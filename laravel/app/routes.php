@@ -16,7 +16,19 @@ Route::get('/', [
         'uses' => 'HomeController@showIndex'
     ]
 );
-// Route::get('/', function()
-// {
-// 	return View::make('hello');
-// });
+
+Route::get('word-lid', [
+        'as' => 'word-lid',
+        'uses' => 'HomeController@wordLid'
+    ]
+);
+
+Route::group(array('prefix' => 'de-gsv'), function()
+{
+
+    Route::get('/', [
+            'as' => 'about',
+            'uses' => 'AboutController@showAbout'
+        ]
+    );
+});

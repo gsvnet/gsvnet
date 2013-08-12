@@ -25,4 +25,9 @@ class HomeController extends BaseController {
 		$this->layout->content = View::make('index');
 	}
 
+	public function wordLid()
+	{
+		$this->layout->content = View::make('word-lid');
+	}
+
 }
