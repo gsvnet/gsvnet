@@ -1,0 +1,40 @@
+.nav-bar {
+	@include container;
+	list-style-type: none;
+	padding: 0;
+}
+
+.logo {
+	display: block;
+	margin: 0;
+	text-align: center;
+}
+
+.logo-link {
+	display: inline-block;
+	width: 90px;
+	height: 90px;
+	background-image: url(../images/logo-90.png);
+	margin-top: 18px;
+	margin-top: 1rem;
+}
+
+.logo-link span {
+	display: none;
+}
+
+.nav-bar-links {
+	margin: 0;
+	padding: 0;
+}
+
+.top-level-menuitem {
+	display: inline-block;
+}
+
+.top-level-link {
+	text-decoration: none;
+	line-height: 2.5em;
+	padding: 0 1em;
+	display: inline-block;
+}
