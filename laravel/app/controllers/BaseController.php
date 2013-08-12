@@ -1,6 +1,10 @@
 <?php
 
 class BaseController extends Controller {
+	/**
+     * The layout that should be used for responses.
+     */
+    protected $layout = 'layouts.default';
 
 	/**
 	 * Setup the layout used by the controller.
