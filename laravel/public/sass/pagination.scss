@@ -1,0 +1,53 @@
+.pagination {
+	@include clearfix;
+	margin: 18px 0;
+	padding: 0;
+}
+
+.pagination > li {
+	display: block;
+	float: left;
+	margin-right: 0.5em;
+}
+
+.pagination > li:last-child {
+	margin-right: 0;
+}
+
+.pagination > li > a, .pagination > li > span {
+	background: $lightPurple;
+	color: #FFF;
+	padding: 0.5em 1em;
+	text-decoration: none;
+	border: 0;
+
+	&:hover {
+		background: $lighterPurple;
+	}
+
+	&:active {
+		-moz-box-shadow: inset 0px 0px 5px rgba(0,0,0,0.5);
+		-webkit-box-shadow: inset 0px 0px 5px rgba(0,0,0,0.5);
+		box-shadow: inset 0px 0px 5px rgba(0,0,0,0.5);
+	}
+}
+
+.pagination > li.active a, .pagination > li.active > span {
+	background: $darkPurple;
+
+	&:active {
+		-moz-box-shadow: none;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+}
+
+.pagination > li.disabled a, .pagination > li.disabled > span {
+	background: $grey;
+
+	&:active {
+		-moz-box-shadow: none;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+}

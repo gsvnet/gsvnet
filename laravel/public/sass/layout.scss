@@ -1,0 +1,116 @@
+/** PAGE BLOCKS **/
+
+.overal-header {
+	background: #EEE;
+	border-top: 2px solid $darkPurple;
+}
+
+.column-holder {
+	@include container;
+	@include clearfix;
+	margin-top: 2em;
+}
+
+/** Normal 2 column page **/
+.main-content {
+	float: left;
+	width: 631px;
+	padding-right: 18px;
+	border-right: 1px solid #EEE;
+}
+
+.secondary-column {
+	float: left;
+	width: 292px;
+	padding-left: 18px;
+
+	p {
+		@include modular-scale(14, $font-base, '#{$type-scale-unit-value}');
+	}
+
+	h2 {
+		@include modular-scale(18, $font-base, '#{$type-scale-unit-value}');
+		text-transform: uppercase;
+	}
+}
+
+/** Article page **/
+.artikel > p, 
+.artikel > h1, 
+.artikel > h2, 
+.artikel > h3,
+.artikel > h4, 
+.artikel > h5, 
+.artikel > h6 {
+	margin-left: 135px;
+	margin-right: 135px;
+}
+
+.artikel p.lead {
+	margin-left: 0;
+	margin-right: 0;
+	@extend .delta;
+}
+
+.artikel aside.note {
+	float: right;
+	width: 180px;
+	margin: 18px 0 18px 18px;
+	font-size: 14px;
+	font-style: italic;
+	padding: 18px;
+	background: #EEE;
+}
+
+figure {
+	margin: 18px 0;
+	
+	img {
+		vertical-align: bottom;
+		max-width: 100%;
+	}
+	figcaption {
+		font-size: 14px;
+		font-style: italic;
+	}
+}
+
+
+/** Footer **/
+.site-footer {
+	@include container;
+}
+
+
+/** Responsive **/
+@media only screen and (max-width: 960px){
+	.column-holder {
+		width: auto;
+		padding-left: 36px;
+		padding-right: 36px;
+	}
+
+	.main-content, .secondary-column {
+		float: none;
+		border: 0;
+		padding: 0;
+		margin: 0;
+		width: auto;
+	}
+
+	.artikel > p, 
+	.artikel > h1, 
+	.artikel > h2, 
+	.artikel > h3,
+	.artikel > h4, 
+	.artikel > h5, 
+	.artikel > h6 {
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+
+::selection {
+	color: $white;
+	background: $darkPurple;
+}
