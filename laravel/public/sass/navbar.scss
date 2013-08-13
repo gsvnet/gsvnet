@@ -28,13 +28,35 @@
 	padding: 0;
 }
 
-.top-level-menuitem {
-	display: inline-block;
-}
-
 .top-level-link {
 	text-decoration: none;
 	line-height: 2.5em;
 	padding: 0 1em;
 	display: inline-block;
+}
+
+.top-level-menuitem {
+	display: inline-block;
+
+	&:first-child .top-level-link {
+		padding-left: 0;
+	}
+}
+
+
+/** Responsive **/
+@media only screen and (max-width: 960px){
+	.nav-bar-links {
+		padding: 0 2em;
+		margin: 1em 0;
+	}
+
+	.top-level-link:link,
+	.top-level-link:visited,
+	.top-level-menuitem:first-child .top-level-link:link {
+		background: $darkPurple;
+		color: #FFF;
+		padding: 0 1em;
+		margin-bottom: .2em;
+	}
 }
