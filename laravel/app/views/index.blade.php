@@ -38,7 +38,3 @@
         </div>
     </div>
 @stop
-
-@section('javascripts')
-    @parent
-@stop

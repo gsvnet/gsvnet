@@ -17,7 +17,7 @@
                     <h1 class="logo"><a class="logo-link" href="/public"><span>GSV</span></a></h1>
                     <ul class="nav-bar-links">
                         <li class="top-level-menuitem"><a class="top-level-link" href="/">Home</a></li>
-                        <li class="top-level-menuitem"><a class="top-level-link" href="/over">De GSV</a></li>
+                        <li class="top-level-menuitem"><a class="top-level-link" href="/de-gsv">De GSV</a></li>
                         <li class="top-level-menuitem"><a class="top-level-link" href="/#">Forum</a></li>
                         <li class="top-level-menuitem"><a class="top-level-link" href="/foto-albums">Fotoalbum</a></li>
                         <li class="top-level-menuitem"><a class="top-level-link" href="/activiteiten">Activiteiten</a></li>
