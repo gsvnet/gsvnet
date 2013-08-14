@@ -1119,39 +1119,28 @@ figure figcaption {
 
 /* line 1, ../sass/pagination.scss */
 .pagination {
-  zoom: 1;
   margin: 18px 0;
   padding: 0;
 }
-/* line 3, ../sass/mixins.scss */
-.pagination:before, .pagination:after {
-  content: "\0020";
-  display: block;
-  height: 0;
-  overflow: hidden;
-}
-/* line 9, ../sass/mixins.scss */
-.pagination:after {
-  clear: both;
-}
 
-/* line 7, ../sass/pagination.scss */
+/* line 6, ../sass/pagination.scss */
 .pagination > li {
-  display: block;
-  float: left;
+  display: inline-block;
   margin-right: 0.5em;
 }
 
-/* line 13, ../sass/pagination.scss */
+/* line 11, ../sass/pagination.scss */
 .pagination > li:last-child {
   margin-right: 0;
 }
 
-/* line 17, ../sass/pagination.scss */
+/* line 15, ../sass/pagination.scss */
 .pagination > li > a, .pagination > li > span {
+  display: inline-block;
   background: #4f267e;
   color: #FFF;
-  padding: 0.5em 1em;
+  line-height: 2.5em;
+  padding: 0 1em;
   text-decoration: none;
   border: 0;
 }

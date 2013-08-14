@@ -19,7 +19,7 @@
                         <li class="top-level-menuitem"><a class="top-level-link" href="/">Home</a></li>
                         <li class="top-level-menuitem"><a class="top-level-link" href="/de-gsv">De GSV</a></li>
                         <li class="top-level-menuitem"><a class="top-level-link" href="/#">Forum</a></li>
-                        <li class="top-level-menuitem"><a class="top-level-link" href="/foto-albums">Fotoalbum</a></li>
+                        <li class="top-level-menuitem"><a class="top-level-link" href="/media">Fotoalbum</a></li>
                         <li class="top-level-menuitem"><a class="top-level-link" href="/activiteiten">Activiteiten</a></li>
                         <li class="top-level-menuitem"><a class="top-level-link" href="/word-lid">Word lid!</a></li>
                         <li class="top-level-menuitem"><a class="top-level-link login-link" href="/login" data-mfp-src="#login-dialog">Inloggen</a></li>
@@ -33,7 +33,7 @@
 
     @section('word-lid')
         <div class="hero-unit">
-            <p class="center"><a href="word-lid.html" class="button">Word lid!</a></p>
+            <p class="center"><a href="word-lid" class="button">Word lid!</a></p>
         </div>
     @show
 

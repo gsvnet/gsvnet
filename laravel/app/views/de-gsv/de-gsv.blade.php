@@ -41,7 +41,7 @@
 @stop
 
 @section('javascripts')
-    <script src="javascripts/jquery-1.10.1.min.js"></script>
+    @parent
     <script src="javascripts/slider.js"></script>
     <script src="javascripts/over.js"></script>
 @stop

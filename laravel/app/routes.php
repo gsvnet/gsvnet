@@ -32,3 +32,13 @@ Route::group(array('prefix' => 'de-gsv'), function()
         ]
     );
 });
+
+Route::get('media', [
+    'as' => 'media',
+    'uses' => 'PhotoController@showAlbums'
+]);
+
+Route::get('activiteiten', [
+    'as' => 'activiteiten',
+    'uses' => 'EventController@showIndex'
+]);

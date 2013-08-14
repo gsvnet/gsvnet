@@ -8,7 +8,7 @@ class HomeController extends BaseController {
 
 	public function wordLid()
 	{
-		$this->layout->content = View::make('word-lid');
+		$this->layout->content = View::make('word-lid.word-lid');
 	}
 
 }

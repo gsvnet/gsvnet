@@ -1,12 +1,10 @@
 .pagination {
-	@include clearfix;
 	margin: 18px 0;
 	padding: 0;
 }
 
 .pagination > li {
-	display: block;
-	float: left;
+	display: inline-block;
 	margin-right: 0.5em;
 }
 
@@ -15,9 +13,11 @@
 }
 
 .pagination > li > a, .pagination > li > span {
+	display: inline-block;
 	background: $lightPurple;
 	color: #FFF;
-	padding: 0.5em 1em;
+	line-height: 2.5em;
+	padding: 0 1em;
 	text-decoration: none;
 	border: 0;
 
