@@ -1,17 +1,30 @@
 (function(){
 	var previewEl = $('#preview-image'),
 	    inputEl = $('#input-image'),
-	    img = $('<img>')
+	    canvas = $('<canvas />').get(0),
+	    img = new Image(),
+	    width = 400,
+	    ctx, url;
 
-	previewEl.append(img);
+	canvas.width = canvas.height = width;
+	previewEl.append(canvas);
 
-	$('#input-image').change(function(evt){
-		var oFReader = new FileReader();
+	ctx = canvas.getContext('2d');
 
-		oFReader.readAsDataURL(evt.target.files[0]);
+	// Check if a file is selected
+	$('#input-image').change(function(e){
+		url = URL.createObjectURL(e.target.files[0]);
+		img = new Image();
+		img.onload = function() {
+			ratio = img.height/img.width;
+			canvas.height = ratio*width;
+			ctx.drawImage(img,0,0,img.width,img.height,0,0,width,ratio*width);
+		}
+		img.src = url;
+	});
 
-		oFReader.onload = function (oFREvent) {
-			img.attr('src', oFREvent.target.result);
-		};
+	// Check if a name is entered
+	$('#input-voornaam').blur(function(){
+		alert('hallo ' + this.value);
 	});
 })();

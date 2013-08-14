@@ -1,8 +1,10 @@
 #preview-image {
 	float: right;
-	width: 45%;
+	background: $lightGrey;
+	padding: 18px;
 }
 
-#preview-image img {
+#preview-image canvas {
 	max-width: 100%;
+	vertical-align: bottom;
 }

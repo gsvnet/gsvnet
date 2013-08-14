@@ -2062,10 +2062,12 @@ img.mfp-img {
 /* line 1, ../sass/preview-image.scss */
 #preview-image {
   float: right;
-  width: 45%;
+  background: #eeeeee;
+  padding: 18px;
 }
 
-/* line 6, ../sass/preview-image.scss */
-#preview-image img {
+/* line 7, ../sass/preview-image.scss */
+#preview-image canvas {
   max-width: 100%;
+  vertical-align: bottom;
 }
