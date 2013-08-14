@@ -41,7 +41,16 @@
     <div class="hero-unit">
         <div class="column-holder" role="main">
             <h2>Meld je aan!</h2>
+            <div id="preview-image">
+                
+            </div>
             <form class="form-horizontal">
+                <div class="control-group">
+                    <label for="input-image" class="control-label">Upload een foto van jezelf</label>
+                    <div class="controls">
+                        <input type="file" name="input-image" id="input-image" accept="image/*" capture="camera">
+                    </div>
+                </div>
                 <div class="control-group">
                     <label class="control-label" for="input-voornaam">Voornaam</label>
                     <div class="controls">
@@ -78,4 +87,9 @@
 @stop
 
 @section('word-lid')
+@stop
+
+@section('javascripts')
+    @parent
+    <script src="javascripts/word-lid.js"></script>
 @stop

@@ -32,11 +32,6 @@
             <ul class="slideshow-nav"></ul>
         </div>
         <p>Hoewel de vereniging vanuit een Gereformeerd vrijgemaakte traditie is opgericht, staat zij open voor alle christenen die het eens kunnen zijn met de gereformeerde basis en grondbeginselen. Zo verwelkomt de vereniging elk jaar rond de 40 nieuwe leden, die meteen een goed begin van hun studententijd hebben bij de GSV. De GSV is naast een gereformeerde ook een academische vereniging. Dit betekent dat alleen universitaire studenten lid kunnen worden van de vereniging. Dit geeft de vereniging haar eigen studentikoze maar ook verdiepende karakter.</p>
-<!--        <figure>
-            <img src="images/foto2.jpg" alt="Mountainbiken">
-            <figcaption>De GSV in 2012</figcaption>
-        </figure>
--->
     </article>
 @stop
 

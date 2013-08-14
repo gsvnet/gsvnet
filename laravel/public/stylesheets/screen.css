@@ -2058,3 +2058,14 @@ img.mfp-img {
 .my-mfp-zoom-in.mfp-removing.mfp-bg {
   opacity: 0;
 }
+
+/* line 1, ../sass/preview-image.scss */
+#preview-image {
+  float: right;
+  width: 45%;
+}
+
+/* line 6, ../sass/preview-image.scss */
+#preview-image img {
+  max-width: 100%;
+}
