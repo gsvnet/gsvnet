@@ -2,6 +2,8 @@
     <h2>Login</h2>
     <form method='post' action='/login'>
 
+        {{ Form::token() }}
+
         <div class="form-group">
             <label class="control-label" for="inputEmail">Email</label>
             <input type="text" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email">
