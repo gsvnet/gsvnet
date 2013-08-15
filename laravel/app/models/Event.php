@@ -22,4 +22,12 @@ class Event extends \Eloquent {
     {
         return '22:00';
     }
+
+    public function image()
+    {
+        // To do
+        //  return /uploads/events/{event-id}-{event-name / image name}.{image extension}
+
+        return 'http://lorempixel.com/126/126?a' . $this->id;
+    }
 }

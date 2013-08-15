@@ -8,7 +8,7 @@
 
 				@foreach ($events as $event)
 					<div class="event-row">
-						<div class="img"><img src="http://lorempixel.com/126/126?a{{ $event->id }}"  alt="Zus"></div>
+						<div class="img"><img src="{{ $event->image() }}"  alt="Zus"></div>
 						<p class="time">
 							<span class="dag">{{ $event->day() }}</span>
 							<span class="datum">{{ $event->date() }}</span>
