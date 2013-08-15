@@ -32,23 +32,6 @@
 		@include modular-scale(18, $font-base, '#{$type-scale-unit-value}');
 		text-transform: uppercase;
 	}
-
-	.secondary-menu {
-		list-style-type: none;
-		padding: 0;
-		margin-top: 18px;
-
-		a {
-			display: block;
-			line-height: 3em;
-			border-top: 1px solid $lightGrey;
-			font-weight: bold;
-		}
-
-		li:last-child a {
-			border-bottom: 1px solid $lightGrey;
-		}
-	}
 }
 
 /** Article page **/
@@ -77,6 +60,14 @@
 	font-style: italic;
 	padding: 18px;
 	background: #EEE;
+}
+
+.artikel .secondary-menu {
+	float: right;
+	width: 292px;
+	padding-left: 18px;
+	border-left: 1px solid $lightGrey;
+	margin-left: 18px;
 }
 
 figure {

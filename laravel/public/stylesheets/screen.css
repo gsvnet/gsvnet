@@ -928,26 +928,9 @@ h6 {
   font-size: 1rem;
   text-transform: uppercase;
 }
-/* line 36, ../sass/layout.scss */
-.secondary-column .secondary-menu {
-  list-style-type: none;
-  padding: 0;
-  margin-top: 18px;
-}
-/* line 41, ../sass/layout.scss */
-.secondary-column .secondary-menu a {
-  display: block;
-  line-height: 3em;
-  border-top: 1px solid #eeeeee;
-  font-weight: bold;
-}
-/* line 48, ../sass/layout.scss */
-.secondary-column .secondary-menu li:last-child a {
-  border-bottom: 1px solid #eeeeee;
-}
 
 /** Article page **/
-/* line 61, ../sass/layout.scss */
+/* line 44, ../sass/layout.scss */
 .artikel > p,
 .artikel > h1,
 .artikel > h2,
@@ -959,13 +942,13 @@ h6 {
   margin-right: 135px;
 }
 
-/* line 66, ../sass/layout.scss */
+/* line 49, ../sass/layout.scss */
 .artikel p.lead {
   margin-left: 0;
   margin-right: 0;
 }
 
-/* line 72, ../sass/layout.scss */
+/* line 55, ../sass/layout.scss */
 .artikel aside.note {
   float: right;
   width: 180px;
@@ -976,23 +959,32 @@ h6 {
   background: #EEE;
 }
 
-/* line 82, ../sass/layout.scss */
+/* line 65, ../sass/layout.scss */
+.artikel .secondary-menu {
+  float: right;
+  width: 292px;
+  padding-left: 18px;
+  border-left: 1px solid #eeeeee;
+  margin-left: 18px;
+}
+
+/* line 73, ../sass/layout.scss */
 figure {
   margin: 18px 0;
 }
-/* line 85, ../sass/layout.scss */
+/* line 76, ../sass/layout.scss */
 figure img {
   vertical-align: bottom;
   max-width: 100%;
 }
-/* line 89, ../sass/layout.scss */
+/* line 80, ../sass/layout.scss */
 figure figcaption {
   font-size: 14px;
   font-style: italic;
 }
 
 /** Footer **/
-/* line 97, ../sass/layout.scss */
+/* line 88, ../sass/layout.scss */
 .site-footer {
   max-width: 960px;
   margin-left: auto;
@@ -1001,14 +993,14 @@ figure figcaption {
 
 /** Responsive **/
 @media only screen and (max-width: 960px) {
-  /* line 104, ../sass/layout.scss */
+  /* line 95, ../sass/layout.scss */
   .column-holder {
     width: auto;
     padding-left: 36px;
     padding-right: 36px;
   }
 
-  /* line 110, ../sass/layout.scss */
+  /* line 101, ../sass/layout.scss */
   .main-content, .secondary-column {
     float: none;
     border: 0;
@@ -1017,7 +1009,7 @@ figure figcaption {
     width: auto;
   }
 
-  /* line 124, ../sass/layout.scss */
+  /* line 115, ../sass/layout.scss */
   .artikel > p,
   .artikel > h1,
   .artikel > h2,
@@ -1029,7 +1021,7 @@ figure figcaption {
     margin-right: 0;
   }
 }
-/* line 130, ../sass/layout.scss */
+/* line 121, ../sass/layout.scss */
 ::selection {
   color: white;
   background: #2a1443;
@@ -1089,15 +1081,33 @@ figure figcaption {
   padding-left: 0;
 }
 
+/* line 46, ../sass/navbar.scss */
+.secondary-menu {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 18px;
+}
+/* line 51, ../sass/navbar.scss */
+.secondary-menu a {
+  display: block;
+  line-height: 3em;
+  border-top: 1px solid #eeeeee;
+  font-weight: bold;
+}
+/* line 58, ../sass/navbar.scss */
+.secondary-menu li:last-child a {
+  border-bottom: 1px solid #eeeeee;
+}
+
 /** Responsive **/
 @media only screen and (max-width: 960px) {
-  /* line 49, ../sass/navbar.scss */
+  /* line 66, ../sass/navbar.scss */
   .nav-bar-links {
     padding: 0 2em;
     margin: 1em 0;
   }
 
-  /* line 56, ../sass/navbar.scss */
+  /* line 73, ../sass/navbar.scss */
   .top-level-link:link,
   .top-level-link:visited,
   .top-level-menuitem:first-child .top-level-link:link {
