@@ -15,7 +15,7 @@ class EventsTableSeeder extends Seeder {
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quicquid opinemur.',
 
                 'start_date' => new DateTime('today +' . $i . 'day'),
-                'end_date' => null,
+                'end_date' =>  new DateTime('today +' . ($i + 1) . 'day'),
 
                 'created_at' => new DateTime('today'),
                 'updated_at' => new DateTime('today')
