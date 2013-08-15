@@ -13,7 +13,7 @@ class EventController extends BaseController {
         //
         $events = Model\Event::where('end_date', '>=', new \DateTime('now'))
             ->orderBy('start_date', 'asc')
-            ->get();
+            ->paginate(5);
 
 		$this->layout->content = View::make('events.index')->with('events', $events);
 	}
