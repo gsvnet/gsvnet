@@ -4,10 +4,10 @@
 
 @if ($paginator->getLastPage() > 1)
     <ul class="pagination">
-        {{ $presenter->getPrevious('« Later'); }}
+        {{ $presenter->getPrevious('« Eerder'); }}
 
         {{ $presenter->getPageRange(1, $paginator->getLastPage()); }}
 
-        {{ $presenter->getNext('Eerder »'); }}
+        {{ $presenter->getNext('Later »'); }}
     </ul>
 @endif
