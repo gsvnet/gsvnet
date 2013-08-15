@@ -10,17 +10,23 @@ class Event extends \Eloquent {
     //  convert $this->start_date naar correcte output
     public function day()
     {
-        return 'donderdag';
+        $start_date = new \DateTime($this->start_date);
+
+        return $start_date->format('l');
     }
 
     public function date()
     {
-        return '8 augustus 2013';
+        $start_date = new \DateTime($this->start_date);
+
+        return $start_date->format('d F Y');
     }
 
     public function time()
     {
-        return '22:00';
+        $start_date = new \DateTime($this->start_date);
+
+        return $start_date->format('H:i');
     }
 
     public function image()
