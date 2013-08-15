@@ -23,6 +23,24 @@ Route::get('word-lid', [
     ]
 );
 
+/*
+// Login and logout routes
+ */
+Route::post('login', array(
+        'as' => 'post_login',
+        'before' => array('csrf'),
+        'uses' => 'LoginController@post_login'
+    )
+);
+
+Route::get('logout', array(
+        'as' => 'get_logout',
+        'before' => array('auth'),
+        'uses' => 'LoginController@get_logout'
+    )
+);
+
+
 Route::group(array('prefix' => 'de-gsv'), function()
 {
 

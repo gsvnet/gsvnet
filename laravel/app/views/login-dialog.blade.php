@@ -1,6 +1,6 @@
 <div id="login-dialog" class="zoom-anim-dialog mfp-hide">
     <h2>Login</h2>
-    <form method='post' action='/login'>
+    <form method="POST" action="/login">
 
         {{ Form::token() }}
 

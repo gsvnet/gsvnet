@@ -22,7 +22,11 @@
                         <li class="top-level-menuitem"><a class="top-level-link" href="/media">Fotoalbum</a></li>
                         <li class="top-level-menuitem"><a class="top-level-link" href="/activiteiten">Activiteiten</a></li>
                         <li class="top-level-menuitem"><a class="top-level-link" href="/word-lid">Word lid!</a></li>
-                        <li class="top-level-menuitem"><a class="top-level-link login-link" href="/login" data-mfp-src="#login-dialog">Inloggen</a></li>
+                        @if (Auth::check())
+                            <li class="top-level-menuitem"><a class="top-level-link" href="/logout">Uitloggen</a></li>
+                        @else
+                            <li class="top-level-menuitem"><a class="top-level-link login-link" href="/login" data-mfp-src="#login-dialog">Inloggen</a></li>
+                        @endif
                     </ul>
                 </nav>
             </header>
