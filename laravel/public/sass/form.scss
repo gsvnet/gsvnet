@@ -1,26 +1,25 @@
-.control-group {
+.form-group {
 	margin-bottom: 1em;
 }
 
-label {
+.control-label {
 	cursor: pointer;
+	display: block;
+	font-weight: bold;
 }
 
-select,
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"] {
+.form-control {
 	padding: .2rem .5rem;
+	border: 1px solid $grey;
+}
+
+.has-error {
+	.control-label {
+		color: #b94a48;
+	}
+	
+	.form-control {
+		border-color: #b94a48;
+	}
+
 }

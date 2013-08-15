@@ -32,6 +32,23 @@
 		@include modular-scale(18, $font-base, '#{$type-scale-unit-value}');
 		text-transform: uppercase;
 	}
+
+	.secondary-menu {
+		list-style-type: none;
+		padding: 0;
+		margin-top: 18px;
+
+		a {
+			display: block;
+			line-height: 3em;
+			border-top: 1px solid $lightGrey;
+			font-weight: bold;
+		}
+
+		li:last-child a {
+			border-bottom: 1px solid $lightGrey;
+		}
+	}
 }
 
 /** Article page **/

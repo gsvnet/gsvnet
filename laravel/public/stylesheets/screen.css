@@ -849,33 +849,30 @@ h6 {
 }
 
 /* line 1, ../sass/form.scss */
-.control-group {
+.form-group {
   margin-bottom: 1em;
 }
 
 /* line 5, ../sass/form.scss */
-label {
+.control-label {
   cursor: pointer;
+  display: block;
+  font-weight: bold;
 }
 
-/* line 24, ../sass/form.scss */
-select,
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"] {
+/* line 11, ../sass/form.scss */
+.form-control {
   padding: 0.2rem 0.5rem;
+  border: 1px solid #cccccc;
+}
+
+/* line 17, ../sass/form.scss */
+.has-error .control-label {
+  color: #b94a48;
+}
+/* line 21, ../sass/form.scss */
+.has-error .form-control {
+  border-color: #b94a48;
 }
 
 /** PAGE BLOCKS **/
@@ -931,9 +928,26 @@ input[type="color"] {
   font-size: 1rem;
   text-transform: uppercase;
 }
+/* line 36, ../sass/layout.scss */
+.secondary-column .secondary-menu {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 18px;
+}
+/* line 41, ../sass/layout.scss */
+.secondary-column .secondary-menu a {
+  display: block;
+  line-height: 3em;
+  border-top: 1px solid #eeeeee;
+  font-weight: bold;
+}
+/* line 48, ../sass/layout.scss */
+.secondary-column .secondary-menu li:last-child a {
+  border-bottom: 1px solid #eeeeee;
+}
 
 /** Article page **/
-/* line 44, ../sass/layout.scss */
+/* line 61, ../sass/layout.scss */
 .artikel > p,
 .artikel > h1,
 .artikel > h2,
@@ -945,13 +959,13 @@ input[type="color"] {
   margin-right: 135px;
 }
 
-/* line 49, ../sass/layout.scss */
+/* line 66, ../sass/layout.scss */
 .artikel p.lead {
   margin-left: 0;
   margin-right: 0;
 }
 
-/* line 55, ../sass/layout.scss */
+/* line 72, ../sass/layout.scss */
 .artikel aside.note {
   float: right;
   width: 180px;
@@ -962,23 +976,23 @@ input[type="color"] {
   background: #EEE;
 }
 
-/* line 65, ../sass/layout.scss */
+/* line 82, ../sass/layout.scss */
 figure {
   margin: 18px 0;
 }
-/* line 68, ../sass/layout.scss */
+/* line 85, ../sass/layout.scss */
 figure img {
   vertical-align: bottom;
   max-width: 100%;
 }
-/* line 72, ../sass/layout.scss */
+/* line 89, ../sass/layout.scss */
 figure figcaption {
   font-size: 14px;
   font-style: italic;
 }
 
 /** Footer **/
-/* line 80, ../sass/layout.scss */
+/* line 97, ../sass/layout.scss */
 .site-footer {
   max-width: 960px;
   margin-left: auto;
@@ -987,14 +1001,14 @@ figure figcaption {
 
 /** Responsive **/
 @media only screen and (max-width: 960px) {
-  /* line 87, ../sass/layout.scss */
+  /* line 104, ../sass/layout.scss */
   .column-holder {
     width: auto;
     padding-left: 36px;
     padding-right: 36px;
   }
 
-  /* line 93, ../sass/layout.scss */
+  /* line 110, ../sass/layout.scss */
   .main-content, .secondary-column {
     float: none;
     border: 0;
@@ -1003,7 +1017,7 @@ figure figcaption {
     width: auto;
   }
 
-  /* line 107, ../sass/layout.scss */
+  /* line 124, ../sass/layout.scss */
   .artikel > p,
   .artikel > h1,
   .artikel > h2,
@@ -1015,7 +1029,7 @@ figure figcaption {
     margin-right: 0;
   }
 }
-/* line 113, ../sass/layout.scss */
+/* line 130, ../sass/layout.scss */
 ::selection {
   color: white;
   background: #2a1443;
@@ -1097,24 +1111,32 @@ figure figcaption {
 .hero-unit {
   padding: 6em 0;
   margin: 2em 0;
-  background: #2a1443;
-  color: #FFF;
 }
 
-/* line 8, ../sass/hero-unit.scss */
-.hero-unit h2 {
-  color: #FFF;
-}
-
-/* line 12, ../sass/hero-unit.scss */
-.hero-unit input[type=text] {
-  border: 0;
-}
-
-/* line 16, ../sass/hero-unit.scss */
+/* line 6, ../sass/hero-unit.scss */
 .hero-unit .center {
   margin: 0;
   text-align: center;
+}
+
+/* line 11, ../sass/hero-unit.scss */
+.hero-unit.purple {
+  background: #2a1443;
+  color: #FFF;
+}
+/* line 15, ../sass/hero-unit.scss */
+.hero-unit.purple h2 {
+  color: #FFF;
+}
+
+/* line 20, ../sass/hero-unit.scss */
+.hero-unit.grey {
+  background: #eeeeee;
+}
+
+/* line 24, ../sass/hero-unit.scss */
+.hero-unit.grey .main-content {
+  border-color: #cccccc;
 }
 
 /* line 1, ../sass/pagination.scss */
@@ -2061,12 +2083,11 @@ img.mfp-img {
 
 /* line 1, ../sass/preview-image.scss */
 #preview-image {
-  float: right;
-  background: #eeeeee;
+  background: #FFF;
   padding: 18px;
 }
 
-/* line 7, ../sass/preview-image.scss */
+/* line 6, ../sass/preview-image.scss */
 #preview-image canvas {
   max-width: 100%;
   vertical-align: bottom;

@@ -31,53 +31,41 @@
             Kortom: wil jij dit meemaken?</p>
         </div>
         <div class="secondary-column">
-            <aside class="pull-quote">
-                <blockquote>
-                    <p>Zus en zo</p>
-                </blockquote>
-            </aside>
+            <ul class="secondary-menu">
+                <li><a href="#">Waarom lid worden?</a></li>
+                <li><a href="#">Zus en zo?</a></li>
+                <li><a href="#">Bla die bla?</a></li>
+            </ul>
         </div>
     </div>
-    <div class="column-holder" role="main">
-        <h2>Meld je aan!</h2>
-        <div id="preview-image">
-        
-        </div>
+    <div class="hero-unit grey">
         <form class="form-horizontal">
-            <div class="control-group">
-                <label for="input-image" class="control-label">Upload een foto van jezelf</label>
-                <div class="controls">
-                    <input type="file" name="input-image" id="input-image" accept="image/*" capture="camera">
+            <div class="column-holder" role="main">
+                <h1>Meld je aan!</h1>
+                <div class="delta">Door onderstaand formulier in te vullen meld je je aan voor de Gereformeerde Studentenvereniging Groningen</div>
+                <div class="main-content">
+                    <div class="form-group">
+                        <label class="control-label" for="inputImage">Upload een foto van jezelf</label>
+                        <input type="file" name="inputImage" id="inputImage" accept="image/*" capture="camera">
+                    </div>
+                    <div class="form-group has-error">
+                        <label class="control-label" for="inputVoornaam">Voornaam</label>
+                        <input type="text" class="form-control" id="inputVoornaam" name="inputVoornaam" placeholder="Voornaam">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="inputAchternaam">Achternaam</label>
+                        <input type="text" class="form-control" id="inputAchternaam" name="inputAchternaam" placeholder="Achternaam">
+                    </div>
+                </div>
+                <div class="secondary-column">
+                    <div id="preview-image">
+                
+                    </div>
                 </div>
             </div>
-            <div class="control-group">
-                <label class="control-label" for="input-voornaam">Voornaam</label>
-                <div class="controls">
-                    <input type="text" id="input-voornaam" placeholder="Voornaam">
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="input-achternaam">Achternaam</label>
-                <div class="controls">
-                    <input type="password" id="input-achternaam" placeholder="Achternaam">
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="input-email">E-mail</label>
-                <div class="controls">
-                    <input type="password" id="input-email" placeholder="E-mail">
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="input-telefoon">Telefoon</label>
-                <div class="controls">
-                    <input type="password" id="input-telefoon" placeholder="Telefoon">
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="input-rug">RuG-nummer</label>
-                <div class="controls">
-                    <input type="password" id="input-rug" placeholder="S.......">
+            <div class="column-holder">
+                <div class="control-group">
+                    <input type="submit" value="Meld je aan" class="button">
                 </div>
             </div>
         </form>

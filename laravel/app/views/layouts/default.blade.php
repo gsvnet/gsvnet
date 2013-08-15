@@ -32,7 +32,7 @@
     @yield('content')
 
     @section('word-lid')
-        <div class="hero-unit">
+        <div class="hero-unit purple">
             <p class="center"><a href="word-lid" class="button">Word lid!</a></p>
         </div>
     @show
@@ -43,26 +43,23 @@
 
     <div id="login-dialog" class="zoom-anim-dialog mfp-hide">
         <h2>Login</h2>
-        <form class="form-horizontal">
-            <div class="control-group">
+        <form>
+
+            <div class="form-group">
                 <label class="control-label" for="inputEmail">Email</label>
-                <div class="controls">
-                    <input type="text" id="inputEmail" placeholder="Email">
-                </div>
+                <input type="text" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email">
             </div>
-            <div class="control-group">
+            <div class="form-group">
                 <label class="control-label" for="inputPassword">Wachtwoord</label>
-                <div class="controls">
-                    <input type="password" id="inputPassword" placeholder="Wachtwoord">
-                </div>
+                <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Wachtwoord">
             </div>
-            <div class="control-group">
-                <div class="controls">
-                    <label class="checkbox">
-                        <input type="checkbox"> Onthoud mij
-                    </label>
-                    <button type="submit" class="btn">Log in</button>
-                </div>
+            <div class="form-group">
+                <label class="checkbox">
+                    <input type="checkbox"> Onthoud mij
+                </label>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="button">Log in</button>
             </div>
         </form>
     </div>

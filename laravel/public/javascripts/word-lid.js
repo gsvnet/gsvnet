@@ -1,6 +1,6 @@
 (function(){
 	var previewEl = $('#preview-image'),
-	    inputEl = $('#input-image'),
+	    fileField = $('#input-image'),
 	    canvas = $('<canvas />').get(0),
 	    img = new Image(),
 	    width = 400,
@@ -12,7 +12,7 @@
 	ctx = canvas.getContext('2d');
 
 	// Check if a file is selected
-	$('#input-image').change(function(e){
+	fileField.change(function(e){
 		url = URL.createObjectURL(e.target.files[0]);
 		img = new Image();
 		img.onload = function() {
@@ -25,6 +25,6 @@
 
 	// Check if a name is entered
 	$('#input-voornaam').blur(function(){
-		alert('hallo ' + this.value);
+		//alert('hallo ' + this.value);
 	});
 })();
