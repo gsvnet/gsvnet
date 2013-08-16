@@ -29,11 +29,17 @@ class Event extends \Eloquent {
         return $start_date->format('H:i');
     }
 
+    //  return /uploads/events/{event-id}-{image name}.{image extension}
     public function image()
     {
-        // To do
-        //  return /uploads/events/{event-id}-{event-name / image name}.{image extension}
+        // Find all files corresponding to /public/uploads/events/{event-id}-{image name}.{image extension}
+        $files = glob("public/uploads/events/" . $this->id . "-*");
 
-        return 'http://lorempixel.com/126/126?a' . $this->id;
+        if (count($files) > 0)
+        {
+            // Select 1 file and remove /public from string
+            return $file = preg_replace('/^public/', '', $files[0]);
+        }
+        return '';
     }
 }
