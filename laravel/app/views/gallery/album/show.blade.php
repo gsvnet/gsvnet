@@ -1,7 +1,7 @@
 @section('content')
     <div class="column-holder" role="main">
-        <h1>Album</h1>
-        <p class="delta">{{ $album->name }}</p>
+        <h1>{{ $album->name }}</h1>
+        <p class="delta">{{ $album->description }}</p>
         <div class="photos">
             <div class="photo-grid-row">
                 <div class="photo-tile first">
