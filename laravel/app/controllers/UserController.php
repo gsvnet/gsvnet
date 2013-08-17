@@ -1,6 +1,6 @@
 <?php
 
-class LoginController extends BaseController {
+class UserController extends BaseController {
 
     public function post_login()
     {
@@ -18,7 +18,7 @@ class LoginController extends BaseController {
         else
         {
             // auth failure! lets go back to the login
-            return Redirect::to('/')
+            return Redirect::to('/login')
                 ->with('login_errors', true);
         }
     }
@@ -27,5 +27,10 @@ class LoginController extends BaseController {
     {
         Auth::logout();
         return Redirect::to('/');
+    }
+
+    public function get_login()
+    {
+        $this->layout->content = View::make('users.login');
     }
 }

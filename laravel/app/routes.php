@@ -23,14 +23,20 @@ Route::get('/', [
 Route::post('login', array(
         'as' => 'post_login',
         'before' => array('csrf'),
-        'uses' => 'LoginController@post_login'
+        'uses' => 'UserController@post_login'
+    )
+);
+
+Route::get('login', array(
+        'as' => 'get_login',
+        'uses' => 'UserController@get_login'
     )
 );
 
 Route::get('logout', array(
         'as' => 'get_logout',
         'before' => array('auth'),
-        'uses' => 'LoginController@get_logout'
+        'uses' => 'UserController@get_logout'
     )
 );
 
