@@ -28,7 +28,7 @@
 
                     <ul id="main-menu" class="nav-bar-links">
                         @foreach ($menuLinks as $link => $name)
-                            <li class="top-level-menuitem"><a class="top-level-link {{ Request::is($link) ? 'active' : '' }}" href="{{ $link }}">{{ $name }}</a></li>
+                            <li class="top-level-menuitem"><a class="top-level-link {{ Request::is($link) ? 'active' : '' }}" href="/{{ $link }}">{{ $name }}</a></li>
                         @endforeach
 
                         @if (Auth::check())

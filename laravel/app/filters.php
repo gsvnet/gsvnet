@@ -19,11 +19,11 @@ App::before(function($request)
 
     View::share('menuLinks', array(
     	'/' 			=> 'Home',
-	    '/de-gsv' 		=> 'De GSV',
-	    '/forum' 		=> 'Forum',
-	    '/albums' 		=> 'Fotoalbum',
-	    '/activiteiten' => 'Activiteiten',
-	    '/word-lid' 	=> 'Word lid!'
+	    'de-gsv' 		=> 'De GSV',
+	    'forum' 		=> 'Forum',
+	    'albums' 		=> 'Fotoalbum',
+	    'activiteiten' => 'Activiteiten',
+	    'word-lid' 	=> 'Lid worden?'
 	));
 });
 
