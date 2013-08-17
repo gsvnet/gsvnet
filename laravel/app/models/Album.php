@@ -1,6 +1,6 @@
 <?php namespace Model;
 
-class Album extends Eloquent {
+class Album extends \Eloquent {
 	protected $guarded = array();
 
 	public static $rules = array();
