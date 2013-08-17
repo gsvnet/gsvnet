@@ -1598,14 +1598,14 @@ a.item:hover .shadow {
 @media only screen and (max-width: 960px) {
   /* line 85, ../sass/slideshow.scss */
   .slideshow-spacer {
-    height: 162px;
+    height: 142px;
     background: #2a1443;
   }
 
   /* line 91, ../sass/slideshow.scss */
   .slideshow .slide-description-wrapper {
-    bottom: -162px;
-    height: 162px;
+    bottom: -142px;
+    height: 142px;
   }
   /* line 96, ../sass/slideshow.scss */
   .slideshow .slide-description-box {

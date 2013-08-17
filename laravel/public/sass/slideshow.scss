@@ -83,14 +83,14 @@ a.item {
 /** Responsive **/
 @media only screen and (max-width: 960px){
   .slideshow-spacer {
-    height: 162px;
+    height: 142px;
     background: $darkPurple;
   }
 
   .slideshow {
     .slide-description-wrapper {
-      bottom: -162px;
-      height: 162px;
+      bottom: -142px;
+      height: 142px;
     }
 
     .slide-description-box {
@@ -117,4 +117,5 @@ a.item {
     -o-transform:scale(0.8);
     transform:scale(0.8);
   }
+
 }
