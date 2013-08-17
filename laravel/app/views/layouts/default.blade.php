@@ -43,7 +43,7 @@
                             <a class="top-level-link {{ Request::is('activiteiten*') ? 'active' : '' }}" href="/activiteiten">Activiteiten</a>
                         </li>
                         <li class="top-level-menuitem">
-                            <a class="top-level-link {{ Request::is('word-lid*') ? 'active' : '' }}" href="/word-lid">Word lid!</a>
+                            <a class="top-level-link {{ Request::is('word-lid*') ? 'active' : '' }}" href="/word-lid">Lid worden?</a>
                         </li>
 
                         @if (Auth::check())
