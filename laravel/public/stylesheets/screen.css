@@ -1589,20 +1589,25 @@ a.item:hover .shadow {
     background: #2a1443;
   }
 
-  /* line 90, ../sass/slideshow.scss */
-  .carousel-inner {
-    overflow: visible;
-  }
-
-  /* line 95, ../sass/slideshow.scss */
+  /* line 91, ../sass/slideshow.scss */
   .slideshow .slide-description-wrapper {
     bottom: -162px;
     height: 162px;
   }
-  /* line 100, ../sass/slideshow.scss */
+  /* line 96, ../sass/slideshow.scss */
   .slideshow .slide-description-box {
     width: auto;
     padding: 18px 36px;
+  }
+
+  /* line 102, ../sass/slideshow.scss */
+  .carousel-inner {
+    overflow: visible;
+  }
+
+  /* line 106, ../sass/slideshow.scss */
+  .slideshow-wrap {
+    overflow: hidden;
   }
 }
 /* Magnific Popup CSS */

@@ -16,7 +16,7 @@
                 <nav class="nav-bar">
                     <div class="nav-bar-extras">
                         <h1 class="logo">
-                            <a class="logo-link" href="/public"><span>Gereformeerde Studentenvereniging Groningen</span></a>
+                            <a class="logo-link" href="/"><span>Gereformeerde Studentenvereniging Groningen</span></a>
                         </h1>
                         <button id="navbar-toggler" class="nav-toggle">
                             <span class="icon-bar"></span>

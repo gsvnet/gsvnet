@@ -87,10 +87,6 @@ a.item {
     background: $darkPurple;
   }
 
-  .carousel-inner {
-    overflow: visible;
-  }
-
   .slideshow {
     .slide-description-wrapper {
       bottom: -162px;
@@ -101,5 +97,13 @@ a.item {
       width: auto;
       padding: 18px 36px;
     }
+  }
+
+  .carousel-inner {
+    overflow: visible;
+  }
+
+  .slideshow-wrap {
+    overflow: hidden;
   }
 }
