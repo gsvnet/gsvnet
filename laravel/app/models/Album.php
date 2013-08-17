@@ -1,4 +1,4 @@
-<?php
+<?php namespace Model;
 
 class Album extends Eloquent {
 	protected $guarded = array();

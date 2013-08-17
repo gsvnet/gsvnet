@@ -17,12 +17,6 @@ Route::get('/', [
     ]
 );
 
-Route::get('word-lid', [
-        'as' => 'word-lid',
-        'uses' => 'HomeController@wordLid'
-    ]
-);
-
 /*
 // Login and logout routes
  */
@@ -51,17 +45,28 @@ Route::group(array('prefix' => 'de-gsv'), function()
     );
 });
 
+Route::get('word-lid', [
+        'as' => 'word-lid',
+        'uses' => 'HomeController@wordLid'
+    ]
+);
+
 Route::get('albums', [
-    'as' => 'albums',
-    'uses' => 'PhotoController@showAlbums'
+    'as'    => 'albums',
+    'uses'  => 'PhotoController@showAlbums'
 ]);
 
 Route::get('albums/{id}', [
-    'as' => 'show_media',
-    'uses' => 'PhotoController@showPhotos'
+    'as'    => 'show_media',
+    'uses'  => 'PhotoController@showPhotos'
 ])->where('id', '[0-9]+');
 
 Route::get('activiteiten', [
     'as' => 'activiteiten',
     'uses' => 'EventController@showIndex'
 ]);
+
+Route::get('albums/{id}', [
+    'as'    => 'show_media',
+    'uses'  => 'PhotoController@showPhotos'
+])->where('id', '[0-9]+');

@@ -1,4 +1,4 @@
-<?php
+<?php namespace Model;
 
 class Photo extends Eloquent {
 	protected $guarded = array();
