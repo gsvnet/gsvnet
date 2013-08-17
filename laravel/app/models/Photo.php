@@ -9,4 +9,14 @@ class Photo extends Eloquent {
     {
         return $this->belongsTo('Album');
     }
+
+    public function smallImage()
+    {
+        return 'http://lorempixel.com/306/306?' . $this->id;
+    }
+
+    public function wideImage()
+    {
+        return 'http://lorempixel.com/634/306?' . $this->id;
+    }
 }

@@ -51,12 +51,12 @@ Route::group(array('prefix' => 'de-gsv'), function()
     );
 });
 
-Route::get('media', [
-    'as' => 'media',
+Route::get('albums', [
+    'as' => 'albums',
     'uses' => 'PhotoController@showAlbums'
 ]);
 
-Route::get('media/{id}', [
+Route::get('albums/{id}', [
     'as' => 'show_media',
     'uses' => 'PhotoController@showPhotos'
 ])->where('id', '[0-9]+');
