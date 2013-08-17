@@ -24,7 +24,15 @@
                     </div>
                     <span class="shadow"></span>
                     <div class="video-button"></div>
-                    <img src="images/nogeen-1600.jpg" alt="" class="slide-img"/>
+                    <span data-picture data-alt="Een geweldig plaatje">
+                        <span data-src="/images/nogeen-480.jpg"></span>
+                        <span data-src="/images/nogeen-600.jpg" data-media="(max-width: 600px)"></span>
+                        <span data-src="/images/nogeen-1024.jpg" data-media="(max-width: 1024px)"></span>
+                        <span data-src="/images/nogeen-1600.jpg" data-media="(max-width: 1600px)"></span>
+                        <noscript>
+                            <img src="/images/nogeen-480.jpg" alt="Geweldig plaatje">
+                        </noscript>
+                    </span>
                 </a>
                 <div href="#" class="item">
                     <div class="slide-description-wrapper">
@@ -35,7 +43,15 @@
                             </div>
                         </div>
                     </div>
-                    <img src="images/een-1600.jpg" alt="" class="slide-img"/>
+                    <span data-picture data-alt="Een geweldig plaatje">
+                        <span data-src="/images/nogeen-480.jpg"></span>
+                        <span data-src="/images/nogeen-600.jpg" data-media="(max-width: 600px)"></span>
+                        <span data-src="/images/nogeen-1024.jpg" data-media="(max-width: 1024px)"></span>
+                        <span data-src="/images/nogeen-1600.jpg" data-media="(max-width: 1600px)"></span>
+                        <noscript>
+                            <img src="/images/nogeen-480.jpg" alt="Geweldig plaatje">
+                        </noscript>
+                    </span>
                 </div>
                 <div href="#" class="item">
                     <div class="slide-description-wrapper">
@@ -46,7 +62,15 @@
                             </div>
                         </div>
                     </div>
-                    <img src="images/een-1600.jpg" alt="" class="slide-img"/>
+                    <span data-picture data-alt="Een geweldig plaatje">
+                        <span data-src="/images/nogeen-480.jpg"></span>
+                        <span data-src="/images/nogeen-600.jpg" data-media="(max-width: 600px)"></span>
+                        <span data-src="/images/nogeen-1024.jpg" data-media="(max-width: 1024px)"></span>
+                        <span data-src="/images/nogeen-1600.jpg" data-media="(max-width: 1600px)"></span>
+                        <noscript>
+                            <img src="/images/nogeen-480.jpg" alt="Geweldig plaatje">
+                        </noscript>
+                    </span>
                 </div>
                 <div href="#" class="item">
                     <div class="slide-description-wrapper">
@@ -57,7 +81,15 @@
                             </div>
                         </div>
                     </div>
-                    <img src="images/een-1600.jpg" alt="" class="slide-img"/>
+                    <span data-picture data-alt="Een geweldig plaatje">
+                        <span data-src="/images/nogeen-480.jpg"></span>
+                        <span data-src="/images/nogeen-600.jpg" data-media="(max-width: 600px)"></span>
+                        <span data-src="/images/nogeen-1024.jpg" data-media="(max-width: 1024px)"></span>
+                        <span data-src="/images/nogeen-1600.jpg" data-media="(max-width: 1600px)"></span>
+                        <noscript>
+                            <img src="/images/nogeen-480.jpg" alt="Geweldig plaatje">
+                        </noscript>
+                    </span>
                 </div>
             </div>
 
@@ -95,4 +127,6 @@
     @parent
 
     <script src="javascripts/carousel.js"></script>
+    <script src="javascripts/matchmedia.js"></script>
+    <script src="javascripts/picturefill.js"></script>
 @stop

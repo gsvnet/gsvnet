@@ -1096,26 +1096,25 @@ figure figcaption {
 
 /* line 19, ../sass/navbar.scss */
 .logo-link {
-  float: left;
   display: block;
   width: 90px;
   height: 90px;
   background-image: url(../images/logo-90.png);
 }
 
-/* line 27, ../sass/navbar.scss */
+/* line 26, ../sass/navbar.scss */
 .logo-link span {
   display: none;
 }
 
-/* line 31, ../sass/navbar.scss */
+/* line 30, ../sass/navbar.scss */
 .nav-bar-links {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
 
-/* line 37, ../sass/navbar.scss */
+/* line 36, ../sass/navbar.scss */
 .top-level-link {
   text-decoration: none;
   line-height: 2.5em;
@@ -1123,17 +1122,17 @@ figure figcaption {
   display: inline-block;
 }
 
-/* line 44, ../sass/navbar.scss */
+/* line 43, ../sass/navbar.scss */
 .active {
   background: #FFF;
 }
 
-/* line 48, ../sass/navbar.scss */
+/* line 47, ../sass/navbar.scss */
 .top-level-menuitem {
   display: inline-block;
 }
 
-/* line 52, ../sass/navbar.scss */
+/* line 51, ../sass/navbar.scss */
 .nav-toggle {
   background: #4f267e;
   padding: 9px 10px;
@@ -1142,53 +1141,53 @@ figure figcaption {
   float: right;
   margin-top: 2.5em;
 }
-/* line 60, ../sass/navbar.scss */
+/* line 59, ../sass/navbar.scss */
 .nav-toggle:hover {
   background: #5b2b92;
 }
-/* line 64, ../sass/navbar.scss */
+/* line 63, ../sass/navbar.scss */
 .nav-toggle .icon-bar {
   width: 22px;
   height: 2px;
   background: #FFF;
   display: block;
 }
-/* line 71, ../sass/navbar.scss */
+/* line 70, ../sass/navbar.scss */
 .nav-toggle .icon-bar + .icon-bar {
   margin-top: 4px;
 }
 
-/* line 76, ../sass/navbar.scss */
+/* line 75, ../sass/navbar.scss */
 .secondary-menu {
   list-style-type: none;
   padding: 0;
   margin-top: 18px;
 }
-/* line 81, ../sass/navbar.scss */
+/* line 80, ../sass/navbar.scss */
 .secondary-menu a {
   display: block;
   line-height: 3em;
   border-top: 1px solid #eeeeee;
   font-weight: bold;
 }
-/* line 88, ../sass/navbar.scss */
+/* line 87, ../sass/navbar.scss */
 .secondary-menu li:last-child a {
   border-bottom: 1px solid #eeeeee;
 }
 
 /** Responsive **/
 @media only screen and (max-width: 960px) {
-  /* line 96, ../sass/navbar.scss */
+  /* line 95, ../sass/navbar.scss */
   .logo {
     margin: 18px 0;
   }
 
-  /* line 100, ../sass/navbar.scss */
+  /* line 99, ../sass/navbar.scss */
   .nav-bar {
     padding: 0 2em;
   }
 
-  /* line 106, ../sass/navbar.scss */
+  /* line 105, ../sass/navbar.scss */
   .top-level-link:link,
   .top-level-link:visited,
   .top-level-menuitem:first-child .top-level-link:link {
@@ -1198,12 +1197,12 @@ figure figcaption {
     margin-bottom: .2em;
   }
 
-  /* line 113, ../sass/navbar.scss */
+  /* line 112, ../sass/navbar.scss */
   .nav-toggle {
     display: block;
   }
 
-  /* line 117, ../sass/navbar.scss */
+  /* line 116, ../sass/navbar.scss */
   .nav-bar-links {
     display: none;
     margin-bottom: 1em;
@@ -1524,7 +1523,7 @@ figure figcaption {
   display: block;
 }
 /* line 11, ../sass/slideshow.scss */
-.slideshow .slide-img {
+.slideshow img {
   vertical-align: bottom;
   max-width: 100%;
 }
