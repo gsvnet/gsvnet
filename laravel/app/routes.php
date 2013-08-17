@@ -49,6 +49,12 @@ Route::group(array('prefix' => 'de-gsv'), function()
             'uses' => 'AboutController@showCommittees'
         ]
     );
+
+    Route::get('commissies/{id}', [
+            'as' => 'show_committee',
+            'uses' => 'AboutController@showCommittee'
+        ]
+    );
 });
 
 Route::get('word-lid', [
