@@ -1,22 +1,27 @@
 .nav-bar {
 	@include container;
-	list-style-type: none;
 	padding: 0;
+}
+
+.nav-bar-extras {
+	@include clearfix;
 }
 
 .logo {
 	display: block;
 	margin: 0;
 	text-align: center;
+	width: 90px;
+	float: left;
+	margin-top: 18px;
 }
 
 .logo-link {
-	display: inline-block;
+	float: left;
+	display: block;
 	width: 90px;
 	height: 90px;
 	background-image: url(../images/logo-90.png);
-	margin-top: 18px;
-	margin-top: 1rem;
 }
 
 .logo-link span {
@@ -26,6 +31,7 @@
 .nav-bar-links {
 	margin: 0;
 	padding: 0;
+	list-style-type: none;
 }
 
 .top-level-link {
@@ -40,6 +46,30 @@
 
 	&:first-child .top-level-link {
 		padding-left: 0;
+	}
+}
+
+.nav-toggle {
+	background: $lightPurple;
+	padding: 9px 10px;
+	border: 0;
+	display: none;
+	float: right;
+	margin-top: 2.5em;
+
+	&:hover {
+		background: $lighterPurple;
+	}
+
+	.icon-bar {
+		width: 22px;
+		height: 2px;
+		background: #FFF;
+		display: block;
+	}
+
+	.icon-bar + .icon-bar {
+		margin-top: 4px;
 	}
 }
 
@@ -63,9 +93,12 @@
 
 /** Responsive **/
 @media only screen and (max-width: 960px){
-	.nav-bar-links {
+	.logo {
+		margin: 18px 0;
+	}
+
+	.nav-bar {
 		padding: 0 2em;
-		margin: 1em 0;
 	}
 
 	.top-level-link:link,
@@ -75,5 +108,14 @@
 		color: #FFF;
 		padding: 0 1em;
 		margin-bottom: .2em;
+	}
+
+	.nav-toggle {
+		display: block;
+	}
+
+	.nav-bar-links {
+		display: none;
+		margin-bottom: 1em;
 	}
 }

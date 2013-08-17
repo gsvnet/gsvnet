@@ -14,8 +14,17 @@
         @section('header')
             <header class="top-header">
                 <nav class="nav-bar">
-                    <h1 class="logo"><a class="logo-link" href="/public"><span>GSV</span></a></h1>
-                    <ul class="nav-bar-links">
+                    <div class="nav-bar-extras">
+                        <h1 class="logo">
+                            <a class="logo-link" href="/public"><span>Gereformeerde Studentenvereniging Groningen</span></a>
+                        </h1>
+                        <button id="navbar-toggler" class="nav-toggle">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <ul id="main-menu" class="nav-bar-links">
                         <li class="top-level-menuitem"><a class="top-level-link" href="/">Home</a></li>
                         <li class="top-level-menuitem"><a class="top-level-link" href="/de-gsv">De GSV</a></li>
                         <li class="top-level-menuitem"><a class="top-level-link" href="/#">Forum</a></li>

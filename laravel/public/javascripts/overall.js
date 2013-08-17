@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	$mainMenu = $('#main-menu');
+
 	$('.login-link').magnificPopup({
 		type: 'inline',
 
@@ -13,5 +15,9 @@ $(document).ready(function() {
 		midClick: true,
 		removalDelay: 300,
 		mainClass: 'my-mfp-zoom-in'
+	});
+
+	$('#navbar-toggler').click(function(){
+		$mainMenu.slideToggle();
 	});
 });

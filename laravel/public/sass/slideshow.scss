@@ -87,6 +87,10 @@ a.item {
     background: $darkPurple;
   }
 
+  .carousel-inner {
+    overflow: visible;
+  }
+
   .slideshow {
     .slide-description-wrapper {
       bottom: -162px;
