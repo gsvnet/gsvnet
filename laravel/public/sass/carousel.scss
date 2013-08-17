@@ -103,9 +103,11 @@
 }
 .carousel-control .icon-prev:before {
   content: '\2039';
+  background: $darkPurple;
 }
 .carousel-control .icon-next:before {
   content: '\203a';
+  background: $darkPurple;
 }
 .carousel-indicators {
   position: absolute;

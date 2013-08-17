@@ -79,10 +79,10 @@
         </div>
     </div>
     <div class="hero-unit grey">
-        {{ Former::open_horizontal() }}
+        {{ Former::open_horizontal()->id('membership') }}
             <div class="column-holder" role="main">
                 <h1>Meld je aan!</h1>
-                <div class="delta">Door onderstaand formulier in te vullen meld je je aan voor de Gereformeerde Studentenvereniging Groningen</div>
+                <div class="delta">Door onderstaand formulier in te vullen meld je je aan bij de Gereformeerde Studentenvereniging Groningen</div>
                 <div id="preview-image">
                 </div>
             
@@ -113,7 +113,7 @@
             </div>
             <div class="column-holder">
                 <div class="control-group">
-                    <input type="submit" value="Meld je aan" class="button">
+                    <input type="submit" id="submit" value="Meld je aan" class="button">
                 </div>
             </div>
         {{Former::close()}}

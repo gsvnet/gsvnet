@@ -494,79 +494,80 @@ a.more {
 a.more::after {
   content: "›";
   padding-left: 6px;
+  display: inline-block;
 }
 
-/* line 425, ../sass/typography.scss */
+/* line 426, ../sass/typography.scss */
 h1, h2, h3, h4, h5, h6 {
   text-rendering: optimizeLegibility;
   line-height: 1;
   margin-top: 0;
 }
 
-/* line 440, ../sass/typography.scss */
+/* line 441, ../sass/typography.scss */
 .tera {
   font-size: 117px;
   font-size: 6.5rem;
   margin-bottom: 0.25385rem;
 }
 
-/* line 440, ../sass/typography.scss */
+/* line 441, ../sass/typography.scss */
 .giga {
   font-size: 90px;
   font-size: 5rem;
   margin-bottom: 0.33rem;
 }
 
-/* line 440, ../sass/typography.scss */
+/* line 441, ../sass/typography.scss */
 .mega {
   font-size: 72px;
   font-size: 4rem;
   margin-bottom: 0.4125rem;
 }
 
-/* line 440, ../sass/typography.scss */
+/* line 441, ../sass/typography.scss */
 .alpha, h1 {
   font-size: 60px;
   font-size: 3.33333rem;
   margin-bottom: 0.495rem;
 }
 
-/* line 440, ../sass/typography.scss */
+/* line 441, ../sass/typography.scss */
 .beta {
   font-size: 48px;
   font-size: 2.66667rem;
   margin-bottom: 0.61875rem;
 }
 
-/* line 440, ../sass/typography.scss */
+/* line 441, ../sass/typography.scss */
 .gamma, h2 {
   font-size: 36px;
   font-size: 2rem;
   margin-bottom: 0.825rem;
 }
 
-/* line 440, ../sass/typography.scss */
+/* line 441, ../sass/typography.scss */
 .delta, h3, .artikel p.lead {
   font-size: 24px;
   font-size: 1.33333rem;
   margin-bottom: 1.2375rem;
 }
 
-/* line 440, ../sass/typography.scss */
+/* line 441, ../sass/typography.scss */
 .epsilon, h4 {
   font-size: 21px;
   font-size: 1.16667rem;
   margin-bottom: 1.41429rem;
 }
 
-/* line 440, ../sass/typography.scss */
+/* line 441, ../sass/typography.scss */
 .zeta, h5, h6 {
   font-size: 18px;
   font-size: 1rem;
   margin-bottom: 1.65rem;
 }
 
-/* line 475, ../sass/typography.scss */
+/* line 476, ../sass/typography.scss */
 p {
   margin: 0 0 1.5em;
   /*& + p {
@@ -576,7 +577,7 @@ p {
   }*/
 }
 
-/* line 501, ../sass/typography.scss */
+/* line 502, ../sass/typography.scss */
 abbr,
 acronym,
 blockquote,
@@ -597,18 +598,18 @@ xmp {
   hyphens: none;
 }
 
-/* line 518, ../sass/typography.scss */
+/* line 519, ../sass/typography.scss */
 pre code {
   white-space: -moz-pre-wrap;
   white-space: pre-wrap;
 }
 
-/* line 523, ../sass/typography.scss */
+/* line 524, ../sass/typography.scss */
 pre {
   white-space: pre;
 }
 
-/* line 527, ../sass/typography.scss */
+/* line 528, ../sass/typography.scss */
 code {
   white-space: pre;
   font-family: monospace;
@@ -622,19 +623,19 @@ code {
  * Extend this object into your markup.
  *
  */
-/* line 543, ../sass/typography.scss */
+/* line 544, ../sass/typography.scss */
 abbr {
   font-variant: small-caps;
   font-weight: 600;
   text-transform: lowercase;
   color: gray;
 }
-/* line 545, ../sass/typography.scss */
+/* line 546, ../sass/typography.scss */
 abbr:hover {
   cursor: help;
 }
 
-/* line 559, ../sass/typography.scss */
+/* line 560, ../sass/typography.scss */
 h1,
 h2,
 h3,
@@ -719,30 +720,30 @@ h6 {
  * Extend this object into your markup.
  *
  */
-/* line 610, ../sass/typography.scss */
+/* line 611, ../sass/typography.scss */
 .stats-tabs {
   padding: 0;
 }
-/* line 612, ../sass/typography.scss */
+/* line 613, ../sass/typography.scss */
 .stats-tabs li {
   display: inline-block;
   margin: 0 0.625rem 0 0;
   padding: 0 0.625rem 0 0;
   border-right: 0.125rem solid #cccccc;
 }
-/* line 617, ../sass/typography.scss */
+/* line 618, ../sass/typography.scss */
 .stats-tabs li:last-child {
   margin: 0;
   padding: 0;
   border: none;
 }
-/* line 622, ../sass/typography.scss */
+/* line 623, ../sass/typography.scss */
 .stats-tabs li a {
   display: inline-block;
   font-size: 1.5rem;
   font-weight: bold;
 }
-/* line 626, ../sass/typography.scss */
+/* line 627, ../sass/typography.scss */
 .stats-tabs li a b {
   display: block;
   margin: 0.125rem 0 0 0;
@@ -775,25 +776,25 @@ h6 {
  * Extend this object into your custom stylesheet.
  *
  */
-/* line 706, ../sass/typography.scss */
+/* line 707, ../sass/typography.scss */
 .pull-quote {
   position: relative;
   padding: 1em;
 }
-/* line 688, ../sass/typography.scss */
+/* line 689, ../sass/typography.scss */
 .pull-quote:before, .pull-quote:after {
   height: 1em;
   opacity: 0.15;
   position: absolute;
   font-size: 4em;
 }
-/* line 694, ../sass/typography.scss */
+/* line 695, ../sass/typography.scss */
 .pull-quote:before {
   content: '“';
   top: 0;
   left: 0;
 }
-/* line 699, ../sass/typography.scss */
+/* line 700, ../sass/typography.scss */
 .pull-quote:after {
   content: '”';
   bottom: 0;
@@ -848,6 +849,18 @@ h6 {
   -moz-box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.5);
   box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* line 24, ../sass/buttons.scss */
+.disabled {
+  background: #cccccc;
+}
+/* line 27, ../sass/buttons.scss */
+.disabled:hover, .disabled:active {
+  background: #cccccc;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 /* line 1, ../sass/form.scss */
@@ -1442,14 +1455,16 @@ a.item:hover .shadow {
 /* line 104, ../sass/carousel.scss */
 .carousel-control .icon-prev:before {
   content: '\2039';
+  background: #2a1443;
 }
 
-/* line 107, ../sass/carousel.scss */
+/* line 108, ../sass/carousel.scss */
 .carousel-control .icon-next:before {
   content: '\203a';
+  background: #2a1443;
 }
 
-/* line 110, ../sass/carousel.scss */
+/* line 112, ../sass/carousel.scss */
 .carousel-indicators {
   position: absolute;
   bottom: 10px;
@@ -1464,7 +1479,7 @@ a.item:hover .shadow {
   margin-bottom: 0;
 }
 
-/* line 123, ../sass/carousel.scss */
+/* line 125, ../sass/carousel.scss */
 .carousel-indicators li {
   display: inline-block;
   width: 10px;
@@ -1476,7 +1491,7 @@ a.item:hover .shadow {
   cursor: pointer;
 }
 
-/* line 133, ../sass/carousel.scss */
+/* line 135, ../sass/carousel.scss */
 .carousel-indicators .active {
   margin: 0;
   width: 12px;
@@ -1484,7 +1499,7 @@ a.item:hover .shadow {
   background-color: #ffffff;
 }
 
-/* line 139, ../sass/carousel.scss */
+/* line 141, ../sass/carousel.scss */
 .carousel-caption {
   position: absolute;
   left: 15%;
@@ -1498,13 +1513,13 @@ a.item:hover .shadow {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
-/* line 151, ../sass/carousel.scss */
+/* line 153, ../sass/carousel.scss */
 .carousel-caption .btn {
   text-shadow: none;
 }
 
 @media screen and (min-width: 768px) {
-  /* line 157, ../sass/carousel.scss */
+  /* line 159, ../sass/carousel.scss */
   .carousel-control .glyphicon,
   .carousel-control .icon-prev,
   .carousel-control .icon-next {
@@ -1515,14 +1530,14 @@ a.item:hover .shadow {
     font-size: 30px;
   }
 
-  /* line 164, ../sass/carousel.scss */
+  /* line 166, ../sass/carousel.scss */
   .carousel-caption {
     left: 20%;
     right: 20%;
     padding-bottom: 30px;
   }
 
-  /* line 169, ../sass/carousel.scss */
+  /* line 171, ../sass/carousel.scss */
   .carousel-indicators {
     bottom: 20px;
   }
@@ -2249,12 +2264,13 @@ img.mfp-img {
 #preview-image.visible {
   border: 1px solid white;
   padding: 9px;
-  width: 300px;
+  width: 308px;
   float: left;
   margin-right: 18px;
+  cursor: pointer;
 }
 
-/* line 9, ../sass/preview-image.scss */
+/* line 10, ../sass/preview-image.scss */
 #preview-image canvas {
   max-width: 100%;
   vertical-align: bottom;

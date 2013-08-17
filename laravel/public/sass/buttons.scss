@@ -20,3 +20,14 @@
 		box-shadow: inset 0px 0px 3px rgba(0,0,0,0.5);
 	}
 }
+
+.disabled {
+	background: $grey;
+
+	&:hover, &:active {
+		background: $grey;
+		-moz-box-shadow: none;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+}

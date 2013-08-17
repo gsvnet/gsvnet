@@ -1,6 +1,7 @@
 <div id="login-dialog" class="zoom-anim-dialog mfp-hide">
     <h2>Login</h2>
     <form method="POST" action="/login">
+        <p>Inloggen geeft je toegang tot het forum</p>
 
         {{ Form::token() }}
 
