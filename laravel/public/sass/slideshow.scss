@@ -107,3 +107,14 @@ a.item {
     overflow: hidden;
   }
 }
+
+
+@media only screen and (max-width: 480px){
+  .video-button {
+    -webkit-transform:scale(0.8);
+    -moz-transform:scale(0.8);
+    -ms-transform:scale(0.8);
+    -o-transform:scale(0.8);
+    transform:scale(0.8);
+  }
+}

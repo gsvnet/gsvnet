@@ -5,6 +5,7 @@
 
 .nav-bar-extras {
 	@include clearfix;
+	padding: 1em 0;
 }
 
 .logo {
@@ -13,7 +14,6 @@
 	text-align: center;
 	width: 90px;
 	float: left;
-	margin-top: 18px;
 }
 
 .logo-link {
@@ -41,12 +41,12 @@
 	display: inline-block;
 }
 
+.active {
+	background: #FFF;
+}
+
 .top-level-menuitem {
 	display: inline-block;
-
-	&:first-child .top-level-link {
-		padding-left: 0;
-	}
 }
 
 .nav-toggle {

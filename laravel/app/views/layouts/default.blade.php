@@ -46,7 +46,7 @@
 
     @section('word-lid')
         <div class="hero-unit purple">
-            <p class="center"><a href="word-lid" class="button">Word lid!</a></p>
+            <p class="center"><a href="/word-lid" class="button">Word lid!</a></p>
         </div>
     @show
 
@@ -57,9 +57,9 @@
     @include('login-dialog')
 
     @section('javascripts')
-        <script src="javascripts/jquery-1.10.1.min.js"></script>
-        <script src="javascripts/magnific-popup-0.9.4.js"></script>
-        <script src="javascripts/overall.js"></script>
+        <script src="/javascripts/jquery-1.10.1.min.js"></script>
+        <script src="/javascripts/magnific-popup-0.9.4.js"></script>
+        <script src="/javascripts/overall.js"></script>
     @show
 </body>
 </html>
