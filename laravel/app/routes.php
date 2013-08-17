@@ -56,6 +56,11 @@ Route::get('media', [
     'uses' => 'PhotoController@showAlbums'
 ]);
 
+Route::get('media/{id}', [
+    'as' => 'show_media',
+    'uses' => 'PhotoController@showPhotos'
+])->where('id', '[0-9]+');
+
 Route::get('activiteiten', [
     'as' => 'activiteiten',
     'uses' => 'EventController@showIndex'

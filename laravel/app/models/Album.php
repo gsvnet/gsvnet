@@ -5,6 +5,11 @@ class Album extends Eloquent {
 
 	public static $rules = array();
 
+    public function photos()
+    {
+        return $this->hasMany('Photo');
+    }
+
     public function smallImage()
     {
         return 'http://lorempixel.com/306/306?' . $this->id;

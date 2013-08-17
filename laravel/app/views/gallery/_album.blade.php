@@ -1,5 +1,5 @@
 <div class="photo-tile {{ $first }} {{ $wide }}">
-    <a href="fotos.html" class="photo-link" title="{{ $album->name }}">
+    <a href="{{ URL::route('show_media', $album->id); }}" class="photo-link" title="{{ $album->name }}">
         @if ($wide == 'wide')
             <img src="{{ $album->wideImage() }}" alt="{{ $album->name }}" />
         @else

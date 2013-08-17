@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic">
     @section('stylesheets')
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="stylesheets/screen.css">
+        <link rel="stylesheet" href="/stylesheets/screen.css">
     @show
 </head>
 <body>
