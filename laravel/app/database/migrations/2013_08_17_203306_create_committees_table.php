@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreatePhotosTable extends Migration {
+class CreateCommitteesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,10 @@ class CreatePhotosTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('photos', function(Blueprint $table) {
+		Schema::create('committees', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('name');
-			$table->integer('album_id');
-			$table->foreign('album_id')->references('id')->on('albums');
+			$table->text('description');
 			$table->timestamps();
 		});
 	}
@@ -28,7 +27,7 @@ class CreatePhotosTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('photos');
+		Schema::drop('committees');
 	}
 
 }

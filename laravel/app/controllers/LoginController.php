@@ -1,10 +1,6 @@
 <?php
 
 class LoginController extends BaseController {
-    public function get_login()
-    {
-        return View::make('admin.login');
-    }
 
     public function post_login()
     {

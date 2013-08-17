@@ -7,4 +7,12 @@ class AboutController extends BaseController {
 		$this->layout->content = View::make('de-gsv.de-gsv');
 	}
 
+    public function showCommittees()
+    {
+        $committees = Committee::all();
+
+        $this->layout->content = View::make('de-gsv.committees')
+            ->with('committees', $committees);
+    }
+
 }

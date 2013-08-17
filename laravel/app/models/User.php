@@ -49,4 +49,9 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 		return $this->email;
 	}
 
+	public function committees()
+	{
+		return $this->belongsToMany('Committee', 'committee_user')
+                    ->withPivot('start_time', 'end_time');
+	}
 }
