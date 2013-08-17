@@ -27,9 +27,24 @@
                     </div>
 
                     <ul id="main-menu" class="nav-bar-links">
-                        @foreach ($menuLinks as $link => $name)
-                            <li class="top-level-menuitem"><a class="top-level-link {{ Request::is($link) ? 'active' : '' }}" href="/{{ $link }}">{{ $name }}</a></li>
-                        @endforeach
+                        <li class="top-level-menuitem">
+                            <a class="top-level-link {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a>
+                        </li>
+                        <li class="top-level-menuitem">
+                            <a class="top-level-link {{ Request::is('de-gsv*') ? 'active' : '' }}" href="/de-gsv">De GSV</a>
+                        </li>
+                        <li class="top-level-menuitem">
+                            <a class="top-level-link {{ Request::is('forum*') ? 'active' : '' }}" href="/#">Forum</a>
+                        </li>
+                        <li class="top-level-menuitem">
+                            <a class="top-level-link {{ Request::is('albums*') ? 'active' : '' }}" href="/albums">Fotoalbum</a>
+                        </li>
+                        <li class="top-level-menuitem">
+                            <a class="top-level-link {{ Request::is('activiteiten*') ? 'active' : '' }}" href="/activiteiten">Activiteiten</a>
+                        </li>
+                        <li class="top-level-menuitem">
+                            <a class="top-level-link {{ Request::is('word-lid*') ? 'active' : '' }}" href="/word-lid">Word lid!</a>
+                        </li>
 
                         @if (Auth::check())
                             <li class="top-level-menuitem"><a class="top-level-link" href="/logout">Uitloggen</a></li>
@@ -46,7 +61,7 @@
 
     @section('word-lid')
         <div class="hero-unit purple">
-            <p class="center"><a href="/word-lid" class="button">Word lid!</a></p>
+            <p class="center"><a href="word-lid" class="button">Word lid!</a></p>
         </div>
     @show
 
@@ -57,9 +72,9 @@
     @include('login-dialog')
 
     @section('javascripts')
-        <script src="/javascripts/jquery-1.10.1.min.js"></script>
-        <script src="/javascripts/magnific-popup-0.9.4.js"></script>
-        <script src="/javascripts/overall.js"></script>
+        <script src="javascripts/jquery-1.10.1.min.js"></script>
+        <script src="javascripts/magnific-popup-0.9.4.js"></script>
+        <script src="javascripts/overall.js"></script>
     @show
 </body>
 </html>
