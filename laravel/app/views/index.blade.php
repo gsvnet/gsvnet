@@ -26,9 +26,9 @@
                     <div class="video-button"></div>
                     <span data-picture data-alt="Een geweldig plaatje">
                         <span data-src="/images/nogeen-480.jpg"></span>
-                        <span data-src="/images/nogeen-600.jpg" data-media="(max-width: 600px)"></span>
-                        <span data-src="/images/nogeen-1024.jpg" data-media="(max-width: 1024px)"></span>
-                        <span data-src="/images/nogeen-1600.jpg" data-media="(max-width: 1600px)"></span>
+                        <span data-src="/images/nogeen-600.jpg" data-media="(min-width: 480px)"></span>
+                        <span data-src="/images/nogeen-1024.jpg" data-media="(min-width: 600px)"></span>
+                        <span data-src="/images/nogeen-1600.jpg" data-media="(min-width: 1024px)"></span>
                         <noscript>
                             <img src="/images/nogeen-480.jpg" alt="Geweldig plaatje">
                         </noscript>
@@ -45,9 +45,9 @@
                     </div>
                     <span data-picture data-alt="Een geweldig plaatje">
                         <span data-src="/images/nogeen-480.jpg"></span>
-                        <span data-src="/images/nogeen-600.jpg" data-media="(max-width: 600px)"></span>
-                        <span data-src="/images/nogeen-1024.jpg" data-media="(max-width: 1024px)"></span>
-                        <span data-src="/images/nogeen-1600.jpg" data-media="(max-width: 1600px)"></span>
+                        <span data-src="/images/nogeen-600.jpg" data-media="(min-width: 480px)"></span>
+                        <span data-src="/images/nogeen-1024.jpg" data-media="(min-width: 600px)"></span>
+                        <span data-src="/images/nogeen-1600.jpg" data-media="(min-width: 1024px)"></span>
                         <noscript>
                             <img src="/images/nogeen-480.jpg" alt="Geweldig plaatje">
                         </noscript>
@@ -64,9 +64,9 @@
                     </div>
                     <span data-picture data-alt="Een geweldig plaatje">
                         <span data-src="/images/nogeen-480.jpg"></span>
-                        <span data-src="/images/nogeen-600.jpg" data-media="(max-width: 600px)"></span>
-                        <span data-src="/images/nogeen-1024.jpg" data-media="(max-width: 1024px)"></span>
-                        <span data-src="/images/nogeen-1600.jpg" data-media="(max-width: 1600px)"></span>
+                        <span data-src="/images/nogeen-600.jpg" data-media="(min-width: 480px)"></span>
+                        <span data-src="/images/nogeen-1024.jpg" data-media="(min-width: 600px)"></span>
+                        <span data-src="/images/nogeen-1600.jpg" data-media="(min-width: 1024px)"></span>
                         <noscript>
                             <img src="/images/nogeen-480.jpg" alt="Geweldig plaatje">
                         </noscript>
@@ -83,9 +83,9 @@
                     </div>
                     <span data-picture data-alt="Een geweldig plaatje">
                         <span data-src="/images/nogeen-480.jpg"></span>
-                        <span data-src="/images/nogeen-600.jpg" data-media="(max-width: 600px)"></span>
-                        <span data-src="/images/nogeen-1024.jpg" data-media="(max-width: 1024px)"></span>
-                        <span data-src="/images/nogeen-1600.jpg" data-media="(max-width: 1600px)"></span>
+                        <span data-src="/images/nogeen-600.jpg" data-media="(min-width: 480px)"></span>
+                        <span data-src="/images/nogeen-1024.jpg" data-media="(min-width: 600px)"></span>
+                        <span data-src="/images/nogeen-1600.jpg" data-media="(min-width: 1024px)"></span>
                         <noscript>
                             <img src="/images/nogeen-480.jpg" alt="Geweldig plaatje">
                         </noscript>
