@@ -21,7 +21,6 @@ class PhotoController extends BaseController {
         $this->layout->content = View::make('gallery.album.show')
             ->with('album', $album)
             ->with('photos', $photos);
-
     }
 
 }

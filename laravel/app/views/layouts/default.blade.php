@@ -25,13 +25,12 @@
                             <span class="icon-bar"></span>
                         </button>
                     </div>
+
                     <ul id="main-menu" class="nav-bar-links">
-                        <li class="top-level-menuitem"><a class="top-level-link" href="/">Home</a></li>
-                        <li class="top-level-menuitem"><a class="top-level-link" href="/de-gsv">De GSV</a></li>
-                        <li class="top-level-menuitem"><a class="top-level-link" href="/#">Forum</a></li>
-                        <li class="top-level-menuitem"><a class="top-level-link" href="/albums">Fotoalbum</a></li>
-                        <li class="top-level-menuitem"><a class="top-level-link" href="/activiteiten">Activiteiten</a></li>
-                        <li class="top-level-menuitem"><a class="top-level-link" href="/word-lid">Word lid!</a></li>
+                        @foreach ($menuLinks as $link => $name)
+                            <li class="top-level-menuitem"><a class="top-level-link {{ Request::is($link) ? 'active' : '' }}" href="{{ $link }}">{{ $name }}</a></li>
+                        @endforeach
+
                         @if (Auth::check())
                             <li class="top-level-menuitem"><a class="top-level-link" href="/logout">Uitloggen</a></li>
                         @else

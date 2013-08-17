@@ -16,6 +16,15 @@ App::before(function($request)
 	View::share('title', 'GSVnet');
     View::share('description', '');
     View::share('keywords', '');
+
+    View::share('menuLinks', array(
+    	'/' 			=> 'Home',
+	    '/de-gsv' 		=> 'De GSV',
+	    '/forum' 		=> 'Forum',
+	    '/albums' 		=> 'Fotoalbum',
+	    '/activiteiten' => 'Activiteiten',
+	    '/word-lid' 	=> 'Word lid!'
+	));
 });
 
 
