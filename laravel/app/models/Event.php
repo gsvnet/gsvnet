@@ -33,6 +33,8 @@ class Event extends \Eloquent {
     public function image()
     {
         // Find all files corresponding to /public/uploads/events/{event-id}-{image name}.{image extension}
+        //
+        // public/uploads/events/17-.*\.(jpg|jpeg|png|bmp|)
         $files = glob("public/uploads/events/" . $this->id . "-*");
 
         if (count($files) > 0)

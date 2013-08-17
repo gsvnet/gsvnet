@@ -15,7 +15,7 @@ class CreatePhotosTable extends Migration {
 		Schema::create('photos', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('name');
-			$table->integer('album_id');
+			$table->foreign('album_id')->references('id')->on('albums');
 			$table->timestamps();
 		});
 	}

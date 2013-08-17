@@ -3,7 +3,9 @@
 class PhotoController extends BaseController {
 	public function showAlbums()
 	{
-		$this->layout->content = View::make('gallery.albums');
+        $albums = Album::paginate(10);
+
+		$this->layout->content = View::make('gallery.albums')->with('albums', $albums);
 	}
 
 }
