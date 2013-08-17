@@ -220,12 +220,14 @@ sub {
 /* line 221, ../sass/normalize.scss */
 img {
   border: 0;
+  vertical-align: bottom;
+  /* Added by Harmen */
 }
 
 /**
  * Correct overflow displayed oddly in IE 9.
  */
-/* line 229, ../sass/normalize.scss */
+/* line 230, ../sass/normalize.scss */
 svg:not(:root) {
   overflow: hidden;
 }
@@ -236,7 +238,7 @@ svg:not(:root) {
 /**
  * Address margin not present in IE 8/9 and Safari 5.
  */
-/* line 241, ../sass/normalize.scss */
+/* line 242, ../sass/normalize.scss */
 figure {
   margin: 0;
 }
@@ -247,7 +249,7 @@ figure {
 /**
  * Define consistent border, margin, and padding.
  */
-/* line 253, ../sass/normalize.scss */
+/* line 254, ../sass/normalize.scss */
 fieldset {
   border: 1px solid silver;
   margin: 0 2px;
@@ -258,7 +260,7 @@ fieldset {
  * 1. Correct `color` not being inherited in IE 8/9.
  * 2. Remove padding so people aren't caught out if they zero out fieldsets.
  */
-/* line 264, ../sass/normalize.scss */
+/* line 265, ../sass/normalize.scss */
 legend {
   border: 0;
   /* 1 */
@@ -271,7 +273,7 @@ legend {
  * 2. Correct font size not being inherited in all browsers.
  * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
  */
-/* line 278, ../sass/normalize.scss */
+/* line 279, ../sass/normalize.scss */
 button,
 input,
 select,
@@ -288,7 +290,7 @@ textarea {
  * Address Firefox 4+ setting `line-height` on `input` using `!important` in
  * the UA stylesheet.
  */
-/* line 290, ../sass/normalize.scss */
+/* line 291, ../sass/normalize.scss */
 button,
 input {
   line-height: normal;
@@ -300,7 +302,7 @@ input {
  * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
  * Correct `select` style inheritance in Firefox 4+ and Opera.
  */
-/* line 302, ../sass/normalize.scss */
+/* line 303, ../sass/normalize.scss */
 button,
 select {
   text-transform: none;
@@ -313,7 +315,7 @@ select {
  * 3. Improve usability and consistency of cursor style between image-type
  *    `input` and others.
  */
-/* line 317, ../sass/normalize.scss */
+/* line 318, ../sass/normalize.scss */
 button,
 html input[type="button"],
 input[type="reset"],
@@ -327,7 +329,7 @@ input[type="submit"] {
 /**
  * Re-set default cursor for disabled elements.
  */
-/* line 327, ../sass/normalize.scss */
+/* line 328, ../sass/normalize.scss */
 button[disabled],
 html input[disabled] {
   cursor: default;
@@ -337,7 +339,7 @@ html input[disabled] {
  * 1. Address box sizing set to `content-box` in IE 8/9.
  * 2. Remove excess padding in IE 8/9.
  */
-/* line 337, ../sass/normalize.scss */
+/* line 338, ../sass/normalize.scss */
 input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
@@ -351,7 +353,7 @@ input[type="radio"] {
  * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
  *    (include `-moz` to future-proof).
  */
-/* line 348, ../sass/normalize.scss */
+/* line 349, ../sass/normalize.scss */
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
@@ -365,7 +367,7 @@ input[type="search"] {
  * Remove inner padding and search cancel button in Safari 5 and Chrome
  * on OS X.
  */
-/* line 361, ../sass/normalize.scss */
+/* line 362, ../sass/normalize.scss */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
@@ -374,7 +376,7 @@ input[type="search"]::-webkit-search-decoration {
 /**
  * Remove inner padding and border in Firefox 4+.
  */
-/* line 370, ../sass/normalize.scss */
+/* line 371, ../sass/normalize.scss */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
@@ -385,7 +387,7 @@ input::-moz-focus-inner {
  * 1. Remove default vertical scrollbar in IE 8/9.
  * 2. Improve readability and alignment in all browsers.
  */
-/* line 380, ../sass/normalize.scss */
+/* line 381, ../sass/normalize.scss */
 textarea {
   overflow: auto;
   /* 1 */
@@ -399,7 +401,7 @@ textarea {
 /**
  * Remove most spacing between table cells.
  */
-/* line 393, ../sass/normalize.scss */
+/* line 394, ../sass/normalize.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -875,6 +877,11 @@ h6 {
   border-color: #b94a48;
 }
 
+/* line 29, ../sass/form.scss */
+.form-row-horizontal .form-group {
+  display: inline-block;
+}
+
 /** PAGE BLOCKS **/
 /* line 3, ../sass/layout.scss */
 .overal-header {
@@ -1249,7 +1256,7 @@ figure figcaption {
 }
 
 /* line 39, ../sass/slideshow.scss */
-a.slide .video-button {
+a.item .video-button {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -1261,7 +1268,7 @@ a.slide .video-button {
   z-index: 101;
 }
 /* line 51, ../sass/slideshow.scss */
-a.slide:hover .video-button {
+a.item:hover .video-button {
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
   -ms-transform: scale(1.2);
@@ -1269,7 +1276,7 @@ a.slide:hover .video-button {
   transform: scale(1.2);
 }
 /* line 59, ../sass/slideshow.scss */
-a.slide:active .video-button {
+a.item:active .video-button {
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
   -ms-transform: scale(1);
@@ -1277,7 +1284,7 @@ a.slide:active .video-button {
   transform: scale(1);
 }
 /* line 67, ../sass/slideshow.scss */
-a.slide .shadow {
+a.item .shadow {
   transition: all 0.3s ease;
   position: absolute;
   background: #000;
@@ -1288,7 +1295,7 @@ a.slide .shadow {
   opacity: 0;
 }
 /* line 78, ../sass/slideshow.scss */
-a.slide:hover .shadow {
+a.item:hover .shadow {
   opacity: .3;
 }
 
@@ -1311,68 +1318,215 @@ a.slide:hover .shadow {
     padding: 18px 36px;
   }
 }
-/* line 1, ../sass/article-slideshow.scss */
-.article-slideshow-section {
-  zoom: 1;
-}
-/* line 3, ../sass/mixins.scss */
-.article-slideshow-section:before, .article-slideshow-section:after {
-  content: "\0020";
-  display: block;
-  height: 0;
-  overflow: hidden;
-}
-/* line 9, ../sass/mixins.scss */
-.article-slideshow-section:after {
-  clear: both;
-}
-
-/* line 5, ../sass/article-slideshow.scss */
-.article-slideshow {
+/* line 1, ../sass/carousel.scss */
+.carousel {
   position: relative;
 }
-/* line 8, ../sass/article-slideshow.scss */
-.article-slideshow .article-slide {
-  float: left;
-}
 
-/* line 13, ../sass/article-slideshow.scss */
-.article-slideshow-wrapper {
+/* line 4, ../sass/carousel.scss */
+.carousel-inner {
+  position: relative;
+  overflow: hidden;
   width: 100%;
-  margin: 0;
+}
+
+/* line 9, ../sass/carousel.scss */
+.carousel-inner > .item {
+  display: none;
   position: relative;
-  overflow: hidden;
+  -webkit-transition: 0.6s ease-in-out left;
+  transition: 0.6s ease-in-out left;
 }
 
-/* line 20, ../sass/article-slideshow.scss */
-.slideshow-nav-button {
-  z-index: 1000;
-  display: block;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-}
-/* line 27, ../sass/article-slideshow.scss */
-.slideshow-nav-button span {
-  color: #2a1443;
-  display: block;
-  background: #FFF;
-  line-height: 54px;
-  width: 54px;
-  text-align: center;
-  border-radius: 54px;
+/* line 16, ../sass/carousel.scss */
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  line-height: 1;
 }
 
-/* line 38, ../sass/article-slideshow.scss */
-.slideshow-nav-left {
+/* line 24, ../sass/carousel.scss */
+.carousel-inner > .active,
+.carousel-inner > .next,
+.carousel-inner > .prev {
+  display: block;
+}
+
+/* line 27, ../sass/carousel.scss */
+.carousel-inner > .active {
   left: 0;
 }
 
-/* line 42, ../sass/article-slideshow.scss */
-.slideshow-nav-right {
+/* line 31, ../sass/carousel.scss */
+.carousel-inner > .next,
+.carousel-inner > .prev {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/* line 36, ../sass/carousel.scss */
+.carousel-inner > .next {
+  left: 100%;
+}
+
+/* line 39, ../sass/carousel.scss */
+.carousel-inner > .prev {
+  left: -100%;
+}
+
+/* line 43, ../sass/carousel.scss */
+.carousel-inner > .next.left,
+.carousel-inner > .prev.right {
+  left: 0;
+}
+
+/* line 46, ../sass/carousel.scss */
+.carousel-inner > .active.left {
+  left: -100%;
+}
+
+/* line 49, ../sass/carousel.scss */
+.carousel-inner > .active.right {
+  left: 100%;
+}
+
+/* line 52, ../sass/carousel.scss */
+.carousel-control {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 15%;
+  opacity: 0.5;
+  filter: alpha(opacity=30);
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* line 73, ../sass/carousel.scss */
+.carousel-control.right {
+  left: auto;
   right: 0;
 }
 
+/* line 84, ../sass/carousel.scss */
+.carousel-control:hover,
+.carousel-control:focus {
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+
+/* line 92, ../sass/carousel.scss */
+.carousel-control .glyphicon,
+.carousel-control .icon-prev,
+.carousel-control .icon-next {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  font-family: serif;
+}
+
+/* line 104, ../sass/carousel.scss */
+.carousel-control .icon-prev:before {
+  content: '\2039';
+}
+
+/* line 107, ../sass/carousel.scss */
+.carousel-control .icon-next:before {
+  content: '\203a';
+}
+
+/* line 110, ../sass/carousel.scss */
+.carousel-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  z-index: 15;
+  width: 60%;
+  margin-left: -30%;
+  padding-left: 0;
+  list-style: none;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* line 123, ../sass/carousel.scss */
+.carousel-indicators li {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 1px;
+  text-indent: -999px;
+  border: 1px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* line 133, ../sass/carousel.scss */
+.carousel-indicators .active {
+  margin: 0;
+  width: 12px;
+  height: 12px;
+  background-color: #ffffff;
+}
+
+/* line 139, ../sass/carousel.scss */
+.carousel-caption {
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  bottom: 20px;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* line 151, ../sass/carousel.scss */
+.carousel-caption .btn {
+  text-shadow: none;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 157, ../sass/carousel.scss */
+  .carousel-control .glyphicon,
+  .carousel-control .icon-prev,
+  .carousel-control .icon-next {
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    margin-left: -15px;
+    font-size: 30px;
+  }
+
+  /* line 164, ../sass/carousel.scss */
+  .carousel-caption {
+    left: 20%;
+    right: 20%;
+    padding-bottom: 30px;
+  }
+
+  /* line 169, ../sass/carousel.scss */
+  .carousel-indicators {
+    bottom: 20px;
+  }
+}
 /* Magnific Popup CSS */
 /* line 72, ../sass/popup.scss */
 .mfp-bg {
@@ -2092,12 +2246,15 @@ img.mfp-img {
 }
 
 /* line 1, ../sass/preview-image.scss */
-#preview-image {
-  background: #FFF;
-  padding: 18px;
+#preview-image.visible {
+  border: 1px solid white;
+  padding: 9px;
+  width: 300px;
+  float: left;
+  margin-right: 18px;
 }
 
-/* line 6, ../sass/preview-image.scss */
+/* line 9, ../sass/preview-image.scss */
 #preview-image canvas {
   max-width: 100%;
   vertical-align: bottom;

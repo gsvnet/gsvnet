@@ -2,19 +2,71 @@
     @parent
 
     <section class="slideshow-wrap">
-        <div class="slideshow">
-            <a href="#" class="slide">
-                <div class="slide-description-wrapper">
-                    <div class="slide-description">
-                        <div class="slide-description-box">
-                            <p class="delta">Bekijk de film</p>
-                            <p>En hier wat!</p>
+        <div id="carousel-example-generic" class="slideshow carousel slide">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <a href="#" class="item active">
+                    <div class="slide-description-wrapper">
+                        <div class="slide-description">
+                            <div class="slide-description-box">
+                                <p class="delta">Bekijk de film</p>
+                                <p>En hier wat!</p>
+                            </div>
                         </div>
                     </div>
+                    <span class="shadow"></span>
+                    <div class="video-button"></div>
+                    <img src="images/nogeen-1600.jpg" alt="" class="slide-img"/>
+                </a>
+                <div href="#" class="item">
+                    <div class="slide-description-wrapper">
+                        <div class="slide-description">
+                            <div class="slide-description-box">
+                                <p class="delta">Hier wat leuks!</p>
+                                <p>En hier wat!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="images/een-1600.jpg" alt="" class="slide-img"/>
                 </div>
-                <span class="shadow"></span>
-                <div class="video-button"></div>
-                <img src="images/nogeen-1600.jpg" alt="" class="slide-img"/>
+                <div href="#" class="item">
+                    <div class="slide-description-wrapper">
+                        <div class="slide-description">
+                            <div class="slide-description-box">
+                                <p class="delta">Hier wat leuks!</p>
+                                <p>En hier wat!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="images/een-1600.jpg" alt="" class="slide-img"/>
+                </div>
+                <div href="#" class="item">
+                    <div class="slide-description-wrapper">
+                        <div class="slide-description">
+                            <div class="slide-description-box">
+                                <p class="delta">Hier wat leuks!</p>
+                                <p>En hier wat!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="images/een-1600.jpg" alt="" class="slide-img"/>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <span class="icon-prev"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                <span class="icon-next"></span>
             </a>
         </div>
         <div class="slideshow-spacer"></div>
@@ -37,4 +89,10 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa id aut voluptas eos sed vel blanditiis maiores sunt inventore nihil.</p>
         </div>
     </div>
+@stop
+
+@section('javascripts')
+    @parent
+
+    <script src="javascripts/carousel.js"></script>
 @stop

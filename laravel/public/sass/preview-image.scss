@@ -1,6 +1,9 @@
-#preview-image {
-	background: #FFF;
-	padding: 18px;
+#preview-image.visible {
+	border: 1px solid #FFF;
+	padding: 9px;
+	width: 300px;
+	float: left;
+	margin-right: 18px;
 }
 
 #preview-image canvas {

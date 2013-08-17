@@ -1,30 +1,51 @@
-(function(){
+WordLid = (function(){
 	var previewEl = $('#preview-image'),
-	    fileField = $('#input-image'),
+	    fileField = $('#inputImage'),
 	    canvas = $('<canvas />').get(0),
-	    img = new Image(),
-	    width = 400,
+	    width = 300,
 	    ctx, url;
 
-	canvas.width = canvas.height = width;
-	previewEl.append(canvas);
+	function imageLoad(img) {
+		ratio = img.height/img.width;
+		canvas.height = ratio*width;
+		ctx.drawImage(img,0,0,img.width,img.height,0,0,width,ratio*width);
+	}
 
-	ctx = canvas.getContext('2d');
+	function init(){
+		var img = new Image();
 
-	// Check if a file is selected
-	fileField.change(function(e){
-		url = URL.createObjectURL(e.target.files[0]);
-		img = new Image();
+		// Initialize canvas
+		canvas.width = canvas.height = width;
+		previewEl.addClass('visible').append(canvas);
+
+		ctx = canvas.getContext('2d');
+
+		// Set default image
 		img.onload = function() {
-			ratio = img.height/img.width;
-			canvas.height = ratio*width;
-			ctx.drawImage(img,0,0,img.width,img.height,0,0,width,ratio*width);
+			imageLoad(img)
 		}
-		img.src = url;
-	});
+		img.src = '/images/persoon.png';
 
-	// Check if a name is entered
-	$('#input-voornaam').blur(function(){
-		//alert('hallo ' + this.value);
-	});
+		// Check if a file is selected
+		fileField.change(function(e){
+			var img = new Image();
+			url = URL.createObjectURL(e.target.files[0]);
+			img.onload = function() {
+				imageLoad(img)
+			}
+			img.src = url;
+		});
+
+		// Check if a name is entered
+		$('#input-voornaam').blur(function(){
+			//alert('hallo ' + this.value);
+		});
+
+	}
+
+	return {
+		init: init
+	}
 })();
+
+WordLid.init();

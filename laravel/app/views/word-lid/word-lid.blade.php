@@ -2,18 +2,58 @@
     @parent
 
     <section class="slideshow-wrap">
-        <div class="slideshow">
-            <div href="#" class="slide">
-                <div class="slide-description-wrapper">
-                    <div class="slide-description">
-                        <div class="slide-description-box">
-                            <p class="delta">Hier wat leuks!</p>
-                            <p>En hier wat!</p>
+        <div id="carousel-example-generic" class="slideshow carousel slide">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div href="#" class="item active">
+                    <div class="slide-description-wrapper">
+                        <div class="slide-description">
+                            <div class="slide-description-box">
+                                <p class="delta">Hier wat leuks!</p>
+                                <p>En hier wat!</p>
+                            </div>
                         </div>
                     </div>
+                    <img src="images/een-1600.jpg" alt="" class="slide-img"/>
                 </div>
-                <img src="images/een-1600.jpg" alt="" class="slide-img"/>
+                <div href="#" class="item">
+                    <div class="slide-description-wrapper">
+                        <div class="slide-description">
+                            <div class="slide-description-box">
+                                <p class="delta">Hier wat leuks!</p>
+                                <p>En hier wat!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="images/een-1600.jpg" alt="" class="slide-img"/>
+                </div>
+                <div href="#" class="item">
+                    <div class="slide-description-wrapper">
+                        <div class="slide-description">
+                            <div class="slide-description-box">
+                                <p class="delta">Hier wat leuks!</p>
+                                <p>En hier wat!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="images/een-1600.jpg" alt="" class="slide-img"/>
+                </div>
             </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <span class="icon-prev"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                <span class="icon-next"></span>
+            </a>
         </div>
         <div class="slideshow-spacer"></div>
     </section>
@@ -39,15 +79,18 @@
         </div>
     </div>
     <div class="hero-unit grey">
-        <form class="form-horizontal">
+        {{ Former::open_horizontal() }}
             <div class="column-holder" role="main">
                 <h1>Meld je aan!</h1>
                 <div class="delta">Door onderstaand formulier in te vullen meld je je aan voor de Gereformeerde Studentenvereniging Groningen</div>
-                <div class="main-content">
-                    <div class="form-group">
-                        <label class="control-label" for="inputImage">Upload een foto van jezelf</label>
-                        <input type="file" name="inputImage" id="inputImage" accept="image/*" capture="camera">
-                    </div>
+                <div id="preview-image">
+                </div>
+            
+                <div class="form-group">
+                    <label class="control-label" for="inputImage">Upload een foto van jezelf</label>
+                    <input type="file" size="10" name="inputImage" id="inputImage" accept="image/*" capture="camera">
+                </div>
+                <div class="form-row-horizontal">
                     <div class="form-group has-error">
                         <label class="control-label" for="inputVoornaam">Voornaam</label>
                         <input type="text" class="form-control" id="inputVoornaam" name="inputVoornaam" placeholder="Voornaam">
@@ -57,9 +100,14 @@
                         <input type="text" class="form-control" id="inputAchternaam" name="inputAchternaam" placeholder="Achternaam">
                     </div>
                 </div>
-                <div class="secondary-column">
-                    <div id="preview-image">
-                
+                <div class="form-row-horizontal">
+                    <div class="form-group">
+                        <label class="control-label" for="inputStraat">Straat</label>
+                        <input type="text" class="form-control" id="inputStraat" name="inputStraat" placeholder="Achternaam">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="inputAchternaam">Achternaam</label>
+                        <input type="text" class="form-control" id="inputAchternaam" name="inputAchternaam" placeholder="Achternaam">
                     </div>
                 </div>
             </div>
@@ -68,7 +116,7 @@
                     <input type="submit" value="Meld je aan" class="button">
                 </div>
             </div>
-        </form>
+        {{Former::close()}}
     </div>
 @stop
 
@@ -78,4 +126,5 @@
 @section('javascripts')
     @parent
     <script src="javascripts/word-lid.js"></script>
+    <script src="javascripts/carousel.js"></script>
 @stop
