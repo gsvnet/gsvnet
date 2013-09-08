@@ -2,7 +2,7 @@
 
 class UserController extends BaseController {
 
-    public function post_login()
+    public function postLogin()
     {
         // get POST data
         $userdata = array(
@@ -23,14 +23,24 @@ class UserController extends BaseController {
         }
     }
 
-    public function get_logout()
+    public function getLogout()
     {
         Auth::logout();
         return Redirect::to('/');
     }
 
-    public function get_login()
+    public function getLogin()
     {
         $this->layout->content = View::make('users.login');
+    }
+
+    public function showUsers()
+    {
+        $this->layout->content = View::make('users.index');
+    }
+
+    public function showUser($id)
+    {
+        $this->layout->content = View::make('users.profile');
     }
 }

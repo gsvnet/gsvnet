@@ -21,25 +21,38 @@ Route::get('/', [
 // Login and logout routes
  */
 Route::post('login', array(
-        'as' => 'post_login',
+        'as' => 'post-login',
         'before' => array('csrf'),
-        'uses' => 'UserController@post_login'
+        'uses' => 'UserController@postLogin'
     )
 );
 
 Route::get('login', array(
-        'as' => 'get_login',
-        'uses' => 'UserController@get_login'
+        'as' => 'get-login',
+        'uses' => 'UserController@getLogin'
     )
 );
 
 Route::get('logout', array(
-        'as' => 'get_logout',
+        'as' => 'get-logout',
         'before' => array('auth'),
-        'uses' => 'UserController@get_logout'
+        'uses' => 'UserController@getLogout'
     )
 );
 
+Route::group(array('prefix' => 'gebruikers'), function()
+{
+
+    Route::get('/', [
+        'as' => 'user-list',
+        'uses' => 'UserController@showUsers'   
+    ]);
+
+    Route::get('/gebruiker/{id}', [
+        'as' => 'user-profile',
+        'users' => 'UserController@showUser'
+    ]);
+});
 
 Route::group(array('prefix' => 'de-gsv'), function()
 {
