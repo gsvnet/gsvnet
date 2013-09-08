@@ -115,7 +115,8 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
 		'Way\Generators\GeneratorsServiceProvider',
-		'Former\FormerServiceProvider'
+		'Former\FormerServiceProvider',
+		'Frozennode\Administrator\AdministratorServiceProvider'
 
 	),
 
