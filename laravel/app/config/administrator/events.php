@@ -26,6 +26,7 @@ return array(
 		),
 		'description' => array(
 			'title' => 'Omschrijving',
+			'type' => 'textarea'
 		),
 		'start_date' => array(
 			'title' => 'Begin datum',
