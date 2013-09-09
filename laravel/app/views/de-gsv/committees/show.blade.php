@@ -13,7 +13,7 @@
             <ul>
                 @foreach ($committee->users as $user)
                     <li>
-                        {{ $user->fullname() }}
+                        {{ $user->fullname }}
                     </li>
                 @endforeach
             </ul>
