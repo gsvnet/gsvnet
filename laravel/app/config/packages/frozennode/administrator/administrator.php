@@ -50,6 +50,7 @@ return array(
 	 */
 	'menu' => array(
 		'users',
+		'year_groups',
 		'events',
 		'committees'
 	),
