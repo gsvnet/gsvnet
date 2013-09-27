@@ -60,8 +60,6 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
                     ->withPivot('start_time', 'end_time');
 	}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 	public function profile()
 	{
 		return $this->hasOne('Model\Profile');
@@ -72,9 +70,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 	// {
 	// 	return $this->hasRole() || $this->hasCommittee();
 	// }
-=======
-=======
->>>>>>> 7dbb16616e19dc719c6539f81373dc3672fb6287
+
 	public function activeCommittees()
 	{
 		return $this->belongsToMany('Model\Committee', 'committee_user')
@@ -82,8 +78,4 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
                     ->orWhere('end_date', '>=', new \DateTime('now'))
                     ->withPivot('start_time', 'end_time');
 	}
-<<<<<<< HEAD
->>>>>>> 7dbb16616e19dc719c6539f81373dc3672fb6287
-=======
->>>>>>> 7dbb16616e19dc719c6539f81373dc3672fb6287
 }
