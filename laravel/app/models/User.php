@@ -60,6 +60,17 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
                     ->withPivot('start_time', 'end_time');
 	}
 
+	public function profile()
+	{
+		return $this->hasOne('Model\Profile');
+	}
+
+	// TODO example
+	// public function canManagePhotos()
+	// {
+	// 	return $this->hasRole() || $this->hasCommittee();
+	// }
+
 	public function activeCommittees()
 	{
 		return $this->belongsToMany('Model\Committee', 'committee_user')

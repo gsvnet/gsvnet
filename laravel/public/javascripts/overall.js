@@ -18,6 +18,6 @@ $(document).ready(function() {
 	});
 
 	$('#navbar-toggler').click(function(){
-		$mainMenu.slideToggle();
+		$mainMenu.slideToggle(100);
 	});
 });

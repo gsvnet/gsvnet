@@ -18,8 +18,7 @@ class UserController extends BaseController {
         else
         {
             // auth failure! lets go back to the login
-            return Redirect::to('/login')
-                ->with('login_errors', true);
+            return Redirect::to('/login')->with('login_errors', true);
         }
     }
 

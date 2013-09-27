@@ -1,2 +1,3 @@
 *.sass-cache*
 *Thumb.db*
+*.sqlite
