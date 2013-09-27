@@ -10,4 +10,12 @@ class Committee extends \Eloquent {
         return $this->belongsToMany('Model\User', 'committee_user')
                     ->withPivot('start_date', 'end_date');
     }
+
+    public function activeUsers()
+    {
+        return $this->belongsToMany('Model\User', 'committee_user')
+                    ->where('end_date', null)
+                    ->orWhere('end_date', '>=', new \DateTime('now'))
+                    ->withPivot('start_date', 'end_date');
+    }
 }

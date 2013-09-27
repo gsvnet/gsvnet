@@ -59,4 +59,12 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 		return $this->belongsToMany('Model\Committee', 'committee_user')
                     ->withPivot('start_time', 'end_time');
 	}
+
+	public function activeCommittees()
+	{
+		return $this->belongsToMany('Model\Committee', 'committee_user')
+                    ->where('end_date', null)
+                    ->orWhere('end_date', '>=', new \DateTime('now'))
+                    ->withPivot('start_time', 'end_time');
+	}
 }
