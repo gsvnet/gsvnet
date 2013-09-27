@@ -32,8 +32,7 @@ return array(
 		
 		'user_profiles' => array(
 			'type' => 'relationship',
-			'title' => 'Leden',
-			'name_field' => 'fullname'
+			'title' => 'Leden'
 		)
 	)
 );

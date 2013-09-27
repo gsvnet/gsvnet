@@ -1,6 +1,6 @@
 <?php
 
-class User_profilesTableSeeder extends Seeder {
+class UserProfilesTableSeeder extends Seeder {
 
 	public function run()
 	{
