@@ -52,7 +52,8 @@ return array(
 		'users',
 		'year_groups',
 		'events',
-		'committees'
+		'committees',
+		'user_profiles'
 	),
 
 	/**

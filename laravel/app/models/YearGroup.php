@@ -9,7 +9,7 @@ class YearGroup extends \Eloquent {
 	 */
 	protected $table = 'year_groups';
 
-	public function user_profiles() {
+	public function userProfiles() {
 		return $this->hasMany('Model\UserProfile');
 	}
 
