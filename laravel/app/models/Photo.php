@@ -12,11 +12,16 @@ class Photo extends \Eloquent {
 
     public function smallImage()
     {
-        return 'http://lorempixel.com/306/306?' . $this->id;
+        return 'http://lorempixel.com/306/306/abstract?' . $this->id;
     }
 
     public function wideImage()
     {
-        return 'http://lorempixel.com/634/306?' . $this->id;
+        return 'http://lorempixel.com/634/306/abstract?' . $this->id;
+    }
+
+    public function originalImage()
+    {
+        return 'http://lorempixel.com/1600/1200/abstract?' . $this->id;
     }
 }

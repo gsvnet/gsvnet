@@ -44,12 +44,12 @@
                         </div>
                     </div>
                     <span data-picture data-alt="Een geweldig plaatje">
-                        <span data-src="/images/nogeen-480.jpg"></span>
-                        <span data-src="/images/nogeen-600.jpg" data-media="(min-width: 480px)"></span>
-                        <span data-src="/images/nogeen-1024.jpg" data-media="(min-width: 600px)"></span>
-                        <span data-src="/images/nogeen-1600.jpg" data-media="(min-width: 1024px)"></span>
+                        <span data-src="/images/banner/meisje-480.jpg"></span>
+                        <span data-src="/images/banner/meisje-600.jpg" data-media="(min-width: 480px)"></span>
+                        <span data-src="/images/banner/meisje-1024.jpg" data-media="(min-width: 600px)"></span>
+                        <span data-src="/images/banner/meisje-1600.jpg" data-media="(min-width: 1024px)"></span>
                         <noscript>
-                            <img src="/images/nogeen-480.jpg" alt="Geweldig plaatje">
+                            <img src="/images/banner/meisje-480.jpg" alt="Geweldig plaatje">
                         </noscript>
                     </span>
                 </div>
@@ -63,10 +63,10 @@
                         </div>
                     </div>
                     <span data-picture data-alt="Een geweldig plaatje">
-                        <span data-src="/images/nogeen-480.jpg"></span>
-                        <span data-src="/images/nogeen-600.jpg" data-media="(min-width: 480px)"></span>
-                        <span data-src="/images/nogeen-1024.jpg" data-media="(min-width: 600px)"></span>
-                        <span data-src="/images/nogeen-1600.jpg" data-media="(min-width: 1024px)"></span>
+                        <span data-src="/images/banner/mensen-480.jpg"></span>
+                        <span data-src="/images/banner/mensen-600.jpg" data-media="(min-width: 480px)"></span>
+                        <span data-src="/images/banner/mensen-1024.jpg" data-media="(min-width: 600px)"></span>
+                        <span data-src="/images/banner/mensen-1600.jpg" data-media="(min-width: 1024px)"></span>
                         <noscript>
                             <img src="/images/nogeen-480.jpg" alt="Geweldig plaatje">
                         </noscript>
