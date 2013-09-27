@@ -13,9 +13,7 @@
 
 App::before(function($request)
 {
-	View::share('title', 'GSVnet');
-    View::share('description', '');
-    View::share('keywords', '');
+	//
 });
 
 

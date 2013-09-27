@@ -8,14 +8,14 @@
 
 				@foreach ($events as $event)
 					<div class="event-row">
-						<div class="img"><img src="{{ $event->image() }}"  alt="Zus"></div>
+						<div class="img"><img src="{{ $event->image() }}"  alt="{{ $event->title }}"></div>
 						<p class="time">
 							<span class="dag">{{ $event->day() }}</span>
 							<span class="datum">{{ $event->date() }}</span>
 							<span class="tijd">{{ $event->time() }}</span>
 						</p>
 						<div class="info">
-							<h2><a href="#">{{ $event->title}}</a></h2>
+							<h2><a href="{{ route('show_event', $event->id) }}">{{ $event->title}}</a></h2>
 							<p>{{ $event->description }}</p>
 						</div>
 					</div>

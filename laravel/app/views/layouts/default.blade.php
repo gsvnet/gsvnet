@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title }}</title>
+
+    <meta name="description" content="{{ $description }}" />
+    <meta name="keywords" content="{{ $keywords }}" />
+
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic">
     @section('stylesheets')
         <!-- Stylesheets -->
@@ -56,6 +60,10 @@
             </header>
         @show
     </div>
+
+    @yield('breadcrumb')
+
+
 
     @yield('content')
 

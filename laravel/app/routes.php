@@ -45,7 +45,7 @@ Route::group(array('prefix' => 'gebruikers'), function()
 
     Route::get('/', [
         'as' => 'user-list',
-        'uses' => 'UserController@showUsers'   
+        'uses' => 'UserController@showUsers'
     ]);
 
     Route::get('/gebruiker/{id}', [
@@ -95,6 +95,11 @@ Route::get('albums/{id}', [
 Route::get('activiteiten', [
     'as' => 'activiteiten',
     'uses' => 'EventController@showIndex'
+]);
+
+Route::get('activiteiten/{id}', [
+    'as' => 'show_event',
+    'uses' => 'EventController@showEvent'
 ]);
 
 Route::get('albums/{id}', [
