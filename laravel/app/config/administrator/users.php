@@ -14,9 +14,6 @@ return array(
 		),
 		'email' => array(
 			'title' => 'Email'
-		),
-		'telephone' => array(
-			'title' => 'Telefoon'
 		)
 	),
 
@@ -29,8 +26,8 @@ return array(
 			'title' => 'Achternaam',
 			'type' => 'text'
 		),
-		'telephone' => array(
-			'title' => 'Telefoon',
+		'email' => array(
+			'title' => 'Email',
 			'type' => 'text'
 		),
 		'password' => array(

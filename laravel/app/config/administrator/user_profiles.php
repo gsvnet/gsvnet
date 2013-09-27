@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'title' => 'Profielen',
+    'title' => 'GSV-profiel',
     'single' => 'profiel',
     'model' => 'Model\UserProfile',
 
@@ -16,7 +16,7 @@ return array(
             'title' => 'Telefoon'
         ),
         'year_group' => array(
-            'title' => 'Jaargroep',
+            'title' => 'Jaarverband',
             'relationship' => 'yearGroup',
             'select' => '(:table).name'
         )
@@ -37,7 +37,7 @@ return array(
         ),
         'yearGroup' => array(
             'type' => 'relationship',
-            'title' => 'Jaargroep',
+            'title' => 'Jaarverband',
             'name_field' => 'name', //using the getFullNameAttribute accessor
             //'options_sort_field' => "firstname",
         )

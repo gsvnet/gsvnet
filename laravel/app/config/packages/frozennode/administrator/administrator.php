@@ -49,11 +49,10 @@ return array(
 	 *	)
 	 */
 	'menu' => array(
-		'users',
+		'Gebruikers' => array('users', 'user_profiles'),
 		'year_groups',
 		'events',
-		'committees',
-		'user_profiles'
+		'committees'
 	),
 
 	/**
