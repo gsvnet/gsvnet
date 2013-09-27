@@ -20,7 +20,8 @@ class Photo extends \Eloquent {
         return 'http://lorempixel.com/634/306/abstract?' . $this->id;
     }
 
-    public function originalImage()
+    // Show original image
+    public function getShowURLAttribute()
     {
         return 'http://lorempixel.com/1600/1200/abstract?' . $this->id;
     }

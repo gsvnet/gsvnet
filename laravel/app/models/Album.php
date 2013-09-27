@@ -19,4 +19,9 @@ class Album extends \Eloquent {
     {
         return 'http://lorempixel.com/634/306?' . $this->id;
     }
+
+    public function getShowURLAttribute()
+    {
+        return \URL::route('show_media', $this->id);
+    }
 }
