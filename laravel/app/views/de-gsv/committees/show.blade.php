@@ -11,7 +11,7 @@
             <h2>Leden</h2>
 
             <ul>
-                @foreach ($committee->users as $user)
+                @foreach ($committee->active_users as $user)
                     <li>
                         {{ $user->fullname }}
                     </li>
