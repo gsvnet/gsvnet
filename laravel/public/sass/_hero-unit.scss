@@ -1,0 +1,26 @@
+.hero-unit {
+	padding: 6em 0;
+	margin: 2em 0;
+}
+
+.hero-unit .center {
+	margin: 0;
+	text-align: center;
+}
+
+.hero-unit.purple {
+	background: $darkPurple;
+	color: #FFF;
+
+	h2 {
+		color: #FFF;
+	}
+}
+
+.hero-unit.grey {
+	background: $lightGrey;
+}
+
+.hero-unit.grey .main-content {
+	border-color: $grey;
+}

@@ -1,0 +1,32 @@
+.form-group {
+	margin-bottom: 1em;
+}
+
+.control-label {
+	cursor: pointer;
+	display: block;
+	font-weight: bold;
+}
+
+.form-control {
+	padding: .2rem .5rem;
+	border: 1px solid $grey;
+}
+
+.has-error {
+	.control-label {
+		color: #b94a48;
+	}
+	
+	.form-control {
+		border-color: #b94a48;
+	}
+
+}
+
+.form-row-horizontal {
+
+	.form-group {
+		display: inline-block;
+	}
+}
