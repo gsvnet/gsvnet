@@ -6,7 +6,8 @@
 		"laravel/framework": "4.0.*",
 		"way/generators": "dev-master",
 		"anahkiasen/former": "dev-develop",
-		"frozennode/administrator": "dev-master"
+		"frozennode/administrator": "dev-master",
+		"fzaninotto/faker": "1.2.*@dev"
 	},
 	"autoload": {
 		"classmap": [

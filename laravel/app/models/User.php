@@ -49,6 +49,11 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 		return $this->email;
 	}
 
+	public function getFullnameAttribute()
+	{
+		return $this->firstname . ' ' . $this->lastname;
+	}
+
 	/**
 	 * Set the password to be hashed when saved
 	 */
