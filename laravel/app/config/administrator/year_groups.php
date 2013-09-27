@@ -14,7 +14,7 @@ return array(
 		),
 		'num_user_profiles' => array(
 			'title' => 'Aantal leden',
-			'relationship' => 'user_profiles',
+			'relationship' => 'userProfiles',
 			'select' => 'COUNT((:table).id)'
 		)
 	),
@@ -29,8 +29,8 @@ return array(
 			'type' => 'number',
 			'thousands_separator' => '' //optional, defaults to ','
 		),
-		
-		'user_profiles' => array(
+
+		'userProfiles' => array(
 			'type' => 'relationship',
 			'title' => 'Leden'
 		)
