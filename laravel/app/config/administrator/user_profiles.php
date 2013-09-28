@@ -61,7 +61,7 @@ return array(
             'options' => array(
                 '0' => 'Man',
                 '1' => 'Vrouw'
-            ),
+            )
         ),
         'start_date_rug' => array(
             'title' => 'Begin studie RuG',

@@ -12,8 +12,15 @@ return array(
 		'lastname' => array(
 			'title' => 'Achternaam'
 		),
+		'username' => array(
+			'title' => 'Gebruikersnaam',
+			'type' => 'text'
+		),
 		'email' => array(
 			'title' => 'Email'
+		),
+		'type' => array(
+			'title' => 'Lid-type'
 		)
 	),
 
@@ -26,6 +33,10 @@ return array(
 			'title' => 'Achternaam',
 			'type' => 'text'
 		),
+		'username' => array(
+			'title' => 'Gebruikersnaam',
+			'type' => 'text'
+		),
 		'email' => array(
 			'title' => 'Email',
 			'type' => 'text'
@@ -33,7 +44,17 @@ return array(
 		'password' => array(
 			'title' => 'Wachtwoord',
 			'type' => 'password'
-		)
+		),
+		'type' => array(
+			'title' => 'Lid-type',
+            'type' => 'enum',
+            'options' => array(
+                '0' => 'Bezoeker',
+                '1' => 'Potential',
+                '2' => 'Lid',
+                '3' => 'Oud-lid'
+            )
+        )
 	)
 );
 ?>

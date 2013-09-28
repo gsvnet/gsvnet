@@ -50,9 +50,9 @@ return array(
 	 */
 	'menu' => array(
 		'Gebruikers' => array('users', 'user_profiles'),
+		'Commissies' => array('committees', 'committee_user'),
 		'year_groups',
 		'events',
-		'committees'
 	),
 
 	/**
