@@ -78,3 +78,14 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+/**
+ * Check if a user has certain abilities specified in de User model
+ */
+Route::filter('can', function($route, $request, $action){
+	if(!Auth::user()->can($action))
+	{
+		//Session::flash('error', 'Niet genoeg rechten.');
+		return Redirect::to('/');
+	}
+});
