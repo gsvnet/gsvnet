@@ -17,7 +17,7 @@
 
         <p>Dit uit zich in de vele verschillende aspecten van de vereniging. We houden bijvoorbeeld bijbelkring en sing-ins om zo God te dienen en samen christen te zijn, maar ook zijn er door het jaar heen lezingen en studiegerelateerde avonden die ook de ruimte bieden voor discussie en verdieping. Het sociale aspect van de vereniging komt naar voren, in het elkaar leren kennen en ontmoeten op soosavonden en feestjes. Het doel van de vereniging is om de Heer te dienen in de academische wereld en elkaar te steunen in het zijn van christen binnen de universiteit. </p>
 
-        <div id="carousel-example-generic" class="carousel slide">
+        <div id="about-slideshow" class="carousel slide article-slideshow">
             <!-- Indicators -->
             <ol class="carousel-indicators">
                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -48,10 +48,10 @@
             </div>
 
             <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+            <a class="left carousel-control" href="#about-slideshow" data-slide="prev">
                 <span class="icon-prev"></span>
             </a>
-            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+            <a class="right carousel-control" href="#about-slideshow" data-slide="next">
                 <span class="icon-next"></span>
             </a>
         </div>
@@ -66,7 +66,6 @@
 
 @section('javascripts')
     @parent
-    <script src="javascripts/slider.js"></script>
-    <script src="javascripts/over.js"></script>
+    <script src="javascripts/jquery-1.10.1.min.js"></script>
     <script src="javascripts/carousel.js"></script>
 @stop

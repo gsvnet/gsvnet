@@ -40,7 +40,7 @@ Route::get('logout', array(
     )
 );
 
-Route::group(array('prefix' => 'gebruikers'), function()
+Route::group(array('prefix' => 'jaarbundel', 'before' => 'auth|can:viewMemberlist'), function()
 {
 
     Route::get('/', [
@@ -48,7 +48,7 @@ Route::group(array('prefix' => 'gebruikers'), function()
         'uses' => 'UserController@showUsers'
     ]);
 
-    Route::get('/gebruiker/{id}', [
+    Route::get('/gsver-{id}', [
         'as' => 'user-profile',
         'users' => 'UserController@showUser'
     ]);

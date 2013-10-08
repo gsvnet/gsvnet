@@ -1487,8 +1487,13 @@ figure figcaption {
   text-shadow: none;
 }
 
+/* line 157, ../sass/_carousel.scss */
+.article-slideshow {
+  margin-bottom: 1em;
+}
+
 @media screen and (min-width: 768px) {
-  /* line 159, ../sass/_carousel.scss */
+  /* line 164, ../sass/_carousel.scss */
   .carousel-control .glyphicon,
   .carousel-control .icon-prev,
   .carousel-control .icon-next {
@@ -1499,14 +1504,14 @@ figure figcaption {
     font-size: 30px;
   }
 
-  /* line 166, ../sass/_carousel.scss */
+  /* line 171, ../sass/_carousel.scss */
   .carousel-caption {
     left: 20%;
     right: 20%;
     padding-bottom: 30px;
   }
 
-  /* line 171, ../sass/_carousel.scss */
+  /* line 176, ../sass/_carousel.scss */
   .carousel-indicators {
     bottom: 20px;
   }

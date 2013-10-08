@@ -70,14 +70,31 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 
 	public function profile()
 	{
-		return $this->hasOne('Model\Profile');
+		return $this->hasOne('Model\UserProfile');
 	}
 
-	// TODO example
-	// public function canManagePhotos()
-	// {
-	// 	return $this->hasRole() || $this->hasCommittee();
-	// }
+	public function isMember()
+	{
+		return $this->type == 3 || $this->type == 4;
+	}
+
+	/**
+	 * Determine the user's capacities
+	 */
+	public function can($action = '')
+	{
+
+		switch($action)
+		{
+			case 'viewMemberlist':
+				return $this->isMember();
+			break;
+			default:
+				// TODO: Maybe an error here?
+				return false;
+			break;
+		}
+	}
 
 	public function activeCommittees()
 	{
