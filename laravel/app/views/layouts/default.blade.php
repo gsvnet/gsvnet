@@ -71,9 +71,11 @@
     @yield('content')
 
     @section('word-lid')
+        @if(Auth::guest() || !Auth::user()->isMember())
         <div class="hero-unit purple">
             <p class="center"><a href="word-lid" class="button">Word lid!</a></p>
         </div>
+        @endif
     @show
 
     <footer class="site-footer">
