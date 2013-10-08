@@ -66,7 +66,6 @@
 
 @section('javascripts')
     @parent
-    <script src="javascripts/slider.js"></script>
-    <script src="javascripts/over.js"></script>
+    <script src="javascripts/jquery-1.10.1.min.js"></script>
     <script src="javascripts/carousel.js"></script>
 @stop
