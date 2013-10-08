@@ -106,3 +106,23 @@ Route::get('albums/{id}', [
     'as'    => 'show_media',
     'uses'  => 'PhotoController@showPhotos'
 ])->where('id', '[0-9]+');
+
+
+
+// TODO: check if user has album permissions
+Route::group(array('prefix' => 'markadmin'), function()
+{
+    Route::resource('albums', 'Admin\AlbumController');
+    Route::resource('albums.photo', 'Admin\PhotoController');
+});
+
+App::missing(function($exception)
+{
+    $data = array(
+        'title' => 'Pagina niet gevonden - GSVnet',
+        'description' => '',
+        'keywords' => ''
+    );
+
+    return Response::view('errors.missing', $data, 404);
+});

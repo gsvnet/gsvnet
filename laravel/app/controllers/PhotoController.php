@@ -5,7 +5,7 @@ class PhotoController extends BaseController {
 	{
         $albums = Model\Album::paginate(10);
 
-		$this->layout->content = View::make('gallery.album.index')->with('albums', $albums);
+		$this->layout->content = View::make('gallery.albums.index')->with('albums', $albums);
 	}
 
     public function showPhotos($id)
@@ -18,7 +18,7 @@ class PhotoController extends BaseController {
         $photos = Model\Photo::where('album_id', '=', $id)->paginate(10);
         //$photos->setBaseUrl('custom/url');
 
-        $this->layout->content = View::make('gallery.album.show')
+        $this->layout->content = View::make('gallery.albums.show')
             ->with('album', $album)
             ->with('photos', $photos);
     }
