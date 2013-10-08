@@ -14,18 +14,24 @@
         </div>
 
         <div class="secondary-column">
-            <form method="POST" action="/login">
+            <div id="committees">
                 <div class="form-group">
                     <label class="control-label" for="inputSearch">Zoeken</label>
-                    <input type="text" class="form-control" id="inputSearch" name="inputSearch" placeholder="Zoeken">
+                    <input type="text" class="search form-control" id="inputSearch" name="inputSearch" placeholder="Zoeken">
                 </div>
-            </form>
-            <ul class="secondary-menu">
-                @foreach ($committees as $committee)
-                    <li><a href="{{ URL::route('show_committee', $committee->id) }}">{{ $committee->name }}</a></li>
-                @endforeach
-            </ul>
+                <ul class="list secondary-menu">
+                    @foreach ($committees as $committee)
+                        <li><a class="committee" href="{{ URL::route('show_committee', $committee->id) }}">{{ $committee->name }}</a></li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
 
     </div>
+@stop
+
+@section('javascripts')
+    @parent
+    <script src="/javascripts/list.min.js"></script>
+    <script src="/javascripts/committees.js"></script>
 @stop

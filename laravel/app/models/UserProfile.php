@@ -16,8 +16,8 @@ class UserProfile extends \Eloquent {
 		return $this->belongsTo('Model\YearGroup');
 	}
 
-	public function getFullnameAttribute()
+	public function user()
 	{
-		return $this->firstname . ' ' . $this->lastname;
+		return $this->belongsTo('Model\User');
 	}
 }
