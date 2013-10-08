@@ -53,6 +53,10 @@
                         </li>
                         @endif
 
+                        @if(Auth::check() && Auth::user()->can('viewMemberlist'))
+                            <li class="top-level-menuitem {{ Request::is('jaarbundel*') ? 'active' : '' }}"><a href="/jaarbundel" class="top-level-link">Jaarbundel</a></li>
+                        @endif
+
                         @if (Auth::check())
                             <li class="top-level-menuitem"><a class="top-level-link" href="/logout">Uitloggen</a></li>
                         @else
