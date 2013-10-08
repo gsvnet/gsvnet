@@ -46,9 +46,12 @@
                         <li class="top-level-menuitem">
                             <a class="top-level-link {{ Request::is('activiteiten*') ? 'active' : '' }}" href="/activiteiten">Activiteiten</a>
                         </li>
+
+                        @if(Auth::guest() || !Auth::user()->isMember())
                         <li class="top-level-menuitem">
                             <a class="top-level-link {{ Request::is('word-lid*') ? 'active' : '' }}" href="/word-lid">Lid worden?</a>
                         </li>
+                        @endif
 
                         @if (Auth::check())
                             <li class="top-level-menuitem"><a class="top-level-link" href="/logout">Uitloggen</a></li>

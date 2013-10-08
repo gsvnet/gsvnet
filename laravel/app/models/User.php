@@ -73,6 +73,11 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 		return $this->hasOne('Model\UserProfile');
 	}
 
+	public function isMember()
+	{
+		return $this->type == 3 || $this->type == 4;
+	}
+
 	/**
 	 * Determine the user's capacities
 	 */
@@ -82,7 +87,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 		switch($action)
 		{
 			case 'viewMemberlist':
-				return $this->type == 3 || $this->type == 4;
+				return $this->isMember();
 			break;
 			default:
 				// TODO: Maybe an error here?

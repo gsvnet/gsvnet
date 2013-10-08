@@ -7,6 +7,7 @@
 				@if($member->profile)
 					<p>Telefoon: {{$member->profile->phone}}</p>
 					<p>Jaarverband: {{$member->profile->yearGroup->name}}</p>
+					<p>Email: {{$member->mail}}</p>
 				@else
 					<p><em>Gebruiker heeft geen profiel</em></p>
 				@endif
