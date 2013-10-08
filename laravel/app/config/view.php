@@ -26,6 +26,6 @@ return array(
 	|
 	*/
 
-	'pagination' => 'pagination.main',
+	'pagination' => 'layouts.pagination.main',
 
 );
