@@ -1065,10 +1065,22 @@ figure figcaption {
   max-width: 960px;
   margin-left: auto;
   margin-right: auto;
+  zoom: 1;
   padding: 0;
 }
+/* line 3, ../sass/_mixins.scss */
+.nav-bar:before, .nav-bar:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+/* line 9, ../sass/_mixins.scss */
+.nav-bar:after {
+  clear: both;
+}
 
-/* line 6, ../sass/_navbar.scss */
+/* line 7, ../sass/_navbar.scss */
 .nav-bar-extras {
   zoom: 1;
   padding: 1em 0;
@@ -1085,54 +1097,83 @@ figure figcaption {
   clear: both;
 }
 
-/* line 11, ../sass/_navbar.scss */
+/* line 12, ../sass/_navbar.scss */
 .logo {
   display: block;
   margin: 0;
   text-align: center;
-  width: 90px;
   float: left;
+  background: #FFF;
 }
 
-/* line 19, ../sass/_navbar.scss */
+/* line 20, ../sass/_navbar.scss */
 .logo-link {
   display: block;
-  width: 90px;
+  width: 180px;
   height: 90px;
-  background-image: url(../images/logo-90.png);
+  background: url(../images/logo-90.png) no-repeat center center;
 }
 
-/* line 26, ../sass/_navbar.scss */
+/* line 27, ../sass/_navbar.scss */
 .logo-link span {
   display: none;
 }
 
-/* line 30, ../sass/_navbar.scss */
+/* line 31, ../sass/_navbar.scss */
 .nav-bar-links {
+  zoom: 1;
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
+/* line 3, ../sass/_mixins.scss */
+.nav-bar-links:before, .nav-bar-links:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+/* line 9, ../sass/_mixins.scss */
+.nav-bar-links:after {
+  clear: both;
+}
 
-/* line 36, ../sass/_navbar.scss */
+/* line 38, ../sass/_navbar.scss */
 .top-level-link {
   text-decoration: none;
-  line-height: 2.5em;
-  padding: 0 1em;
-  display: inline-block;
+  line-height: 90px;
+  padding: 0 0.8em;
+  display: block;
+  border-left: 1px solid #dddddd;
 }
 
-/* line 43, ../sass/_navbar.scss */
-.active {
-  background: #FFF;
+/* line 46, ../sass/_navbar.scss */
+.active-menu, a.active-menu:link, a.active-menu:visited {
+  background: #2a1443;
+  color: #FFF;
+  position: relative;
 }
-
-/* line 47, ../sass/_navbar.scss */
-.top-level-menuitem {
-  display: inline-block;
-}
-
 /* line 51, ../sass/_navbar.scss */
+.active-menu:after, a.active-menu:link:after, a.active-menu:visited:after {
+  background: transparent url("../images/nav-main-active.png") no-repeat 50% 50%;
+  width: 100%;
+  height: 11px;
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+/* line 65, ../sass/_navbar.scss */
+.top-level-menuitem {
+  display: block;
+  float: left;
+}
+
+/* line 70, ../sass/_navbar.scss */
 .nav-toggle {
   background: #4f267e;
   padding: 9px 10px;
@@ -1141,53 +1182,53 @@ figure figcaption {
   float: right;
   margin-top: 2.5em;
 }
-/* line 59, ../sass/_navbar.scss */
+/* line 78, ../sass/_navbar.scss */
 .nav-toggle:hover {
   background: #5b2b92;
 }
-/* line 63, ../sass/_navbar.scss */
+/* line 82, ../sass/_navbar.scss */
 .nav-toggle .icon-bar {
   width: 22px;
   height: 2px;
   background: #FFF;
   display: block;
 }
-/* line 70, ../sass/_navbar.scss */
+/* line 89, ../sass/_navbar.scss */
 .nav-toggle .icon-bar + .icon-bar {
   margin-top: 4px;
 }
 
-/* line 75, ../sass/_navbar.scss */
+/* line 94, ../sass/_navbar.scss */
 .secondary-menu {
   list-style-type: none;
   padding: 0;
   margin-top: 18px;
 }
-/* line 80, ../sass/_navbar.scss */
+/* line 99, ../sass/_navbar.scss */
 .secondary-menu a {
   display: block;
   line-height: 3em;
   border-top: 1px solid #eeeeee;
   font-weight: bold;
 }
-/* line 87, ../sass/_navbar.scss */
+/* line 106, ../sass/_navbar.scss */
 .secondary-menu li:last-child a {
   border-bottom: 1px solid #eeeeee;
 }
 
 /** Responsive **/
 @media only screen and (max-width: 960px) {
-  /* line 95, ../sass/_navbar.scss */
+  /* line 114, ../sass/_navbar.scss */
   .logo {
     margin: 18px 0;
   }
 
-  /* line 99, ../sass/_navbar.scss */
+  /* line 118, ../sass/_navbar.scss */
   .nav-bar {
     padding: 0 2em;
   }
 
-  /* line 105, ../sass/_navbar.scss */
+  /* line 124, ../sass/_navbar.scss */
   .top-level-link:link,
   .top-level-link:visited,
   .top-level-menuitem:first-child .top-level-link:link {
@@ -1197,12 +1238,12 @@ figure figcaption {
     margin-bottom: .2em;
   }
 
-  /* line 112, ../sass/_navbar.scss */
+  /* line 131, ../sass/_navbar.scss */
   .nav-toggle {
     display: block;
   }
 
-  /* line 116, ../sass/_navbar.scss */
+  /* line 135, ../sass/_navbar.scss */
   .nav-bar-links {
     display: none;
     margin-bottom: 1em;

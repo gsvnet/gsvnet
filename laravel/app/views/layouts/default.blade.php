@@ -19,42 +19,39 @@
         @section('header')
             <header class="top-header">
                 <nav class="nav-bar">
-                    <div class="nav-bar-extras">
-                        <h1 class="logo">
-                            <a class="logo-link" href="/"><span>Gereformeerde Studentenvereniging Groningen</span></a>
-                        </h1>
+<!--                     <div class="nav-bar-extras">
                         <button id="navbar-toggler" class="nav-toggle">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                    </div>
+                    </div> -->
 
+                    <h1 class="logo">
+                        <a class="logo-link" href="/"><span>Gereformeerde Studentenvereniging Groningen</span></a>
+                    </h1>
                     <ul id="main-menu" class="nav-bar-links">
                         <li class="top-level-menuitem">
-                            <a class="top-level-link {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a>
+                            <a class="top-level-link {{ Request::is('de-gsv*') ? 'active-menu' : '' }}" href="/de-gsv">De GSV</a>
                         </li>
                         <li class="top-level-menuitem">
-                            <a class="top-level-link {{ Request::is('de-gsv*') ? 'active' : '' }}" href="/de-gsv">De GSV</a>
+                            <a class="top-level-link {{ Request::is('forum*') ? 'active-menu' : '' }}" href="/#">Forum</a>
                         </li>
                         <li class="top-level-menuitem">
-                            <a class="top-level-link {{ Request::is('forum*') ? 'active' : '' }}" href="/#">Forum</a>
+                            <a class="top-level-link {{ Request::is('albums*') ? 'active-menu' : '' }}" href="/albums">Fotoalbum</a>
                         </li>
                         <li class="top-level-menuitem">
-                            <a class="top-level-link {{ Request::is('albums*') ? 'active' : '' }}" href="/albums">Fotoalbum</a>
-                        </li>
-                        <li class="top-level-menuitem">
-                            <a class="top-level-link {{ Request::is('activiteiten*') ? 'active' : '' }}" href="/activiteiten">Activiteiten</a>
+                            <a class="top-level-link {{ Request::is('activiteiten*') ? 'active-menu' : '' }}" href="/activiteiten">Activiteiten</a>
                         </li>
 
                         @if(Auth::guest() || !Auth::user()->isMember())
                         <li class="top-level-menuitem">
-                            <a class="top-level-link {{ Request::is('word-lid*') ? 'active' : '' }}" href="/word-lid">Lid worden?</a>
+                            <a class="top-level-link {{ Request::is('word-lid*') ? 'active-menu' : '' }}" href="/word-lid">Lid worden?</a>
                         </li>
                         @endif
 
                         @if(Auth::check() && Auth::user()->can('viewMemberlist'))
-                            <li class="top-level-menuitem {{ Request::is('jaarbundel*') ? 'active' : '' }}"><a href="/jaarbundel" class="top-level-link">Jaarbundel</a></li>
+                            <li class="top-level-menuitem {{ Request::is('jaarbundel*') ? 'active-menu' : '' }}"><a href="/jaarbundel" class="top-level-link">Jaarbundel</a></li>
                         @endif
 
                         @if (Auth::check())
