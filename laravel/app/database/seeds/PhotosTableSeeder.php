@@ -15,6 +15,8 @@ class PhotosTableSeeder extends Seeder {
                 $photo = array(
                     'name' => 'Photo ' . $i . ' from album ' . $album_id,
                     'album_id' => $album_id,
+                    // Let our path be a random lorempixel image
+                    'src_path' => 'http://lorempixel.com/634/306/abstract?' . $i,
 
                     'created_at' => new DateTime('today'),
                     'updated_at' => new DateTime('today')

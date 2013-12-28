@@ -8,14 +8,18 @@ class UsersTableSeeder extends Seeder {
 		$users = array(
             array(
                 'email'         => 'markredeman@gmail.com',
-                'password'      => Hash::make('hello world'),
+                'password'      => Hash::make('helloworld'),
                 'firstname'     => 'Mark',
                 'lastname'      => 'Redeman',
-                'username'      => 'mredeman'
+                'middlename'    => 'Sietse',
+                'username'      => 'mredeman',
+
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
 
             )
 		);
-		
+
 		DB::table('users')->insert($users);
 	}
 

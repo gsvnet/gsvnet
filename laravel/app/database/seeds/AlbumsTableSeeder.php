@@ -14,6 +14,8 @@ class AlbumsTableSeeder extends Seeder {
                 'name' => 'Album ' . $i,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quicquid opinemur.',
 
+                'slug' => Str::slug('Album ' . $i),
+
                 'created_at' => new DateTime('today'),
                 'updated_at' => new DateTime('today')
             );

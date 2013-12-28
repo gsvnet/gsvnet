@@ -19,6 +19,8 @@ class PivotCommitteeUserTable extends Migration {
 			$table->foreign('committee_id')->references('id')->on('committees')->onDelete('cascade');
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
+			$table->timestamps();
+
 			$table->datetime('start_date');
 			$table->datetime('end_date');
 		});

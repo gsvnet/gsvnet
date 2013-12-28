@@ -12,7 +12,7 @@ class CreateYearGroupTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('year_group', function(Blueprint $table) {
+		Schema::create('year_groups', function(Blueprint $table) {
 			$table->integer('id', true);
 			$table->string('name');
 			$table->integer('year');
@@ -27,7 +27,7 @@ class CreateYearGroupTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('year_group');
+		Schema::drop('year_groups');
 	}
 
 }

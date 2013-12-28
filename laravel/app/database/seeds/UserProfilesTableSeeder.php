@@ -6,7 +6,7 @@ class UserProfilesTableSeeder extends Seeder {
 	{
 		// Uncomment the below to wipe the table clean before populating
 		// DB::table('user_profiles')->truncate();
-
+		return;
 		$user_profiles = [
 			[
 				'firstname' => 'Mark',
