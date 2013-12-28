@@ -15,4 +15,9 @@ class AdminController extends BaseController {
     {
         $this->layout = 'layouts.admin';
     }
+
+    public function index()
+    {
+        $this->layout->content =  View::make('admin.index');
+    }
 }
