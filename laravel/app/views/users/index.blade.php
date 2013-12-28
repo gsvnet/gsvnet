@@ -10,8 +10,9 @@
 					<h3>{{ link_to_route('user-profile', $member->firstname . ' ' . $member->lastname, $parameters = array($member->id)) }}</h3>
 					@if($member->profile)
 						<ul class="user-details-list">
-							<li><span class="dot-after">{{$member->mail}}</span> {{$member->profile->phone}}</li>
-							<li><span class="dot-after">{{$member->profile->yearGroup->name}}</span> Regio 2</li>
+							<li><i class="fa fa-share"></i> {{{$member->email}}}</li>
+							<li><i class="fa fa-phone"></i> {{{$member->profile->phone}}}</li>
+							<li><span class="dot-after">{{{$member->profile->yearGroup->name}}}</span> Regio {{{$member->profile->region}}}</li>
 						</ul>
 					@else
 						<p><em>Gebruiker heeft geen profiel</em></p>

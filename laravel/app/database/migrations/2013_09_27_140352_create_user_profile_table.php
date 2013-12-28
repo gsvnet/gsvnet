@@ -16,10 +16,9 @@ class CreateUserProfileTable extends Migration {
 			$table->integer('id', true);
 			$table->integer('user_id', false);
 			$table->integer('year_group_id')->nullable();
+			$table->integer('region');
 
-			$table->string('email');
 			$table->string('phone');
-
 			$table->string('address')->nullable();
 			$table->string('zip_code')->nullable();
 			$table->string('town')->nullable();

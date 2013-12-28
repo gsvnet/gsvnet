@@ -51,7 +51,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 
 	public function getFullnameAttribute()
 	{
-		return $this->firstname . ' ' . $this->lastname;
+		return $this->firstname . ' ' . $this->middlename . ' ' . $this->lastname;
 	}
 
 	/**

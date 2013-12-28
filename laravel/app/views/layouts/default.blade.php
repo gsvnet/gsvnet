@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title }}</title>
 
-    <meta name="description" content="{{ $description }}" />
-    <meta name="keywords" content="{{ $keywords }}" />
+    <meta name="description" content="{{{ $description }}}" />
+    <meta name="keywords" content="{{{ $keywords }}}" />
 
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
     @section('stylesheets')
         <!-- Stylesheets -->
         <link rel="stylesheet" href="/stylesheets/screen.css">
