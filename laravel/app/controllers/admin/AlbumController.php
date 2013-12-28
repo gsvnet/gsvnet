@@ -24,11 +24,6 @@ class AlbumController extends AdminController {
         $this->layout->content = View::make('admin.albums.index')->with('albums', $albums);
     }
 
-    public function create()
-    {
-
-    }
-
     public function store()
     {
         $input = Input::all();
@@ -40,9 +35,9 @@ class AlbumController extends AdminController {
             $album = new Album();
             $album->name = $input['name'];
             $album->description = $input['description'];
+            $album->save();
 
             $album->slug = $album->id . '-' . Str::slug($album->name);
-
             $album->save();
 
             return Redirect::action('Admin\AlbumController@index')
@@ -53,9 +48,9 @@ class AlbumController extends AdminController {
         return Redirect::back()->withInput()->withErrors($validation);
     }
 
-    public function show($albumSlug)
+    public function show($id)
     {
-        $album = Album::where('slug', '=', $albumSlug)->first();
+        $album = Album::find($id);
 
         $photos = Photo::where('album_id', '=', $album->id)->paginate(10);
 
@@ -65,9 +60,9 @@ class AlbumController extends AdminController {
 
     }
 
-    public function edit($albumSlug)
+    public function edit($id)
     {
-        $album = Album::where('slug', '=', $albumSlug)->first();
+        $album = Album::find($id);
 
         $this->layout->content = View::make('admin.albums.edit')
             ->withAlbum($album);
@@ -83,11 +78,6 @@ class AlbumController extends AdminController {
         if ($validation->passes())
         {
             $album = Album::findOrFail($id);
-            // $album->update(
-            //     ['name' => $input['name'],
-            //     'description' => $input['description'],
-            //     'slug' => $album->id . '-' . Str::slug($album->name)]
-            // );
 
             $album->name = $input['name'];
             $album->description = $input['description'];

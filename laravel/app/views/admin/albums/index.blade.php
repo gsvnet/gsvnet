@@ -1,65 +1,64 @@
+@section('stylesheets')
+	@parent
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+@stop
+
 @section('content')
-	<div class="container" role="main">
-		<h1>Fotogallerij</h1>
-		<p class="delta">Voeg een album toe of bewerk oude albums</p>
+    <div class="page-header">
+    	<h1>Foto albums</h1>
+    </div>
+	<p class="delta">Voeg een album toe of bewerk oude albums</p>
 
-		<h2>Album toevoegen</h2>
+	@include('admin.albums.create')
 
-		<section class='create-album panel panel-default panel-info'>
-		    <div class="panel-heading add-item">
-		        <h4 class="panel-title">Album toevoegen <span class="caret"></span></h4>
-		    </div>
+	<h2>Albums bewerken</h2>
+	<table class='table table-bordered'>
+		<thead>
+			<tr>
+				<th>Naam</th>
+				<td>Aantal foto's</td>
+                <td>Laatst bewerkt</td>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach($albums as $album)
+			<tr>
+				<td><a href="{{ URL::action('Admin\AlbumController@show', $album->id) }}" alt="{{ $album->name }}">
+					{{{ $album->name }}}
+				</a></td>
+				<td>
+					{{{ $album->photos->count()}}}
+				</td>
 
-		    {{
-		        Former::vertical_open()
-		            ->action(action('Admin\AlbumController@store'))
-		            ->method('POST')
-		            ->class('panel-body add-form')
-		    }}
+                <td>
+                    {{{ $album->updated_at }}}
+                </td>
 
-		        @include('admin.albums._form')
+				<!-- <td>
+                    <a href="{{ URL::action('Admin\AlbumController@edit', $album->id) }}" alt="Bewerk {{{ $album->name }}}" class='btn btn-default'>
+                        <i class="fa fa-pencil"></i> Album informatie bewerken
+                    </a>
+                </td> -->
 
-		        <button type='submit' class='btn btn-success'>
-		            <i class="fa fa-ok"></i> Toevoegen
-		        </button>
+			</tr>
+			@endforeach
+		</tbody>
+	</table>
 
-		    {{
-		        Former::close()
-		    }}
+	{{ $albums->links() }}
 
-		</section>
+@stop
 
+@section('javascripts')
+	@parent
 
-		<h2>Albums bewerken</h2>
-		<table>
-			<thead>
-				<tr>
-					<th>Naam</th>
-					<td>Aantal foto's</td>
-					<td></td>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach($albums as $album)
-				<tr>
-					<td><a href="{{ URL::action('Admin\AlbumController@show', $album->slug) }}" alt="{{ $album->name }}">
-						{{{ $album->name }}}
-					</a></td>
-					<td>
-						{{{ $album->photos->count()}}}
-					</td>
-
-					<td>
-                        <a href="{{ URL::action('Admin\AlbumController@edit', $album->slug) }}" alt="Bewerk {{{ $album->name }}}" class='btn btn-default'>
-                            <i class="fa fa-pencil"></i> Bewerken
-                        </a>
-                    </td>
-				</tr>
-				@endforeach
-			</tbody>
-		</table>
-
-		{{ $albums->links() }}
-
-	</div>
+	<script>
+        $(document).ready(function() {
+            $('.add-item').on('click', function () {
+                $('.add-form').toggle('fast');
+            });
+            // Hide success message after 2.5 seconds
+            $('.alert.alert-success').delay(2500).slideUp(500);
+        });
+    </script>
 @stop

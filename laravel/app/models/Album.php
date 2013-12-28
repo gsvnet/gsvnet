@@ -28,4 +28,11 @@ class Album extends \Eloquent {
     {
         return \URL::route('show_media', $this->slug);
     }
+
+    public function getUpdatedAtAttribute($updatedAt)
+    {
+        $date = new \Carbon\Carbon($updatedAt);
+
+        return $date->diffForHumans(\Carbon\Carbon::now());
+    }
 }
