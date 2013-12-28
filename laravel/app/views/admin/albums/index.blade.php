@@ -1,9 +1,12 @@
+@section('stylesheets')
+	@parent
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+@stop
+
 @section('content')
 	<div class="column-holder" role="main">
 		<h1>Fotogallerij</h1>
 		<p class="delta">Voeg een album toe of bewerk oude albums</p>
-
-		<h2>Album toevoegen</h2>
 
 		<section class='create-album panel panel-default panel-info'>
 		    <div class="panel-heading add-item">
@@ -20,7 +23,7 @@
 		        @include('admin.albums._form')
 
 		        <button type='submit' class='btn btn-success'>
-		            <i class="fa fa-ok"></i> Toevoegen
+		            <i class="fa fa-check"></i> Toevoegen
 		        </button>
 
 		    {{
@@ -42,7 +45,7 @@
 			<tbody>
 				@foreach($albums as $album)
 				<tr>
-					<td><a href="{{ URL::action('Admin\AlbumController@show', $album->slug) }}" alt="{{ $album->name }}">
+					<td><a href="{{ URL::action('Admin\AlbumController@show', $album->id) }}" alt="{{ $album->name }}">
 						{{{ $album->name }}}
 					</a></td>
 					<td>
@@ -50,8 +53,8 @@
 					</td>
 
 					<td>
-                        <a href="{{ URL::action('Admin\AlbumController@edit', $album->slug) }}" alt="Bewerk {{{ $album->name }}}" class='btn btn-default'>
-                            <i class="fa fa-pencil"></i> Bewerken
+                        <a href="{{ URL::action('Admin\AlbumController@edit', $album->id) }}" alt="Bewerk {{{ $album->name }}}" class='btn btn-default'>
+                            <i class="fa fa-pencil"></i> Album informatie bewerken
                         </a>
                     </td>
 				</tr>

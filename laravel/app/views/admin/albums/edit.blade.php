@@ -13,7 +13,7 @@
         @include('admin.albums._form')
 
         <button type='submit' class='btn btn-success'>
-            <i class="fa fa-ok"></i> Opslaan
+            <i class="fa fa-check"></i> Opslaan
         </button>
 
         <a class='btn btn-default' href="{{ URL::previous() }}">Terug</a>
