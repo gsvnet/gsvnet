@@ -8,6 +8,7 @@
 			@endif
 			
 			
+			{{-- Show committees --}}
 			@if($member->committees && count($member->committees) > 0)
 				<h2>Commissies</h2>
 				<ul>
@@ -16,7 +17,6 @@
 					@endforeach
 				</ul>
 			@endif
-
 		</div>
 		
 		<div class="secondary-column">
