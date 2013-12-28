@@ -4,9 +4,31 @@
 		<p class="delta">Voeg een album toe of bewerk oude albums</p>
 
 		<h2>Album toevoegen</h2>
-		<div class="create-album">
-			Formuliertje
-		</div>
+
+		<section class='create-album panel panel-default panel-info'>
+		    <div class="panel-heading add-item">
+		        <h4 class="panel-title">Album toevoegen <span class="caret"></span></h4>
+		    </div>
+
+		    {{
+		        Former::vertical_open()
+		            ->action(action('Admin\AlbumController@store'))
+		            ->method('POST')
+		            ->class('panel-body add-form')
+		    }}
+
+		        @include('admin.albums._form')
+
+		        <button type='submit' class='btn btn-success'>
+		            <i class="glyphicon glyphicon-ok"></i> Toevoegen
+		        </button>
+
+		    {{
+		        Former::close()
+		    }}
+
+		</section>
+
 
 		<h2>Albums bewerken</h2>
 		<table>
@@ -20,7 +42,7 @@
 			<tbody>
 				@foreach($albums as $album)
 				<tr>
-					<td><a href="{{ URL::action('Admin\AlbumController@show', $album->id) }}" alt="{{ $album->name }}">
+					<td><a href="{{ URL::action('Admin\AlbumController@show', $album->slug) }}" alt="{{ $album->name }}">
 						{{ $album->name }}
 					</a></td>
 					<td>
@@ -29,10 +51,10 @@
 					<td>
 						1
 					</td>
-					<td><a href="{{ URL::action('Admin\AlbumController@edit', $album->id) }}" alt="Bewerk {{ $album->name }}">
+					<td><a href="{{ URL::action('Admin\AlbumController@edit', $album->slug) }}" alt="Bewerk {{ $album->name }}">
 						Bewerken
 					</a></td>
-					<td><a href="{{ URL::action('Admin\AlbumController@destroy', $album->id) }}" alt="Verwijder {{ $album->name }}">
+					<td><a href="{{ URL::action('Admin\AlbumController@destroy', $album->slug) }}" alt="Verwijder {{ $album->name }}">
 						Verwijderen
 					</a></td>
 				</tr>

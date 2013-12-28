@@ -13,12 +13,7 @@ class PhotoController extends BaseController {
 
     public function showPhotos($albumSlug)
     {
-
-        // $album = Model\Album::get($album)->with('photos');
-        //
         $album = Album::where('slug', '=', $albumSlug)->first();
-        //$photos = $album->photos()->paginate(10);
-
         $photos = Photo::where('album_id', '=', $album->id)->paginate(10);
         //$photos->setBaseUrl('custom/url');
 

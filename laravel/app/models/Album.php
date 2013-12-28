@@ -2,9 +2,12 @@
 
 class Album extends \Eloquent {
 
-	protected $guarded = array();
+	protected $fillable = array('name', 'description');
 
-	public static $rules = array();
+	public static $rules = array(
+        'name'        => 'required',
+        'description' => 'required'
+    );
 
     public function photos()
     {
@@ -23,6 +26,6 @@ class Album extends \Eloquent {
 
     public function getShowURLAttribute()
     {
-        return \URL::route('show_media', $this->id);
+        return \URL::route('show_media', $this->slug);
     }
 }
