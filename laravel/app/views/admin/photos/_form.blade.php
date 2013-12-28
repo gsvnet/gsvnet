@@ -1,4 +1,3 @@
-<div>{{ Former::text('name')->required()->autofocus() }}</div>
-<div>
-    {{ Former::file('photo')->accept('image') }}
-</div>
+{{ Former::text('name')->autofocus() }}
+
+{{ Former::file('photo')->required()->accept('image') }}

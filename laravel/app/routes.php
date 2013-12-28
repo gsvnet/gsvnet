@@ -1,5 +1,7 @@
 <?php
 
+Former::framework('TwitterBootstrap3');
+
 Route::get('/', [
         'as' => 'home',
         'uses' => 'HomeController@showIndex'

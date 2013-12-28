@@ -39,7 +39,9 @@ class PhotoController extends AdminController {
         if ($validation->passes())
         {
             $photo = new Photo();
-            $photo->name = $input['name'];
+
+            $photo->name = Input::has('name') ? Input::get('name') : $file->getClientOriginalName();
+
             $photo->album_id = $input['album_id'];
 
             $filename = time() . '-' . $file->getClientOriginalName();

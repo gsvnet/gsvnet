@@ -4,7 +4,6 @@ class Photo extends \Eloquent {
 	protected $fillable = array('name', 'description');
 
     public static $rules = array(
-        'name'        => 'required',
         'album_id'    => 'required|integer',
     );
 
