@@ -1,3 +1,4 @@
 *.sass-cache*
 *Thumb.db*
 *.sqlite
+laravel/public/fluxbb-1.5.5/

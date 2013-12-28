@@ -1,3 +1,9 @@
+/** UTILITIES **/
+.dot-after:after {
+	content:'\00B7';
+	padding-left:5px;
+}
+
 /** PAGE BLOCKS **/
 
 .overal-header {

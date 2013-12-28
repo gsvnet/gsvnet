@@ -51,7 +51,7 @@
                         @endif
 
                         @if(Auth::check() && Auth::user()->can('viewMemberlist'))
-                            <li class="top-level-menuitem {{ Request::is('jaarbundel*') ? 'active-menu' : '' }}"><a href="/jaarbundel" class="top-level-link">Jaarbundel</a></li>
+                            <li class="top-level-menuitem"><a href="/jaarbundel" class="top-level-link {{ Request::is('jaarbundel*') ? 'active-menu' : '' }}">Jaarbundel</a></li>
                         @endif
 
                         @if (Auth::check())

@@ -62,7 +62,7 @@
 
 @section('content')
     <div class="column-holder" role="main">
-        <p class="delta">Wil jij een onvergetelijke studententijd?</p>
+        <p class="delta">{{Auth::check() ? Auth::user()->firstname . ', w' : 'W'}}il jij een onvergetelijke studententijd?</p>
         <div class="main-content">
             <p>De GSV is de meest hechte christelijke studentenvereniging van Groningen. 
             Onze vereniging biedt de perfecte combinatie van christelijke waarden en het echte studentenleven.</p>

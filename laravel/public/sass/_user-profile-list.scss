@@ -1,0 +1,18 @@
+.user-profile-list, .user-details-list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.user-profile-item {
+	@include clearfix;
+	margin-bottom: 1em;
+
+	.profile-image {
+		width: 120px;
+		height: 120px;
+		float: left;
+		margin-right: 1em;
+		background: #CCC;
+	}
+}
