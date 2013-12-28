@@ -1,6 +1,4 @@
-@section('header')
-    @parent
-
+@section('top-slideshow')
     <section class="slideshow-wrap">
         <div id="carousel-example-generic" class="slideshow carousel slide">
             <!-- Indicators -->

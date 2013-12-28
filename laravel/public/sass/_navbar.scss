@@ -37,16 +37,24 @@
 
 .top-level-link {
 	text-decoration: none;
-	line-height: 90px;
 	padding: 0 .8em;
-	display: block;
+	display: inline-block;
 	border-left: 1px solid #DDD;
+	line-height: 90px;
+}
+
+.has-sub-menu .top-level-link {
+	padding-right: 3px;
 }
 
 .active-menu, a.active-menu:link, a.active-menu:visited {
 	background: $darkPurple;
 	color: #FFF;
 	position: relative;
+
+	& a:link, & a:visited {
+		color: #FFF;
+	}
 
 	&:after {
 		background: transparent url('../images/nav-main-active.png') no-repeat 50% 50%;
@@ -65,6 +73,22 @@
 .top-level-menuitem {
 	display: block;
 	float: left;
+	position: relative;
+}
+
+.top-caret {
+	display: inline-block;
+	cursor: pointer;
+	padding: 0 7px 0 4px;
+	line-height: 90px; /* bugged */
+}
+
+.active-menu .active-caret {
+	background: $lightPurple;
+}
+
+.active-caret {
+	background: $grey;
 }
 
 .nav-toggle {
@@ -89,6 +113,29 @@
 	.icon-bar + .icon-bar {
 		margin-top: 4px;
 	}
+}
+
+/** Top Sub menu **/
+.sub-level-menu {
+	position: absolute;
+	top: 90px;
+	left: 0;
+	list-style-type: none;
+	padding: 0;
+	background: #FFF;
+	z-index: 100;
+	width: 200px;
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	display: none;
+}
+
+.sub-level-link, a.sub-level-link:link, a.sub-level-link:visited {
+	display: block;
+	padding: 0 .8em;
+	line-height: 3;
+	border: 1px solid $lightGrey;
+	border-top: 0;
+	color: $body-copy-color;
 }
 
 .secondary-menu {

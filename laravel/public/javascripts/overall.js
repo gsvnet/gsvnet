@@ -20,4 +20,10 @@ $(document).ready(function() {
 	$('#navbar-toggler').click(function(){
 		$mainMenu.slideToggle(100);
 	});
+
+	$('.top-caret').click(function(){
+		$this = $(this);
+		$this.toggleClass('active-caret');
+		$this.next().slideToggle(100);
+	})
 });
