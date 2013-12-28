@@ -16,6 +16,12 @@ class UserController extends BaseController {
 
     public function showUser($id)
     {
-        $this->layout->content = View::make('users.profile');
+        $member = Model\User::with('profile.yearGroup', 'committeesSorted')->find($id);
+        
+
+        //dd($member);
+
+        $this->layout->content = View::make('users.profile')
+            ->with('member', $member);
     }
 }

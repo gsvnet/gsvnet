@@ -29,6 +29,7 @@ Route::get('logout', array(
     )
 );
 
+// Only logged in users can view the member list if they have permission
 Route::group(array('prefix' => 'jaarbundel', 'before' => 'auth|can:viewMemberlist'), function()
 {
 
@@ -39,8 +40,8 @@ Route::group(array('prefix' => 'jaarbundel', 'before' => 'auth|can:viewMemberlis
 
     Route::get('/gsver-{id}', [
         'as' => 'user-profile',
-        'users' => 'UserController@showUser'
-    ]);
+        'uses' => 'UserController@showUser'
+    ])->where('id', '[0-9]+');
 });
 
 Route::group(array('prefix' => 'de-gsv'), function()
