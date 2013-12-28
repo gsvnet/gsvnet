@@ -20,7 +20,7 @@
 		        @include('admin.albums._form')
 
 		        <button type='submit' class='btn btn-success'>
-		            <i class="glyphicon glyphicon-ok"></i> Toevoegen
+		            <i class="fa fa-ok"></i> Toevoegen
 		        </button>
 
 		    {{
@@ -35,28 +35,25 @@
 			<thead>
 				<tr>
 					<th>Naam</th>
-					<td>Omschrijving</td>
-					<td colspan="3">Aantal foto's</td>
+					<td>Aantal foto's</td>
+					<td></td>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach($albums as $album)
 				<tr>
 					<td><a href="{{ URL::action('Admin\AlbumController@show', $album->slug) }}" alt="{{ $album->name }}">
-						{{ $album->name }}
+						{{{ $album->name }}}
 					</a></td>
 					<td>
-						{{$album->description }}
+						{{{ $album->photos->count()}}}
 					</td>
+
 					<td>
-						1
-					</td>
-					<td><a href="{{ URL::action('Admin\AlbumController@edit', $album->slug) }}" alt="Bewerk {{ $album->name }}">
-						Bewerken
-					</a></td>
-					<td><a href="{{ URL::action('Admin\AlbumController@destroy', $album->slug) }}" alt="Verwijder {{ $album->name }}">
-						Verwijderen
-					</a></td>
+                        <a href="{{ URL::action('Admin\AlbumController@edit', $album->slug) }}" alt="Bewerk {{{ $album->name }}}" class='btn btn-default'>
+                            <i class="fa fa-pencil"></i> Bewerken
+                        </a>
+                    </td>
 				</tr>
 				@endforeach
 			</tbody>

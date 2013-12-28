@@ -11,7 +11,7 @@ class Album extends \Eloquent {
 
     public function photos()
     {
-        return $this->hasMany('Photo');
+        return $this->hasMany('Model\Photo');
     }
 
     public function smallImage()
