@@ -9,10 +9,11 @@ use Validator;
 use Str;
 use Redirect;
 
-class AlbumController extends BaseController {
+class AlbumController extends AdminController {
 
     public function __construct()
     {
+        $this->layout = 'layouts.admin';
         $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
     }
 

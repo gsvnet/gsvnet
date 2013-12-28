@@ -6,7 +6,7 @@ use View;
 use Model\Photo;
 use Model\Album;
 
-class PhotoController extends BaseController {
+class PhotoController extends AdminController {
     public function index($id)
     {
         $album = Album::find($id);

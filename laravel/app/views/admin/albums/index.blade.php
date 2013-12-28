@@ -1,5 +1,5 @@
 @section('content')
-	<div class="column-holder" role="main">
+	<div class="container" role="main">
 		<h1>Fotogallerij</h1>
 		<p class="delta">Voeg een album toe of bewerk oude albums</p>
 

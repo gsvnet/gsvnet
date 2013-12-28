@@ -1,10 +1,10 @@
 @section('content')
 	<div class="column-holder">
 		<div class="main-content">
-			<h1>{{ $member->firstname }} {{ $member->lastname }}</h1>
+			<h1>{{{ $member->full_name }}}</h1>
 
 			@if($member->profile)
-			{{$member->profile->yearGroup->name}}
+			{{{$member->profile->yearGroup->name}}}
 			@endif
 			
 			
@@ -13,7 +13,7 @@
 				<h2>Commissies</h2>
 				<ul>
 					@foreach ($member->committees as $committee)
-						<li>{{ link_to_route('show_committee', $committee->name, [$committee->id]) }} van {{$committee->pivot->start_date}} tot {{$committee->pivot->end_date }}</li>
+						<li>{{ link_to_route('show_committee', $committee->name, [$committee->id]) }} van {{{$committee->pivot->start_date}}} tot {{{$committee->pivot->end_date }}}</li>
 					@endforeach
 				</ul>
 			@endif

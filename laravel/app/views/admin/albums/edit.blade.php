@@ -1,5 +1,5 @@
 @section('content')
-<div class="column-holder" role="main">
+    <div class="container" role="main">
     <h2>Album bewerken</h2>
 
     {{
