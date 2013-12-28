@@ -1,5 +1,5 @@
 @section('content')
-    <div class="column-holder" role="main">
+    <div class="container" role="main">
         <a href="{{ URL::action('Admin\AlbumController@index') }}">Terug naar albums</a>
         <h1>{{ $album->name }}</h1>
         <a href="{{ URL::action('Admin\AlbumController@edit', $album->id) }}" alt="Bewerk {{ $album->name }}">

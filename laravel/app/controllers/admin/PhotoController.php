@@ -11,7 +11,7 @@ use Validator;
 use Str;
 use Redirect;
 
-class PhotoController extends BaseController {
+class PhotoController extends AdminController {
     public function __construct()
     {
         $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
