@@ -65,7 +65,14 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 	public function committees()
 	{
 		return $this->belongsToMany('Model\Committee', 'committee_user')
-                    ->withPivot('start_time', 'end_time');
+                    ->withPivot('start_date', 'end_date');
+	}
+
+	public function committeesSorted()
+	{
+		return $this->belongsToMany('Model\Committee', 'committee_user')
+                    ->withPivot('start_date', 'end_date')
+                    ->orderBy('committee_user.end_date', 'desc');
 	}
 
 	public function profile()
