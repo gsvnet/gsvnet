@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
-
 Route::get('/', [
         'as' => 'home',
         'uses' => 'HomeController@showIndex'
@@ -23,20 +12,20 @@ Route::get('/', [
 Route::post('login', array(
         'as' => 'post-login',
         'before' => array('csrf'),
-        'uses' => 'UserController@postLogin'
+        'uses' => 'SessionController@postLogin'
     )
 );
 
 Route::get('login', array(
         'as' => 'get-login',
-        'uses' => 'UserController@getLogin'
+        'uses' => 'SessionController@getLogin'
     )
 );
 
 Route::get('logout', array(
         'as' => 'get-logout',
         'before' => array('auth'),
-        'uses' => 'UserController@getLogout'
+        'uses' => 'SessionController@getLogout'
     )
 );
 
@@ -101,12 +90,6 @@ Route::get('activiteiten/{id}', [
     'as' => 'show_event',
     'uses' => 'EventController@showEvent'
 ]);
-
-Route::get('albums/{id}', [
-    'as'    => 'show_media',
-    'uses'  => 'PhotoController@showPhotos'
-])->where('id', '[0-9]+');
-
 
 
 // TODO: check if user has album permissions
