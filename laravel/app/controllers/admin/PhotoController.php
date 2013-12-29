@@ -7,6 +7,7 @@ use Input;
 use Validator;
 use Str;
 use Redirect;
+use File;
 
 class PhotoController extends BaseController {
     public function __construct()
@@ -65,13 +66,51 @@ class PhotoController extends BaseController {
         $this->layout->content = View::make('admin.photos.show')->withPhoto($photo);
     }
 
-    public function edit($album_id, $id)
-    {
-        # code...
-    }
-
     public function update($album_id, $id)
     {
+        $photo = Photo::find($id);
+        $input = Input::all();
+
+        $input['album_id'] = $album_id;
+        $rules = Photo::$rules;
+        if (Input::hasFile('photo'))
+        {
+            $file = $input['photo'] = Input::file('photo');
+            $rules = array_add(Photo::$rules, 'photo', 'image');
+        }
+
+        // Validate photo name, album id and file type
+        $validation = Validator::make($input, $rules);
+
+        if ($validation->passes())
+        {
+            $photo->name = Input::get('name');
+
+            if (Input::hasFile('photo'))
+            {
+                // Delete old photo files
+                if (File::exists(public_path() . $photo->src_path))
+                {
+                    File::delete(public_path() . $photo->small_image);
+                    File::delete(public_path() . $photo->wide_image);
+                    File::delete(public_path() . $photo->src_path);
+                }
+                // Move the new photo to our upload folder
+                $filename = time() . '-' . $file->getClientOriginalName();
+                $file = $file->move(public_path() . '/uploads/photos/', $filename);
+                $photo->src_path = '/uploads/photos/' . $filename;
+            }
+
+            $photo->save();
+
+            return Redirect::action('Admin\AlbumController@show', $photo->album_id)
+                ->with('message', '<strong>' . $photo->name . '</strong> is succesvol bewerkt.')
+                ->with('changedID', $id);
+        }
+
+        return Redirect::back()
+            ->withInput()
+            ->withErrors($validation);
 
     }
 

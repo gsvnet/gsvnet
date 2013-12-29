@@ -7,7 +7,8 @@ class Photo extends \Eloquent {
     // Define the dimensions of small and wide photos
     private static $dimensions = [
         'small' => [308, 308],
-        'wide' => [634, 308]
+        'wide' => [634, 308],
+        'max' => []
     ];
 
 	protected $fillable = array('name');
