@@ -3,4 +3,5 @@
 *.sqlite
 laravel/public/fluxbb-1.5.5/
 laravel/public/uploads/photos/
+laravel/public/uploads/files/
 laravel/public/packages/

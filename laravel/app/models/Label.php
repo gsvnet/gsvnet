@@ -7,6 +7,7 @@ class Label extends \Eloquent {
 
     public function files()
     {
+        return $this->belongsToMany('Model\File', 'file_label');
         $this->hasMany('Model\Files');
     }
 }

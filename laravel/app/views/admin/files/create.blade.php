@@ -1,17 +1,17 @@
 <section class='create-album panel panel-default panel-info'>
     <div class="panel-heading add-item">
-        <h4 class="panel-title">Album toevoegen <span class="caret"></span></h4>
+        <h4 class="panel-title">Bestand toevoegen <span class="caret"></span></h4>
     </div>
 
     {{
-        Former::vertical_open()
-            ->action(action('Admin\AlbumController@store'))
+        Former::open_vertical_for_files()
+            ->action(action('Admin\FilesController@store'))
             ->method('POST')
-            ->rules(Model\Album::$rules)
+            ->rules(Model\File::$rules)
             ->class('panel-body add-form')
     }}
 
-        @include('admin.albums._form')
+        @include('admin.files._form')
 
         <button type='submit' class='btn btn-success'>
             <i class="fa fa-check"></i> Toevoegen

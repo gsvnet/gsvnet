@@ -42,7 +42,11 @@
           <h3>Administratie</h3>
           <div class="list-group list-group-mfc">
             <a href="{{ URL::action('Admin\AlbumController@index') }}" class="list-group-item {{ Request::segment(2) == 'albums' ? 'active' : '' }}">
-              <i class='glyphicon glyphicon-calendar'></i> Albums
+              <i class='glyphicon glyphicon-picture'></i> Albums
+            </a>
+
+            <a href="{{ URL::action('Admin\FilesController@index') }}" class="list-group-item {{ Request::segment(2) == 'files' ? 'active' : '' }}">
+              <i class='glyphicon glyphicon-hdd'></i> GSVdocs
             </a>
 
             <a href="{{ URL::route('get-logout') }}" class="list-group-item">
