@@ -47,10 +47,11 @@
 
 @section('javascripts')
     @parent
-    <script src="/javascripts/magnific-popup-0.9.4.js"></script>
-    <script src="/javascripts/fotos.js"></script>
+    <script src="/packages/frozennode/administrator/js/jquery/select2/select2.js"></script>
     <script>
         $(document).ready(function() {
+            $("#e12").select2({tags:["red", "green", "blue"]});
+
             $('.add-item').on('click', function () {
                 $('.add-form').toggle('fast');
             });
