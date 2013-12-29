@@ -49,9 +49,13 @@
 
 @section('javascripts')
 	@parent
-
-	<script>
+    <script src="/packages/frozennode/administrator/js/jquery/select2/select2.js"></script>
+    <script>
         $(document).ready(function() {
+            $("#e12").select2({
+                tags: {{ $labels }}
+            });
+
             $('.add-item').on('click', function () {
                 $('.add-form').toggle('fast');
             });
@@ -59,4 +63,10 @@
             $('.alert.alert-success').delay(2500).slideUp(500);
         });
     </script>
+@stop
+
+@section('stylesheets')
+    @parent
+    <link rel="stylesheet" href="/packages/frozennode/administrator/js/jquery/select2/select2.css">
+
 @stop

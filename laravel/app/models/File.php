@@ -9,4 +9,11 @@ class File extends \Eloquent {
     {
         return $this->belongsToMany('Model\Label', 'file_label');
     }
+
+    public function getLabelNamesAttribue()
+    {
+        $labels = $this->labels;
+        $labels = array_fetch($labels->toArray(), 'name');
+        return $labels;
+    }
 }

@@ -19,9 +19,11 @@ class FilesController extends BaseController {
     public function index()
     {
         $files = \Model\File::paginate(10);
+        $labels = \Model\Label::all();
 
         $this->layout->content = View::make('admin.files.index')
-            ->withFiles($files);
+            ->withFiles($files)
+            ->withLabels($labels);
     }
 
     public function store()
@@ -56,6 +58,7 @@ class FilesController extends BaseController {
     {
         $file = \Model\File::find($id);
         $labels = \Model\Label::all();
+        // $labels = json_encode(array_fetch($labels->toArray(), 'name'));
 
         $this->layout->content = View::make('admin.files.show')
             ->withFile($file)
