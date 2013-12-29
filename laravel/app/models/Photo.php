@@ -4,28 +4,25 @@ use File;
 use Image;
 
 class Photo extends \Eloquent {
+    // Define the dimensions of small and wide photos
     private static $dimensions = [
         'small' => [308, 308],
         'wide' => [634, 308]
     ];
 
-	protected $fillable = array('name', 'description');
+	protected $fillable = array('name');
 
     public static $rules = array(
         'album_id'    => 'required|integer',
     );
 
+    // The photo's album
     public function album()
     {
         return $this->belongsTo('Model\Album');
     }
 
     // Check if /uploads/photos/{src-path}-small exists else create it, save it and return it
-    public function smallImage()
-    {
-        return $this->small_image;
-    }
-
     public function getSmallIMageAttribute()
     {
         return $this->grabImage('small');
@@ -36,11 +33,10 @@ class Photo extends \Eloquent {
         return $this->grabImage('wide');
     }
 
-    public function wideImage()
-    {
-        return $this->wide_image;
-    }
-
+    /**
+    * Either create or return the resized image of the original image
+    * @param string $dimension either small or wide
+    */
     private function grabImage($dimension)
     {
         $orignalImagePath = public_path() . $this->src_path;
@@ -67,7 +63,7 @@ class Photo extends \Eloquent {
         return $newPath;
     }
 
-    // Show original image
+    // Return the path to the original image
     public function getShowURLAttribute()
     {
         return $this->src_path;
