@@ -106,6 +106,7 @@ Route::get('activiteiten/{id}', [
 Route::group(array('prefix' => 'markadmin'), function()
 {
     Route::get('/', 'Admin\AdminController@index');
+    Route::resource('events', 'Admin\EventController');
     Route::resource('albums', 'Admin\AlbumController');
     Route::resource('albums.photo', 'Admin\PhotoController');
 });
