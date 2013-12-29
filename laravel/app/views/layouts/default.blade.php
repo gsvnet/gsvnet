@@ -86,8 +86,6 @@
         @show
     </div>
 
-    @yield('breadcrumb')
-
     @yield('content')
 
     @section('word-lid')

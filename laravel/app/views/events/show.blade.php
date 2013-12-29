@@ -1,19 +1,3 @@
-@section('breadcrumb')
-<div class="column-holder">
-    <ul class="pagination breadcrumbs">
-        <li>
-            <a href="/">Home</a>
-        </li>
-        <li>
-            <a href="/activiteiten">Activiteiten</a>
-        </li>
-        <li class='active'>
-            <a href="{{ URL::current() }}">{{ $event->title }}</a>
-        </li>
-    </ul>
-</div>
-@stop
-
 @section('content')
     <div class="column-holder" role="main">
 
