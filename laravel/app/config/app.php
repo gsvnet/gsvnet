@@ -109,7 +109,8 @@ return array(
 
 		'Way\Generators\GeneratorsServiceProvider',
 		'Former\FormerServiceProvider',
-		'Frozennode\Administrator\AdministratorServiceProvider'
+		'Frozennode\Administrator\AdministratorServiceProvider',
+        'Intervention\Image\ImageServiceProvider'
 
 	),
 
@@ -178,6 +179,7 @@ return array(
         'View'            => 'Illuminate\Support\Facades\View',
 
         'Former'          => 'Former\Facades\Former',
+        'Image' => 'Intervention\Image\Facades\Image'
 
 	),
 

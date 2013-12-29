@@ -9,15 +9,17 @@
         <img src="{{{ $photo->src_path }}}" alt="{{{ $photo->name }}}" style='max-width: 100%;'>
 
     </div>
+
+
     <h3>Kleine foto</h3>
     <div class="thumbnail">
-        <img src="{{{ $photo->smallImage() }}}" alt="{{{ $photo->name }}}" style='max-width: 100%;'>
+        <img src="{{{ $photo->small_image }}}" alt="{{{ $photo->name }}}" style='max-width: 100%;'>
 
     </div>
 
     <h3>Grote foto</h3>
     <div class="thumbnail">
-        <img src="{{{ $photo->wideImage() }}}" alt="{{{ $photo->name }}}" style='max-width: 100%;'>
+        <img src="{{{ $photo->wide_image }}}" alt="{{{ $photo->name }}}" style='max-width: 100%;'>
 
     </div>
 
