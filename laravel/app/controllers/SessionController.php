@@ -4,22 +4,33 @@ class SessionController extends BaseController {
 
 	public function postLogin()
     {
-        // get POST data
+        $intended = '/';
+        $becomingMember = Input::has('become-member-login');
+
+        // Get POST data
         $userdata = array(
             'email'      => Input::get('inputEmail'),
             'password'   => Input::get('inputPassword')
         );
 
-        if ( Auth::attempt($userdata) )
+        // If becoming member, return correctly.
+        if ($becomingMember)
         {
-            // we are now logged in, go to home
-            return Redirect::to('/');
+            $intended = URL::route('word-lid') . '#become-member';
         }
-        else
+
+        if (Auth::attempt($userdata))
         {
-            // auth failure! lets go back to the login
-            return Redirect::to('/login')->with('login_errors', true);
+            return Redirect::intended($intended);
         }
+       
+        // Auth failure! lets go back to the login
+        if ($becomingMember)
+        {
+            return Redirect::to(URL::route('word-lid') . '#login-form')->with('login_errors', true);
+        }
+
+        return Redirect::route('get-login')->with('login_errors', true);
     }
 
     public function getLogout()

@@ -79,44 +79,11 @@
         </div>
     </div>
     <div class="hero-unit grey">
-        {{ Former::open_horizontal()->id('membership') }}
-            <div class="column-holder" role="main">
-                <h1>Meld je aan!</h1>
-                <div class="delta">Door onderstaand formulier in te vullen meld je je aan bij de Gereformeerde Studentenvereniging Groningen</div>
-                <div id="preview-image">
-                </div>
-            
-                <div class="form-group">
-                    <label class="control-label" for="inputImage">Upload een foto van jezelf</label>
-                    <input type="file" size="10" name="inputImage" id="inputImage" accept="image/*" capture="camera">
-                </div>
-                <div class="form-row-horizontal">
-                    <div class="form-group has-error">
-                        <label class="control-label" for="inputVoornaam">Voornaam</label>
-                        <input type="text" class="form-control" id="inputVoornaam" name="inputVoornaam" placeholder="Voornaam">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="inputAchternaam">Achternaam</label>
-                        <input type="text" class="form-control" id="inputAchternaam" name="inputAchternaam" placeholder="Achternaam">
-                    </div>
-                </div>
-                <div class="form-row-horizontal">
-                    <div class="form-group">
-                        <label class="control-label" for="inputStraat">Straat</label>
-                        <input type="text" class="form-control" id="inputStraat" name="inputStraat" placeholder="Achternaam">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="inputAchternaam">Achternaam</label>
-                        <input type="text" class="form-control" id="inputAchternaam" name="inputAchternaam" placeholder="Achternaam">
-                    </div>
-                </div>
-            </div>
-            <div class="column-holder">
-                <div class="control-group">
-                    <input type="submit" id="submit" value="Meld je aan" class="button">
-                </div>
-            </div>
-        {{Former::close()}}
+        @if(Auth::check())
+            @include('word-lid.become-member')
+        @else
+            @include('word-lid.login-or-register')
+        @endif
     </div>
 @stop
 
