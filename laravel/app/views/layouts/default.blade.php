@@ -106,7 +106,7 @@
 
     @section('javascripts')
         <script src="/javascripts/jquery-1.10.1.min.js"></script>
-        <script src="/javascripts/magnific-popup-0.9.4.js"></script>
+        <script src="/javascripts/magnific-popup-0.9.9.js"></script>
         <script src="/javascripts/overall.js"></script>
     @show
 </body>
