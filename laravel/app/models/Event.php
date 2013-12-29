@@ -33,7 +33,21 @@ class Event extends \Eloquent {
     {
         $date = new \Carbon\Carbon($start_date);
 
-        return $date->format('d F Y');
+        return $date->format('d M Y');
+    }
+
+    public function getEndDateAttribute($start_date)
+    {
+        $date = new \Carbon\Carbon($start_date);
+
+        return $date->format('d M Y');
+    }
+
+    public function getUpdatedAtAttribute($updatedAt)
+    {
+        $date = new \Carbon\Carbon($updatedAt);
+
+        return $date->diffForHumans();
     }
 
     public function image()

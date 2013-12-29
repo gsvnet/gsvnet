@@ -18,8 +18,13 @@ class CreateEventsTable extends Migration {
 			$table->text('description');
 			$table->string('location')->default('');
 
+			$table->boolean('whole_day');
+
 			$table->datetime('start_date');
-			$table->datetime('end_date')->nullable();
+			$table->datetime('end_date');
+
+			$table->time('start_time')->nullable();
+			$table->time('end_time')->nullable();
 
 			$table->string('image')->default('');
 

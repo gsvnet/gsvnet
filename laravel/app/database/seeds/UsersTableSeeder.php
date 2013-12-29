@@ -7,23 +7,16 @@ class UsersTableSeeder extends Seeder {
         DB::table('users')->truncate();
         DB::table('user_profiles')->truncate();
 
-		$users = array(
-            array(
-                'email'         => 'markredeman@gmail.com',
-                'password'      => Hash::make('helloworld'),
-                'firstname'     => 'Mark',
-                'lastname'      => 'Redeman',
-                'middlename'    => 'Sietse',
-                'username'      => 'mredeman',
-                'type'          => 3,
+		Model\User::create(array(
+            'email'         => 'markredeman@gmail.com',
+            'password'      => Hash::make('helloworld'),
+            'firstname'     => 'Mark',
+            'lastname'      => 'Redeman',
+            'middlename'    => 'Sietse',
+            'username'      => 'mredeman',
+            'type'          => 3,
 
-                'created_at' => new DateTime(),
-                'updated_at' => new DateTime(),
-
-            )
-		);
-
-		DB::table('users')->insert($users);
+        ));
 
         $count = 20;
 

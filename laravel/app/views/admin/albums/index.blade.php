@@ -1,8 +1,3 @@
-@section('stylesheets')
-	@parent
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-@stop
-
 @section('content')
     <div class="page-header">
     	<h1>Foto albums</h1>

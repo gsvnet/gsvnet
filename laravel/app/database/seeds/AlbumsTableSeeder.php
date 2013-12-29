@@ -10,20 +10,13 @@ class AlbumsTableSeeder extends Seeder {
         $albums = array();
 
         for ($i = 1; $i < 4; $i++) {
-            $album = array(
+            Model\Album::create(array(
                 'name' => 'Album ' . $i,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quicquid opinemur.',
-
                 'slug' => Str::slug('Album ' . $i),
-
-                'created_at' => new DateTime('today'),
-                'updated_at' => new DateTime('today')
-            );
-            $albums[] = $album;
+                
+            ));
         }
-
-		// Uncomment the below to run the seeder
-		DB::table('albums')->insert($albums);
 	}
 
 }
