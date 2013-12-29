@@ -109,6 +109,8 @@ Route::group(array('prefix' => 'markadmin'), function()
     Route::resource('events', 'Admin\EventController');
     Route::resource('albums', 'Admin\AlbumController');
     Route::resource('albums.photo', 'Admin\PhotoController');
+
+    Route::resource('files', 'Admin\FilesController');
 });
 
 App::missing(function($exception)

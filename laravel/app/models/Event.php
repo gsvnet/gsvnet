@@ -29,8 +29,16 @@ class Event extends \Eloquent {
         return $start_date->format('H:i');
     }
 
+    public function getStartDateAttribute($start_date)
+    {
+        $date = new \Carbon\Carbon($start_date);
+
+        return $date->format('d F Y');
+    }
+
     public function image()
     {
+        return 'http://lorempixel.com/126/126/abstract?id=' . rand();
         return 'uploads/events/originals/' . $this->image;
     }
 
@@ -63,5 +71,34 @@ class Event extends \Eloquent {
             return $file = preg_replace('/^public/', '', $files[0]);
         }
         return '';
+    }
+
+    public function hoi()
+    {
+        $start_date = new \Carbon\Carbon($this->start_date);
+        $end_date = new \Carbon\Carbon($this->end_date);
+
+
+        if ($start_date->diffInHours($end_date) < 24)
+        {
+            return "Van " . $start_date->format('l d F Y H:i') . " tot " . $end_date->format('H:i') . '.';
+        }
+        else
+        {
+            // if ($start_date->format('H:i') === $end_date->format('H:i'))
+            // {
+            //     return "Van " . $start_date->format('l d F Y H:i') . " tot " . $end_date->format('l d F') . '.';
+            // }
+            // else
+            // {
+                return "Van " . $start_date->format('l d F Y H:i') . " tot " . $end_date->format('l d F H:i') . '.';
+            // }
+        }
+
+        // length is less than 24 hours
+        // van start dag, maand, tijd tot eind tijd
+
+        // van start dag maand, tijd tot eind dag, tijd
+
     }
 }

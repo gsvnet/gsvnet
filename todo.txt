@@ -1,3 +1,6 @@
  !- profielenpagina gebruikers
  -- gsv-docs
  -- word lid
+ -- metadata
+ -- activiteiten
+ !- security

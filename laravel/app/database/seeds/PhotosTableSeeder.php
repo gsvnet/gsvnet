@@ -9,9 +9,9 @@ class PhotosTableSeeder extends Seeder {
 
         $photos = array();
 
-        for ($album_id = 1; $album_id < 31; $album_id++) {
+        for ($album_id = 1; $album_id < 4; $album_id++) {
 
-            for ($i = 1; $i < 31; $i++) {
+            for ($i = 1; $i < ceil(rand() * 10 + 2); $i++) {
                 $photo = array(
                     'name' => 'Photo ' . $i . ' from album ' . $album_id,
                     'album_id' => $album_id,

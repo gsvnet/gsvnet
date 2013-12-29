@@ -9,7 +9,7 @@ class AlbumsTableSeeder extends Seeder {
 
         $albums = array();
 
-        for ($i = 1; $i < 31; $i++) {
+        for ($i = 1; $i < 4; $i++) {
             $album = array(
                 'name' => 'Album ' . $i,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quicquid opinemur.',
