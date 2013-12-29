@@ -8,7 +8,7 @@ class Photo extends \Eloquent {
     private static $dimensions = [
         'small' => [308, 308],
         'wide' => [634, 308],
-        'max' => []
+        'max' => [1024, 768]
     ];
 
 	protected $fillable = array('name');
@@ -68,5 +68,18 @@ class Photo extends \Eloquent {
     public function getShowURLAttribute()
     {
         return $this->src_path;
+    }
+
+    public function restrictImageSize()
+    {
+        $img = Image::make(public_path() . $this->src_path);
+
+        if ($img->width > Self::$dimensions['max'][0] or $img->height > Self::$dimensions['max'][1])
+        {
+            // Resize the image while maintaining correct aspect ratio
+            $img->grab(Self::$dimensions['max'][0], Self::$dimensions['max'][1]);
+            // finally we save the image as a new image
+            $img->save(public_path() . $this->src_path);
+        }
     }
 }

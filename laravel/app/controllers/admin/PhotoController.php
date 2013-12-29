@@ -49,6 +49,8 @@ class PhotoController extends BaseController {
 
             $photo->src_path = '/uploads/photos/' . $filename;
 
+            $photo->restrictImageSize();
+
             $photo->save();
 
             return Redirect::action('Admin\AlbumController@show', $album_id)
@@ -99,6 +101,8 @@ class PhotoController extends BaseController {
                 $filename = time() . '-' . $file->getClientOriginalName();
                 $file = $file->move(public_path() . '/uploads/photos/', $filename);
                 $photo->src_path = '/uploads/photos/' . $filename;
+
+                $photo->restrictImageSize();
             }
 
             $photo->save();
