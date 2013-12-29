@@ -89,6 +89,22 @@ figure {
 	}
 }
 
+/** Become member page **/
+.login-form, .register-form {
+	width: 462px;
+	float: left;
+}
+
+.login-form {
+	padding-right: 17px;
+}
+
+.register-form {
+	border-left: 1px solid $darkGrey;
+	padding-left: 18px;
+
+}
+
 
 /** Footer **/
 .site-footer {

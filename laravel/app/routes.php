@@ -74,6 +74,13 @@ Route::get('word-lid', [
     ]
 );
 
+Route::post('word-lid', [
+        'as' => 'post-word-lid',
+        'before' => 'auth|usertype:visitor',
+        'uses' => 'UserController@postWordLid'
+    ]
+);
+
 Route::get('albums', [
     'as'    => 'albums',
     'uses'  => 'PhotoController@showAlbums'

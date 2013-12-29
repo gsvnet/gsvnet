@@ -82,10 +82,31 @@ Route::filter('csrf', function()
 /**
  * Check if a user has certain abilities specified in de User model
  */
-Route::filter('can', function($route, $request, $action){
+Route::filter('can', function($route, $request, $action)
+{
 	if(!Auth::user()->can($action))
 	{
 		//Session::flash('error', 'Niet genoeg rechten.');
+		return Redirect::to('/');
+	}
+});
+
+/**
+ * Check user type
+ */
+Route::filter('usertype', function($route, $request, $type)
+{
+	$types = Config::get('gsvnet.userTypes');
+	
+	// Check if type exists.
+	if(!in_array($type, $types))
+	{
+		die('Verkeerd type');
+	}
+
+	// Check if user has correct type.
+	if(!Auth::user()->type == $types[$type])
+	{
 		return Redirect::to('/');
 	}
 });

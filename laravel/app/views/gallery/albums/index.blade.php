@@ -8,7 +8,7 @@
 		<h1>Fotogallerij</h1>
 		<p class="delta">Krijg een impressie van de meest geweldige studentenvereniging zus en zo en bla die bla. En zus en zo!</p>
 
-		<div class="photos">
+		<div class="gallery photos">
 			@for($i=0; $i<count($albums); $i++)
 				@include('gallery._album', array('album' => $albums[$i], 'wide' => ($i+1)%5==0, 'class' => $classes[$i]))
 			@endfor
