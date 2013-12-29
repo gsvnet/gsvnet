@@ -76,8 +76,6 @@
                                     @endif
                                     <li><a class="sub-level-link" href="/logout">Uitloggen</a></li>
                                 </ul>
-
-
                             </li>
                         @else
                             <li class="top-level-menuitem"><a class="top-level-link login-link" href="/login" data-mfp-src="#login-dialog">Inloggen</a></li>

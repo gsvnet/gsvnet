@@ -1,19 +1,10 @@
-.photo-grid-row {
-	@include clearfix;
-	margin-bottom: 18px;
-}
-
 .photo-tile {
-	margin-left: 18px;
+	margin: 0 18px 18px 0;
 	float: left;
 	width: 308px;
 	height: 308px;
 	overflow: hidden;
 	position: relative;
-
-	&.first {
-		margin-left: 0;
-	}
 
 	img {
 		vertical-align: bottom;
@@ -21,6 +12,10 @@
 
 	&.wide {
 		width: 634px;
+	}
+
+	&.last-3 {
+		margin-right: 0;
 	}
 
 	.photo-description {
@@ -31,6 +26,7 @@
 }
 
 .albums {
+	@include clearfix;
 	.photo-link {
 		display: block;
 		position: absolute;
@@ -43,4 +39,38 @@
 			top: -312px;
 		}
 	}	
+}
+
+@media only screen and (max-width: 961px){
+
+	.photo-tile {
+
+		&.last-3 {
+			margin-right: 18px;
+		}
+
+		&.last-2 {
+			margin-right: 0;
+		}
+	}
+}
+
+
+@media only screen and (max-width: 723px){
+	.photo-tile{
+		max-width: 308px;
+
+		&.wide {
+			max-width: 308px;
+			overflow: hidden;
+		}
+
+		&.last-3 {
+			margin-right: 0;
+		}
+
+		&.last-2 {
+			margin-right: 0;
+		}
+	}
 }

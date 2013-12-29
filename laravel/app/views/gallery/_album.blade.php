@@ -1,6 +1,6 @@
-<div class="photo-tile {{ $first }} {{ $wide }}">
+<div class="photo-tile {{ $class }}">
     <a href="{{ $album->show_url }}" class="photo-link" title="{{ $album->name }}">
-        @if ($wide == 'wide')
+        @if ($wide)
             <img src="{{ $album->wideImage() }}" alt="{{ $album->name }}" />
         @else
             <img src="{{ $album->smallImage() }}" alt="{{ $album->name }}" />

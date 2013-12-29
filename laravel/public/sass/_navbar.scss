@@ -81,13 +81,17 @@
 	cursor: pointer;
 	padding: 0 7px 0 4px;
 	line-height: 90px; /* bugged */
+	-webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -ms-user-select: none;
 }
 
-.active-menu .active-caret {
+.active-menu.active-sub-menu .top-caret {
 	background: $lightPurple;
 }
 
-.active-caret {
+.active-sub-menu .top-caret {
 	background: $grey;
 }
 
@@ -126,7 +130,16 @@
 	z-index: 100;
 	width: 200px;
 	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.1);
-	display: none;
+	max-height: 0;
+	height: 0;
+	overflow: hidden;
+	transition: max-height 0.26s ease;
+	-webkit-transition: max-height 0.26s ease;
+}
+
+.active-sub-menu .sub-level-menu{
+	max-height: 300px;
+	height: auto;
 }
 
 .sub-level-link, a.sub-level-link:link, a.sub-level-link:visited {
