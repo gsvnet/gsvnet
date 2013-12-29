@@ -3,7 +3,12 @@
 class Event extends \Eloquent {
 	protected $guarded = array();
 
-	public static $rules = array();
+	public static $rules = array(
+        'title' => 'required',
+        'description' => 'required',
+        'start_date' => 'required|date_format:Y-m-d',
+        'end_date' => 'required|date_format:Y-m-d'
+    );
 
 
     // To do;
@@ -29,14 +34,14 @@ class Event extends \Eloquent {
         return $start_date->format('H:i');
     }
 
-    public function getStartDateAttribute($start_date)
+    public function getStartDateFormattedAttribute($start_date)
     {
         $date = new \Carbon\Carbon($start_date);
 
         return $date->format('d M Y');
     }
 
-    public function getEndDateAttribute($start_date)
+    public function getEndDateFormattedAttribute($start_date)
     {
         $date = new \Carbon\Carbon($start_date);
 
