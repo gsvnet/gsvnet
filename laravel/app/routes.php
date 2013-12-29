@@ -98,6 +98,7 @@ Route::get('activiteiten/{id}', [
 // TODO: check if user has album permissions
 Route::group(array('prefix' => 'markadmin'), function()
 {
+    Route::get('/', 'Admin\AdminController@index');
     Route::resource('albums', 'Admin\AlbumController');
     Route::resource('albums.photo', 'Admin\PhotoController');
 });

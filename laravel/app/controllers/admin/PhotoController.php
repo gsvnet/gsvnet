@@ -1,20 +1,18 @@
 <?php namespace Admin;
 
-use BaseController;
 use View;
-
 use Model\Photo;
 use Model\Album;
-
 use Input;
 use Validator;
 use Str;
 use Redirect;
 
-class PhotoController extends AdminController {
+class PhotoController extends BaseController {
     public function __construct()
     {
         $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
+        parent::__construct();
     }
 
     public function index($id)
@@ -27,10 +25,10 @@ class PhotoController extends AdminController {
             ->with('photos', $photos);
     }
 
-    public function store($albumId)
+    public function store($album_id)
     {
         $input = Input::all();
-        $input['album_id'] = $albumId;
+        $input['album_id'] = $album_id;
         $file = $input['photo'] = Input::file('photo');
 
         // Validate photo name, album id and file type
@@ -52,7 +50,7 @@ class PhotoController extends AdminController {
 
             $photo->save();
 
-            return Redirect::action('Admin\AlbumController@show', $albumId)
+            return Redirect::action('Admin\AlbumController@show', $album_id)
                 ->with('message', '<strong>' . $photo->name . '</strong> is succesvol opgeslagen.')
                 ->with('changedID', $photo->id);
         }
@@ -60,22 +58,24 @@ class PhotoController extends AdminController {
         return Redirect::back()->withInput()->withErrors($validation);
     }
 
-    public function show($albumId, $id)
+    public function show($album_id, $id)
     {
+        $photo = Photo::find($id);
 
+        $this->layout->content = View::make('admin.photos.show')->withPhoto($photo);
     }
 
-    public function edit($albumId, $id)
+    public function edit($album_id, $id)
     {
         # code...
     }
 
-    public function update($albumId, $id)
+    public function update($album_id, $id)
     {
 
     }
 
-    public function destroy($albumId, $id)
+    public function destroy($album_id, $id)
     {
         $photo = Photo::find($id);
         $photo->delete();

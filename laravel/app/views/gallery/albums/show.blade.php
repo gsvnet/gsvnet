@@ -2,6 +2,17 @@
     <div class="column-holder" role="main">
         <h1>{{ $album->name }}</h1>
         <p class="delta">{{ $album->description }}</p>
+
+        <!-- <div class="photos">
+            @foreach(array_chunk($photos->getCollection()->all(), 3) as $row)
+                <div class="photo-grid-row">
+                    @foreach($row as $photo)
+                        @include('gallery._album', array('album' => $photo, 'first' => 'first', 'wide' => ''))
+                    @endforeach
+                </div>
+            @endforeach
+        </div> -->
+
         <div class="photos">
             <div class="photo-grid-row">
                 @include('gallery._album', array('album' => $photos[0], 'first' => 'first', 'wide' => ''))

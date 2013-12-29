@@ -1,6 +1,5 @@
 <?php namespace Admin;
 
-use BaseController;
 use View;
 use Model\Album;
 use Model\Photo;
@@ -11,8 +10,8 @@ use Redirect;
 
 class AdminController extends BaseController {
 
-    public function __construct()
+    public function index()
     {
-        $this->layout = 'layouts.admin';
+        $this->layout->content =  View::make('admin.index');
     }
 }
