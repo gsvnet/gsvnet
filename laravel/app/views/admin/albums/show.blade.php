@@ -47,13 +47,13 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <a href="{{ URL::action('Admin\PhotoController@show', [$album->id, $photo->id]) }}" alt="{{{ $photo->name }}}" class="thumbnail">
-                              <img src="{{{ $photo->src_path }}}" alt="{{{ $photo->name }}}">
+                              <img src="{{{ $photo->small_image }}}" alt="{{{ $photo->name }}}">
                             </a>
                         </div>
                         <div class="panel-footer">
                             <h3 class="panel-title">
                                 {{{ $photo->name }}}
-                                <a href="{{ URL::action('Admin\PhotoController@edit', [$album->id, $photo->id]) }}" alt="Bewerk {{ $photo->name }}" class="pull-right">
+                                <a href="{{ URL::action('Admin\PhotoController@show', [$album->id, $photo->id]) }}#edit" alt="Bewerk {{ $photo->name }}" class="pull-right">
                                   <i class="fa fa-pencil"></i>
                                 </a>
                             </h3>

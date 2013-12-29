@@ -23,7 +23,7 @@
 
     </div>
 
-    <div class="panel panel-default">
+    <div class="panel panel-default" id='edit'>
 
         {{
             Former::open_vertical_for_files()

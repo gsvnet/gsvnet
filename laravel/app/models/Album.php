@@ -14,14 +14,16 @@ class Album extends \Eloquent {
         return $this->hasMany('Model\Photo');
     }
 
-    public function smallImage()
+    public function getSmallImageAttribute()
     {
-        return 'http://lorempixel.com/306/306?' . $this->id;
+        $photo = $this->photos->first();
+        return $photo->small_image;
     }
 
-    public function wideImage()
+    public function getWideImageAttribute()
     {
-        return 'http://lorempixel.com/634/306?' . $this->id;
+        $photo = $this->photos->first();
+        return $photo->wide_image;
     }
 
     public function getShowURLAttribute()
