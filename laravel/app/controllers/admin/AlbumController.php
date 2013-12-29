@@ -1,6 +1,5 @@
 <?php namespace Admin;
 
-use BaseController;
 use View;
 use Model\Album;
 use Model\Photo;
@@ -9,12 +8,12 @@ use Validator;
 use Str;
 use Redirect;
 
-class AlbumController extends AdminController {
+class AlbumController extends BaseController {
 
     public function __construct()
     {
-        $this->layout = 'layouts.admin';
         $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
+        parent::__construct();
     }
 
     public function index()
