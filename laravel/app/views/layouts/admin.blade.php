@@ -41,6 +41,9 @@
 
           <h3>Administratie</h3>
           <div class="list-group list-group-mfc">
+            <a href="{{ URL::action('Admin\EventController@index') }}" class="list-group-item {{ Request::segment(2) == 'events' ? 'active' : '' }}">
+              <i class='glyphicon glyphicon-calendar'></i> Activiteiten
+            </a>
             <a href="{{ URL::action('Admin\AlbumController@index') }}" class="list-group-item {{ Request::segment(2) == 'albums' ? 'active' : '' }}">
               <i class='glyphicon glyphicon-picture'></i> Albums
             </a>

@@ -25,12 +25,18 @@
 				</a></td>
 				<td>
 					{{{ $event->start_date }}}
+					@if($event->whole_day == '0')
+					{{{ $event->start_time }}}
+					@endif
 				</td>
 				<td>
 					{{{ $event->end_date }}}
+					@if($event->whole_day == '0')
+					{{{ $event->end_time }}}
+					@endif
 				</td>
 
-				<td>...</td>
+				<td>{{ $event->whole_day == '1' ? '<span class="glyphicon glyphicon-check"></span>' : '<span class="glyphicon glyphicon-unchecked"></span>' }}</td>
 
                 <td>
                     {{{ $event->updated_at }}}

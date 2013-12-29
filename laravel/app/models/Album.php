@@ -35,6 +35,6 @@ class Album extends \Eloquent {
     {
         $date = new \Carbon\Carbon($updatedAt);
 
-        return $date->diffForHumans(\Carbon\Carbon::now());
+        return $date->diffForHumans();
     }
 }

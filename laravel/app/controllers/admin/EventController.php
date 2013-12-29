@@ -50,6 +50,7 @@ class EventController extends BaseController {
             $event->location = Input::get('description', '');
             $event->start_date = $input['start_date'];
             $event->end_date = $input['end_date'];
+            $event->whole_day = Input::get('whole_day', '0');
             
             // Check if whole day is NOT checked
             if (Input::get('whole_day', '0') == '0')
