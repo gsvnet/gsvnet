@@ -1,37 +1,17 @@
+<?php
+    // Dit moet even mooier gedaan worden hoor
+    $classes = ['', 'last-2', 'last-3', 'last-2', 'wide last-2 last-3', '', 'last-2', 'last-3', 'last-2', 'wide last-2 last-3'];
+?>
+
 @section('content')
     <div class="column-holder" role="main">
         <h1>{{ $album->name }}</h1>
         <p class="delta">{{ $album->description }}</p>
 
-        <!-- <div class="photos">
-            @foreach(array_chunk($photos->getCollection()->all(), 3) as $row)
-                <div class="photo-grid-row">
-                    @foreach($row as $photo)
-                        @include('gallery._album', array('album' => $photo, 'first' => 'first', 'wide' => ''))
-                    @endforeach
-                </div>
-            @endforeach
-        </div> -->
-
         <div class="photos">
-            <div class="photo-grid-row">
-                @include('gallery._album', array('album' => $photos[0], 'first' => 'first', 'wide' => ''))
-                @include('gallery._album', array('album' => $photos[1], 'first' => '', 'wide' => ''))
-                @include('gallery._album', array('album' => $photos[2], 'first' => '', 'wide' => ''))
-            </div>
-            <div class="photo-grid-row">
-                @include('gallery._album', array('album' => $photos[4], 'first' => 'first', 'wide' => 'wide'))
-                @include('gallery._album', array('album' => $photos[5], 'first' => '', 'wide' => ''))
-            </div>
-            <div class="photo-grid-row">
-                @include('gallery._album', array('album' => $photos[5], 'first' => 'first', 'wide' => ''))
-                @include('gallery._album', array('album' => $photos[6], 'first' => '', 'wide' => ''))
-                @include('gallery._album', array('album' => $photos[7], 'first' => '', 'wide' => ''))
-            </div>
-            <div class="photo-grid-row">
-                @include('gallery._album', array('album' => $photos[8], 'first' => 'first', 'wide' => ''))
-                @include('gallery._album', array('album' => $photos[9], 'first' => '', 'wide' => 'wide'))
-            </div>
+            @for($i=0; $i<count($photos); $i++)
+                @include('gallery._album', array('album' => $photos[$i], 'wide' => ($i+1)%5==0, 'class' => $classes[$i]))
+            @endfor
         </div>
 
         {{ $photos->links() }}
