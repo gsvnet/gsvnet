@@ -7,25 +7,23 @@ class EventsTableSeeder extends Seeder {
 		// Uncomment the below to wipe the table clean before populating
 		DB::table('events')->truncate();
 
-        $events = array();
+        $faker = Faker\Factory::create('en_US');
 
         for ($i = 0; $i < 20; $i++) {
-            $event = array(
+            $randHour = rand(0, 22);
+            $startdate = $faker->dateTimeBetween('now', '+1 year');
+
+            Model\Event::create(array(
                 'title' => 'Activiteit ' . $i,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quicquid opinemur.',
-
-                'start_date' => new DateTime('today +' . $i . 'day'),
-                'end_date' =>  new DateTime('today +' . ($i + 1) . 'day'),
-
-                'created_at' => new DateTime('today'),
-                'updated_at' => new DateTime('today')
-            );
-
-            $events[] = $event;
+                'location' => '',
+                'whole_day' => rand(0,1),
+                'start_time' => $randHour . ':' . rand(0, 59),
+                'end_time' => $randHour+2 . ':' . rand(0,59),
+                'start_date' => $startdate->format('Y-m-d'),
+                'end_date' => $startdate->add(date_interval_create_from_date_string(rand(0,2) . ' days'))->format('Y-m-d')
+            ));
         }
-
-		// Uncomment the below to run the seeder
-		DB::table('events')->insert($events);
 	}
 
 }
