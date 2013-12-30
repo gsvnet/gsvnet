@@ -200,7 +200,7 @@ table th[class*="col-"] {
 
         <div class="main-content">
             <p>
-                Hé hallo.
+                Download coole bestanden.
             </p>
 
             <table class='table table-bordered'>
@@ -208,7 +208,6 @@ table th[class*="col-"] {
                     <tr>
                         <th>Naam</th>
                         <th>Toegevoegd op</th>
-                        <th>Laatst bewerkt</th>
                         <th>Grootte</th>
                         <th>Type</th>
                         <th>Download</th>
@@ -224,9 +223,6 @@ table th[class*="col-"] {
                         </td>
                         <td>
                             {{{ $file->created_at }}}
-                        </td>
-                        <td>
-                            {{{ $file->updated_at }}}
                         </td>
                         <td>
                             {{{ $file->size }}}
@@ -260,7 +256,19 @@ table th[class*="col-"] {
                     @foreach ($labels as $label)
                     <div class="checkbox">
                       <label>
-                        <input type="checkbox" value="{{{ $label->id }}}" name="labels[{{{ $label->id }}}]">
+                        <input type="checkbox" value="{{{ $label->id }}}" name="labels[{{{ $label->id }}}]"
+                            <?php
+                            // Lelijke code om irritate select boxen te laten checken
+                            if (Input::has('labels'))
+                            {
+                                $labels = Input::get('labels');
+                                if (isset($labels[$label->id]))
+                                {
+                                    echo "checked";
+                                }
+                            }
+                            ?>
+                        >
                         {{{ $label->name }}}
                       </label>
                     </div>

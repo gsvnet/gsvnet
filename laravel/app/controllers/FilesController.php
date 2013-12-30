@@ -10,7 +10,6 @@ class FilesController extends BaseController {
 	public function index()
 	{
 		$input = Input::all();
-		$files = \Model\File::all();
 
 
 		if (Input::has('labels'))
@@ -26,7 +25,10 @@ class FilesController extends BaseController {
 				->lists('file_id');
 
 			$files = \Model\File::whereIn('id', $file_ids)->paginate(10);
-
+		}
+		else
+		{
+			$files = \Model\File::paginate(10);
 		}
 
 		$labels = \Model\Label::all();
