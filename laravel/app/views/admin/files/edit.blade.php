@@ -54,5 +54,12 @@
     $('.btn-danger').click( function() {
         return confirm('Zeker weten?');
     });
+    $(document).ready(function() {
+        $('.add-item').on('click', function () {
+            $('.add-form').toggle('fast');
+        });
+        // Hide success message after 2.5 seconds
+        $('.alert.alert-success').delay(2500).slideUp(500);
+    });
     </script>
 @stop

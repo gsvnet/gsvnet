@@ -24,7 +24,7 @@
 			{{ $events->links() }}
 		</div>
 		<div class="secondary-column">
-			<h2>Zoek op maand</h2>
+			<h2>{{link_to_action('EventController@showMonth', $year - 1, $year - 1)}} | {{link_to_action('EventController@showMonth', $year, $year)}} | {{link_to_action('EventController@showMonth', $year + 1, $year + 1)}}</h2>
 			<ul class="list secondary-menu">
 				<?php
 					$months = array('januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december');
