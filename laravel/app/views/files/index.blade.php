@@ -196,7 +196,7 @@ table th[class*="col-"] {
 </style>
     <div class="column-holder" role="main">
 
-            <h1><i class="fa fa-cloud-download"></i> GSVdocs</h1>
+            <h1>GSVdocs</h1>
 
         <div class="main-content">
             <p>
