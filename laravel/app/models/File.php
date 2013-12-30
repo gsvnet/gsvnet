@@ -19,12 +19,20 @@ class File extends \Eloquent {
 
     public function getTypeAttribute()
     {
+        return '.' . \File::extension($this->fileLocation());
         return '.big';
     }
 
     public function fileLocation()
     {
         return public_path() . $this->file_path;
+    }
+
+    public function getUpdatedAtAttribute($updatedAt)
+    {
+        $date = new \Carbon\Carbon($updatedAt);
+
+        return $date->diffForHumans();
     }
 
     /**

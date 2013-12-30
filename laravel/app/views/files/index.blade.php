@@ -196,20 +196,18 @@ table th[class*="col-"] {
 </style>
     <div class="column-holder" role="main">
 
-        <h1>GSVdocs</h1>
+            <h1><i class="fa fa-cloud-download"></i> GSVdocs</h1>
 
         <div class="main-content">
             <p>
                 Download coole bestanden.
             </p>
 
-            <table class='table table-bordered'>
+            <table class='table table-bordered table-hover table-condensed table-responsive'>
                 <thead>
                     <tr>
                         <th>Naam</th>
-                        <th>Toegevoegd op</th>
-                        <th>Grootte</th>
-                        <th>Type</th>
+                        <th>Bijgewerkt op</th>
                         <th>Download</th>
                     </tr>
                 </thead>
@@ -217,22 +215,17 @@ table th[class*="col-"] {
                     @foreach($files as $file)
                     <tr>
                         <td>
-                            <a href="{{ URL::action('Admin\FilesController@edit', $file->id) }}" alt="{{ $file->name }}">
-                               {{{ $file->name }}}
-                            </a>
+                           {{{ $file->name }}}
                         </td>
                         <td>
-                            {{{ $file->created_at }}}
+                            {{{ $file->updated_at }}}
                         </td>
                         <td>
-                            {{{ $file->size }}}
-                        </td>
-
-                        <td>
+                            <a href="{{{ $file->file_path }}}"><i class="glyphicon glyphicon-download-alt">
+                            <i class="fa fa-download"></i></i>
                             {{{ $file->type }}}
-                        </td>
-                        <td>
-                            <a href="{{{ $file->file_path }}}"><i class="glyphicon glyphicon-download-alt"></i>Download</a>
+                            ({{{ $file->size }}})
+                            </a>
                         </td>
                     </tr>
                     @endforeach
@@ -244,46 +237,43 @@ table th[class*="col-"] {
         </div>
 
         <div class="secondary-column">
-            <div id="labels">
-                <h3>Labels</h3>
-                {{
-                    Former::open()
-                    ->action(action('FilesController@index'))
-                    ->method('GET')
-                }}
+            <h2>Labels</h2>
+            {{
+                Former::open()
+                ->action(action('FilesController@index'))
+                ->method('GET')
+            }}
 
-
-                    @foreach ($labels as $label)
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox" value="{{{ $label->id }}}" name="labels[{{{ $label->id }}}]"
-                            <?php
-                            // Lelijke code om irritate select boxen te laten checken
-                            if (Input::has('labels'))
+            <ul class='list secondary-menu'>
+                @foreach ($labels as $label)
+                <li class="list-item">
+                  <label>
+                    <input type="checkbox" value="{{{ $label->id }}}" name="labels[{{{ $label->id }}}]"
+                        <?php
+                        // Lelijke code om irritate select boxen te laten checken
+                        if (Input::has('labels'))
+                        {
+                            $labels = Input::get('labels');
+                            if (isset($labels[$label->id]))
                             {
-                                $labels = Input::get('labels');
-                                if (isset($labels[$label->id]))
-                                {
-                                    echo "checked";
-                                }
+                                echo "checked";
                             }
-                            ?>
-                        >
-                        {{{ $label->name }}}
-                      </label>
-                    </div>
-                    @endforeach
+                        }
+                        ?>
+                    >
+                    {{{ $label->name }}}
+                  </label>
+                </li>
+                @endforeach
+                </ul>
 
-                    <hr>
+                <hr>
 
-                    <button type='submit' class='button' style='display:block; width:100%;'>
-                        <i class='fa fa-search'></i>
-                        Zoeken
-                    </button>
-                {{ Form::close() }}
-
-
-            </div>
+                <button type='submit' class='button' style='display:block; width:100%;'>
+                    <i class='fa fa-search'></i>
+                    Zoeken
+                </button>
+            {{ Form::close() }}
         </div>
 
     </div>
