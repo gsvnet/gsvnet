@@ -9,9 +9,12 @@ class EventController extends BaseController {
             ->orderBy('start_date', 'asc')
             ->paginate(5);
 
+        $year = (int) date('Y');
+
         $this->layout->content = View::make('events.index')
             ->with('searchTimeRange', false)
-            ->with('events', $events);
+            ->with('events', $events)
+            ->withYear($year);
 
         // Setup metadata
         $this->layout->title = 'Activiteiten - pagina ' . Input::get('page') . ' - GSVnet';
@@ -96,7 +99,7 @@ class EventController extends BaseController {
 
         // Setup metadata
         $this->layout->title = 'Activiteiten in ' . ($strMonth ? $strMonth : '') . ' ' . $year . ' - GSVnet';
-        
+
         //$this->layout->description = $event->description;
         $this->layout->keywords = 'Activiteiten, feesten, borrels';
     }
