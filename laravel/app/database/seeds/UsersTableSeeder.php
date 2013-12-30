@@ -9,12 +9,12 @@ class UsersTableSeeder extends Seeder {
 
 		Model\User::create(array(
             'email'         => 'markredeman@gmail.com',
-            'password'      => Hash::make('helloworld'),
+            'password'      => 'helloworld',
             'firstname'     => 'Mark',
             'lastname'      => 'Redeman',
             'middlename'    => 'Sietse',
             'username'      => 'mredeman',
-            'type'          => 3,
+            'type'          => 0,
 
         ));
 
@@ -37,7 +37,7 @@ class UsersTableSeeder extends Seeder {
                 'middlename' => 'van',
                 'lastname' => $faker->lastName,
                 'username' => $faker->userName,
-                'password' => Hash::make('testen'),
+                'password' => 'testen',
                 'email' => $faker->companyEmail,
                 'type' => rand(1,4)
             ));

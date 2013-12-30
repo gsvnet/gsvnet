@@ -13,6 +13,12 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 	protected $table = 'users';
 
 	/**
+	 * Fillable fields
+	 * @var array
+	 */
+	protected $fillable = array('username', 'firstname', 'middlename', 'lastname', 'email', 'password', 'type');
+
+	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array

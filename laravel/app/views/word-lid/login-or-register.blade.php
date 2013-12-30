@@ -16,44 +16,28 @@
                     <label class="control-label" for="inputPassword">Wachtwoord</label>
                     <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Wachtwoord">
                 </div>
+                <input type="hidden" name="become-member-login" value="1">
                 <div class="form-group">
                     <button type="submit" class="button">Log in</button>
                 </div>
-                <input type="hidden" name="become-member-login" value="1">
             {{Form::close()}}
         </div>
 
         <div id="register-form" class="register-form">
-            {{ Form::open() }}
+            {{ Former::open()->action(URL::route('post-register')) }}
                 <h2>Registreer</h2>
                 <p>Heb je nog geen account? Maak er een aan!</p>
-                <div class="form-group">
-                    <label class="control-label" for="registerFirstname">Voornaam</label>
-                    <input type="text" class="form-control" id="registerFirstname" name="registerFirstname" placeholder="Voornaam">
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="registerMiddlename">Tussenvoegsel</label>
-                    <input type="text" class="form-control" id="registerMiddlename" name="registerMiddlename" placeholder="Tussenvoegsel" size="3">
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="registerLastname">Achternaam</label>
-                    <input type="text" class="form-control" id="registerLastname" name="registerLastname" placeholder="Achternaam">
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="registerEmail">Email</label>
-                    <input type="text" class="form-control" id="registerEmail" name="registerEmail" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="registerPassword">Wachtwoord</label>
-                    <input type="password" class="form-control" id="registerPassword" name="registerPassword" placeholder="Wachtwoord">
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="registerPasswordRepeat">Herhaal wachtwoord</label>
-                    <input type="password" class="form-control" id="registerPasswordRepeat" name="registerPasswordRepeat" placeholder="Herhaal wachtwoord">
-                </div>
+                {{ Former::text('register-username')->label('Gebruikersnaam')}}
+                {{ Former::text('register-firstname')->label('Voornaam')}}
+                {{ Former::text('register-middlename')->label('Tussenvoegsel')->size('3')}}
+                {{ Former::text('register-lastname')->label('Achternaam')}}
+                {{ Former::text('register-email')->label('Email')}}
+                {{ Former::password('register-password')->label('Wachtwoord')}}
+                {{ Former::password('register-password_confirmation')->label('Herhaal wachtwoord')}}
+                <input type="hidden" name="become-member-register" value="1">
                 <div class="form-group">
                     <button type="submit" class="button">Registreer</button>
                 </div>
-            {{Form::close()}}
+            {{Former::close()}}
         </div>
     </div>

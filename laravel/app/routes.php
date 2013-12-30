@@ -1,7 +1,5 @@
 <?php
 
-Former::framework('TwitterBootstrap3');
-
 Route::get('/', [
         'as' => 'home',
         'uses' => 'HomeController@showIndex'
@@ -79,6 +77,12 @@ Route::post('word-lid', [
         'before' => 'auth|usertype:visitor',
         'uses' => 'UserController@postWordLid'
     ]
+);
+
+Route::post('register', array(
+        'as' => 'post-register',
+        'uses' => 'UserController@postRegister'
+    )
 );
 
 Route::get('albums', [
