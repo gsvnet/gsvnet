@@ -202,8 +202,8 @@ table th[class*="col-"] {
             <p>
                 Download coole bestanden.
             </p>
-
-            <table class='table table-bordered table-hover table-condensed table-responsive'>
+            <div class='table-responsive'>
+            <table class='table table-bordered table-hover table-condensed'>
                 <thead>
                     <tr>
                         <th>Naam</th>
@@ -231,6 +231,7 @@ table th[class*="col-"] {
                     @endforeach
                 </tbody>
             </table>
+            </div>
 
             {{ $files->links() }}
 
