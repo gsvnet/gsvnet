@@ -51,6 +51,7 @@
                         @if(Auth::check() && Auth::user()->can('viewMemberlist'))
                         <li><a href="/jaarbundel" class="sub-level-link">Jaarbundel</a></li>
                         @endif
+                        <li><a class="sub-level-link" href="{{ URL::action('FilesController@index') }}">GSVdocs</a></li>
                         <li><a class="sub-level-link" href="/logout">Uitloggen</a></li>
                     </ul>
                 </li>
