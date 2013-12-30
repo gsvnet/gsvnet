@@ -2,6 +2,18 @@
 
 class UserController extends BaseController {
     /**
+     * Show the curren user his profile
+     */
+    public function showProfile()
+    {
+        $member = Auth::user();
+
+        $this->layout->content = View::make('users.profile')
+            ->with('member', $member);
+    }
+
+
+    /**
      * Show current and former members
      */
     public function showUsers()
@@ -17,7 +29,7 @@ class UserController extends BaseController {
     public function showUser($id)
     {
         $member = Model\User::with('profile.yearGroup', 'committeesSorted')->find($id);
-        
+
 
         //dd($member);
 
@@ -33,7 +45,7 @@ class UserController extends BaseController {
         // Construct a date from seperate day, month and year fields.
         $input['potential-birthdate'] = $input['potential-birth-year'] . '-' . $input['potential-birth-month'] . '-' . $input['potential-birth-day'];
 
-        
+
         $rules = [
             'potential-image' => 'image',
             'potential-address' => 'required',
@@ -59,7 +71,7 @@ class UserController extends BaseController {
             $profile->user_id = $user->id;
             $profile->reunist = 0;
             $profile->region = 0;
-            
+
             $profile->phone = $input['potential-phone'];
             $profile->address = $input['potential-address'];
             $profile->zip_code = $input['potential-zip-code'];

@@ -20,6 +20,18 @@
             <div id="senates">
                 <ul class="list secondary-menu">
                     <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2013) }}">2013</a></li>
+                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2012) }}">2012</a></li>
+                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2011) }}">2011</a></li>
+                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2010) }}">2010</a></li>
+                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2009) }}">2009</a></li>
+                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2008) }}">2008</a></li>
+                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2007) }}">2007</a></li>
+                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2006) }}">2006</a></li>
+                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2005) }}">2005</a></li>
+                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2004) }}">2004</a></li>
+                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2003) }}">2003</a></li>
+                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2002) }}">2002</a></li>
+                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2001) }}">2001</a></li>
                 </ul>
             </div>
         </div>
