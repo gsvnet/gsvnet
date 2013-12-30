@@ -12,7 +12,7 @@
             <a class="logo-link" href="/"><span>Gereformeerde Studentenvereniging Groningen</span></a>
         </h1>
         <ul id="main-menu" class="nav-bar-links">
-            <li class="top-level-menuitem has-sub-menu {{ Request::is('de-gsv*') ? 'active-menu' : '' }}">
+            <li class="top-level-menuitem {{ Request::is('de-gsv*') ? 'active-menu' : '' }} has-sub-menu">
                 <a class="top-level-link" href="/de-gsv">De GSV</a>
                 <i class="fa fa-caret-down top-caret"></i>
                 <ul class="sub-level-menu">
@@ -44,15 +44,15 @@
             @endif
 
             @if (Auth::check())
-                <li class="top-level-menuitem has-sub-menu">
-                    <a class="top-level-link" href="/profiel">Intern</a>
+                <li class="top-level-menuitem {{ Request::is('intern*') ? 'active-menu' : '' }} has-sub-menu">
+                    <a class="top-level-link" href="{{ URL::action('UserController@showProfile') }}">Intern</a>
                     <i class="fa fa-caret-down top-caret"></i>
                     <ul class="sub-level-menu">
                         @if(Auth::check() && Auth::user()->can('viewMemberlist'))
-                        <li><a href="/jaarbundel" class="sub-level-link">Jaarbundel</a></li>
+                        <li><a href="{{ URL::action('UserController@showUsers') }}" class="sub-level-link">Jaarbundel</a></li>
                         @endif
                         <li><a class="sub-level-link" href="{{ URL::action('FilesController@index') }}">GSVdocs</a></li>
-                        <li><a class="sub-level-link" href="/logout">Uitloggen</a></li>
+                        <li><a class="sub-level-link" href="{{ URL::action('SessionController@getLogout') ">Uitloggen</a></li>
                     </ul>
                 </li>
             @else

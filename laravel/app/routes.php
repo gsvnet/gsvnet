@@ -28,27 +28,27 @@ Route::get('logout', array(
     )
 );
 
-Route::group(['before' => 'auth'], function() {
+Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
     Route::get('profiel', 'UserController@showProfile');
     Route::get('profiel/edit', 'UserController@editProfile');
 
-    Route::resource('files', 'FilesController');
+    Route::resource('bestanden', 'FilesController');
+    // Only logged in users can view the member list if they have permission
+    Route::group(array('prefix' => 'jaarbundel', 'before' => 'can:viewMemberlist'), function()
+    {
+
+        Route::get('/', [
+            'as' => 'user-list',
+            'uses' => 'UserController@showUsers'
+        ]);
+
+        Route::get('/gsver-{id}', [
+            'as' => 'user-profile',
+            'uses' => 'UserController@showUser'
+        ])->where('id', '[0-9]+');
+    });
 });
 
-// Only logged in users can view the member list if they have permission
-Route::group(array('prefix' => 'jaarbundel', 'before' => 'auth|can:viewMemberlist'), function()
-{
-
-    Route::get('/', [
-        'as' => 'user-list',
-        'uses' => 'UserController@showUsers'
-    ]);
-
-    Route::get('/gsver-{id}', [
-        'as' => 'user-profile',
-        'uses' => 'UserController@showUser'
-    ])->where('id', '[0-9]+');
-});
 
 Route::group(array('prefix' => 'de-gsv'), function()
 {
