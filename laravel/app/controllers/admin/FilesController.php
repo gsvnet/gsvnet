@@ -46,9 +46,9 @@ class FilesController extends BaseController {
             $file->name = $input['name'];
 
             $filename = time() . '-' . $input['file']->getClientOriginalName();
-            $input['file']->move(public_path() . '/uploads/photos/', $filename);
+            $input['file']->move(public_path() . '/uploads/files/', $filename);
 
-            $file->file_path = '/uploads/photos/' . $filename;
+            $file->file_path = '/uploads/files/' . $filename;
             $file->save();
 
             $file->labels()->sync($input['labels']);
