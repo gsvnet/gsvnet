@@ -124,7 +124,7 @@
 @section('javascripts')
     @parent
 
-    <script src="javascripts/carousel.js"></script>
-    <script src="javascripts/matchmedia.js"></script>
-    <script src="javascripts/picturefill.js"></script>
+    <script src="/javascripts/carousel.js"></script>
+    <script src="/javascripts/matchmedia.js"></script>
+    <script src="/javascripts/picturefill.js"></script>
 @stop
