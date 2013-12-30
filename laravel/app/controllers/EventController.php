@@ -32,4 +32,9 @@ class EventController extends BaseController {
         $this->layout->keywords = 'Activiteiten, feesten, borrels';
     }
 
+    public function showMonth($year, $month = false)
+    {
+        return 'poep et kack';
+    }
+
 }

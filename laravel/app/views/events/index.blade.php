@@ -3,7 +3,7 @@
 		<h1>Activiteiten, feesten en borrels</h1>
 		<p class="delta">De GSV bruist van leuke activiteiten en clich&eacute;beschrijvingen die niemand leest. Geef je op en kom langs!</p>
 
-		<div class="">
+		<div class="main-content">
 			<div class="event-container">
 				@if (1 == 2)
 				<h2>Vandaag</h2>
@@ -58,11 +58,16 @@
 
 			{{ $events->links() }}
 		</div>
-		<!-- <div class="secondary-column">
-			<h2>Lorem ipsum dolor sit.</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa id aut voluptas eos sed vel blanditiis maiores sunt inventore nihil.</p>
-			<h2>Lorem ipsum dolor sit.</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa id aut voluptas eos sed vel blanditiis maiores sunt inventore nihil.</p>
-		</div> -->
+		<div class="secondary-column">
+			<h2>Zoek op maand</h2>
+			<ul class="list secondary-menu">
+				<?php
+					$months = array('januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december');
+				?>
+				@foreach ($months as $month)
+					<li>{{link_to_action('EventController@showMonth', $month, array(2013, $month))}}</li>
+				@endforeach
+			</ul>
+		</div>
 	</div>
 @stop

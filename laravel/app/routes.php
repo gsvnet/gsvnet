@@ -105,9 +105,14 @@ Route::get('activiteiten', [
     'uses' => 'EventController@showIndex'
 ]);
 
-Route::get('activiteiten/{id}', [
+Route::get('activiteiten/bekijk-{id}', [
     'as' => 'show_event',
     'uses' => 'EventController@showEvent'
+]);
+
+Route::get('activiteiten/{year}/{month?}', [
+    'as' => 'show_event',
+    'uses' => 'EventController@showMonth'
 ]);
 
 
