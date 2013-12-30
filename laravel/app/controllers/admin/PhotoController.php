@@ -123,6 +123,14 @@ class PhotoController extends BaseController {
         $photo = Photo::find($id);
         $photo->delete();
 
+        // Delete old photo files
+        if (File::exists(public_path() . $photo->src_path))
+        {
+            File::delete(public_path() . $photo->small_image);
+            File::delete(public_path() . $photo->wide_image);
+            File::delete(public_path() . $photo->src_path);
+        }
+
         return Redirect::action('Admin\PhotoController@index')
             ->with('message', '<strong>' . $photo->name . '</strong> is succesvol verwijderd.');
     }
