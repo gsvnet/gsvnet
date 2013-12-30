@@ -33,7 +33,7 @@ class CreateUserProfileTable extends Migration {
 			$table->string('parent_address')->nullable();
 			$table->string('parent_zip_code')->nullable();
 			$table->string('parent_town')->nullable();
-			$table->string('parent_telephone')->nullable();
+			$table->string('parent_phone')->nullable();
 
 			$table->timestamps();
 		});
