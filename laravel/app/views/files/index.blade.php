@@ -267,8 +267,6 @@ table th[class*="col-"] {
                 @endforeach
                 </ul>
 
-                <hr>
-
                 <button type='submit' class='button' style='display:block; width:100%;'>
                     <i class='fa fa-search'></i>
                     Zoeken
