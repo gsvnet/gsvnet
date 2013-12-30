@@ -61,7 +61,7 @@ class UsersTableSeeder extends Seeder {
                 'parent_address' => $faker->streetAddress,
                 'parent_zip_code' => $faker->postcode,
                 'parent_zip_code' => $faker->city,
-                'parent_telephone' => $faker->phoneNumber
+                'parent_phone' => $faker->phoneNumber
             ));
         }
 

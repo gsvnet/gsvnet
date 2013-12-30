@@ -1,7 +1,3 @@
-<pre>
-    {{var_dump($errors)}}
-</pre>
-
 {{ Former::open_vertical_for_files()->id('become-member')->action(URL::route('post-word-lid')) }}
     <div class="column-holder" role="main">
         <h1>Word lid!</h1>
