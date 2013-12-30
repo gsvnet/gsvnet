@@ -9,7 +9,9 @@ class FilesController extends BaseController {
 	 */
 	public function index()
 	{
-		$files = \Model\File::paginate(15);
+		$input = Input::all();
+		//dd($input);
+		$files = \Model\File::all();
 		$labels = \Model\Label::all();
 
         $this->layout->content =  View::make('files.index')
