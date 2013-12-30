@@ -80,7 +80,7 @@ a.item {
 }
 
 /** Responsive **/
-@media only screen and (max-width: 960px){
+@media only screen and (max-width: $firstbreakpoint){
   .slideshow-spacer {
     height: 142px;
     background: $darkPurple;

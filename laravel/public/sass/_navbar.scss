@@ -5,8 +5,10 @@
 }
 
 .nav-bar-extras {
-	@include clearfix;
-	padding: 1em 0;
+	position: absolute;
+	right: 2em;
+	top: 32px;
+	z-index: 2000;
 }
 
 .logo {
@@ -33,6 +35,7 @@
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
+	z-index: 1998;
 }
 
 .top-level-link {
@@ -101,8 +104,7 @@
 	border: 0;
 	display: none;
 	float: right;
-	margin-top: 2.5em;
-
+	
 	&:hover {
 		background: $lighterPurple;
 	}
@@ -127,7 +129,7 @@
 	list-style-type: none;
 	padding: 0;
 	background: #FFF;
-	z-index: 100;
+	z-index: 1999;
 	width: 200px;
 	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.1);
 	max-height: 0;
@@ -156,7 +158,7 @@
 	padding: 0;
 	margin-top: 18px;
 
-	a {
+	a, .list-item {
 		display: block;
 		line-height: 3em;
 		border-top: 1px solid $lightGrey;
@@ -170,22 +172,36 @@
 
 
 /** Responsive **/
-@media only screen and (max-width: 960px){
-	.logo {
-		margin: 18px 0;
-	}
-
+@media only screen and (max-width: $firstbreakpoint){
 	.nav-bar {
 		padding: 0 2em;
 	}
 
+	.logo-link {
+		width: 90px;
+	}
+
+	.top-caret {
+		display: block;
+		float: right;
+		text-align: center;
+		padding: 0;
+		width: 14%;
+	}
+
 	.top-level-link:link,
-	.top-level-link:visited,
-	.top-level-menuitem:first-child .top-level-link:link {
+	.top-level-link:visited {
 		background: $darkPurple;
 		color: #FFF;
-		padding: 0 1em;
-		margin-bottom: .2em;
+		border: 0;
+		display: block;
+		float: left;
+		padding: 0 0 0 4%;
+		width: 82%;
+	}
+
+	.sub-level-menu {
+		width: 100%;
 	}
 
 	.nav-toggle {
@@ -194,6 +210,28 @@
 
 	.nav-bar-links {
 		display: none;
-		margin-bottom: 1em;
+		padding-top: 92px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		background: $darkPurple;
+	}
+
+	.top-level-menuitem {
+		@include clearfix;
+		float: none;
+		display: block;
+	}
+}
+
+
+@media only screen and (max-width: 480px){
+	.nav-bar {
+		padding: 0 1em;
+	}
+
+	.nav-bar-extras {
+		right: 1em;
 	}
 }
