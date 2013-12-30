@@ -1,5 +1,4 @@
 <?php
-
 Route::get('/', [
         'as' => 'home',
         'uses' => 'HomeController@showIndex'
@@ -28,6 +27,13 @@ Route::get('logout', array(
         'uses' => 'SessionController@getLogout'
     )
 );
+
+Route::group(['before' => 'auth'], function() {
+    Route::get('profiel', 'UserController@showProfile');
+    Route::get('profiel/edit', 'UserController@editProfile');
+
+    Route::resource('files', 'FilesController');
+});
 
 // Only logged in users can view the member list if they have permission
 Route::group(array('prefix' => 'jaarbundel', 'before' => 'auth|can:viewMemberlist'), function()
@@ -114,6 +120,7 @@ Route::get('activiteiten/{id}', [
 // TODO: check if user has album permissions
 Route::group(array('prefix' => 'markadmin'), function()
 {
+    Former::framework('TwitterBootstrap3');
     Route::get('/', 'Admin\AdminController@index');
     Route::resource('events', 'Admin\EventController');
     Route::resource('albums', 'Admin\AlbumController');
