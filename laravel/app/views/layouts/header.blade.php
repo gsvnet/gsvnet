@@ -16,9 +16,9 @@
                 <a class="top-level-link" href="/de-gsv">De GSV</a>
                 <i class="fa fa-caret-down top-caret"></i>
                 <ul class="sub-level-menu">
-                    <li><a class="sub-level-link" href="#">Senaten</a></li>
-                    <li><a class="sub-level-link" href="#">Commissies</a></li>
-                    <li><a class="sub-level-link" href="#">Contact</a></li>
+                    <li><a class="sub-level-link" href="{{{ URL::action('AboutController@showSenates')}}}">Senaten</a></li>
+                    <li><a class="sub-level-link" href="{{{ URL::action('AboutController@showCommittees')}}}">Commissies</a></li>
+                    <li><a class="sub-level-link" href="{{{ URL::action('AboutController@showContact')}}}">Contact</a></li>
                 </ul>
             </li>
             <li class="top-level-menuitem {{ Request::is('forum*') ? 'active-menu' : '' }}">

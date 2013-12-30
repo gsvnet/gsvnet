@@ -66,6 +66,11 @@ Route::group(array('prefix' => 'de-gsv'), function()
             'uses' => 'AboutController@showCommittee'
         ]
     );
+
+    Route::get('senaten', 'AboutController@showSenates');
+    Route::get('senaten/{senaat}', 'AboutController@showSenate');
+
+    Route::get('contact', 'AboutController@showContact');
 });
 
 Route::get('word-lid', [

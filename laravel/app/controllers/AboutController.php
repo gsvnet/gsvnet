@@ -25,4 +25,20 @@ class AboutController extends BaseController {
             ->with('committees', $committees);
     }
 
+    public function showSenates()
+    {
+        $this->layout->content = View::make('de-gsv.senates.index');
+    }
+
+    public function showSenate($senate)
+    {
+        $this->layout->content = View::make('de-gsv.senates.index');
+        $this->layout->content->senate = View::make('de-gsv.senates.' . $senate);
+    }
+
+    public function showContact()
+    {
+        $this->layout->content = View::make('de-gsv.contact');
+    }
+
 }
