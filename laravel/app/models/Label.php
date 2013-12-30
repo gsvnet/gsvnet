@@ -10,4 +10,9 @@ class Label extends \Eloquent {
         return $this->belongsToMany('Model\File', 'file_label');
         $this->hasMany('Model\Files');
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }
