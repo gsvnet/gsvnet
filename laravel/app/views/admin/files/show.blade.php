@@ -1,7 +1,7 @@
 @section('content')
     <!-- <a href="{{ URL::action('Admin\FilesController@index') }}">Terug naar files</a> -->
     <div class="page-header">
-        <h1>{{{ $file->name }}}</h1>
+        <h1>{{{ $file->name }}} bewerken</h1>
     </div>
 
     <section class='create-file panel panel-default'>
@@ -29,20 +29,6 @@
         }}
 
     </section>
-
-    <section class="labels">
-        <h2>Labels</h2>
-
-        <ul>
-            @foreach($labels as $label)
-                <li>{{{ $label->name }}}</li>
-            @endforeach
-
-        </ul>
-
-    </section>
-
-
 @stop
 
 @section('javascripts')

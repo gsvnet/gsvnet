@@ -1,24 +1,33 @@
 @section('content')
-    <h2>Bestand bewerken</h2>
+<div class="page-header">
+        <h1>{{{ $file->name }}} bewerken</h1>
+    </div>
 
-    {{
-        Former::open_vertical_for_files()
-            ->action(action('Admin\FilesController@update', $file->id))
-            ->rules(Model\File::$rules)
-            ->method('PUT')
-    }}
-        {{ Former::populate( $file ) }}
+    <section class='create-file panel panel-default'>
+        <div class="panel-heading add-item">
+            <h4 class="panel-title">{{{ $file->name }}} bewerken<span class="caret"></span></h4>
+        </div>
 
-        @include('admin.files._form')
+        {{
+            Former::open_vertical_for_files()
+                ->action(action('Admin\FilesController@update', $file->id))
+                ->rules(Model\File::$rules)
+                ->method('put')
+                ->class('panel-body add-form')
+        }}
 
-        <button type='submit' class='btn btn-success'>
-            <i class="glyphicon glyphicon-ok"></i> Opslaan
-        </button>
+            {{ Former::populate($file) }}
 
-        <a class='btn btn-default' href="{{ URL::previous() }}">Terug</a>
-    {{
-        Former::close()
-    }}
+            @include('admin.files._form')
+
+            <button type='submit' class='btn btn-success'>
+                <i class="fa fa-check"></i> Opslaan
+            </button>
+
+        {{
+            Former::close()
+        }}
+    </section>
 
     <hr>
 

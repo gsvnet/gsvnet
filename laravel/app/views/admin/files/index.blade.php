@@ -25,7 +25,7 @@
 			@foreach($files as $file)
 			<tr>
 				<td>
-                    <a href="{{ URL::action('Admin\FilesController@show', $file->id) }}" alt="{{ $file->name }}">
+                    <a href="{{ URL::action('Admin\FilesController@edit', $file->id) }}" alt="{{ $file->name }}">
 					   {{{ $file->name }}}
                     </a>
                 </td>

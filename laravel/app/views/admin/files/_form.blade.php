@@ -1,16 +1,12 @@
 {{ Former::text('name')->required()->autofocus() }}
 
-{{ Former::file('file')->required()->help("") }}
-
-{{-- Former::text('labels') --}}
-
-{{ Former::select('labels')->fromQuery($labels, 'name', 'id')->multiple(true) }}
+{{ Former::file('file')->help("") }}
 
 <h3>Labels</h3>
 @foreach ($labels as $label)
 <div class="checkbox">
   <label>
-    <input type="checkbox" value="{{{ $label->name }}}" name="{{{ $label->id }}}">
+    <input type="checkbox" value="{{{ $label->id }}}" name="labels[{{{ $label->id }}}]" {{ $checked[$label->id] }}>
     {{{ $label->name }}}
   </label>
 </div>
