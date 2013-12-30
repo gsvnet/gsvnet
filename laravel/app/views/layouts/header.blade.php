@@ -1,12 +1,12 @@
 <header class="top-header">
     <nav class="nav-bar">
-<!--                     <div class="nav-bar-extras">
+        <div class="nav-bar-extras">
             <button id="navbar-toggler" class="nav-toggle">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-        </div> -->
+        </div>
 
         <h1 class="logo">
             <a class="logo-link" href="/"><span>Gereformeerde Studentenvereniging Groningen</span></a>
