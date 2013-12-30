@@ -10,8 +10,25 @@ class FilesController extends BaseController {
 	public function index()
 	{
 		$input = Input::all();
-		//dd($input);
 		$files = \Model\File::all();
+
+
+		if (Input::has('labels'))
+		{
+			$selected_labels = Input::get('labels');
+			$count = count($selected_labels);
+
+			$file_ids = DB::table('file_label')
+				//->select('file_id as id')
+				->whereIn('label_id', $selected_labels)
+				->groupBy('file_id')
+				->havingRaw('count(*) = ' . $count)
+				->lists('file_id');
+
+			$files = \Model\File::whereIn('id', $file_ids)->paginate(10);
+
+		}
+
 		$labels = \Model\Label::all();
 
         $this->layout->content =  View::make('files.index')

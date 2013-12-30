@@ -59,7 +59,7 @@
 			{{ $events->links() }}
 		</div>
 		<div class="secondary-column">
-			<h2>Zoek op maand</h2>
+			<h2>2012 | 2013 | 2014</h2>
 			<ul class="list secondary-menu">
 				<?php
 					$months = array('januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december');

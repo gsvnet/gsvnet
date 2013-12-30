@@ -47,9 +47,9 @@ class File extends \Eloquent {
         } elseif ($tmp >=1048576 && $tmp < 10485760) { // more than 1 MB, but less than 10
                 $tmp = $tmp / 1048576;
                 $file = round($tmp, 1) . " MB";
-        } elseif ($tmp < 1073741824) { // less than 1 GB
-                $tmp = $tmp / 1073741824;
-                $file = round($tmp) . " GB";
+        // } elseif ($tmp < (1024 * 1024 * 1024)) { // less than 1 GB
+        //         $tmp = $tmp / (1024 * 1024 * 1024);
+        //         $file = round($tmp, 1) . " GB";
         } else {
             $file = 'groter dan je moeder';
         }

@@ -243,6 +243,8 @@ table th[class*="col-"] {
                 </tbody>
             </table>
 
+            {{ $files->links() }}
+
         </div>
 
         <div class="secondary-column">
@@ -253,6 +255,8 @@ table th[class*="col-"] {
                     ->action(action('FilesController@index'))
                     ->method('GET')
                 }}
+
+
                     @foreach ($labels as $label)
                     <div class="checkbox">
                       <label>

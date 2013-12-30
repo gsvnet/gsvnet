@@ -51,7 +51,10 @@ class FilesController extends BaseController {
             $file->file_path = '/uploads/files/' . $filename;
             $file->save();
 
-            $file->labels()->sync($input['labels']);
+            if (Input::has('labels'))
+            {
+                $file->labels()->sync($input['labels']);
+            }
 
             return Redirect::action('Admin\FilesController@index')
                 ->with('message', '<strong>' . $file->name . '</strong> is succesvol opgeslagen.')
@@ -108,7 +111,14 @@ class FilesController extends BaseController {
                 $file->file_path = '/uploads/photos/' . $filename;
             }
 
-            $file->labels()->sync($input['labels']);
+            if (Input::has('labels'))
+            {
+                $file->labels()->sync($input['labels']);
+            }
+            else
+            {
+                $file->labels()->sync(array());
+            }
 
             $file->save();
 
@@ -124,13 +134,14 @@ class FilesController extends BaseController {
 
     public function destroy($id)
     {
+        $file = \Model\File::find($id);
+
         // Delete old file
-        if (File::exists(public_path() . $photo->src_path))
+        if (File::exists(public_path() . $file->src_path))
         {
-            File::delete(public_path() . $photo->src_path);
+            File::delete(public_path() . $file->src_path);
         }
 
-        $file = File::find($id);
         $file->delete();
 
         return Redirect::action('Admin\FilesController@index')
