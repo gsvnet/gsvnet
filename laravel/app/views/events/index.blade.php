@@ -30,7 +30,7 @@
 					$months = array('januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december');
 				?>
 				@foreach ($months as $month)
-					<li>{{link_to_action('EventController@showMonth', $month, array(2013, $month))}}</li>
+					<li>{{link_to_action('EventController@showMonth', $month, array($year, $month))}}</li>
 				@endforeach
 			</ul>
 		</div>

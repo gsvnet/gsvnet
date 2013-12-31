@@ -4,3 +4,16 @@
  -- metadata
  -- activiteiten
  !- security
+
+
+ Nieuw todo..
+ -- Show pagina van activiteiten
+ -- Profile pagina voor user
+ -- Profile pagina voor gsvers
+ -- Statische paginas
+ -- Registratie mooier maken
+ -- Beveiliging
+ -- Layout issues
+ -- iFrames gebruiken
+ -- Forum
+ -- Email sturen bij registratie ed.
