@@ -33,7 +33,7 @@
 
             @if(Auth::guest() || !Auth::user()->isMember())
             <li class="top-level-menuitem {{ Request::is('word-lid*') ? 'active-menu' : '' }} has-sub-menu">
-                <a class="top-level-link" href="/word-lid">Lid worden?</a>
+                <a class="top-level-link" href="{{ URL::action('HomeController@wordLid')}}">Lid worden?</a>
                 <i class="fa fa-caret-down top-caret"></i>
                 <ul class="sub-level-menu">
                     <li><a class="sub-level-link" href="#">Waarom</a></li>
