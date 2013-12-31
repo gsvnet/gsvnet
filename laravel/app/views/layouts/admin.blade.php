@@ -38,8 +38,7 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Albums</a></li>
-            <li><a href="#about">Gebruikers</a></li>
+            <li><a href="/">Front end</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -62,7 +61,7 @@
               <i class='glyphicon glyphicon-hdd'></i> GSVdocs
             </a>
 
-            <a href="{{ URL::route('get-logout') }}" class="list-group-item">
+            <a href="{{ URL::action('SessionController@getLogout') }}" class="list-group-item">
               <i class="glyphicon glyphicon-log-out"></i> Uitloggen
             </a>
           </div>

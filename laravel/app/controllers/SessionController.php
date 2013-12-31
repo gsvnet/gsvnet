@@ -23,14 +23,14 @@ class SessionController extends BaseController {
         {
             return Redirect::intended($intended);
         }
-       
+
         // Auth failure! lets go back to the login
         if ($becomingMember)
         {
             return Redirect::to(URL::route('word-lid') . '#login-form')->with('login_errors', true);
         }
 
-        return Redirect::route('get-login')->with('login_errors', true);
+        return Redirect::action('SessionController@getLogin')->with('login_errors', true);
     }
 
     public function getLogout()

@@ -5,29 +5,13 @@ Route::get('/', [
     ]
 );
 
-/*
 // Login and logout routes
- */
-Route::post('login', array(
-        'as' => 'post-login',
-        'before' => array('csrf'),
-        'uses' => 'SessionController@postLogin'
-    )
-);
+Route::post('login', 'SessionController@postLogin')->before('csrf');
+Route::get('login', 'SessionController@getLogin');
+Route::get('logout', 'SessionController@getLogout')
+    ->before('auth');
 
-Route::get('login', array(
-        'as' => 'get-login',
-        'uses' => 'SessionController@getLogin'
-    )
-);
-
-Route::get('logout', array(
-        'as' => 'get-logout',
-        'before' => array('auth'),
-        'uses' => 'SessionController@getLogout'
-    )
-);
-
+// Intern
 Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
     Route::get('profiel', 'UserController@showProfile');
     Route::get('profiel/edit', 'UserController@editProfile');
@@ -36,40 +20,20 @@ Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
     // Only logged in users can view the member list if they have permission
     Route::group(array('prefix' => 'jaarbundel', 'before' => 'can:viewMemberlist'), function()
     {
+        Route::get('/', 'UserController@showUsers');
 
-        Route::get('/', [
-            'as' => 'user-list',
-            'uses' => 'UserController@showUsers'
-        ]);
-
-        Route::get('/gsver-{id}', [
-            'as' => 'user-profile',
-            'uses' => 'UserController@showUser'
-        ])->where('id', '[0-9]+');
+        Route::get('/gsver-{id}', 'UserController@showUser')
+            ->where('id', '[0-9]+');
     });
 });
 
-
+// De GSV
 Route::group(array('prefix' => 'de-gsv'), function()
 {
+    Route::get('/', 'AboutController@showAbout');
 
-    Route::get('/', [
-            'as' => 'about',
-            'uses' => 'AboutController@showAbout'
-        ]
-    );
-
-    Route::get('commissies', [
-            'as' => 'about_committees',
-            'uses' => 'AboutController@showCommittees'
-        ]
-    );
-
-    Route::get('commissies/{id}', [
-            'as' => 'show_committee',
-            'uses' => 'AboutController@showCommittee'
-        ]
-    );
+    Route::get('commissies', 'AboutController@showCommittees');
+    Route::get('commissies/{id}', 'AboutController@showCommittee');
 
     Route::get('senaten', 'AboutController@showSenates');
     Route::get('senaten/{senaat}', 'AboutController@showSenate');
@@ -77,6 +41,7 @@ Route::group(array('prefix' => 'de-gsv'), function()
     Route::get('contact', 'AboutController@showContact');
 });
 
+// Word lid
 Route::get('word-lid', [
         'as' => 'word-lid',
         'uses' => 'HomeController@wordLid'
@@ -96,38 +61,23 @@ Route::post('register', array(
     )
 );
 
-Route::get('albums', [
-    'as'    => 'albums',
-    'uses'  => 'PhotoController@showAlbums'
-]);
+// Albums
+Route::get('albums', 'PhotoController@showAlbums');
+Route::get('albums/{album}', 'PhotoController@showPhotos');
 
-Route::get('albums/{album}', [
-    'as'    => 'show_media',
-    'uses'  => 'PhotoController@showPhotos'
-]);
-
-Route::get('activiteiten', [
-    'as' => 'activiteiten',
-    'uses' => 'EventController@showIndex'
-]);
-
-Route::get('activiteiten/bekijk-{id}', [
-    'as' => 'show_event',
-    'uses' => 'EventController@showEvent'
-]);
-
-Route::get('activiteiten/{year}/{month?}', [
-    'as' => 'show_event',
-    'uses' => 'EventController@showMonth'
-]);
+// Events
+Route::get('activiteiten', 'EventController@showIndex');
+Route::get('activiteiten/bekijk-{id}', 'EventController@showEvent');
+Route::get('activiteiten/{year}/{month?}', 'EventController@showMonth');
 
 
 // TODO: check if user has album permissions
 Route::group(array('prefix' => 'markadmin'), function()
 {
-    Former::framework('TwitterBootstrap3');
     Route::get('/', 'Admin\AdminController@index');
+
     Route::resource('events', 'Admin\EventController');
+
     Route::resource('albums', 'Admin\AlbumController');
     Route::resource('albums.photo', 'Admin\PhotoController');
 

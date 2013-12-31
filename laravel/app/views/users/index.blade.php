@@ -5,9 +5,9 @@
 			@foreach ($members as $member)
 				<li class="user-profile-item">
 					<div class="profile-image">
-						
+
 					</div>
-					<h3>{{ link_to_route('user-profile', $member->full_name, array($member->id)) }}</h3>
+					<h3>{{ link_to_action('UserController@showUser', $member->full_name, array($member->id)) }}</h3>
 					@if($member->profile)
 						<ul class="user-details-list">
 							<li><i class="fa fa-share"></i> {{{$member->email}}}</li>

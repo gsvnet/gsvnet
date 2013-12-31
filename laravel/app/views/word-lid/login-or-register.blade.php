@@ -5,7 +5,7 @@
     </div>
     <div class="column-holder">
         <div id="login-form" class="login-form">
-            {{ Form::open(array('route' => 'post-login')) }}
+            {{ Form::open(array('action' => 'SessionController@postLogin')) }}
                 <h2>Login</h2>
                 <p>Heb je al een bestaand account? Log dan in!</p>
                 <div class="form-group{{Session::has('login_errors') ? ' has-error' : ''}}">

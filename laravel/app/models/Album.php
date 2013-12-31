@@ -28,7 +28,7 @@ class Album extends \Eloquent {
 
     public function getShowURLAttribute()
     {
-        return \URL::route('show_media', $this->slug);
+        return \URL::action('PhotoController@showPhotos', $this->slug);
     }
 
     public function getUpdatedAtAttribute($updatedAt)

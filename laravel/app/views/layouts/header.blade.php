@@ -25,10 +25,10 @@
                 <a class="top-level-link" href="/#">Forum</a>
             </li>
             <li class="top-level-menuitem {{ Request::is('albums*') ? 'active-menu' : '' }}">
-                <a class="top-level-link" href="/albums">Fotoalbum</a>
+                <a class="top-level-link" href="{{ URL::action('PhotoController@showAlbums') }}">Fotoalbum</a>
             </li>
             <li class="top-level-menuitem {{ Request::is('activiteiten*') ? 'active-menu' : '' }}">
-                <a class="top-level-link" href="/activiteiten">Activiteiten</a>
+                <a class="top-level-link" href="{{ URL::action('EventController@showIndex')}}">Activiteiten</a>
             </li>
 
             @if(Auth::guest() || !Auth::user()->isMember())
@@ -52,7 +52,7 @@
                         <li><a href="{{ URL::action('UserController@showUsers') }}" class="sub-level-link">Jaarbundel</a></li>
                         @endif
                         <li><a class="sub-level-link" href="{{ URL::action('FilesController@index') }}">GSVdocs</a></li>
-                        <li><a class="sub-level-link" href="{{ URL::action('SessionController@getLogout') ">Uitloggen</a></li>
+                        <li><a class="sub-level-link" href="{{ URL::action('SessionController@getLogout') }}">Uitloggen</a></li>
                     </ul>
                 </li>
             @else
