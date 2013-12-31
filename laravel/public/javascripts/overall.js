@@ -7,6 +7,7 @@ Menu = (function(){
 
 	return {
 		// Initializes the menu
+		// TODO IMPLEMENT TOUCH START!!
 		init: function(menu, carets) {
 			carets.click(function(e){
 				// Save jQuery instance of element
@@ -33,8 +34,8 @@ Menu = (function(){
 
 			// Remove menu when document clicked, tapped or when escape is pressed
 			$('html').on({
-				click: collapse,
-				touchstart: collapse//,
+				click: collapse//,
+				//touchstart: collapse,
 				// keyup: function(e) {
 				// 	// Check for escape
 				// 	if (e.keyCode == 27) { collapse(); }
