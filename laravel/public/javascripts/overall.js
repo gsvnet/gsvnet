@@ -7,7 +7,7 @@ Menu = (function(){
 
 	return {
 		// Initializes the menu
-		init: function(carets) {
+		init: function(menu, carets) {
 			carets.click(function(e){
 				// Save jQuery instance of element
 				$parent = $(this).parent();
@@ -24,6 +24,10 @@ Menu = (function(){
 				}
 
 				// Stop bubbling up the DOM.
+				e.stopPropagation();
+			});
+
+			menu.click(function(e){
 				e.stopPropagation();
 			});
 
@@ -60,9 +64,9 @@ $(document).ready(function() {
 	});
 
 	$('#navbar-toggler').click(function(){
-		$mainMenu.slideToggle(100);
+		$mainMenu.toggleClass('main-menu-active');
 	});
 
-	Menu.init($('.top-caret'));
+	Menu.init($mainMenu, $('.top-caret'));
 });
 

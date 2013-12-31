@@ -36,6 +36,7 @@
 	padding: 0;
 	list-style-type: none;
 	z-index: 1998;
+	-webkit-transition: max-height 0.26s ease;
 }
 
 .top-level-link {
@@ -50,10 +51,9 @@
 	padding-right: 3px;
 }
 
-.active-menu, a.active-menu:link, a.active-menu:visited {
+.active-menu {
 	background: $darkPurple;
 	color: #FFF;
-	position: relative;
 
 	& a:link, & a:visited {
 		color: #FFF;
@@ -209,13 +209,34 @@
 	}
 
 	.nav-bar-links {
-		display: none;
+		max-height: 0;
+		height: 0;
+		overflow: hidden;
 		padding-top: 92px;
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		background: $darkPurple;
+	}
+
+	.main-menu-active {
+		max-height: 1000px;
+		height: auto;
+	}
+
+	.active-menu:after {
+		background: 0;
+		width: auto;
+		height: 0;
+		overflow: hidden;
+		content: "";
+		display: block;
+		position: static;
+		bottom: auto;
+		left: auto;
+		right: auto;
+		z-index: auto;
 	}
 
 	.top-level-menuitem {
