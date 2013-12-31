@@ -1,21 +1,22 @@
 <?php
-Route::get('/', [
-        'as' => 'home',
-        'uses' => 'HomeController@showIndex'
-    ]
-);
+// We keep the home route name as some build in functions use the 'home' name
+Route::get('/', ['as' => 'home',
+    'uses' => 'HomeController@showIndex'
+]);
 
 // Login and logout routes
-Route::post('login', 'SessionController@postLogin')->before('csrf');
 Route::get('login', 'SessionController@getLogin');
+Route::post('login', 'SessionController@postLogin')
+    ->before('csrf');
 Route::get('logout', 'SessionController@getLogout')
     ->before('auth');
 
 // Intern
 Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
+    // Profiles
     Route::get('profiel', 'UserController@showProfile');
     Route::get('profiel/edit', 'UserController@editProfile');
-
+    // GSVdocs
     Route::resource('bestanden', 'FilesController');
     // Only logged in users can view the member list if they have permission
     Route::group(array('prefix' => 'jaarbundel', 'before' => 'can:viewMemberlist'), function()
@@ -42,24 +43,13 @@ Route::group(array('prefix' => 'de-gsv'), function()
 });
 
 // Word lid
-Route::get('word-lid', [
-        'as' => 'word-lid',
-        'uses' => 'HomeController@wordLid'
-    ]
-);
+// Hier moet een check komen dat je niet al gejoined bent, want de pagina heeft gene zin voor dat soort mensen
+Route::get('word-lid', 'HomeController@wordLid');
+// Only users which are logged in, but have not yet joined our little club, may post to this form
+Route::post('word-lid', 'UserController@postWordLid')
+    ->before('auth|usertype:visitor');
 
-Route::post('word-lid', [
-        'as' => 'post-word-lid',
-        'before' => 'auth|usertype:visitor',
-        'uses' => 'UserController@postWordLid'
-    ]
-);
-
-Route::post('register', array(
-        'as' => 'post-register',
-        'uses' => 'UserController@postRegister'
-    )
-);
+Route::post('register', 'UserController@postRegister');
 
 // Albums
 Route::get('albums', 'PhotoController@showAlbums');

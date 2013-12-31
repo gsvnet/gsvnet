@@ -130,7 +130,8 @@ class UserController extends BaseController {
             // Potentials should return to the become member form
             if(Input::has('become-member-register'))
             {
-                return Redirect::to(URL::route('word-lid') . '#become-member')->withInput()->withErrors($validation);
+                return Redirect::to(URL::action('HomeController@wordLid') . '#become-member')
+                    ->withInput()->withErrors($validation);
             }
 
             // TODO waar moet de registratiereturn heen?
@@ -139,7 +140,8 @@ class UserController extends BaseController {
 
         if(Input::has('become-member-register'))
         {
-            return Redirect::to(URL::route('word-lid') . '#register-form')->withInput()->withErrors($validation);
+            return Redirect::to(URL::action('HomeController@wordLid') . '#register-form')
+                ->withInput()->withErrors($validation);
         }
 
         return Redirect::back()->withInput()->withErrors($validation);
