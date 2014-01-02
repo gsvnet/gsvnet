@@ -45,9 +45,9 @@ class PhotoController extends BaseController {
 
             $filename = time() . '-' . $file->getClientOriginalName();
 
-            $file = $file->move(public_path() . '/uploads/photos/', $filename);
+            $file = $file->move(public_path() . '/uploads/photos/album-' . $album_id . '/', $filename);
 
-            $photo->src_path = '/uploads/photos/' . $filename;
+            $photo->src_path = '/uploads/photos/album-' . $album_id . '/' . $filename;
 
             $photo->restrictImageSize();
 
@@ -99,8 +99,8 @@ class PhotoController extends BaseController {
                 }
                 // Move the new photo to our upload folder
                 $filename = time() . '-' . $file->getClientOriginalName();
-                $file = $file->move(public_path() . '/uploads/photos/', $filename);
-                $photo->src_path = '/uploads/photos/' . $filename;
+                $file = $file->move(public_path() . '/uploads/photos/album-' . $album_id . '/', $filename);
+                $photo->src_path = '/uploads/photos/album-' . $album_id . '/' . $filename;
 
                 $photo->restrictImageSize();
             }
