@@ -4,7 +4,7 @@ class BaseController extends \BaseController {
 
     public function __construct()
     {
-        Parent::__construct();
+        parent::__construct();
         $this->layout = 'layouts.admin';
         \Former::framework('TwitterBootstrap3');
     }

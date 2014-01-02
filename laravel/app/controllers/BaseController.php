@@ -6,6 +6,10 @@ class BaseController extends Controller {
      */
     protected $layout = 'layouts.default';
 
+    public function __construct()
+    {
+        \Former::framework('TwitterBootstrap3');
+    }
     /**
      * Setup the layout used by the controller.
      *
@@ -21,5 +25,6 @@ class BaseController extends Controller {
             $this->layout->keywords = '';
         }
     }
+
 
 }
