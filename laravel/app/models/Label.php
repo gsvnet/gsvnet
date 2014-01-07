@@ -1,3 +1,4 @@
+
 <?php namespace Model;
 
 class Label extends \Eloquent {

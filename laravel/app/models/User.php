@@ -102,6 +102,8 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 			case 'viewMemberlist':
 				return $this->isMember();
 			break;
+			case 'createFiles':
+			case 'createPhotos':
 			default:
 				// TODO: Maybe an error here?
 				return false;

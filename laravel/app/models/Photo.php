@@ -2,20 +2,23 @@
 
 use File;
 use Image;
+use GSVnet\Services\PhotoHandler;
+use URL;
 
 class Photo extends \Eloquent {
     // Define the dimensions of small and wide photos
-    private static $dimensions = [
-        'small' => [308, 308],
-        'wide' => [634, 308],
-        'max' => [1024, 768]
-    ];
 
 	protected $fillable = array('name');
+    protected $photoHandler;
 
     public static $rules = array(
         'album_id'    => 'required|integer',
     );
+
+    public function __construct()
+    {
+        $this->photoHandler = new PhotoHandler;
+    }
 
     // The photo's album
     public function album()
@@ -26,12 +29,19 @@ class Photo extends \Eloquent {
     // Check if /uploads/photos/{src-path}-small exists else create it, save it and return it
     public function getSmallIMageAttribute()
     {
+        return $this->photoHandler->get($this, 'small');
         return $this->grabImage('small');
     }
 
     public function getWideImageAttribute()
     {
+        return $this->photoHandler->get($this, 'wide');
         return $this->grabImage('wide');
+    }
+
+    public function getImageAttribute()
+    {
+        return $this->photoHandler->get($this);
     }
 
     /**
@@ -65,9 +75,21 @@ class Photo extends \Eloquent {
     }
 
     // Return the path to the original image
-    public function getShowURLAttribute()
+    public function getImageURLAttribute()
     {
-        return $this->src_path;
+        return URL::action('PhotoController@showPhoto', $this->id);
+    }
+
+    // Return the path to the original image
+    public function getWideImageURLAttribute()
+    {
+        return URL::action('PhotoController@showPhotoWide', $this->id);
+    }
+
+    // Return the path to the original image
+    public function getSmallImageURLAttribute()
+    {
+        return URL::action('PhotoController@showPhotoSmall', $this->id);
     }
 
     public function restrictImageSize()

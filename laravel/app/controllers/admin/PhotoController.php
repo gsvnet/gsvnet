@@ -10,8 +10,12 @@ use Redirect;
 use File;
 
 class PhotoController extends BaseController {
-    public function __construct()
+
+    protected $photoHandler;
+
+    public function __construct(PhotoHandler $photoHandler)
     {
+        $this->photoHandler = $photoHandler;
         $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
         parent::__construct();
     }
@@ -38,18 +42,10 @@ class PhotoController extends BaseController {
         if ($validation->passes())
         {
             $photo = new Photo();
-
-            $photo->name = Input::has('name') ? Input::get('name') : $file->getClientOriginalName();
-
+            $photo->name     = Input::has('name') ? Input::get('name') : $file->getClientOriginalName();
             $photo->album_id = $input['album_id'];
-
-            $filename = time() . '-' . $file->getClientOriginalName();
-
-            $file = $file->move(public_path() . '/uploads/photos/album-' . $album_id . '/', $filename);
-
-            $photo->src_path = '/uploads/photos/album-' . $album_id . '/' . $filename;
-
-            $photo->restrictImageSize();
+            // Let the photo handler store our photo file
+            $photo = $this->photoHandler->make($photo, $file);
 
             $photo->save();
 

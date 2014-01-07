@@ -22,4 +22,32 @@ class PhotoController extends BaseController {
             ->with('photos', $photos);
     }
 
+
+    // ToDO:
+    // Check if current user has rights to view photo
+
+    // Return an image object
+    public function showPhoto($photo)
+    {
+        $photo = Photo::find($photo);
+
+        return Response::make($photo->image, 200, ['Content-Type' => 'image/jpg']);
+    }
+
+    // Return an image object
+    public function showPhotoWide($photo)
+    {
+        $photo = Photo::find($photo);
+
+        return Response::make($photo->wide_image, 200, ['Content-Type' => 'image/jpg']);
+    }
+
+    // Return an image object
+    public function showPhotoSmall($photo)
+    {
+        $photo = Photo::find($photo);
+
+        return Response::make($photo->small_image, 200, ['Content-Type' => 'image/jpg']);
+    }
+
 }

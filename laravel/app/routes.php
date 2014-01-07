@@ -55,6 +55,11 @@ Route::post('register', 'UserController@postRegister');
 Route::get('albums', 'PhotoController@showAlbums');
 Route::get('albums/{album}', 'PhotoController@showPhotos');
 
+// Get photo images
+Route::get('photos/{photo}', 'PhotoController@showPhoto');
+Route::get('photos/{photo}/wide', 'PhotoController@showPhotoWide');
+Route::get('photos/{photo}/small', 'PhotoController@showPhotoSmall');
+
 // Events
 Route::get('activiteiten', 'EventController@showIndex');
 Route::get('activiteiten/bekijk-{id}', 'EventController@showEvent');

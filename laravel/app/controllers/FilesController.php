@@ -10,15 +10,13 @@ class FilesController extends BaseController {
 	public function index()
 	{
 		$input = Input::all();
-
-
+		// Select all files which belong to (all of) the selected labels
 		if (Input::has('labels'))
 		{
 			$selected_labels = Input::get('labels');
 			$count = count($selected_labels);
 
 			$file_ids = DB::table('file_label')
-				//->select('file_id as id')
 				->whereIn('label_id', $selected_labels)
 				->groupBy('file_id')
 				->havingRaw('count(*) = ' . $count)

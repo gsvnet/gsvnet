@@ -5,3 +5,6 @@ laravel/public/fluxbb-1.5.5/
 laravel/public/uploads/photos/
 laravel/public/uploads/files/
 laravel/public/packages/
+
+laravel/app/storage/uploads/photos/
+laravel/app/storage/uploads/files/
