@@ -4,6 +4,7 @@
 	padding: 0;
 }
 
+// This is the wrapper of the toggle icon for the mobile menu
 .nav-bar-extras {
 	position: absolute;
 	right: 2em;
@@ -153,6 +154,8 @@
 	color: $body-copy-color;
 }
 
+
+// This is a secondary menu which is on the page itself
 .secondary-menu {
 	list-style-type: none;
 	padding: 0;

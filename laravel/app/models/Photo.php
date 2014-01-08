@@ -74,10 +74,10 @@ class Photo extends \Eloquent {
     {
         $img = Image::make(public_path() . $this->src_path);
 
-        if ($img->width > Self::$dimensions['max'][0] or $img->height > Self::$dimensions['max'][1])
+        if ($img->width > self::$dimensions['max'][0] or $img->height > self::$dimensions['max'][1])
         {
             // Resize the image while maintaining correct aspect ratio
-            $img->grab(Self::$dimensions['max'][0], Self::$dimensions['max'][1]);
+            $img->grab(self::$dimensions['max'][0], self::$dimensions['max'][1]);
             // finally we save the image as a new image
             $img->save(public_path() . $this->src_path);
         }

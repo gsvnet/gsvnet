@@ -40,6 +40,9 @@
           <ul class="nav navbar-nav">
             <li><a href="/">Front end</a></li>
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{{ URL::action('SessionController@getLogout') }}"><i class="glyphicon glyphicon-log-out"></i> Uitloggen</a></li>
+          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
@@ -59,10 +62,6 @@
 
             <a href="{{ URL::action('Admin\FilesController@index') }}" class="list-group-item {{ Request::segment(2) == 'files' ? 'active' : '' }}">
               <i class='glyphicon glyphicon-hdd'></i> GSVdocs
-            </a>
-
-            <a href="{{ URL::action('SessionController@getLogout') }}" class="list-group-item">
-              <i class="glyphicon glyphicon-log-out"></i> Uitloggen
             </a>
           </div>
 
