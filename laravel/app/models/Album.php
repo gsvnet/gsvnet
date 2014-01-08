@@ -30,10 +30,10 @@ class Album extends \Eloquent {
 
     public function getShowURLAttribute()
     {
-        return \URL::action('PhotoController@showPhotos', $this->slug);
+        return URL::action('PhotoController@showPhotos', $this->slug);
     }
 
-        // Return the path to the original image
+    // Return the path to the original image
     public function getImageURLAttribute()
     {
         $photo = $this->photos->first();

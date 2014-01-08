@@ -24,7 +24,7 @@ class PhotoController extends BaseController {
 
 
     // ToDO:
-    // Check if current user has rights to view photo
+    // Check if current user has rights to view phxoto
 
     // Return an image object
     public function showPhoto($photo)

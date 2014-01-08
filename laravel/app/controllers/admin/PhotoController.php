@@ -45,7 +45,7 @@ class PhotoController extends BaseController {
             $photo->name     = Input::has('name') ? Input::get('name') : $file->getClientOriginalName();
             $photo->album_id = $input['album_id'];
             // Let the photo handler store our photo file
-            $photo = $this->photoHandler->make($photo, $file);
+            $photo = $this->photoHandler->make($file, "/uploads/photos/album-" . $photo->album_id . "/");
 
             $photo->save();
 
@@ -71,6 +71,8 @@ class PhotoController extends BaseController {
 
         $input['album_id'] = $album_id;
         $rules = Photo::$rules;
+
+        // To do : use $v->sometimes()
         if (Input::hasFile('photo'))
         {
             $file = $input['photo'] = Input::file('photo');
@@ -86,19 +88,7 @@ class PhotoController extends BaseController {
 
             if (Input::hasFile('photo'))
             {
-                // Delete old photo files
-                if (File::exists(public_path() . $photo->src_path))
-                {
-                    File::delete(public_path() . $photo->small_image);
-                    File::delete(public_path() . $photo->wide_image);
-                    File::delete(public_path() . $photo->src_path);
-                }
-                // Move the new photo to our upload folder
-                $filename = time() . '-' . $file->getClientOriginalName();
-                $file = $file->move(public_path() . '/uploads/photos/album-' . $album_id . '/', $filename);
-                $photo->src_path = '/uploads/photos/album-' . $album_id . '/' . $filename;
-
-                $photo->restrictImageSize();
+                $this->photoHandler->update($file, $photo->src_path);
             }
 
             $photo->save();
@@ -117,15 +107,10 @@ class PhotoController extends BaseController {
     public function destroy($album_id, $id)
     {
         $photo = Photo::find($id);
+        // Delete photo files
+        $this->photoHandler->destroy($photo->src_path);
+        // Delete photo entry
         $photo->delete();
-
-        // Delete old photo files
-        if (File::exists(public_path() . $photo->src_path))
-        {
-            File::delete(public_path() . $photo->small_image);
-            File::delete(public_path() . $photo->wide_image);
-            File::delete(public_path() . $photo->src_path);
-        }
 
         return Redirect::action('Admin\PhotoController@index')
             ->with('message', '<strong>' . $photo->name . '</strong> is succesvol verwijderd.');
