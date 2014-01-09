@@ -2,6 +2,8 @@
 /*
 / The PhotoHandler class handles the storage n
 */
+use File, Image;
+
 class PhotoHandler
 {
     private static $dimensions = [
@@ -26,8 +28,29 @@ class PhotoHandler
     // Get the photo corresponding to the given dimension
     public function get($photo, $dimension = '')
     {
-        return Image::make(storage_path() . $this->grab($photo, $dimension));
+        return File::get(storage_path() . $this->grab($photo, $dimension));
     }
+
+    public function update($file, $path)
+    {
+        $this->destroy($photo);
+        $this->make($file, $path);
+    }
+
+    // ToDo: only dependent on the photo his location, not the model
+    public function destroy($path)
+    {
+        // Delete old photo files
+        if (File::exists(storage_path() . $path))
+            File::delete(storage_path() . $path);
+
+        if (File::exists(storage_path() . $path . '-small'))
+            File::delete(storage_path() . $path . '-small');
+
+        if (File::exists(storage_path() . $path . '-wide'))
+            File::delete(storage_path() . $path . '-wide');
+    }
+
 
     /**
     * Either create or return the resized image of the original image
@@ -36,19 +59,24 @@ class PhotoHandler
     private function grab($path, $dimension = '')
     {
         $fullPath = storage_path() . $path;
+
         // Check if we can find the original image's path, if not, throw an exception error
         if (! File::exists($fullPath))
         {
-            throw new PhotoFileNotFoundException;
+            //throw new PhotoFileNotFoundException;
+            return 'error... hier moet nog iets goeds komen';
         }
+
         // Return the full path if we don't need a certain dimension
         if ($dimension == '')
         {
-            return $fullPath;
+            return $path;
         }
+
         // Get the new filepath corresponding for the given dimension
         $ext     = File::extension(storage_path() . $path);
         $newPath = str_replace('.' . $ext, '', $path) . '-' . $dimension . '.' . $ext;
+
         // If we can't find the file, resize the original photo and return the new path
         if (! File::exists(storage_path() . $newPath))
         {
@@ -60,26 +88,6 @@ class PhotoHandler
         }
 
         return $newPath;
-    }
-
-    public function update($file, $path)
-    {
-        $this->destroy($photo);
-        $this->make($file, $path);
-    }
-
-    // ToDo: only dependent on the photo his location, not the model
-    public function destroy($fullPath)
-    {
-        // Delete old photo files
-        if (File::exists(storage_path() . $path))
-            File::delete(storage_path() . $path);
-
-        if (File::exists(storage_path() . $path . '-small'))
-            File::delete(storage_path() . $path . '-small');
-
-        if (File::exists(storage_path() . $path . '-wide'))
-            File::delete(storage_path() . $path . '-wide');
     }
 
     private function restrictImageSize($path)
