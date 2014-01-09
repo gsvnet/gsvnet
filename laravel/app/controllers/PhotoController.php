@@ -31,7 +31,7 @@ class PhotoController extends BaseController {
     {
         $photo = Photo::find($photo);
 
-        return Response::make($photo->image, 200, ['Content-Type' => 'image/jpg']);
+        return Response::image($photo->image); //, 200, ['Content-Type' => 'image/jpg']);
     }
 
     // Return an image object
@@ -39,7 +39,7 @@ class PhotoController extends BaseController {
     {
         $photo = Photo::find($photo);
 
-        return Response::make($photo->wide_image, 200, ['Content-Type' => 'image/jpg']);
+        return Response::image($photo->wide_image); //, 200, ['Content-Type' => 'image/jpg']);
     }
 
     // Return an image object
@@ -47,7 +47,7 @@ class PhotoController extends BaseController {
     {
         $photo = Photo::find($photo);
 
-        return Response::make($photo->small_image, 200, ['Content-Type' => 'image/jpg']);
+        return Response::image($photo->small_image); //, 200, ['Content-Type' => 'image/jpg']);
     }
 
 }
