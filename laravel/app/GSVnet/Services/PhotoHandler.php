@@ -12,6 +12,16 @@ class PhotoHandler
         'max' => [1024, 768]
     ];
 
+    // Base path kunnen we gebruiken om het pad waar de foto in opgeslagen moet worden alvast vast te zetten,
+    // zodat we dan alleen nog maar de naam van een bestand hoeven te weten,
+    // maar hier moet eerst nog wat beter over nageacht worden voordat we dat implementeren...
+    protected $basePath;
+
+    public function __construct($basePath = '')
+    {
+        $this->basePath = storage_path($basePath);
+    }
+
 
     /**
     * Saves a photo at the given location
@@ -24,7 +34,7 @@ class PhotoHandler
         $filename = time() . '-' . $file->getClientOriginalName();
         $relativePath = $path . $filename;
         // Move the file and restrict it's size
-        $file = $file->move(storage_path() . $path, $filename);
+        $file = $file->move($this->basePath . $path, $filename);
         $this->restrictImageSize($relativePath);
         // Finaly return the new relativePath of the file
         return $relativePath;
@@ -33,32 +43,35 @@ class PhotoHandler
     // Get the photo corresponding to the given dimension
     public function get($path, $dimension = '')
     {
-        return Image::make(storage_path() . $this->grab($path, $dimension));
+        return Image::make($this->basePath . $this->grab($path, $dimension));
     }
 
     public function getStoragePath($path, $dimension = '')
     {
-        return storage_path() . $this->grab($path, $dimension);
+        return $this->basePath . $this->grab($path, $dimension);
     }
 
-    public function update($file, $path)
+    // Update de foto, waarbij file weer een input bestand is, new path de plek waar de foto geplaatst moet worden
+    // en path de plek van de oude foto
+    // Dit wordt nu nog niet goed gebruikt
+    public function update($file, $newPath, $path)
     {
         $this->destroy($path);
-        return $this->make($file, $path);
+        return $this->make($file, $newPath);
     }
 
     // ToDo: only dependent on the photo his location, not the model
     public function destroy($path)
     {
         // Delete old photo files
-        if (File::exists(storage_path() . $path))
-            File::delete(storage_path() . $path);
+        if (File::exists($this->basePath . $path))
+            File::delete($this->basePath . $path);
 
-        if (File::exists(storage_path() . $path . '-small'))
-            File::delete(storage_path() . $path . '-small');
+        if (File::exists($this->basePath . $path . '-small'))
+            File::delete($this->basePath . $path . '-small');
 
-        if (File::exists(storage_path() . $path . '-wide'))
-            File::delete(storage_path() . $path . '-wide');
+        if (File::exists($this->basePath . $path . '-wide'))
+            File::delete($this->basePath . $path . '-wide');
     }
 
 
@@ -68,7 +81,7 @@ class PhotoHandler
     */
     private function grab($path, $dimension = '')
     {
-        $fullPath = storage_path() . $path;
+        $fullPath = $this->basePath . $path;
 
         // Check if we can find the original image's path, if not, throw an exception error
         if (! File::exists($fullPath))
@@ -84,17 +97,17 @@ class PhotoHandler
         }
 
         // Get the new filepath corresponding for the given dimension
-        $ext     = File::extension(storage_path() . $path);
+        $ext     = File::extension($this->basePath . $path);
         $newPath = str_replace('.' . $ext, '', $path) . '-' . $dimension . '.' . $ext;
 
         // If we can't find the file, resize the original photo and return the new path
-        if (! File::exists(storage_path() . $newPath))
+        if (! File::exists($this->basePath . $newPath))
         {
             $img = Image::make($fullPath);
             // Resize the image while maintaining correct aspect ratio
             $img->grab(self::$dimensions[$dimension][0], self::$dimensions[$dimension][1]);
             // finally we save the image as a new image
-            $img->save(storage_path() . $newPath);
+            $img->save($this->basePath . $newPath);
         }
 
         return $newPath;
@@ -102,7 +115,7 @@ class PhotoHandler
 
     private function restrictImageSize($path)
     {
-        $img = Image::make(storage_path() . $path);
+        $img = Image::make($this->basePath . $path);
         // If the image which was found is larger than the given max dimensions, then resize it
         if ($img->width > Self::$dimensions['max'][0] or
             $img->height > Self::$dimensions['max'][1])
@@ -110,7 +123,7 @@ class PhotoHandler
             // Resize the image while maintaining correct aspect ratio
             $img->grab(Self::$dimensions['max'][0], Self::$dimensions['max'][1]);
             // finally we save the image as a new image
-            $img->save(storage_path() . $path);
+            $img->save($this->basePath . $path);
         }
     }
 
