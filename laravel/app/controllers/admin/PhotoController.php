@@ -8,6 +8,7 @@ use Validator;
 use Str;
 use Redirect;
 use File;
+use GSVnet\Services\PhotoHandler;
 
 class PhotoController extends BaseController {
 
@@ -45,7 +46,7 @@ class PhotoController extends BaseController {
             $photo->name     = Input::has('name') ? Input::get('name') : $file->getClientOriginalName();
             $photo->album_id = $input['album_id'];
             // Let the photo handler store our photo file
-            $photo = $this->photoHandler->make($file, "/uploads/photos/album-" . $photo->album_id . "/");
+            $photo->src_path = $this->photoHandler->make($file, "/uploads/photos/album-" . $photo->album_id . "/");
 
             $photo->save();
 
@@ -86,9 +87,10 @@ class PhotoController extends BaseController {
         {
             $photo->name = Input::get('name');
 
-            if (Input::hasFile('photo'))
+            if (isset($file))
             {
-                $this->photoHandler->update($file, $photo->src_path);
+                $this->photoHandler->destroy($photo->src_path);
+                $photo->src_path = $this->photoHandler->make($file, "/uploads/photos/album-" . $photo->album_id . "/");
             }
 
             $photo->save();

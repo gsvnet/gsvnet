@@ -44,7 +44,7 @@ class PhotoHandler
     public function update($file, $path)
     {
         $this->destroy($path);
-        $this->make($file, $path);
+        return $this->make($file, $path);
     }
 
     // ToDo: only dependent on the photo his location, not the model
