@@ -12,7 +12,12 @@ class PhotoHandler
         'max' => [1024, 768]
     ];
 
-    // Save a photo
+
+    /**
+    * Saves a photo at the given location
+    * @file file from Input::file()
+    * @path string the location
+    */
     public function make($file, $path = '/uploads/photos/')
     {
         // Create a unique filename
@@ -26,14 +31,19 @@ class PhotoHandler
     }
 
     // Get the photo corresponding to the given dimension
-    public function get($photo, $dimension = '')
+    public function get($path, $dimension = '')
     {
-        return File::get(storage_path() . $this->grab($photo, $dimension));
+        return Image::make(storage_path() . $this->grab($path, $dimension));
+    }
+
+    public function getStoragePath($path, $dimension = '')
+    {
+        return storage_path() . $this->grab($path, $dimension);
     }
 
     public function update($file, $path)
     {
-        $this->destroy($photo);
+        $this->destroy($path);
         $this->make($file, $path);
     }
 

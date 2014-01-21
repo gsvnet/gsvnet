@@ -2,8 +2,18 @@
 
 use Model\Album;
 use Model\Photo;
+use GSVnet\Services\PhotoHandler;
 
 class PhotoController extends BaseController {
+    protected $photoHandler;
+
+    public function __construct(PhotoHandler $photoHandler)
+    {
+        $this->photoHandler = $photoHandler;
+        $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
+        parent::__construct();
+    }
+
 	public function showAlbums()
 	{
         $albums = Album::paginate(10);
@@ -31,7 +41,8 @@ class PhotoController extends BaseController {
     {
         $photo = Photo::find($photo);
 
-        return Response::image($photo->image); //, 200, ['Content-Type' => 'image/jpg']);
+        $image = $this->photoHandler->get($photo->src_path);
+        return $image->response();
     }
 
     // Return an image object
@@ -39,7 +50,8 @@ class PhotoController extends BaseController {
     {
         $photo = Photo::find($photo);
 
-        return Response::image($photo->wide_image); //, 200, ['Content-Type' => 'image/jpg']);
+        $image = $this->photoHandler->get($photo->src_path, 'wide');
+        return $image->response();
     }
 
     // Return an image object
@@ -47,7 +59,8 @@ class PhotoController extends BaseController {
     {
         $photo = Photo::find($photo);
 
-        return Response::image($photo->small_image); //, 200, ['Content-Type' => 'image/jpg']);
+        $image = $this->photoHandler->get($photo->src_path, 'small');
+        return $image->response();
     }
 
 }

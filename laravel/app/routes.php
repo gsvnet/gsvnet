@@ -86,8 +86,3 @@ App::missing(function($exception) {
 
     return Response::view('errors.missing', $data, 404);
 });
-// Setup a response macro, such that we can do Response::image($image)
-Response::macro('image', function($file)
-{
-    return Response::make($file, 200, ['Content-Type' => 'image/jpg']);
-});
