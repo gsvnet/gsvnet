@@ -205,6 +205,7 @@
 
 	.sub-level-menu {
 		width: 100%;
+		position: static;
 	}
 
 	.nav-toggle {
@@ -215,7 +216,6 @@
 		max-height: 0;
 		height: 0;
 		overflow: hidden;
-		padding-top: 92px;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -226,6 +226,10 @@
 	.main-menu-active {
 		max-height: 1000px;
 		height: auto;
+		padding-top: 92px;
+		-webkit-box-shadow: 0 0 50px rgba(0,0,0,0.5);
+		-moz-box-shadow: 0 0 50px rgba(0,0,0,0.5);
+		box-shadow: 0 0 50px rgba(0,0,0,0.5);
 	}
 
 	.active-menu:after {

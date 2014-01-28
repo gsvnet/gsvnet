@@ -875,14 +875,14 @@ h6 {
   margin-left: 18px;
 }
 
-figure {
+.artikel figure {
   margin: 18px 0;
 }
-figure img {
+.artikel figure img {
   vertical-align: bottom;
   max-width: 100%;
 }
-figure figcaption {
+.artikel figure figcaption {
   font-size: 14px;
   font-style: italic;
 }
@@ -934,6 +934,11 @@ figure figcaption {
   .artikel > h6 {
     margin-left: 0;
     margin-right: 0;
+  }
+
+  .register-form {
+    border-left: 0;
+    padding-left: 0;
   }
 }
 @media only screen and (max-width: 480px) {
@@ -1169,6 +1174,7 @@ figure figcaption {
 
   .sub-level-menu {
     width: 100%;
+    position: static;
   }
 
   .nav-toggle {
@@ -1179,7 +1185,6 @@ figure figcaption {
     max-height: 0;
     height: 0;
     overflow: hidden;
-    padding-top: 92px;
     position: absolute;
     top: 0;
     left: 0;
@@ -1190,6 +1195,10 @@ figure figcaption {
   .main-menu-active {
     max-height: 1000px;
     height: auto;
+    padding-top: 92px;
+    -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
   }
 
   .active-menu:after {
@@ -1408,17 +1417,6 @@ figure figcaption {
   height: 20px;
   margin-top: -10px;
   margin-left: -10px;
-  font-family: serif;
-}
-
-.carousel-control .icon-prev:before {
-  content: '\2039';
-  background: #2a1443;
-}
-
-.carousel-control .icon-next:before {
-  content: '\203a';
-  background: #2a1443;
 }
 
 .carousel-indicators {
@@ -1582,7 +1580,7 @@ a.item:hover .shadow {
     padding: 18px 36px;
   }
 
-  .carousel-inner {
+  .top-slideshow .carousel-inner {
     overflow: visible;
   }
 
