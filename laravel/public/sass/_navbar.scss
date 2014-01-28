@@ -78,6 +78,7 @@
 	display: block;
 	float: left;
 	position: relative;
+	height: 90px; /* vanwege een bug in chrome */
 }
 
 .top-caret {
@@ -250,6 +251,7 @@
 		@include clearfix;
 		float: none;
 		display: block;
+		height: auto;
 	}
 }
 
