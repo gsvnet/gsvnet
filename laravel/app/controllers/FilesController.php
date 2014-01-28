@@ -1,6 +1,16 @@
 <?php
 
+use GSVnet\Services\FileHandler;
+
 class FilesController extends BaseController {
+
+	protected $fileHandler;
+
+    public function __construct(FileHandler $fileHandler)
+    {
+        $this->fileHandler = $fileHandler;
+        parent::__construct();
+    }
 
 	/**
 	 * Display a listing of the resource.
@@ -44,19 +54,18 @@ class FilesController extends BaseController {
 	 */
 	public function show($id)
 	{
+		return $this->download($id);
 		// $file = \Model\File::find($id);
 
 		// return Response::download($file->file);
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
+	public function download($id)
 	{
-        return View::make('files.edit');
+		$file = \Model\File::find($id);
+
+		$file = $this->fileHandler->getPath($file->file_path);
+
+		return Response::download($file);
 	}
 }

@@ -9,9 +9,15 @@ use Str;
 use Redirect;
 use File;
 
+use GSVnet\Services\FileHandler;
+
 class FilesController extends BaseController {
-    public function __construct()
+
+    protected $fileHandler;
+
+    public function __construct(FileHandler $fileHandler)
     {
+        $this->fileHandler = $fileHandler;
         $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
         parent::__construct();
     }
@@ -122,7 +128,7 @@ class FilesController extends BaseController {
 
             $file->save();
 
-            return Redirect::action('Admin\FilesController@edit', $file->id)
+            return Redirect::action('Admin\FilesController@index')
                 ->with('message', '<strong>' . $file->name . '</strong> is succesvol bewerkt.')
                 ->with('changedID', $id);
         }

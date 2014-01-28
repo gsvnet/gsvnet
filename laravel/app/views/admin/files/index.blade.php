@@ -36,7 +36,7 @@
                     {{{ $file->updated_at }}}
                 </td>
                 <td>
-                    <a href="{{{ $file->file_path }}}"><i class="glyphicon glyphicon-download-alt"></i>Download</a>
+                    <a href="{{ URL::action('FilesController@show', $file->id) }}"><i class="glyphicon glyphicon-download-alt"></i>Download</a>
                 </td>
 			</tr>
 			@endforeach

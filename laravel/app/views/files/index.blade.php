@@ -221,7 +221,7 @@ table th[class*="col-"] {
                             {{{ $file->updated_at }}}
                         </td>
                         <td>
-                            <a href="{{{ $file->file_path }}}"><i class="glyphicon glyphicon-download-alt">
+                            <a href="{{ URL::action('FilesController@show', $file->id) }}"><i class="glyphicon glyphicon-download-alt">
                             <i class="fa fa-download"></i></i>
                             {{{ $file->type }}}
                             ({{{ $file->size }}})

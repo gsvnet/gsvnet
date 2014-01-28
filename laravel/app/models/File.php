@@ -1,11 +1,19 @@
 <?php namespace Model;
 
+use GSVnet\Services\FileHandler;
+
 class File extends \Eloquent {
 	protected $guarded = array();
-
 	public static $rules = array(
         'name' => 'required'
     );
+
+    protected $fileHandler;
+
+    public function __construct()
+    {
+        $this->fileHandler = new FileHandler;
+    }
 
     public function labels()
     {
@@ -14,18 +22,17 @@ class File extends \Eloquent {
 
     public function getSizeAttribute()
     {
-        return $this->readable_size($this->fileLocation());
+        return $this->readable_size($this->fileHandler->fileSize($this->file_path));
     }
 
     public function getTypeAttribute()
     {
-        return '.' . \File::extension($this->fileLocation());
-        return '.big';
+        return '.' . $this->fileHandler->extension($this->file_path);
     }
 
     public function fileLocation()
     {
-        return public_path() . $this->file_path;
+        return storage_path() . $this->file_path;
     }
 
     public function getUpdatedAtAttribute($updatedAt)
@@ -45,8 +52,9 @@ class File extends \Eloquent {
     *
     * http://www.php.net/manual/en/function.filesize.php
     */
-    private function readable_size($path) {
-        $tmp = filesize($path);
+    private function readable_size($size) {
+        $tmp = $size;
+        $file = 0;
         if ($tmp >= 0 && $tmp < 1024) {
             $file = $tmp . " bytes";
         } elseif ($tmp >=1024 && $tmp < 1048576) { // less than 1 MB
