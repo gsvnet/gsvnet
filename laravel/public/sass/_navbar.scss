@@ -78,18 +78,18 @@
 	display: block;
 	float: left;
 	position: relative;
-	height: 90px; /* vanwege een bug in chrome */
 }
 
 .top-caret {
 	display: inline-block;
 	cursor: pointer;
 	padding: 0 7px 0 4px;
-	line-height: 90px; /* bugged */
+	line-height: 90px; 
 	-webkit-user-select: none;
     -moz-user-select: none;
     -khtml-user-select: none;
     -ms-user-select: none;
+    vertical-align: top; /* lost 1px bug in chrome op */
 }
 
 .active-menu.active-sub-menu .top-caret {
