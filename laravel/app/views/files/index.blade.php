@@ -208,24 +208,16 @@ table th[class*="col-"] {
                     <tr>
                         <th>Naam</th>
                         <th>Bijgewerkt op</th>
-                        <th>Download</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($files as $file)
                     <tr>
                         <td>
-                           {{{ $file->name }}}
+                           <a href="{{{ $file->file_path }}}">{{{ $file->name }}}</a> ({{{ $file->size}}} {{{$file->type }}})
                         </td>
                         <td>
                             {{{ $file->updated_at }}}
-                        </td>
-                        <td>
-                            <a href="{{{ $file->file_path }}}"><i class="glyphicon glyphicon-download-alt">
-                            <i class="fa fa-download"></i></i>
-                            {{{ $file->type }}}
-                            ({{{ $file->size }}})
-                            </a>
                         </td>
                     </tr>
                     @endforeach
