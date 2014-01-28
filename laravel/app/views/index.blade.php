@@ -1,5 +1,5 @@
 @section('top-slideshow')
-    <section class="slideshow-wrap">
+    <section class="slideshow-wrap top-slideshow">
         <div id="carousel-example-generic" class="slideshow carousel slide">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -93,10 +93,10 @@
 
             <!-- Controls -->
             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                <span class="icon-prev"></span>
+                <span class="fa fa-arrow-left icon-prev"></span>
             </a>
             <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                <span class="icon-next"></span>
+                <span class="fa fa-arrow-right icon-next"></span>
             </a>
         </div>
         <div class="slideshow-spacer"></div>
