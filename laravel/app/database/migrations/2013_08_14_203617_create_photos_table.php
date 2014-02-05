@@ -16,7 +16,7 @@ class CreatePhotosTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->integer('album_id');
-			$table->foreign('album_id')->references('id')->on('albums');
+			// $table->foreign('album_id')->references('id')->on('albums');
 
 			$table->string('src_path')->default('');
 

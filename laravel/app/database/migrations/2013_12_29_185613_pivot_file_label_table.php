@@ -16,8 +16,8 @@ class PivotFileLabelTable extends Migration {
 			$table->increments('id');
 			$table->integer('file_id')->unsigned()->index();
 			$table->integer('label_id')->unsigned()->index();
-			$table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
-			$table->foreign('label_id')->references('id')->on('labels')->onDelete('cascade');
+			// $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
+			// $table->foreign('label_id')->references('id')->on('labels')->onDelete('cascade');
 		});
 	}
 

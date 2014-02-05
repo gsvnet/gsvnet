@@ -33,6 +33,7 @@ xdebug.cli_color=1
 xdebug.show_local_vars=1
 EOF
 
+
 echo "--- Enabling mod-rewrite ---"
 sudo a2enmod rewrite
 
@@ -47,6 +48,10 @@ sed -i "s/display_errors = .*/display_errors = On/" /etc/php5/apache2/php.ini
 
 sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 
+echo "---  Enable pcntl-functions (needed for Laravel tinker/Boris) ---"
+sed -i "s/disable_functions = /; disable_functions = /" /etc/php5/cli/php.ini
+sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+
 echo "--- Restarting Apache ---"
 sudo service apache2 restart
 
@@ -55,5 +60,16 @@ curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 
 # Laravel stuff here, if you want
+# -------------------------------
+# Set up the database
+echo "--- Create database ---"
+echo "CREATE DATABASE IF NOT EXISTS gsvnet" | mysql -u root -proot
+# Run artisan migrate to setup the database and schema
+echo "--- Run artisan migrate ---"
+cd /vagrant
+
+php artisan migrate
+echo "--- Seeding the database ---"
+php artisan db:seed
 
 echo "--- All set to go! Would you like to play a game? ---"
