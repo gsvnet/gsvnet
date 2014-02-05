@@ -1061,11 +1061,12 @@ h6 {
   cursor: pointer;
   padding: 0 7px 0 4px;
   line-height: 90px;
-  /* bugged */
   -webkit-user-select: none;
   -moz-user-select: none;
   -khtml-user-select: none;
   -ms-user-select: none;
+  vertical-align: top;
+  /* lost 1px bug in chrome op */
 }
 
 .active-menu.active-sub-menu .top-caret {
@@ -1219,6 +1220,7 @@ h6 {
     zoom: 1;
     float: none;
     display: block;
+    height: auto;
   }
   .top-level-menuitem:before, .top-level-menuitem:after {
     content: "\0020";
