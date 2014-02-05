@@ -1,6 +1,18 @@
 GSVnet 3
 ========
 
+## Setup met vagrant
+'cd' naar de laravel map en gebruik 'vagrant up'. Daarna:
+   vagrant ssh
+   cd /vagrant
+   composer install
+
+De website is nu te vinden op 'localhost:8080'.
+
+## Vagrant sluiten
+'vagrant suspend' of 'vagrant desroy'
+
+
 Wat er moet gebeuren op korte termijn:
 --------------------------------------
 
