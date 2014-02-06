@@ -86,9 +86,20 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 		return $this->hasOne('Model\UserProfile');
 	}
 
+	/**
+	 * Type 3 and 4 are members
+	 */
 	public function isMember()
 	{
 		return $this->type == 3 || $this->type == 4;
+	}
+
+	public function activeCommittees()
+	{
+		return $this->belongsToMany('Model\Committee', 'committee_user')
+                    ->where('end_date', null)
+                    ->orWhere('end_date', '>=', new \DateTime('now'))
+                    ->withPivot('start_time', 'end_time');
 	}
 
 	/**
@@ -104,18 +115,13 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 			break;
 			case 'createFiles':
 			case 'createPhotos':
+			break;
+			case 'canView':
+			break;
+
 			default:
-				// TODO: Maybe an error here?
-				return false;
+				App::abort(404);
 			break;
 		}
-	}
-
-	public function activeCommittees()
-	{
-		return $this->belongsToMany('Model\Committee', 'committee_user')
-                    ->where('end_date', null)
-                    ->orWhere('end_date', '>=', new \DateTime('now'))
-                    ->withPivot('start_time', 'end_time');
 	}
 }

@@ -76,7 +76,7 @@
 	margin-left: 18px;
 }
 
-figure {
+.artikel figure {
 	margin: 18px 0;
 	
 	img {
@@ -102,7 +102,6 @@ figure {
 .register-form {
 	border-left: 1px solid $darkGrey;
 	padding-left: 18px;
-
 }
 
 
@@ -137,6 +136,11 @@ figure {
 	.artikel > h6 {
 		margin-left: 0;
 		margin-right: 0;
+	}
+
+	.register-form {
+		border-left: 0;
+		padding-left: 0;
 	}
 }
 

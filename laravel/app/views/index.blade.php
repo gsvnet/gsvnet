@@ -1,5 +1,5 @@
 @section('top-slideshow')
-    <section class="slideshow-wrap">
+    <section class="slideshow-wrap top-slideshow">
         <div id="carousel-example-generic" class="slideshow carousel slide">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -93,10 +93,10 @@
 
             <!-- Controls -->
             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                <span class="icon-prev"></span>
+                <span class="fa fa-arrow-left icon-prev"></span>
             </a>
             <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                <span class="icon-next"></span>
+                <span class="fa fa-arrow-right icon-next"></span>
             </a>
         </div>
         <div class="slideshow-spacer"></div>
@@ -106,7 +106,7 @@
 
 @section('content')
     <div class="column-holder" role="main">
-        <p class="delta">Denk je na over een actief studentenleven in Groningen? Dan ben je hier aan het juiste adres. De GSV is dé studentenvereniging waar je verdieping vindt en uiteraard veel gezelligheid.</p>
+        <p class="delta">Denk je na over een actief studentenleven in Groningen? Dan ben je hier aan het juiste adres. De GSV is dé perfecte combinatie van christelijke waarden en het echte studentenleven.</p>
         <div class="main-content">
             <p>Op deze site kun je meer lezen over de GSV en wat er allemaal valt te beleven bij onze studentenverenging. Wil je lid worden, of ben je gewoon nieuwsgierig? <a href="#" class="more">Klik dan snel hier</a></p>
             <h2>Over de GSV</h2>

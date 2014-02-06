@@ -208,14 +208,13 @@ table th[class*="col-"] {
                     <tr>
                         <th>Naam</th>
                         <th>Bijgewerkt op</th>
-                        <th>Download</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($files as $file)
                     <tr>
                         <td>
-                           {{{ $file->name }}}
+                           <a href="{{{ $file->file_path }}}">{{{ $file->name }}}</a> ({{{ $file->size}}} {{{$file->type }}})
                         </td>
                         <td>
                             {{{ $file->updated_at }}}

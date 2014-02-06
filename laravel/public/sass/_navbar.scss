@@ -4,6 +4,7 @@
 	padding: 0;
 }
 
+// This is the wrapper of the toggle icon for the mobile menu
 .nav-bar-extras {
 	position: absolute;
 	right: 2em;
@@ -83,11 +84,12 @@
 	display: inline-block;
 	cursor: pointer;
 	padding: 0 7px 0 4px;
-	line-height: 90px; /* bugged */
+	line-height: 90px; 
 	-webkit-user-select: none;
     -moz-user-select: none;
     -khtml-user-select: none;
     -ms-user-select: none;
+    vertical-align: top; /* lost 1px bug in chrome op */
 }
 
 .active-menu.active-sub-menu .top-caret {
@@ -153,6 +155,8 @@
 	color: $body-copy-color;
 }
 
+
+// This is a secondary menu which is on the page itself
 .secondary-menu {
 	list-style-type: none;
 	padding: 0;
@@ -202,6 +206,7 @@
 
 	.sub-level-menu {
 		width: 100%;
+		position: static;
 	}
 
 	.nav-toggle {
@@ -212,7 +217,6 @@
 		max-height: 0;
 		height: 0;
 		overflow: hidden;
-		padding-top: 92px;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -223,6 +227,10 @@
 	.main-menu-active {
 		max-height: 1000px;
 		height: auto;
+		padding-top: 92px;
+		-webkit-box-shadow: 0 0 50px rgba(0,0,0,0.5);
+		-moz-box-shadow: 0 0 50px rgba(0,0,0,0.5);
+		box-shadow: 0 0 50px rgba(0,0,0,0.5);
 	}
 
 	.active-menu:after {
@@ -243,6 +251,7 @@
 		@include clearfix;
 		float: none;
 		display: block;
+		height: auto;
 	}
 }
 
