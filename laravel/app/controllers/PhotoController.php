@@ -2,65 +2,83 @@
 
 use Model\Album;
 use Model\Photo;
-use GSVnet\Services\PhotoHandler;
+
+use GSVnet\Services\ImageHandler;
+use GSVnet\Repos\AlbumsRepositoryInterface;
+use GSVnet\Repos\PhotosRepositoryInterface;
 
 class PhotoController extends BaseController {
-    protected $photoHandler;
+    protected $imageHandler;
+    protected $albums;
+    protected $photos;
 
-    public function __construct(PhotoHandler $photoHandler)
+    public function __construct(
+        ImageHandler $imageHandler,
+        AlbumsRepositoryInterface $albums,
+        PhotosRepositoryInterface $photos)
     {
-        $this->photoHandler = $photoHandler;
+        $this->imageHandler = $imageHandler;
+        $this->albums = $albums;
+        $this->photos = $photos;
+
         $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
         parent::__construct();
     }
 
 	public function showAlbums()
 	{
-        $albums = Album::paginate(10);
+        $photosPerPage = Config::get('photos.photos_per_page');
+        $albums = $this->albums->paginate($photosPerPage);
 
 		$this->layout->content = View::make('gallery.albums.index')->with('albums', $albums);
 	}
 
-    public function showPhotos($albumSlug)
+    public function showPhotos($slug)
     {
-        $album = Album::where('slug', '=', $albumSlug)->first();
-        $photos = Photo::where('album_id', '=', $album->id)->paginate(10);
-        //$photos->setBaseUrl('custom/url');
+        $album = $this->albums->bySlug($slug);
+        // Get the album's photos
+        $photosPerPage = Config::get('photos.photos_per_page');
+        $photos = $this->photos->byAlbumIdAndPaginate($album->id, $photosPerPage);
 
         $this->layout->content = View::make('gallery.albums.show')
-            ->with('album', $album)
-            ->with('photos', $photos);
+            ->withAlbum($album)
+            ->withPhotos($photos);
     }
 
 
     // ToDO:
     // Check if current user has rights to view phxoto
 
-    // Return an image object
-    public function showPhoto($photo)
+    // Show original (resized) photo
+    public function showPhoto($id)
     {
-        $photo = Photo::find($photo);
-
-        $image = $this->photoHandler->get($photo->src_path);
-        return $image->response();
+        return $this->photoResponse($id);
     }
 
-    // Return an image object
-    public function showPhotoWide($photo)
+    // Show wide photo
+    public function showPhotoWide($id)
     {
-        $photo = Photo::find($photo);
-
-        $image = $this->photoHandler->get($photo->src_path, 'wide');
-        return $image->response();
+        return $this->photoResponse($id, 'wide');
     }
 
-    // Return an image object
-    public function showPhotoSmall($photo)
+    // Show small photo
+    public function showPhotoSmall($id)
     {
-        $photo = Photo::find($photo);
-
-        $image = $this->photoHandler->get($photo->src_path, 'small');
-        return $image->response();
+        return $this->photoResponse($id, 'small');
     }
 
+    /**
+    *
+    *   Returns an image response
+    *
+    *   @param int $id
+    *   @param string $type ('', 'small', or 'wide')
+    */
+    private function photoResponse($id, $type = '')
+    {
+        $photo = $this->photos->byId($id);
+
+        $image = $this->imageHandler->get($photo->src_path, $type);
+        return $image->response();
+    }
 }

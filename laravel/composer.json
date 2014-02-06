@@ -19,8 +19,8 @@
 			"app/database/seeds",
 			"app/tests/TestCase.php"
 		],
-		"psr-0": {
-			"GSVnet": "app/"
+		"psr-4": {
+			"GSVnet\\": "app/GSVnet/"
 		}
 	},
 	"scripts": {
