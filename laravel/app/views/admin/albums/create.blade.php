@@ -7,7 +7,6 @@
         Former::vertical_open()
             ->action(action('Admin\AlbumController@store'))
             ->method('POST')
-            ->rules(Model\Album::$rules)
             ->class('panel-body add-form')
     }}
 

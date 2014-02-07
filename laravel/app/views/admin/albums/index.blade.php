@@ -43,17 +43,3 @@
 	{{ $albums->links() }}
 
 @stop
-
-@section('javascripts')
-	@parent
-
-	<script>
-        $(document).ready(function() {
-            $('.add-item').on('click', function () {
-                $('.add-form').toggle('fast');
-            });
-            // Hide success message after 2.5 seconds
-            $('.alert.alert-success').delay(2500).slideUp(500);
-        });
-    </script>
-@stop

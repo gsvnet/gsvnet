@@ -4,7 +4,6 @@
     {{
         Former::vertical_open()
             ->action(action('Admin\AlbumController@update', $album->id))
-            ->rules(Model\Album::$rules)
             ->method('PUT')
     }}
         {{ Former::populate( $album ) }}

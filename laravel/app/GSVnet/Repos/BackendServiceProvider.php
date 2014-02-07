@@ -10,6 +10,10 @@ class BackendServiceProvider extends ServiceProvider {
     public function register()
     {
         $this->app->bind(
+            'GSVnet\Repos\AlbumsRepositoryInterface',
+            'GSVnet\Repos\DbAlbumsRepository'
+        );
+        $this->app->bind(
             'GSVnet\Repos\PhotosRepositoryInterface',
             'GSVnet\Repos\DbPhotosRepository'
         );

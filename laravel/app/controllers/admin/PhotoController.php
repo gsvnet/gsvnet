@@ -1,121 +1,98 @@
 <?php namespace Admin;
 
-use View;
-use Model\Photo;
-use Model\Album;
-use Input;
-use Validator;
-use Str;
-use Redirect;
-use File;
-use GSVnet\Services\PhotoHandler;
+use View, Input, Redirect;
+
+use GSVnet\Services\PhotoManager;
+use GSVnet\Repos\PhotosRepositoryInterface;
+
+use GSVnet\Validators\ValidationException;
+use GSVnet\Exceptions\PhotoStorageException;
 
 class PhotoController extends BaseController {
 
-    protected $photoHandler;
+    protected $photos;
+    protected $manager;
 
-    public function __construct(PhotoHandler $photoHandler)
+    public function __construct(
+        PhotosRepositoryInterface $photos,
+        PhotoManager $manager)
     {
-        $this->photoHandler = $photoHandler;
+        $this->photos = $photos;
+        $this->manager = $manager;
+
+        $this->beforeFilter('maxUploadSize', ['only' => array('store', 'update')]);
         $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
         parent::__construct();
-    }
-
-    public function index($id)
-    {
-        $album = Album::find($id);
-        $photos = Photo::where('album_id', '=', $id)->paginate(10);
-
-        $this->layout->content = View::make('admin.albums.show')
-            ->with('album', $album)
-            ->with('photos', $photos);
     }
 
     public function store($album_id)
     {
         $input = Input::all();
         $input['album_id'] = $album_id;
-        $file = $input['photo'] = Input::file('photo');
+        $input['photo'] = Input::file('photo');
 
-        // Validate photo name, album id and file type
-        $validation = Validator::make($input, array_add(Photo::$rules, 'photo', 'required|image'));
+        try {
+            $photo = $this->manager->create($input);
 
-        if ($validation->passes())
-        {
-            $photo = new Photo();
-            $photo->name     = Input::has('name') ? Input::get('name') : $file->getClientOriginalName();
-            $photo->album_id = $input['album_id'];
-            // Let the photo handler store our photo file
-            $photo->src_path = $this->photoHandler->make($file, "/uploads/photos/album-" . $photo->album_id . "/");
-
-            $photo->save();
-
+            $message = '<strong>' . $photo->name . '</strong> is succesvol opgeslagen.';
             return Redirect::action('Admin\AlbumController@show', $album_id)
-                ->with('message', '<strong>' . $photo->name . '</strong> is succesvol opgeslagen.')
-                ->with('changedID', $photo->id);
+                ->withMessage($message);
         }
-
-        return Redirect::back()->withInput()->withErrors($validation);
+        catch (ValidationException $e)
+        {
+            return Redirect::action('Admin\AlbumController@show', $album_id)
+                ->withInput()
+                ->withErrors($e->getErrors());
+        }
+        catch (PhotoStorageException $e)
+        {
+            return Redirect::action('Admin\AlbumController@show', $album_id)
+                ->withInput()
+                ->withErrors("Er ging iets mis tijdens het uploaden, probeer het opnieuw. (misschien is het geuploade bestand te groot?)");
+        }
     }
 
     public function show($album_id, $id)
     {
-        $photo = Photo::find($id);
+        $photo = $this->photos->byId($id);
 
         $this->layout->content = View::make('admin.photos.show')->withPhoto($photo);
     }
 
     public function update($album_id, $id)
     {
-        $photo = Photo::find($id);
         $input = Input::all();
-
         $input['album_id'] = $album_id;
-        $rules = Photo::$rules;
+        $input['photo'] = Input::file('photo');
 
-        // To do : use $v->sometimes()
-        if (Input::hasFile('photo'))
-        {
-            $file = $input['photo'] = Input::file('photo');
-            $rules = array_add(Photo::$rules, 'photo', 'image');
+        try {
+            $photo = $this->manager->update($id, $input);
+
+            $message = '<strong>' . $photo->name . '</strong> is succesvol opgeslagen.';
+            return Redirect::action('Admin\AlbumController@show', $album_id)
+                ->withMessage($message);
         }
-
-        // Validate photo name, album id and file type
-        $validation = Validator::make($input, $rules);
-
-        if ($validation->passes())
+        catch (ValidationException $e)
         {
-            $photo->name = Input::get('name');
-
-            if (isset($file))
-            {
-                $this->photoHandler->destroy($photo->src_path);
-                $photo->src_path = $this->photoHandler->make($file, "/uploads/photos/album-" . $photo->album_id . "/");
-            }
-
-            $photo->save();
-
-            return Redirect::action('Admin\AlbumController@show', $photo->album_id)
-                ->with('message', '<strong>' . $photo->name . '</strong> is succesvol bewerkt.')
-                ->with('changedID', $id);
+            return Redirect::action('Admin\AlbumController@show', $album_id)
+                ->withInput()
+                ->withErrors($e->getErrors());
         }
-
-        return Redirect::back()
-            ->withInput()
-            ->withErrors($validation);
-
+        catch (PhotoStorageException $e)
+        {
+            return Redirect::action('Admin\AlbumController@show', $album_id)
+                ->withInput()
+                ->withErrors("Er ging iets mis tijdens het uploaden, probeer het opnieuw. (misschien is het geuploade bestand te groot?)");
+        }
     }
 
     public function destroy($album_id, $id)
     {
-        $photo = Photo::find($id);
-        // Delete photo files
-        $this->photoHandler->destroy($photo->src_path);
-        // Delete photo entry
-        $photo->delete();
+        $photo = $this->manager->destroy($id);
 
-        return Redirect::action('Admin\PhotoController@index')
-            ->with('message', '<strong>' . $photo->name . '</strong> is succesvol verwijderd.');
+        $message = '<strong>' . $photo->name . '</strong> is succesvol verwijderd.';
+        return Redirect::action('Admin\AlbumController@show', $album_id)
+            ->withMessage($message);
     }
 
 }

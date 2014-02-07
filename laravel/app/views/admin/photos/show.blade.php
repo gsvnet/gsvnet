@@ -1,4 +1,16 @@
 @section('content')
+{{
+        Former::inline_open()
+          ->action(action('Admin\PhotoController@destroy', [$photo->album_id, $photo->id]))
+          ->method('DELETE')
+    }}
+        <button type='submit' class='btn btn-danger'>
+            <i class="glyphicon glyphicon-trash"></i> Verwijderen
+        </button>
+
+    {{
+        Former::close();
+    }}
     <!-- <a href="{{ URL::action('Admin\AlbumController@index') }}">Terug naar albums</a> -->
     <div class="page-header">
         <h1>{{{ $photo->name }}} <small>uit <a href="{{ URL::action('Admin\AlbumController@show', $photo->album_id) }}" alt="Bewerk {{{ $photo->album->name }}}">{{{ $photo->album->name }}}</a></small></h1>
@@ -66,6 +78,11 @@
             });
             // Hide success message after 2.5 seconds
             $('.alert.alert-success').delay(2500).slideUp(500);
+
+            $('.btn-danger').click( function() {
+                return confirm('Zeker weten?');
+            });
         });
+
     </script>
 @stop

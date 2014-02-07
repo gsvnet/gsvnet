@@ -6,7 +6,7 @@ use GSVnet\Services\ImageHandler;
 class Photo extends \Eloquent {
     // Define the dimensions of small and wide photos
 
-	protected $fillable = array('name');
+	protected $fillable = array('name', 'src_path');
     protected $imageHandler;
 
     public static $rules = array(

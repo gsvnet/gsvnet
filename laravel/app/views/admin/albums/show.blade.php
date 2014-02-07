@@ -74,13 +74,4 @@
     @parent
     <script src="/javascripts/magnific-popup-0.9.4.js"></script>
     <script src="/javascripts/fotos.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.add-item').on('click', function () {
-                $('.add-form').toggle('fast');
-            });
-            // Hide success message after 2.5 seconds
-            $('.alert.alert-success').delay(2500).slideUp(500);
-        });
-    </script>
 @stop

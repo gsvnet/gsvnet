@@ -56,7 +56,7 @@ class ImageHandler
     // ToDo: only dependent on the photo his location, not the model
     public function destroy($path)
     {
-        $ext     = File::extension($this->basePath . $path);
+        $ext  = File::extension($this->basePath . $path);
         $path = $this->basePath . str_replace('.' . $ext, '', $path);
 
         // Delete old photo files

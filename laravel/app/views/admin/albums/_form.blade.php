@@ -1,2 +1,2 @@
-<div>{{ Former::text('name')->required()->autofocus() }}</div>
-<div>{{ Former::textarea('description')->required() }}</div>
+<div>{{ Former::text('name')->autofocus() }}</div>
+<div>{{ Former::textarea('description') }}</div>
