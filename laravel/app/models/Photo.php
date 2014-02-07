@@ -1,9 +1,7 @@
 <?php namespace Model;
 
-use File;
-use Image;
-use GSVnet\Services\ImageHandler;
 use URL;
+use GSVnet\Services\ImageHandler;
 
 class Photo extends \Eloquent {
     // Define the dimensions of small and wide photos
