@@ -16,7 +16,7 @@
     <h2>Foto's</h2>
     <section class='create-album panel panel-default panel-info'>
         <div class="panel-heading add-item">
-            <h4 class="panel-title">Foto toevoegen <span class="caret"></span></h4>
+            <h4 class="panel-title"><i class="fa fa-plus"></i> Foto toevoegen <span class="caret"></span></h4>
         </div>
 
         {{

@@ -37,7 +37,7 @@
 
     <div class="panel panel-default" id='edit'>
         <div class="panel-heading add-item">
-            <h4 class="panel-title">Foto bewerken <span class="caret"></span></h4>
+            <h4 class="panel-title"><i class="fa fa-pencil"></i> Foto bewerken <span class="caret"></span></h4>
         </div>
         {{
             Former::open_vertical_for_files()

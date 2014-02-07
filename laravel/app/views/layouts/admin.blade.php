@@ -20,6 +20,11 @@
 
       <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.0/journal/bootstrap.min.css"> -->
       <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.0/yeti/bootstrap.min.css">
+      <style>
+      body {
+        font-size: 150%;
+      }
+      </style>
 
     @show
   </head>

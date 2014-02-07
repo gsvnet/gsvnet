@@ -5,7 +5,7 @@
 
     <section class='create-file panel panel-default'>
         <div class="panel-heading add-item">
-            <h4 class="panel-title">{{{ $file->name }}} bewerken<span class="caret"></span></h4>
+            <h4 class="panel-title"><i class="fa fa-pencil"></i> {{{ $file->name }}} bewerken<span class="caret"></span></h4>
         </div>
 
         {{
