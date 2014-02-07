@@ -7,7 +7,6 @@
         Former::open_vertical_for_files()
             ->action(action('Admin\FilesController@store'))
             ->method('POST')
-            ->rules(Model\File::$rules)
             ->class('panel-body add-form')
     }}
 

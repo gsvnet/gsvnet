@@ -18,7 +18,7 @@ class FileHandler
     * @file file from Input::file()
     * @path string the location
     */
-    public function make($file, $file)
+    public function make($file, $path = '/uploads/files/')
     {
         // Create a unique filename
         $filename = time() . '-' . $file->getClientOriginalName();
@@ -37,8 +37,6 @@ class FileHandler
     public function getPath($path)
     {
         return $path = $this->basePath . $path;
-
-        // return File::get($path);
     }
 
     /**
@@ -52,10 +50,11 @@ class FileHandler
         $this->make($file, $path);
     }
 
-    // ToDo: only dependent on the photo his location, not the model
+    /**
+    *   Deletes the file
+    */
     public function destroy($path)
     {
-        // Delete old photo files
         if (File::exists($this->basePath . $path))
             File::delete($this->basePath . $path);
     }

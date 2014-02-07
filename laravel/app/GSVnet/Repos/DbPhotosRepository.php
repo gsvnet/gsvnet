@@ -63,7 +63,6 @@ class DbPhotosRepository implements PhotosRepositoryInterface
     * Delete photo
     *
     * @param int $id
-    * @param array $input
     * @return Photo
     */
     public function delete($id)

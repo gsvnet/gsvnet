@@ -1,9 +1,8 @@
 <?php namespace Model;
 
 class Label extends \Eloquent {
-	protected $guarded = array();
-
-	public static $rules = array();
+    protected $fillable = ['name'];
+    public $timestamps = false;
 
     public function files()
     {

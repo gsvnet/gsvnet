@@ -3,7 +3,8 @@
 use GSVnet\Services\FileHandler;
 
 class File extends \Eloquent {
-	protected $guarded = array();
+	protected $fillable = array('name', 'file_path');
+
 	public static $rules = array(
         'name' => 'required'
     );

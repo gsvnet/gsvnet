@@ -13,9 +13,20 @@ class BackendServiceProvider extends ServiceProvider {
             'GSVnet\Repos\AlbumsRepositoryInterface',
             'GSVnet\Repos\DbAlbumsRepository'
         );
+
         $this->app->bind(
             'GSVnet\Repos\PhotosRepositoryInterface',
             'GSVnet\Repos\DbPhotosRepository'
+        );
+
+        $this->app->bind(
+            'GSVnet\Repos\FilesRepositoryInterface',
+            'GSVnet\Repos\DbFilesRepository'
+        );
+
+        $this->app->bind(
+            'GSVnet\Repos\LabelsRepositoryInterface',
+            'GSVnet\Repos\DbLabelsRepository'
         );
     }
 

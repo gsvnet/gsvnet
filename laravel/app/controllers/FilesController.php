@@ -1,14 +1,24 @@
 <?php
 
+use GSVnet\Repos\FilesRepositoryInterface;
+use GSVnet\Repos\LabelsRepositoryInterface;
 use GSVnet\Services\FileHandler;
 
 class FilesController extends BaseController {
 
 	protected $fileHandler;
+	protected $files;
+	protected $labels;
 
-    public function __construct(FileHandler $fileHandler)
+    public function __construct(
+    	FileHandler $fileHandler,
+    	FilesRepositoryInterface $files,
+    	LabelsRepositoryInterface $labels)
     {
         $this->fileHandler = $fileHandler;
+        $this->files = $files;
+        $this->labels = $labels;
+
         parent::__construct();
     }
 
@@ -19,27 +29,12 @@ class FilesController extends BaseController {
 	 */
 	public function index()
 	{
-		$input = Input::all();
 		// Select all files which belong to (all of) the selected labels
-		if (Input::has('labels'))
-		{
-			$selected_labels = Input::get('labels');
-			$count = count($selected_labels);
+		$selectedLabels = Input::get('labels');
+		$filesPerPage = 10;
+		$files = $this->files->paginateWhereLabels($filesPerPage, $selectedLabels);
 
-			$file_ids = DB::table('file_label')
-				->whereIn('label_id', $selected_labels)
-				->groupBy('file_id')
-				->havingRaw('count(*) = ' . $count)
-				->lists('file_id');
-
-			$files = \Model\File::whereIn('id', $file_ids)->paginate(10);
-		}
-		else
-		{
-			$files = \Model\File::paginate(10);
-		}
-
-		$labels = \Model\Label::all();
+		$labels = $this->labels->all();
 
         $this->layout->content =  View::make('files.index')
         	->withFiles($files)
@@ -54,18 +49,10 @@ class FilesController extends BaseController {
 	 */
 	public function show($id)
 	{
-		return $this->download($id);
-		// $file = \Model\File::find($id);
+		$file = $this->files->byId($id);
 
-		// return Response::download($file->file);
-	}
+		$path = $this->fileHandler->getPath($file->file_path);
 
-	public function download($id)
-	{
-		$file = \Model\File::find($id);
-
-		$file = $this->fileHandler->getPath($file->file_path);
-
-		return Response::download($file);
+		return Response::download($path, $file->name);
 	}
 }

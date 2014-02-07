@@ -3,7 +3,6 @@
     	<h1>GSVdocs</h1>
     </div>
 
-
 	@include('admin.files.create')
 
 	<h2>Bestanden</h2>
@@ -21,7 +20,7 @@
 			<tr>
 				<td>
                     <a href="{{ URL::action('Admin\FilesController@edit', $file->id) }}" alt="{{ $file->name }}">
-					   {{{ $file->name }}}
+					   {{{ $file->name }}} <i class="fa fa-pencil"></i>
                     </a>
                 </td>
                 <td>
@@ -39,29 +38,5 @@
 	</table>
 
 	{{ $files->links() }}
-
-@stop
-
-@section('javascripts')
-	@parent
-    <script src="/packages/frozennode/administrator/js/jquery/select2/select2.js"></script>
-    <script>
-        $(document).ready(function() {
-            $("#e12").select2({
-                tags: {{ $labels }}
-            });
-
-            $('.add-item').on('click', function () {
-                $('.add-form').toggle('fast');
-            });
-            // Hide success message after 2.5 seconds
-            $('.alert.alert-success').delay(2500).slideUp(500);
-        });
-    </script>
-@stop
-
-@section('stylesheets')
-    @parent
-    <link rel="stylesheet" href="/packages/frozennode/administrator/js/jquery/select2/select2.css">
 
 @stop

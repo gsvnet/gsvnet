@@ -21,7 +21,8 @@ Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
     Route::get('profiel', 'UserController@showProfile');
     Route::get('profiel/edit', 'UserController@editProfile');
     // GSVdocs
-    Route::resource('bestanden', 'FilesController');
+    Route::get('bestanden', 'FilesController@index');
+    Route::get('bestanden/{id}', 'FilesController@show');
     // Only logged in users can view the member list if they have permission
     Route::group(array('prefix' => 'jaarbundel', 'before' => 'can:viewMemberlist'), function() {
         Route::get('/', 'UserController@showUsers');
@@ -84,6 +85,8 @@ Route::group(array('prefix' => 'markadmin'), function() {
     Route::resource('files', 'Admin\FilesController');
 });
 
+
+// Dit is best wel lelijk en moet eigenlijk in een service provider oid
 App::missing(function($exception) {
     $data = array(
         'title' => 'Pagina niet gevonden - GSVnet',

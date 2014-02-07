@@ -1,8 +1,8 @@
 <?php namespace GSVnet\Repos;
 
-interface AlbumsRepositoryInterface
+interface FilesRepositoryInterface
 {
-     /**
+    /**
     * Get all albums
     *
     * @return Collection
@@ -17,13 +17,19 @@ interface AlbumsRepositoryInterface
     public function paginate($amount);
 
     /**
+    *   Get all files belonging to selected labels
+    *
+    *   @param
+    */
+    public function paginateWhereLabels($amount, $labels);
+
+    /**
      * Get by slug
      *
      * @param int $id
      * @return Album
      */
     public function byId($id);
-
     /**
     * Create file
     *
