@@ -90,12 +90,14 @@ class DbAlbumsRepository implements AlbumsRepositoryInterface
     */
     public function create(array $input)
     {
-        $album = new Album();
-        $album->name = $input['name'];
+        $album              = new Album();
+        $album->name        = $input['name'];
         $album->description = $input['description'];
-        $album->slug = $this->createSlug($album->name);
+        $album->slug        = $this->createSlug($album->name);
 
         $album->save();
+
+        return $album;
     }
 
     /**
@@ -107,11 +109,11 @@ class DbAlbumsRepository implements AlbumsRepositoryInterface
     */
     public function update($id, array $input)
     {
-        $album = $this->byId($id);
+        $album              = $this->byId($id);
 
-        $album->name = $input['name'];
+        $album->name        = $input['name'];
         $album->description = $input['description'];
-        $album->slug = $album->id . '-' . Str::slug($album->name);
+        $album->slug        = $this->createSlug($album->name);
 
         $album->save();
 
@@ -124,11 +126,14 @@ class DbAlbumsRepository implements AlbumsRepositoryInterface
     * @param int $id
     * @param array $input
     * @return Album
+    * @TODO: delete all photos
     */
     public function delete($id)
     {
         $album = $this->byId($id);
         $album->delete();
+
+        // App::make('PhotoManager')->deleteAlbumPhotos($id)
 
         return $album;
     }

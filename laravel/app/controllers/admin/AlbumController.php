@@ -1,24 +1,36 @@
 <?php namespace Admin;
 
-use View;
-use Model\Album;
-use Model\Photo;
-use Input;
-use Validator;
-use Str;
-use Redirect;
+use View, Input, Redirect;
+
+use GSVnet\Services\ImageHandler;
+use GSVnet\Repos\AlbumsRepositoryInterface;
+use GSVnet\Repos\PhotosRepositoryInterface;
+
+use GSVnet\Validators\AlbumValidator;
+use GSVnet\Validators\ValidationException;
 
 class AlbumController extends BaseController {
 
-    public function __construct()
+    protected $albums;
+    protected $photos;
+    protected $validator;
+
+    public function __construct(
+        AlbumsRepositoryInterface $albums,
+        PhotosRepositoryInterface $photos,
+        AlbumValidator $validator)
     {
+        $this->albums = $albums;
+        $this->photos = $photos;
+        $this->validator = $validator;
+
         $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
         parent::__construct();
     }
 
     public function index()
     {
-        $albums = Album::paginate(10);
+        $albums = $this->albums->paginate(10);
 
         $this->layout->content = View::make('admin.albums.index')->with('albums', $albums);
     }
@@ -27,41 +39,38 @@ class AlbumController extends BaseController {
     {
         $input = Input::all();
 
-        $validation = Validator::make($input, Album::$rules);
-
-        if ($validation->passes())
+        try
         {
-            $album = new Album();
-            $album->name = $input['name'];
-            $album->description = $input['description'];
-            $album->save();
+            $this->validator->validate($input);
+            $album = $this->albums->create($input);
 
-            $album->slug = $album->id . '-' . Str::slug($album->name);
-            $album->save();
-
+            $message = '<strong>' . $album->name . '</strong> is succesvol opgeslagen.';
             return Redirect::action('Admin\AlbumController@index')
-                ->with('message', '<strong>' . $album->name . '</strong> is succesvol opgeslagen.')
-                ->with('changedID', $album->id);
+                ->withMessage($message);
         }
-
-        return Redirect::back()->withInput()->withErrors($validation);
+        catch (ValidationException $e)
+        {
+            return Redirect::action('Admin\AlbumController@index')
+                ->withInput()
+                ->withErrors($e->getErrors());
+        }
     }
 
     public function show($id)
     {
-        $album = Album::find($id);
+        $album = $this->albums->byId($id);
 
-        $photos = Photo::where('album_id', '=', $album->id)->paginate(10);
+        $photosPerPage = 10;
+        $photos = $this->photos->byAlbumIdAndPaginate($id, $photosPerPage);
 
         $this->layout->content = View::make('admin.albums.show')
-            ->with('album', $album)
-            ->with('photos', $photos);
-
+            ->withAlbum($album)
+            ->withPhotos($photos);
     }
 
     public function edit($id)
     {
-        $album = Album::find($id);
+        $album = $this->albums->byId($id);
 
         $this->layout->content = View::make('admin.albums.edit')
             ->withAlbum($album);
@@ -71,33 +80,26 @@ class AlbumController extends BaseController {
     {
         $input = Input::all();
 
-
-        $validation = Validator::make($input, Album::$rules);
-
-        if ($validation->passes())
+        try
         {
-            $album = Album::findOrFail($id);
+            $this->validator->validate($input);
+            $album = $this->albums->update($id, $input);
 
-            $album->name = $input['name'];
-            $album->description = $input['description'];
-            $album->slug = $album->id . '-' . Str::slug($album->name);
-
-            $album->save();
-
-            return Redirect::action('Admin\AlbumController@index')
-                ->with('message', '<strong>' . $album->name . '</strong> is succesvol bewerkt.')
-                ->with('changedID', $id);
+            $message = '<strong>' . $album->name . '</strong> is succesvol bewerkt.';
+            return Redirect::action('Admin\AlbumController@show', $id)
+                ->withMessage($message);
         }
-
-        return Redirect::back()
-            ->withInput()
-            ->withErrors($validation);
+        catch (ValidationException $e)
+        {
+            return Redirect::action('Admin\AlbumController@edit', $id)
+                ->withInput()
+                ->withErrors($e->getErrors());
+        }
     }
 
     public function destroy($id)
     {
-        $album = Album::find($id);
-        $album->delete();
+        $album = $this->albums->delete($id);
 
         return Redirect::action('Admin\AlbumController@index')
             ->with('message', '<strong>' . $album->name . '</strong> is succesvol verwijderd.');
