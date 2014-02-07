@@ -28,7 +28,7 @@ class PhotoController extends BaseController {
 	public function showAlbums()
 	{
         $photosPerPage = Config::get('photos.photos_per_page');
-        $albums = $this->albums->paginate($photosPerPage);
+        $albums = $this->albums->paginateWithFirstPhoto($photosPerPage);
 
 		$this->layout->content = View::make('gallery.albums.index')->with('albums', $albums);
 	}

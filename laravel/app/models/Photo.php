@@ -2,14 +2,14 @@
 
 use File;
 use Image;
-use GSVnet\Services\PhotoHandler;
+use GSVnet\Services\ImageHandler;
 use URL;
 
 class Photo extends \Eloquent {
     // Define the dimensions of small and wide photos
 
 	protected $fillable = array('name');
-    protected $photoHandler;
+    protected $imageHandler;
 
     public static $rules = array(
         'album_id'    => 'required|integer',
@@ -17,7 +17,7 @@ class Photo extends \Eloquent {
 
     public function __construct()
     {
-        $this->photoHandler = new PhotoHandler;
+        $this->imageHandler = new ImageHandler;
     }
 
     // The photo's album
@@ -29,17 +29,17 @@ class Photo extends \Eloquent {
 
     public function getImageAttribute()
     {
-        return $this->photoHandler->get($this->src_path);
+        return $this->imageHandler->get($this->src_path);
     }
     // Check if /uploads/photos/{src-path}-small exists else create it, save it and return it
     public function getSmallIMageAttribute()
     {
-        return $this->photoHandler->get($this->src_path, 'small');
+        return $this->imageHandler->get($this->src_path, 'small');
     }
 
     public function getWideImageAttribute()
     {
-        return $this->photoHandler->get($this->src_path, 'wide');
+        return $this->imageHandler->get($this->src_path, 'wide');
     }
 
     // Return the path to the original image
