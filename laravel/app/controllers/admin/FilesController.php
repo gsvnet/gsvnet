@@ -11,9 +11,9 @@ use GSVnet\Exceptions\FileStorageException;
 
 class FilesController extends BaseController {
 
-    protected $fileHandler;
     protected $files;
     protected $labels;
+    protected $manager;
 
     public function __construct(
         FilesRepositoryInterface $files,
