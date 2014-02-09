@@ -28,6 +28,11 @@ class BackendServiceProvider extends ServiceProvider {
             'GSVnet\Repos\LabelsRepositoryInterface',
             'GSVnet\Repos\DbLabelsRepository'
         );
+
+        $this->app->instance('GSVnet\Permissions\UserPermissionManager', function() {
+            $user = Auth::user();
+            return new GSVnet\Permissions\UserPermissionManager($user);
+        });
     }
 
 }

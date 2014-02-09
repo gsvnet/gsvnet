@@ -9,8 +9,8 @@ class UserPermissionManager
 
     }
 
-    public function has(PermissionInterface $permission)
+    public function has($permission)
     {
-
+        return true;
     }
 }
