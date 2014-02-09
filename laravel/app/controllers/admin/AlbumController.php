@@ -2,12 +2,13 @@
 
 use View, Input, Redirect;
 
-use GSVnet\Services\ImageHandler;
-use GSVnet\Repos\AlbumsRepositoryInterface;
-use GSVnet\Repos\PhotosRepositoryInterface;
+use GSVnet\Albums\AlbumsRepositoryInterface;
+use GSVnet\Albums\AlbumValidator;
 
-use GSVnet\Validators\AlbumValidator;
-use GSVnet\Validators\ValidationException;
+use GSVnet\Albums|Photos\ImageHandler;
+use GSVnet\Albums\Photos\PhotosRepositoryInterface;
+
+use GSVnet\Core\ValidationException;
 
 class AlbumController extends BaseController {
 

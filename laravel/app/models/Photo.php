@@ -1,7 +1,7 @@
 <?php namespace Model;
 
 use URL;
-use GSVnet\Services\ImageHandler;
+use GSVnet\Albums\Photos\ImageHandler;
 
 class Photo extends \Eloquent {
     // Define the dimensions of small and wide photos
@@ -13,9 +13,9 @@ class Photo extends \Eloquent {
         'album_id'    => 'required|integer',
     );
 
-    public function __construct()
+    public function __construct(ImageHandler $imageHandler)
     {
-        $this->imageHandler = new ImageHandler;
+        $this->imageHandler = $imageHandlerw;
     }
 
     // The photo's album

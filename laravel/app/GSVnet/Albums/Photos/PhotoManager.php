@@ -1,12 +1,12 @@
-<?php namespace GSVnet\Services;
+<?php namespace GSVnet\Albums\Photos;
 
-use GSVnet\Validators\PhotoCreatorValidator;
-use GSVnet\Validators\PhotoUpdatorValidator;
+use GSVnet\Albums\Photos\PhotoCreatorValidator;
+use GSVnet\Albums\Photos\PhotoUpdatorValidator;
 
-use GSVnet\Services\ImageHandler;
-use GSVnet\Repos\PhotosRepositoryInterface;
+use GSVnet\Albums\Photos\ImageHandler;
+use GSVnet\Albums\Photos\PhotosRepositoryInterface;
 
-use GSVnet\Exceptions\PhotoStorageException;
+use GSVnet\Albums\Photos\PhotoStorageException;
 
 class PhotoManager
 {
@@ -15,10 +15,11 @@ class PhotoManager
     protected $imageHandler;
     protected $photos;
 
-    public function __construct(PhotoCreatorValidator $createValidator,
-     PhotoUpdatorValidator $updateValidator,
-     ImageHandler $imageHandler,
-     PhotosRepositoryInterface $photos)
+    public function __construct(
+        PhotoCreatorValidator $createValidator,
+        PhotoUpdatorValidator $updateValidator,
+        ImageHandler $imageHandler,
+        PhotosRepositoryInterface $photos)
     {
         $this->imageHandler = $imageHandler;
         $this->createValidator = $createValidator;

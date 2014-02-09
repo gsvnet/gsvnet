@@ -2,12 +2,13 @@
 
 use View, Input, Redirect;
 
-use GSVnet\Services\FileManager;
-use GSVnet\Repos\FilesRepositoryInterface;
-use GSVnet\Repos\LabelsRepositoryInterface;
+use GSVnet\Files\FileManager;
+use GSVnet\Files\FilesRepositoryInterface;
+use GSVnet\Files\FileStorageException;
 
-use GSVnet\Validators\ValidationException;
-use GSVnet\Exceptions\FileStorageException;
+use GSVnet\Files\Labels\LabelsRepositoryInterface;
+
+use GSVnet\Core\ValidationException;
 
 class FilesController extends BaseController {
 

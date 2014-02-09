@@ -1,12 +1,12 @@
-<?php namespace GSVnet\Services;
+<?php namespace GSVnet\Files;
 
-use GSVnet\Validators\FileCreatorValidator;
-use GSVnet\Validators\FileUpdatorValidator;
+use GSVnet\Files\FileCreatorValidator;
+use GSVnet\Files\FileUpdatorValidator;
 
-use GSVnet\Services\FileHandler;
-use GSVnet\Repos\FilesRepositoryInterface;
+use GSVnet\Files\FileHandler;
+use GSVnet\Files\FilesRepositoryInterface;
 
-use GSVnet\Exceptions\FileStorageException;
+use GSVnet\Files\FileStorageException;
 
 class FileManager
 {

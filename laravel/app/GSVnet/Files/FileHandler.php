@@ -1,4 +1,4 @@
-<?php namespace GSVnet\Services;
+<?php namespace GSVnet\Files;
 
 use File;
 

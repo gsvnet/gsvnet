@@ -139,6 +139,6 @@ Route::filter('maxUploadSize', function()
     // If content exceeds max size, throw an exception
     if ($contentSize > $maxUploadSize)
     {
-        throw new GSVnet\Exceptions\MaxUploadSizeException;
+        throw new GSVnet\Core\MaxUploadSizeException;
     }
 });

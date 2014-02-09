@@ -1,11 +1,8 @@
 <?php
 
-use Model\Album;
-use Model\Photo;
-
-use GSVnet\Services\ImageHandler;
-use GSVnet\Repos\AlbumsRepositoryInterface;
-use GSVnet\Repos\PhotosRepositoryInterface;
+use GSVnet\Albums\AlbumsRepositoryInterface;
+use GSVnet\Albums\Photos\PhotosRepositoryInterface;
+use GSVnet\Albums\Photos\ImageHandler;
 
 class PhotoController extends BaseController {
     protected $imageHandler;

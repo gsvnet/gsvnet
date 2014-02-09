@@ -1,4 +1,4 @@
-<?php namespace GSVnet\Services;
+<?php namespace GSVnet\Albums\Photos;
 /*
 / The ImageHandler class handles the storage n
 */

@@ -1,3 +1,3 @@
-<?php namespace GSVnet\Exceptions;
+<?php namespace GSVnet\Core;
 
 class MaxUploadSizeException extends \Exception {}

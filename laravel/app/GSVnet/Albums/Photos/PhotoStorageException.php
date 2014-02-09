@@ -1,3 +1,3 @@
-<?php namespace GSVnet\Exceptions;
+<?php namespace GSVnet\Albums\Photos;
 
 class PhotoStorageException extends \Exception {}

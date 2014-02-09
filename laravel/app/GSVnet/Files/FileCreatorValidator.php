@@ -1,4 +1,6 @@
-<?php namespace GSVnet\Validators;
+<?php namespace GSVnet\Files;
+
+use GSVnet\Core\Validator;
 
 class FileCreatorValidator extends Validator
 {

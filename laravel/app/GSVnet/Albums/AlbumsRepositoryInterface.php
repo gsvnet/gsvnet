@@ -1,4 +1,4 @@
-<?php namespace GSVnet\Repos;
+<?php namespace GSVnet\Albums;
 
 interface AlbumsRepositoryInterface
 {

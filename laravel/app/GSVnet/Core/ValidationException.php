@@ -1,4 +1,4 @@
-<?php namespace GSVnet\Validators;
+<?php namespace GSVnet\Core;
 
 class ValidationException extends \Exception {
 
