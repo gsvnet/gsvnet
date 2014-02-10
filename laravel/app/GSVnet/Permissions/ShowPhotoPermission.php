@@ -1,19 +1,18 @@
-<?php namespace GSVnet\Permission;
+<?php namespace GSVnet\Permissions;
 // Dit is nog een voorbeeld
 class ShowPhotoPermission implements PermissionInterface
 {
-    private $photo;
-    private $photos;
+    protected $photos;
 
-    public function __construct($id, PhotoRepositoryInterface $photos)
+    public function __construct(PhotoRepositoryInterface $photos)
     {
         $this->photos = $photos;
-        $this->photo = $this->photos->byId($id);
     }
 
-    public function check(PermissionManager $manager)
+    public function check($id, PermissionManager $manager)
     {
-        if ($photo->public) { return true }
+        $photo = $this->photos->byId($id);
+        if ($photo->public) return true;
         return $manager->has('show.photo');
     }
 }

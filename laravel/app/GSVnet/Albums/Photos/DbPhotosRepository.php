@@ -7,7 +7,7 @@ class DbPhotosRepository implements PhotosRepositoryInterface
 {
     public function getInstance()
     {
-        return new Photo(new ImageHandler);
+        return new Photo;
     }
 
     /**

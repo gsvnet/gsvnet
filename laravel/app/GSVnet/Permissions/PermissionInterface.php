@@ -1,4 +1,4 @@
-<?php namespace GSVnet\Permission;
+<?php namespace GSVnet\Permissions;
 
 interface PermissionInterface
 {

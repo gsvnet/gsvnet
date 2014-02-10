@@ -114,7 +114,7 @@ return array(
 
 
         'GSVnet\ServiceProviders\BackendServiceProvider',
-
+        'GSVnet\Albums\AlbumServiceProvider',
 	),
 
 	/*

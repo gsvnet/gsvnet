@@ -1,3 +1,3 @@
-<?php namespace GSVnet\Permission;
+<?php namespace GSVnet\Permissions;
 
 class NoPermissionException extends \Exception {}

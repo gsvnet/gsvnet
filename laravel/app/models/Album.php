@@ -46,4 +46,9 @@ class Album extends \Eloquent {
 
         return $date->diffForHumans();
     }
+
+    public function getPublicAttribute($value)
+    {
+        return $value == 1 ? true : null;
+    }
 }

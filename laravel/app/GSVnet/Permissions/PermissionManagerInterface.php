@@ -1,9 +1,7 @@
-<?php namespace GSVnet\Permission;
+<?php namespace GSVnet\Permissions;
 
-class PermissionManagerInterface
+interface PermissionManagerInterface
 {
-    // Store a collection of all current permissions
-    protected $permissions;
-
-    public function has(PermissionInterface $permission);
+    // TODO: misschien PermissionInterface gebruiken?
+    public function has($permission);
 }

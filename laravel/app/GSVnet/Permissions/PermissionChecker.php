@@ -1,4 +1,4 @@
-<?php namespace GSVnet\Permission;
+<?php namespace GSVnet\Permissions;
 
 class PermissionChecker
 {
@@ -8,7 +8,7 @@ class PermissionChecker
     *
     *   @param PermissionManager $manager
     */
-    public function __construct(PermissionManager $manager)
+    public function __construct(PermissionManagerInterface $manager)
     {
         $this->manager = $manager;
     }

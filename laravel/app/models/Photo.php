@@ -22,18 +22,18 @@ class Photo extends \Eloquent {
     // Return the path to the original image
     public function getImageURLAttribute()
     {
-        return URL::action('PhotoController@showPhoto', $this->id);
+        return URL::action('PhotoController@showPhoto', [$this->album_id, $this->id]);
     }
 
     // Return the path to the original image
     public function getWideImageURLAttribute()
     {
-        return URL::action('PhotoController@showPhotoWide', $this->id);
+        return URL::action('PhotoController@showPhotoWide', [$this->album_id, $this->id]);
     }
 
     // Return the path to the original image
     public function getSmallImageURLAttribute()
     {
-        return URL::action('PhotoController@showPhotoSmall', $this->id);
+        return URL::action('PhotoController@showPhotoSmall', [$this->album_id, $this->id]);
     }
 }

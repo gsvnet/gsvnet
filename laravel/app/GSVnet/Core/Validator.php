@@ -1,5 +1,6 @@
 <?php namespace GSVnet\Core;
 
+use GSVnet\Core\Exceptions\ValidationException;
 use Illuminate\Validation\Factory;
 
 abstract class Validator {

@@ -93,6 +93,7 @@ class DbAlbumsRepository implements AlbumsRepositoryInterface
         $album              = new Album();
         $album->name        = $input['name'];
         $album->description = $input['description'];
+        $album->public       = $input['public'];
         $album->slug        = $this->createSlug($album->name);
 
         $album->save();
@@ -113,6 +114,7 @@ class DbAlbumsRepository implements AlbumsRepositoryInterface
 
         $album->name        = $input['name'];
         $album->description = $input['description'];
+        $album->public       = $input['public'];
         $album->slug        = $this->createSlug($album->name);
 
         $album->save();

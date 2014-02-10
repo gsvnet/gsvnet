@@ -56,13 +56,15 @@ Route::post('register', 'UserController@postRegister');
 
 // Albums
 Route::get('albums', 'PhotoController@showAlbums');
-Route::get('albums/{album}', 'PhotoController@showPhotos');
+Route::get('albums/{album}', 'PhotoController@showPhotos')
+    ->before('album.show');
 
 // Get photo images
-Route::group(array('prefix' => 'photos'), function() {
-    Route::get('{photo}', 'PhotoController@showPhoto');
-    Route::get('{photo}/wide', 'PhotoController@showPhotoWide');
-    Route::get('{photo}/small', 'PhotoController@showPhotoSmall');
+// TODO: verander alle referenties naar dez route.
+Route::group(array('prefix' => 'albums/{album}/photo/{photo}'), function() {
+    Route::get('/', 'PhotoController@showPhoto');
+    Route::get('/wide', 'PhotoController@showPhotoWide');
+    Route::get('/small', 'PhotoController@showPhotoSmall');
 });
 
 // Events
@@ -83,27 +85,4 @@ Route::group(array('prefix' => 'markadmin'), function() {
         ['except' => ['index', 'create']]);
 
     Route::resource('files', 'Admin\FilesController');
-});
-
-
-// Dit is best wel lelijk en moet eigenlijk in een service provider oid
-App::missing(function($exception) {
-    $data = array(
-        'title' => 'Pagina niet gevonden - GSVnet',
-        'description' => '',
-        'keywords' => ''
-    );
-
-    return Response::view('errors.missing', $data, 404);
-});
-
-App::error(function(GSVnet\Core\Exceptions\MaxUploadSizeException $exception)
-{
-    $message = 'Het bestand dat je hebt geprobeerd te uploaden is te groot.';
-    return Redirect::back()->withInput()->withErrors($message);
-});
-
-App::error(function(Symfony\Component\HttpFoundation\File\Exception\FileException $e) {
-   $message = 'Het bestand dat je hebt geprobeerd te uploaden is te groot.';
-    return Redirect::back()->withInput()->withErrors($message);
 });

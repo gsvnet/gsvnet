@@ -19,6 +19,17 @@ class PhotoController extends BaseController {
         $this->photos = $photos;
 
         $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
+
+        // TODO: set up filtering
+        // $this->beforeFilter('showAlbumFilter', ['only' => ['showPhotos','showPhoto', 'showPhotoWide', 'showPhotoSmall']]);
+
+
+
+        // $this->beforeFilter('@filterPhotoPermission', ['only' => ['showPhoto', 'showPhotoWide', 'showPhotoSmall']]);
+        // $this->beforeFilter(function($hoi, $a) {
+        //     dd($hoi);
+        //     dd('He dit mag niet!');
+        // }, ['only' => ['showPhoto', 'showPhotoWide', 'showPhotoSmall']]);
         parent::__construct();
     }
 
@@ -47,19 +58,19 @@ class PhotoController extends BaseController {
     // Check if current user has rights to view phxoto
 
     // Show original (resized) photo
-    public function showPhoto($id)
+    public function showPhoto($album_id, $id)
     {
         return $this->photoResponse($id);
     }
 
     // Show wide photo
-    public function showPhotoWide($id)
+    public function showPhotoWide($album_id, $id)
     {
         return $this->photoResponse($id, 'wide');
     }
 
     // Show small photo
-    public function showPhotoSmall($id)
+    public function showPhotoSmall($album_id, $id)
     {
         return $this->photoResponse($id, 'small');
     }
@@ -74,7 +85,6 @@ class PhotoController extends BaseController {
     private function photoResponse($id, $type = '')
     {
         $photo = $this->photos->byId($id);
-
         $image = $this->imageHandler->get($photo->src_path, $type);
         return $image->response();
     }

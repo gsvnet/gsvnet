@@ -1,6 +1,6 @@
-<?php namespace GSVnet\Permission;
+<?php namespace GSVnet\Permissions;
 
-class UserPermissionManager
+class UserPermissionManager implements PermissionManagerInterface
 {
     protected $user;
 
