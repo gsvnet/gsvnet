@@ -13,7 +13,7 @@ class AddPublicPropertyToAlbums extends Migration {
 	public function up()
 	{
 		Schema::table('albums', function(Blueprint $table) {
-			$table->boolean('public')->default(true);
+			$table->boolean('public')->default(false);
 		});
 	}
 
