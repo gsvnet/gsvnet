@@ -5,10 +5,10 @@ use View, Input, Redirect;
 use GSVnet\Albums\AlbumsRepositoryInterface;
 use GSVnet\Albums\AlbumValidator;
 
-use GSVnet\Albums|Photos\ImageHandler;
+use GSVnet\Albums\Photos\ImageHandler;
 use GSVnet\Albums\Photos\PhotosRepositoryInterface;
 
-use GSVnet\Core\ValidationException;
+use GSVnet\Core\Exceptions\ValidationException;
 
 class AlbumController extends BaseController {
 

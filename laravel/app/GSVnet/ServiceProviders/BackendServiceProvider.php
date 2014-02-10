@@ -1,4 +1,4 @@
-<?php namespace GSVnet\Repos;
+<?php namespace GSVnet\ServiceProviders;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -10,23 +10,23 @@ class BackendServiceProvider extends ServiceProvider {
     public function register()
     {
         $this->app->bind(
-            'GSVnet\Repos\AlbumsRepositoryInterface',
-            'GSVnet\Repos\DbAlbumsRepository'
+            'GSVnet\Albums\AlbumsRepositoryInterface',
+            'GSVnet\Albums\DbAlbumsRepository'
         );
 
         $this->app->bind(
-            'GSVnet\Repos\PhotosRepositoryInterface',
-            'GSVnet\Repos\DbPhotosRepository'
+            'GSVnet\Albums\Photos\PhotosRepositoryInterface',
+            'GSVnet\Albums\Photos\DbPhotosRepository'
         );
 
         $this->app->bind(
-            'GSVnet\Repos\FilesRepositoryInterface',
-            'GSVnet\Repos\DbFilesRepository'
+            'GSVnet\Files\FilesRepositoryInterface',
+            'GSVnet\Files\DbFilesRepository'
         );
 
         $this->app->bind(
-            'GSVnet\Repos\LabelsRepositoryInterface',
-            'GSVnet\Repos\DbLabelsRepository'
+            'GSVnet\Files\Labels\LabelsRepositoryInterface',
+            'GSVnet\Files\Labels\DbLabelsRepository'
         );
 
         $this->app->instance('GSVnet\Permissions\UserPermissionManager', function() {

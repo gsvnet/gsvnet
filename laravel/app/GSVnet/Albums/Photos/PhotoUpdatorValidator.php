@@ -1,5 +1,7 @@
 <?php namespace GSVnet\Albums\Photos;
 
+use GSVnet\Core\Validator;
+
 class PhotoUpdatorValidator extends Validator
 {
     static $rules = [

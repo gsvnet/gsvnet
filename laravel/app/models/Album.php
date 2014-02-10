@@ -16,16 +16,16 @@ class Album extends \Eloquent {
         return $this->hasMany('Model\Photo');
     }
 
-    public function getSmallImageAttribute()
+    public function getSmallImageURLAttribute()
     {
         $photo = $this->photos->first();
-        return $photo->small_image;
+        return $photo->small_image_url;
     }
 
-    public function getWideImageAttribute()
+    public function getWideImageURLAttribute()
     {
         $photo = $this->photos->first();
-        return $photo->wide_image;
+        return $photo->wide_image_url;
     }
 
     public function getShowURLAttribute()
@@ -36,21 +36,8 @@ class Album extends \Eloquent {
     // Return the path to the original image
     public function getImageURLAttribute()
     {
+        $photo = $this->photos->first();
         return URL::action('PhotoController@showPhotos', $this->slug);
-    }
-
-    // Return the path to the original image
-    public function getWideImageURLAttribute()
-    {
-        $photo = $this->photos->first();
-        return URL::action('PhotoController@showPhotoWide', $photo->id);
-    }
-
-    // Return the path to the original image
-    public function getSmallImageURLAttribute()
-    {
-        $photo = $this->photos->first();
-        return URL::action('PhotoController@showPhotoSmall', $photo->id);
     }
 
     public function getUpdatedAtAttribute($updatedAt)

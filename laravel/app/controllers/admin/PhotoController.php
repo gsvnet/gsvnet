@@ -5,7 +5,7 @@ use View, Input, Redirect;
 use GSVnet\Albums\Photos\PhotoManager;
 use GSVnet\Albums\Photos\PhotosRepositoryInterface;
 
-use GSVnet\Core\ValidationException;
+use GSVnet\Core\Exceptions\ValidationException;
 use GSVnet\Albums\Photos\PhotoStorageException;
 
 class PhotoController extends BaseController {

@@ -97,7 +97,7 @@ App::missing(function($exception) {
     return Response::view('errors.missing', $data, 404);
 });
 
-App::error(function(GSVnet\Core\MaxUploadSizeException $exception)
+App::error(function(GSVnet\Core\Exceptions\MaxUploadSizeException $exception)
 {
     $message = 'Het bestand dat je hebt geprobeerd te uploaden is te groot.';
     return Redirect::back()->withInput()->withErrors($message);

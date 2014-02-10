@@ -8,7 +8,7 @@ use GSVnet\Files\FileStorageException;
 
 use GSVnet\Files\Labels\LabelsRepositoryInterface;
 
-use GSVnet\Core\ValidationException;
+use GSVnet\Core\Exceptions\ValidationException;
 
 class FilesController extends BaseController {
 

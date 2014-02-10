@@ -111,7 +111,9 @@ return array(
 		'Former\FormerServiceProvider',
 		'Frozennode\Administrator\AdministratorServiceProvider',
         'Intervention\Image\ImageServiceProvider',
-        'GSVnet\Repos\BackendServiceProvider'
+
+
+        'GSVnet\ServiceProviders\BackendServiceProvider',
 
 	),
 

@@ -1,9 +1,15 @@
 <?php namespace GSVnet\Albums\Photos;
 
 use Model\Photo;
+use GSVnet\Albums\Photos\ImageHandler;
 
 class DbPhotosRepository implements PhotosRepositoryInterface
 {
+    public function getInstance()
+    {
+        return new Photo(new ImageHandler);
+    }
+
     /**
      * Get by id
      *
@@ -35,7 +41,7 @@ class DbPhotosRepository implements PhotosRepositoryInterface
     */
     public function create(array $input)
     {
-        $photo = new Photo;
+        $photo = $this->getInstance();
         $photo->name = $input['name'];
         $photo->album_id = $input['album_id'];
         $photo->src_path = $input['src_path'];
