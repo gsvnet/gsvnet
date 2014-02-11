@@ -183,7 +183,9 @@ return array(
         'View'            => 'Illuminate\Support\Facades\View',
 
         'Former'          => 'Former\Facades\Former',
-        'Image' => 'Intervention\Image\Facades\Image'
+        'Image'           => 'Intervention\Image\Facades\Image',
+
+        'Permission'      => 'GSVnet\Permissions\Permission'
 
 	),
 
