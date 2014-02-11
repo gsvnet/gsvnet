@@ -6,8 +6,6 @@
         <div id="preview-image">
         </div>
 
-        <fieldset>
-            <legend>Over jou</legend>
             {{
                 Former::file('potential-image')->label('Upload een foto van jezelf')->accept('image')
             }}
@@ -92,7 +90,10 @@
             {{
                 Former::text('potential-study-year')->label('Jaar waarin je begon of begint met studeren')
             }}
-        </fieldset>
+
+            {{
+                Former::stacked_radios('foo')->radios('ja', 'nee')->label('Is dit ook het adres van je moeder?')
+            }}
 
         <fieldset>
             <legend>Over je moeder</legend>

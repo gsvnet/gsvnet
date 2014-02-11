@@ -14,16 +14,22 @@ class UserController extends BaseController {
 
 
     /**
-     * Show current and former members
+     * Show current members
      */
     public function showUsers()
     {
-        $memberlist = Model\User::whereIn('type', array(3,4))
+        $member = Config::get('gsvnet.userTypes.member');
+        //$formerMember = Config::get('gsvnet.userTypes.formerMember');
+        $memberlist = Model\User::where('type', '=', $member)
                                 ->with('profile.yearGroup')
                                 ->orderBy('lastname')
-                                ->paginate(10);
+                                ->paginate(200);
+
+        $yearGroups = Model\YearGroup::orderBy('year', 'DESC')->get();
+
         $this->layout->content = View::make('users.index')
-            ->with('members', $memberlist);
+            ->with('members', $memberlist)
+            ->with('yearGroups', $yearGroups);
     }
 
     public function showUser($id)
