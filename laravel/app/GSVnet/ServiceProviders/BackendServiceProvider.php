@@ -11,26 +11,6 @@ class BackendServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        // $this->app->bind(
-        //     'GSVnet\Albums\AlbumsRepositoryInterface',
-        //     'GSVnet\Albums\DbAlbumsRepository'
-        // );
-
-        // $this->app->bind(
-        //     'GSVnet\Albums\Photos\PhotosRepositoryInterface',
-        //     'GSVnet\Albums\Photos\DbPhotosRepository'
-        // );
-
-        $this->app->bind(
-            'GSVnet\Files\FilesRepositoryInterface',
-            'GSVnet\Files\DbFilesRepository'
-        );
-
-        $this->app->bind(
-            'GSVnet\Files\Labels\LabelsRepositoryInterface',
-            'GSVnet\Files\Labels\DbLabelsRepository'
-        );
-
         // Permission services
         $this->app->bind('GSVnet\Permissions\PermissionManagerInterface', 'GSVnet\Permissions\FalsePermissionManager');
         $this->app->bind(

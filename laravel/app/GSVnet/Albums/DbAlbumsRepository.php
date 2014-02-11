@@ -22,7 +22,7 @@ class DbAlbumsRepository implements AlbumsRepositoryInterface
     */
     public function recent($amount)
     {
-        return Album::orderBy('updated_at', 'DESC')->take($amount)->get();
+        return Album::recent()->take($amount)->get();
     }
 
     /**
@@ -43,8 +43,20 @@ class DbAlbumsRepository implements AlbumsRepositoryInterface
     public function paginateWithFirstPhoto($amount)
     {
         return Album::has('photos')
-            ->orderBy('updated_at', 'DESC')
-            // ->with('photos')
+            ->recent()
+            ->paginate($amount);
+    }
+
+    /**
+     * Get paginated albums
+     * @TODO this should use eager loading
+     * @param int $amount
+     */
+    public function paginatePublicWithFirstPhoto($amount)
+    {
+        return Album::has('photos')
+            ->recent()
+            ->public()
             ->paginate($amount);
     }
 
@@ -93,7 +105,7 @@ class DbAlbumsRepository implements AlbumsRepositoryInterface
         $album              = new Album();
         $album->name        = $input['name'];
         $album->description = $input['description'];
-        $album->public       = $input['public'];
+        $album->public      = $input['public'];
         $album->slug        = $this->createSlug($album->name);
 
         $album->save();
