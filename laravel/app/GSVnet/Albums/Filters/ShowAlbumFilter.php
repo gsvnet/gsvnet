@@ -1,4 +1,4 @@
-<?php namespace GSVnet\Albums;
+<?php namespace GSVnet\Albums\Filters;
 
 use GSVnet\Albums\AlbumsRepositoryInterface;
 use Permission;
@@ -17,7 +17,7 @@ Class ShowAlbumFilter
         $id     = $route->getParameter('album');
         $albums = $this->albums->bySlug($id);
         if ($albums->public) return;
-        if ( ! Permission::has('show.album'))
+        if ( ! Permission::has('album.show'))
         {
             throw new \GSVnet\Permissions\NoPermissionException;
         }

@@ -20,7 +20,15 @@ class AlbumServiceProvider extends ServiceProvider {
             'GSVnet\Albums\Photos\DbPhotosRepository'
         );
 
-        Route::filter('photo.show', 'GSVnet\Albums\Photo\ShowPhotoFilter');
-        Route::filter('album.show', 'GSVnet\Albums\ShowAlbumFilter');
+        // Album filters
+        Route::filter('album.show', 'GSVnet\Albums\Filters\ShowAlbumFilter');
+        Route::filter('album.create', 'GSVnet\Albums\Albums\Filters\CreateAlbumFilter');
+        Route::filter('album.update', 'GSVnet\Albums\Albums\Filters\UpdateAlbumFilter');
+        Route::filter('album.delete', 'GSVnet\Albums\Albums\Filters\DeleteAlbumFilter');
+        // Photo filters
+        Route::filter('photo.show', 'GSVnet\Albums\Photos\Filters\ShowPhotoFilter');
+        Route::filter('photo.create', 'GSVnet\Albums\Photos\Filters\CreatePhotoFilter');
+        Route::filter('photo.update', 'GSVnet\Albums\Photos\Filters\UpdatePhotoFilter');
+        Route::filter('photo.delete', 'GSVnet\Albums\Photos\Filters\DeletePhotoFilter');
     }
 }
