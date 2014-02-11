@@ -15,17 +15,6 @@ class DbAlbumsRepository implements AlbumsRepositoryInterface
     }
 
     /**
-    * Get recent albums
-    *
-    * @param int $amount
-    * @return Collection
-    */
-    public function recent($amount)
-    {
-        return Album::recent()->take($amount)->get();
-    }
-
-    /**
      * Get paginated albums
      *
      * @param int $amount
@@ -43,7 +32,7 @@ class DbAlbumsRepository implements AlbumsRepositoryInterface
     public function paginateWithFirstPhoto($amount)
     {
         return Album::has('photos')
-            ->recent()
+            ->latest()
             ->paginate($amount);
     }
 
@@ -55,7 +44,7 @@ class DbAlbumsRepository implements AlbumsRepositoryInterface
     public function paginatePublicWithFirstPhoto($amount)
     {
         return Album::has('photos')
-            ->recent()
+            ->latest()
             ->public()
             ->paginate($amount);
     }

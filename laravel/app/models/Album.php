@@ -11,6 +11,16 @@ class Album extends \Eloquent {
         'description' => 'required'
     );
 
+    public function scopePublic($query)
+    {
+        $query->wherePublic(true);
+    }
+
+    public function scopeLatest($query)
+    {
+        $query->orderBy('updated_at', 'DESC');
+    }
+
     public function photos()
     {
         return $this->hasMany('Model\Photo');
