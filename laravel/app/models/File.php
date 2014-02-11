@@ -1,6 +1,6 @@
 <?php namespace Model;
 
-use GSVnet\Services\FileHandler;
+use GSVnet\Files\FileHandler;
 
 class File extends \Eloquent {
 	protected $fillable = array('name', 'file_path');

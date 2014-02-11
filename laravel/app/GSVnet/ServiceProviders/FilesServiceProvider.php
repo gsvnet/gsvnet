@@ -1,6 +1,7 @@
 <?php namespace GSVnet\ServiceProviders;
 
 use Illuminate\Support\ServiceProvider;
+use Route;
 
 class FilesServiceProvider extends ServiceProvider {
 
@@ -18,6 +19,8 @@ class FilesServiceProvider extends ServiceProvider {
             'GSVnet\Files\Labels\LabelsRepositoryInterface',
             'GSVnet\Files\Labels\DbLabelsRepository'
         );
+
+        Route::filter('files.show', 'GSVnet\Files\Filters\ShowFileFilter');
     }
 
 }

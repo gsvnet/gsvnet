@@ -56,8 +56,7 @@ Route::post('register', 'UserController@postRegister');
 
 // Albums
 Route::get('albums', 'PhotoController@showAlbums');
-Route::get('albums/{album}', 'PhotoController@showPhotos')
-    ->before('album.show');
+Route::get('albums/{album}', 'PhotoController@showPhotos');
 
 // Get photo images
 // TODO: verander alle referenties naar dez route.
