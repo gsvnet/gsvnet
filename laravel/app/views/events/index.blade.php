@@ -13,9 +13,14 @@
 
 				@foreach ($events as $event)
 					<div class="event-row">
-						<h3><a href="{{ URL::action('EventController@showEvent', $event->id) }}">{{ $event->title}}</a></h3>
-						<p>{{ $event->description }}</p>
-						<small>{{{ $event->hoi() }}}</small>
+						<div class="event-details">
+							<div class="event-image"></div>
+							<div class="event-date">22 jan{{--{$event->start_date}--}}</div>
+						</div>
+						<div class="event-body">
+							<h3><a href="{{ URL::action('EventController@showEvent', $event->id) }}">{{{ $event->title}}}</a></h3>
+							<p>{{ $event->description }}</p>
+						</div>
 					</div>
 				@endforeach
 

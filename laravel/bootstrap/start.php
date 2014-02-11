@@ -27,6 +27,7 @@ $app = new Illuminate\Foundation\Application;
 $env = $app->detectEnvironment(array(
 
 	'local' => array('your-machine-name'),
+	'harmenconfig' => array('Harmen_Laptop')
 
 ));
 

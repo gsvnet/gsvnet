@@ -34,4 +34,23 @@
 		height: 90px;
 		margin: 0 18px 0 0;
 	}
+
+	.event-details {
+		@extend .delta;
+		float: left;
+		width: 16%;
+		background: $lightGrey;
+		text-align: center;
+	}
+
+	.event-image {
+		width: 100%;
+		background: $darkGrey;
+		height: 100px;
+	}
+
+	.event-body {
+		float: right;
+		width: 80%;
+	}
 }
