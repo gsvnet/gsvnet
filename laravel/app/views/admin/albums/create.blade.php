@@ -1,13 +1,12 @@
 <section class='create-album panel panel-default panel-info'>
     <div class="panel-heading add-item">
-        <h4 class="panel-title">Album toevoegen <span class="caret"></span></h4>
+        <h4 class="panel-title"><i class="fa fa-plus"></i> Album toevoegen <span class="caret"></span></h4>
     </div>
 
     {{
         Former::vertical_open()
             ->action(action('Admin\AlbumController@store'))
             ->method('POST')
-            ->rules(Model\Album::$rules)
             ->class('panel-body add-form')
     }}
 

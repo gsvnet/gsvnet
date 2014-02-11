@@ -1,5 +1,7 @@
 <?php namespace Model;
 
+use URL;
+
 class Album extends \Eloquent {
 
 	protected $fillable = array('name', 'description');
@@ -14,21 +16,28 @@ class Album extends \Eloquent {
         return $this->hasMany('Model\Photo');
     }
 
-    public function getSmallImageAttribute()
+    public function getSmallImageURLAttribute()
     {
         $photo = $this->photos->first();
-        return $photo->small_image;
+        return $photo->small_image_url;
     }
 
-    public function getWideImageAttribute()
+    public function getWideImageURLAttribute()
     {
         $photo = $this->photos->first();
-        return $photo->wide_image;
+        return $photo->wide_image_url;
     }
 
     public function getShowURLAttribute()
     {
-        return \URL::action('PhotoController@showPhotos', $this->slug);
+        return URL::action('PhotoController@showPhotos', $this->slug);
+    }
+
+    // Return the path to the original image
+    public function getImageURLAttribute()
+    {
+        $photo = $this->photos->first();
+        return URL::action('PhotoController@showPhotos', $this->slug);
     }
 
     public function getUpdatedAtAttribute($updatedAt)

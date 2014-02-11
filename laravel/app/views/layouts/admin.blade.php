@@ -14,10 +14,17 @@
 
       <style type="text/css">
         .add-form {
-          display: none;
+          /*display: none;*/
         }
       </style>
 
+      <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.0/journal/bootstrap.min.css"> -->
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.0/yeti/bootstrap.min.css">
+      <style>
+      body {
+        font-size: 150%;
+      }
+      </style>
 
     @show
   </head>
@@ -48,6 +55,18 @@
     </div>
 
     <div class="container">
+        @if ($errors->any())
+              <ul class='list-unstyled errors'>
+                  {{ implode('', $errors->all('<li class="alert alert-danger">:message</li>')) }}
+              </ul>
+          @endif
+
+          @if (Session::has('message'))
+              <div class="alert alert-success">
+                  {{ Session::get('message') }}
+              </div>
+          @endif
+      @show
       <div class="row">
         <div class="col-md-3">
 
@@ -67,11 +86,6 @@
 
         </div>
         <div class="col-md-9" role="main">
-          @if (Session::has('message'))
-              <div class="alert alert-success">
-                  {{ Session::get('message') }}
-              </div>
-          @endif
           @yield('content')
         </div>
       </div>
@@ -85,6 +99,16 @@
       <!-- Placed at the end of the document so the pages load faster -->
       <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
       <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+      <script>
+        $(document).ready(function() {
+            $('.add-item').on('click', function () {
+                $('.add-form').toggle('fast');
+            });
+            // Hide success message after 2.5 seconds
+            $('.alert.alert-success').delay(2500).slideUp(500);
+        });
+    </script>
     @show
   </body>
 </html>

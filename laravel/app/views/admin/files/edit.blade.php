@@ -5,13 +5,12 @@
 
     <section class='create-file panel panel-default'>
         <div class="panel-heading add-item">
-            <h4 class="panel-title">{{{ $file->name }}} bewerken<span class="caret"></span></h4>
+            <h4 class="panel-title"><i class="fa fa-pencil"></i> {{{ $file->name }}} bewerken<span class="caret"></span></h4>
         </div>
 
         {{
             Former::open_vertical_for_files()
                 ->action(action('Admin\FilesController@update', $file->id))
-                ->rules(Model\File::$rules)
                 ->method('put')
                 ->class('panel-body add-form')
         }}
@@ -51,15 +50,10 @@
     @parent
 
     <script>
-    $('.btn-danger').click( function() {
-        return confirm('Zeker weten?');
-    });
     $(document).ready(function() {
-        $('.add-item').on('click', function () {
-            $('.add-form').toggle('fast');
+        $('.btn-danger').click( function() {
+            return confirm('Zeker weten?');
         });
-        // Hide success message after 2.5 seconds
-        $('.alert.alert-success').delay(2500).slideUp(500);
     });
     </script>
 @stop

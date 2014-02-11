@@ -16,7 +16,7 @@
     <h2>Foto's</h2>
     <section class='create-album panel panel-default panel-info'>
         <div class="panel-heading add-item">
-            <h4 class="panel-title">Foto toevoegen <span class="caret"></span></h4>
+            <h4 class="panel-title"><i class="fa fa-plus"></i> Foto toevoegen <span class="caret"></span></h4>
         </div>
 
         {{
@@ -47,7 +47,7 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <a href="{{ URL::action('Admin\PhotoController@show', [$album->id, $photo->id]) }}" alt="{{{ $photo->name }}}" class="thumbnail">
-                              <img src="{{{ $photo->small_image }}}" alt="{{{ $photo->name }}}">
+                              <img src="{{ URL::action('PhotoController@showPhotoSmall', $photo->id) }}" alt="{{{ $photo->name }}}">
                             </a>
                         </div>
                         <div class="panel-footer">
@@ -74,13 +74,4 @@
     @parent
     <script src="/javascripts/magnific-popup-0.9.4.js"></script>
     <script src="/javascripts/fotos.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.add-item').on('click', function () {
-                $('.add-form').toggle('fast');
-            });
-            // Hide success message after 2.5 seconds
-            $('.alert.alert-success').delay(2500).slideUp(500);
-        });
-    </script>
 @stop

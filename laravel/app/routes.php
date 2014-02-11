@@ -1,4 +1,8 @@
 <?php
+Event::listen('illuminate.query', function($sql)
+{
+  Log::error($sql);
+});
 // We keep the home route name as some build in functions use the 'home' name
 Route::get('/', ['as' => 'home',
     'uses' => 'HomeController@showIndex'
@@ -17,10 +21,10 @@ Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
     Route::get('profiel', 'UserController@showProfile');
     Route::get('profiel/edit', 'UserController@editProfile');
     // GSVdocs
-    Route::resource('bestanden', 'FilesController');
+    Route::get('bestanden', 'FilesController@index');
+    Route::get('bestanden/{id}', 'FilesController@show');
     // Only logged in users can view the member list if they have permission
-    Route::group(array('prefix' => 'jaarbundel', 'before' => 'can:viewMemberlist'), function()
-    {
+    Route::group(array('prefix' => 'jaarbundel', 'before' => 'can:viewMemberlist'), function() {
         Route::get('/', 'UserController@showUsers');
 
         Route::get('/gsver-{id}', 'UserController@showUser')
@@ -29,8 +33,7 @@ Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
 });
 
 // De GSV
-Route::group(array('prefix' => 'de-gsv'), function()
-{
+Route::group(array('prefix' => 'de-gsv'), function() {
     Route::get('/', 'AboutController@showAbout');
 
     Route::get('commissies', 'AboutController@showCommittees');
@@ -55,27 +58,36 @@ Route::post('register', 'UserController@postRegister');
 Route::get('albums', 'PhotoController@showAlbums');
 Route::get('albums/{album}', 'PhotoController@showPhotos');
 
+// Get photo images
+Route::group(array('prefix' => 'photos'), function() {
+    Route::get('{photo}', 'PhotoController@showPhoto');
+    Route::get('{photo}/wide', 'PhotoController@showPhotoWide');
+    Route::get('{photo}/small', 'PhotoController@showPhotoSmall');
+});
+
 // Events
 Route::get('activiteiten', 'EventController@showIndex');
 Route::get('activiteiten/bekijk-{id}', 'EventController@showEvent');
 Route::get('activiteiten/{year}/{month?}', 'EventController@showMonth');
 
-
 // TODO: check if user has album permissions
-Route::group(array('prefix' => 'markadmin'), function()
-{
+Route::group(array('prefix' => 'markadmin'), function() {
     Route::get('/', 'Admin\AdminController@index');
 
     Route::resource('events', 'Admin\EventController');
 
-    Route::resource('albums', 'Admin\AlbumController');
-    Route::resource('albums.photo', 'Admin\PhotoController');
+
+    Route::resource('albums', 'Admin\AlbumController',
+        ['except' => ['create']]);
+    Route::resource('albums.photo', 'Admin\PhotoController',
+        ['except' => ['index', 'create']]);
 
     Route::resource('files', 'Admin\FilesController');
 });
 
-App::missing(function($exception)
-{
+
+// Dit is best wel lelijk en moet eigenlijk in een service provider oid
+App::missing(function($exception) {
     $data = array(
         'title' => 'Pagina niet gevonden - GSVnet',
         'description' => '',
@@ -83,4 +95,15 @@ App::missing(function($exception)
     );
 
     return Response::view('errors.missing', $data, 404);
+});
+
+App::error(function(GSVnet\Core\Exceptions\MaxUploadSizeException $exception)
+{
+    $message = 'Het bestand dat je hebt geprobeerd te uploaden is te groot.';
+    return Redirect::back()->withInput()->withErrors($message);
+});
+
+App::error(function(Symfony\Component\HttpFoundation\File\Exception\FileException $e) {
+   $message = 'Het bestand dat je hebt geprobeerd te uploaden is te groot.';
+    return Redirect::back()->withInput()->withErrors($message);
 });

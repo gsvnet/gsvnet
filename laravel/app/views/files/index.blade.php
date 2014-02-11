@@ -219,6 +219,13 @@ table th[class*="col-"] {
                         <td>
                             {{{ $file->updated_at }}}
                         </td>
+                        <td>
+                            <a href="{{ URL::action('FilesController@show', $file->id) }}"><i class="glyphicon glyphicon-download-alt">
+                            <i class="fa fa-download"></i></i>
+                            {{{ $file->type }}}
+                            ({{{ $file->size }}})
+                            </a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
