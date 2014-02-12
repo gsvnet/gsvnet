@@ -10,15 +10,20 @@
                 {{ $event->description }}
             </p>
 
+            @if(!empty($event->location))
             <strong>Locatie: {{ $event->location }}</strong>
-            <div>
-                <a class='button' href="{{ URL::previous() }}">Terug</a>
-            </div>
+            @endif
         </div>
 
         <div class="secondary-column">
-            <div class="img"><img src="{{ $event->image() }}"  alt="{{ $event->title }}"></div>
+            @if(isset($types[$event->type]))
+                <div class="single-event-details {{$types[$event->type]}}">
+                    Dit is nou typische een activiteit met zo'n kleur
+                </div>
+            @endif
         </div>
-
+    </div>
+    <div class="column-holder">
+        <p><a class="button" href="{{ URL::previous() }}">Terug</a></p>
     </div>
 @stop

@@ -9,14 +9,12 @@ class EventController extends BaseController {
             ->orderBy('start_date', 'asc')
             ->paginate(5);
 
-        $types = Config::get('gsvnet.eventTypes');
-
         $year = (int) date('Y');
 
         $this->layout->content = View::make('events.index')
             ->with('searchTimeRange', false)
             ->with('events', $events)
-            ->with('types', $types)
+            ->with('types', Config::get('gsvnet.eventTypes'))
             ->withYear($year);
 
         // Setup metadata
@@ -35,7 +33,8 @@ class EventController extends BaseController {
 
         $this->layout->content = View::make('events.show')
             ->with('events', $events)
-            ->with('event', $event);
+            ->with('event', $event)
+            ->with('types', Config::get('gsvnet.eventTypes'));
         // Setup metadata
         $this->layout->title = 'Activitiet - ' . $event->title . ' - GSVnet';
         $this->layout->description = $event->description;
