@@ -31,6 +31,7 @@ class PhotoController extends BaseController {
         $photosPerPage = Config::get('photos.photos_per_page');
         $albums = $this->albums->paginateWithFirstPhoto($photosPerPage);
 
+        $this->layout->bodyID = 'albums-page';
 		$this->layout->content = View::make('gallery.albums.index')->with('albums', $albums);
 	}
 
@@ -41,6 +42,7 @@ class PhotoController extends BaseController {
         $photosPerPage = Config::get('photos.photos_per_page');
         $photos = $this->photos->byAlbumIdAndPaginate($album->id, $photosPerPage);
 
+        $this->layout->bodyID = 'album-page';
         $this->layout->content = View::make('gallery.albums.show')
             ->withAlbum($album)
             ->withPhotos($photos);

@@ -89,9 +89,3 @@
 
 @section('word-lid')
 @stop
-
-@section('javascripts')
-    @parent
-    <script src="/javascripts/word-lid.js"></script>
-    <script src="/javascripts/carousel.js"></script>
-@stop

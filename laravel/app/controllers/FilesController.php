@@ -38,6 +38,7 @@ class FilesController extends BaseController {
 
 		$labels = $this->labels->all();
 
+        $this->layout->bodyID = 'files-page';
         $this->layout->content =  View::make('files.index')
         	->withFiles($files)
         	->withLabels($labels);

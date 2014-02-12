@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title }}</title>
+    <title>{{{ $title }}}</title>
 
     <meta name="description" content="{{{ $description }}}" />
     <meta name="keywords" content="{{{ $keywords }}}" />
@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="/stylesheets/screen.css">
     @show
 </head>
-<body>
+<body id="{{{$bodyID}}}">
     <div class="overal-header">
 
         @yield('top-slideshow')
@@ -42,9 +42,7 @@
     @endif
 
     @section('javascripts')
-        <script src="/javascripts/jquery-1.10.1.min.js"></script>
-        <script src="/javascripts/magnific-popup-0.9.9.js"></script>
-        <script src="/javascripts/overall.js"></script>
+        <script src="/build-javascripts/app.js"></script>
     @show
 </body>
 </html>
