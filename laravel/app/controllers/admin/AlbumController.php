@@ -85,6 +85,7 @@ class AlbumController extends BaseController {
     public function update($id)
     {
         $input = Input::all();
+        $input['public'] = Input::get('public', false);
 
         try
         {

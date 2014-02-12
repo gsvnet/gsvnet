@@ -44,7 +44,7 @@ class FileManager
             throw new FileStorageException;
         }
         // If the file was not given a name, use the file's name
-        if (! (isset($input['name'])) || $input['name'] == '')
+        if (! (isset($input['name'])) || empty($input['name']))
         {
             $input['name'] = $input['file']->getClientOriginalName();
         }

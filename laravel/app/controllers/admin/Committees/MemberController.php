@@ -9,6 +9,6 @@ class MemberController extends BaseController {
 
     public function store()
     {
-
+        $input = Input::all();
     }
 }

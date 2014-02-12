@@ -20,7 +20,7 @@ class PhotoController extends BaseController {
 
         $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
         // TODO: set up filtering
-        $this->beforeFilter('albums.show', ['only' => ['showPhotos','showPhoto', 'showPhotoWide', 'showPhotoSmall']]);
+        // $this->beforeFilter('albums.show', ['only' => ['showPhotos','showPhoto', 'showPhotoWide', 'showPhotoSmall']]);
 
         parent::__construct();
     }
