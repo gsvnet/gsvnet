@@ -4,7 +4,7 @@
     <p class="lead">Hallo</p>
 
 
-    <h3>Jaarverbanden</h3>
+{{--    <h3>Jaarverbanden</h3>
     <ul class="list-unstyled">
         @foreach($year_groups as $yeargroup)
         <li>
@@ -12,5 +12,5 @@
         </li>
         @endforeach
     </ul>
-    TODO: jaarverbanden bewerken, toevoegen en verwijderen
+    TODO: jaarverbanden bewerken, toevoegen en verwijderen --}}
 @stop

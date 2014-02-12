@@ -5,19 +5,24 @@ use View, Input, Redirect;
 use GSVnet\Committees\CommitteesRepositoryInterface;
 use GSVnet\Committees\CommitteeValidator;
 
+use GSVnet\Users\UsersRepositoryInterface;
+
 use GSVnet\Core\Exceptions\ValidationException;
 
 class CommitteeController extends BaseController {
 
     protected $committees;
+    protected $users;
     protected $validator;
 
     public function __construct(
         CommitteesRepositoryInterface $committees,
-        CommitteeValidator $validator)
+        CommitteeValidator $validator,
+        UsersRepositoryInterface $users)
     {
         $this->committees = $committees;
         $this->validator = $validator;
+        $this->users = $users;
 
         $this->beforeFilter('csrf', ['only' => ['store', 'update', 'delete']]);
         $this->beforeFilter('committees.create', ['on' => 'store']);
@@ -29,7 +34,7 @@ class CommitteeController extends BaseController {
 
     public function index()
     {
-        $committees = $this->committees->paginate(10);
+        $committees = $this->committees->paginate(20);
 
         $this->layout->content = View::make('admin.committees.index')->with('committees', $committees);
     }
@@ -61,11 +66,13 @@ class CommitteeController extends BaseController {
         $committee = $this->committees->byId($id);
 
         $usersPerPage = 10;
-        $users = $this->committees->usersByCommitteIdAndPaginate($id, $usersPerPage);
+        $members = $this->committees->usersByCommitteIdAndPaginate($id, $usersPerPage);
+        $users = $this->users->all();
 
         $this->layout->content = View::make('admin.committees.show')
             ->withCommittee($committee)
-            ->withUsers($users);
+            ->withUsers($users)
+            ->withMembers($members);
     }
 
     public function edit($id)
@@ -83,7 +90,7 @@ class CommitteeController extends BaseController {
         try
         {
             $this->validator->validate($input);
-            $committee1 = $this->committees->update($id, $input);
+            $committee = $this->committees->update($id, $input);
 
             $message = '<strong>' . $committee->name . '</strong> is succesvol bewerkt.';
             return Redirect::action('Admin\CommitteeController@show', $id)
