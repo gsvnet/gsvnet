@@ -13,12 +13,12 @@ class Album extends \Eloquent {
 
     public function scopePublic($query)
     {
-        $query->wherePublic(true);
+        return $query->wherePublic(true);
     }
 
     public function scopeLatest($query)
     {
-        $query->orderBy('updated_at', 'DESC');
+        return $query->orderBy('updated_at', 'DESC');
     }
 
     public function photos()

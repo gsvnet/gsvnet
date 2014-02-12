@@ -151,7 +151,7 @@ class DbAlbumsRepository implements AlbumsRepositoryInterface
     private function createSlug($name)
     {
         $slug = Str::slug($name);
-        $count = Album::count();
+        $count = Album::count() + 1;
 
         return $count . '-' . $slug;
     }

@@ -15,7 +15,8 @@ Class ShowAlbumFilter
     public function filter($route)
     {
         $id     = $route->getParameter('album');
-        $albums = $this->albums->bySlug($id);
+
+        $albums = $this->albums->byId($id);
         if ($albums->public) return;
         if ( ! Permission::has('album.show'))
         {

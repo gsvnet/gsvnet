@@ -1,6 +1,14 @@
 <?php
 
+use GSVnet\Committees\CommitteesRepositoryInterface;
+
 class AboutController extends BaseController {
+
+
+    public function __construct(CommitteesRepositoryInterface $committees)
+    {
+        $this->committees = $committees;
+    }
 
 	public function showAbout()
 	{
@@ -9,7 +17,7 @@ class AboutController extends BaseController {
 
     public function showCommittees()
     {
-        $committees = Model\Committee::all();
+        $committees = $this->committees->all();
 
         $this->layout->bodyID = 'committees-page';
         $this->layout->content = View::make('de-gsv.committees.index')
@@ -18,8 +26,8 @@ class AboutController extends BaseController {
 
     public function showCommittee($id)
     {
-        $committee = Model\Committee::find($id);
-        $committees = Model\Committee::all();
+        $committee = $this->committees->byId($id);
+        $committees = $this->committees->all();
 
         $this->layout->bodyID = 'committee-page';
         $this->layout->content = View::make('de-gsv.committees.show')

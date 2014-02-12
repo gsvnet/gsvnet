@@ -12,6 +12,15 @@ App::error(function(GSVnet\Permissions\NoPermissionException $exception) {
 
 // Dit is best wel lelijk en moet eigenlijk in een service provider oid
 
+App::error(function(Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
+    $data = array(
+        'title' => 'Pagina niet gevonden - GSVnet',
+        'description' => '',
+        'keywords' => ''
+    );
+
+    return Response::view('errors.missing', $data, 404);
+});
 App::missing(function($exception) {
     $data = array(
         'title' => 'Pagina niet gevonden - GSVnet',

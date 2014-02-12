@@ -4,7 +4,7 @@ class Committee extends \Eloquent {
 	protected $guarded = array();
 
 	public static $rules = array();
-
+    // Change users to members?
     public function users()
     {
         return $this->belongsToMany('Model\User', 'committee_user')
