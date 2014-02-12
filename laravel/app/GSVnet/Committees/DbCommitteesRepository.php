@@ -4,6 +4,26 @@ use Model\Committee;
 
 class DbCommitteesRepository implements CommitteesRepositoryInterface {
 
+    /**
+     * Get by slug
+     *
+     * @param int $id
+     * @return Album
+     */
+    public function byId($id)
+    {
+        return Committee::findOrFail($id);
+    }
+
+    /**
+    * Get all committees
+    *
+    * @return Collection
+    */
+    public function all()
+    {
+        return Committee::orderBy('updated_at', 'DESC')->get();
+    }
 
     /**
      * Get paginated committees
@@ -18,17 +38,6 @@ class DbCommitteesRepository implements CommitteesRepositoryInterface {
     public function usersByCommitteIdAndPaginate($id, $amount)
     {
         return $this->byId($id)->users;
-    }
-
-    /**
-     * Get by slug
-     *
-     * @param int $id
-     * @return Album
-     */
-    public function byId($id)
-    {
-        return Committee::findOrFail($id);
     }
 
     /**

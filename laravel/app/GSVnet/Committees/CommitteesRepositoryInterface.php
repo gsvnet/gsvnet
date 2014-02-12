@@ -2,6 +2,8 @@
 
 interface CommitteesRepositoryInterface {
     public function byId($id);
+
+    public function all();
     public function paginate($amount);
     public function usersByCommitteIdAndPaginate($id, $amount);
 
