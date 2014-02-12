@@ -62,5 +62,3 @@ WordLid = (function(){
 		init: init
 	}
 })();
-
-WordLid.init();

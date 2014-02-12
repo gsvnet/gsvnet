@@ -23,6 +23,7 @@ class BaseController extends Controller {
             $this->layout->title = 'GSVnet';
             $this->layout->description = '';
             $this->layout->keywords = '';
+            $this->layout->bodyID = '';
         }
     }
 

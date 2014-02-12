@@ -33,9 +33,3 @@
 
     </div>
 @stop
-
-@section('javascripts')
-    @parent
-    <script src="/javascripts/list.min.js"></script>
-    <script src="/javascripts/committees.js"></script>
-@stop

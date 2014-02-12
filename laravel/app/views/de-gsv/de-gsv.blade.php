@@ -56,8 +56,3 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim itaque animi numquam similique perspiciatis dicta beatae corrupti eum deleniti ad! Veniam, adipisci, dolorem, voluptate tempore fugit id temporibus iure beatae vero rem cumque consequatur facilis nobis consequuntur magnam blanditiis aspernatur veritatis qui quod cupiditate harum placeat cum possimus officia animi culpa ex eligendi voluptatibus corporis ipsum neque explicabo mollitia officiis consectetur soluta iste maiores aut. Cupiditate, pariatur, animi perspiciatis expedita eos recusandae reiciendis sed in laboriosam officiis eius aut voluptatem!</p>
     </article>
 @stop
-
-@section('javascripts')
-    @parent
-    <script src="/javascripts/carousel.js"></script>
-@stop

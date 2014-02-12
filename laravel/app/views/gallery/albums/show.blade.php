@@ -17,8 +17,3 @@
         {{ $photos->links() }}
     </div>
 @stop
-
-@section('javascripts')
-    @parent
-    <script src="/javascripts/fotos.js"></script>
-@stop

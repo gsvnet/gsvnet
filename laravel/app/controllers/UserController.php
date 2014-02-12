@@ -2,12 +2,13 @@
 
 class UserController extends BaseController {
     /**
-     * Show the curren user his profile
+     * Show the current user's profile
      */
     public function showProfile()
     {
         $member = Auth::user();
 
+        $this->layout->bodyID = 'own-profile-page';
         $this->layout->content = View::make('users.profile')
             ->with('member', $member);
     }
@@ -27,6 +28,7 @@ class UserController extends BaseController {
 
         $yearGroups = Model\YearGroup::orderBy('year', 'DESC')->get();
 
+        $this->layout->bodyID = 'user-list-page';
         $this->layout->content = View::make('users.index')
             ->with('members', $memberlist)
             ->with('yearGroups', $yearGroups);
@@ -39,6 +41,7 @@ class UserController extends BaseController {
 
         //dd($member);
 
+        $this->layout->bodyID = 'user-profile-page';
         $this->layout->content = View::make('users.profile')
             ->with('member', $member);
     }
