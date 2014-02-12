@@ -32,6 +32,23 @@ class DbCommitteesRepository implements CommitteesRepositoryInterface {
     }
 
     /**
+    * Create committee
+    *
+    * @param array $input
+    * @return Committee
+    */
+    public function create(array $input)
+    {
+        $committee              = new Committee();
+        $committee->name        = $input['name'];
+        $committee->description = $input['description'];
+
+        $committee->save();
+
+        return $committee;
+    }
+
+    /**
     * Update committee
     *
     * @param int $id

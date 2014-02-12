@@ -42,9 +42,9 @@ class CommitteeController extends BaseController {
         try
         {
             $this->validator->validate($input);
-            $album = $this->committees->create($input);
+            $committee = $this->committees->create($input);
 
-            $message = '<strong>' . $album->name . '</strong> is succesvol opgeslagen.';
+            $message = '<strong>' . $committee->name . '</strong> is succesvol opgeslagen.';
             return Redirect::action('Admin\CommitteeController@index')
                 ->withMessage($message);
         }
@@ -58,22 +58,22 @@ class CommitteeController extends BaseController {
 
     public function show($id)
     {
-        $album = $this->committees->byId($id);
+        $committee = $this->committees->byId($id);
 
         $usersPerPage = 10;
         $users = $this->committees->usersByCommitteIdAndPaginate($id, $usersPerPage);
 
         $this->layout->content = View::make('admin.committees.show')
-            ->withCommittee($album)
+            ->withCommittee($committee)
             ->withUsers($users);
     }
 
     public function edit($id)
     {
-        $album = $this->committees->byId($id);
+        $committee = $this->committees->byId($id);
 
         $this->layout->content = View::make('admin.committees.edit')
-            ->withCommittee($album);
+            ->withCommittee($committee);
     }
 
     public function update($id)
@@ -83,7 +83,7 @@ class CommitteeController extends BaseController {
         try
         {
             $this->validator->validate($input);
-            $committee = $this->committees->update($id, $input);
+            $committee1 = $this->committees->update($id, $input);
 
             $message = '<strong>' . $committee->name . '</strong> is succesvol bewerkt.';
             return Redirect::action('Admin\CommitteeController@show', $id)
