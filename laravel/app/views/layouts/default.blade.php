@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="/stylesheets/screen.css">
     @show
 </head>
-<body id="{{{$bodyID}}}">
+<body id="{{{ $bodyID or '' }}}">
     <div class="overal-header">
 
         @yield('top-slideshow')
