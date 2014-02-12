@@ -2,6 +2,7 @@
 
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use Config;
 
 class User extends \Eloquent implements UserInterface, RemindableInterface {
 
@@ -91,7 +92,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 	 */
 	public function isMember()
 	{
-		return $this->type == 3 || $this->type == 4;
+		return $this->type == Config::get('gsvnet.userTypes.member') || $this->type ==  Config::get('gsvnet.userTypes.formerMember');
 	}
 
 	public function activeCommittees()
