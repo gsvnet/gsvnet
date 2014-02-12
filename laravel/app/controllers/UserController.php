@@ -20,11 +20,36 @@ class UserController extends BaseController {
     public function showUsers()
     {
         $member = Config::get('gsvnet.userTypes.member');
-        //$formerMember = Config::get('gsvnet.userTypes.formerMember');
-        $memberlist = Model\User::where('type', '=', $member)
+        
+        $memberlistQuery = Model\User::where('type', '=', $member)
                                 ->with('profile.yearGroup')
-                                ->orderBy('lastname')
-                                ->paginate(200);
+                                ->orderBy('lastname');
+
+        // Enable search on full name
+        if(Input::has('name'))
+        {
+            $name = Input::get('name');
+            $memberlistQuery->whereRaw(
+                'firstname || " " || lastname LIKE ?',
+                array('%' . $name . '%')
+            );
+        }
+
+        // TODO: regions en yeargroups
+        // // Enable search on year group
+        // if(Input::has('region'))
+        // {
+        //     $region = intval(Input::get('region'));
+        //     if(array_key_exists($region, Config::get('gsvnet.regions')))
+        //     {
+        //         $memberlistQuery->whereRaw(
+        //             'firstname || " " || lastname LIKE ?',
+        //             array('%' . $name . '%')
+        //         );   
+        //     }
+        // }
+
+        $memberlist = $memberlistQuery->paginate(200);
 
         $yearGroups = Model\YearGroup::orderBy('year', 'DESC')->get();
 
