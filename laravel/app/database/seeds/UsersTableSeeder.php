@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder {
             'lastname'      => 'Redeman',
             'middlename'    => 'Sietse',
             'username'      => 'mredeman',
-            'type'          => 0,
+            'type'          => 2,
 
         ));
 

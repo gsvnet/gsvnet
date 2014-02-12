@@ -17,6 +17,7 @@ class EventsTableSeeder extends Seeder {
                 'title' => 'Activiteit ' . $i,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quicquid opinemur.',
                 'location' => '',
+                'type' => rand(0, 3),
                 'whole_day' => rand(0,1),
                 'start_time' => $randHour . ':' . rand(0, 59),
                 'end_time' => $randHour+2 . ':' . rand(0,59),
