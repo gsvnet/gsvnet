@@ -9,7 +9,7 @@
     <title>Admin</title>
     @section('stylesheets')
       <!-- Bootstrap core CSS -->
-      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.10/css/bootstrap.min.css">
       <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
 
       <style type="text/css">
@@ -20,6 +20,8 @@
 
       <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.0/journal/bootstrap.min.css"> -->
       <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.0/yeti/bootstrap.min.css">
+      <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.0/lumen/bootstrap.min.css"> -->
+
       <style>
       body {
         font-size: 150%;

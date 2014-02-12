@@ -3,6 +3,7 @@
 / The ImageHandler class handles the storage n
 */
 use File, Image, Config;
+use Illuminate\Filesystem\Filesystem;
 
 class ImageHandler
 {
@@ -10,9 +11,11 @@ class ImageHandler
     // zodat we dan alleen nog maar de naam van een bestand hoeven te weten,
     // maar hier moet eerst nog wat beter over nageacht worden voordat we dat implementeren...
     protected $basePath;
+    protected $filesystem;
 
-    public function __construct($basePath = '')
+    public function __construct($basePath = '', Filesystem $filesystem)
     {
+        $this->filesystem = $filesystem;
         $this->basePath = storage_path($basePath);
     }
 

@@ -18,20 +18,20 @@
 
     <h2>Originele foto</h2>
     <div class="thumbnail">
-        <img src="{{ $photo->image_url }}" alt="{{{ $photo->name }}}" style='max-width: 100%;'>
+        <img src="{{ URL::action('PhotoController@showPhoto', $photo->id) }}" alt="{{{ $photo->name }}}" style='max-width: 100%;'>
 
     </div>
 
 
     <h3>Kleine foto</h3>
     <div class="thumbnail">
-        <img src="{{ $photo->small_image_url }}" alt="{{{ $photo->name }}}" style='max-width: 100%;'>
+        <img src="{{ URL::action('PhotoController@showPhotoSmall', $photo->id) }}" alt="{{{ $photo->name }}}" style='max-width: 100%;'>
 
     </div>
 
     <h3>Grote foto</h3>
     <div class="thumbnail">
-        <img src="{{ $photo->wide_image_url }}" alt="{{{ $photo->name }}}" style='max-width: 100%;'>
+        <img src="{{ URL::action('PhotoController@showPhotoWide', $photo->id) }}" alt="{{{ $photo->name }}}" style='max-width: 100%;'>
 
     </div>
 

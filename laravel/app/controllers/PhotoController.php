@@ -19,7 +19,6 @@ class PhotoController extends BaseController {
         $this->photos = $photos;
 
         $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
-
         // TODO: set up filtering
         $this->beforeFilter('albums.show', ['only' => ['showPhotos','showPhoto', 'showPhotoWide', 'showPhotoSmall']]);
 

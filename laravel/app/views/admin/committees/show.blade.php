@@ -21,12 +21,12 @@
 
         {{
             Former::open_vertical_for_files()
-                ->action(action('Admin\PhotoController@store', $committee->id))
+                ->action(action('Admin\Committees\MemberController@store', $committee->id))
                 ->method('POST')
                 ->class('panel-body add-form')
         }}
 
-            @include('admin.photos._form')
+            @include('admin.committees.members._form')
 
             <button type='submit' class='btn btn-success'>
                 <i class="fa fa-check"></i> Toevoegen
