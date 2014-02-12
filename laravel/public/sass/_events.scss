@@ -47,6 +47,24 @@
 		width: 100%;
 		background: $darkGrey;
 		height: 100px;
+
+		// place holders 
+		&.intellectual {
+			background: purple;
+		}
+
+		&.social {
+			background: gold;
+		}
+
+		&.collegiate {
+			background: blue;
+		}
+
+		&.christian {
+			background: green;
+
+		}
 	}
 
 	.event-body {
