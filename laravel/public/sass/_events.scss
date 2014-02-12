@@ -72,3 +72,28 @@
 		width: 80%;
 	}
 }
+
+.single-event-details {
+	min-height: 200px;
+	padding: 1em;
+
+	// place holders 
+	&.intellectual {
+		background: purple;
+		color: white;
+	}
+
+	&.social {
+		background: gold;
+	}
+
+	&.collegiate {
+		background: blue;
+		color: white;
+	}
+
+	&.christian {
+		background: green;
+		color: white;
+	}
+}

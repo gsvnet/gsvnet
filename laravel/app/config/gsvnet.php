@@ -13,5 +13,12 @@ return array(
 		'social', 
 		'collegiate',
 		'christian'
+	),
+
+	'regions' => array(
+		1 => 'Regio 1',
+		2 => 'Regio 2',
+		3 => 'Regio 3',
+		4 => 'Regio IV'
 	)
 );

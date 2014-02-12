@@ -1,6 +1,7 @@
 @section('content')
 	<div id="user-list" class="column-holder">
 		<div class="main-content">
+			<h1>Jaarbundel</h1>
 			<ul class="user-profile-list">
 			@foreach ($members as $member)
 				<li class="user-profile-item">
