@@ -9,7 +9,7 @@
 
 					</div>
 					<h3>{{ link_to_action('UserController@showUser', $member->full_name, array($member->id, 'class' => 'search-users')) }}</h3>
-					@if($member->profile)
+					@if($member->profile && $member->profile->yearGroup)
 						<ul class="user-details-list">
 							<li><i class="fa fa-share"></i> {{{$member->email}}}</li>
 							<li class="phone"><i class="fa fa-phone"></i> {{{$member->profile->phone}}}</li>
@@ -27,16 +27,15 @@
 			<h2>Zoek een GSV'er</h2>
 			<div class="form-group">
 				<label class="control-label" for="name">Naam</label>
-				<input type="search" class="form-control search-user-input" id="name" name="name" placeholder="typ maar gewoon iets">
+				<input type="search" class="form-control search-user-input" id="name" name="name" placeholder="typ maar gewoon iets" value="{{{Input::get('name', '')}}}">
 			</div>
 			<div class="form-group">
 				<label class="control-label" for="region">Regio</label>
 				<select name="region" id="region">
 					<option value="0"></option>
-					<option val="1">Regio 1</option>
-					<option val="2">Regio 2</option>
-					<option val="3">Regio 3</option>
-					<option val="4">Regio IV</option>
+					@foreach ($regions as $key => $region)
+						<option value="{{{$key}}}" {{{Input::get('region') == $key ? 'selected="selected"' : ''}}}>{{{$region}}}</option>
+					@endforeach
 				</select>
 			</div>
 			<div class="form-group">
@@ -44,7 +43,7 @@
 				<select name="yeargroup" id="yeargroup">
 					<option value="0"></option>
 					@foreach ($yearGroups as $yearGroup)
-						<option value="{{{$yearGroup->id}}}">{{{$yearGroup->name}}}</option>
+						<option value="{{{$yearGroup->id}}}" {{{Input::get('yeargroup') == $yearGroup->id ? 'selected="selected"' : ''}}}>{{{$yearGroup->name}}}</option>
 					@endforeach
 				</select>
 			</div>

@@ -20,10 +20,10 @@ class UserController extends BaseController {
     public function showUsers()
     {
         $member = Config::get('gsvnet.userTypes.member');
+        $regions = Config::get('gsvnet.regions');
         
-        $memberlistQuery = Model\User::where('type', '=', $member)
-                                ->with('profile.yearGroup')
-                                ->orderBy('lastname');
+        $memberlistQuery = Model\User::where('type', '=', $member)->orderBy('lastname');
+        $with = array();
 
         // Enable search on full name
         if(Input::has('name'))
@@ -35,27 +35,39 @@ class UserController extends BaseController {
             );
         }
 
-        // TODO: regions en yeargroups
-        // // Enable search on year group
-        // if(Input::has('region'))
-        // {
-        //     $region = intval(Input::get('region'));
-        //     if(array_key_exists($region, Config::get('gsvnet.regions')))
-        //     {
-        //         $memberlistQuery->whereRaw(
-        //             'firstname || " " || lastname LIKE ?',
-        //             array('%' . $name . '%')
-        //         );   
-        //     }
-        // }
+        // Enable search on region
+        if(Input::has('region'))
+        {
+            $region = intval(Input::get('region'));
+            if(array_key_exists($region, Config::get('gsvnet.regions')))
+            {
+                $with['profile'] = function($q) use ($region) {
+                    $q->where('region', '=', $region);
+                };
+            }
+        }
+
+        // Enable search on yeargroup
+        if(Input::has('yeargroup') && Model\YearGroup::find(Input::get('yeargroup')))
+        {
+            $yeargroup = Input::get('yeargroup');
+            $with['profile.yearGroup'] = function($q) use ($yeargroup) {
+                $q->where('id', '=', $yeargroup);
+            };
+        }
+
+        $memberlistQuery->with($with);
 
         $memberlist = $memberlistQuery->paginate(200);
 
         $yearGroups = Model\YearGroup::orderBy('year', 'DESC')->get();
 
+        dd(DB::getQueryLog());
+
         $this->layout->bodyID = 'user-list-page';
         $this->layout->content = View::make('users.index')
             ->with('members', $memberlist)
+            ->with('regions', $regions)
             ->with('yearGroups', $yearGroups);
     }
 
