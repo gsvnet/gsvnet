@@ -11,6 +11,6 @@ class UserPermissionManager implements PermissionManagerInterface
 
     public function has($permission)
     {
-        return false;
+        return true;
     }
 }

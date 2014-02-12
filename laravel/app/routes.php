@@ -1,8 +1,4 @@
 <?php
-Event::listen('illuminate.query', function($sql)
-{
-  Log::error($sql);
-});
 // We keep the home route name as some build in functions use the 'home' name
 Route::get('/', ['as' => 'home',
     'uses' => 'HomeController@showIndex'
@@ -84,4 +80,7 @@ Route::group(array('prefix' => 'markadmin'), function() {
         ['except' => ['index', 'create']]);
 
     Route::resource('files', 'Admin\FilesController');
+
+    Route::resource('commissies', 'Admin\CommitteeController',
+        ['except' => ['create']]);
 });
