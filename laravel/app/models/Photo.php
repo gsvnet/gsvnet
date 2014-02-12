@@ -20,6 +20,12 @@ class Photo extends \Eloquent {
     }
 
     // Return the path to the original image
+    public function getShowURLAttribute()
+    {
+        return URL::action('PhotoController@showPhoto', [$this->album_id, $this->id]);
+    }
+
+    // Return the path to the original image
     public function getImageURLAttribute()
     {
         return URL::action('PhotoController@showPhoto', [$this->album_id, $this->id]);

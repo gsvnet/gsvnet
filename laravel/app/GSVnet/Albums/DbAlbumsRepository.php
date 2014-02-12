@@ -31,6 +31,7 @@ class DbAlbumsRepository implements AlbumsRepositoryInterface
      */
     public function paginateWithFirstPhoto($amount)
     {
+        return Album::with('photos')->latest()->paginate($amount);
         return Album::has('photos')
             ->latest()
             ->paginate($amount);

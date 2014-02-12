@@ -9,14 +9,14 @@ class AlbumsTableSeeder extends Seeder {
 
         $albums = array();
 
-        for ($i = 1; $i < 4; $i++) {
-            Model\Album::create(array(
-                'name' => 'Album ' . $i,
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quicquid opinemur.',
-                'slug' => Str::slug('Album ' . $i),
-                
-            ));
-        }
+        // for ($i = 1; $i < 4; $i++) {
+        //     Model\Album::create(array(
+        //         'name' => 'Album ' . $i,
+        //         'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quicquid opinemur.',
+        //         'slug' => Str::slug('Album ' . $i),
+
+        //     ));
+        // }
 	}
 
 }
