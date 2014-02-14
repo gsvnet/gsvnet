@@ -2,6 +2,7 @@
 
 interface UsersRepositoryInterface {
     public function byId($id);
+    public function search($search);
 
     public function all();
     public function paginate($amount);

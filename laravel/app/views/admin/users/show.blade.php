@@ -2,7 +2,6 @@
     <!-- <a href="{{ URL::action('Admin\UsersController@index') }}">Terug naar gebruikers</a> -->
     <div class="page-header">
         <h1>{{{ $user->full_name }}}</h1>
-
     </div>
 
     <dl class="dl-horizontal">
@@ -32,7 +31,9 @@
     </div>
 
     <dl class="dl-horizontal">
-        @foreach ($profile->toArray() as $key => $value)
+        <dt>Jaarverband</dt>
+        <dd>{{ $profile->yearGroup->name }}</dd>
+        @foreach ($profile->getAttributes() as $key => $value)
             <dt>{{{ $key }}}</dt>
             <dd>{{{ $value }}}</dd>
         @endforeach

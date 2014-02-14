@@ -5,7 +5,7 @@ use Model\User;
 class DbUsersRepository implements UsersRepositoryInterface {
 
     /**
-     * Get by slug
+     * Get by id
      *
      * @param int $id
      * @return Album
@@ -13,6 +13,17 @@ class DbUsersRepository implements UsersRepositoryInterface {
     public function byId($id)
     {
         return User::findOrFail($id);
+    }
+
+    /**
+     * Get by search
+     *
+     * @param int $id
+     * @return Album
+     */
+    public function search($search)
+    {
+        dd('not implemented yet :\'(');
     }
 
     /**
