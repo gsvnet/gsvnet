@@ -37,7 +37,7 @@
 
                     {{
                         Former::inline_open()
-                          ->action(action('Admin\CommitteeController@destroy', $committee->id))
+                          ->action(action('Admin\Committees\MembersController@destroy', [$committee->id, $member->id]))
                           ->method('DELETE')
                           ->class('pull-right')
                     }}

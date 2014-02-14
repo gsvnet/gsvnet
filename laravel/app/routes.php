@@ -16,7 +16,7 @@ Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
     // Profiles
     Route::get('profiel', 'UserController@showProfile');
     Route::get('profiel/edit', 'UserController@editProfile');
-    // GSVdocs
+    // GsSVdocs
     Route::get('bestanden', 'FilesController@index');
     Route::get('bestanden/{id}', 'FilesController@show');
     // Only logged in users can view the member list if they have permission
@@ -83,6 +83,12 @@ Route::group(array('prefix' => 'markadmin'), function() {
 
     Route::resource('commissies', 'Admin\CommitteeController',
         ['except' => ['create']]);
+
+    // Hier nog een route voor ajax calls naar users db
+    Route::post('commissies/{committee}/',
+        'Admin\Committees\MembersController@store');
+    Route::delete('commissies/{committee}/members/{member}',
+        'Admin\Committees\MembersController@destroy');
 
     Route::resource('gebruikers', 'Admin\UsersController');
 });
