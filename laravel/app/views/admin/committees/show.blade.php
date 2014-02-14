@@ -12,6 +12,24 @@
     @if ($members->count() > 0)
     <h2>Leden</h2>
     <div class="panel panel-primary">
+        <div class="panel-heading">Lid toevoegen</div>
+        <div class="panel-body">
+            {{
+                Former::vertical_open()
+                    // ->action(action('Admin\CommitteeController@addMember', $committee->id))
+                    ->method('PUT')
+            }}
+                {{ Former::text('Lid')->placeholder('Naam lid') }}
+                {{ Former::date('Begindatum')}}
+
+                <button type='submit' class='btn btn-success btn-sm'>
+                    <i class="glyphicon glyphicon-ok"></i> Opslaan
+                </button>
+
+            {{ Former::close() }}
+        </div>
+            <hr>
+
         <ul class="list-group">
             @foreach ($members as $member)
                 <li class="list-group-item clearfix">
@@ -33,21 +51,8 @@
                     }}
                 </li>
             @endforeach
-            </ul>
-
-            <div class="panel-heading">Lid toevoegen</div>
-                <div class="panel-body">
-                    {{
-                        Former::vertical_open()
-                            // ->action(action('Admin\CommitteeController@addMember', $committee->id))
-                            ->method('PUT')
-                    }}
-                        {{ Former::text('Lid')->placeholder('Naam lid') }}
-                        {{ Former::date('Begindatum')}}
-                    {{ Former::close() }}
-                </div>
-
-        </div>
+        </ul>
+    </div>
     @endif
 
     <a href="{{ URL::action('Admin\CommitteeController@edit', $committee->id) }}" alt="Bewerk {{{ $committee->name }}}" class='btn btn-default'>
