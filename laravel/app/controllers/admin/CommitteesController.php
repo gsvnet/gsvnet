@@ -78,9 +78,15 @@ class CommitteeController extends BaseController {
     public function edit($id)
     {
         $committee = $this->committees->byId($id);
+        $users = $this->users->all();
+        // Dit moet eigenlijk via een repository
+        $members = $committee->users;
+
 
         $this->layout->content = View::make('admin.committees.edit')
-            ->withCommittee($committee);
+            ->withCommittee($committee)
+            ->withUsers($users)
+            ->withMembers($members);
     }
 
     public function update($id)

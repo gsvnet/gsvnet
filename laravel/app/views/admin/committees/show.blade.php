@@ -13,6 +13,7 @@
         <i class="fa fa-pencil"></i> Commissie informatie bewerken
     </a>
 
+    @if ($members->count() > 0)
     <h2>Leden</h2>
 
     <div class="row">
@@ -53,6 +54,13 @@
         </div>
 
     </div>
+    @else
+
+    <a href="{{ URL::action('Admin\Committees\MemberController@edit', $committee->id) }}" alt="Bewerk {{{ $committee->name }}}" class='btn btn-success'>
+        <i class="fa fa-check"></i> Leden toevoegen
+    </a>
+
+    @endif
     @if ( 1==2 )
 
     <section class='create-album panel panel-default panel-info'>
