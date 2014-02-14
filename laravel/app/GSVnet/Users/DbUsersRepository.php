@@ -22,7 +22,7 @@ class DbUsersRepository implements UsersRepositoryInterface {
     */
     public function all()
     {
-        return User::orderBy('updated_at', 'DESC')->get();
+        return User::orderBy('lastname', 'ASC')->get();
     }
 
     /**
@@ -32,7 +32,7 @@ class DbUsersRepository implements UsersRepositoryInterface {
      */
     public function paginate($amount)
     {
-        return User::orderBy('updated_at', 'DESC')->paginate($amount);
+        return User::orderBy('lastname', 'ASC')->paginate($amount);
     }
 
     /**

@@ -8,7 +8,7 @@ class Committee extends \Eloquent {
     public function members()
     {
         return $this->belongsToMany('Model\User', 'committee_user')
-                    ->withPivot('start_date', 'end_date');
+            ->withPivot('start_date', 'end_date');
     }
 
     public function activeMembers()

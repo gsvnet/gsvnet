@@ -83,4 +83,6 @@ Route::group(array('prefix' => 'markadmin'), function() {
 
     Route::resource('commissies', 'Admin\CommitteeController',
         ['except' => ['create']]);
+
+    Route::resource('gebruikers', 'Admin\UsersController');
 });

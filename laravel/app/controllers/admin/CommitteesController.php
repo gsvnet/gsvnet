@@ -82,8 +82,18 @@ class CommitteeController extends BaseController {
     {
         $committee = $this->committees->byId($id);
         $users = $this->users->all();
+
         // Dit moet eigenlijk via een repository
         $members = $committee->users;
+
+        // Wat uitprobeersels
+        // $new = $users->filter(function($user) use ($members)
+        // {
+        //     if ($members->contains($user->id))
+        //         return true;
+        // });
+        // dd($users->intersect($members)->toArray());
+        // dd($new->toArray());
 
 
         $this->layout->content = View::make('admin.committees.edit')
