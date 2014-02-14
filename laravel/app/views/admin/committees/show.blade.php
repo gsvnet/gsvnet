@@ -11,16 +11,49 @@
 
     @if ($members->count() > 0)
     <h2>Leden</h2>
+    <div class="panel panel-primary">
         <ul class="list-group">
             @foreach ($members as $member)
-                <li class="list-group-item">{{ $member->full_name }}</li>
+                <li class="list-group-item clearfix">
+                    {{ $member->full_name }}
+
+                    {{
+                        Former::inline_open()
+                          ->action(action('Admin\CommitteeController@destroy', $committee->id))
+                          ->method('DELETE')
+                          ->class('pull-right')
+                    }}
+                        <button type='submit' class='btn btn-danger btn-xs'>
+                            Verwijderen
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </button>
+
+                    {{
+                        Former::close();
+                    }}
+                </li>
             @endforeach
-        </ul>
+            </ul>
+
+            <div class="panel-heading">Lid toevoegen</div>
+                <div class="panel-body">
+                    {{
+                        Former::vertical_open()
+                            // ->action(action('Admin\CommitteeController@addMember', $committee->id))
+                            ->method('PUT')
+                    }}
+                        {{ Former::text('Lid')->placeholder('Naam lid') }}
+                        {{ Former::date('Begindatum')}}
+                    {{ Former::close() }}
+                </div>
+
+        </div>
     @endif
 
     <a href="{{ URL::action('Admin\CommitteeController@edit', $committee->id) }}" alt="Bewerk {{{ $committee->name }}}" class='btn btn-default'>
         <i class="fa fa-pencil"></i> Commissie informatie bewerken
     </a>
+
     {{-- $users->links() --}}
 @stop
 
