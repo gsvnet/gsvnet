@@ -20,7 +20,7 @@
 		</div>
 
 		<div class="secondary-column">
-			<h2>;D</h2>
+			<h2>Dit is een lekker ding</h2>
 		</div>
 	</div>
 

@@ -8,6 +8,7 @@ class CommitteeUser extends \Eloquent {
 	 * @var string
 	 */
 	protected $table = 'committee_user';
+	protected $fillable = array('start_date', 'end_date');
 
 
 
