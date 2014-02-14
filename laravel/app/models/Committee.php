@@ -13,10 +13,12 @@ class Committee extends \Eloquent {
 
     public function activeMembers()
     {
+        // Select all active members, i.e. for which the current date is
+        //  between the start and enddate
         return $this->belongsToMany('Model\User', 'committee_user')
-                    ->where('end_date', null)
-                    ->orWhere('end_date', '>=', new \DateTime('now'))
-                    ->withPivot('start_date', 'end_date');
+            ->wherePivot('end_date', '>=', new \DateTime('now'))
+            ->wherePivot('start_date', '<=', new \DateTime('now'))
+            ->withPivot('start_date', 'end_date');
     }
 
 
