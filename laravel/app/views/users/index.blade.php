@@ -2,25 +2,25 @@
 	<div id="user-list" class="column-holder">
 		<div class="main-content">
 			<h1>Jaarbundel</h1>
-			<ul class="user-profile-list">
-			@foreach ($members as $member)
-				<li class="user-profile-item">
-					<div class="profile-image">
+			@if(count($members) > 0)
+				<ul class="user-profile-list">
+				@foreach ($members as $member)
+					<li class="user-profile-item">
+						<div class="profile-image">
 
-					</div>
-					<h3>{{ link_to_action('UserController@showUser', $member->full_name, array($member->id, 'class' => 'search-users')) }}</h3>
-					@if($member->profile && $member->profile->yearGroup)
+						</div>
+						<h3>{{ link_to_action('UserController@showUser', $member->user->full_name, array($member->id, 'class' => 'search-users')) }}</h3>
 						<ul class="user-details-list">
-							<li><i class="fa fa-share"></i> {{{$member->email}}}</li>
-							<li class="phone"><i class="fa fa-phone"></i> {{{$member->profile->phone}}}</li>
-							<li><span class="dot-after">{{{$member->profile->yearGroup->name}}}</span> Regio {{{$member->profile->region}}}</li>
+							<li><i class="fa fa-share"></i> {{{$member->user->email}}}</li>
+							<li class="phone"><i class="fa fa-phone"></i> {{{$member->phone}}}</li>
+							<li><span class="dot-after">{{{$member->yearGroup->name or 'Geen jaarverband'}}}</span> Regio {{{$member->region}}}</li>
 						</ul>
-					@else
-						<p><em>Gebruiker heeft geen profiel</em></p>
-					@endif
-				</li>
-			@endforeach
+					</li>
+				@endforeach
 			</ul>
+			@else
+				<p>Geen gebruikers gevonden</p>
+			@endif
 		</div>
 		<div class="secondary-column">
 			{{Form::open(array('method'=>'get'))}}

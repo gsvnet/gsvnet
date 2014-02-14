@@ -2,12 +2,12 @@
 
 class UsersTableSeeder extends Seeder {
 
-	public function run()
-	{
+    public function run()
+    {
         DB::table('users')->truncate();
         DB::table('user_profiles')->truncate();
 
-		Model\User::create(array(
+        Model\User::create(array(
             'email'         => 'markredeman@gmail.com',
             'password'      => 'helloworld',
             'firstname'     => 'Mark',
@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder {
 
         ));
 
-        $count = 20;
+        $count = 200;
 
         $faker = Faker\Factory::create('en_US');
 
@@ -66,6 +66,5 @@ class UsersTableSeeder extends Seeder {
         }
 
         $this->command->info('Person table seeded using Faker ...');
-	}
-
+    }
 }
