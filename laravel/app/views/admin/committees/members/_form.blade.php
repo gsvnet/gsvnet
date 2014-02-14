@@ -1,14 +1,6 @@
-
-{{-- Former::text('name')->autofocus() --}}
-
+<h3>Leden toevoegen</h3>
 <ul class='list-group'>
-    @foreach ($users as $user)
-    <li class='list-group-item'>
-        <button class="btn btn-sm btn-success">
-            <i class="glyphicon glyphicon-plus"></i>
-        </button>
-        {{{ $user->full_name }}}
-    </li>
+    @foreach($users as $user)
+        @include('admin.committees._member')
     @endforeach
-
 </ul>

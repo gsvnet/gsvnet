@@ -73,6 +73,15 @@ class DbCommitteesRepository implements CommitteesRepositoryInterface {
 
         $committee->save();
 
+        if (isset($input['members']))
+        {
+            $committee->members()->sync($input['members']);
+        }
+        else
+        {
+            $committee->members()->sync(array());
+        }
+
         return $committee;
     }
 

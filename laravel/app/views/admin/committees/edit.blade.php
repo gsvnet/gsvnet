@@ -9,23 +9,17 @@
         {{ Former::populate( $committee ) }}
 
         @include('admin.committees._form')
+        @include('admin.committees.members._form')
 
         <button type='submit' class='btn btn-success'>
             <i class="glyphicon glyphicon-ok"></i> Opslaan
         </button>
 
         <a class='btn btn-default' href="{{ URL::previous() }}">Terug</a>
-    {{
-        Former::close()
-    }}
 
-    <h3>Leden toevoegen</h3>
-    <ul class='list-group'>
-        @foreach($users as $user)
-            @include('admin.committees._member')
-        @endforeach
-    </ul>
-
+        {{
+            Former::close()
+        }}
     <hr>
 
     <p>Of verwijder de commissies.</p>
