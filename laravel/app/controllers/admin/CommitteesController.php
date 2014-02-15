@@ -68,8 +68,7 @@ class CommitteeController extends BaseController {
     {
         $committee = $this->committees->byId($id);
 
-        $usersPerPage = 10;
-        $members = $this->committees->usersByCommitteIdAndPaginate($id, $usersPerPage);
+        $members = $this->committees->members($id);
         $users = $this->users->all();
 
         $this->layout->content = View::make('admin.committees.show')

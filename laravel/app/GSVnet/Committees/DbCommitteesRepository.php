@@ -35,9 +35,9 @@ class DbCommitteesRepository implements CommitteesRepositoryInterface {
         return Committee::orderBy('updated_at', 'DESC')->paginate($amount);
     }
 
-    public function usersByCommitteIdAndPaginate($id, $amount)
+    public function members($id)
     {
-        return $this->byId($id)->users;
+        return $this->byId($id)->members;
     }
 
     /**
