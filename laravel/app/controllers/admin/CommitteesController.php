@@ -69,7 +69,23 @@ class CommitteeController extends BaseController {
         $committee = $this->committees->byId($id);
 
         $members = $this->committees->members($id);
+
+        // TODO: filter current members
         $users = $this->users->all();
+
+        // $users = $users->filter(function($user) use ($members)
+        // {
+        //     if ($members->contains($user->id))
+        //         return false;
+        //     return true;
+        // });
+
+
+        // Select the user's fullname as we're only interested in that
+        // $users = $users->map(function($user)
+        // {
+        //     return ['user' => $user->firstname . ' ' . $user->middlename . ' ' . $user->lastname];
+        // });
 
         $this->layout->content = View::make('admin.committees.show')
             ->withCommittee($committee)

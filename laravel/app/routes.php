@@ -85,8 +85,9 @@ Route::group(array('prefix' => 'markadmin'), function() {
         ['except' => ['create']]);
 
     // Hier nog een route voor ajax calls naar users db
-    Route::post('commissies/{committee}/',
+    Route::post('commissies/{committee}/members',
         'Admin\Committees\MembersController@store');
+
     Route::delete('commissies/{committee}/members/{member}',
         'Admin\Committees\MembersController@destroy');
 

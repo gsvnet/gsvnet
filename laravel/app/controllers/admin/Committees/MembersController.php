@@ -22,13 +22,21 @@ class MembersController extends BaseController {
         parent::__construct();
     }
 
-    public function store()
+    public function store($committee)
     {
-        dd(Inpug::all());
+        $input = Input::all();
 
-        $committee->attach($memberId,  [
+        $member_id = $input['member_id'];
+        $committee = $this->committees->byId($committee);
+        $member = $this->users->byId($member_id);
+
+        $committee->members()->attach($input['member_id'],  [
             'start_date' => $input['start_date']
         ]);
+
+        $message = "$member->full_name succesvol toegevoegd aan $committee->name";
+        return Redirect::action('Admin\CommitteeController@show', $committee->id)
+            ->withMessage($message);
     }
 
     public function destroy($committee, $member)
