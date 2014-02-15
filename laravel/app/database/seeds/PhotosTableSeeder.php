@@ -1,5 +1,7 @@
 <?php
 
+use Model\Album, Model\Photo;
+
 class PhotosTableSeeder extends Seeder {
 
 	public function run()
@@ -7,18 +9,19 @@ class PhotosTableSeeder extends Seeder {
 		// Uncomment the below to wipe the table clean before populating
 		DB::table('photos')->truncate();
 
-        // for ($album_id = 1; $album_id < 4; $album_id++) {
+        $privateAlbum = Album::whereSlug('1-feest')->first();
+        $publicAlbum = Album::whereSlug('2-publiek')->first();
 
-        //     for ($i = 1; $i < ceil(rand(1,2) * 10 + 2); $i++) {
-        //         Model\Photo::create(array(
-        //             'name' => 'Photo ' . $i . ' from album ' . $album_id,
-        //             'album_id' => $album_id,
-        //             'src_path' => 'http://lorempixel.com/634/306/abstract?' . $i
-        //         ));
-        //     }
-        // }
+        Photo::create([
+            'name' => 'Kat',
+            'album_id' => 2,
+            'src_path' => '/seeds/cat.jpg'
+        ]);
 
-        // Uncomment the below to run the seeder
+        Photo::create([
+            'name' => 'Hond',
+            'album_id' => 1,
+            'src_path' => '/seeds/dog.jpg'
+        ]);
 	}
-
 }

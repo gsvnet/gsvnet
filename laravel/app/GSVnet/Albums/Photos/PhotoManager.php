@@ -37,15 +37,8 @@ class PhotoManager
     {
         $this->createValidator->validate($input);
         // Store the photo file and get its new path
-        if (! $input['src_path'] = $this->imageHandler->make($input['photo'], "/uploads/images/album-" . $input['album_id'] . "/"))
-        {
-            throw new PhotoStorageException;
-        }
-        // If the photo was not given a name, use the file's name
-        if (! (isset($input['name'])) || $input['name'] == '')
-        {
-            $input['name'] = $input['photo']->getClientOriginalName();
-        }
+        $this->uploadPhoto($input);
+        $this->namePhoto($input);
         // Save the photo to the database
         return $this->photos->create($input);
     }
@@ -67,19 +60,8 @@ class PhotoManager
             $photo = $this->photos->byId($id);
             $this->imageHandler->destroy($photo->src_path);
             // Store the photo file and get its new path
-            $input['src_path'] = $this->imageHandler->make(
-                $input['photo'],
-                "/uploads/images/album-" . $input['album_id'] . "/"
-            );
-            if (! $input['src_path'])
-            {
-                throw new PhotoStorageException;
-            }
-            // If the photo was not given a name, use the file's name
-            if (! (isset($input['name'])) || $input['name'] == '')
-            {
-                $input['name'] = $input['photo']->getClientOriginalName();
-            }
+            $this->uploadPhoto($input);
+            $this->namePhoto($input);
         }
         // Save the photo to the database
         return $this->photos->update($id, $input);
@@ -92,5 +74,25 @@ class PhotoManager
         $this->imageHandler->destroy($photo->src_path);
 
         return $photo;
+    }
+
+    // Uploads a photo and adjust the input's src_path accordingly
+    private function uploadPhoto(&$input)
+    {
+        if (! $input['src_path'] = $this->imageHandler->make( $input['photo'],
+            "/uploads/images/album-" . $input['album_id'] . "/"))
+        {
+            throw new PhotoStorageException;
+        }
+    }
+
+    // Set photo's name if name was not provided
+    private function namePhoto(&$input)
+    {
+        // If the photo was not given a name, use the file's name
+        if (! (isset($input['name'])) || $input['name'] == '')
+        {
+            $input['name'] = $input['photo']->getClientOriginalName();
+        }
     }
 }
