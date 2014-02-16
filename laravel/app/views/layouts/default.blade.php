@@ -19,8 +19,8 @@
 <body id="{{{ $bodyID or '' }}}">
     <div class="overal-header">
 
-        @yield('top-slideshow')
         @include('layouts.header')
+        @yield('top-slideshow')
     </div>
 
     @yield('content')
