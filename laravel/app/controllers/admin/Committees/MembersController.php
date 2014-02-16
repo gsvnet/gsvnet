@@ -31,7 +31,8 @@ class MembersController extends BaseController {
         $member = $this->users->byId($member_id);
 
         $committee->members()->attach($input['member_id'],  [
-            'start_date' => $input['start_date']
+            'start_date' => $input['start_date'],
+            'end_date' => null
         ]);
 
         $message = "$member->full_name succesvol toegevoegd aan $committee->name";

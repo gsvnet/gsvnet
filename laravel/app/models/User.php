@@ -127,4 +127,11 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 			break;
 		}
 	}
+
+	public function getTypeAttribute($type)
+	{
+		$types = Config::get('gsvnet.userTypes');
+		$key = array_search ($type, $types);
+		return $key;
+	}
 }

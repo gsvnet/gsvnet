@@ -1,4 +1,5 @@
 <?php namespace GSVnet\Permissions;
+use Auth;
 
 class UserPermissionManager implements PermissionManagerInterface
 {
@@ -11,6 +12,8 @@ class UserPermissionManager implements PermissionManagerInterface
 
     public function has($permission)
     {
-        return true;
+        if (Auth::check())
+            return true;
+        return false;
     }
 }

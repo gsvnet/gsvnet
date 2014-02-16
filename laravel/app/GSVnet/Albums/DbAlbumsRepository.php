@@ -1,6 +1,7 @@
 <?php namespace GSVnet\Albums;
 
 use Model\Album, Str;
+use Permission;
 
 class DbAlbumsRepository implements AlbumsRepositoryInterface
 {
@@ -11,7 +12,9 @@ class DbAlbumsRepository implements AlbumsRepositoryInterface
     */
     public function all()
     {
-        return Album::orderBy('updated_at', 'DESC')->get();
+        if (Permission::has('photo.show'))
+            return Album::recent()->get();
+        return Album::recent()->public()->get();
     }
 
     /**
@@ -21,7 +24,9 @@ class DbAlbumsRepository implements AlbumsRepositoryInterface
      */
     public function paginate($amount)
     {
-        return Album::orderBy('updated_at', 'DESC')->paginate($amount);
+        if (Permission::has('photo.show'))
+            return Album::recent()->paginate($amount);
+        return Album::recent()->public()->paginate($amount);
     }
 
     /**
@@ -31,7 +36,9 @@ class DbAlbumsRepository implements AlbumsRepositoryInterface
      */
     public function paginateWithFirstPhoto($amount)
     {
-        return Album::with('photos')->latest()->paginate($amount);
+        if (Permission::has('photo.show'))
+            return Album::with('photos')->latest()->paginate($amount);
+        return Album::with('photos')->latest()->public()->paginate($amount);
         return Album::has('photos')
             ->latest()
             ->paginate($amount);

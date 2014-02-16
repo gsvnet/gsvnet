@@ -22,7 +22,7 @@ class PivotCommitteeUserTable extends Migration {
 			$table->timestamps();
 
 			$table->datetime('start_date');
-			$table->datetime('end_date');
+			$table->datetime('end_date')->nullable();
 		});
 	}
 

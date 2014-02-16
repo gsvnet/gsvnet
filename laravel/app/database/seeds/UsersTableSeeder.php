@@ -25,11 +25,11 @@ class UsersTableSeeder extends Seeder {
         $faker->addProvider(new Faker\Provider\en_US\Person($faker));
         $faker->addProvider(new Faker\Provider\en_US\Address($faker));
         $faker->addProvider(new Faker\Provider\Internet($faker));
-        
+
         $this->command->info('Inserting '.$count.' sample records using Faker ...');
 
         $yearGroupIds = DB::table('year_groups')->lists('id');
-        
+
         for( $x=0 ; $x<$count; $x++ )
         {
             $user = Model\User::create(array(
@@ -39,7 +39,7 @@ class UsersTableSeeder extends Seeder {
                 'username' => $faker->userName,
                 'password' => 'testen',
                 'email' => $faker->companyEmail,
-                'type' => rand(1,4)
+                'type' => rand(0,3)
             ));
 
             $k = array_rand($yearGroupIds);
