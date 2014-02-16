@@ -17,12 +17,13 @@ class Committee extends \Eloquent {
         //  between the start and enddate
         return $this->belongsToMany('Model\User', 'committee_user')
             ->wherePivot('start_date', '<=', new \DateTime('now'))
-            ->where(function($q){
-                return $q->wherePivot('end_date', '>=', new \DateTime('now'))
-                ->orWherePivot('end_date', '<>', 'NULL');
+            ->wherePivot('end_date', '>=', new \DateTime('now'))
 
-            })
+            // ->where(function($q){
+            //     return $q->wherePivot('end_date', '>=', new \DateTime('now'))
+            //     ->orWherePivot('end_date', '<>', 'NULL');
 
+            // })
             ->withPivot('start_date', 'end_date');
     }
 
