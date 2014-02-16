@@ -10,6 +10,12 @@ class Event extends \Eloquent {
         'end_date' => 'required|date_format:Y-m-d'
     );
 
+    // TODO: lijkt nog niet te werken met accessors?
+    // public function getDates()
+    // {
+    //     return array('created_at', 'updated_at', 'deleted_at', 'start_date', 'end_date');
+    // }
+
 
     // To do;
     //  convert $this->start_date naar correcte output
@@ -38,7 +44,7 @@ class Event extends \Eloquent {
     {
         $date = new \Carbon\Carbon($start_date);
 
-        return $date->format('d M Y');
+        return $date->formatLocalized('%d %b');
     }
 
     public function getEndDateFormattedAttribute($start_date)

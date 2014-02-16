@@ -15,6 +15,8 @@ class EventController extends BaseController {
             ->with('searchTimeRange', false)
             ->with('events', $events)
             ->with('types', Config::get('gsvnet.eventTypes'))
+            ->with('showNextYear', true)
+            ->with('showPrevYear', true)
             ->withYear($year);
 
         // Setup metadata

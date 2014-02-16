@@ -15,7 +15,7 @@
 					<div class="event-row">
 						<div class="event-details">
 							<div class="event-image {{{$types[$event->type] or ''}}}"></div>
-							<div class="event-date">22 jan{{--{$event->start_date}--}}</div>
+							<div class="event-date">{{{$event->start_date_formatted}}}</div>
 						</div>
 						<div class="event-body">
 							<h3><a href="{{ URL::action('EventController@showEvent', $event->id) }}">{{{ $event->title}}}</a></h3>
@@ -23,7 +23,6 @@
 						</div>
 					</div>
 				@endforeach
-
 			</div>
 
 			{{ $events->links() }}
