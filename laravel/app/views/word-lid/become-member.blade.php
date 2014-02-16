@@ -78,7 +78,7 @@
             }}
 
             {{
-                Former::select('potential-birth-year')->label('')->options(range(date('Y')-14, 1900))
+                Former::select('potential-birth-year')->label('')->range(date('Y')-14, 1980)
             }}
 
             {{

@@ -65,7 +65,10 @@ Route::group(array('prefix' => 'albums/{album}/photo/{photo}'), function() {
 // Events
 Route::get('activiteiten', 'EventController@showIndex');
 Route::get('activiteiten/bekijk-{id}', 'EventController@showEvent');
-Route::get('activiteiten/{year}/{month?}', 'EventController@showMonth');
+
+// Hier filter je of de opgegeven jaar en datum goed zijn
+Route::get('activiteiten/{year}/{month?}', 'EventController@showMonth')
+    ->before('checkDate');
 
 // TODO: check if user has album permissions
 Route::group(array('prefix' => 'markadmin'), function() {

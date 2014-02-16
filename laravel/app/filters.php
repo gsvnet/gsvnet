@@ -142,3 +142,29 @@ Route::filter('maxUploadSize', function()
         throw new GSVnet\Core\Exceptions\MaxUploadSizeException;
     }
 });
+
+/**
+ * Check if a year or month is requested which does not exist
+ */
+
+Route::filter('checkDate', function($route, $request)
+{
+	$min = (int) Config::get('gsvnet.events.minYear');
+	$max = (int) Config::get('gsvnet.events.maxYear');
+	$months = Config::get('gsvnet.months');
+
+	$year = (int) $route->getParameter('year');
+	$month = $route->getParameter('month', '');
+
+
+	if($year < $min or $year > $max)
+	{
+		App::abort('404');
+	}
+
+	if(!empty($month) && !array_key_exists($month, $months))
+	{
+		App::abort('404');
+	}
+
+});

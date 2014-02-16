@@ -29,7 +29,15 @@
 			{{ $events->links() }}
 		</div>
 		<div class="secondary-column">
-			<h2>{{link_to_action('EventController@showMonth', $year - 1, $year - 1)}} | {{link_to_action('EventController@showMonth', $year, $year)}} | {{link_to_action('EventController@showMonth', $year + 1, $year + 1)}}</h2>
+			<h2>
+			@if($showPrevYear)
+				{{link_to_action('EventController@showMonth', $year - 1, $year - 1)}} |
+			@endif
+			{{link_to_action('EventController@showMonth', $year, $year)}}
+			@if($showNextYear)
+				| {{link_to_action('EventController@showMonth', $year + 1, $year + 1)}}
+			@endif
+			</h2>
 			<ul class="list secondary-menu">
 				<?php
 					$months = array('januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december');
