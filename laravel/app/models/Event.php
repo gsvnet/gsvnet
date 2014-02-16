@@ -40,9 +40,9 @@ class Event extends \Eloquent {
         return $start_date->format('H:i');
     }
 
-    public function getStartDateFormattedAttribute($start_date)
+    public function getStartDateFormattedAttribute()
     {
-        $date = new \Carbon\Carbon($start_date);
+        $date = new \Carbon\Carbon($this->start_date);
 
         return $date->formatLocalized('%d %b');
     }
