@@ -1,6 +1,6 @@
 <?php namespace GSVnet\Files\Labels;
 
-use Model\Label;
+use GSVnet\Files\Labels\Label;
 
 class LabelsRepository
 {

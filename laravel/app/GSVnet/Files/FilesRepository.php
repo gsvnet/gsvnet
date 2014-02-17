@@ -1,7 +1,5 @@
 <?php namespace GSVnet\Files;
 
-use Model\File;
-
 class FilesRepository
 {
     /**

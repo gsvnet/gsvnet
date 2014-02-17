@@ -1,16 +1,17 @@
 <?php
+use GSVnet\Files\Labels\Label;
 
 class LabelsTableSeeder extends Seeder {
     public function run() {
         DB::table('labels')->truncate();
 
-        Model\Label::create([
+        Label::create([
             'name' => 'Commissies'
         ]);
-        Model\Label::create([
+        Label::create([
             'name' => 'Notulen'
         ]);
-        Model\Label::create([
+        Label::create([
             'name' => 'Senaat'
         ]);
     }

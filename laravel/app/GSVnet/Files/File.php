@@ -1,11 +1,11 @@
-<?php namespace Model;
+<?php namespace GSVnet\Files;
 
 use GSVnet\Files\FileHandler;
 
 class File extends \Eloquent {
-	protected $fillable = array('name', 'file_path');
+    protected $fillable = array('name', 'file_path');
 
-	public static $rules = array(
+    public static $rules = array(
         'name' => 'required'
     );
 
@@ -18,7 +18,7 @@ class File extends \Eloquent {
 
     public function labels()
     {
-        return $this->belongsToMany('Model\Label', 'file_label');
+        return $this->belongsToMany('GSVnet\Files\Labels\Label', 'file_label');
     }
 
     public function getSizeAttribute()

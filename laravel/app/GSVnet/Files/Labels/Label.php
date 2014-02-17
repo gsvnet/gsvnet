@@ -1,4 +1,4 @@
-<?php namespace Model;
+<?php namespace GSVnet\Files\Labels;
 
 class Label extends \Eloquent {
     protected $fillable = ['name'];
@@ -6,8 +6,7 @@ class Label extends \Eloquent {
 
     public function files()
     {
-        return $this->belongsToMany('Model\File', 'file_label');
-        $this->hasMany('Model\Files');
+        return $this->belongsToMany('GSVnet\Files\File', 'file_label');
     }
 
     public function __toString()
