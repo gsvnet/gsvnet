@@ -1,7 +1,5 @@
 <?php namespace GSVnet\Committees;
 
-use Model\Committee;
-
 class CommitteesRepository {
 
     /**

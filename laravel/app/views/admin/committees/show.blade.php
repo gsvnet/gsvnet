@@ -9,7 +9,6 @@
         {{{ $committee->description }}}
     </p>
 
-    @if ($members->count() > 0)
     <h2>Leden</h2>
     <div class="panel panel-primary">
         <div class="panel-heading">Lid toevoegen</div>
@@ -29,32 +28,34 @@
 
             {{ Former::close() }}
         </div>
+
+        @if ($members->count() > 0)
             <hr>
 
-        <ul class="list-group">
-            @foreach ($members as $member)
-                <li class="list-group-item clearfix">
-                    {{ $member->full_name }}
+            <ul class="list-group">
+                @foreach ($members as $member)
+                    <li class="list-group-item clearfix">
+                        {{ $member->full_name }}
 
-                    {{
-                        Former::inline_open()
-                          ->action(action('Admin\Committees\MembersController@destroy', [$committee->id, $member->id]))
-                          ->method('DELETE')
-                          ->class('pull-right')
-                    }}
-                        <button type='submit' class='btn btn-danger btn-xs'>
-                            Verwijderen
-                            <i class="glyphicon glyphicon-remove"></i>
-                        </button>
+                        {{
+                            Former::inline_open()
+                              ->action(action('Admin\Committees\MembersController@destroy', [$committee->id, $member->id]))
+                              ->method('DELETE')
+                              ->class('pull-right')
+                        }}
+                            <button type='submit' class='btn btn-danger btn-xs'>
+                                Verwijderen
+                                <i class="glyphicon glyphicon-remove"></i>
+                            </button>
 
-                    {{
-                        Former::close();
-                    }}
-                </li>
-            @endforeach
-        </ul>
+                        {{
+                            Former::close();
+                        }}
+                    </li>
+                @endforeach
+            </ul>
+        @endif
     </div>
-    @endif
 
     <a href="{{ URL::action('Admin\CommitteeController@edit', $committee->id) }}" alt="Bewerk {{{ $committee->name }}}" class='btn btn-default'>
         <i class="fa fa-pencil"></i> Commissie informatie bewerken

@@ -71,7 +71,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 
 	public function committees()
 	{
-		return $this->belongsToMany('Model\Committee', 'committee_user')
+		return $this->belongsToMany('GSVnet\Committees\Committee', 'committee_user')
                     ->withPivot('start_date', 'end_date')
                     ->withTimestamps();
 	}
@@ -79,7 +79,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 	public function committeesSorted()
 	{
 		// Maybe ->withTimestamps(); ?
-		return $this->belongsToMany('Model\Committee', 'committee_user')
+		return $this->belongsToMany('GSVnet\Committees\Committee', 'committee_user')
                     ->withPivot('start_date', 'end_date')
                     ->orderBy('committee_user.end_date', 'desc');
 	}
@@ -99,7 +99,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 
 	public function activeCommittees()
 	{
-		return $this->belongsToMany('Model\Committee', 'committee_user')
+		return $this->belongsToMany('GSVnet\Committees\Committee', 'committee_user')
                     ->where('end_date', null)
                     ->orWhere('end_date', '>=', new \DateTime('now'))
                     ->withPivot('start_time', 'end_time');

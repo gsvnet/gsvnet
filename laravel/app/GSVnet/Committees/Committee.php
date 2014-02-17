@@ -1,9 +1,9 @@
-<?php namespace Model;
+<?php namespace GSVnet\Committees;
 
 class Committee extends \Eloquent {
-	protected $guarded = array();
+    protected $guarded = array();
 
-	public static $rules = array();
+    public static $rules = array();
     // Change users to members?
     public function members()
     {
