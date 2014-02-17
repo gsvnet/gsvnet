@@ -14,56 +14,57 @@ Route::get('logout', 'SessionController@getLogout')
 // Intern
 Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
     // Profiles
-    Route::get('profiel', 'UserController@showProfile');
-    Route::get('profiel/edit', 'UserController@editProfile');
+    Route::get('profiel',        'UserController@showProfile');
+    Route::get('profiel/edit',   'UserController@editProfile');
     // GsSVdocs
-    Route::get('bestanden', 'FilesController@index');
+    Route::get('bestanden',      'FilesController@index');
     Route::get('bestanden/{id}', 'FilesController@show');
+
     // Only logged in users can view the member list if they have permission
     Route::group(array('prefix' => 'jaarbundel', 'before' => 'can:viewMemberlist'), function() {
-        Route::get('/', 'UserController@showUsers');
+        Route::get('/',             'UserController@showUsers');
 
-        Route::get('/gsver-{id}', 'UserController@showUser')
+        Route::get('/gsver-{id}',   'UserController@showUser')
             ->where('id', '[0-9]+');
     });
 });
 
 // De GSV
 Route::group(array('prefix' => 'de-gsv'), function() {
-    Route::get('/', 'AboutController@showAbout');
+    Route::get('/',                 'AboutController@showAbout');
 
-    Route::get('commissies', 'AboutController@showCommittees');
-    Route::get('commissies/{id}', 'AboutController@showCommittee');
+    Route::get('commissies',        'AboutController@showCommittees');
+    Route::get('commissies/{id}',   'AboutController@showCommittee');
 
-    Route::get('senaten', 'AboutController@showSenates');
-    Route::get('senaten/{senaat}', 'AboutController@showSenate');
+    Route::get('senaten',           'AboutController@showSenates');
+    Route::get('senaten/{senaat}',  'AboutController@showSenate');
 
-    Route::get('contact', 'AboutController@showContact');
+    Route::get('contact',           'AboutController@showContact');
 });
 
 // Word lid
 // Hier moet een check komen dat je niet al gejoined bent, want de pagina heeft gene zin voor dat soort mensen
-Route::get('word-lid', 'HomeController@wordLid');
+Route::get('word-lid',    'HomeController@wordLid');
 // Only users which are logged in, but have not yet joined our little club, may post to this form
-Route::post('word-lid', 'UserController@postWordLid')
+Route::post('word-lid',   'UserController@postWordLid')
     ->before('auth|usertype:visitor');
 
-Route::post('register', 'UserController@postRegister');
+Route::post('register',   'UserController@postRegister');
 
 // Albums
-Route::get('albums', 'PhotoController@showAlbums');
+Route::get('albums',         'PhotoController@showAlbums');
 Route::get('albums/{album}', 'PhotoController@showPhotos');
 
 // Get photo images
 // TODO: verander alle referenties naar dez route.
 Route::group(array('prefix' => 'albums/{album}/photo/{photo}'), function() {
-    Route::get('/', 'PhotoController@showPhoto');
-    Route::get('/wide', 'PhotoController@showPhotoWide');
+    Route::get('/',      'PhotoController@showPhoto');
+    Route::get('/wide',  'PhotoController@showPhotoWide');
     Route::get('/small', 'PhotoController@showPhotoSmall');
 });
 
 // Events
-Route::get('activiteiten', 'EventController@showIndex');
+Route::get('activiteiten',             'EventController@showIndex');
 Route::get('activiteiten/bekijk-{id}', 'EventController@showEvent');
 
 // Hier filter je of de opgegeven jaar en datum goed zijn
@@ -72,19 +73,18 @@ Route::get('activiteiten/{year}/{month?}', 'EventController@showMonth')
 
 // TODO: check if user has album permissions
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'before' => 'auth'], function() {
-    Route::get('/', 'AdminController@index');
+    Route::get('/',           'AdminController@index');
 
     Route::resource('events', 'EventController');
-
 
     Route::resource('albums', 'AlbumController',
         ['except' => ['create']]);
     Route::resource('albums.photo', 'PhotoController',
         ['except' => ['index', 'create']]);
 
-    Route::resource('files', 'FilesController');
+    Route::resource('files',        'FilesController');
 
-    Route::resource('commissies', 'CommitteeController',
+    Route::resource('commissies',   'CommitteeController',
         ['except' => ['create']]);
 
     // Hier nog een route voor ajax calls naar users db

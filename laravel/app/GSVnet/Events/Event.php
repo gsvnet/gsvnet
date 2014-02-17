@@ -1,9 +1,9 @@
-<?php namespace Model;
+<?php namespace GSVnet\Events;
 
 class Event extends \Eloquent {
-	protected $guarded = array();
+    protected $guarded = array();
 
-	public static $rules = array(
+    public static $rules = array(
         'title' => 'required',
         'description' => 'required',
         'start_date' => 'required|date_format:Y-m-d',

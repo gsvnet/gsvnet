@@ -7,7 +7,7 @@ class Committee extends \Eloquent {
     // Change users to members?
     public function members()
     {
-        return $this->belongsToMany('Model\User', 'committee_user')
+        return $this->belongsToMany('GSVnet\Users\User', 'committee_user')
             ->withPivot('start_date', 'end_date');
     }
 
@@ -15,7 +15,7 @@ class Committee extends \Eloquent {
     {
         // Select all active members, i.e. for which the current date is
         //  between the start and enddate
-        return $this->belongsToMany('Model\User', 'committee_user')
+        return $this->belongsToMany('GSVnet\Users\User', 'committee_user')
             ->wherePivot('start_date', '<=', new \DateTime('now'))
             ->wherePivot('end_date', '>=', new \DateTime('now'))
 

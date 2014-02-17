@@ -8,7 +8,7 @@ class CommitteeUser extends \Eloquent {
 
     public function user()
     {
-        return $this->belongsTo('Model\User');
+        return $this->belongsTo('GSVnet\Users\User');
     }
 
     public function committee()

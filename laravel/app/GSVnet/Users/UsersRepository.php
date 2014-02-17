@@ -1,7 +1,5 @@
 <?php namespace GSVnet\Users;
 
-use Model\User;
-
 class UsersRepository {
 
     /**

@@ -8,7 +8,7 @@ class UserCommitteeSeeder extends Seeder {
 
         $faker = Faker\Factory::create('en_US');
 
-        $users = Model\User::where('type', '=', 2)->get();
+        $users = GSVnet\Users\User::where('type', '=', 2)->get();
         $committees = DB::table('committees')->lists('id');
 
         foreach($users as $user)

@@ -7,7 +7,7 @@ class UsersTableSeeder extends Seeder {
         DB::table('users')->truncate();
         DB::table('user_profiles')->truncate();
 
-        Model\User::create(array(
+        GSVnet\Users\User::create(array(
             'email'         => 'markredeman@gmail.com',
             'password'      => 'helloworld',
             'firstname'     => 'Mark',
@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder {
 
         for( $x=0 ; $x<$count; $x++ )
         {
-            $user = Model\User::create(array(
+            $user = GSVnet\Users\User::create(array(
                 'firstname' => $faker->firstName,
                 'middlename' => 'van',
                 'lastname' => $faker->lastName,
@@ -44,7 +44,7 @@ class UsersTableSeeder extends Seeder {
 
             $k = array_rand($yearGroupIds);
 
-            Model\UserProfile::create(array(
+            GSVnet\Users\UserProfile::create(array(
                 'user_id' => $user->id,
                 'year_group_id' => $yearGroupIds[$k],
                 'region' => rand(1,4),

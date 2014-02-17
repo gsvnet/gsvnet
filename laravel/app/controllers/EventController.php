@@ -5,7 +5,7 @@ class EventController extends BaseController {
 	{
 
         // Get all events which haven't finishes yet
-        $events = Model\Event::where('end_date', '>=', new \DateTime('now'))
+        $events = GSVnet\Events\Event::where('end_date', '>=', new \DateTime('now'))
             ->orderBy('start_date', 'asc')
             ->paginate(5);
 
@@ -28,8 +28,8 @@ class EventController extends BaseController {
 
     public function showEvent($id)
     {
-        $event = Model\Event::find($id);
-        $events = Model\Event::where('end_date', '>=', new \DateTime('now'))
+        $event = GSVnet\Events\Event::find($id);
+        $events = GSVnet\Events\Event::where('end_date', '>=', new \DateTime('now'))
             ->orderBy('start_date', 'asc')
             ->paginate(5);
 
@@ -65,7 +65,7 @@ class EventController extends BaseController {
         }
 
         // Select all events that take place between $start and $end
-        $events = Model\Event::where('start_date', '<=', $end)
+        $events = GSVnet\Events\Event::where('start_date', '<=', $end)
             ->orderBy('start_date', 'asc')
             ->where('end_date', '>=', $begin)
             ->paginate(5);
