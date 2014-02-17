@@ -2,7 +2,7 @@
 
 use Model\User;
 
-class DbUsersRepository implements UsersRepositoryInterface {
+class UsersRepository {
 
     /**
      * Get by id

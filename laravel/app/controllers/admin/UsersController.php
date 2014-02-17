@@ -2,7 +2,7 @@
 
 use View, Input, Redirect;
 
-use GSVnet\Users\UsersRepositoryInterface;
+use GSVnet\Users\UsersRepository;
 use GSVnet\Users\UserValidator;
 
 use GSVnet\Core\Exceptions\ValidationException;
@@ -14,7 +14,7 @@ class UsersController extends BaseController {
 
     public function __construct(
         UserValidator $validator,
-        UsersRepositoryInterface $users)
+        UsersRepository $users)
     {
         $this->validator = $validator;
         $this->users = $users;
