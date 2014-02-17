@@ -6,7 +6,6 @@
 		"laravel/framework": "4.1.*",
 		"way/generators": "dev-master",
 		"anahkiasen/former": "dev-master",
-		"frozennode/administrator": "dev-dev",
 		"fzaninotto/faker": "1.2.*@dev",
 		"intervention/image": "dev-master"
 	},
@@ -25,15 +24,13 @@
 	},
 	"scripts": {
 		"post-install-cmd": [
-			"php artisan optimize",
-        	"php artisan asset:publish frozennode/administrator"
+			"php artisan optimize"
 		],
 		"pre-update-cmd": [
 			"php artisan clear-compiled"
 		],
 		"post-update-cmd": [
-			"php artisan optimize",
-        	"php artisan asset:publish frozennode/administrator"
+			"php artisan optimize"
 		],
 		"post-create-project-cmd": [
 			"php artisan key:generate"

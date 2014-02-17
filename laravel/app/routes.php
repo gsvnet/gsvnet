@@ -71,28 +71,28 @@ Route::get('activiteiten/{year}/{month?}', 'EventController@showMonth')
     ->before('checkDate');
 
 // TODO: check if user has album permissions
-Route::group(array('prefix' => 'markadmin'), function() {
-    Route::get('/', 'Admin\AdminController@index');
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'before' => 'auth'], function() {
+    Route::get('/', 'AdminController@index');
 
-    Route::resource('events', 'Admin\EventController');
+    Route::resource('events', 'EventController');
 
 
-    Route::resource('albums', 'Admin\AlbumController',
+    Route::resource('albums', 'AlbumController',
         ['except' => ['create']]);
-    Route::resource('albums.photo', 'Admin\PhotoController',
+    Route::resource('albums.photo', 'PhotoController',
         ['except' => ['index', 'create']]);
 
-    Route::resource('files', 'Admin\FilesController');
+    Route::resource('files', 'FilesController');
 
-    Route::resource('commissies', 'Admin\CommitteeController',
+    Route::resource('commissies', 'CommitteeController',
         ['except' => ['create']]);
 
     // Hier nog een route voor ajax calls naar users db
     Route::post('commissies/{committee}/members',
-        'Admin\Committees\MembersController@store');
+        'Committees\MembersController@store');
 
     Route::delete('commissies/{committee}/members/{member}',
-        'Admin\Committees\MembersController@destroy');
+        'Committees\MembersController@destroy');
 
-    Route::resource('gebruikers', 'Admin\UsersController');
+    Route::resource('gebruikers', 'UsersController');
 });
