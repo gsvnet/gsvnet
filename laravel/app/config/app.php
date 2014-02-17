@@ -111,7 +111,6 @@ return array(
 		'Former\FormerServiceProvider',
         'Intervention\Image\ImageServiceProvider',
 
-
         'GSVnet\ServiceProviders\BackendServiceProvider',
         'GSVnet\ServiceProviders\AlbumServiceProvider',
         'GSVnet\ServiceProviders\FilesServiceProvider',
