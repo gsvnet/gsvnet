@@ -3,10 +3,10 @@
 use View, Input, Redirect;
 
 use GSVnet\Files\FileManager;
-use GSVnet\Files\FilesRepositoryInterface;
+use GSVnet\Files\FilesRepository;
 use GSVnet\Files\FileStorageException;
 
-use GSVnet\Files\Labels\LabelsRepositoryInterface;
+use GSVnet\Files\Labels\LabelsRepository;
 
 use GSVnet\Core\Exceptions\ValidationException;
 
@@ -17,8 +17,8 @@ class FilesController extends BaseController {
     protected $manager;
 
     public function __construct(
-        FilesRepositoryInterface $files,
-        LabelsRepositoryInterface $labels,
+        FilesRepository $files,
+        LabelsRepository $labels,
         FileManager $manager)
     {
         $this->files = $files;

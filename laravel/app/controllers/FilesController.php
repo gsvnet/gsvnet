@@ -1,7 +1,7 @@
 <?php
 
-use GSVnet\Files\FilesRepositoryInterface;
-use GSVnet\Files\Labels\LabelsRepositoryInterface;
+use GSVnet\Files\FilesRepository;
+use GSVnet\Files\Labels\LabelsRepository;
 use GSVnet\Files\FileHandler;
 
 class FilesController extends BaseController {
@@ -12,8 +12,8 @@ class FilesController extends BaseController {
 
     public function __construct(
     	FileHandler $fileHandler,
-    	FilesRepositoryInterface $files,
-    	LabelsRepositoryInterface $labels)
+    	FilesRepository $files,
+    	LabelsRepository $labels)
     {
         $this->fileHandler = $fileHandler;
         $this->files = $files;

@@ -2,7 +2,7 @@
 
 use Model\Label;
 
-class DbLabelsRepository implements LabelsRepositoryInterface
+class LabelsRepository implements LabelsRepositoryInterface
 {
     /**
     * Get all albums

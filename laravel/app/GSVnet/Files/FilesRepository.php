@@ -2,7 +2,7 @@
 
 use Model\File;
 
-class DbFilesRepository implements FilesRepositoryInterface
+class FilesRepository
 {
     /**
     * Get all albums
