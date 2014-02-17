@@ -1,6 +1,6 @@
 <?php namespace GSVnet\Albums;
 
-use Model\Album, Str;
+use Str;
 use Permission;
 
 class AlbumsRepository
@@ -13,8 +13,8 @@ class AlbumsRepository
     public function all()
     {
         if (Permission::has('photo.show'))
-            return Album::recent()->get();
-        return Album::recent()->public()->get();
+            return Album::latest()->get();
+        return Album::latest()->public()->get();
     }
 
     /**
@@ -25,8 +25,8 @@ class AlbumsRepository
     public function paginate($amount)
     {
         if (Permission::has('photo.show'))
-            return Album::recent()->paginate($amount);
-        return Album::recent()->public()->paginate($amount);
+            return Album::latest()->paginate($amount);
+        return Album::latest()->public()->paginate($amount);
     }
 
     /**

@@ -1,6 +1,5 @@
 <?php namespace GSVnet\Albums\Photos;
 
-use Model\Photo;
 use GSVnet\Albums\Photos\ImageHandler;
 
 class PhotosRepository
