@@ -4,7 +4,7 @@ use GSVnet\Albums\Photos\PhotoCreatorValidator;
 use GSVnet\Albums\Photos\PhotoUpdatorValidator;
 
 use GSVnet\Albums\Photos\ImageHandler;
-use GSVnet\Albums\Photos\PhotosRepositoryInterface;
+use GSVnet\Albums\Photos\PhotosRepository;
 
 use GSVnet\Albums\Photos\PhotoStorageException;
 
@@ -19,7 +19,7 @@ class PhotoManager
         PhotoCreatorValidator $createValidator,
         PhotoUpdatorValidator $updateValidator,
         ImageHandler $imageHandler,
-        PhotosRepositoryInterface $photos)
+        PhotosRepository $photos)
     {
         $this->imageHandler = $imageHandler;
         $this->createValidator = $createValidator;

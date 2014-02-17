@@ -2,11 +2,11 @@
 
 use View, Input, Redirect;
 
-use GSVnet\Albums\AlbumsRepositoryInterface;
+use GSVnet\Albums\AlbumsRepository;
 use GSVnet\Albums\AlbumValidator;
 
 use GSVnet\Albums\Photos\ImageHandler;
-use GSVnet\Albums\Photos\PhotosRepositoryInterface;
+use GSVnet\Albums\Photos\PhotosRepository;
 
 use GSVnet\Core\Exceptions\ValidationException;
 
@@ -17,8 +17,8 @@ class AlbumController extends BaseController {
     protected $validator;
 
     public function __construct(
-        AlbumsRepositoryInterface $albums,
-        PhotosRepositoryInterface $photos,
+        AlbumsRepository $albums,
+        PhotosRepository $photos,
         AlbumValidator $validator)
     {
         $this->albums = $albums;

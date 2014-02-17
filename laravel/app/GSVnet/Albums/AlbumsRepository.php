@@ -3,7 +3,7 @@
 use Model\Album, Str;
 use Permission;
 
-class DbAlbumsRepository implements AlbumsRepositoryInterface
+class AlbumsRepository
 {
     /**
     * Get all albums

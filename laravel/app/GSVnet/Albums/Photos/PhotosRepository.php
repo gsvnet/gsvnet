@@ -3,7 +3,7 @@
 use Model\Photo;
 use GSVnet\Albums\Photos\ImageHandler;
 
-class DbPhotosRepository implements PhotosRepositoryInterface
+class PhotosRepository
 {
     public function getInstance()
     {

@@ -10,16 +10,6 @@ class AlbumServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->app->bind(
-            'GSVnet\Albums\AlbumsRepositoryInterface',
-            'GSVnet\Albums\DbAlbumsRepository'
-        );
-
-        $this->app->bind(
-            'GSVnet\Albums\Photos\PhotosRepositoryInterface',
-            'GSVnet\Albums\Photos\DbPhotosRepository'
-        );
-
         // Album filters
         Route::filter('albums.show', 'GSVnet\Albums\Filters\ShowAlbumFilter');
         Route::filter('albums.create', 'GSVnet\Albums\Filters\CreateAlbumFilter');
