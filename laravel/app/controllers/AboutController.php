@@ -1,11 +1,11 @@
 <?php
 
-use GSVnet\Committees\CommitteesRepositoryInterface;
+use GSVnet\Committees\CommitteesRepository;
 
 class AboutController extends BaseController {
 
 
-    public function __construct(CommitteesRepositoryInterface $committees)
+    public function __construct(CommitteesRepository $committees)
     {
         $this->committees = $committees;
     }

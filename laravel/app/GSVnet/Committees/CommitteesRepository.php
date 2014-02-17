@@ -2,7 +2,7 @@
 
 use Model\Committee;
 
-class DbCommitteesRepository implements CommitteesRepositoryInterface {
+class CommitteesRepository {
 
     /**
      * Get by slug

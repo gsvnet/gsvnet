@@ -2,7 +2,7 @@
 
 use View, Input, Redirect;
 
-use GSVnet\Committees\CommitteesRepositoryInterface;
+use GSVnet\Committees\CommitteesRepository;
 use GSVnet\Committees\CommitteeValidator;
 
 use GSVnet\Users\UsersRepositoryInterface;
@@ -16,7 +16,7 @@ class CommitteeController extends BaseController {
     protected $validator;
 
     public function __construct(
-        CommitteesRepositoryInterface $committees,
+        CommitteesRepository $committees,
         CommitteeValidator $validator,
         UsersRepositoryInterface $users)
     {

@@ -9,11 +9,6 @@ class CommitteesServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->app->bind(
-            'GSVnet\Committees\CommitteesRepositoryInterface',
-            'GSVnet\Committees\DbCommitteesRepository'
-        );
-
         // Album filters
         // Route::filter('albums.show', 'GSVnet\Albums\Filters\ShowAlbumFilter');
     }
