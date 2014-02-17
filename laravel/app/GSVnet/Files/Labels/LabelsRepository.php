@@ -2,7 +2,7 @@
 
 use Model\Label;
 
-class LabelsRepository implements LabelsRepositoryInterface
+class LabelsRepository
 {
     /**
     * Get all albums
