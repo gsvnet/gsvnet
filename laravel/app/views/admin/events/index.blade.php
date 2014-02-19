@@ -60,13 +60,6 @@
             var endTime = $('#end_time')[0];
             var $wholeDay = $('#whole_day');
 
-            $('.add-item').on('click', function () {
-                $('.add-form').toggle('fast');
-            });
-
-            // Hide success message after 2.5 seconds
-            $('.alert.alert-success').delay(2500).slideUp(500);
-
             function toggleTimeBoxes() {
             	startTime.disabled = $wholeDay[0].checked;
             	endTime.disabled = $wholeDay[0].checked;
