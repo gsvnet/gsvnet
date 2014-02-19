@@ -1,78 +1,59 @@
 <?php namespace Admin;
 
-use View;
-use GSVnet\Events\Event;
-use Input;
-use Validator;
-use Str;
-use Redirect;
-use File;
+use View, Input, Redirect;
+
+use GSVnet\Events\EventsRepository;
+use GSVnet\Events\EventValidator;
 
 class EventController extends BaseController {
-    public function __construct()
+
+    protected $events;
+    protected $validator;
+
+    public function __construct(
+        EventsRepository $events,
+        EventValidator $validator)
     {
+        $this->events = $events;
+        $this->validator = $validator;
+
         $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
         parent::__construct();
     }
 
     public function index()
     {
-        $events = Event::paginate(10);
+        $events = $this->events->paginate(10);
 
         $this->layout->content = View::make('admin.events.index')
-            ->with('events', $events);
+            ->withEvents($events);
     }
 
     public function store()
     {
         $input = Input::all();
+        $input['location'] = Input::get('location', '');
+        $input['whole_day'] = Input::get('whole_day', '');
 
-        // Validate photo name, album id and file type
-        $validation = Validator::make($input, Event::$rules);
+        $this->validator->validate($input);
+        $event = $this->events->create($input);
 
-        // Require time only if it is not a whole day
-        $validation->sometimes(array('start_time', 'end_time'), 'required', function($input){
-            return $input->get('whole_day', '0') == '0';
-        });
-
-        if ($validation->passes())
-        {
-            $event = new Event();
-
-            $event->title = $input['title'];
-            $event->description = $input['description'];
-            $event->location = Input::get('description', '');
-            $event->start_date = $input['start_date'];
-            $event->end_date = $input['end_date'];
-            $event->whole_day = Input::get('whole_day', '0');
-
-            // Check if whole day is NOT checked
-            if (Input::get('whole_day', '0') == '0')
-            {
-                $event->start_time = $input['start_time'];
-                $event->end_time = $input['end_time'];
-            }
-
-            $event->save();
-
-            return Redirect::action('Admin\EventController@index')
-                ->with('message', '<strong>' . $event->title . '</strong> is succesvol opgeslagen.')
-                ->with('changedID', $event->id);
-        }
-
-        return Redirect::back()->withInput()->withErrors($validation);
+        $message = '<strong>' . $event->title . '</strong> is succesvol opgeslagen.';
+        return Redirect::action('Admin\EventController@index')
+            ->withMessage($message);
     }
 
     public function show($id)
     {
-        $event = Event::find($id);
+        $event = $this->events->byId($id);
 
-        $this->layout->content = View::make('admin.events.show')->withEvent($event);
+        $this->layout->content = View::make('admin.events.show')
+            ->withEvent($event);
     }
 
     public function edit($id)
     {
-        $event = Event::find($id);
+        $event = $this->events->byId($id);
 
         $this->layout->content = View::make('admin.events.edit')
             ->withEvent($event);
@@ -81,48 +62,24 @@ class EventController extends BaseController {
     public function update($id)
     {
         $input = Input::all();
-        $event = Event::findOrFail($id);
+        $input['location'] = Input::get('location', '');
+        $input['whole_day'] = Input::get('whole_day', '');
 
-        $validation = Validator::make($input, Event::$rules);
+        $this->validator->validate($input);
+        $event = $this->events->update($id, $input);
 
-        // Require time only if it is not a whole day
-        $validation->sometimes(array('start_time', 'end_time'), 'required', function($input){
-            return $input->get('whole_day', '0') == '0';
-        });
-
-        if ($validation->passes())
-        {
-
-            $event->title = $input['title'];
-            $event->description = $input['description'];
-            $event->location = Input::get('description', '');
-            $event->start_date = $input['start_date'];
-            $event->end_date = $input['end_date'];
-            $event->whole_day = Input::get('whole_day', '0');
-
-            // Check if whole day is NOT checked
-            if (Input::get('whole_day', '0') == '0')
-            {
-                $event->start_time = $input['start_time'];
-                $event->end_time = $input['end_time'];
-            }
-
-            $event->save();
-
-            return Redirect::action('Admin\EventController@index')
-                ->with('message', '<strong>' . $event->title . '</strong> is succesvol bewerkt.')
-                ->with('changedID', $event->id);
-        }
-
-        return Redirect::back()->withInput()->withErrors($validation);
+        $message = '<strong>' . $event->title . '</strong> is succesvol bewerkt.';
+        return Redirect::action('Admin\EventController@index')
+            ->withMessage($message);
 
     }
 
     public function destroy($id)
     {
-        $event = Event::findOrFail($id);
+        $event = $this->events->delete($id);
 
-        $event->delete();
+        return Redirect::action('Admin\EventController@index')
+            ->with('message', '<strong>' . $event->title . '</strong> is succesvol verwijderd.');
     }
 
 }
