@@ -21,6 +21,7 @@ class EventsSideBarComposer {
             $view->withYear($year);
         }
 
+        $year = $view->year;
         $options = Config::get('gsvnet.events');
 
         $months = array('januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december');
