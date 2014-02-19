@@ -46,8 +46,9 @@ Route::group(array('prefix' => 'de-gsv'), function() {
 });
 
 // Word lid
-// Hier moet een check komen dat je niet al gejoined bent, want de pagina heeft gene zin voor dat soort mensen
-Route::get('word-lid',    'HomeController@wordLid');
+Route::get('word-lid',    'HomeController@wordLid')
+    ->before('usertype:visitor');
+    
 // Only users which are logged in, but have not yet joined our little club, may post to this form
 Route::post('word-lid',   'UserController@postWordLid')
     ->before('auth|usertype:visitor');
