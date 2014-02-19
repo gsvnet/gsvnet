@@ -8,8 +8,6 @@ use GSVnet\Albums\AlbumValidator;
 use GSVnet\Albums\Photos\ImageHandler;
 use GSVnet\Albums\Photos\PhotosRepository;
 
-use GSVnet\Core\Exceptions\ValidationException;
-
 class AlbumController extends BaseController {
 
     protected $albums;
@@ -45,21 +43,12 @@ class AlbumController extends BaseController {
         $input = Input::all();
         $input['public'] = Input::get('public', false);
 
-        try
-        {
-            $this->validator->validate($input);
-            $album = $this->albums->create($input);
+        $this->validator->validate($input);
+        $album = $this->albums->create($input);
 
-            $message = '<strong>' . $album->name . '</strong> is succesvol opgeslagen.';
-            return Redirect::action('Admin\AlbumController@index')
-                ->withMessage($message);
-        }
-        catch (ValidationException $e)
-        {
-            return Redirect::action('Admin\AlbumController@index')
-                ->withInput()
-                ->withErrors($e->getErrors());
-        }
+        $message = '<strong>' . $album->name . '</strong> is succesvol opgeslagen.';
+        return Redirect::action('Admin\AlbumController@index')
+            ->withMessage($message);
     }
 
     public function show($id)
@@ -87,21 +76,12 @@ class AlbumController extends BaseController {
         $input = Input::all();
         $input['public'] = Input::get('public', false);
 
-        try
-        {
-            $this->validator->validate($input);
-            $album = $this->albums->update($id, $input);
+        $this->validator->validate($input);
+        $album = $this->albums->update($id, $input);
 
-            $message = '<strong>' . $album->name . '</strong> is succesvol bewerkt.';
-            return Redirect::action('Admin\AlbumController@show', $id)
-                ->withMessage($message);
-        }
-        catch (ValidationException $e)
-        {
-            return Redirect::action('Admin\AlbumController@edit', $id)
-                ->withInput()
-                ->withErrors($e->getErrors());
-        }
+        $message = '<strong>' . $album->name . '</strong> is succesvol bewerkt.';
+        return Redirect::action('Admin\AlbumController@show', $id)
+            ->withMessage($message);
     }
 
     public function destroy($id)

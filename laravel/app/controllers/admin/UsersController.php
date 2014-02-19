@@ -5,8 +5,6 @@ use View, Input, Redirect;
 use GSVnet\Users\UsersRepository;
 use GSVnet\Users\UserValidator;
 
-use GSVnet\Core\Exceptions\ValidationException;
-
 class UsersController extends BaseController {
 
     protected $users;
@@ -45,21 +43,12 @@ class UsersController extends BaseController {
         $input = Input::all();
         $input['public'] = Input::get('public', false);
 
-        try
-        {
-            $this->validator->validate($input);
-            $user = $this->users->create($input);
+        $this->validator->validate($input);
+        $user = $this->users->create($input);
 
-            $message = '<strong>' . $user->name . '</strong> is succesvol opgeslagen.';
-            return Redirect::action('Admin\UsersController@index')
-                ->withMessage($message);
-        }
-        catch (ValidationException $e)
-        {
-            return Redirect::action('Admin\UsersController@index')
-                ->withInput()
-                ->withErrors($e->getErrors());
-        }
+        $message = '<strong>' . $user->name . '</strong> is succesvol opgeslagen.';
+        return Redirect::action('Admin\UsersController@index')
+            ->withMessage($message);
     }
 
     public function show($id)
@@ -102,21 +91,12 @@ class UsersController extends BaseController {
     {
         $input = Input::all();
 
-        try
-        {
-            $this->validator->validate($input);
-            $user = $this->users->update($id, $input);
+        $this->validator->validate($input);
+        $user = $this->users->update($id, $input);
 
-            $message = '<strong>' . $user->name . '</strong> is succesvol bewerkt.';
-            return Redirect::action('Admin\UsersController@show', $id)
-                ->withMessage($message);
-        }
-        catch (ValidationException $e)
-        {
-            return Redirect::action('Admin\UsersController@edit', $id)
-                ->withInput()
-                ->withErrors($e->getErrors());
-        }
+        $message = '<strong>' . $user->name . '</strong> is succesvol bewerkt.';
+        return Redirect::action('Admin\UsersController@show', $id)
+            ->withMessage($message);
     }
 
     public function destroy($id)
