@@ -38,16 +38,9 @@ class FileManager
     {
         $this->createValidator->validate($input);
         // Store the file file and get its new path
-        $input['file_path'] = $this->fileHandler->make($input['file'], "/uploads/files/");
-        if (! $input['file_path'])
-        {
-            throw new FileStorageException;
-        }
+        $this->uploadFile($input);
         // If the file was not given a name, use the file's name
-        if (! (isset($input['name'])) || empty($input['name']))
-        {
-            $input['name'] = $input['file']->getClientOriginalName();
-        }
+        $this->nameFile($input);
         // Save the file to the database
         return $this->files->create($input);
     }
@@ -68,16 +61,9 @@ class FileManager
             $file = $this->files->byId($id);
             $this->fileHandler->destroy($file->file_path);
             // Store the file file and get its new path
-            $input['file_path'] = $this->fileHandler->make($input['file'], "/uploads/files/");
-            if (! $input['file_path'])
-            {
-                throw new FileStorageException;
-            }
+            $this->uploadFile($input);
             // If the file was not given a name, use the file's name
-            if (! (isset($input['name'])) || $input['name'] == '')
-            {
-                $input['name'] = $input['file']->getClientOriginalName();
-            }
+            $this->nameFile($input);
         }
         // Save the file to the database
         return $this->files->update($id, $input);
@@ -90,5 +76,25 @@ class FileManager
         $this->fileHandler->destroy($file->file_path);
 
         return $file;
+    }
+
+    // Uploads a photo and adjust the input's src_path accordingly
+    private function uploadFile(&$input)
+    {
+        if (! $input['file_path'] = $this->fileHandler->make($input['file'],
+                "/uploads/files/");)
+        {
+            throw new FileStorageException;
+        }
+    }
+
+    // Set photo's name if name was not provided
+    private function nameFile(&$input)
+    {
+        // If the file was not given a name, use the file's name
+        if (! (isset($input['name'])) || $input['name'] == '')
+        {
+            $input['name'] = $input['file']->getClientOriginalName();
+        }
     }
 }
