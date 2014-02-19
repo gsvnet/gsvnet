@@ -81,6 +81,7 @@ class ImageHandler
     private function grab($path, $dimension = '')
     {
         $fullPath = $this->basePath . $path;
+        $dimensions = Config::get('photos.dimensions');
 
         // Check if we can find the original image's path, if not, throw an exception error
         if (! File::exists($fullPath))
@@ -90,7 +91,7 @@ class ImageHandler
         }
 
         // Return the full path if we don't need a certain dimension
-        if ($dimension == '')
+        if ($dimension === '')
         {
             return $path;
         }
@@ -104,7 +105,7 @@ class ImageHandler
         {
             $img = Image::make($fullPath);
             // Resize the image while maintaining correct aspect ratio
-            $img->grab(Config::get('photos.dimensions')[$dimension][0], Config::get('photos.dimensions')[$dimension][1]);
+            $img->grab($dimensions[$dimension][0], $dimensions[$dimension][1]);
             // finally we save the image as a new image
             $img->save($this->basePath . $newPath);
         }
@@ -121,11 +122,10 @@ class ImageHandler
         // Get the max width and height
         $dimensions = Config::get('photos.dimensions.max');
         // If the image which was found is larger than the given max dimensions, then resize it
-        if ($img->width > $dimensions[0] or
-            $img->height > $dimensions[1])
+        if ($img->width > $dimensions[0] or $img->height > $dimensions[1])
         {
             // Resize the image while maintaining correct aspect ratio
-            $img->grab($dimensions[0], $dimensions[1]);
+            $img->resize($dimensions[0], $dimensions[1], true);
             // finally we save the image as a new image
             $img->save($this->basePath . $path);
         }
