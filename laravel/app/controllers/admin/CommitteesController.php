@@ -7,8 +7,6 @@ use GSVnet\Committees\CommitteeValidator;
 
 use GSVnet\Users\UsersRepository;
 
-use GSVnet\Core\Exceptions\ValidationException;
-
 class CommitteeController extends BaseController {
 
     protected $committees;
@@ -47,21 +45,13 @@ class CommitteeController extends BaseController {
         $input = Input::all();
         $input['public'] = Input::get('public', false);
 
-        try
-        {
-            $this->validator->validate($input);
-            $committee = $this->committees->create($input);
+        $this->validator->validate($input);
+        $committee = $this->committees->create($input);
 
-            $message = '<strong>' . $committee->name . '</strong> is succesvol opgeslagen.';
-            return Redirect::action('Admin\CommitteeController@index')
-                ->withMessage($message);
-        }
-        catch (ValidationException $e)
-        {
-            return Redirect::action('Admin\CommitteeController@index')
-                ->withInput()
-                ->withErrors($e->getErrors());
-        }
+        $message = '<strong>' . $committee->name . '</strong> is succesvol opgeslagen.';
+        return Redirect::action('Admin\CommitteeController@index')
+            ->withMessage($message);
+
     }
 
     public function show($id)
@@ -120,22 +110,12 @@ class CommitteeController extends BaseController {
     public function update($id)
     {
         $input = Input::all();
+        $this->validator->validate($input);
+        $committee = $this->committees->update($id, $input);
 
-        try
-        {
-            $this->validator->validate($input);
-            $committee = $this->committees->update($id, $input);
-
-            $message = '<strong>' . $committee->name . '</strong> is succesvol bewerkt.';
-            return Redirect::action('Admin\CommitteeController@show', $id)
-                ->withMessage($message);
-        }
-        catch (ValidationException $e)
-        {
-            return Redirect::action('Admin\CommitteeController@edit', $id)
-                ->withInput()
-                ->withErrors($e->getErrors());
-        }
+        $message = '<strong>' . $committee->name . '</strong> is succesvol bewerkt.';
+        return Redirect::action('Admin\CommitteeController@show', $id)
+            ->withMessage($message);
     }
 
     public function destroy($id)

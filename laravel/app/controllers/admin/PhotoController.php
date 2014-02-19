@@ -5,9 +5,6 @@ use View, Input, Redirect;
 use GSVnet\Albums\Photos\PhotoManager;
 use GSVnet\Albums\Photos\PhotosRepository;
 
-use GSVnet\Core\Exceptions\ValidationException;
-use GSVnet\Albums\Photos\PhotoStorageException;
-
 class PhotoController extends BaseController {
 
     protected $photos;
@@ -31,25 +28,11 @@ class PhotoController extends BaseController {
         $input['album_id'] = $album_id;
         $input['photo'] = Input::file('photo');
 
-        try {
-            $photo = $this->manager->create($input);
+        $photo = $this->manager->create($input);
 
-            $message = '<strong>' . $photo->name . '</strong> is succesvol opgeslagen.';
-            return Redirect::action('Admin\AlbumController@show', $album_id)
-                ->withMessage($message);
-        }
-        catch (ValidationException $e)
-        {
-            return Redirect::action('Admin\AlbumController@show', $album_id)
-                ->withInput()
-                ->withErrors($e->getErrors());
-        }
-        catch (PhotoStorageException $e)
-        {
-            return Redirect::action('Admin\AlbumController@show', $album_id)
-                ->withInput()
-                ->withErrors("Er ging iets mis tijdens het uploaden, probeer het opnieuw. (misschien is het geuploade bestand te groot?)");
-        }
+        $message = '<strong>' . $photo->name . '</strong> is succesvol opgeslagen.';
+        return Redirect::action('Admin\AlbumController@show', $album_id)
+            ->withMessage($message);
     }
 
     public function show($album_id, $id)
@@ -65,25 +48,11 @@ class PhotoController extends BaseController {
         $input['album_id'] = $album_id;
         $input['photo'] = Input::file('photo');
 
-        try {
-            $photo = $this->manager->update($id, $input);
+        $photo = $this->manager->update($id, $input);
 
-            $message = '<strong>' . $photo->name . '</strong> is succesvol opgeslagen.';
-            return Redirect::action('Admin\AlbumController@show', $album_id)
-                ->withMessage($message);
-        }
-        catch (ValidationException $e)
-        {
-            return Redirect::action('Admin\AlbumController@show', $album_id)
-                ->withInput()
-                ->withErrors($e->getErrors());
-        }
-        catch (PhotoStorageException $e)
-        {
-            return Redirect::action('Admin\AlbumController@show', $album_id)
-                ->withInput()
-                ->withErrors("Er ging iets mis tijdens het uploaden, probeer het opnieuw. (misschien is het geuploade bestand te groot?)");
-        }
+        $message = '<strong>' . $photo->name . '</strong> is succesvol opgeslagen.';
+        return Redirect::action('Admin\AlbumController@show', $album_id)
+            ->withMessage($message);
     }
 
     public function destroy($album_id, $id)

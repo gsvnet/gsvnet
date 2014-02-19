@@ -4,11 +4,8 @@ use View, Input, Redirect;
 
 use GSVnet\Files\FileManager;
 use GSVnet\Files\FilesRepository;
-use GSVnet\Files\FileStorageException;
 
 use GSVnet\Files\Labels\LabelsRepository;
-
-use GSVnet\Core\Exceptions\ValidationException;
 
 class FilesController extends BaseController {
 
@@ -52,25 +49,12 @@ class FilesController extends BaseController {
         $input = Input::all();
         $input['file'] = Input::file('file');
 
-        try {
-            $file = $this->manager->create($input);
+        $file = $this->manager->create($input);
 
-            $message = '<strong>' . $file->name . '</strong> is succesvol opgeslagen.';
-            return Redirect::action('Admin\FilesController@index')
-                ->withMessage($message);
-        }
-        catch (ValidationException $e)
-        {
-            return Redirect::action('Admin\FilesController@index')
-                ->withInput()
-                ->withErrors($e->getErrors());
-        }
-        catch (FileStorageException $e)
-        {
-            return Redirect::action('Admin\FilesController@index')
-                ->withInput()
-                ->withErrors("Er ging iets mis tijdens het uploaden, probeer het opnieuw. (misschien is het geuploade bestand te groot?)");
-        }
+        $message = '<strong>' . $file->name . '</strong> is succesvol opgeslagen.';
+        return Redirect::action('Admin\FilesController@index')
+            ->withMessage($message);
+
     }
 
     public function edit($id)
@@ -96,25 +80,11 @@ class FilesController extends BaseController {
         $input = Input::all();
         $input['file'] = Input::file('file');
 
-        try {
-            $file = $this->manager->update($id, $input);
+        $file = $this->manager->update($id, $input);
 
-            $message = '<strong>' . $file->name . '</strong> is succesvol opgeslagen.';
-            return Redirect::action('Admin\FilesController@index')
-                ->withMessage($message);
-        }
-        catch (ValidationException $e)
-        {
-            return Redirect::action('Admin\FilesController@edit', $id)
-                ->withInput()
-                ->withErrors($e->getErrors());
-        }
-        catch (FileStorageException $e)
-        {
-            return Redirect::action('Admin\FilesController@edit', $id)
-                ->withInput()
-                ->withErrors("Er ging iets mis tijdens het uploaden, probeer het opnieuw. (misschien is het geuploade bestand te groot?)");
-        }
+        $message = '<strong>' . $file->name . '</strong> is succesvol opgeslagen.';
+        return Redirect::action('Admin\FilesController@index')
+            ->withMessage($message);
     }
 
     public function destroy($id)
