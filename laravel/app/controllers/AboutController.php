@@ -54,4 +54,16 @@ class AboutController extends BaseController {
         $this->layout->content = View::make('de-gsv.contact');
     }
 
+    public function showPillars()
+    {
+        $this->layout->bodyID = 'pillars-page';
+        $this->layout->content = View::make('de-gsv.pillars');
+    }
+
+    public function showHistory()
+    {
+        $this->layout->bodyID = 'history-page';
+        $this->layout->content = View::make('de-gsv.history');
+    }
+
 }

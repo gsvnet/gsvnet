@@ -33,6 +33,9 @@ Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
 Route::group(array('prefix' => 'de-gsv'), function() {
     Route::get('/',                 'AboutController@showAbout');
 
+    Route::get('/pijlers',          'AboutController@showPillars');
+    Route::get('/geschiedenis',     'AboutController@showHistory');
+
     Route::get('commissies',        'AboutController@showCommittees');
     Route::get('commissies/{id}',   'AboutController@showCommittee');
 
