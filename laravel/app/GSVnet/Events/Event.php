@@ -3,12 +3,6 @@
 class Event extends \Eloquent {
     protected $guarded = array();
 
-    public static $rules = array(
-        'title' => 'required',
-        'description' => 'required',
-        'start_date' => 'required|date_format:Y-m-d',
-        'end_date' => 'required|date_format:Y-m-d'
-    );
 
     // TODO: lijkt nog niet te werken met accessors?
     // public function getDates()
