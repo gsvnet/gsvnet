@@ -109,9 +109,7 @@ return array(
 
 		'Way\Generators\GeneratorsServiceProvider',
 		'Former\FormerServiceProvider',
-		'Frozennode\Administrator\AdministratorServiceProvider',
         'Intervention\Image\ImageServiceProvider',
-
 
         'GSVnet\ServiceProviders\BackendServiceProvider',
         'GSVnet\ServiceProviders\AlbumServiceProvider',

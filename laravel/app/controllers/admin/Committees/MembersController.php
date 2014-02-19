@@ -1,7 +1,7 @@
 <?php namespace Admin\Committees;
 
-use GSVnet\Committees\CommitteesRepositoryInterface;
-use GSVnet\Users\UsersRepositoryInterface;
+use GSVnet\Committees\CommitteesRepository;
+use GSVnet\Users\UsersRepository;
 
 use Admin\BaseController;
 use Redirect, Input, View;
@@ -13,8 +13,8 @@ class MembersController extends BaseController {
     protected $users;
 
     public function __construct(
-        CommitteesRepositoryInterface $committees,
-        UsersRepositoryInterface $users)
+        CommitteesRepository $committees,
+        UsersRepository $users)
     {
         $this->committees = $committees;
         $this->users = $users;

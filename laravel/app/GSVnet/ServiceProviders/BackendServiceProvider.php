@@ -17,7 +17,6 @@ class BackendServiceProvider extends ServiceProvider {
             return $this->app->make('GSVnet\Permissions\PermissionManagerInterface');
         });
 
-        $this->app->bind('GSVnet\Users\UsersRepositoryInterface', 'GSVnet\Users\DbUsersRepository');
 
         // $this->app->instance('GSVnet\Permissions\UserPermissionManager', function() {
         //     $user = Auth::user();

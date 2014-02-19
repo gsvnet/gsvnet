@@ -1,13 +1,13 @@
 <?php namespace GSVnet\Albums\Filters;
 
-use GSVnet\Albums\AlbumsRepositoryInterface;
+use GSVnet\Albums\AlbumsRepository;
 use Permission;
 
 Class ShowAlbumFilter
 {
     protected $albums;
 
-    public function __construct(AlbumsRepositoryInterface $albums)
+    public function __construct(AlbumsRepository $albums)
     {
         $this->albums  = $albums;
     }

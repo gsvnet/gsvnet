@@ -1,7 +1,7 @@
 <?php namespace Admin;
 
 use View;
-use Model\Event;
+use GSVnet\Events\Event;
 use Input;
 use Validator;
 use Str;
@@ -29,7 +29,7 @@ class EventController extends BaseController {
 
         // Validate photo name, album id and file type
         $validation = Validator::make($input, Event::$rules);
-        
+
         // Require time only if it is not a whole day
         $validation->sometimes(array('start_time', 'end_time'), 'required', function($input){
             return $input->get('whole_day', '0') == '0';
@@ -45,7 +45,7 @@ class EventController extends BaseController {
             $event->start_date = $input['start_date'];
             $event->end_date = $input['end_date'];
             $event->whole_day = Input::get('whole_day', '0');
-            
+
             // Check if whole day is NOT checked
             if (Input::get('whole_day', '0') == '0')
             {
@@ -84,7 +84,7 @@ class EventController extends BaseController {
         $event = Event::findOrFail($id);
 
         $validation = Validator::make($input, Event::$rules);
-        
+
         // Require time only if it is not a whole day
         $validation->sometimes(array('start_time', 'end_time'), 'required', function($input){
             return $input->get('whole_day', '0') == '0';
@@ -99,7 +99,7 @@ class EventController extends BaseController {
             $event->start_date = $input['start_date'];
             $event->end_date = $input['end_date'];
             $event->whole_day = Input::get('whole_day', '0');
-            
+
             // Check if whole day is NOT checked
             if (Input::get('whole_day', '0') == '0')
             {

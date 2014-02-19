@@ -23,7 +23,7 @@ class UserController extends BaseController {
         $regions = Config::get('gsvnet.regions');
 
         // Initialize basic query
-        $memberlistQuery = Model\UserProfile::join('users', function($join) use ($member) {
+        $memberlistQuery = GSVnet\Users\UserProfile::join('users', function($join) use ($member) {
             $join->on('users.id', '=', 'user_profiles.user_id')->where('users.type', '=', $member);
         })->orderBy('users.lastname');
 
@@ -48,7 +48,7 @@ class UserController extends BaseController {
         }
 
         // Enable search on yeargroup
-        if(Input::has('yeargroup') && Model\YearGroup::find(Input::get('yeargroup')))
+        if(Input::has('yeargroup') && GSVnet\Users\YearGroup::find(Input::get('yeargroup')))
         {
             $yeargroup = Input::get('yeargroup');
             $memberlistQuery->where('year_group_id', '=', $yeargroup);
@@ -58,7 +58,7 @@ class UserController extends BaseController {
         $memberlist = $memberlistQuery->paginate(200);
 
         // Select year groups
-        $yearGroups = Model\YearGroup::orderBy('year', 'DESC')->get();
+        $yearGroups = GSVnet\Users\YearGroup::orderBy('year', 'DESC')->get();
 
         // Create the view
         $this->layout->bodyID = 'user-list-page';
@@ -70,7 +70,7 @@ class UserController extends BaseController {
 
     public function showUser($id)
     {
-        $member = Model\User::with('profile.yearGroup', 'committeesSorted')->find($id);
+        $member = GSVnet\Users\User::with('profile.yearGroup', 'committeesSorted')->find($id);
 
 
         //dd($member);
@@ -110,7 +110,7 @@ class UserController extends BaseController {
 
         if ($validation->passes())
         {
-            $profile = Model\UserProfile::firstOrNew(array('user_id' => $user->id));
+            $profile = GSVnet\Users\UserProfile::firstOrNew(array('user_id' => $user->id));
             $profile->user_id = $user->id;
             $profile->reunist = 0;
             $profile->region = 0;
@@ -157,7 +157,7 @@ class UserController extends BaseController {
 
         if($validation->passes())
         {
-            $user = Model\User::create(array(
+            $user = GSVnet\Users\User::create(array(
                 'firstname' => $input['register-firstname'],
                 'middlename' => Input::get('register-middlename', ''),
                 'lastname' => $input['register-lastname'],

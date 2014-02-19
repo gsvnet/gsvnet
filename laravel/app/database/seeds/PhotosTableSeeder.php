@@ -1,6 +1,6 @@
 <?php
 
-use Model\Album, Model\Photo;
+use GSVnet\Albums\Album, GSVnet\Albums\Photos\Photo;
 
 class PhotosTableSeeder extends Seeder {
 

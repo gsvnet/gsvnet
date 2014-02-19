@@ -1,7 +1,7 @@
 <?php
 
-use GSVnet\Albums\AlbumsRepositoryInterface;
-use GSVnet\Albums\Photos\PhotosRepositoryInterface;
+use GSVnet\Albums\AlbumsRepository;
+use GSVnet\Albums\Photos\PhotosRepository;
 use GSVnet\Albums\Photos\ImageHandler;
 
 class PhotoController extends BaseController {
@@ -11,8 +11,8 @@ class PhotoController extends BaseController {
 
     public function __construct(
         ImageHandler $imageHandler,
-        AlbumsRepositoryInterface $albums,
-        PhotosRepositoryInterface $photos)
+        AlbumsRepository $albums,
+        PhotosRepository $photos)
     {
         $this->imageHandler = $imageHandler;
         $this->albums = $albums;

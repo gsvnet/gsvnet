@@ -1,5 +1,7 @@
 <?php
 
+use GSVnet\Albums\Album;
+
 class AlbumsTableSeeder extends Seeder {
 
 	public function run()
@@ -7,14 +9,14 @@ class AlbumsTableSeeder extends Seeder {
     	// Uncomment the below to wipe the table clean before populating
     	DB::table('albums')->truncate();
 
-        Model\Album::create([
+        Album::create([
             'name' => 'Honden',
             'description' => 'Foto\'s van honden.',
             'slug' => '1-honden',
             'public' => false
         ]);
 
-        Model\Album::create([
+        Album::create([
             'name' => 'Katten',
             'description' => 'Foto\'s van katten.',
             'slug' => '2-katten',

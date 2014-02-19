@@ -4,7 +4,7 @@ use GSVnet\Files\FileCreatorValidator;
 use GSVnet\Files\FileUpdatorValidator;
 
 use GSVnet\Files\FileHandler;
-use GSVnet\Files\FilesRepositoryInterface;
+use GSVnet\Files\FilesRepository;
 
 use GSVnet\Files\FileStorageException;
 
@@ -19,7 +19,7 @@ class FileManager
         FileCreatorValidator $createValidator,
         FileUpdatorValidator $updateValidator,
         FileHandler $fileHandler,
-        FilesRepositoryInterface $files
+        FilesRepository $files
     )
     {
         $this->fileHandler = $fileHandler;

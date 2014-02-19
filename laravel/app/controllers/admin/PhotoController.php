@@ -3,7 +3,7 @@
 use View, Input, Redirect;
 
 use GSVnet\Albums\Photos\PhotoManager;
-use GSVnet\Albums\Photos\PhotosRepositoryInterface;
+use GSVnet\Albums\Photos\PhotosRepository;
 
 use GSVnet\Core\Exceptions\ValidationException;
 use GSVnet\Albums\Photos\PhotoStorageException;
@@ -14,7 +14,7 @@ class PhotoController extends BaseController {
     protected $manager;
 
     public function __construct(
-        PhotosRepositoryInterface $photos,
+        PhotosRepository $photos,
         PhotoManager $manager)
     {
         $this->photos = $photos;

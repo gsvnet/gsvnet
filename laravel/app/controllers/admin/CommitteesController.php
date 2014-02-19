@@ -2,10 +2,10 @@
 
 use View, Input, Redirect;
 
-use GSVnet\Committees\CommitteesRepositoryInterface;
+use GSVnet\Committees\CommitteesRepository;
 use GSVnet\Committees\CommitteeValidator;
 
-use GSVnet\Users\UsersRepositoryInterface;
+use GSVnet\Users\UsersRepository;
 
 use GSVnet\Core\Exceptions\ValidationException;
 
@@ -16,9 +16,9 @@ class CommitteeController extends BaseController {
     protected $validator;
 
     public function __construct(
-        CommitteesRepositoryInterface $committees,
+        CommitteesRepository $committees,
         CommitteeValidator $validator,
-        UsersRepositoryInterface $users)
+        UsersRepository $users)
     {
         $this->committees = $committees;
         $this->validator = $validator;

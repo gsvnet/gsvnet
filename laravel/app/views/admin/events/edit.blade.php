@@ -4,7 +4,7 @@
     {{
         Former::vertical_open()
             ->action(action('Admin\EventController@update', $event->id))
-            ->rules(Model\Event::$rules)
+            ->rules(GSVnet\Events\Event::$rules)
             ->method('PUT')
     }}
         {{ Former::populate( $event ) }}
