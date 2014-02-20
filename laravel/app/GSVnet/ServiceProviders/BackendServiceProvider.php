@@ -2,6 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 use App;
+use Auth;
 
 class BackendServiceProvider extends ServiceProvider {
 
@@ -10,11 +11,13 @@ class BackendServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        // Permission services
-        $this->app->bind('GSVnet\Permissions\PermissionManagerInterface', 'GSVnet\Permissions\UserPermissionManager');
         $this->app->bind('permission', function()
         {
-            return $this->app->make('GSVnet\Permissions\PermissionManagerInterface');
+            $user = Auth::user();
+            $committees = App::make('GSVnet\Committees\CommitteesRepository');
+
+            // return App::make('GSVnet\Permissions\PermissionManager');
+            return new \GSVnet\Permissions\PermissionManager($user, $committees);
         });
 
 

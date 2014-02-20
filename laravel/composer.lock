@@ -94,7 +94,7 @@
             ],
             "authors": [
                 {
-                    "name": "Maxime Fabre",
+                    "name": "Anahkiasen",
                     "email": "ehtnam6@gmail.com"
                 }
             ],
@@ -107,12 +107,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mtdowling/ClassPreloader.git",
-                "reference": "1.0.1"
+                "reference": "1a50f7945b725ff2c60f234e51407d1d6e7c77c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mtdowling/ClassPreloader/zipball/1.0.1",
-                "reference": "1.0.1",
+                "url": "https://api.github.com/repos/mtdowling/ClassPreloader/zipball/1a50f7945b725ff2c60f234e51407d1d6e7c77c5",
+                "reference": "1a50f7945b725ff2c60f234e51407d1d6e7c77c5",
                 "shasum": ""
             },
             "require": {
@@ -472,12 +472,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "1faf4c8508378b0b102d148c53c322a8048b16dd"
+                "reference": "544f764e48a60b3216408eeef172fb207d4ff9ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/1faf4c8508378b0b102d148c53c322a8048b16dd",
-                "reference": "1faf4c8508378b0b102d148c53c322a8048b16dd",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/544f764e48a60b3216408eeef172fb207d4ff9ff",
+                "reference": "544f764e48a60b3216408eeef172fb207d4ff9ff",
                 "shasum": ""
             },
             "require": {
@@ -581,7 +581,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2014-02-18 17:05:05"
+            "time": "2014-02-20 04:30:06"
         },
         {
             "name": "monolog/monolog",
@@ -589,12 +589,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "4c74b127eb5f1475157bb54c2b7cb3d529fe18f7"
+                "reference": "08f09c20805695212ebe713b6706b8efb24f96e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/4c74b127eb5f1475157bb54c2b7cb3d529fe18f7",
-                "reference": "4c74b127eb5f1475157bb54c2b7cb3d529fe18f7",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/08f09c20805695212ebe713b6706b8efb24f96e7",
+                "reference": "08f09c20805695212ebe713b6706b8efb24f96e7",
                 "shasum": ""
             },
             "require": {
@@ -648,7 +648,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2014-02-18 14:12:15"
+            "time": "2014-02-20 10:38:44"
         },
         {
             "name": "mustache/mustache",

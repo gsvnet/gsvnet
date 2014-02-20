@@ -12,7 +12,7 @@ class AlbumsRepository
     */
     public function all()
     {
-        if (Permission::has('photo.show'))
+        if (Permission::has('photos.show-private'))
             return Album::latest()->get();
         return Album::latest()->public()->get();
     }
@@ -24,7 +24,7 @@ class AlbumsRepository
      */
     public function paginate($amount)
     {
-        if (Permission::has('photo.show'))
+        if (Permission::has('photos.show-private'))
             return Album::latest()->paginate($amount);
         return Album::latest()->public()->paginate($amount);
     }
@@ -36,7 +36,7 @@ class AlbumsRepository
      */
     public function paginateWithFirstPhoto($amount)
     {
-        if (Permission::has('photo.show'))
+        if (Permission::has('photos.show-private'))
             return Album::with('photos')->latest()->paginate($amount);
         return Album::with('photos')->latest()->public()->paginate($amount);
         return Album::has('photos')
