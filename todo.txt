@@ -1,19 +1,30 @@
- !- profielenpagina gebruikers
- -- gsv-docs
- -- word lid
- -- metadata
- -- activiteiten
- !- security
+ PAGINAS
+ - Home page: activiteiten rechter zijbar (evt verjaardagen)
+ - Enkele eventpagina: alle informatie laten zien
+ - Word lid-pagina: 
+ 	- Afschermen voor leden en oud-leden
+ 	- Formulier mooiere opmaak geven
+ 	- Mail sturen bij succes en 
+ - Registreerpagina: toevoegen
+ - GSVdocs: zoek op naam
+ - Admin: uploaden van meerdere foto's tegelijk in de admin
 
+ - Submenu toevoegen op actieve pagina
 
- Nieuw todo..
- -- Show pagina van activiteiten
- -- Profile pagina voor user
- -- Profile pagina voor gsvers
- -- Statische paginas
- -- Registratie mooier maken
- -- Beveiliging
- -- Layout issues
- -- iFrames gebruiken
- -- Forum
- -- Email sturen bij registratie ed.
+PERMISSIES
+- Soorten
+	- 'become-member': type member of type former member
+	- 'photos.show-private': type member of type former member
+	- 'photos.manage': commissie webcie of commissie reebocie
+	- 'admin': senatoren of commissie webcie
+	- 'docs.show': type member of type former member
+	- 'events.show-private': type member of type former member
+	- 'events.manage': type member of type former member
+	- 'events.publish': commissie webcie
+
+DATABASE
+- events.public
+
+NIEUW
+- Nieuwspagina
+- Forum
