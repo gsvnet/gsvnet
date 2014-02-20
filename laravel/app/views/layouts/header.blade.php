@@ -47,7 +47,7 @@
 
             @if (Auth::check())
                 <li class="top-level-menuitem {{ Request::is('intern*') ? 'active-menu' : '' }} has-sub-menu">
-                    <a class="top-level-link" href="{{ URL::action('UserController@showProfile') }}">{{Gravatar::image(Auth::user()->email, 'Profiel', array('class' => 'nav-profile-image', 'width' => 72, 'height' => 72))}}</a>
+                    <a class="top-level-link" href="{{ URL::action('UserController@showProfile') }}">{{Gravatar::image(Auth::user()->email, 'Profiel', array('class' => 'nav-profile-image', 'width' => 24, 'height' => 24))}} {{{Auth::user()->firstname}}}</a>
                     <i class="fa fa-caret-down top-caret"></i>
                     <ul class="sub-level-menu">
                         @if(Auth::check() && Auth::user()->can('viewMemberlist'))
@@ -58,7 +58,14 @@
                     </ul>
                 </li>
             @else
-                <li class="top-level-menuitem"><a class="top-level-link login-link" href="/login" data-mfp-src="#login-dialog">Inloggen</a></li>
+                <li class="top-level-menuitem has-sub-menu">
+                    <a class="top-level-link login-link" href="{{{ URL::action('SessionController@getLogin') }}}" data-mfp-src="#login-dialog">Inloggen</a>
+                    <i class="fa fa-caret-down top-caret"></i>
+                    <ul class="sub-level-menu">
+                        <li><a class="sub-level-link" href="{{ URL::action('UserController@showRegister') }}">Registreren</a></li>
+                        <li><a class="sub-level-link" href="{{ URL::action('SessionController@getLogin') }}"data-mfp-src="#login-dialog">Inloggen</a></li>
+                    </ul>
+                </li>
             @endif
         </ul>
     </nav>
