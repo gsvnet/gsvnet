@@ -24,9 +24,7 @@ class AlbumController extends BaseController {
         $this->validator = $validator;
 
         $this->beforeFilter('csrf', ['only' => ['store', 'update', 'delete']]);
-        $this->beforeFilter('albums.create', ['on' => 'store']);
-        $this->beforeFilter('albums.update', ['only' => ['update', 'edit']]);
-        $this->beforeFilter('albums.delete', ['on' => 'destroy']);
+        $this->beforeFilter('albums.manage');
 
         parent::__construct();
     }

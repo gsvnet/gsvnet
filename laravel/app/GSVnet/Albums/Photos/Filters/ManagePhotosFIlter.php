@@ -2,11 +2,11 @@
 
 use Permission;
 
-Class UpdatePhotoFilter
+Class ManagePhotosFilter
 {
     public function filter($route)
     {
-        if ( ! Permission::has('photo.update'))
+        if ( ! Permission::has('photos.manage'))
         {
             throw new \GSVnet\Permissions\NoPermissionException;
         }

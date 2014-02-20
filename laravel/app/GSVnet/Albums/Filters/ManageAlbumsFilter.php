@@ -1,12 +1,12 @@
-<?php namespace GSVnet\Albums\Photos\Filters;
+<?php namespace GSVnet\Albums\Filters;
 
 use Permission;
 
-Class DeletePhotoFilter
+Class ManageAlbumsFilter
 {
     public function filter($route)
     {
-        if ( ! Permission::has('photo.delete'))
+        if ( ! Permission::has('photos.manage'))
         {
             throw new \GSVnet\Permissions\NoPermissionException;
         }

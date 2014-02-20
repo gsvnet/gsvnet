@@ -11,14 +11,11 @@ class AlbumServiceProvider extends ServiceProvider {
     public function register()
     {
         // Album filters
-        Route::filter('albums.show', 'GSVnet\Albums\Filters\ShowAlbumFilter');
-        Route::filter('albums.create', 'GSVnet\Albums\Filters\CreateAlbumFilter');
-        Route::filter('albums.update', 'GSVnet\Albums\Filters\UpdateAlbumFilter');
-        Route::filter('albums.delete', 'GSVnet\Albums\Filters\DeleteAlbumFilter');
+        Route::filter('albums.show', 'GSVnet\Albums\Filters\ShowAlbumsFilter');
+        Route::filter('albums.manage', 'GSVnet\Albums\Filters\ManageAlbumsFilter');
+
         // Photo filters
-        Route::filter('photos.show', 'GSVnet\Albums\Photos\Filters\ShowPhotoFilter');
-        Route::filter('photos.create', 'GSVnet\Albums\Photos\Filters\CreatePhotoFilter');
-        Route::filter('photos.update', 'GSVnet\Albums\Photos\Filters\UpdatePhotoFilter');
-        Route::filter('photos.delete', 'GSVnet\Albums\Photos\Filters\DeletePhotoFilter');
+        Route::filter('photos.show', 'GSVnet\Albums\Photos\Filters\ShowPhotosFilter');
+        Route::filter('photos.manage', 'GSVnet\Albums\Photos\Filters\ManagePhotosFilter');
     }
 }

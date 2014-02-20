@@ -3,7 +3,7 @@
 use GSVnet\Albums\AlbumsRepository;
 use Permission;
 
-Class ShowAlbumFilter
+Class ShowAlbumsFilter
 {
     protected $albums;
 
@@ -18,7 +18,7 @@ Class ShowAlbumFilter
 
         $albums = $this->albums->byId($id);
         if ($albums->public) return;
-        if ( ! Permission::has('album.show'))
+        if ( ! Permission::has('photos.show-private'))
         {
             throw new \GSVnet\Permissions\NoPermissionException;
         }
