@@ -17,7 +17,7 @@ Class ShowPhotoFilter
         $id     = $route->getParameter('photo');
         $photo  = $this->photos->byId($id);
         if ($photo->public) return;
-        if ( ! Permission::has('photo.show'))
+        if ( ! Permission::has('photos.show-private'))
         {
             throw new \GSVnet\Permissions\NoPermissionException;
         }
