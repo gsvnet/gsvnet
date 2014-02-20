@@ -1,6 +1,14 @@
 <?php
 
 return array(
+    /**
+    *   User Types
+    *
+    *   visitor:      ingelogd maar niet word lid ingevuld
+    *   potential:    ingelogd, heeft word lid ingevuld, maar is nog niet confirmed
+    *   member:       ingelogd, en is confirmed lid van vereniging
+    *   formerMember: ingelogd, oud lid van vereninging
+    */
 	'userTypes' => array(
 		'visitor' => 0,
 		'potential' => 1,
@@ -9,8 +17,8 @@ return array(
 	),
 
 	'eventTypes' => array(
-		'intellectual', 
-		'social', 
+		'intellectual',
+		'social',
 		'collegiate',
 		'christian'
 	),

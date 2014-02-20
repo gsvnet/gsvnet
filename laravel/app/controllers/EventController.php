@@ -14,7 +14,7 @@ class EventController extends BaseController {
 	public function showIndex()
 	{
         // Get all events which haven't finishes yet
-        $events = $this->events->ongoing(5);
+        $events = $this->events->upcoming(5);
         $this->layout->content = View::make('events.index')
             ->with('searchTimeRange', false)
             ->with('events',          $events)
