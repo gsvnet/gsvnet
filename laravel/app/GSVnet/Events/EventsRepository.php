@@ -11,7 +11,7 @@ class EventsRepository {
         return Event::paginate($amount);
     }
 
-    public function ongoing($amount = 5)
+    public function upcoming($amount = 5)
     {
         return Event::where('end_date', '>=', new \DateTime('now'))
             ->orderBy('start_date', 'asc')
