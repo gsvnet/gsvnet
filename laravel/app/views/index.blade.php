@@ -113,10 +113,22 @@
             <p>De GSV, de Gereformeerde Studentenvereniging, is een christelijke studentenvereniging met een gereformeerde basis. De vereniging bestaat uit een hechte groep van zo’n 200 studenten die elke week bij elkaar komen op bijbelkring en tijdens soosavonden. </p>
         </div>
         <div class="secondary-column">
-            <h2>Komende activiteiten.</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa id aut voluptas eos sed vel blanditiis maiores sunt inventore nihil.</p>
-            <h2>Lorem ipsum dolor sit.</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa id aut voluptas eos sed vel blanditiis maiores sunt inventore nihil.</p>
+            @if(count($events) > 0)
+                <h2>Komende activiteiten.</h2>
+                <ul class="small-event-list">
+                @foreach ($events as $event)
+                    <li>
+                        {{ $event->start_date }}
+                        {{ link_to_action('EventController@showEvent', $event->title, [$event->id])}}
+                    </li>
+                @endforeach
+                </ul>
+            @endif
+
+            <h2>Verjaardagen van moeders van oud-gsv'ers</h2>
+            <ul>
+                <li>2 tot 3 per eenheid</li>
+            </ul>
         </div>
     </div>
 @stop
