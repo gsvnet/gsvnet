@@ -47,7 +47,7 @@
 
             @if (Auth::check())
                 <li class="top-level-menuitem {{ Request::is('intern*') ? 'active-menu' : '' }} has-sub-menu">
-                    <a class="top-level-link" href="{{ URL::action('UserController@showProfile') }}">Intern</a>
+                    <a class="top-level-link" href="{{ URL::action('UserController@showProfile') }}">{{Gravatar::image(Auth::user()->email, 'Profiel', array('class' => 'nav-profile-image', 'width' => 72, 'height' => 72))}}</a>
                     <i class="fa fa-caret-down top-caret"></i>
                     <ul class="sub-level-menu">
                         @if(Auth::check() && Auth::user()->can('viewMemberlist'))
