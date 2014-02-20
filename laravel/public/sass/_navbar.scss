@@ -46,6 +46,10 @@
 	display: inline-block;
 	border-left: 1px solid #DDD;
 	line-height: 90px;
+
+	&:hover {
+		text-decoration: none;
+	}
 }
 
 .has-sub-menu .top-level-link {
@@ -125,6 +129,7 @@
 
 .nav-profile-image {
 	vertical-align: middle;
+	margin-right: 9px;
 }
 
 /** Top Sub menu **/

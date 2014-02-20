@@ -30,10 +30,6 @@
 	width: 292px;
 	padding-left: 18px;
 
-	p {
-		@include modular-scale(14, $font-base, '#{$type-scale-unit-value}');
-	}
-
 	h2 {
 		@include modular-scale(18, $font-base, '#{$type-scale-unit-value}');
 		text-transform: uppercase;
