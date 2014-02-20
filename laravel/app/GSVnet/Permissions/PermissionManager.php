@@ -21,18 +21,24 @@ class PermissionManager implements PermissionManagerInterface
 
     public function has($permission)
     {
+        // Check if permission exists
+        if (! array_key_exists($permission, $this->permissions))
+        {
+            throw new PermissionNotFoundException;
+        }
+
         // Get the permission's criteria
         $criteria = $this->permissions[$permission];
 
         // Check if type criteria is matched
-        if (array_key_exists ('type', $criteria) and
+        if (array_key_exists('type', $criteria) and
             $this->checkTypeCriteria($criteria['type']))
         {
             return true;
         }
 
         // Check if commitee criteria is matched
-        if (array_key_exists ('committee', $criteria) and
+        if (array_key_exists('committee', $criteria) and
             $this->checkCommitteeCriteria($criteria['committee']))
         {
             return true;
