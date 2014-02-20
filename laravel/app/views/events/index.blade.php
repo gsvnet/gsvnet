@@ -15,10 +15,16 @@
 					<div class="event-row">
 						<div class="event-details">
 							<div class="event-image {{{$types[$event->type] or ''}}}"></div>
-							<div class="event-date">{{{$event->start_date_formatted}}}</div>
+							<div class="event-date">
+								{{{$event->start_date_formatted}}}
+							</div>
 						</div>
 						<div class="event-body">
-							<h3><a href="{{ URL::action('EventController@showEvent', $event->id) }}">{{{ $event->title}}}</a></h3>
+							<h3>
+								<a href="{{ URL::action('EventController@showEvent', $event->id) }}">
+									{{{ $event->title}}}
+								</a>
+							</h3>
 							<p>{{ $event->description }}</p>
 						</div>
 					</div>
@@ -27,24 +33,7 @@
 
 			{{ $events->links() }}
 		</div>
-		<div class="secondary-column">
-			<h2>
-			@if($showPrevYear)
-				{{link_to_action('EventController@showMonth', $year - 1, $year - 1)}} |
-			@endif
-			{{link_to_action('EventController@showMonth', $year, $year)}}
-			@if($showNextYear)
-				| {{link_to_action('EventController@showMonth', $year + 1, $year + 1)}}
-			@endif
-			</h2>
-			<ul class="list secondary-menu">
-				<?php
-					$months = array('januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december');
-				?>
-				@foreach ($months as $month)
-					<li>{{link_to_action('EventController@showMonth', $month, array($year, $month))}}</li>
-				@endforeach
-			</ul>
-		</div>
+
+		@include('events.sidebar')
 	</div>
 @stop

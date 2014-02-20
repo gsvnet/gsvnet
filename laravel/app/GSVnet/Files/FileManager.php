@@ -82,7 +82,7 @@ class FileManager
     private function uploadFile(&$input)
     {
         if (! $input['file_path'] = $this->fileHandler->make($input['file'],
-                "/uploads/files/");)
+                "/uploads/files/"))
         {
             throw new FileStorageException;
         }

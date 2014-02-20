@@ -1,18 +1,30 @@
 <?php namespace GSVnet\Events;
 
-use Str;
-
 class EventsRepository {
     public function byId($id)
     {
         return Event::findOrFail($id);
     }
 
-    public function paginate($amount)
+    public function paginate($amount = 5)
     {
-        return Event::paginate(10);
+        return Event::paginate($amount);
     }
 
+    public function ongoing($amount = 5)
+    {
+        return Event::where('end_date', '>=', new \DateTime('now'))
+            ->orderBy('start_date', 'asc')
+            ->paginate($amount);
+    }
+
+    public function between($start, $end, $amount = 5)
+    {
+        return Event::where('start_date', '<=', $end)
+            ->orderBy('start_date', 'asc')
+            ->where('end_date', '>=', $start)
+            ->paginate($amount);
+    }
 
 
 
@@ -59,8 +71,6 @@ class EventsRepository {
     {
         $event = $this->byId($id);
         $event->delete();
-
-        // App::make('PhotoManager')->deleteEventPhotos($id)
 
         return $event;
     }

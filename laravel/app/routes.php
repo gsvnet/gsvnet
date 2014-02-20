@@ -46,8 +46,14 @@ Route::group(array('prefix' => 'de-gsv'), function() {
 });
 
 // Word lid
+<<<<<<< HEAD
 Route::get('word-lid',    'HomeController@wordLid');
     
+=======
+Route::get('word-lid',    'HomeController@wordLid')
+    ->before('usertype:visitor');
+
+>>>>>>> 929b3748353d552ff20d0fead097367cf6bab0ab
 // Only users which are logged in, but have not yet joined our little club, may post to this form
 Route::post('word-lid',   'UserController@postWordLid')
     ->before('auth|usertype:visitor');
@@ -59,7 +65,6 @@ Route::get('albums',         'PhotoController@showAlbums');
 Route::get('albums/{album}', 'PhotoController@showPhotos');
 
 // Get photo images
-// TODO: verander alle referenties naar dez route.
 Route::group(array('prefix' => 'albums/{album}/photo/{photo}'), function() {
     Route::get('/',      'PhotoController@showPhoto');
     Route::get('/wide',  'PhotoController@showPhotoWide');
@@ -69,7 +74,6 @@ Route::group(array('prefix' => 'albums/{album}/photo/{photo}'), function() {
 // Events
 Route::get('activiteiten',             'EventController@showIndex');
 Route::get('activiteiten/bekijk-{id}', 'EventController@showEvent');
-
 // Hier filter je of de opgegeven jaar en datum goed zijn
 Route::get('activiteiten/{year}/{month?}', 'EventController@showMonth')
     ->before('checkDate');
