@@ -45,14 +45,11 @@ Route::group(array('prefix' => 'de-gsv'), function() {
     Route::get('contact',           'AboutController@showContact');
 });
 
-// Word lid
+// Register and become member
 Route::get('word-lid',    'HomeController@wordLid');
-    
-// Only users which are logged in, but have not yet joined our little club, may post to this form
-Route::post('word-lid',   'UserController@postWordLid')
-    ->before('auth|usertype:visitor');
-
-Route::post('register',   'UserController@postRegister');
+Route::post('word-lid',   'UserController@postWordLid');
+Route::get('registreer',    'UserController@showRegister');
+Route::post('registreer',   'UserController@postRegister');
 
 // Albums
 Route::get('albums',         'PhotoController@showAlbums');

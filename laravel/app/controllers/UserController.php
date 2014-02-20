@@ -188,6 +188,11 @@ class UserController extends BaseController {
         }
 
         return Redirect::back()->withInput()->withErrors($validation);
+    }
 
+    public function showRegister()
+    {
+        $this->layout->bodyID = 'show-register';
+        $this->layout->layout = View::make('users.register');
     }
 }
