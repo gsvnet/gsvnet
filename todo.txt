@@ -1,5 +1,4 @@
  PAGINAS
- - Home page: activiteiten rechter zijbar (evt verjaardagen)
  - Enkele eventpagina: alle informatie laten zien
  - Word lid-pagina: 
  	- Afschermen voor leden en oud-leden
@@ -17,12 +16,19 @@ PERMISSIES
 	- 'photos.manage': commissie webcie of commissie reebocie
 	- 'admin': senatoren of commissie webcie
 	- 'docs.show': type member of type former member
+	- 'docs.manage': type member of type former member
+	- 'docs.publish': commissie webcie
 	- 'events.show-private': type member of type former member
 	- 'events.manage': type member of type former member
 	- 'events.publish': commissie webcie
 
+KLEINE TODOS
+- Overal soft delete, want wie iets verwijdert heeft iets te verbergen
+- Opmaak van events op home page
+
 DATABASE
 - events.public
+- docs.public
 
 NIEUW
 - Nieuwspagina

@@ -3,9 +3,11 @@
 
         <div class="main-content">
             <h1>{{ $event->title }}</h1>
-            <h3><span class="dag">{{ $event->day() }}</span>
-                                <span class="datum">{{ $event->date() }}</span>
-                                <span class="tijd">{{ $event->time() }}</span></h3>
+            <h3>
+                <span class="dag">{{ $event->day() }}</span>
+                <span class="datum">{{ $event->date() }}</span>
+                <span class="tijd">{{ $event->time() }}</span>
+            </h3>
             <p class="delta">
                 {{ $event->description }}
             </p>

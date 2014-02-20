@@ -14,7 +14,7 @@ class HomeController extends BaseController {
 	public function showIndex()
 	{
 		// Get the coming events and show it in the sidebar
-		$events = $this->events->upcoming(5)
+		$events = $this->events->upcoming(5);
 
         $this->layout->bodyID = 'home-page';
 		$this->layout->content = View::make('index')

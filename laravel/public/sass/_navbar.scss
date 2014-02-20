@@ -183,6 +183,23 @@
 	}
 }
 
+.extra-submenu-nav {
+	background: desaturate(lighten($darkPurple, 60%), 40%);
+}
+
+.extra-submenu {
+	@include container;
+	@include clearfix;
+	padding: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+
+	.top-level-link {
+		border: 0;
+		line-height: 45px;
+	}
+}
+
 
 /** Responsive **/
 @media only screen and (max-width: $firstbreakpoint){
