@@ -133,7 +133,7 @@ Route::filter('maxUploadSize', function()
     {
         $contentSize = $_SERVER['HTTP_CONTENT_LENGTH'];
     }
-    if (isset($_SERVER['CONTENT_LENGTH']))
+    elseif (isset($_SERVER['CONTENT_LENGTH']))
     {
         $contentSize = $_SERVER['CONTENT_LENGTH'];
     }
