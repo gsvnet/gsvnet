@@ -13,18 +13,15 @@ class BackendServiceProvider extends ServiceProvider {
     {
         $this->app->bind('permission', function()
         {
-            $user = Auth::user();
+            // $user       = Auth::user();
+            // $auth       = App::make('Auth');
             $committees = App::make('GSVnet\Committees\CommitteesRepository');
 
-            // return App::make('GSVnet\Permissions\PermissionManager');
-            return new \GSVnet\Permissions\PermissionManager($user, $committees);
+            $manager = new \GSVnet\Permissions\PermissionManager($committees);
+            $manager->setUser(Auth::user());
+
+            return $manager;
         });
-
-
-        // $this->app->instance('GSVnet\Permissions\UserPermissionManager', function() {
-        //     $user = Auth::user();
-        //     return new GSVnet\Permissions\UserPermissionManager($user);
-        // });
     }
 
 }
