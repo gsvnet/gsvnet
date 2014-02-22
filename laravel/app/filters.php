@@ -169,3 +169,15 @@ Route::filter('checkDate', function($route, $request)
 	}
 
 });
+
+/**
+ * Check if a user has certain abilities specified in de User model
+ */
+Route::filter('has', function($route, $request, $permission)
+{
+    if(! Permission::has($permission))
+    {
+        //Session::flash('error', 'Niet genoeg rechten.');
+        throw new \GSVnet\Permissions\NoPermissionException;
+    }
+});

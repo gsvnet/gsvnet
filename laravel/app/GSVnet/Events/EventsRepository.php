@@ -1,5 +1,7 @@
 <?php namespace GSVnet\Events;
 
+use Permission;
+
 class EventsRepository {
     public function byId($id)
     {
@@ -8,22 +10,38 @@ class EventsRepository {
 
     public function paginate($amount = 5)
     {
-        return Event::paginate($amount);
+        if (Permission::has('events.show-private'))
+        {
+            return Event::paginate($amount);
+        }
+        return Event::all()->public()->paginate($amount);
     }
 
     public function upcoming($amount = 5)
     {
-        return Event::where('end_date', '>=', new \DateTime('now'))
-            ->orderBy('start_date', 'asc')
-            ->paginate($amount);
+        $events = Event::where('end_date', '>=', new \DateTime('now'))
+            ->orderBy('start_date', 'asc');
+
+        if (! Permission::has('events.show-private'))
+        {
+            $events = $events->public();
+        }
+
+        return $events->paginate($amount);
     }
 
     public function between($start, $end, $amount = 5)
     {
-        return Event::where('start_date', '<=', $end)
+        $events = Event::where('start_date', '<=', $end)
             ->orderBy('start_date', 'asc')
-            ->where('end_date', '>=', $start)
-            ->paginate($amount);
+            ->where('end_date', '>=', $start);
+
+        if (! Permission::has('events.show-private'))
+        {
+            $events = $events->public();
+        }
+
+        return $events->paginate($amount);
     }
 
 

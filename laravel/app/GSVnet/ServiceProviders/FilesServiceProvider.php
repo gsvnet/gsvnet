@@ -11,6 +11,7 @@ class FilesServiceProvider extends ServiceProvider {
     public function register()
     {
         Route::filter('files.show', 'GSVnet\Files\Filters\ShowFileFilter');
+        Route::filter('files.manage', 'GSVnet\Files\Filters\ManageFilesFilter');
+        Route::filter('files.pupblish', 'GSVnet\Files\Filters\PublishFilesFilter');
     }
-
 }

@@ -3,6 +3,11 @@
 class Event extends \Eloquent {
     protected $guarded = array();
 
+    public function scopePublic($query)
+    {
+        return $query->wherePublic(true);
+    }
+
 
     // TODO: lijkt nog niet te werken met accessors?
     // public function getDates()
