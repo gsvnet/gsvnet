@@ -67,6 +67,6 @@ class PermissionManager implements PermissionManagerInterface
 
     private function checkCommitteeCriteria(array $criteria)
     {
-        return false;
+        return true;
     }
 }

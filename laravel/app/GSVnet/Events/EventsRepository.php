@@ -105,6 +105,11 @@ class EventsRepository {
         $event->end_date    = $properties['end_date'];
         $event->whole_day   = $properties['whole_day'];
 
+        if (Permission::has('events.publish'))
+        {
+            $event->published = $properties['published'];
+        }
+
         // Check if whole day is NOT checked
         if ($properties['whole_day'] == '0')
         {

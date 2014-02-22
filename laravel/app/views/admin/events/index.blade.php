@@ -11,10 +11,12 @@
 		<thead>
 			<tr>
 				<th>Titel</th>
-				<td>Van</td>
-				<td>Tot</td>
-				<td>Hele dag?</td>
-                <td>Laatst bewerkt</td>
+				<th>Van</th>
+				<th>Tot</th>
+				<th>Hele dag?</th>
+                <th>Laatst bewerkt</th>
+                <th>Prive activiteit</th>
+                <th>Gepubliceerd</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -41,6 +43,14 @@
                 <td>
                     {{{ $event->updated_at }}}
                 </td>
+
+                <td>
+                    {{{ $event->public ? 'Nee' : 'Ja' }}}
+                </td>
+                <td>
+                    {{{ $event->published ? 'Ja' : 'Nee' }}}
+                </td>
+
 
 			</tr>
 			@endforeach

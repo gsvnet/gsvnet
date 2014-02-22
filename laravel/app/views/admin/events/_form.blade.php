@@ -6,3 +6,9 @@
 {{ Former::time('start_time')->required() }}
 {{ Former::date('end_date')->required() }}
 {{ Former::time('end_time')->required() }}
+
+{{ Former::checkbox('public')->text('Maak activiteit pulbiek')->label(null) }}
+
+@if (Permission::has('events.publish'))
+    {{ Former::checkbox('published')->text('Publiceer activiteit')->label(null) }}
+@endif

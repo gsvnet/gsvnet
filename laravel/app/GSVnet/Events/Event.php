@@ -10,6 +10,7 @@ class Event extends \Eloquent {
 
     public function scopePublished($query, $published = true)
     {
+        if (! $published) { return $query; }
         return $query->wherePublished($published);
     }
 
@@ -129,5 +130,15 @@ class Event extends \Eloquent {
 
         // van start dag maand, tijd tot eind dag, tijd
 
+    }
+
+    public function getPublicAttribute($value)
+    {
+        return $value == 1 ? true : null;
+    }
+
+    public function getPublishedAttribute($value)
+    {
+        return $value == 1 ? true : null;
     }
 }

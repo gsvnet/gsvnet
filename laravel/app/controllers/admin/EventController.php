@@ -36,6 +36,8 @@ class EventController extends BaseController {
         $input = Input::all();
         $input['location'] = Input::get('location', '');
         $input['whole_day'] = Input::get('whole_day', '');
+        $input['public'] = Input::get('public', false);
+        $input['published'] = Input::get('published', false);
 
         $this->validator->validate($input);
         $event = $this->events->create($input);
@@ -66,6 +68,8 @@ class EventController extends BaseController {
         $input = Input::all();
         $input['location'] = Input::get('location', '');
         $input['whole_day'] = Input::get('whole_day', '');
+        $input['public'] = Input::get('public', false);
+        $input['published'] = Input::get('published', false);
 
         $this->validator->validate($input);
         $event = $this->events->update($id, $input);
