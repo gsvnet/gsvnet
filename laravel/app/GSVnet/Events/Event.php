@@ -8,6 +8,11 @@ class Event extends \Eloquent {
         return $query->wherePublic(true);
     }
 
+    public function scopePublished($query, $published = true)
+    {
+        return $query->wherePublished($published);
+    }
+
 
     // TODO: lijkt nog niet te werken met accessors?
     // public function getDates()

@@ -40,7 +40,7 @@ return [
     ],
 
     'events.manage' => [
-        'type' => ['member', 'formerMember']
+        'type' => ['member', 'formerMember'],
     ],
 
     'events.publish' => [

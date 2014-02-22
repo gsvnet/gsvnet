@@ -18,12 +18,14 @@ class EventController extends BaseController {
         $this->validator = $validator;
 
         $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
+        $this->beforeFilter('has:events.manage');
         parent::__construct();
     }
 
     public function index()
     {
-        $events = $this->events->paginate(10);
+        // Get all paginated events which are not necessarily published
+        $events = $this->events->paginate(10, false);
 
         $this->layout->content = View::make('admin.events.index')
             ->withEvents($events);

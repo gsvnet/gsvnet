@@ -8,19 +8,20 @@ class EventsRepository {
         return Event::findOrFail($id);
     }
 
-    public function paginate($amount = 5)
+    public function paginate($amount = 5, $published = true)
     {
         if (Permission::has('events.show-private'))
         {
-            return Event::paginate($amount);
+            return Event::published($published)->paginate($amount);
         }
-        return Event::all()->public()->paginate($amount);
+        return Event::published($published)->public()->paginate($amount);
     }
 
-    public function upcoming($amount = 5)
+    public function upcoming($amount = 5, $published = true)
     {
         $events = Event::where('end_date', '>=', new \DateTime('now'))
-            ->orderBy('start_date', 'asc');
+            ->orderBy('start_date', 'asc')
+            ->published($published);
 
         if (! Permission::has('events.show-private'))
         {
@@ -30,11 +31,12 @@ class EventsRepository {
         return $events->paginate($amount);
     }
 
-    public function between($start, $end, $amount = 5)
+    public function between($start, $end, $amount = 5, $published = true)
     {
         $events = Event::where('start_date', '<=', $end)
             ->orderBy('start_date', 'asc')
-            ->where('end_date', '>=', $start);
+            ->where('end_date', '>=', $start)
+            ->published($published);
 
         if (! Permission::has('events.show-private'))
         {
