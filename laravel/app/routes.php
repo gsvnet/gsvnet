@@ -90,15 +90,19 @@ Route::group([
 
     Route::resource('files',        'FilesController');
 
-    Route::resource('commissies',   'CommitteeController',
-        ['except' => ['create']]);
+    // Only administraors (web committee members) can manage
+    // committees and users
+    Route::group(['before' => 'has:admin'], function() {
+        Route::resource('commissies',   'CommitteeController',
+            ['except' => ['create']]);
 
-    // Hier nog een route voor ajax calls naar users db
-    Route::post('commissies/{committee}/members',
-        'Committees\MembersController@store');
+        // Hier nog een route voor ajax calls naar users db
+        Route::post('commissies/{committee}/members',
+            'Committees\MembersController@store');
 
-    Route::delete('commissies/{committee}/members/{member}',
-        'Committees\MembersController@destroy');
+        Route::delete('commissies/{committee}/members/{member}',
+            'Committees\MembersController@destroy');
 
-    Route::resource('gebruikers', 'UsersController');
+        Route::resource('gebruikers', 'UsersController');
+    });
 });
