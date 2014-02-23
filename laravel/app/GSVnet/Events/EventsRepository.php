@@ -5,7 +5,19 @@ use Permission;
 class EventsRepository {
     public function byId($id)
     {
-        return Event::findOrFail($id);
+        $event = Event::findOrFail($id);
+
+        if (! $event->public and ! Permission::has('events.show-private'))
+        {
+            throw new NoPermissionException;
+        }
+
+        if (! $event->published and ! Permission::has('events.publish'))
+        {
+            throw new NoPermissionException;
+        }
+
+        return $event;
     }
 
     public function paginate($amount = 5, $published = true)
