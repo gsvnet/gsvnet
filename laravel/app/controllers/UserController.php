@@ -164,7 +164,8 @@ class UserController extends BaseController {
                 'email' => $input['register-email'],
                 'username' => $input['register-username'],
                 'password' => $input['register-password'],
-                'type' => 0
+                'type' => 0,
+                'approved' => 0
             ));
 
             // Log the user immediately in

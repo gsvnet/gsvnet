@@ -94,7 +94,7 @@
             ],
             "authors": [
                 {
-                    "name": "Anahkiasen",
+                    "name": "Maxime Fabre",
                     "email": "ehtnam6@gmail.com"
                 }
             ],
@@ -107,12 +107,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mtdowling/ClassPreloader.git",
-                "reference": "1a50f7945b725ff2c60f234e51407d1d6e7c77c5"
+                "reference": "1.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mtdowling/ClassPreloader/zipball/1a50f7945b725ff2c60f234e51407d1d6e7c77c5",
-                "reference": "1a50f7945b725ff2c60f234e51407d1d6e7c77c5",
+                "url": "https://api.github.com/repos/mtdowling/ClassPreloader/zipball/1.0.1",
+                "reference": "1.0.1",
                 "shasum": ""
             },
             "require": {
@@ -335,12 +335,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "aa75c42975801286d00cba84b6ac845199880e8b"
+                "reference": "18f50ac4317d82ecfe88b6b1ed46d071478c5022"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/aa75c42975801286d00cba84b6ac845199880e8b",
-                "reference": "aa75c42975801286d00cba84b6ac845199880e8b",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/18f50ac4317d82ecfe88b6b1ed46d071478c5022",
+                "reference": "18f50ac4317d82ecfe88b6b1ed46d071478c5022",
                 "shasum": ""
             },
             "require": {
@@ -377,7 +377,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2014-02-11 16:27:23"
+            "time": "2014-02-20 15:58:24"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -472,12 +472,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "544f764e48a60b3216408eeef172fb207d4ff9ff"
+                "reference": "78f0c1c294f861eed3801e6b0d3a6b958a539182"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/544f764e48a60b3216408eeef172fb207d4ff9ff",
-                "reference": "544f764e48a60b3216408eeef172fb207d4ff9ff",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/78f0c1c294f861eed3801e6b0d3a6b958a539182",
+                "reference": "78f0c1c294f861eed3801e6b0d3a6b958a539182",
                 "shasum": ""
             },
             "require": {
@@ -581,7 +581,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2014-02-20 04:30:06"
+            "time": "2014-02-22 15:19:10"
         },
         {
             "name": "monolog/monolog",
@@ -843,12 +843,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "8dc659d694d3e0af68688600908ff1cac9d079dc"
+                "reference": "e08c7244e2b2be89c01fc6e8fda2b8d602dda250"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/8dc659d694d3e0af68688600908ff1cac9d079dc",
-                "reference": "8dc659d694d3e0af68688600908ff1cac9d079dc",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/e08c7244e2b2be89c01fc6e8fda2b8d602dda250",
+                "reference": "e08c7244e2b2be89c01fc6e8fda2b8d602dda250",
                 "shasum": ""
             },
             "require": {
@@ -929,7 +929,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2014-02-17 17:53:54"
+            "time": "2014-02-21 18:22:09"
         },
         {
             "name": "predis/predis",
