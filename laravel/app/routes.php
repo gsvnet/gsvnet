@@ -16,10 +16,11 @@ Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
     // Profiles
     Route::get('profiel',        'UserController@showProfile');
     Route::get('profiel/edit',   'UserController@editProfile');
-    // GsSVdocs
-    Route::get('bestanden',      'FilesController@index');
-    Route::get('bestanden/{id}', 'FilesController@show');
-
+    // GSVdocs
+    Route::group(['before' => 'has:member-or-former-member'], function() {
+        Route::get('bestanden',      'FilesController@index');
+        Route::get('bestanden/{id}', 'FilesController@show');
+    });
     // Only logged in users can view the member list if they have permission
     Route::group(array('prefix' => 'jaarbundel', 'before' => 'can:viewMemberlist'), function() {
         Route::get('/',             'UserController@showUsers');
