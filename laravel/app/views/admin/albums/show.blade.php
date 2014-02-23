@@ -38,6 +38,26 @@
 
     </section>
 
+    <section class='create-album panel panel-default panel-info'>
+        <div class="panel-heading add-item">
+            <h4 class="panel-title"><i class="fa fa-plus"></i> Foto's toevoegen <span class="caret"></span></h4>
+        </div>
+        <div class="panel-body">
+            {{
+                Former::open_vertical_for_files()
+                    ->action(action('Admin\PhotoController@store', $album->id))
+                    ->method('POST')
+                    ->class('dropzone')
+                    ->id('uploadmultiple')
+            }}
+
+            {{
+                Former::close()
+            }}
+        </div>
+
+    </section>
+
     <section class="photos">
         @foreach(array_chunk($photos->getCollection()->all(), 3) as $row)
             <div class="row">

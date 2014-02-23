@@ -11,6 +11,7 @@
       <!-- Bootstrap core CSS -->
       <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.10/css/bootstrap.min.css">
       <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="/stylesheets/admin.css">
 
       <style type="text/css">
         .add-form {
@@ -90,6 +91,8 @@
       <!-- Placed at the end of the document so the pages load faster -->
       <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
       <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+      <script src="/javascripts/components/dropzone.js"></script>
+      <script src="/javascripts/multi-upload.js"></script>
 
       <script>
         $(document).ready(function() {

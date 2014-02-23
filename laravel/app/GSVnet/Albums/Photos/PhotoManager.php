@@ -90,7 +90,7 @@ class PhotoManager
     private function namePhoto(&$input)
     {
         // If the photo was not given a name, use the file's name
-        if (! (isset($input['name'])) || $input['name'] == '')
+        if (! (isset($input['name'])) || empty($input['name']))
         {
             $input['name'] = $input['photo']->getClientOriginalName();
         }
