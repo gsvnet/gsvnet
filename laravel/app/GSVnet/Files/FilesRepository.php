@@ -1,5 +1,7 @@
 <?php namespace GSVnet\Files;
 
+use Permission;
+
 class FilesRepository
 {
     /**
@@ -7,9 +9,9 @@ class FilesRepository
     *
     * @return Collection
     */
-    public function all()
+    public function all($published = true)
     {
-        return File::all();
+        return File::published($published)->all();
     }
 
     /**
@@ -17,9 +19,9 @@ class FilesRepository
      *
      * @param int $amount
      */
-    public function paginate($amount)
+    public function paginate($amount, $published = true)
     {
-        return File::paginate($amount);
+        return File::published($published)->paginate($amount);
     }
 
     /**
@@ -27,14 +29,14 @@ class FilesRepository
     *
     *   @param
     */
-    public function paginateWhereLabels($amount, $labels = [])
+    public function paginateWhereLabels($amount, $labels = [], $published = true)
     {
         $count = count($labels);
         // Just return paginated data when we have no restriction
         //  on the labels
         if ($count == 0)
         {
-            return File::paginate($amount);
+            return File::published($published)->paginate($amount);
         }
         // Get the ids of files which belong to all the specified labels
         $file_ids = \DB::table('file_label')
@@ -43,7 +45,7 @@ class FilesRepository
             ->havingRaw('count(*) = ' . $count)
             ->lists('file_id');
         // Return all files with the found ids
-        return File::whereIn('id', $file_ids)->paginate($amount);
+        return File::published($published)->whereIn('id', $file_ids)->paginate($amount);
     }
 
     /**
@@ -54,7 +56,14 @@ class FilesRepository
      */
     public function byId($id)
     {
-        return File::findOrFail($id);
+        $file = File::findOrFail($id);
+
+        if (! $file->published and ! Permission::has('docs.publish'))
+        {
+            throw new NoPermissionException;
+        }
+
+        return $file;
     }
 
     /**
@@ -68,6 +77,12 @@ class FilesRepository
         $file = new File;
         $file->name = $input['name'];
         $file->file_path = $input['file_path'];
+
+        if (Permission::has('docs.publish'))
+        {
+            $file->published = $input['published'];
+        }
+
         $file->save();
 
         if (isset($input['labels']))
@@ -88,7 +103,14 @@ class FilesRepository
     public function update($id, array $input)
     {
         $file = $this->byId($id);
-        $file->update($input);
+        $file->fill($input);
+
+        if (Permission::has('docs.publish'))
+        {
+            $file->published = $input['published'];
+        }
+        $file->save();
+
         // Reset the selected labels
         if (isset($input['labels']))
         {

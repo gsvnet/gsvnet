@@ -1,3 +1,4 @@
 <?php namespace GSVnet\Permissions;
 
-class PermissionNotFoundException extends \Exception;
+class PermissionNotFoundException extends \Exception {
+}

@@ -2,6 +2,10 @@
 
 {{ Former::file('file')->help("") }}
 
+@if (Permission::has('docs.publish'))
+    {{ Former::checkbox('published')->text('Publiceer bestand')->label(null) }}
+@endif
+
 @if ($labels->count() > 0)
     <h3>Labels</h3>
     @foreach ($labels as $label)
@@ -13,6 +17,5 @@
         </div>
     @endforeach
 @endif
-
 
 <hr>

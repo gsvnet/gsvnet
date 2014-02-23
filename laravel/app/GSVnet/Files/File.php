@@ -16,6 +16,12 @@ class File extends \Eloquent {
         $this->fileHandler = new FileHandler;
     }
 
+    public function scopePublished($query, $published = true)
+    {
+        if (! $published) { return $query; }
+        return $query->wherePublished($published);
+    }
+
     public function labels()
     {
         return $this->belongsToMany('GSVnet\Files\Labels\Label', 'file_label');

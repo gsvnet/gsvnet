@@ -24,12 +24,15 @@ class FilesController extends BaseController {
 
         $this->beforeFilter('maxUploadSize', ['only' => array('store', 'update')]);
         $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
+        $this->beforeFilter('has:docs.manage');
+
         parent::__construct();
     }
 
     public function index()
     {
-        $files = $this->files->paginate(10);
+        // Get all files which do not have to be published
+        $files = $this->files->paginate(10, false);
         $labels = $this->labels->all();
 
         $checked = array();
@@ -46,8 +49,9 @@ class FilesController extends BaseController {
 
     public function store()
     {
-        $input = Input::all();
-        $input['file'] = Input::file('file');
+        $input              = Input::all();
+        $input['file']      = Input::file('file');
+        $input['published'] = Input::get('published', false);
 
         $file = $this->manager->create($input);
 
