@@ -53,5 +53,9 @@ return [
         'committee' => [
             'web'
         ]
+    ],
+
+    'users.show' => [
+        'type' => ['member', 'formerMember']
     ]
 ];

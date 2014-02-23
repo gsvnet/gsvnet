@@ -22,10 +22,10 @@ Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
         Route::get('bestanden/{id}', 'FilesController@show');
     });
     // Only logged in users can view the member list if they have permission
-    Route::group(array('prefix' => 'jaarbundel', 'before' => 'can:viewMemberlist'), function() {
-        Route::get('/',             'UserController@showUsers');
+    Route::group(['before' => 'has:users.show'], function() {
+        Route::get('jaarbundel',             'UserController@showUsers');
 
-        Route::get('/gsver-{id}',   'UserController@showUser')
+        Route::get('jaarbundel/gsver-{id}',   'UserController@showUser')
             ->where('id', '[0-9]+');
     });
 });

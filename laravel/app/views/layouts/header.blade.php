@@ -50,10 +50,22 @@
                     <a class="top-level-link" href="{{ URL::action('UserController@showProfile') }}">{{Gravatar::image(Auth::user()->email, 'Profiel', array('class' => 'nav-profile-image', 'width' => 24, 'height' => 24))}} {{{Auth::user()->firstname}}}</a>
                     <i class="fa fa-caret-down top-caret"></i>
                     <ul class="sub-level-menu">
-                        @if(Auth::check() && Auth::user()->can('viewMemberlist'))
-                        <li><a href="{{ URL::action('UserController@showUsers') }}" class="sub-level-link">Jaarbundel</a></li>
+                        @if (Permission::has('users.show'))
+                        <li>
+                            <a href="{{ URL::action('UserController@showUsers') }}" class="sub-level-link">
+                                Jaarbundel
+                            </a>
+                        </li>
                         @endif
-                        <li><a class="sub-level-link" href="{{ URL::action('FilesController@index') }}">GSVdocs</a></li>
+
+                        @if (Permission::has('docs.show'))
+                        <li>
+                            <a class="sub-level-link" href="{{ URL::action('FilesController@index') }}">
+                                GSVdocs
+                            </a>
+                        </li>
+                        @endif
+
                         <li><a class="sub-level-link" href="{{ URL::action('SessionController@getLogout') }}">Uitloggen</a></li>
                     </ul>
                 </li>
