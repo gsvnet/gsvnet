@@ -1,29 +1,49 @@
 <?php namespace GSVnet\Events;
 
+use Permission;
+
 class EventsRepository {
     public function byId($id)
     {
         return Event::findOrFail($id);
     }
 
-    public function paginate($amount = 5)
+    public function paginate($amount = 5, $published = true)
     {
-        return Event::paginate($amount);
+        if (Permission::has('events.show-private'))
+        {
+            return Event::published($published)->paginate($amount);
+        }
+        return Event::published($published)->public()->paginate($amount);
     }
 
-    public function upcoming($amount = 5)
+    public function upcoming($amount = 5, $published = true)
     {
-        return Event::where('end_date', '>=', new \DateTime('now'))
+        $events = Event::where('end_date', '>=', new \DateTime('now'))
             ->orderBy('start_date', 'asc')
-            ->paginate($amount);
+            ->published($published);
+
+        if (! Permission::has('events.show-private'))
+        {
+            $events = $events->public();
+        }
+
+        return $events->paginate($amount);
     }
 
-    public function between($start, $end, $amount = 5)
+    public function between($start, $end, $amount = 5, $published = true)
     {
-        return Event::where('start_date', '<=', $end)
+        $events = Event::where('start_date', '<=', $end)
             ->orderBy('start_date', 'asc')
             ->where('end_date', '>=', $start)
-            ->paginate($amount);
+            ->published($published);
+
+        if (! Permission::has('events.show-private'))
+        {
+            $events = $events->public();
+        }
+
+        return $events->paginate($amount);
     }
 
 
@@ -84,6 +104,11 @@ class EventsRepository {
         $event->start_date  = $properties['start_date'];
         $event->end_date    = $properties['end_date'];
         $event->whole_day   = $properties['whole_day'];
+
+        if (Permission::has('events.publish'))
+        {
+            $event->published = $properties['published'];
+        }
 
         // Check if whole day is NOT checked
         if ($properties['whole_day'] == '0')

@@ -72,7 +72,12 @@ Route::get('activiteiten/{year}/{month?}', 'EventController@showMonth')
     ->before('checkDate');
 
 // TODO: check if user has album permissions
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'before' => 'auth'], function() {
+Route::group([
+        'prefix' => 'admin',
+        'namespace' => 'Admin',
+        'before' => 'auth|has:member-or-former-member'
+    ], function() {
+
     Route::get('/',           'AdminController@index');
 
     Route::resource('events', 'EventController');

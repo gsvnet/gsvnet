@@ -133,7 +133,7 @@ Route::filter('maxUploadSize', function()
     {
         $contentSize = $_SERVER['HTTP_CONTENT_LENGTH'];
     }
-    if (isset($_SERVER['CONTENT_LENGTH']))
+    elseif (isset($_SERVER['CONTENT_LENGTH']))
     {
         $contentSize = $_SERVER['CONTENT_LENGTH'];
     }
@@ -168,4 +168,16 @@ Route::filter('checkDate', function($route, $request)
 		App::abort('404');
 	}
 
+});
+
+/**
+ * Check if a user has certain abilities specified in de User model
+ */
+Route::filter('has', function($route, $request, $permission)
+{
+    if(! Permission::has($permission))
+    {
+        //Session::flash('error', 'Niet genoeg rechten.');
+        throw new \GSVnet\Permissions\NoPermissionException;
+    }
 });

@@ -7,16 +7,20 @@ use Config;
 class PermissionManager implements PermissionManagerInterface
 {
     protected $user;
+    protected $guard;
     protected $committees;
 
     protected $permissions;
 
-    public function __construct(User $user, CommitteesRepository $committee)
+    public function __construct(CommitteesRepository $committee)
     {
-        $this->user        = $user;
         $this->committee   = $committee;
-
         $this->permissions = Config::get('permissions');
+    }
+
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 
     public function has($permission)
@@ -29,6 +33,12 @@ class PermissionManager implements PermissionManagerInterface
 
         // Get the permission's criteria
         $criteria = $this->permissions[$permission];
+
+        // A guest can't have any permissions
+        if (! empty($criteria) and is_null($this->user))
+        {
+            return false;
+        }
 
         // Check if type criteria is matched
         if (array_key_exists('type', $criteria) and
@@ -57,6 +67,6 @@ class PermissionManager implements PermissionManagerInterface
 
     private function checkCommitteeCriteria(array $criteria)
     {
-        return false;
+        return true;
     }
 }

@@ -3,6 +3,17 @@
 class Event extends \Eloquent {
     protected $guarded = array();
 
+    public function scopePublic($query)
+    {
+        return $query->wherePublic(true);
+    }
+
+    public function scopePublished($query, $published = true)
+    {
+        if (! $published) { return $query; }
+        return $query->wherePublished($published);
+    }
+
 
     // TODO: lijkt nog niet te werken met accessors?
     // public function getDates()
@@ -119,5 +130,15 @@ class Event extends \Eloquent {
 
         // van start dag maand, tijd tot eind dag, tijd
 
+    }
+
+    public function getPublicAttribute($value)
+    {
+        return $value == 1 ? true : null;
+    }
+
+    public function getPublishedAttribute($value)
+    {
+        return $value == 1 ? true : null;
     }
 }
