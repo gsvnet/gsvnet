@@ -7,14 +7,25 @@
 				@foreach ($members as $member)
 					<li class="user-profile-item">
 						<div class="profile-image">
-
+							{{ Gravatar::image(Auth::user()->email, 'Profielfoto', array('width' => 120, 'height' => 120)) }}
 						</div>
-						<h3>{{ link_to_action('UserController@showUser', $member->user->full_name, array($member->id, 'class' => 'search-users')) }}</h3>
-						<ul class="user-details-list">
-							<li><i class="fa fa-share"></i> {{{$member->user->email}}}</li>
-							<li class="phone"><i class="fa fa-phone"></i> {{{$member->phone}}}</li>
-							<li><span class="dot-after">{{{$member->yearGroup->name or 'Geen jaarverband'}}}</span> Regio {{{$member->region}}}</li>
-						</ul>
+						<div class="user-details">
+							<h3>{{ link_to_action('UserController@showUser', $member->user->full_name, array($member->id, 'class' => 'search-users')) }}</h3>
+							<ul class="user-details-list">
+								<li>
+									<i class="fa fa-share"></i> 
+									{{ HTML::mailto($member->user->email) }}
+								</li>
+								<li class="phone">
+									<i class="fa fa-phone"></i> 
+									<a href="tel:{{{$member->phone}}}" title="Bel {{{$member->user->full_name}}}">{{{$member->phone}}}</a>
+								</li>
+								<li>
+									<span class="dot-after">{{{$member->yearGroup->name or 'Geen jaarverband'}}}</span> 
+									Regio {{{$member->region}}}
+								</li>
+							</ul>
+						</div>
 					</li>
 				@endforeach
 			</ul>
@@ -32,7 +43,7 @@
 			<div class="form-group">
 				<label class="control-label" for="region">Regio</label>
 				<select name="region" id="region">
-					<option value="0"></option>
+					<option value="0">Maakt niet uit</option>
 					@foreach ($regions as $key => $region)
 						<option value="{{{$key}}}" {{{Input::get('region') == $key ? 'selected="selected"' : ''}}}>{{{$region}}}</option>
 					@endforeach
@@ -41,7 +52,7 @@
 			<div class="form-group">
 				<label class="control-label" for="yeargroup">Jaarverband</label>
 				<select name="yeargroup" id="yeargroup">
-					<option value="0"></option>
+					<option value="0">Doet er niet toe</option>
 					@foreach ($yearGroups as $yearGroup)
 						<option value="{{{$yearGroup->id}}}" {{{Input::get('yeargroup') == $yearGroup->id ? 'selected="selected"' : ''}}}>{{{$yearGroup->name}}}</option>
 					@endforeach
