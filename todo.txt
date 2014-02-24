@@ -1,14 +1,15 @@
  PAGINAS
  - Enkele eventpagina: alle informatie laten zien
- - Word lid-pagina: 
+ - Word lid-pagina:
  	- Afschermen voor leden en oud-leden
  	- Formulier mooiere opmaak geven
- 	- Mail sturen bij succes en 
+ 	- Mail sturen bij succes en
  - GSVdocs: zoek op naam
 
  - Submenu toevoegen op actieve pagina
 
 PERMISSIES
+- Commissie permissies afmaken
 - Soorten
 	- 'become-member': type member of type former member
 	- 'photos.show-private': type member of type former member
@@ -22,12 +23,8 @@ PERMISSIES
 	- 'events.publish': commissie webcie
 
 KLEINE TODOS
-- Overal soft delete, want wie iets verwijdert heeft iets te verbergen
+- (voorlopig niet) Overal soft delete, want wie iets verwijdert heeft iets te verbergen
 - Opmaak van events op home page
-
-DATABASE
-- events.public
-- docs.public
 
 NIEUW
 - Nieuwspagina
@@ -35,3 +32,4 @@ NIEUW
 
 KLAAR:
  - Admin: uploaden van meerdere foto's tegelijk in de admin
+ - Events en Docs public / published
