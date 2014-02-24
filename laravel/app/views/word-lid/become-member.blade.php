@@ -3,6 +3,7 @@
         <h1>Word lid!</h1>
         <p class="delta">{{Auth::user()->firstname}}, door onderstaand formulier in te vullen meld je je aan bij de Gereformeerde Studentenvereniging Groningen</p>
 
+        <h2>Informatie over jezelf</h2>
         <div id="preview-image">
         </div>
 
@@ -85,8 +86,8 @@
                 ))->label('Woon je bij je ouders/verzorgers?')->check('0')
             }}
 
-        <fieldset id="parents-info">
-            <legend>Over je moeder</legend>
+        <div id="parents-info">
+            <h2>Adres van je ouders</h2>
             {{
                 Former::text('parents-address')->label('Adres')
             }}
@@ -99,7 +100,7 @@
             {{
                 Former::text('parents-phone')->label('Telefoon')
             }}
-        </fieldset>
+        </div>
 
     </div>
     <div class="column-holder">

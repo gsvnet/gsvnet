@@ -4,7 +4,7 @@
 	font-family: $font-family-sans;
 	line-height: 2em;
 
-	p {
+	.form-helper-text {
 		float: left;
 		margin-right: 1em;
 	}
@@ -32,13 +32,25 @@
 		padding: 0 1em;
 
 		&.active, &:hover {
-			color: $lightPurple;
+			color: $darkPurple;
 			text-decoration: none;
 		}
 
 		&.active, &.active:hover {
 			background: $darkPurple;
 			color: #FFF;
+		}
+	}
+}
+
+@media only screen and (max-width: $breakpoint){
+	.form-steps {
+		li {
+			float: none;
+		}
+
+		.form-helper-text {
+			float: none;
 		}
 	}
 }

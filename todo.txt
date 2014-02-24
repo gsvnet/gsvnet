@@ -2,7 +2,6 @@
  - Enkele eventpagina: alle informatie laten zien
  - Word lid-pagina:
  	- Afschermen voor leden en oud-leden
- 	- Formulier mooiere opmaak geven
  	- Mail sturen bij succes en
  - GSVdocs: zoek op naam
 
@@ -33,3 +32,4 @@ NIEUW
 KLAAR:
  - Admin: uploaden van meerdere foto's tegelijk in de admin
  - Events en Docs public / published
+ - Formulier mooiere opmaak geven

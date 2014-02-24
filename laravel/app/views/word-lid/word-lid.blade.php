@@ -22,7 +22,7 @@
             <p class="form-helper-text">Voortgang: </p>
             <ol>
                 <li><a href="/" class="step-item">1. Inloggen of registreren</a></li>
-                <li><a href="/" class="step-item active">2. Persoonlijke gegevens invullen</a></li>
+                <li><a href="/" class="step-item active">2. Gegevens invullen</a></li>
                 <li><span class="step-item">3. Klaar!</span></li>
             </ol>
         </div>
