@@ -1,65 +1,3 @@
-@section('header')
-    @parent
-
-    <section class="slideshow-wrap">
-        <div id="carousel-example-generic" class="slideshow carousel slide">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                <div href="#" class="item active">
-                    <div class="slide-description-wrapper">
-                        <div class="slide-description">
-                            <div class="slide-description-box">
-                                <p class="delta">Hier wat leuks!</p>
-                                <p>En hier wat!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="images/een-1600.jpg" alt="" class="slide-img"/>
-                </div>
-                <div href="#" class="item">
-                    <div class="slide-description-wrapper">
-                        <div class="slide-description">
-                            <div class="slide-description-box">
-                                <p class="delta">Hier wat leuks!</p>
-                                <p>En hier wat!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="images/een-1600.jpg" alt="" class="slide-img"/>
-                </div>
-                <div href="#" class="item">
-                    <div class="slide-description-wrapper">
-                        <div class="slide-description">
-                            <div class="slide-description-box">
-                                <p class="delta">Hier wat leuks!</p>
-                                <p>En hier wat!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="images/een-1600.jpg" alt="" class="slide-img"/>
-                </div>
-            </div>
-
-            <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                <span class="icon-prev"></span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                <span class="icon-next"></span>
-            </a>
-        </div>
-        <div class="slideshow-spacer"></div>
-    </section>
-
-@stop
-
 @section('content')
     <div class="column-holder" role="main">
         <p class="delta">{{Auth::check() ? Auth::user()->firstname . ', w' : 'W'}}il jij een onvergetelijke studententijd?</p>
@@ -79,6 +17,15 @@
         </div>
     </div>
     <div class="hero-unit grey">
+        <div class="column-holder form-steps">
+
+            <p class="form-helper-text">Voortgang: </p>
+            <ol>
+                <li><a href="/" class="step-item">1. Inloggen of registreren</a></li>
+                <li><a href="/" class="step-item active">2. Persoonlijke gegevens invullen</a></li>
+                <li><span class="step-item">3. Klaar!</span></li>
+            </ol>
+        </div>
         @if(Auth::check())
             @include('word-lid.become-member')
         @else

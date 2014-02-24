@@ -1,0 +1,44 @@
+.form-steps {
+	@include clearfix;
+
+	font-family: $font-family-sans;
+	line-height: 2em;
+
+	p {
+		float: left;
+		margin-right: 1em;
+	}
+
+	ol {
+		@include clearfix;
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		color: $grey;
+		float: left;
+	}
+
+
+	li {
+		float: left;
+		margin-right: 1em;
+	}
+
+	.step-item {
+		color: $grey;
+		display: block;
+		cursor: pointer;
+		background: #FFF;
+		padding: 0 1em;
+
+		&.active, &:hover {
+			color: $lightPurple;
+			text-decoration: none;
+		}
+
+		&.active, &.active:hover {
+			background: $darkPurple;
+			color: #FFF;
+		}
+	}
+}
