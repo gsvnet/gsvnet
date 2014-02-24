@@ -4,42 +4,56 @@
     </div>
 	<p class="delta">Voeg een album toe of bewerk oude albums</p>
 
-	@include('admin.albums.create')
 
-	<h2>Albums bewerken</h2>
-	<table class='table table-bordered'>
-		<thead>
-			<tr>
-				<th>Naam</th>
-				<td>Aantal foto's</td>
-                <td>Laatst bewerkt</td>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach($albums as $album)
-			<tr>
-				<td><a href="{{ URL::action('Admin\AlbumController@show', $album->id) }}" alt="{{ $album->name }}">
-					{{{ $album->name }}}
-				</a></td>
-				<td>
-					{{{ $album->photos->count()}}}
-				</td>
+    <section class="spacer">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#huidige-albums" data-toggle="tab">Huidige albums</a></li>
+          <li><a href="#album-toevoegen" data-toggle="tab">Album toevoegen</a></li>
+        </ul>
 
-                <td>
-                    {{{ $album->updated_at }}}
-                </td>
+        <div class="tab-content">
+            <div class="tab-pane active" id="huidige-albums">
+				<h2>Albums bewerken</h2>
+				<table class='table table-bordered'>
+					<thead>
+						<tr>
+							<th>Naam</th>
+							<td>Aantal foto's</td>
+			                <td>Laatst bewerkt</td>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach($albums as $album)
+						<tr>
+							<td><a href="{{ URL::action('Admin\AlbumController@show', $album->id) }}" alt="{{ $album->name }}">
+								{{{ $album->name }}}
+							</a></td>
+							<td>
+								{{{ $album->photos->count()}}}
+							</td>
 
-				<!-- <td>
-                    <a href="{{ URL::action('Admin\AlbumController@edit', $album->id) }}" alt="Bewerk {{{ $album->name }}}" class='btn btn-default'>
-                        <i class="fa fa-pencil"></i> Album informatie bewerken
-                    </a>
-                </td> -->
+			                <td>
+			                    {{{ $album->updated_at }}}
+			                </td>
 
-			</tr>
-			@endforeach
-		</tbody>
-	</table>
+							<!-- <td>
+			                    <a href="{{ URL::action('Admin\AlbumController@edit', $album->id) }}" alt="Bewerk {{{ $album->name }}}" class='btn btn-default'>
+			                        <i class="fa fa-pencil"></i> Album informatie bewerken
+			                    </a>
+			                </td> -->
 
-	{{ $albums->links() }}
+						</tr>
+						@endforeach
+					</tbody>
+				</table>
+
+				{{ $albums->links() }}
+            </div>
+            <div class="tab-pane" id="album-toevoegen">
+				@include('admin.albums.create')
+            </div>
+        </div>
+    </section>
 
 @stop
