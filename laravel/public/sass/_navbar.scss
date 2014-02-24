@@ -10,7 +10,7 @@
 	position: absolute;
 	right: 2em;
 	top: 25px;
-	z-index: 2000;
+	z-index: $gsvnet-z-index-base + 2;
 }
 
 .logo {
@@ -44,7 +44,7 @@
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
-	z-index: 1998;
+	z-index: $gsvnet-z-index-base;
 	-webkit-transition: max-height 0.26s ease;
 }
 
@@ -136,7 +136,7 @@
 }
 
 .nav-profile-image {
-	vertical-align: middle;
+	vertical-align: -6px;
 	margin-right: 9px;
 }
 
@@ -148,7 +148,7 @@
 	list-style-type: none;
 	padding: 0;
 	background: #FFF;
-	z-index: 1999;
+	z-index: $gsvnet-z-index-base + 1;
 	width: 200px;
 	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.1);
 	max-height: 0;
@@ -283,7 +283,7 @@
 		bottom: auto;
 		left: auto;
 		right: auto;
-		z-index: auto;
+		z-index: $gsvnet-z-index-base + 1;
 	}
 
 	.top-level-menuitem {
