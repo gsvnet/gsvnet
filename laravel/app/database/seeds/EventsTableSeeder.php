@@ -22,7 +22,9 @@ class EventsTableSeeder extends Seeder {
                 'start_time' => $randHour . ':' . rand(0, 59),
                 'end_time' => $randHour+2 . ':' . rand(0,59),
                 'start_date' => $startdate->format('Y-m-d'),
-                'end_date' => $startdate->add(date_interval_create_from_date_string(rand(0,2) . ' days'))->format('Y-m-d')
+                'end_date' => $startdate->add(date_interval_create_from_date_string(rand(0,2) . ' days'))->format('Y-m-d'),
+                'published' => random(1,10) > 3,
+                'public' => random(1,10) > 3,
             ));
         }
 	}
