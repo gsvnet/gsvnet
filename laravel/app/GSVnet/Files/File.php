@@ -22,6 +22,34 @@ class File extends \Eloquent {
         return $query->wherePublished($published);
     }
 
+    public function scopeWithLabels($query, array $labels = [])
+    {
+        $count = count($labels);
+        // Return original query when we have no restriction on the labels
+        if ($count == 0) { return $query; }
+
+        // Get the ids of files which belong to all the specified labels
+        $file_ids = \DB::table('file_label')
+            ->whereIn('label_id', $labels)
+            ->groupBy('file_id')
+            ->havingRaw('count(*) = ' . $count)
+            ->lists('file_id');
+
+        if (empty($file_ids))
+        {
+            // null returnen
+            return $query->where(\DB::raw('false'));
+        }
+
+        // Return all files with the found ids
+        return $query->whereIn('id', $file_ids);
+    }
+
+    public function scopeSearch($query, $search)
+    {
+        return $query;
+    }
+
     public function labels()
     {
         return $this->belongsToMany('GSVnet\Files\Labels\Label', 'file_label');

@@ -48,6 +48,23 @@ class FilesRepository
         return File::published($published)->whereIn('id', $file_ids)->paginate($amount);
     }
 
+    public function getPublishedAndSearchWithLabelsAndPaginate($search, $labels, $amount = 5)
+    {
+        $query = File::published();
+
+        if ( ! empty($search))
+        {
+            $query = $query->search($search);
+        }
+
+        if ( ! empty($labels))
+        {
+            $query = $query->withLabels($labels);
+        }
+
+        return $query->paginate($amount);
+    }
+
     /**
      * Get by slug
      *
