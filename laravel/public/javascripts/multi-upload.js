@@ -2,7 +2,7 @@ Dropzone.autoDiscover = false;
 
 Dropzone.options.uploadmultiple = {
   paramName: "photo", // The name that will be used to transfer the file
-  maxFilesize: 2, // MB
+  maxFilesize: 5, // MB
   acceptedFiles: 'image/*',
   autoProcessQueue: false,
   dictDefaultMessage: 'Sleep hier bestanden in of klik gewoon',
