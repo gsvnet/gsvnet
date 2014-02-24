@@ -1,7 +1,8 @@
 @section('content')
 	<div id="user-list" class="column-holder">
+		<h1>Jaarbundel</h1>
+		<p class="delta">Ben je stiekem vergeten hoe die sjaars heet? Vind het hier</p>
 		<div class="main-content">
-			<h1>Jaarbundel</h1>
 			@if(count($members) > 0)
 				<ul class="user-profile-list">
 				@foreach ($members as $member)
