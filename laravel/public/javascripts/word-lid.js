@@ -4,7 +4,9 @@ WordLid = (function(){
 			fileField: $('#potential-image'),
 			form: $('#become-member'),
 			submitButton: $('#submit'),
-			canvas: document.createElement('canvas')
+			canvas: document.createElement('canvas'),
+			parentRadioButtons: $('input[type=radio][name=parents-same-address]'),
+			parentsFormWrapper: $('#parents-info')
 		},
 		width = 308, 
 		ctx, 
@@ -14,6 +16,24 @@ WordLid = (function(){
 		ratio = img.height/img.width;
 		elements.canvas.height = ratio*width;
 		ctx.drawImage(img,0,0,img.width,img.height,0,0,width,ratio*width);
+	}
+
+	function parentsRadioButtonInit() {
+		elements.parentRadioButtons.change(function(){
+			$this = $(this);
+			if($this.val() == '1') {
+				elements.parentsFormWrapper.slideUp('fast');
+			} else {
+				elements.parentsFormWrapper.slideDown('fast');
+			}
+		});
+
+		console.log(elements.parentRadioButtons.val());
+		if(elements.parentRadioButtons.val() == '1') {
+			elements.parentsFormWrapper.hide();
+		} else {
+			elements.parentsFormWrapper.show();
+		}
 	}
 
 	function init(){
@@ -41,20 +61,16 @@ WordLid = (function(){
 			img.src = url;
 		});
 
-		// Check if a name is entered
-		$('#input-voornaam').blur(function(){
-			//alert('hallo ' + this.value);
-		});
-
 		// Disable the submit button when clicked
 		elements.form.submit(function() {
 			elements.submitButton.addClass('disabled').val('Verzenden...');
 		});
 
 		// Open image browser when clicking preview area
-		elements.previewWrap.click(function(){
-			elements.fileField.click();
-		});
+		elements.previewWrap.click(elements.fileField.click);
+
+		// Initialise parents radio button effects
+		parentsRadioButtonInit();
 
 	}
 

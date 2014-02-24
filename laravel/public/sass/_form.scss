@@ -1,15 +1,22 @@
 .form-group {
 	margin-bottom: 1em;
+	font-family: $font-family-sans;
 }
 
 .control-label {
 	cursor: pointer;
 	display: block;
 	font-weight: bold;
+	font-family: $font-family-sans;
+}
+
+.radio {
+	margin-right: 1em;
+	cursor: pointer;
 }
 
 .form-control {
-	padding: .2rem .5rem;
+	padding: .2em .5em;
 	border: 1px solid $grey;
 }
 
@@ -34,4 +41,10 @@
 .help-block {
 	font-style: italic;
 	margin-left: 1em;
+}
+
+.inline-form-row {
+	.form-control, .form-group {
+		display: inline-block;
+	}
 }

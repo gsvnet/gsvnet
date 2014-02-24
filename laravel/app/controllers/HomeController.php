@@ -8,6 +8,7 @@ class HomeController extends BaseController {
 
     public function __construct(EventsRepository $events)
     {
+    	parent::__construct();
         $this->events = $events;
     }
 

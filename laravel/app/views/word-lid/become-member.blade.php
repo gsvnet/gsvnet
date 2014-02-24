@@ -22,8 +22,11 @@
                 Former::text('potential-phone')->label('Telefoon')
             }}
             {{
-                Former::select('potential-gender')->label('Telefoon')->options(array('male' => 'Man', 'female' => 'Vrouw'))
+                Former::select('potential-gender')->label('Geslacht')->options(array('male' => 'Man', 'female' => 'Vrouw'))
             }}
+
+            <div class="inline-form-row">
+            <label for="potential-birth-day" class="control-label">Geboortedatum</label>
             {{
                 Former::select('potential-birth-day')->label('')->options(array(
                     '01' => '01',
@@ -80,7 +83,7 @@
             {{
                 Former::select('potential-birth-year')->label('')->range(date('Y')-14, 1980)
             }}
-
+            </div>
             {{
                 Former::text('potential-church')->label('Kerkgezindte')
             }}
@@ -92,10 +95,13 @@
             }}
 
             {{
-                Former::stacked_radios('foo')->radios('ja', 'nee')->label('Is dit ook het adres van je moeder?')
+                Former::stacked_radios('parents-same-address')->radios(array(
+                    'Ja' => array('name' => 'parents-same-address', 'value' => '1'),
+                    'Nee' => array('name' => 'parents-same-address', 'value' => '0'),
+                ))->label('Woon je bij je ouders/verzorgers?')->check('0')
             }}
 
-        <fieldset>
+        <fieldset id="parents-info">
             <legend>Over je moeder</legend>
             {{
                 Former::text('parents-address')->label('Adres')

@@ -5,7 +5,6 @@
  	- Formulier mooiere opmaak geven
  	- Mail sturen bij succes en 
  - GSVdocs: zoek op naam
- - Admin: uploaden van meerdere foto's tegelijk in de admin
 
  - Submenu toevoegen op actieve pagina
 
@@ -33,3 +32,6 @@ DATABASE
 NIEUW
 - Nieuwspagina
 - Forum
+
+KLAAR:
+ - Admin: uploaden van meerdere foto's tegelijk in de admin
