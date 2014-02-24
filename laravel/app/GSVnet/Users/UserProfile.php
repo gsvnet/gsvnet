@@ -1,5 +1,7 @@
 <?php namespace GSVnet\Users;
 
+use Config;
+
 class UserProfile extends \Eloquent {
 
     /**
@@ -17,5 +19,11 @@ class UserProfile extends \Eloquent {
     public function user()
     {
         return $this->belongsTo('GSVnet\Users\User');
+    }
+
+    public function getRegionNameAttribute()
+    {
+        $regions = Config::get('gsvnet.regions');
+        return $regions[$this->region];
     }
 }

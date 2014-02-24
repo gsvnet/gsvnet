@@ -7,15 +7,14 @@ class UsersTableSeeder extends Seeder {
         DB::table('users')->truncate();
         DB::table('user_profiles')->truncate();
 
-        GSVnet\Users\User::create(array(
+        $mark = GSVnet\Users\User::create(array(
             'email'         => 'markredeman@gmail.com',
             'password'      => 'helloworld',
             'firstname'     => 'Mark',
             'lastname'      => 'Redeman',
             'middlename'    => 'Sietse',
             'username'      => 'mredeman',
-            'type'          => 2,
-
+            'type'          => 2
         ));
 
         $count = 200;
@@ -60,10 +59,30 @@ class UsersTableSeeder extends Seeder {
                 'reunist' => rand(0,1),
                 'parent_address' => $faker->streetAddress,
                 'parent_zip_code' => $faker->postcode,
-                'parent_zip_code' => $faker->city,
+                'parent_town' => $faker->city,
                 'parent_phone' => $faker->phoneNumber
             ));
         }
+
+        GSVnet\Users\UserProfile::create(array(
+            'user_id' => $mark->id,
+            'year_group_id' => $yearGroupIds[array_rand($yearGroupIds)],
+            'region' => rand(1,4),
+            'phone' => '050-4040544',
+            'address' => 'Mooistraat 2',
+            'zip_code' => '9712AX',
+            'town' => 'Groningen',
+            'study' => 'Technische Wiskunde',
+            'birthdate' => '1992-10-10',
+            'church' => 'GKV',
+            'gender' => 'male',
+            'start_date_rug' => '2011-08-01',
+            'reunist' => 0,
+            'parent_address' => 'Mooiestraat 3',
+            'parent_zip_code' => '9556EX',
+            'parent_town' => 'Opende',
+            'parent_phone' => '0800-223344'
+        ));
 
         $this->command->info('Person table seeded using Faker ...');
     }
