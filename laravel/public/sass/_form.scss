@@ -7,7 +7,6 @@
 	cursor: pointer;
 	display: block;
 	font-weight: bold;
-	font-family: $font-family-sans;
 }
 
 .radio {
@@ -47,4 +46,5 @@
 	.form-control, .form-group {
 		display: inline-block;
 	}
+	font-family: $font-family-sans;
 }

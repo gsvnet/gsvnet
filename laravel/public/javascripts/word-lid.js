@@ -19,6 +19,7 @@ WordLid = (function(){
 	}
 
 	function parentsRadioButtonInit() {
+		// Hide parent address form if potential lives with his parent
 		elements.parentRadioButtons.change(function(){
 			$this = $(this);
 			if($this.val() == '1') {
@@ -28,7 +29,7 @@ WordLid = (function(){
 			}
 		});
 
-		console.log(elements.parentRadioButtons.val());
+		// Check value on load
 		if(elements.parentRadioButtons.val() == '1') {
 			elements.parentsFormWrapper.hide();
 		} else {
@@ -67,7 +68,9 @@ WordLid = (function(){
 		});
 
 		// Open image browser when clicking preview area
-		elements.previewWrap.click(elements.fileField.click);
+		elements.previewWrap.click(function() {
+			elements.fileField.click()
+		});
 
 		// Initialise parents radio button effects
 		parentsRadioButtonInit();
