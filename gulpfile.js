@@ -20,8 +20,9 @@ gulp.task('css', function(){
 
 gulp.task('scripts', function() {
   return gulp.src([
-  		'laravel/public/javascripts/components/jquery-1.10.1.min.js',
-  		'laravel/public/javascripts/components/matchmedia.js',
+      'laravel/public/javascripts/components/jquery-1.10.1.min.js',
+      'laravel/public/javascripts/components/load-image.min.js',
+      'laravel/public/javascripts/components/matchmedia.js',
   		'laravel/public/javascripts/components/picturefill.js',
   		'laravel/public/javascripts/components/list.min.js',
   		'laravel/public/javascripts/components/carousel.js',

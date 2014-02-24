@@ -9,14 +9,7 @@ WordLid = (function(){
 			parentsFormWrapper: $('#parents-info')
 		},
 		width = 308, 
-		ctx, 
-		url;
-
-	function imageLoad(img) {
-		ratio = img.height/img.width;
-		elements.canvas.height = ratio*width;
-		ctx.drawImage(img,0,0,img.width,img.height,0,0,width,ratio*width);
-	}
+		url, ctx;
 
 	function parentsRadioButtonInit() {
 		// Hide parent address form if potential lives with his parent
@@ -37,34 +30,25 @@ WordLid = (function(){
 		}
 	}
 
-	function init(){
+	function handleImage(canvas) {
+		elements.previewWrap.addClass('has-image').html(canvas);
+	}
+
+	function init() {
 		var img = new Image();
 
-		// Initialize canvas
-		elements.canvas.width = elements.canvas.height = width;
-		elements.previewWrap.addClass('visible').append(elements.canvas);
-
-		ctx = elements.canvas.getContext('2d');
-
-		// Set default preview image
-		img.onload = function() {
-			imageLoad(img)
-		}
-		img.src = '/images/persoon.png';
+		// Initialize canvas wrapper
+		elements.previewWrap.addClass('visible');
 
 		// Check if a file is selected
 		elements.fileField.change(function(e){
-			var img = new Image();
-			url = URL.createObjectURL(e.target.files[0]);
-			img.onload = function() {
-				imageLoad(img)
+			if(e.target.files && e.target.files[0]) {
+				loadImage(e.target.files[0], handleImage, {
+					maxWidth: width,
+					canvas: true,
+					orientation: true
+				});
 			}
-			img.src = url;
-		});
-
-		// Disable the submit button when clicked
-		elements.form.submit(function() {
-			elements.submitButton.addClass('disabled').val('Verzenden...');
 		});
 
 		// Open image browser when clicking preview area
@@ -74,6 +58,11 @@ WordLid = (function(){
 
 		// Initialise parents radio button effects
 		parentsRadioButtonInit();
+
+		// Disable the submit button when clicked
+		elements.form.submit(function() {
+			elements.submitButton.addClass('disabled').val('Verzenden...');
+		});
 
 	}
 
