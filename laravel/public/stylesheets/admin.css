@@ -1,3 +1,11 @@
+.spacer {
+  margin-top: 2em;
+}
+
+.tab-content>.tab-pane {
+  padding-top: 1em;
+}
+
 /* The MIT License */
 .dropzone,
 .dropzone *,
