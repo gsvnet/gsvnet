@@ -35,7 +35,10 @@ class FilesController extends BaseController {
 		$selectedLabels = Input::get('labels');
         $search         = Input::get('search');
 		$filesPerPage   = 10;
-		$files = $this->files->getPublishedAndSearchWithLabelsAndPaginate($search, $selectedLabels, $filesPerPage);
+
+		$files = $this->files->getPublishedAndSearchWithLabelsAndPaginate(
+            $search, $selectedLabels, $filesPerPage
+        );
 
 		$labels = $this->labels->all();
 

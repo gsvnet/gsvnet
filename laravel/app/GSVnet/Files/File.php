@@ -47,7 +47,7 @@ class File extends \Eloquent {
 
     public function scopeSearch($query, $search)
     {
-        return $query;
+        return $query->whereRaw("MATCH(name) AGAINST(? IN BOOLEAN MODE)", [$search]);
     }
 
     public function labels()

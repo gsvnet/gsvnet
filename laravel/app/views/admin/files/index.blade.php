@@ -13,6 +13,9 @@
                 <td>Toegevoegd op</td>
                 <td>Laatst bewerkt</td>
 				<td>Download</td>
+                <td>
+                    Gepubliceerd
+                </td>
 			</tr>
 		</thead>
 		<tbody>
@@ -31,6 +34,9 @@
                 </td>
                 <td>
                     <a href="{{ URL::action('FilesController@show', $file->id) }}"><i class="glyphicon glyphicon-download-alt"></i>Download</a>
+                </td>
+                <td>
+                    {{{ $file->published ? 'Ja' : 'Nee' }}}
                 </td>
 			</tr>
 			@endforeach

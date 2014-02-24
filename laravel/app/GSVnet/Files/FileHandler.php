@@ -1,6 +1,6 @@
 <?php namespace GSVnet\Files;
 
-use File;
+use File as F;
 
 // This class handles all file manipulation method
 // It is made such that we can easily change the
@@ -55,8 +55,8 @@ class FileHandler
     */
     public function destroy($path)
     {
-        if (File::exists($this->basePath . $path))
-            File::delete($this->basePath . $path);
+        if (F::exists($this->basePath . $path))
+            F::delete($this->basePath . $path);
     }
 
     public function fileSize($path)
@@ -66,6 +66,6 @@ class FileHandler
 
     public function extension($path)
     {
-        return File::extension($this->basePath . $path);
+        return F::extension($this->basePath . $path);
     }
 }

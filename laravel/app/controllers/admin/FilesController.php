@@ -83,6 +83,7 @@ class FilesController extends BaseController {
     {
         $input = Input::all();
         $input['file'] = Input::file('file');
+        $input['published'] = Input::get('published', false);
 
         $file = $this->manager->update($id, $input);
 
