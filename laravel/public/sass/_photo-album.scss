@@ -1,5 +1,6 @@
 .photo-tile {
-	margin: 0 18px 18px 0;
+	padding: 0 18px 0 0;
+	margin-bottom: 18px;
 	float: left;
 	width: 308px;
 	height: 308px;
@@ -15,7 +16,7 @@
 	}
 
 	&.last-3 {
-		margin-right: 0;
+		padding-right: 0;
 	}
 
 	.photo-description {
@@ -25,13 +26,17 @@
 	}
 }
 
+.photo-link {
+	display: block;
+	overflow: hidden;
+}
+
 .photos {
 	@include clearfix;
 }
 
 .gallery {
 	.photo-link {
-		display: block;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -47,13 +52,34 @@
 @media only screen and (max-width: $firstbreakpoint){
 
 	.photo-tile {
+		box-sizing: border-box;
+		width: 33%;
+		height: auto;
 
-		&.last-3 {
-			margin-right: 18px;
+		&.wide {
+			width: 66%;
 		}
 
-		&.last-2 {
-			margin-right: 0;
+		&.last-3 {
+			padding-right: 18px;
+		}
+
+		img {
+			height: auto;
+			width: 100%;
+		}
+
+		.photo-description {
+			text-align: left;
+			line-height: 1;
+			padding-top: .2em;
+		}
+	}
+
+	.gallery {
+		.photo-link {
+			position: static;
+			height: auto;
 		}
 	}
 }
@@ -61,19 +87,16 @@
 
 @media only screen and (max-width: 723px){
 	.photo-tile{
-		max-width: 308px;
+
+		width: 50%;
 
 		&.wide {
-			max-width: 308px;
+			width: 50%;
 			overflow: hidden;
-		}
 
-		&.last-3 {
-			margin-right: 0;
-		}
-
-		&.last-2 {
-			margin-right: 0;
+			img {
+				width: 205%;
+			}
 		}
 	}
 }
