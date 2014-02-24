@@ -104,6 +104,10 @@ class ImageHandler
         if (! File::exists($this->basePath . $newPath))
         {
             $img = Image::make($fullPath);
+
+            // Rotate image if necessary
+            $this->rotateByExifData($img);
+
             // Resize the image while maintaining correct aspect ratio
             $img->grab($dimensions[$dimension][0], $dimensions[$dimension][1]);
             // finally we save the image as a new image
@@ -119,6 +123,10 @@ class ImageHandler
     private function restrictImageSize($path)
     {
         $img = Image::make($this->basePath . $path);
+
+        // Rotate automatically if needed
+        $this->rotateByExifData($img);
+
         // Get the max width and height
         $dimensions = Config::get('photos.dimensions.max');
         // If the image which was found is larger than the given max dimensions, then resize it
@@ -129,6 +137,49 @@ class ImageHandler
             // finally we save the image as a new image
             $img->save($this->basePath . $path);
         }
+    }
+
+    /*
+    * Rotates an image by exif data if it is available
+    * Image is passed by reference so this function returns nothing.4
+    * @return true if rotated, false otherwise
+    */
+    private function rotateByExifData(&$img)
+    {
+        // Only check mimes on image/jpg files
+        if($img->mime != 'image/jpeg')
+        {
+            return false;
+        }
+
+        // Check if exif data exists
+        // See: http://stackoverflow.com/questions/8106683/exif-read-data-incorrect-app1-exif-identifier-code
+        // for more on this hacky check.
+        getimagesize($img->dirname .'/'. $img->basename, $info);
+        if (!isset($info["APP1"]) || strpos($info['APP1'], 'exif') !== 0)
+        {
+            return false;
+        }
+
+        // Check for exif data and rotate if needed
+        $orientation = $img->exif('Orientation');
+
+        if(!is_null($orientation))
+        {
+            switch($orientation) {
+                case 8:
+                    $img->rotate(90);
+                    break;
+                case 3:
+                    $img->rotate(180);
+                    break;
+                case 6:
+                    $img->rotate(-90);
+                    break;
+            }
+        }
+
+        return true;
     }
 
 }
