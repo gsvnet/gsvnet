@@ -1,5 +1,4 @@
 <?php namespace GSVnet\Albums\Photos\Filters;
-
 use Permission;
 
 Class ManagePhotosFilter
