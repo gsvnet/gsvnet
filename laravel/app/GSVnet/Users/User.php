@@ -90,11 +90,19 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
     }
 
     /**
-     * Type 3 and 4 are members
+     * Type 2 and 3 are members
      */
     public function isMember()
     {
         return $this->type == Config::get('gsvnet.userTypes.member') || $this->type ==  Config::get('gsvnet.userTypes.formerMember');
+    }
+
+    /**
+     * Type 2 and 3 are members
+     */
+    public function wasOrIsMember()
+    {
+        return $this->type == 'member' || $this->type == 'formerMember';
     }
 
     public function activeCommittees()
