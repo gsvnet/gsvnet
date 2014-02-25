@@ -27,19 +27,17 @@
 	.step-item {
 		color: $grey;
 		display: block;
-		cursor: pointer;
 		background: #FFF;
 		padding: 0 1em;
-
-		&.active, &:hover {
-			color: $darkPurple;
-			text-decoration: none;
-		}
 
 		&.active, &.active:hover {
 			background: $darkPurple;
 			color: #FFF;
 		}
+	}
+
+	span.step-item {
+		cursor: default;
 	}
 }
 

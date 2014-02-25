@@ -10,6 +10,10 @@ return [
         'type' => ['member', 'formerMember']
     ],
 
+    'become-member' => [
+        'type' => ['visitor']
+    ],
+
     'photos.show-private' => [
         'type' => ['member', 'formerMember']
     ],

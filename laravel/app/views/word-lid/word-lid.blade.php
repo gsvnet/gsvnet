@@ -21,15 +21,17 @@
 
             <p class="form-helper-text">Voortgang: </p>
             <ol>
-                <li><a href="/" class="step-item">1. Inloggen of registreren</a></li>
-                <li><a href="/" class="step-item active">2. Gegevens invullen</a></li>
-                <li><span class="step-item">3. Klaar!</span></li>
+                @foreach ($steps as $type => $data)
+                    <li><span class="step-item{{{$type==$activeStep ? ' active' : ''}}}">{{$data['text']}}</span></li>
+                @endforeach
             </ol>
         </div>
-        @if(Auth::check())
-            @include('word-lid.become-member')
-        @else
+        @if($activeStep == 'login-or-register')
             @include('word-lid.login-or-register')
+        @elseif($activeStep == 'become-member')
+            @include('word-lid.become-member')
+        @elseif($activeStep == 'all-done')
+            @include('word-lid.lid-geworden')
         @endif
     </div>
 @stop
