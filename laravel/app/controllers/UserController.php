@@ -23,7 +23,7 @@ class UserController extends BaseController {
         $regions = Config::get('gsvnet.regions');
 
         // Initialize basic query
-        $memberlistQuery = GSVnet\Users\UserProfile::join('users', function($join) use ($member) {
+        $memberlistQuery = GSVnet\Users\Profiles\UserProfile::join('users', function($join) use ($member) {
             $join->on('users.id', '=', 'user_profiles.user_id')->where('users.type', '=', $member);
         })->orderBy('users.lastname');
 
@@ -72,136 +72,10 @@ class UserController extends BaseController {
     {
         $member = GSVnet\Users\User::with('profile.yearGroup', 'committeesSorted')->find($id);
 
-
         //dd($member);
 
         $this->layout->bodyID = 'user-profile-page';
         $this->layout->content = View::make('users.profile')
             ->with('member', $member);
-    }
-
-    public function postWordLid()
-    {
-        $user = Auth::user();
-        $input = Input::all();
-
-        // Construct a date from seperate day, month and year fields.
-        $input['potential-birthdate'] = $input['potential-birth-year'] . '-' . $input['potential-birth-month'] . '-' . $input['potential-birth-day'];
-
-        // Check if parent address is the same as potential address
-        if(Input::get('parents-same-address', '0') == '1')
-        {
-            $input['parents-address'] = $input['potential-address'];
-            $input['parents-town'] = $input['potential-town'];
-            $input['parents-zip-code'] = $input['potential-zip-code'];
-        }
-
-
-        $rules = [
-            'potential-image' => 'image',
-            'potential-address' => 'required',
-            'potential-zip-code' => 'required',
-            'potential-town' => 'required',
-            'potential-phone' => 'required',
-            'potential-gender' => 'required|in:male,female',
-            'potential-birthdate' => 'required|date_format:Y-m-d',
-            'potential-church' => 'required',
-            'potential-study-year' => 'required|date_format:Y',
-            'potential-study' => 'required',
-            'parents-address' => 'required_if:parents-same-address,0',
-            'parents-zip-code' => 'required_if:parents-same-address,0',
-            'parents-town' => 'required_if:parents-same-address,0',
-            'parents-phone' => 'required'
-        ];
-
-        $validation = Validator::make($input, $rules);
-
-        if ($validation->passes())
-        {
-            $profile = GSVnet\Users\UserProfile::firstOrNew(array('user_id' => $user->id));
-            $profile->user_id = $user->id;
-            $profile->reunist = 0;
-            $profile->region = 0;
-
-            $profile->phone = $input['potential-phone'];
-            $profile->address = $input['potential-address'];
-            $profile->zip_code = $input['potential-zip-code'];
-            $profile->town = $input['potential-town'];
-            $profile->study = $input['potential-study'];
-            $profile->birthdate = $input['potential-birthdate'];
-            $profile->church = $input['potential-church'];
-            $profile->gender = $input['potential-gender'];
-            $profile->start_date_rug = $input['potential-study-year'];
-
-            $profile->parent_phone = $input['parents-phone'];
-            $profile->parent_address = $input['parents-address'];
-            $profile->parent_zip_code = $input['parents-zip-code'];
-            $profile->parent_town = $input['parents-town'];
-
-            $profile->save();
-
-            $user->type = 1;
-            $user->save();
-
-            // Redirct to the become-member page: it shows the 3rd step [done] as active page
-            return Redirect::action('HomeController@wordLid');
-        } else {
-            return Redirect::back()->withInput()->withErrors($validation);
-        }
-    }
-
-    public function postRegister()
-    {
-        $input = Input::all();
-        $rules = [
-            'register-username' => 'required|unique:users,username',
-            'register-firstname' => 'required',
-            'register-lastname' => 'required',
-            'register-email' => 'required|email|unique:users,email',
-            'register-password' => 'required|confirmed'
-        ];
-
-        $validation = Validator::make($input, $rules);
-
-        if($validation->passes())
-        {
-            $user = GSVnet\Users\User::create(array(
-                'firstname' => $input['register-firstname'],
-                'middlename' => Input::get('register-middlename', ''),
-                'lastname' => $input['register-lastname'],
-                'email' => $input['register-email'],
-                'username' => $input['register-username'],
-                'password' => $input['register-password'],
-                'type' => 0,
-                'approved' => 0
-            ));
-
-            // Log the user immediately in
-            Auth::login($user);
-
-            // Potentials should return to the become member form
-            if(Input::has('become-member-register'))
-            {
-                return Redirect::to(URL::action('HomeController@wordLid') . '#become-member')
-                    ->withInput()->withErrors($validation);
-            }
-
-            // TODO waar moet de registratiereturn heen?
-            return Redirect::to('/');
-        }
-
-        if(Input::has('become-member-register'))
-        {
-            return Redirect::to(URL::action('HomeController@wordLid') . '#register-form')
-                ->withInput()->withErrors($validation);
-        }
-
-        return Redirect::back()->withInput()->withErrors($validation);
-    }
-
-    public function showRegister()
-    {
-        $this->layout->bodyID = 'show-register';
-        $this->layout->layout = View::make('users.register');
     }
 }

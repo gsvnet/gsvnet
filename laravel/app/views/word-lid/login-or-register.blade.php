@@ -24,7 +24,7 @@
         </div>
 
         <div id="register-form" class="register-form">
-            {{ Former::open()->action(URL::action('UserController@postRegister')) }}
+            {{ Former::open()->action(URL::action('RegisterController@create')) }}
                 <h2>Registreer</h2>
                 <p>Heb je nog geen account? Maak er een aan!</p>
 

@@ -35,7 +35,7 @@
 
             @if(Auth::guest() || !Auth::user()->wasOrIsMember())
             <li class="top-level-menuitem {{ Request::is('word-lid*') ? 'active-menu' : '' }} has-sub-menu">
-                <a class="top-level-link" href="{{ URL::action('HomeController@wordLid')}}">Lid worden?</a>
+                <a class="top-level-link" href="{{ URL::action('MemberController@index')}}">Lid worden?</a>
                 <i class="fa fa-caret-down top-caret"></i>
                 <ul class="sub-level-menu">
                     <li><a class="sub-level-link" href="#">Waarom</a></li>
@@ -76,7 +76,7 @@
                     </a>
                     <i class="fa fa-caret-down top-caret"></i>
                     <ul class="sub-level-menu">
-                        <li><a class="sub-level-link" href="{{ URL::action('UserController@showRegister') }}">Registreren</a></li>
+                        <li><a class="sub-level-link" href="{{ URL::action('RegisterController@create') }}">Registreren</a></li>
                         <li><a class="sub-level-link" href="{{ URL::action('SessionController@getLogin') }}"data-mfp-src="#login-dialog">Inloggen</a></li>
                     </ul>
                 </li>

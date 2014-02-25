@@ -4,7 +4,6 @@ class SessionController extends BaseController {
 
 	public function postLogin()
     {
-        $intended = '/';
         $becomingMember = Input::has('become-member-login');
 
         // Get POST data
@@ -13,21 +12,22 @@ class SessionController extends BaseController {
             'password'   => Input::get('inputPassword')
         );
 
-        // If becoming member, return correctly.
-        if ($becomingMember)
-        {
-            $intended = URL::action('HomeController@wordLid') . '#become-member';
-        }
-
+        // Attempt to login user else redirect as intended
         if (Auth::attempt($userdata))
         {
+            $intended = '/';
+            // If becoming member, return correctly.
+            if ($becomingMember)
+            {
+                $intended = URL::action('MemberController@wordLid') . '#become-member';
+            }
             return Redirect::intended($intended);
         }
 
         // Auth failure! lets go back to the login
         if ($becomingMember)
         {
-            return Redirect::to(URL::action('HomeController@wordLid') . '#login-form')->with('login_errors', true);
+            return Redirect::to(URL::action('MemberController@wordLid') . '#login-form')->with('login_errors', true);
         }
 
         return Redirect::action('SessionController@getLogin')->with('login_errors', true);

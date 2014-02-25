@@ -1,4 +1,4 @@
-<?php namespace GSVnet\Users;
+<?php namespace GSVnet\Users\Profiles;
 
 use Config;
 
@@ -12,8 +12,8 @@ class UserProfile extends \Eloquent {
     protected $table = 'user_profiles';
 
     protected $fillable = array(
-        'user_id', 
-        'year_group_id', 
+        'user_id',
+        'year_group_id',
         'region',
         'phone',
         'address',

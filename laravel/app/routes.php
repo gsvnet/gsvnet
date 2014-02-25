@@ -54,11 +54,11 @@ Route::group(array('prefix' => 'de-gsv'), function() {
 });
 
 // Register and become member
-Route::get('word-lid',    'HomeController@wordLid')
+Route::get('word-lid',    'MemberController@index')
     ->before('canBecomeMember');
-Route::post('word-lid',   'UserController@postWordLid');
-Route::get('registreer',    'UserController@showRegister');
-Route::post('registreer',   'UserController@postRegister');
+Route::post('word-lid',     'MemberController@postWordLid');
+Route::get('registreer',    'RegisterController@create');
+Route::post('registreer',   'RegisterController@store');
 
 // Albums
 Route::get('albums',         'PhotoController@showAlbums');

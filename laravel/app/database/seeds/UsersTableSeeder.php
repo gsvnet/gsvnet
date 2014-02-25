@@ -43,7 +43,7 @@ class UsersTableSeeder extends Seeder {
 
             $k = array_rand($yearGroupIds);
 
-            GSVnet\Users\UserProfile::create(array(
+            GSVnet\Users\Profiles\UserProfile::create(array(
                 'user_id' => $user->id,
                 'year_group_id' => $yearGroupIds[$k],
                 'region' => rand(1,4),
@@ -64,7 +64,7 @@ class UsersTableSeeder extends Seeder {
             ));
         }
 
-        GSVnet\Users\UserProfile::create(array(
+        GSVnet\Users\Profiles\UserProfile::create(array(
             'user_id' => $mark->id,
             'year_group_id' => $yearGroupIds[array_rand($yearGroupIds)],
             'region' => rand(1,4),

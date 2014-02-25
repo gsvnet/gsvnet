@@ -86,7 +86,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 
     public function profile()
     {
-        return $this->hasOne('GSVnet\Users\UserProfile');
+        return $this->hasOne('GSVnet\Users\Profiles\UserProfile');
     }
 
     /**

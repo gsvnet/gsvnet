@@ -1,4 +1,4 @@
-{{ Former::open_vertical_for_files()->id('become-member')->action(URL::action('UserController@postWordLid')) }}
+{{ Former::open_vertical_for_files()->id('become-member')->action(URL::action('MemberController@postWordLid')) }}
     <div class="column-holder" role="main">
         <h1>Word lid!</h1>
         <p class="delta">{{Auth::user()->firstname}}, door onderstaand formulier in te vullen meld je je aan bij de Gereformeerde Studentenvereniging Groningen</p>

@@ -31,11 +31,17 @@
     </div>
 
     <dl class="dl-horizontal">
-        <dt>Jaarverband</dt>
-        <dd>{{ $profile->yearGroup->name }}</dd>
+        @if ($profile->yearGroup)
+            <dt>Jaarverband</dt>
+            <dd>{{ $profile->yearGroup->name }}</dd>
+        @endif
+
         @foreach ($profile->getAttributes() as $key => $value)
-            <dt>{{{ $key }}}</dt>
-            <dd>{{{ $value }}}</dd>
+            {{-- Only show attribute if value is set --}}
+            @if ($value)
+                <dt>{{{ $key }}}</dt>
+                <dd>{{{ $value }}} &nbsp;</dd>
+            @endif
         @endforeach
     </dl>
 

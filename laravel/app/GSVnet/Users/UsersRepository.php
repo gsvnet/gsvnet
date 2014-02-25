@@ -52,11 +52,15 @@ class UsersRepository {
     */
     public function create(array $input)
     {
-        $user = new User();
-
-        $user->save();
-
-        return $user;
+        return $user = User::create(array(
+            'firstname'    => $input['register-firstname'],
+            'middlename'   => $input['register-middlename'],
+            'lastname'     => $input['register-lastname'],
+            'email'        => $input['register-email'],
+            'username'     => $input['register-username'],
+            'password'     => $input['register-password'],
+            'type'         => $input['type'],
+        ));
     }
 
     /**
@@ -68,7 +72,8 @@ class UsersRepository {
     */
     public function update($id, array $input)
     {
-        $user              = $this->byId($id);
+        $user = $this->byId($id);
+        $user->fill($input);
 
         $user->save();
 

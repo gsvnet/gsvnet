@@ -10,7 +10,7 @@ class YearGroup extends \Eloquent {
     protected $table = 'year_groups';
 
     public function userProfiles() {
-        return $this->hasMany('GSVnet\Users\UserProfile');
+        return $this->hasMany('GSVnet\Users\Profiles\UserProfile');
     }
 
 }
