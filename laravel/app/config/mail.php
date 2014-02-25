@@ -29,6 +29,7 @@ return array(
 	*/
 
 	'host' => 'smtp.mailgun.org',
+	// 'host' => 'smtp.gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +55,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => null, 'name' => null),
+	'from' => array('address' => 'welkom@gsvnet.nl', 'name' => 'GSVnet'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +81,8 @@ return array(
 	|
 	*/
 
-	'username' => null,
+	'username' => 'postmaster@sandbox81735.mailgun.org',
+
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +95,7 @@ return array(
 	|
 	*/
 
-	'password' => null,
+	'password' => '8xzd01hl-0c3',
 
 	/*
 	|--------------------------------------------------------------------------
