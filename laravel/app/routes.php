@@ -1,7 +1,4 @@
 <?php
-
-use Mailgun\Mailgun;
-
 Route::get('mail', function() {
     $data = [];
     $mail = Mail::queue('emails.users.welcome', $data, function($message){

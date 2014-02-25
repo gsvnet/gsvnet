@@ -58,8 +58,6 @@ class EventsRepository {
         return $events->paginate($amount);
     }
 
-
-
     /**
     * Create event
     *
