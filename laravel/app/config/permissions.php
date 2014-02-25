@@ -10,7 +10,7 @@ return [
         'type' => ['member', 'formerMember']
     ],
 
-    'become-member' => [
+    'user.become-member' => [
         'type' => ['visitor']
     ],
 

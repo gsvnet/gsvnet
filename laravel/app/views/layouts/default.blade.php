@@ -26,7 +26,7 @@
     @yield('content')
 
     @section('word-lid')
-        @if (Auth::guest() || !Auth::user()->isMember())
+        @if (Auth::guest() || !Auth::user()->wasOrIsMember())
         <div class="hero-unit purple">
             <p class="center"><a href="{{ URL::action('HomeController@wordLid') }}" class="button">Word lid!</a></p>
         </div>
