@@ -181,3 +181,12 @@ Route::filter('has', function($route, $request, $permission)
         throw new \GSVnet\Permissions\NoPermissionException;
     }
 });
+
+Route::filter('canBecomeMember', function()
+{
+	if(Auth::check() && Auth::user()->wasOrIsMember() )
+	{
+		// TODO: eigen exceptie?
+		throw new \GSVnet\Permissions\NoPermissionException;
+	}
+});

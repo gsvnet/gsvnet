@@ -33,7 +33,7 @@
                 <a class="top-level-link" href="{{ URL::action('EventController@showIndex')}}">Activiteiten</a>
             </li>
 
-            @if(Auth::guest() || !Auth::user()->isMember())
+            @if(Auth::guest() || !Auth::user()->wasOrIsMember())
             <li class="top-level-menuitem {{ Request::is('word-lid*') ? 'active-menu' : '' }} has-sub-menu">
                 <a class="top-level-link" href="{{ URL::action('HomeController@wordLid')}}">Lid worden?</a>
                 <i class="fa fa-caret-down top-caret"></i>

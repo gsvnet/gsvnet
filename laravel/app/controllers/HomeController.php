@@ -34,7 +34,7 @@ class HomeController extends BaseController {
 			],
 			'become-member' => [
 				'text' => '2. Gegevens invullen', 
-				'active' => Permission::has('become-member')
+				'active' => Permission::has('user.become-member')
 			],
 			'all-done' => [ 
 				'text' => '3. Klaar!', 
