@@ -214,17 +214,13 @@ table th[class*="col-"] {
                     @foreach($files as $file)
                     <tr>
                         <td>
-                           <a href="{{{ $file->file_path }}}">{{{ $file->name }}}</a> ({{{ $file->size}}} {{{$file->type }}})
+                        <a href="{{ URL::action('FilesController@show', $file->id) }}">
+                          <i class="fa fa-download"></i>
+                           {{{ $file->name }}} ({{{ $file->size}}} {{{$file->type }}})
+                           </a>
                         </td>
                         <td>
                             {{{ $file->updated_at }}}
-                        </td>
-                        <td>
-                            <a href="{{ URL::action('FilesController@show', $file->id) }}"><i class="glyphicon glyphicon-download-alt">
-                            <i class="fa fa-download"></i></i>
-                            {{{ $file->type }}}
-                            ({{{ $file->size }}})
-                            </a>
                         </td>
                     </tr>
                     @endforeach
@@ -237,7 +233,6 @@ table th[class*="col-"] {
         </div>
 
         <div class="secondary-column">
-            <h2>Labels</h2>
             {{
                 Former::open()
                 ->action(action('FilesController@index'))
@@ -245,6 +240,8 @@ table th[class*="col-"] {
             }}
 
             <ul class='list secondary-menu'>
+
+              <h2>Filter labels</h2>
                 @foreach ($labels as $label)
                 <li class="list-item">
                   <label>
@@ -265,13 +262,18 @@ table th[class*="col-"] {
                   </label>
                 </li>
                 @endforeach
+
+                <li class="list-item">
+                  {{ Former::text('search')->label('Zoeken op naam') }}
+                </li>
                 </ul>
+
 
                 <button type='submit' class='button' style='display:block; width:100%;'>
                     <i class='fa fa-search'></i>
                     Zoeken
                 </button>
-            {{ Form::close() }}
+            {{ Former::close() }}
         </div>
 
     </div>

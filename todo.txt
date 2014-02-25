@@ -3,7 +3,6 @@
  - Word lid-pagina:
  	- Afschermen voor leden en oud-leden
  	- Mail sturen bij succes en
- - GSVdocs: zoek op naam
 
  - Submenu toevoegen op actieve pagina
 
@@ -24,6 +23,7 @@ PERMISSIES
 KLEINE TODOS
 - (voorlopig niet) Overal soft delete, want wie iets verwijdert heeft iets te verbergen
 - Opmaak van events op home page
+- GSVdocs seeds toevoegen
 
 NIEUW
 - Nieuwspagina
@@ -34,3 +34,4 @@ KLAAR:
  - Events en Docs public / published
  - Formulier mooiere opmaak geven
  - Mobielvriendelijke fotopagina's
+ - GSVdocs: zoek op naam
