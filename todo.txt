@@ -3,6 +3,8 @@
  - Word lid-pagina:
  	- Afschermen voor leden en oud-leden
  	- Mail sturen bij succes en
+ - Profiel bewerken
+ - Mails sturen
 
  - Submenu toevoegen op actieve pagina
 
