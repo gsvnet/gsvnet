@@ -88,6 +88,14 @@ class UserController extends BaseController {
         // Construct a date from seperate day, month and year fields.
         $input['potential-birthdate'] = $input['potential-birth-year'] . '-' . $input['potential-birth-month'] . '-' . $input['potential-birth-day'];
 
+        // Check if parent address is the same as potential address
+        if(Input::get('parents-same-address', '0') == '1')
+        {
+            $input['parents-address'] = $input['potential-address'];
+            $input['parents-town'] = $input['potential-town'];
+            $input['parents-zip-code'] = $input['potential-zip-code'];
+        }
+
 
         $rules = [
             'potential-image' => 'image',
@@ -100,9 +108,9 @@ class UserController extends BaseController {
             'potential-church' => 'required',
             'potential-study-year' => 'required|date_format:Y',
             'potential-study' => 'required',
-            'parents-address' => 'required',
-            'parents-zip-code' => 'required',
-            'parents-town' => 'required',
+            'parents-address' => 'required_if:parents-same-address,0',
+            'parents-zip-code' => 'required_if:parents-same-address,0',
+            'parents-town' => 'required_if:parents-same-address,0',
             'parents-phone' => 'required'
         ];
 
@@ -135,8 +143,8 @@ class UserController extends BaseController {
             $user->type = 1;
             $user->save();
 
-            $this->layout->content = View::make('word-lid.lid-geworden');
-
+            // Redirct to the become-member page: it shows the 3rd step [done] as active page
+            return Redirect::action('HomeController@wordLid');
         } else {
             return Redirect::back()->withInput()->withErrors($validation);
         }

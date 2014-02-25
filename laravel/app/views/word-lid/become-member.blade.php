@@ -77,7 +77,9 @@
 
             {{ Former::text('potential-church')->label('Kerkgezindte') }}
             {{ Former::text('potential-study')->label('Naam van studie') }}
-            {{ Former::text('potential-study-year')->label('Jaar waarin je begon of begint met studeren') }}
+            {{ Former::select('potential-study-year')->range(date('Y')+1, date('Y')-4)->label('Jaar waarin je begon of begint met studeren') }}
+
+        <h2>Gegevens over je ouders</h2>
 
             {{
                 Former::stacked_radios('parents-same-address')->radios(array(
@@ -86,21 +88,20 @@
                 ))->label('Woon je bij je ouders/verzorgers?')->check('0')
             }}
 
-        <div id="parents-info">
-            <h2>Adres van je ouders</h2>
-            {{
-                Former::text('parents-address')->label('Adres')
-            }}
-            {{
-                Former::text('parents-zip-code')->label('Postcode')->size(6)
-            }}
-            {{
-                Former::text('parents-town')->label('Woonplaats')
-            }}
+            <div id="parents-info">
+                {{
+                    Former::text('parents-address')->label('Adres')
+                }}
+                {{
+                    Former::text('parents-zip-code')->label('Postcode')->size(6)
+                }}
+                {{
+                    Former::text('parents-town')->label('Woonplaats')
+                }}
+            </div>
             {{
                 Former::text('parents-phone')->label('Telefoon')
             }}
-        </div>
 
     </div>
     <div class="column-holder">
