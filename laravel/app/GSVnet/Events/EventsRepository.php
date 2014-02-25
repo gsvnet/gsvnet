@@ -58,8 +58,6 @@ class EventsRepository {
         return $events->paginate($amount);
     }
 
-
-
     /**
     * Create event
     *
@@ -84,7 +82,7 @@ class EventsRepository {
     */
     public function update($id, array $input)
     {
-        $event              = $this->byId($id);
+        $event = $this->byId($id);
         $event = $this->setEventProperties($event, $input);
         $event->save();
 
@@ -97,7 +95,6 @@ class EventsRepository {
     * @param int $id
     * @param array $input
     * @return Event
-    * @TODO: delete all photos
     */
     public function delete($id)
     {

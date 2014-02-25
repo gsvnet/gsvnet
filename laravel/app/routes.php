@@ -1,4 +1,11 @@
 <?php
+Route::get('mail', function() {
+    $data = [];
+    $mail = Mail::queue('emails.users.welcome', $data, function($message){
+        $message->to('markredeman@gmail.com')
+            ->subject('Welkom op gsvnet');
+    });
+});
 // We keep the home route name as some build in functions use the 'home' name
 Route::get('/', ['as' => 'home',
     'uses' => 'HomeController@showIndex'
