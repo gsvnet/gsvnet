@@ -26,7 +26,6 @@ class ProfilesRepository {
         return $this->search($search, $region, $yearGroup)->paginate($amount);
     }
 
-
     /**
     *   Search for members
     *
@@ -47,7 +46,7 @@ class ProfilesRepository {
 
         if ( ! empty($search))
         {
-            $query = $query->search($search);
+            $query = $query->search('%' . $search . '%');
         }
 
         // Search for members inside region if region is valid
