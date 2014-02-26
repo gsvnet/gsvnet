@@ -1,7 +1,7 @@
 MORGEN
-- Comissie permissie
 - emails
 - profiel bewerken
+- Submenu toevoegen op actieve pagina
 
  PAGINAS
  - Enkele eventpagina: alle informatie laten zien
@@ -11,7 +11,6 @@ MORGEN
  - Mails sturen
  - Password reminder views en mails mooier maken
 
- - Submenu toevoegen op actieve pagina
 
 PERMISSIES
 - Commissie permissies afmaken
@@ -45,3 +44,5 @@ KLAAR:
  - partial login view
  - password reminder
  - Afschermen voor leden en oud-leden
+ - Comissie permissie
+ - Zoeken users
