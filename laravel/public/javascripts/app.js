@@ -5,7 +5,8 @@ app = (function() {
 		'become-member-page': becomeMember,
 		'committees-page': committees,
 		'albums-page': photos,
-		'album-page': photos
+		'album-page': photos,
+		'user-list-page': userListPage
 	}
 
 	function home() {
@@ -52,6 +53,16 @@ app = (function() {
 		WordLid.init();
 	}
 
+	function userListPage() {
+		console.log('test');
+		$searchForm = $('#user-search-form');
+
+
+		$('#user-search-form-toggler').click(function(){
+			$searchForm.toggleClass('visible');
+		});
+	}
+
 	function overall() {
 		$mainMenu = $('#main-menu');
 
@@ -78,6 +89,8 @@ app = (function() {
 		// Boostraps javascripts for specific pages
 		init: function() {
 			var id = document.body.id;
+
+			$(document.body).addClass('js');
 
 			// First execute overall scripts
 			overall();

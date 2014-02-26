@@ -33,7 +33,7 @@
         @endif
     @show
 
-    <footer class="site-footer">
+    <footer class="site-footer column-holder">
         <p>Caput sapientiae est reverentia domini</p>
     </footer>
 

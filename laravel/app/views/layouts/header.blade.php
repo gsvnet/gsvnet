@@ -83,11 +83,11 @@
             @endif
         </ul>
     </nav>
-    <nav class="extra-submenu-nav" style="display:{{{rand(1,2)==1 ? 'block': 'none'}}}">
+<!--     <nav class="extra-submenu-nav" style="display:{{{rand(1,2)==1 ? 'block': 'none'}}}">
         <ul class="extra-submenu">
             <li class="top-level-menuitem"><a class="top-level-link" href="/">Test 1</a></li>
             <li class="top-level-menuitem"><a class="top-level-link" href="/">Test 2</a></li>
             <li class="top-level-menuitem"><a class="top-level-link" href="/">Test 3</a></li>
         </ul>
-    </nav>
+    </nav> -->
 </header>
