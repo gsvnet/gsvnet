@@ -172,25 +172,6 @@
 	color: $body-copy-color;
 }
 
-
-// This is a secondary menu which is on the page itself
-.secondary-menu {
-	list-style-type: none;
-	padding: 0;
-	margin-top: 18px;
-
-	a, .list-item {
-		display: block;
-		line-height: 3em;
-		border-top: 1px solid $lightGrey;
-		font-weight: bold;
-	}
-
-	li:last-child a {
-		border-bottom: 1px solid $lightGrey;
-	}
-}
-
 .extra-submenu-nav {
 	background: #FFF;
 	font-family: $font-family-sans;

@@ -3,6 +3,8 @@
 		<h1>Activiteiten, feesten en borrels</h1>
 		<p class="delta">De GSV bruist van leuke activiteiten en clich&eacute;beschrijvingen die niemand leest. Geef je op en kom langs!</p>
 
+		@include('events.sidebar')
+		
 		<div class="main-content">
 			<div class="event-container">
 				@if($searchTimeRange)
@@ -33,7 +35,5 @@
 
 			{{ $events->links() }}
 		</div>
-
-		@include('events.sidebar')
 	</div>
 @stop

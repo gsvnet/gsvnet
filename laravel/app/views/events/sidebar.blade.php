@@ -1,21 +1,21 @@
 <div class="secondary-column">
-    <h2>
-    @if($showPrevYear)
-        {{link_to_action('EventController@showMonth', $year - 1, $year - 1)}} |
-    @endif
-    {{link_to_action('EventController@showMonth', $year, $year)}}
-    @if($showNextYear)
-        | {{link_to_action('EventController@showMonth', $year + 1, $year + 1)}}
-    @endif
-    </h2>
+    <h2>Activiteiten in ...</h2>
+    <ul id="years-list" class="inline-list to-select-box">
+        @foreach ($visibleYears as $visibleYear)
+            <li>{{link_to_action('EventController@showMonth', $visibleYear, $visibleYear, array(
+                'class' => $searchTimeRange && $visibleYear == $year ? 'active' : ''
+            ))}}</li>
+        @endforeach
+    </ul>
 
-    <ul class="list secondary-menu">
-        @foreach ($months as $month)
+    <ul id="months-list" class="list secondary-menu to-select-box">
+        @foreach ($months as $monthName)
             <li>
                 {{ link_to_action(
                     'EventController@showMonth',
-                    $month,
-                    array($year, $month))
+                    $monthName,
+                    array($year, $monthName),
+                    array('class' => $searchTimeRange && $month == $monthName  ? 'active' : ''))
                 }}
             </li>
         @endforeach

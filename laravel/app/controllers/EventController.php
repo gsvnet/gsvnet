@@ -17,8 +17,8 @@ class EventController extends BaseController {
         $events = $this->events->upcoming(5);
         $this->layout->content = View::make('events.index')
             ->with('searchTimeRange', false)
-            ->with('events',          $events)
-            ->with('types',           Config::get('gsvnet.eventTypes'));
+            ->with('events', $events)
+            ->with('types', Config::get('gsvnet.eventTypes'));
 
         // Setup metadata
         $this->layout->title = 'Activiteiten - pagina ' . Input::get('page') . ' - GSVnet';
@@ -60,6 +60,7 @@ class EventController extends BaseController {
         $this->layout->title    = 'Activiteiten in ' . ($strMonth ? $strMonth : '') . ' ' . $year . ' - GSVnet';
         //$this->layout->description = $event->description;
         $this->layout->keywords = 'Activiteiten, feesten, borrels';
+        $this->layout->bodyID = 'events-page';
     }
 
     public function showEvent($id)
@@ -74,7 +75,7 @@ class EventController extends BaseController {
         $this->layout->title        = 'Activitiet - ' . $event->title . ' - GSVnet';
         $this->layout->description  = $event->description;
         $this->layout->keywords     = 'Activiteiten, feesten, borrels';
-        $this->layout->bodyID       = 'show-event-page';
+        $this->layout->bodyID       = 'single-event-page';
     }
 
 }

@@ -6,11 +6,35 @@ app = (function() {
 		'committees-page': committees,
 		'albums-page': photos,
 		'album-page': photos,
-		'user-list-page': userListPage
+		'user-list-page': userListPage,
+		'senates-page': senate,
+		'senate-page': senate,
+		'events-page': events,
+		'event-page': events
 	}
 
 	function home() {
 
+	}
+
+	function senate() {
+
+		ListToMenu.init($('#senates-list'), {
+			defaultText: '(kies een senaat)',
+			activeClass: 'active'
+		});
+	}
+
+	function events() {
+		ListToMenu.init($('#months-list'), {
+			defaultText: '(kies een maand)',
+			activeClass: 'active'
+		});
+
+		ListToMenu.init($('#years-list'), {
+			defaultText: '(kies een jaar)',
+			activeClass: 'active'
+		});
 	}
 
 	function committees() {
