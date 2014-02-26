@@ -36,7 +36,12 @@ class UserCommitteeSeeder extends Seeder {
 
         }
 
+        $mark = GSVnet\Users\User::where('firstname', '=', 'mark')->first();
+        $webcie = GSVnet\Committees\Committee::where('unique_name', '=', 'webcie')->first();
+        $mark->committees()->save($webcie);
+
         $this->command->info('Added some people to committees ...');
+
 	}
 
 }

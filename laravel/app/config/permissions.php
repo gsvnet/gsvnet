@@ -20,8 +20,9 @@ return [
 
     'photos.manage' => [
         'committee' => [
-            'web',
-            'photo'
+            'webcie',
+            'reebocie',
+            'prescie'
         ]
     ],
 
@@ -35,7 +36,7 @@ return [
 
     'docs.publish' => [
         'committee' => [
-            'web'
+            'webcie'
         ]
     ],
 
@@ -49,13 +50,13 @@ return [
 
     'events.publish' => [
         'committee' => [
-            'web'
+            'webcie'
         ]
     ],
 
     'admin' => [
         'committee' => [
-            'web'
+            'webcie'
         ]
     ],
 
