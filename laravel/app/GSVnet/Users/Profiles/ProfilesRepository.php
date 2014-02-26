@@ -46,7 +46,10 @@ class ProfilesRepository {
 
         if ( ! empty($search))
         {
-            $query = $query->search('%' . $search . '%');
+            // $terms = explode(' ', $search);
+            // $search = implode("*", $terms);
+
+            $query = $query->search('*' . $search . '*');
         }
 
         // Search for members inside region if region is valid
