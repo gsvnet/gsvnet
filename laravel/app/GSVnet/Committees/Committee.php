@@ -18,7 +18,6 @@ class Committee extends \Eloquent {
         return $this->belongsToMany('GSVnet\Users\User', 'committee_user')
             ->where('committee_user.start_date', '<=', new \DateTime('now'))
             ->where(function($q) {
-                $date = new \DateTime('now');
                 return $q->where('committee_user.end_date', '>=', new \DateTime('now'))
                     ->orWhereNull('committee_user.end_date');
             })
