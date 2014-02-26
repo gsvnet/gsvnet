@@ -54,7 +54,7 @@ class FilesRepository
 
         if ( ! empty($search))
         {
-            $query = $query->search($search);
+            $query = $query->search('*' . $search . '*');
         }
 
         if ( ! empty($labels))
