@@ -6,6 +6,8 @@ use GSVnet\Users\Profiles\ProfilesRepository;
 use GSVnet\Users\UsersRepository;
 use GSVnet\Users\User;
 
+use Event;
+
 
 class ProfileManager
 {

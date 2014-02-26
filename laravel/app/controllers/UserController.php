@@ -1,6 +1,25 @@
 <?php
 
+use GSVnet\Users\Profiles\ProfilesRepository;
+use GSVnet\Users\UsersRepository;
+use GSVnet\Users\YearGroupRepository;
+
 class UserController extends BaseController {
+
+    protected $users;
+    protected $profiles;
+    protected $yearGroups;
+
+    public function __construct(
+        ProfilesRepository $profiles,
+        UsersRepository $users,
+        YearGroupRepository $yearGroups)
+    {
+        $this->profiles = $profiles;
+        $this->users = $users;
+        $this->yearGroups = $yearGroups;
+    }
+
     /**
      * Show the current user's profile
      */
@@ -19,51 +38,31 @@ class UserController extends BaseController {
      */
     public function showUsers()
     {
-        $member = Config::get('gsvnet.userTypes.member');
+        $search = Input::get('name', '');
+
         $regions = Config::get('gsvnet.regions');
 
-        // Initialize basic query
-        $memberlistQuery = GSVnet\Users\Profiles\UserProfile::join('users', function($join) use ($member) {
-            $join->on('users.id', '=', 'user_profiles.user_id')->where('users.type', '=', $member);
-        })->orderBy('users.lastname');
-
-        // Enable search on full name
-        if(Input::has('name'))
+        if (! ($region = Input::get('region') and array_key_exists($region, $regions)))
         {
-            $name = Input::get('name');
-            $memberlistQuery->whereRaw(
-                'users.firstname || " " || users.middlename ||  " " || users.lastname LIKE ?',
-                array('%' . $name . '%')
-            );
-        }
-
-        // Enable search on region
-        if(Input::has('region'))
-        {
-            $region = intval(Input::get('region'));
-            if(array_key_exists($region, Config::get('gsvnet.regions')))
-            {
-                $memberlistQuery->where('region', '=', $region);
-            }
+            $region = null;
         }
 
         // Enable search on yeargroup
-        if(Input::has('yeargroup') && GSVnet\Users\YearGroup::find(Input::get('yeargroup')))
+        if (! ($yeargroup = Input::get('yeargroup') and $this->yearGroups->exists($yeargroup)))
         {
-            $yeargroup = Input::get('yeargroup');
-            $memberlistQuery->where('year_group_id', '=', $yeargroup);
+            $yeargroup = null;
         }
 
-        // Retrieve results
-        $memberlist = $memberlistQuery->paginate(200);
+        $perPage = 10;
+        $members = $this->profiles->searchAndPaginate($search, $region, $yeargroup, $perPage);
 
         // Select year groups
-        $yearGroups = GSVnet\Users\YearGroup::orderBy('year', 'DESC')->get();
+        $yearGroups = $this->yearGroups->all();
 
         // Create the view
         $this->layout->bodyID = 'user-list-page';
         $this->layout->content = View::make('users.index')
-            ->with('members', $memberlist)
+            ->with('members', $members)
             ->with('regions', $regions)
             ->with('yearGroups', $yearGroups);
     }

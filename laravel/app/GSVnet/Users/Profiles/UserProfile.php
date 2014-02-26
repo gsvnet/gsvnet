@@ -31,6 +31,12 @@ class UserProfile extends \Eloquent {
         'parent_phone'
     );
 
+    // Blah dit is niet zo mooi, maar voorlopig werkt dit wel
+    public function scopeSearch($query, $search)
+    {
+        return $query->whereRaw("MATCH(users.firstname, users.middlename, users.lastname) AGAINST(? IN BOOLEAN MODE)", [$search]);
+    }
+
     public function yearGroup()
     {
         return $this->belongsTo('GSVnet\Users\YearGroup');

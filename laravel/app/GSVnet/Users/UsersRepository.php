@@ -14,17 +14,6 @@ class UsersRepository {
     }
 
     /**
-     * Get by search
-     *
-     * @param int $id
-     * @return Album
-     */
-    public function search($search)
-    {
-        dd('not implemented yet :\'(');
-    }
-
-    /**
     * Get all users
     *
     * @return Collection
