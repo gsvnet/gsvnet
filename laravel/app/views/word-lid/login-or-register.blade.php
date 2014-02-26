@@ -5,22 +5,17 @@
     </div>
     <div class="column-holder">
         <div id="login-form" class="login-form">
-            {{ Form::open(array('action' => 'SessionController@postLogin')) }}
+            {{ Former::open()->action(action('SessionController@postLogin')) }}
                 <h2>Login</h2>
                 <p>Heb je al een bestaand account? Log dan in!</p>
-                <div class="form-group{{Session::has('login_errors') ? ' has-error' : ''}}">
-                    <label class="control-label" for="inputEmail">Email</label>
-                    <input type="text" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email">
-                </div>
-                <div class="form-group{{Session::has('login_errors') ? ' has-error' : ''}}">
-                    <label class="control-label" for="inputPassword">Wachtwoord</label>
-                    <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Wachtwoord">
-                </div>
+
+                @include('partials._login')
+
                 <input type="hidden" name="become-member-login" value="1">
                 <div class="form-group">
                     <button type="submit" class="button">Log in</button>
                 </div>
-            {{Form::close()}}
+            {{ Former::close() }}
         </div>
 
         <div id="register-form" class="register-form">
@@ -28,7 +23,7 @@
                 <h2>Registreer</h2>
                 <p>Heb je nog geen account? Maak er een aan!</p>
 
-                @include('register._form')
+                @include('partials._register')
 
                 <input type="hidden" name="become-member-register" value="1">
                 <div class="form-group">

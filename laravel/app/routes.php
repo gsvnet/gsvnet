@@ -56,7 +56,7 @@ Route::group(array('prefix' => 'de-gsv'), function() {
 // Register and become member
 Route::get('word-lid',    'MemberController@index')
     ->before('canBecomeMember');
-Route::post('word-lid',     'MemberController@postWordLid');
+Route::post('word-lid',     'MemberController@store');
 Route::get('registreer',    'RegisterController@create');
 Route::post('registreer',   'RegisterController@store');
 
@@ -114,3 +114,6 @@ Route::group([
         Route::resource('gebruikers', 'UsersController');
     });
 });
+
+
+Route::controller('password', 'RemindersController');

@@ -108,9 +108,12 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
     public function activeCommittees()
     {
         return $this->belongsToMany('GSVnet\Committees\Committee', 'committee_user')
-                    ->where('end_date', null)
-                    ->orWhere('end_date', '>=', new \DateTime('now'))
-                    ->withPivot('start_time', 'end_time');
+            ->where('committee_user.start_date', '<=', new \DateTime('now'))
+            ->where(function($q) {
+                return $q->where('committee_user.end_date', '>=', new \DateTime('now'))
+                    ->orWhereNull('committee_user.end_date');
+            })
+            ->withPivot('start_date', 'end_date');
     }
 
     /**

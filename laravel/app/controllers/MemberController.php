@@ -59,17 +59,7 @@ class MemberController extends BaseController {
             ->with('activeStep', $activeStep);
     }
 
-    public function storeMember()
-    {
-
-    }
-
-    public function why()
-    {
-        return 'Why not?';
-    }
-
-    public function postWordLid()
+    public function store()
     {
         $user = Auth::user();
         $input = Input::all();
@@ -90,5 +80,10 @@ class MemberController extends BaseController {
 
         // Redirct to the become-member page: it shows the 3rd step [done] as active page
         return Redirect::action('MemberController@index');
+    }
+
+    public function why()
+    {
+        return 'Why not?';
     }
 }

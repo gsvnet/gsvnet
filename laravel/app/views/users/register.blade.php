@@ -5,7 +5,7 @@
         <div class="main-content">
             {{ Former::open()->action(URL::action('RegisterController@store')) }}
 
-                @include('register._form')
+                @include('partials._register')
 
                 <div class="form-group">
                     <button type="submit" class="button">Registreer</button>

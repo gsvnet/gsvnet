@@ -1,10 +1,15 @@
+MORGEN
+- Comissie permissie
+- emails
+- profiel bewerken
+
  PAGINAS
  - Enkele eventpagina: alle informatie laten zien
  - Word lid-pagina:
- 	- Afschermen voor leden en oud-leden
  	- Mail sturen bij succes en
  - Profiel bewerken
  - Mails sturen
+ - Password reminder views en mails mooier maken
 
  - Submenu toevoegen op actieve pagina
 
@@ -37,3 +42,6 @@ KLAAR:
  - Formulier mooiere opmaak geven
  - Mobielvriendelijke fotopagina's
  - GSVdocs: zoek op naam
+ - partial login view
+ - password reminder
+ - Afschermen voor leden en oud-leden
