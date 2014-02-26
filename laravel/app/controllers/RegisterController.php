@@ -15,7 +15,7 @@ class RegisterController extends BaseController {
     public function create()
     {
         $this->layout->bodyID = 'show-register';
-        $this->layout->layout = View::make('register.index');
+        $this->layout->layout = View::make('users.register');
     }
 
     public function store()
@@ -23,7 +23,7 @@ class RegisterController extends BaseController {
         $input = Input::all();
 
         // Let the user be a visitor
-        $input['type']     = 0;
+        $input['type'] = 0;
 
         // Let the user manager handle validation, creation and emails
         $user = $this->userManager->create($input);
@@ -32,9 +32,9 @@ class RegisterController extends BaseController {
         Auth::login($user);
 
         // Potentials should return to the become member form
-        if(Input::has('become-member-register'))
+        if (Input::has('become-member-register'))
         {
-            return Redirect::to(URL::action('MemberController@index') . '#become-member')
+            return Redirect::to(URL::action('MemberController@index') . '#become-member');
         }
 
         return Redirect::to('/');

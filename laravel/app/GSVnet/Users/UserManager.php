@@ -1,5 +1,7 @@
 <?php namespace GSVnet\Users;
 
+use Event;
+
 use GSVnet\Users\UserCreatorValidator;
 
 use GSVnet\Users\UsersRepository;
@@ -27,6 +29,11 @@ class UserManager
     {
         $this->createValidator->validate($input);
         // Save the user to the database
-        return $this->users->create($input);
+        $user = $this->users->create($input);
+
+        // Send email etc.
+        Event::fire('user.regitered');
+
+        return $user;
     }
 }

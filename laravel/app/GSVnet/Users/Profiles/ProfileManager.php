@@ -35,6 +35,11 @@ class ProfileManager
         // TODO: upload photo
 
         // Save the user to the database
-        return $this->profiles->create($user, $input);
+        $profile = $this->profiles->create($user, $input);
+
+        // Send email etc.
+        Event::fire('potential.registered', ['user' => $user]);
+
+        return $profile;
     }
 }
