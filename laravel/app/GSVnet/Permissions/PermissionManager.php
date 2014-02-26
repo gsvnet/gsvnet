@@ -1,6 +1,8 @@
 <?php namespace GSVnet\Permissions;
 
 use GSVnet\Users\User;
+use GSVnet\Committees\CommitteeUser;
+use GSVnet\Committees\Committee;
 use GSVnet\Committees\CommitteesRepository;
 use Config;
 
@@ -65,8 +67,11 @@ class PermissionManager implements PermissionManagerInterface
         return false;
     }
 
-    private function checkCommitteeCriteria(array $criteria)
+    private function checkCommitteeCriteria(array $committees)
     {
-        return true;
+        // Find in how many of the given committees the user is in
+        // Post::find(1)->comments()->where('title', '=', 'foo')->first();
+        $total = $this->user->activeCommittees()->whereIn('unique_name', $committees)->count();
+        return  $total > 0;
     }
 }
