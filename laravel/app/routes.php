@@ -114,3 +114,6 @@ Route::group([
         Route::resource('gebruikers', 'UsersController');
     });
 });
+
+
+Route::controller('password', 'RemindersController');

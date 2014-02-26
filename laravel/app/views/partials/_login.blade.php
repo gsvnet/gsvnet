@@ -15,5 +15,7 @@
 </div>
 
 <div class="form-group">
-    Wachtwoord vergeten? Dan heb je pech.
+    <a href="{{ URL::action('RemindersController@getRemind') }}">
+        Wachtwoord vergeten?
+    </a>
 </div>

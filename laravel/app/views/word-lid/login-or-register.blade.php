@@ -5,7 +5,7 @@
     </div>
     <div class="column-holder">
         <div id="login-form" class="login-form">
-            {{ Form::open(array('action' => 'SessionController@postLogin')) }}
+            {{ Former::open()->action(action('SessionController@postLogin')) }}
                 <h2>Login</h2>
                 <p>Heb je al een bestaand account? Log dan in!</p>
 
@@ -15,7 +15,7 @@
                 <div class="form-group">
                     <button type="submit" class="button">Log in</button>
                 </div>
-            {{Form::close()}}
+            {{ Former::close() }}
         </div>
 
         <div id="register-form" class="register-form">
