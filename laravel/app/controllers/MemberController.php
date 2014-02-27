@@ -2,19 +2,28 @@
 
 use GSVnet\Users\UserManager;
 use GSVnet\Users\Profiles\ProfileManager;
+use GSVnet\Users\Profiles\ProfilesRepository;
+
+use GSVnet\Core\ImageHandler;
 
 class MemberController extends BaseController {
 
     protected $userManager;
     protected $profileManager;
+    protected $profiles;
+    protected $imageHandler;
 
     public function __construct(
         UserManager $userManager,
-        ProfileManager $profileManger)
+        ProfilesRepository $profiles,
+        ProfileManager $profileManger,
+        ImageHandler $imageHandler)
     {
         parent::__construct();
         $this->userManager = $userManager;
         $this->profileManger = $profileManger;
+        $this->profiles = $profiles;
+        $this->imageHandler = $imageHandler;
     }
 
     public function index()
@@ -62,7 +71,12 @@ class MemberController extends BaseController {
     public function store()
     {
         $user = Auth::user();
-        $input = Input::all();
+        $input = Input::except(['potential-image']);
+
+        if (Input::hasFile('potential-image'))
+        {
+            $input['photo'] = Input::file('potential-image');
+        }
 
         // Construct a date from seperate day, month and year fields.
         $input['potential-birthdate'] = $input['potential-birth-year'] . '-' . $input['potential-birth-month'] . '-' . $input['potential-birth-day'];
@@ -85,5 +99,61 @@ class MemberController extends BaseController {
     public function why()
     {
         return 'Why not?';
+    }
+
+    // Show original (resized) photo
+    public function showPhoto($profile_id)
+    {
+        return $this->photoResponse($profile_id);
+    }
+    /**
+    *
+    *   Returns an image response
+    *
+    *   @param int $id
+    *   @param string $type ('', 'small', or 'wide')
+    */
+    private function photoResponse($id)
+    {
+        $profile    = $this->profiles->byId($id);
+        $image      = $this->imageHandler->get($profile->photo_path);
+        $response   = $image->response();
+
+        $path = $this->imageHandler->getStoragePath($profile->photo_path);
+        $name = $profile->user->full_name;
+
+         if (is_null($name)) {
+            $name = basename($path);
+        }
+
+        $filetime = filemtime($path);
+        $etag = md5($filetime . $path);
+        $time = gmdate('r', $filetime);
+        // Keep images 1 month
+        $lifetime = 60*60*24*30;
+        $expires = gmdate('r', $filetime + $lifetime);
+        // $expires = '+1 month';
+        $length = filesize($path);
+
+        $headers = array(
+            'Content-Disposition' => 'inline; filename="' . $name . '"',
+            'Last-Modified' => $time,
+            'Cache-Control' => 'must-revalidate',
+            'Expires' => $expires,
+            'Pragma' => 'public',
+            'Etag' => $etag,
+        );
+        $headerTest1 = isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) && $_SERVER['HTTP_IF_MODIFIED_SINCE'] == $time;
+        $headerTest2 = isset($_SERVER['HTTP_IF_NONE_MATCH']) && str_replace('"', '', stripslashes($_SERVER['HTTP_IF_NONE_MATCH'])) == $etag;
+        //image is cached by the browser, we dont need to send it again
+        if ($headerTest1 || $headerTest2) {
+            return Response::make('', 304, $headers);
+        }
+
+        foreach ($headers as $header => $value) {
+            $response->header($header, $value);
+        }
+
+        return $response;
     }
 }

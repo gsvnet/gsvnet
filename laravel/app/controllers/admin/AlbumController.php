@@ -5,7 +5,7 @@ use View, Input, Redirect;
 use GSVnet\Albums\AlbumsRepository;
 use GSVnet\Albums\AlbumValidator;
 
-use GSVnet\Albums\Photos\ImageHandler;
+use GSVnet\Core\ImageHandler;
 use GSVnet\Albums\Photos\PhotosRepository;
 
 class AlbumController extends BaseController {

@@ -2,7 +2,7 @@
 
 use GSVnet\Core\Validator;
 
-class ProfileCreatorValidator extends Validator
+class ProfileUpdatorValidator extends Validator
 {
     static $rules = [
             'potential-image' => 'image',
@@ -18,8 +18,6 @@ class ProfileCreatorValidator extends Validator
             'parents-address' => 'required_if:parents-same-address,0',
             'parents-zip-code' => 'required_if:parents-same-address,0',
             'parents-town' => 'required_if:parents-same-address,0',
-            'parents-phone' => 'required',
-
-            'photo' => 'image',
+            'parents-phone' => 'required'
     ];
 }
