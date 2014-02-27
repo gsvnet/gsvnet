@@ -1,6 +1,8 @@
 <?php namespace GSVnet\Users\Profiles;
 
 use GSVnet\Users\Profiles\ProfileCreatorValidator;
+use GSVnet\Users\Profiles\ProfileUpdatorValidator;
+
 use GSVnet\Users\Profiles\ProfilesRepository;
 
 use GSVnet\Users\UsersRepository;
@@ -12,11 +14,13 @@ use Event;
 class ProfileManager
 {
     protected $createValidator;
+    protected $updateValidator;
     protected $profiles;
     protected $users;
 
     public function __construct(
         ProfileCreatorValidator $createValidator,
+        ProfileUpdatorValidator $updateValidator,
         ProfilesRepository $profiles,
         UsersRepository $users)
     {
@@ -41,6 +45,21 @@ class ProfileManager
 
         // Send email etc.
         Event::fire('potential.registered', ['user' => $user]);
+
+        return $profile;
+    }
+
+    public function update($id, $input)
+    {
+        $this->updateValidator->validate($input);
+        $profile = $this->profiles->byId($id);
+        // If uploading new photo, destroy old one and upload new photo
+        $this->photoManager->destroy($profile->photo_path);
+        $input['photo_path'] = $this->photoManager->update($input['photo']);
+
+        $profile = $this->profiles->update($id, $input);
+
+        Event::fire('profile.updated', ['profile' => $profile]);
 
         return $profile;
     }

@@ -15,12 +15,15 @@ class UserMailer extends Mailer {
     public function welcome($user)
     {
         $data = ['user' => $user];
-        $this->sendTo($user, 'Welkom', 'emails.welcome', $data);
+        $this->sendTo($user, 'Welkom', 'emails.users.welcome', $data);
     }
 
-    public function registered($user)
+    public function join($user)
     {
+        $data = ['user' => $user];
+        $this->sendTo($user, 'Aanmelding word verwerkt', 'emails.users.join', $data);
 
+        $this->sendTo($senate, 'Aanmelding: ' $user->full_name, 'emails.users.application', $data);
     }
 
     /**
@@ -29,6 +32,7 @@ class UserMailer extends Mailer {
     */
     public function accepted($user)
     {
-
+        $data = ['user' => $user];
+        $this->sendTo($user, 'Welkom', 'emails.users.accepted', $data);
     }
 }
