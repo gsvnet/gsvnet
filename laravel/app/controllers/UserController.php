@@ -15,6 +15,7 @@ class UserController extends BaseController {
         UsersRepository $users,
         YearGroupRepository $yearGroups)
     {
+        parent::__construct();
         $this->profiles = $profiles;
         $this->users = $users;
         $this->yearGroups = $yearGroups;
@@ -76,5 +77,11 @@ class UserController extends BaseController {
         $this->layout->bodyID = 'user-profile-page';
         $this->layout->content = View::make('users.profile')
             ->with('member', $member);
+    }
+
+    public function editProfile()
+    {
+        $this->layout->bodyID = 'edit-profile-page';
+        $this->layout->content = View::make('users.edit-profile');
     }
 }

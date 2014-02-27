@@ -86,17 +86,14 @@
 }
 
 /** Become member page **/
-.login-form, .register-form {
+.half-column {
 	width: 462px;
 	float: left;
 }
 
-.login-form {
-	padding-right: 17px;
-}
-
-.register-form {
-	border-left: 1px solid $darkGrey;
+.with-border {
+	margin-left: 17px;
+	border-left: 1px solid $grey;
 	padding-left: 18px;
 }
 
@@ -134,9 +131,10 @@
 		margin-right: 0;
 	}
 
-	.register-form {
+	.with-border {
 		border-left: 0;
 		padding-left: 0;
+		margin-left: 0;
 	}
 }
 

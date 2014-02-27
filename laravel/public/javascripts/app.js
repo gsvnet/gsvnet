@@ -10,11 +10,52 @@ app = (function() {
 		'senates-page': senate,
 		'senate-page': senate,
 		'events-page': events,
-		'event-page': events
+		'event-page': events,
+		'edit-profile-page': editProfile
 	}
 
 	function home() {
 
+	}
+
+	function editProfile() {
+		var $btn = $('#edit-profile-submit'),
+			$frm = $('#edit-profile-form'),
+			companies = ['Google', 'NSA', 'Facebook'],
+			company;
+
+		// Select random entry
+		company = companies[Math.floor(Math.random() * companies.length)];
+
+		// Set event on button click 
+		$btn.click(function(){
+
+			if(Math.random() < 0.3) {
+				$this = $(this);
+				$btn.addClass('disabled').val('Gegevens opslaan.');
+				
+				setTimeout(function(){
+					$btn.val(['Gegeven verkopen aan ', company, '.'].join(''));
+					setTimeout(function(){
+						$btn.val(['Gegeven verkopen aan ', company, '..'].join(''));
+						setTimeout(function(){
+							$btn.val(['Gegeven verkopen aan ', company, '...'].join(''));
+							setTimeout(function(){
+								$btn.val('Transactie opslaan...');
+								setTimeout(function(){
+									$btn.val('Succes!');
+									setTimeout(function(){
+										$frm.submit();
+									}, 1000);
+								}, 1000);
+							}, 1000);
+						}, 1000);
+					}, 1000);
+				}, 1000);
+				
+				return false;
+			}
+		});
 	}
 
 	function senate() {
