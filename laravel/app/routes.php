@@ -1,8 +1,8 @@
 <?php
 Route::get('mail', function() {
-    $data = [];
+    $data = ['title' => 'WELKOM!'];
     $mail = Mail::queue('emails.users.welcome', $data, function($message){
-        $message->to('markredeman@gmail.com')
+        $message->to('harmenstoppels@gmail.com')
             ->subject('Welkom op gsvnet');
     });
 });
