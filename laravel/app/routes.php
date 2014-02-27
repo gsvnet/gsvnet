@@ -112,8 +112,6 @@ Route::group([
             'Committees\MembersController@destroy');
 
         Route::resource('gebruikers', 'UsersController');
-
-        Route::get('log', 'AdminController@log');
     });
 });
 

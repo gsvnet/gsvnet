@@ -30,6 +30,8 @@ KLEINE TODOS
 - (voorlopig niet) Overal soft delete, want wie iets verwijdert heeft iets te verbergen
 - Opmaak van events op home page
 - GSVdocs seeds toevoegen
+- Slug routing verbeteren
+- Patterns in routing gebruiken (http://markvaneijk.com/route-patterns-in-laravel)
 
 NIEUW
 - Nieuwspagina
