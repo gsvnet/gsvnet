@@ -3,14 +3,25 @@
 class CommitteesRepository {
 
     /**
-     * Get by slug
+     * Get by id
      *
      * @param int $id
-     * @return Album
+     * @return Committee
      */
     public function byId($id)
     {
         return Committee::findOrFail($id);
+    }
+
+    /**
+     * Get by slug
+     *
+     * @param string $slug
+     * @return Committee
+     */
+    public function bySlug($slug)
+    {
+        return Committee::where('unique_name', '=', $slug)->firstOrFail();
     }
 
     /**
