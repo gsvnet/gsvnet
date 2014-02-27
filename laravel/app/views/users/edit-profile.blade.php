@@ -3,9 +3,11 @@
 		<h1>Verander je profiel</h1>
 		<p class="delta">ALS EEN MODDERFOKKER!</p>
 
-		{{ Former::open_vertical_for_files()->id('edit-profile-form') }}
+		{{ Former::open_vertical_for_files()
+            ->action(action('UserController@updateProfile'))
+            ->id('edit-profile-form')
+        }}
 		<div class="main-content">
-
 			<h2>Persoonlijke gegevens</h2>
 			{{ Former::populate(Auth::user()) }}
 
@@ -37,8 +39,9 @@
 		</div>
 		<div class="secondary-column">
 			<h2>Je profielfoto</h2>
+            {{ Former::file('potential-image')->label('Upload een foto van jezelf')->accept('image') }}
 			<div style="height:100px;background:grey;">
-				
+
 			</div>
 
 			<h2>Je avatar</h2>

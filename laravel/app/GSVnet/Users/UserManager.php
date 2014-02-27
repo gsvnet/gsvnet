@@ -9,13 +9,16 @@ use GSVnet\Users\UsersRepository;
 class UserManager
 {
     protected $createValidator;
+    protected $updateValidator;
     protected $users;
 
     public function __construct(
         UserCreatorValidator $createValidator,
+        UserUpdatorValidator $updateValidator,
         UsersRepository $users)
     {
         $this->createValidator = $createValidator;
+        $this->updateValidator = $updateValidator;
         $this->users = $users;
     }
 
@@ -34,6 +37,14 @@ class UserManager
         // Send email etc.
         Event::fire('user.regitered');
 
+        return $user;
+    }
+
+    public function update(User $user, array $input)
+    {
+        $this->updateValidator->validate($input);
+        // Save new properties
+        $user = $this->users->update($user->id, $input);
         return $user;
     }
 }

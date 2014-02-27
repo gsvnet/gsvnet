@@ -2,6 +2,8 @@
 
 use GSVnet\Users\Profiles\ProfilesRepository;
 use GSVnet\Users\UsersRepository;
+use GSVnet\Users\UserManager;
+use GSVnet\Users\Profiles\profileManager;
 use GSVnet\Users\YearGroupRepository;
 
 class UserController extends BaseController {
@@ -9,16 +11,22 @@ class UserController extends BaseController {
     protected $users;
     protected $profiles;
     protected $yearGroups;
+    protected $profileManager;
+    protected $userManager;
 
     public function __construct(
         ProfilesRepository $profiles,
         UsersRepository $users,
+        UserManager $userManager,
+        profileManager $profileManager,
         YearGroupRepository $yearGroups)
     {
         parent::__construct();
         $this->profiles = $profiles;
         $this->users = $users;
         $this->yearGroups = $yearGroups;
+        $this->userManager = $userManager;
+        $this->profileManager = $profileManager;
     }
 
     /**
@@ -83,5 +91,31 @@ class UserController extends BaseController {
     {
         $this->layout->bodyID = 'edit-profile-page';
         $this->layout->content = View::make('users.edit-profile');
+    }
+
+    public function updateProfile()
+    {
+        $user = Auth::user();
+        $input = Input::except(['potential-image']);
+
+        if (Input::hasFile('potential-image'))
+        {
+            $input['photo'] = Input::file('potential-image');
+        }
+
+        // Check if parent address is the same as potential address
+        if (Input::get('parents-same-address', '0') == '1')
+        {
+            $input['parents-address'] = $input['potential-address'];
+            $input['parents-town'] = $input['potential-town'];
+            $input['parents-zip-code'] = $input['potential-zip-code'];
+        }
+
+        // Create the profile and attach it to the user
+        $profile = $this->userManager->update($user, $input);
+        // $profile = $this->profileManager->update($user, $input);
+
+        // Redirct to the become-member page: it shows the 3rd step [done] as active page
+        return Redirect::action('UserController@showProfile');
     }
 }

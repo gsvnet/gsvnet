@@ -22,7 +22,8 @@ Route::get('logout', 'SessionController@getLogout')
 Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
     // Profiles
     Route::get('profiel',            'UserController@showProfile');
-    Route::get('profiel/bewerken',   'UserController@editProfile');
+    Route::get('profiel/bewerken',    'UserController@editProfile');
+    Route::post('profiel/bewerken',   'UserController@updateProfile');
     // GSVdocs
     Route::group(['before' => 'has:member-or-former-member'], function() {
         Route::get('bestanden',      'FilesController@index');
