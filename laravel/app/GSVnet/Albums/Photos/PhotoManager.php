@@ -3,7 +3,7 @@
 use GSVnet\Albums\Photos\PhotoCreatorValidator;
 use GSVnet\Albums\Photos\PhotoUpdatorValidator;
 
-use GSVnet\Albums\Photos\ImageHandler;
+use GSVnet\Core\ImageHandler;
 use GSVnet\Albums\Photos\PhotosRepository;
 
 use GSVnet\Albums\Photos\PhotoStorageException;

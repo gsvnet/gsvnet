@@ -2,7 +2,7 @@
 
 use GSVnet\Albums\AlbumsRepository;
 use GSVnet\Albums\Photos\PhotosRepository;
-use GSVnet\Albums\Photos\ImageHandler;
+use GSVnet\Core\ImageHandler;
 
 class PhotoController extends BaseController {
     protected $imageHandler;

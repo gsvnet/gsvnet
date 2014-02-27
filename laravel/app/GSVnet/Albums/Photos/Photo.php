@@ -1,7 +1,7 @@
 <?php namespace GSVnet\Albums\Photos;
 
 use URL;
-use GSVnet\Albums\Photos\ImageHandler;
+use GSVnet\Core\ImageHandler;
 
 class Photo extends \Eloquent {
     // Define the dimensions of small and wide photos
