@@ -1,9 +1,11 @@
 <li class="user-profile-item">
     <div class="profile-image">
-        {{ Gravatar::image($member->user->email, 'Profielfoto', array('width' => 120, 'height' => 120)) }}
+        {{ $member->photo }}
     </div>
     <div class="user-details">
-        <h3>{{ link_to_action('UserController@showUser', $member->user->full_name, [$member->id], ['class' => 'search-users']) }}</h3>
+        <h3>
+            {{ link_to_action('UserController@showUser', $member->user->full_name, [$member->id], ['class' => 'search-users']) }}
+        </h3>
         <ul class="user-details-list">
             <li>
                 <i class="fa fa-share"></i>

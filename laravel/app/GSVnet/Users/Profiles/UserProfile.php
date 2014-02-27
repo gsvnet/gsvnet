@@ -1,6 +1,7 @@
 <?php namespace GSVnet\Users\Profiles;
 
 use Config;
+use Gravatar;
 
 class UserProfile extends \Eloquent {
 
@@ -51,5 +52,10 @@ class UserProfile extends \Eloquent {
     {
         $regions = Config::get('gsvnet.regions');
         return $regions[$this->region];
+    }
+
+    public function getPhotoAttribute()
+    {
+        return Gravatar::image($this->user->email, 'Profielfoto', array('width' => 120, 'height' => 120));
     }
 }
