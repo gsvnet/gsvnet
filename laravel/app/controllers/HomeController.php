@@ -1,24 +1,30 @@
 <?php
 
 use GSVnet\Events\EventsRepository;
+use GSVnet\Users\Profiles\ProfilesRepository;
 
 class HomeController extends BaseController {
 
     protected $events;
+    protected $profiles;
 
-    public function __construct(EventsRepository $events)
+    public function __construct(EventsRepository $events, ProfilesRepository $profiles)
     {
     	parent::__construct();
         $this->events = $events;
+        $this->profiles = $profiles;
     }
 
 	public function showIndex()
 	{
 		// Get the coming events and show it in the sidebar
-		$events = $this->events->upcoming(5);
+		$events    = $this->events->upcoming(5);
+        $birthdays = $this->profiles->byUpcomingBirthdays(1);
 
         $this->layout->bodyID = 'home-page';
-		$this->layout->content = View::make('index')
-			->withEvents($events);
+		$this->layout->content = View::make('index')->with([
+            'events'    => $events,
+            'birthdays' => $birthdays
+        ]);
 	}
 }

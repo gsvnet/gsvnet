@@ -1,8 +1,8 @@
 <?php namespace GSVnet\Users\Profiles;
 
 use GSVnet\Users\User;
-
 use Config;
+use Carbon\Carbon;
 
 class ProfilesRepository {
 
@@ -66,6 +66,28 @@ class ProfilesRepository {
 
         // Retrieve results
         return $query;
+    }
+
+    /**
+    *   Finds all users whose birthday is in coming $weeks
+    *
+    *   @param int $weeks
+    *   @return UserProfile[]
+    */
+    public function byUpcomingBirthdays($weeks)
+    {
+        $now = new Carbon;
+        $year = $now->year;
+        $from   = $now->format('Y-m-d');
+        $to     = $now->addWeeks($weeks)->format('Y-m-d');
+
+        $birthday = "date_format(birthdate, \"{$year}-%m-%d\")";
+
+        $profiles = UserProfile::whereRaw("$birthday between \"{$from}\" and \"{$to}\"")
+            ->orderBy(\DB::raw($birthday))
+            ->get(array('*', \DB::raw("{$birthday} as birthday")));
+
+        return $profiles;
     }
 
 

@@ -115,19 +115,34 @@
         <div class="secondary-column">
             @if(count($events) > 0)
                 <h2>Komende activiteiten.</h2>
-                <ul class="small-event-list">
+                <ul class="unstyled-list">
                 @foreach ($events as $event)
                     <li>
-                        {{ $event->start_date }}
+                        <strong>
                         {{ link_to_action('EventController@showEvent', $event->title, [$event->id])}}
+                        </strong>
+                        <br>
+                        {{ $event->start_date }}
                     </li>
                 @endforeach
                 </ul>
             @endif
 
             <h2>Verjaardagen van moeders van oud-gsv'ers</h2>
-            <ul>
-                <li>2 tot 3 per eenheid</li>
+            <ul class="unstyled-list">
+                @if ($birthdays->count())
+                    @foreach ($birthdays as $profile)
+                        <li>
+                            <strong>
+                            {{{ $profile->user->full_name }}}
+                            </strong>
+                            <br>
+                            {{{ $profile->birthday }}}
+                        </li>
+                    @endforeach
+                @else
+                    <li>Geen verjaardagen deze week.</li>
+                @endif
             </ul>
         </div>
     </div>
