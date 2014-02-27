@@ -24,9 +24,9 @@ class AboutController extends BaseController {
             ->with('committees', $committees);
     }
 
-    public function showCommittee($id)
+    public function showCommittee($slug)
     {
-        $committee = $this->committees->byId($id);
+        $committee = $this->committees->bySlug($slug);
         $committees = $this->committees->all();
 
         $this->layout->bodyID = 'committee-page';
