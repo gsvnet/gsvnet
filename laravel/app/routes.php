@@ -34,6 +34,7 @@ Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
 
         Route::get('jaarbundel/gsver-{id}',   'UserController@showUser')
             ->where('id', '[0-9]+');
+        Route::get('jaarbundel/{id}/foto',   'MemberController@showPhoto');
     });
 });
 

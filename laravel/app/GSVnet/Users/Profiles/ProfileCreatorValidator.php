@@ -18,6 +18,8 @@ class ProfileCreatorValidator extends Validator
             'parents-address' => 'required_if:parents-same-address,0',
             'parents-zip-code' => 'required_if:parents-same-address,0',
             'parents-town' => 'required_if:parents-same-address,0',
-            'parents-phone' => 'required'
+            'parents-phone' => 'required',
+
+            'photo' => 'image',
     ];
 }

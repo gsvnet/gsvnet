@@ -119,6 +119,8 @@ class ProfilesRepository {
         $profile->parent_zip_code  = $input['parents-zip-code'];
         $profile->parent_town      = $input['parents-town'];
 
+        $profile->photo_path = $input['photo_path'];
+
         $profile->save();
         // Set user as potential
         $user->type = 1;
