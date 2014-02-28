@@ -98,9 +98,9 @@ class UserController extends BaseController {
         $user = Auth::user();
         $input = Input::except(['potential-image']);
 
-        if (Input::hasFile('potential-image'))
+        if (Input::hasFile('photo'))
         {
-            $input['photo'] = Input::file('potential-image');
+            $input['photo'] = Input::file('photo');
         }
 
         // Check if parent address is the same as potential address
@@ -112,8 +112,8 @@ class UserController extends BaseController {
         }
 
         // Create the profile and attach it to the user
-        $profile = $this->userManager->update($user, $input);
-        // $profile = $this->profileManager->update($user, $input);
+        $profile = $this->userManager->update($user->id, $input);
+        $profile = $this->profileManager->update($user->profile->id, $input['profile']);
 
         // Redirct to the become-member page: it shows the 3rd step [done] as active page
         return Redirect::action('UserController@showProfile');

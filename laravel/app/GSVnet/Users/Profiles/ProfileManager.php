@@ -63,7 +63,6 @@ class ProfileManager
 
     public function update($id, $input)
     {
-dd('hee');
         $this->updateValidator->validate($input);
         // Optionally update the photo's file
         if (isset($input['photo']))

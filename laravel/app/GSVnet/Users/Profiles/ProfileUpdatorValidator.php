@@ -5,19 +5,18 @@ use GSVnet\Core\Validator;
 class ProfileUpdatorValidator extends Validator
 {
     static $rules = [
-            'potential-image' => 'image',
-            'potential-address' => 'required',
-            'potential-zip-code' => 'required',
-            'potential-town' => 'required',
-            'potential-phone' => 'required',
-            'potential-gender' => 'required|in:male,female',
-            'potential-birthdate' => 'required|date_format:Y-m-d',
-            'potential-church' => 'required',
-            'potential-study-year' => 'required|date_format:Y',
-            'potential-study' => 'required',
-            'parents-address' => 'required_if:parents-same-address,0',
-            'parents-zip-code' => 'required_if:parents-same-address,0',
-            'parents-town' => 'required_if:parents-same-address,0',
-            'parents-phone' => 'required'
+            'photo' => 'image',
+            'church' => 'required',
+            'study' => 'required',
+            'address' => 'required',
+            'zip_code' => 'required',
+            'town' => 'required',
+            'phone' => 'required',
+            'gender' => 'required|in:male,female',
+            // 'study-year' => 'required|date_format:Y',
+            'parent_address' => 'required_if:parent_same_address,0',
+            'parent_zip_code' => 'required_if:parent_same_address,0',
+            'parent_town' => 'required_if:parent_same_address,0',
+            'parent_phone' => 'required'
     ];
 }

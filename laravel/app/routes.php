@@ -2,7 +2,7 @@
 Route::get('mail', function() {
     $data = ['title' => 'WELKOM!'];
     $mail = Mail::queue('emails.users.welcome', $data, function($message){
-        $message->to('harmenstoppels@gmail.com')
+        $message->to('markredeman@gmail.com')
             ->subject('Welkom op gsvnet');
     });
 });
@@ -13,10 +13,8 @@ Route::get('/', ['as' => 'home',
 
 // Login and logout routes
 Route::get('login', 'SessionController@getLogin');
-Route::post('login', 'SessionController@postLogin')
-    ->before('csrf');
-Route::get('logout', 'SessionController@getLogout')
-    ->before('auth');
+Route::post('login', 'SessionController@postLogin')->before('csrf');
+Route::get('logout', 'SessionController@getLogout')->before('auth');
 
 // Intern
 Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {

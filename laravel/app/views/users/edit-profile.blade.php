@@ -21,21 +21,30 @@
 			{{ Former::text('email')->label('Email') }}
 
 			<h2>Vul vooral meer in</h2>
-			{{ Former::text('profile.church')->label('Kerkgezindte') }}
-            {{ Former::text('profile.study')->label('Naam van studie') }}
-            {{ Former::select('profile.start_date_rug')->range(date('Y')+1, date('Y')-4)->label('Jaar waarin je begon of begint met studeren') }}
+			{{ Former::text('profile[church]')->label('Kerkgezindte') }}
+            {{ Former::text('profile[study]')->label('Naam van studie') }}
+            {{ Former::select('profile[start_date_rug]')->range(date('Y')+1, date('Y')-4)->label('Jaar waarin je begon of begint met studeren') }}
 
-            {{ Former::text('profile.address')->label('Adres') }}
-            {{ Former::text('profile.zip_code')->label('Postcode')->size(6) }}
-            {{ Former::text('profile.town')->label('Woonplaats') }}
-            {{ Former::text('profile.phone')->label('Telefoon') }}
-            {{ Former::select('profile.gender')->label('Geslacht')->options(array('male' => 'Man', 'female' => 'Vrouw')) }}
+            {{ Former::text('profile[address]')->label('Adres') }}
+            {{ Former::text('profile[zip_code]')->label('Postcode')->size(6) }}
+            {{ Former::text('profile[town]')->label('Woonplaats') }}
+            {{ Former::text('profile[phone]')->label('Telefoon') }}
+            {{ Former::select('profile[gender]')->label('Geslacht')->options(array('male' => 'Man', 'female' => 'Vrouw')) }}
 
             <h2>Adres van je ouders</h2>
-			{{ Former::text('profile.parent_address')->label('Adres ouders') }}
-            {{ Former::text('profile.parent_zip_code')->label('Postcode ouders')->size(6) }}
-            {{ Former::text('profile.parent_town')->label('Woonplaats ouders') }}
-            {{ Former::text('profile.parent_phone')->label('Telefoon ouders') }}
+            {{
+                Former::stacked_radios('parents-same-address')->radios(array(
+                    'Ja' => array('name' => 'parents-same-address', 'value' => '1'),
+                    'Nee' => array('name' => 'parents-same-address', 'value' => '0'),
+                ))->label('Woon je bij je ouders/verzorgers?')->check('0')
+            }}
+            <div id="parents-info">
+    			{{ Former::text('profile[parent_address]')->label('Adres ouders') }}
+                {{ Former::text('profile[parent_zip_code]')->label('Postcode ouders')->size(6) }}
+                {{ Former::text('profile[parent_town]')->label('Woonplaats ouders') }}
+            </div>
+
+                {{ Former::text('profile[parent_phone]')->label('Telefoon ouders') }}
 		</div>
 		<div class="secondary-column">
 			<h2>Je profielfoto</h2>
