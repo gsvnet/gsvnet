@@ -100,7 +100,7 @@ class UserController extends BaseController {
 
         if (Input::hasFile('photo'))
         {
-            $input['photo'] = Input::file('photo');
+            $input['profile']['photo'] = Input::file('photo');
         }
 
         // Check if parent address is the same as potential address

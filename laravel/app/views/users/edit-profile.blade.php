@@ -48,7 +48,7 @@
 		</div>
 		<div class="secondary-column">
 			<h2>Je profielfoto</h2>
-            {{ Former::file('potential-image')->label('Upload een foto van jezelf')->accept('image') }}
+            {{ Former::file('photo')->label('Upload een foto van jezelf')->accept('image') }}
 			<div style="height:100px;background:grey;">
 
 			</div>

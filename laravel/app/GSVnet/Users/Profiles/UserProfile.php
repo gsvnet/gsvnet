@@ -29,7 +29,8 @@ class UserProfile extends \Eloquent {
         'parent_address',
         'parent_zip_code',
         'parent_town',
-        'parent_phone'
+        'parent_phone',
+        'photo_path',
     );
 
     // Blah dit is niet zo mooi, maar voorlopig werkt dit wel
@@ -60,7 +61,9 @@ class UserProfile extends \Eloquent {
         // or img html with url generated
         if ($this->photo_path != '')
         {
-            $url = \URL::action('MemberController@showPhoto', $this->id);
+            // what the fuck, $this->id geeft iets vaags
+            // maar $this->user->profile->id geeft het goed,e terwijl this profile zou moeten zijn...
+            $url = \URL::action('MemberController@showPhoto', $this->user->profile->id);
             return '<img src="' . $url . '" width="120" height="120" alt="Profielfoto">';
         }
         return Gravatar::image($this->user->email, 'Profielfoto', array('width' => 120, 'height' => 120));

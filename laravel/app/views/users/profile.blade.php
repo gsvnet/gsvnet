@@ -35,6 +35,7 @@
 
 		<div class="secondary-column">
 			<h2>Dit is een lekker ding</h2>
+			{{ $member->profile->photo }}
 			@if(Auth::check() && Auth::user()->id == $member->id)
 			<p>{{ link_to_action('UserController@editProfile', 'Bewerk je profiel', [], ['class'=>'button']) }}
 			@endif
