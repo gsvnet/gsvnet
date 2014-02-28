@@ -1,15 +1,11 @@
-MORGEN
-- emails
-- profiel bewerken
-- Submenu toevoegen op actieve pagina
-
  PAGINAS
  - Enkele eventpagina: alle informatie laten zien
  - Word lid-pagina:
  	- Mail sturen bij succes en
- - Profiel bewerken
+ - Profiel bewerken mooier maken
  - Mails sturen
- - Password reminder views en mails mooier maken
+ - Password reminder views en mails mooier maken-
+- ( voorlopig niet? )Submenu toevoegen op actieve pagina
 
 
 PERMISSIES
@@ -48,3 +44,4 @@ KLAAR:
  - Afschermen voor leden en oud-leden
  - Comissie permissie
  - Zoeken users
+ - profiel bewerken
