@@ -3,7 +3,7 @@
 use GSVnet\Users\Profiles\ProfilesRepository;
 use GSVnet\Users\UsersRepository;
 use GSVnet\Users\UserManager;
-use GSVnet\Users\Profiles\profileManager;
+use GSVnet\Users\Profiles\ProfileManager;
 use GSVnet\Users\YearGroupRepository;
 
 class UserController extends BaseController {
@@ -18,7 +18,7 @@ class UserController extends BaseController {
         ProfilesRepository $profiles,
         UsersRepository $users,
         UserManager $userManager,
-        profileManager $profileManager,
+        ProfileManager $profileManager,
         YearGroupRepository $yearGroups)
     {
         parent::__construct();
