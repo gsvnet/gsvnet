@@ -1,4 +1,33 @@
 @section('content')
+<ul class="nav nav-tabs nav-justified">
+
+        <li class="{{ Request::segment(3) == 'gasten' ? 'active' : '' }}">
+        <a href="{{ URL::action('Admin\UsersController@showGuests') }}">
+            <i class='glyphicon glyphicon-user'></i> Gasten
+        </a>
+        </li>
+
+        <li class="{{ Request::segment(3) == 'potentiaal' ? 'active' : '' }}">
+        <a href="{{ URL::action('Admin\UsersController@showPotentials') }}">
+            <i class='glyphicon glyphicon-user'></i> Potentiaalen
+        </a>
+        </li>
+
+        <li class="{{ Request::segment(3) == 'leden' ? 'active' : '' }}">
+        <a href="{{ URL::action('Admin\UsersController@showMembers') }}">
+            <i class='glyphicon glyphicon-user'></i> Leden
+        </a>
+        </li>
+
+        <li class="{{ Request::segment(3) == 'oud-leden' ? 'active' : '' }}">
+        <a href="{{ URL::action('Admin\UsersController@showFormerMembers') }}">
+            <i class='glyphicon glyphicon-user'></i> Oud leden
+        </a>
+        </li>
+</ul>
+    <div class="list-group">
+    </div>
+
     <div class="page-header">
     	<h1>Gebruikers</h1>
     </div>
