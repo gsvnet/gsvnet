@@ -1,3 +1,71 @@
+<?php
+// $menu = [
+//     'de-gsv' => [
+//         'url' => URL::action('AboutController@showAbout'),
+//         'title' => 'De GSV',
+//         'visible' => true,
+//         'submenu' => [
+//             'geschiedenis' => [
+//                 'url' => URL::action('AboutController@showHistory')
+//                 'title' => 'Geschiedenis'
+//             ],
+//             'pijlers' => [
+//                 'url' => URL::action('AboutController@showPillars'),
+//                 'title' => 'Pijlers'
+//             ],
+//             'senaten' => [
+//                 'url' => URL::action('AboutController@showSenates'),
+//                 'title' => 'Senaten'
+//             ],
+//             'commissies' => [
+//                 'url' => URL::action('AboutController@showCommittees'),
+//                 'title' => 'Commissies'
+//             ],
+//             'contact' => [
+//                 'url' => URL::action('AboutController@showContact'),
+//                 'title' => 'Contact'
+//             ]
+//         ]
+//     ],
+
+//     'forum' => [
+//         'title' => 'Forum'
+//         'url' => '#',
+//         'visible' => true
+//     ],
+
+//     'foto-album' => [
+//         'title' => 'Fotoalbum',
+//         'url' => URL::action('PhotoController@showAlbums'),
+//         'visible' => true
+//     ],
+
+//     'activiteiten' => [
+//         'title' => 'Activiteiten',
+//         'url' => URL::action('EventController@showIndex'),
+//         'visible' => true
+//     ],
+
+//     'lid-worden' => [
+//         'title' => 'Lid worden?',
+//         'url' => URL::action('MemberController@index'),
+//         'visible' => Auth::guest() || !Auth::user()->wasOrIsMember(),
+//         'submenu' => [
+//             'groningen' => [
+//                 'url' => URL::action('AboutController@showHistory')
+//                 'title' => 'Groningen'
+//             ]
+//         ]
+//     ],
+
+//     'inloggen'
+
+
+// ];
+
+?>
+
+
 <header class="top-header">
     <nav class="nav-bar">
         <div class="nav-bar-extras">
@@ -83,11 +151,11 @@
             @endif
         </ul>
     </nav>
-<!--     <nav class="extra-submenu-nav" style="display:{{{rand(1,2)==1 ? 'block': 'none'}}}">
+    <nav class="extra-submenu-nav">
         <ul class="extra-submenu">
             <li class="top-level-menuitem"><a class="top-level-link" href="/">Test 1</a></li>
             <li class="top-level-menuitem"><a class="top-level-link" href="/">Test 2</a></li>
-            <li class="top-level-menuitem"><a class="top-level-link" href="/">Test 3</a></li>
+            <li class="top-level-menuitem active"><a class="top-level-link" href="/">Test 3</a></li>
         </ul>
-    </nav> -->
+    </nav>
 </header>
