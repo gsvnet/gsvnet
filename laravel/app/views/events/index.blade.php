@@ -16,7 +16,7 @@
 				@foreach ($events as $event)
 					<div class="event-row">
 						<div class="event-details">
-							<div class="event-image {{{$types[$event->type] or ''}}}"></div>
+							<div class="event-image {{{$types[$event->type] ? 'i-' . $types[$event->type] : ''}}}"></div>
 							<div class="event-date">
 								{{{$event->start_date_formatted}}}
 							</div>

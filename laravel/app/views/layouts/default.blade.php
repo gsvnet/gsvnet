@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="/stylesheets/screen.css">
     @show
 </head>
-<body id="{{{ $bodyID or '' }}}">
+<body id="{{{ $bodyID or '' }}}" class="svg">
     <div class="overal-header">
 
         @include('layouts.header')
