@@ -1,6 +1,17 @@
 @section('content')
     <div class="column-holder" role="main">
-        <p class="delta">{{Auth::check() ? Auth::user()->firstname . ', w' : 'W'}}il jij een onvergetelijke studententijd?</p>
+        <p class="delta">
+            @if(Auth::check())
+                {{Auth::user()->firstname}}, 
+                @if(Auth::user()->type == 'potential')
+                    vanaf nu ga je een onvergetelijke studententijd tegemoet!
+                @else
+                    wil jij een onvergetelijke studententijd?</p>
+                @endif
+            @else
+                Wil jij een onvergetelijke studententijd?
+            @endif
+        </p>
         <div class="main-content">
             <p>De GSV is de meest hechte christelijke studentenvereniging van Groningen. 
             Onze vereniging biedt de perfecte combinatie van christelijke waarden en het echte studentenleven.</p>
@@ -9,14 +20,10 @@
             Kortom: wil jij dit meemaken?</p>
         </div>
         <div class="secondary-column">
-            <ul class="secondary-menu">
-                <li><a href="#">Waarom lid worden?</a></li>
-                <li><a href="#">Zus en zo?</a></li>
-                <li><a href="#">Bla die bla?</a></li>
-            </ul>
+            <p>Test</p>
         </div>
     </div>
-    <div class="hero-unit grey">
+    <div class="hero-unit grey" id="lid-worden">
         <div class="column-holder form-steps">
 
             <p class="form-helper-text">Voortgang: </p>
