@@ -1,12 +1,12 @@
 @section('top-slideshow')
     <section class="slideshow-wrap top-slideshow">
-        <div id="carousel-example-generic" class="slideshow carousel slide">
+        <div id="homepage-carousel" class="slideshow carousel slide">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                <li data-target="#homepage-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#homepage-carousel" data-slide-to="1"></li>
+                <li data-target="#homepage-carousel" data-slide-to="2"></li>
+                <li data-target="#homepage-carousel" data-slide-to="3"></li>
             </ol>
 
             <!-- Wrapper for slides -->
@@ -15,8 +15,8 @@
                     <div class="slide-description-wrapper">
                         <div class="slide-description">
                             <div class="slide-description-box">
-                                <p class="delta">Bekijk de film</p>
-                                <p>En hier wat!</p>
+                                <p class="slide-title">Bekijk de film</p>
+                                <p class="slide-description-text">En hier wat!</p>
                             </div>
                         </div>
                     </div>
@@ -36,8 +36,8 @@
                     <div class="slide-description-wrapper">
                         <div class="slide-description">
                             <div class="slide-description-box">
-                                <p class="delta">Hier wat leuks!</p>
-                                <p>En hier wat!</p>
+                                <p class="slide-title">Hier wat leuks!</p>
+                                <p class="slide-description-text">En hier wat!</p>
                             </div>
                         </div>
                     </div>
@@ -55,8 +55,8 @@
                     <div class="slide-description-wrapper">
                         <div class="slide-description">
                             <div class="slide-description-box">
-                                <p class="delta">Hier wat leuks!</p>
-                                <p>En hier wat!</p>
+                                <p class="slide-title">Hier wat leuks!</p>
+                                <p class="slide-description-text">En hier wat!</p>
                             </div>
                         </div>
                     </div>
@@ -74,8 +74,8 @@
                     <div class="slide-description-wrapper">
                         <div class="slide-description">
                             <div class="slide-description-box">
-                                <p class="delta">Hier wat leuks!</p>
-                                <p>En hier wat!</p>
+                                <p class="slide-title">Hier wat leuks!</p>
+                                <p class="slide-description-text">En hier wat!</p>
                             </div>
                         </div>
                     </div>
@@ -92,10 +92,10 @@
             </div>
 
             <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+            <a class="left carousel-control" href="#homepage-carousel" data-slide="prev">
                 <span class="fa fa-arrow-left icon-prev"></span>
             </a>
-            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+            <a class="right carousel-control" href="#homepage-carousel" data-slide="next">
                 <span class="fa fa-arrow-right icon-next"></span>
             </a>
         </div>
@@ -147,21 +147,20 @@
         </div>
         <div class="secondary-column">
             @if(count($events) > 0)
-                <h2>Komende activiteiten.</h2>
-                <ul class="unstyled-list">
+                <h2>Komende activiteiten</h2>
+                <ul class="unstyled-list small-event-list">
                 @foreach ($events as $event)
                     <li>
-                        <strong>
+                        <span class="list-title">
                         {{ link_to_action('EventController@showEvent', $event->title, [$event->id])}}
-                        </strong>
-                        <br>
-                        {{ $event->start_date }}
+                        </span>
+                        <time class="list-description">{{ $event->start_date }}</time>
                     </li>
                 @endforeach
                 </ul>
             @endif
 
-            <h2>Verjaardagen van moeders van oud-gsv'ers</h2>
+            <h2>Verjaardagen</h2>
             <ul class="unstyled-list">
                 @if ($birthdays->count())
                     @foreach ($birthdays as $profile)

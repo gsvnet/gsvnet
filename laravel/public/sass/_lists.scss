@@ -21,6 +21,24 @@
 	list-style-type: none;
 }
 
+.small-event-list {
+	margin-bottom: 2em;
+	
+	li {
+		margin-bottom: 1em;
+	}
+
+	.list-description {
+		display: block;
+		color: $darkGrey;
+	}
+
+	.list-title {
+		display: block;
+		font-weight: bold;
+	}
+}
+
 
 // This is a secondary menu which is on the page itself
 .secondary-menu {
