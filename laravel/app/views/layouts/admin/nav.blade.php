@@ -1,5 +1,6 @@
 <div class="list-group">
     @if (Permission::has('admin'))
+    <div></div>
     <a href="{{ URL::action('Admin\UsersController@index') }}" class="list-group-item {{ Request::segment(2) == 'gebruikers' ? 'active' : '' }}">
         <i class='glyphicon glyphicon-user'></i> Gebruikers
     </a>

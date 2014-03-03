@@ -33,6 +33,38 @@ class UsersController extends BaseController {
             ->withUsers($users);
     }
 
+    public function showGuests()
+    {
+        $users = $this->users->paginateWhereType(0, 30);
+
+        $this->layout->content = View::make('admin.users.index')
+            ->with(['users' => $users]);
+    }
+
+    public function showPotentials()
+    {
+        $users = $this->users->paginateWhereType(1, 30);
+
+        $this->layout->content = View::make('admin.users.index')
+            ->with(['users' => $users]);
+    }
+
+    public function showMembers()
+    {
+        $users = $this->users->paginateWhereType(2, 30);
+
+        $this->layout->content = View::make('admin.users.index')
+            ->with(['users' => $users]);
+    }
+
+    public function showFormerMembers()
+    {
+        $users = $this->users->paginateWhereType(3, 30);
+
+        $this->layout->content = View::make('admin.users.index')
+            ->with(['users' => $users]);
+    }
+
     public function create()
     {
         $this->layout->content = View::make('admin.users.create');

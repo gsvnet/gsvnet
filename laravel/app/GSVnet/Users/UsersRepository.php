@@ -33,6 +33,13 @@ class UsersRepository {
         return User::orderBy('lastname', 'ASC')->paginate($amount);
     }
 
+    public function paginateWhereType($type, $amount)
+    {
+        return User::orderBy('lastname', 'ASC')
+            ->where('type', $type)
+            ->paginate($amount);
+    }
+
     /**
     * Create user
     *

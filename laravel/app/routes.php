@@ -111,7 +111,13 @@ Route::group([
         Route::delete('commissies/{committee}/members/{member}',
             'Committees\MembersController@destroy');
 
-        Route::resource('gebruikers', 'UsersController');
+        Route::group(['prefix' => 'gebruikers'], function() {
+            Route::resource('/',      'UsersController');
+            Route::get('/gasten',     'UsersController@showGuests');
+            Route::get('/potentiaal', 'UsersController@showPotentials');
+            Route::get('/leden',      'UsersController@showMembers');
+            Route::get('/oud-leden',  'UsersController@showFormerMembers');
+        });
     });
 });
 
