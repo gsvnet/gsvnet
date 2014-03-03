@@ -362,7 +362,7 @@ html {
 
 body {
 	// Ala Trent Walton
-	@include css-hyphens(auto);
+	// @include css-hyphens(auto);
 
 	// normal: Indicates that lines may only break at normal word break points.
 	// break-word : Indicates that normally unbreakable words may be broken at ...
