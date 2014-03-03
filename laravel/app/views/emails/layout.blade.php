@@ -219,7 +219,7 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
 		<!-- Tables are the most common way to format your email consistently. Set your table widths inside cells and in most cases reset cellpadding, cellspacing, and border to zero. Use nested tables as a way to space effectively in your message. -->
 		<table cellpadding="36px" cellspacing="0" border="0" align="center" style="background:#FFF;">
 			<tr>
-				<td width="600" valign="top">
+				<td width="600" valign="top" style="border-top:2px solid #2a1443;">
 					@yield('header')
 				</td>
 			</tr>
