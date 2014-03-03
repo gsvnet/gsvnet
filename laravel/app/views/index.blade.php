@@ -28,7 +28,7 @@
                         <span data-src="/images/nogeen-1024.jpg" data-media="(min-width: 600px)"></span>
                         <span data-src="/images/nogeen-1600.jpg" data-media="(min-width: 1024px)"></span>
                         <noscript>
-                            <img src="/images/nogeen-480.jpg" alt="Geweldig plaatje">
+                            <img src="/images/nogeen-480.jpg" alt="Geweldig plaatje" width="480" height="360">
                         </noscript>
                     </span>
                 </a>
@@ -47,7 +47,7 @@
                         <span data-src="/images/banner/meisje-1024.jpg" data-media="(min-width: 600px)"></span>
                         <span data-src="/images/banner/meisje-1600.jpg" data-media="(min-width: 1024px)"></span>
                         <noscript>
-                            <img src="/images/banner/meisje-480.jpg" alt="Geweldig plaatje">
+                            <img src="/images/banner/meisje-480.jpg" alt="Geweldig plaatje" width="480" height="360">
                         </noscript>
                     </span>
                 </div>
@@ -66,7 +66,7 @@
                         <span data-src="/images/banner/mensen-1024.jpg" data-media="(min-width: 600px)"></span>
                         <span data-src="/images/banner/mensen-1600.jpg" data-media="(min-width: 1024px)"></span>
                         <noscript>
-                            <img src="/images/nogeen-480.jpg" alt="Geweldig plaatje">
+                            <img src="/images/nogeen-480.jpg" alt="Geweldig plaatje" width="480" height="360">
                         </noscript>
                     </span>
                 </div>
@@ -85,7 +85,7 @@
                         <span data-src="/images/banner/leuke-1024.jpg" data-media="(min-width: 600px)"></span>
                         <span data-src="/images/banner/leuke-1600.jpg" data-media="(min-width: 1024px)"></span>
                         <noscript>
-                            <img src="/images/banner/leuke-480.jpg" alt="Geweldig plaatje">
+                            <img src="/images/banner/leuke-480.jpg" alt="Geweldig plaatje" width="480" height="360">
                         </noscript>
                     </span>
                 </div>
