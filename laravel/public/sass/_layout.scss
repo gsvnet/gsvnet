@@ -85,7 +85,6 @@
 	}
 }
 
-/** Become member page **/
 .half-column {
 	width: 462px;
 	float: left;
@@ -95,6 +94,42 @@
 	margin-left: 17px;
 	border-left: 1px solid $grey;
 	padding-left: 18px;
+}
+
+.content-columns {
+	@include clearfix;
+}
+
+.content-column {
+	box-sizing: border-box;
+	width: 50%;
+	float: left;
+	margin-bottom: 1em;
+}
+
+a.block-link {
+	transition: background .3s;
+	display: block;
+	padding: 1em;
+	@include clearfix;
+	color: $body-copy-color;
+
+	p {
+		margin-bottom: 0;
+	}
+
+	&:hover {
+		text-decoration: none;
+		background: #EFEFEF;
+		color: $body-copy-color;
+	}
+
+	.icon {
+		float: right;
+		width: 100px;
+		height: 100px;
+		margin: 0 0 .5em .5em;
+	}
 }
 
 
@@ -141,6 +176,13 @@
 		padding-left: 0;
 		margin-left: 0;
 	}
+
+	a.block-link {
+		.icon {
+			float: none;
+			margin: 0 auto;
+		}
+	}
 }
 
 @media only screen and (max-width: 480px){
@@ -152,6 +194,11 @@
 		width: auto;
 		padding-left: 18px;
 		padding-right: 18px;
+	}
+
+	.content-column {
+		width: 100%;
+		float: none;
 	}
 
 }

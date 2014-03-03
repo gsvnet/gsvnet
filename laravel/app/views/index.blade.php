@@ -111,6 +111,39 @@
             <p>Op deze site kun je meer lezen over de GSV en wat er allemaal valt te beleven bij onze studentenverenging. Wil je lid worden, of ben je gewoon nieuwsgierig? <a href="#" class="more">Klik dan snel hier</a></p>
             <h2>Over de GSV</h2>
             <p>De GSV, de Gereformeerde Studentenvereniging, is een christelijke studentenvereniging met een gereformeerde basis. De vereniging bestaat uit een hechte groep van zo’n 200 studenten die elke week bij elkaar komen op bijbelkring en tijdens soosavonden. </p>
+
+            <div class="content-columns">
+                <div class="content-column">
+                    <a href="#" class="block-link">
+                        <h3>Christelijk</h3>
+                        <div class="icon i-christian"></div>
+                        <p>Als hier nou ieman wat schrijft dan zou dat fantastisch zijn.</p>
+                    </a>
+                </div>
+                <div class="content-column">
+                    <a href="#" class="block-link">
+                        <h3>Sociaal</h3>
+                        <div class="icon i-social"></div>
+                        <p>Hier geldt eigenlijk precies hetzelfde voor, even kijken wat er gebeurt als ik de tekst wat langer maak zodat hij meerdere regels beslaat.</p>
+                    </a>
+                </div>
+            </div>
+            <div class="content-columns">
+                <div class="content-column">
+                    <a href="#" class="block-link">
+                        <h3>Intellectueel</h3>
+                        <div class="icon i-intellectual"></div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet cumque sapiente dolor corporis nam earum necessitatibus voluptatem! Placeat, expedita, qui ab et deleniti aut iste repellendus omnis pariatur perspiciatis unde.</p>
+                    </a>
+                </div>
+                <div class="content-column">
+                    <a href="#" class="block-link">
+                        <h3>Studentikoos</h3>
+                        <div class="icon i-collegiate"></div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, dolor?</p>
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="secondary-column">
             @if(count($events) > 0)
