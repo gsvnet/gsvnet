@@ -166,7 +166,7 @@ foreach($menuitems as $name => $item)
     // Show sub menu
     if(array_key_exists('submenu', $item))
     {
-        echo '<i class="fa fa-caret-down top-caret"></i>';
+        echo '<span class="top-caret"><i class="caret"></i></span>';
         echo '<ul class="sub-level-menu">';
         foreach($item['submenu'] as $subItem)
         {
