@@ -12,4 +12,7 @@
             <button type="submit" class="button">Log in</button>
         </div>
     {{ Former::close() }}
+
+    <h3>Geen account?</h3>
+    {{ link_to_action('RegisterController@create', 'Registreer je dan nu!') }}
 </div>
