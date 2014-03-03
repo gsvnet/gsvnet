@@ -36,17 +36,18 @@
 	}
 
 	.event-details {
-		@extend .delta;
 		float: left;
 		width: 16%;
 		background: $lightGrey;
 		text-align: center;
+		box-sizing: border-box;
 	}
 
 	.event-image {
 		width: 100%;
 		background: #FFF;
-		height: 100px;
+		padding-bottom: 100%;
+		background-size: contain;
 	}
 
 	.event-body {
