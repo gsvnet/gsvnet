@@ -105,6 +105,17 @@
 	width: 50%;
 	float: left;
 	margin-bottom: 1em;
+
+	&.with-padding {
+		padding-right: 1em;
+	}
+}
+
+.secondary-column {
+	.content-column {
+		float: none;
+		width: 100%;
+	}
 }
 
 a.block-link {
@@ -155,8 +166,19 @@ a.block-link {
 		width: auto;
 	}
 
+	.has-border-bottom {
+		margin-bottom: 1em;
+		padding-bottom: 1em;
+		border-bottom: 1px solid $lightGrey;
+	}
+
 	.secondary-column {
 		margin-bottom: 2em;
+
+		.content-column {
+			width: 50%;
+			float: left;
+		}
 	}
 
 	.half-column {
@@ -200,7 +222,7 @@ a.block-link {
 		padding-right: 18px;
 	}
 
-	.content-column {
+	.secondary-column .content-column, .content-column {
 		width: 100%;
 		float: none;
 	}

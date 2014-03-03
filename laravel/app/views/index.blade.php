@@ -107,7 +107,7 @@
 @section('content')
     <div class="column-holder" role="main">
         <p class="delta">Denk je na over een actief studentenleven in Groningen? Dan ben je hier aan het juiste adres. De GSV is dé perfecte combinatie van christelijke waarden en het echte studentenleven.</p>
-        <div class="main-content">
+        <div class="main-content has-border-bottom">
             <p>Op deze site kun je meer lezen over de GSV en wat er allemaal valt te beleven bij onze studentenverenging. Wil je lid worden, of ben je gewoon nieuwsgierig? <a href="#" class="more">Klik dan snel hier</a></p>
             <h2>Over de GSV</h2>
             <p>De GSV, de Gereformeerde Studentenvereniging, is een christelijke studentenvereniging met een gereformeerde basis. De vereniging bestaat uit een hechte groep van zo’n 200 studenten die elke week bij elkaar komen op bijbelkring en tijdens soosavonden. </p>
@@ -146,36 +146,40 @@
             </div>
         </div>
         <div class="secondary-column">
-            @if(count($events) > 0)
-                <h2>Komende activiteiten</h2>
-                <ul class="unstyled-list small-event-list">
-                @foreach ($events as $event)
-                    <li>
-                        <span class="list-title">
-                        {{ link_to_action('EventController@showEvent', $event->title, [$event->id])}}
-                        </span>
-                        <time class="list-description">{{ $event->start_long }}</time>
-                    </li>
-                @endforeach
-                </ul>
-            @endif
+            <div class="content-columns">
+                <div class="content-column">
+                    @if(count($events) > 0)
+                        <h2>Komende activiteiten</h2>
+                        <ul class="unstyled-list small-event-list">
+                        @foreach ($events as $event)
+                            <li>
+                                <span class="list-title">
+                                {{ link_to_action('EventController@showEvent', $event->title, [$event->id])}}
+                                </span>
+                                <time class="list-description">{{ $event->start_long }}</time>
+                            </li>
+                        @endforeach
+                        </ul>
+                    @endif
+                </div>
+                <div class="content-column">
+                
 
-            <h2>Verjaardagen</h2>
-            <ul class="unstyled-list">
-                @if ($birthdays->count())
-                    @foreach ($birthdays as $profile)
-                        <li>
-                            <strong>
-                            {{{ $profile->user->full_name }}}
-                            </strong>
-                            <br>
-                            {{{ $profile->birthday }}}
-                        </li>
-                    @endforeach
-                @else
-                    <li>Geen verjaardagen deze week.</li>
-                @endif
-            </ul>
+                    <h2>Verjaardagen</h2>
+                    <ul class="unstyled-list small-event-list">
+                        @if ($birthdays->count())
+                            @foreach ($birthdays as $profile)
+                                <li>
+                                    <span class="list-title">{{{ $profile->user->full_name }}}</span>
+                                    <time class="list-description">{{{ $profile->birthday }}}</time>
+                                </li>
+                            @endforeach
+                        @else
+                            <li>Geen verjaardagen deze week.</li>
+                        @endif
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 @stop
