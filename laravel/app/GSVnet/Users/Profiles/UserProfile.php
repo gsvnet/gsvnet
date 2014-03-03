@@ -33,6 +33,8 @@ class UserProfile extends \Eloquent {
         'photo_path',
     );
 
+    public $presenter = 'GSVnet\Users\Profiles\ProfilePresenter';
+
     // Blah dit is niet zo mooi, maar voorlopig werkt dit wel
     public function scopeSearch($query, $search)
     {

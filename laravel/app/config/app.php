@@ -111,6 +111,7 @@ return array(
 		'Former\FormerServiceProvider',
         'Intervention\Image\ImageServiceProvider',
         'Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider',
+        'McCool\LaravelAutoPresenter\LaravelAutoPresenterServiceProvider',
 
         'GSVnet\ServiceProviders\BackendServiceProvider',
         'GSVnet\ServiceProviders\AlbumServiceProvider',
@@ -186,6 +187,7 @@ return array(
         'Former'          => 'Former\Facades\Former',
         'Image'           => 'Intervention\Image\Facades\Image',
 		'Gravatar'        => 'Thomaswelton\LaravelGravatar\Facades\Gravatar',
+		'BasePresenter'   => 'McCool\LaravelAutoPresenter\BasePresenter',
 
         'Permission'      => 'GSVnet\Permissions\Permission'
 

@@ -1,12 +1,12 @@
 @section('top-slideshow')
     <section class="slideshow-wrap top-slideshow">
-        <div id="carousel-example-generic" class="slideshow carousel slide">
+        <div id="homepage-carousel" class="slideshow carousel slide">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                <li data-target="#homepage-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#homepage-carousel" data-slide-to="1"></li>
+                <li data-target="#homepage-carousel" data-slide-to="2"></li>
+                <li data-target="#homepage-carousel" data-slide-to="3"></li>
             </ol>
 
             <!-- Wrapper for slides -->
@@ -15,8 +15,8 @@
                     <div class="slide-description-wrapper">
                         <div class="slide-description">
                             <div class="slide-description-box">
-                                <p class="delta">Bekijk de film</p>
-                                <p>En hier wat!</p>
+                                <p class="slide-title">Bekijk de film</p>
+                                <p class="slide-description-text">En hier wat!</p>
                             </div>
                         </div>
                     </div>
@@ -36,8 +36,8 @@
                     <div class="slide-description-wrapper">
                         <div class="slide-description">
                             <div class="slide-description-box">
-                                <p class="delta">Hier wat leuks!</p>
-                                <p>En hier wat!</p>
+                                <p class="slide-title">Hier wat leuks!</p>
+                                <p class="slide-description-text">En hier wat!</p>
                             </div>
                         </div>
                     </div>
@@ -55,8 +55,8 @@
                     <div class="slide-description-wrapper">
                         <div class="slide-description">
                             <div class="slide-description-box">
-                                <p class="delta">Hier wat leuks!</p>
-                                <p>En hier wat!</p>
+                                <p class="slide-title">Hier wat leuks!</p>
+                                <p class="slide-description-text">En hier wat!</p>
                             </div>
                         </div>
                     </div>
@@ -74,8 +74,8 @@
                     <div class="slide-description-wrapper">
                         <div class="slide-description">
                             <div class="slide-description-box">
-                                <p class="delta">Hier wat leuks!</p>
-                                <p>En hier wat!</p>
+                                <p class="slide-title">Hier wat leuks!</p>
+                                <p class="slide-description-text">En hier wat!</p>
                             </div>
                         </div>
                     </div>
@@ -92,10 +92,10 @@
             </div>
 
             <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+            <a class="left carousel-control" href="#homepage-carousel" data-slide="prev">
                 <span class="fa fa-arrow-left icon-prev"></span>
             </a>
-            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+            <a class="right carousel-control" href="#homepage-carousel" data-slide="next">
                 <span class="fa fa-arrow-right icon-next"></span>
             </a>
         </div>
@@ -111,24 +111,56 @@
             <p>Op deze site kun je meer lezen over de GSV en wat er allemaal valt te beleven bij onze studentenverenging. Wil je lid worden, of ben je gewoon nieuwsgierig? <a href="#" class="more">Klik dan snel hier</a></p>
             <h2>Over de GSV</h2>
             <p>De GSV, de Gereformeerde Studentenvereniging, is een christelijke studentenvereniging met een gereformeerde basis. De vereniging bestaat uit een hechte groep van zo’n 200 studenten die elke week bij elkaar komen op bijbelkring en tijdens soosavonden. </p>
+
+            <div class="content-columns">
+                <div class="content-column">
+                    <a href="#" class="block-link">
+                        <h3>Christelijk</h3>
+                        <div class="icon i-christian"></div>
+                        <p>Als hier nou ieman wat schrijft dan zou dat fantastisch zijn.</p>
+                    </a>
+                </div>
+                <div class="content-column">
+                    <a href="#" class="block-link">
+                        <h3>Sociaal</h3>
+                        <div class="icon i-social"></div>
+                        <p>Hier geldt eigenlijk precies hetzelfde voor, even kijken wat er gebeurt als ik de tekst wat langer maak zodat hij meerdere regels beslaat.</p>
+                    </a>
+                </div>
+            </div>
+            <div class="content-columns">
+                <div class="content-column">
+                    <a href="#" class="block-link">
+                        <h3>Intellectueel</h3>
+                        <div class="icon i-intellectual"></div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet cumque sapiente dolor corporis nam earum necessitatibus voluptatem! Placeat, expedita, qui ab et deleniti aut iste repellendus omnis pariatur perspiciatis unde.</p>
+                    </a>
+                </div>
+                <div class="content-column">
+                    <a href="#" class="block-link">
+                        <h3>Studentikoos</h3>
+                        <div class="icon i-collegiate"></div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, dolor?</p>
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="secondary-column">
             @if(count($events) > 0)
-                <h2>Komende activiteiten.</h2>
-                <ul class="unstyled-list">
+                <h2>Komende activiteiten</h2>
+                <ul class="unstyled-list small-event-list">
                 @foreach ($events as $event)
                     <li>
-                        <strong>
+                        <span class="list-title">
                         {{ link_to_action('EventController@showEvent', $event->title, [$event->id])}}
-                        </strong>
-                        <br>
-                        {{ $event->start_date }}
+                        </span>
+                        <time class="list-description">{{ $event->start_date }}</time>
                     </li>
                 @endforeach
                 </ul>
             @endif
 
-            <h2>Verjaardagen van moeders van oud-gsv'ers</h2>
+            <h2>Verjaardagen</h2>
             <ul class="unstyled-list">
                 @if ($birthdays->count())
                     @foreach ($birthdays as $profile)

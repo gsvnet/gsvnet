@@ -13,24 +13,28 @@
 				<h2>Komende activiteiten</h2>
 				@endif
 
-				@foreach ($events as $event)
-					<div class="event-row">
-						<div class="event-details">
-							<div class="event-image {{{$types[$event->type] or ''}}}"></div>
-							<div class="event-date">
-								{{{$event->start_date_formatted}}}
+				@if(count($events) == 0)
+					<p>Helaas, geen activiteiten in deze tijd</p>
+				@else
+					@foreach ($events as $event)
+						<div class="event-row">
+							<div class="event-details">
+								<div class="event-image {{{$types[$event->type] ? 'i-' . $types[$event->type] : ''}}}"></div>
+								<div class="event-date">
+									{{{$event->start_date_formatted}}}
+								</div>
+							</div>
+							<div class="event-body">
+								<h3>
+									<a href="{{ URL::action('EventController@showEvent', $event->id) }}">
+										{{{ $event->title}}}
+									</a>
+								</h3>
+								<p>{{ $event->description }}</p>
 							</div>
 						</div>
-						<div class="event-body">
-							<h3>
-								<a href="{{ URL::action('EventController@showEvent', $event->id) }}">
-									{{{ $event->title}}}
-								</a>
-							</h3>
-							<p>{{ $event->description }}</p>
-						</div>
-					</div>
-				@endforeach
+					@endforeach
+				@endif
 			</div>
 
 			{{ $events->links() }}

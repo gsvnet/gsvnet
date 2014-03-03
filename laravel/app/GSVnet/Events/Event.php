@@ -3,6 +3,8 @@
 class Event extends \Eloquent {
     protected $guarded = array();
 
+    public $presenter = 'GSVnet\Events\EventPresenter';
+
     public function scopePublic($query)
     {
         return $query->wherePublic(true);

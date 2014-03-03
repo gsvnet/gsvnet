@@ -36,35 +36,18 @@
 	}
 
 	.event-details {
-		@extend .delta;
 		float: left;
 		width: 16%;
 		background: $lightGrey;
 		text-align: center;
+		box-sizing: border-box;
 	}
 
 	.event-image {
 		width: 100%;
-		background: $darkGrey;
-		height: 100px;
-
-		// place holders 
-		&.intellectual {
-			background: purple;
-		}
-
-		&.social {
-			background: gold;
-		}
-
-		&.collegiate {
-			background: blue;
-		}
-
-		&.christian {
-			background: green;
-
-		}
+		background: #FFF;
+		padding-bottom: 100%;
+		background-size: contain;
 	}
 
 	.event-body {

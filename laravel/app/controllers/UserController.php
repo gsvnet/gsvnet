@@ -35,10 +35,12 @@ class UserController extends BaseController {
     public function showProfile()
     {
         $member = Auth::user();
+        $committees = $member->committees;
 
         $this->layout->bodyID = 'own-profile-page';
         $this->layout->content = View::make('users.profile')
-            ->with('member', $member);
+            ->with('member', $member)
+            ->with('committees', $committees);
     }
 
 

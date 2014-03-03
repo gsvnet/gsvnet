@@ -116,29 +116,6 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
             ->withPivot('start_date', 'end_date');
     }
 
-    /**
-     * Determine the user's capacities
-     */
-    public function can($action = '')
-    {
-
-        switch($action)
-        {
-            case 'viewMemberlist':
-                return $this->isMember();
-            break;
-            case 'createFiles':
-            case 'createPhotos':
-            break;
-            case 'canView':
-            break;
-
-            default:
-                App::abort(404);
-            break;
-        }
-    }
-
     public function getTypeAttribute($type)
     {
         $types = Config::get('gsvnet.userTypes');

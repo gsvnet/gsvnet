@@ -6,7 +6,7 @@
 		display: inline;
 
 		&:after {
-			content: ' | ';
+			content: ' \00b7 ';
 		}
 
 		&:last-child:after {
@@ -19,6 +19,24 @@
 	margin-left: 0;
 	padding-left: 0;
 	list-style-type: none;
+}
+
+.small-event-list {
+	margin-bottom: 2em;
+
+	li {
+		margin-bottom: 1em;
+	}
+
+	.list-description {
+		display: block;
+		color: $darkGrey;
+	}
+
+	.list-title {
+		display: block;
+		font-weight: bold;
+	}
 }
 
 
@@ -51,6 +69,6 @@
 	}
 
 	.js .select-from-list {
-		display: block;
+		display: inline;
 	}
 }

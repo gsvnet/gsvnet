@@ -34,7 +34,7 @@ class RegisterController extends BaseController {
         // Potentials should return to the become member form
         if (Input::has('become-member-register'))
         {
-            return Redirect::to(URL::action('MemberController@index') . '#become-member');
+            return Redirect::to(URL::action('MemberController@index') . '#lid-worden');
         }
 
         return Redirect::to('/');

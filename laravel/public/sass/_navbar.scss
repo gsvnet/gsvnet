@@ -184,13 +184,16 @@
 	margin-top: 0;
 	margin-bottom: 0;
 
-	font-weight: 900;
 	border-bottom: 1px solid #DDD;
 	text-transform: lowercase;
 
 	.top-level-link {
 		border: 0;
 		line-height: 45px;
+	}
+
+	.active .top-level-link {
+		font-weight: 900;
 	}
 }
 
@@ -199,6 +202,10 @@
 @media only screen and (max-width: $firstbreakpoint){
 	.nav-bar {
 		padding: 0 2em;
+	}
+
+	.extra-submenu-nav {
+		display: none;
 	}
 
 	.top-caret {

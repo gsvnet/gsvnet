@@ -8,7 +8,8 @@
 		"anahkiasen/former": "dev-master",
 		"fzaninotto/faker": "1.2.*@dev",
 		"intervention/image": "dev-master",
-		"thomaswelton/laravel-gravatar": "dev-master"
+		"thomaswelton/laravel-gravatar": "dev-master",
+		"mccool/laravel-auto-presenter": "*"
 	},
 	"autoload": {
 		"classmap": [
