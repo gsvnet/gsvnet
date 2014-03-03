@@ -44,10 +44,9 @@
 	}
 
 	.event-image {
+		@extend .icon-scale;
 		width: 100%;
-		background: #FFF;
-		padding-bottom: 100%;
-		background-size: contain;
+		background-color: #FFF;
 	}
 
 	.event-body {
