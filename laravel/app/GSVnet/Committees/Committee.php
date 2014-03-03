@@ -4,6 +4,9 @@ class Committee extends \Eloquent {
     protected $guarded = array();
 
     public static $rules = array();
+
+    public $presenter = 'GSVnet\Committees\CommitteePresenter';
+
     // Change users to members?
     public function members()
     {

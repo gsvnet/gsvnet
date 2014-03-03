@@ -22,11 +22,11 @@
 
 
 				{{-- Show committees --}}
-				@if($member->committees && count($member->committees) > 0)
+				@if(count($member->committees) > 0)
 					<h3>Commissies</h3>
 					<ul>
-						@foreach ($member->committees as $committee)
-							<li>{{ link_to_action('AboutController@showCommittee', $committee->name, [$committee->id]) }} van {{{$committee->pivot->start_date}}} tot {{{$committee->pivot->end_date }}}</li>
+						@foreach ($committees as $committee)
+							<li>{{ link_to_action('AboutController@showCommittee', $committee->name, [$committee->id]) }} van {{{$committee->from_to}}}</li>
 						@endforeach
 					</ul>
 				@endif
@@ -46,5 +46,4 @@
 	<div class="column-holder">
 
 	</div>
-
 @stop

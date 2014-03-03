@@ -1,12 +1,10 @@
 @section('content')
     <div class="column-holder" role="main">
 
+        <h1>{{ $event->title }}</h1>
         <div class="main-content">
-            <h1>{{ $event->title }}</h1>
             <h3>
-                <span class="dag">{{ $event->day() }}</span>
-                <span class="datum">{{ $event->date() }}</span>
-                <span class="tijd">{{ $event->time() }}</span>
+                {{{ $event->formatted_start_date() }}}
             </h3>
             <p class="delta">
                 {{ $event->description }}
