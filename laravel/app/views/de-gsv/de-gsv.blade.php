@@ -7,6 +7,9 @@
         </div>
 
         <p>De GSV is opgericht in 1966 en is al zo’n goed 50 jaar d&eacute; academische vereniging met gereformeerde grondslag in Groningen. Als doelstelling heeft de vereniging: &ldquo;elkaar steunen in het dienen van de Here, met name in de studie.&rdquo;</p>
+        <aside class="note">
+            <b>Elkaar steunen</b> in het dienen van de Here, met name in de studie.
+        </aside>
 
         <p>Dit uit zich in de vele verschillende aspecten van de vereniging. We houden bijvoorbeeld bijbelkring en sing-ins om zo God te dienen en samen christen te zijn, maar ook zijn er door het jaar heen lezingen en studiegerelateerde avonden die ook de ruimte bieden voor discussie en verdieping. Het sociale aspect van de vereniging komt naar voren, in het elkaar leren kennen en ontmoeten op soosavonden en feestjes. Het doel van de vereniging is om de Heer te dienen in de academische wereld en elkaar te steunen in het zijn van christen binnen de universiteit. </p>
 
@@ -50,8 +53,5 @@
         </div>
 
         <p>Hoewel de vereniging vanuit een Gereformeerd vrijgemaakte traditie is opgericht, staat zij open voor alle christenen die het eens kunnen zijn met de gereformeerde basis en grondbeginselen. Zo verwelkomt de vereniging elk jaar rond de 40 nieuwe leden, die meteen een goed begin van hun studententijd hebben bij de GSV. De GSV is naast een gereformeerde ook een academische vereniging. Dit betekent dat alleen universitaire studenten lid kunnen worden van de vereniging. Dit geeft de vereniging haar eigen studentikoze maar ook verdiepende karakter.</p>
-        <aside class="note">
-            <b>Elkaar steunen</b> in het dienen van de Here, met name in de studie.
-        </aside>
     </article>
 @stop
