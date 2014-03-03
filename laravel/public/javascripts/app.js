@@ -34,6 +34,7 @@ app = (function() {
 				$this = $(this);
 				$btn.addClass('disabled').val('Gegevens opslaan.');
 				
+				// ugly timeouts
 				setTimeout(function(){
 					$btn.val(['Gegeven verkopen aan ', company, '.'].join(''));
 					setTimeout(function(){
@@ -131,7 +132,7 @@ app = (function() {
 	function overall() {
 		$mainMenu = $('#main-menu');
 
-		$('.login-link').magnificPopup({
+		$('#login-link').magnificPopup({
 			type: 'inline',
 
 			fixedContentPos: false,
