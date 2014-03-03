@@ -63,6 +63,7 @@ class MemberController extends BaseController {
         }
 
         $this->layout->bodyID = 'become-member-page';
+        $this->layout->activeMenuItem = 'lid-worden';
         $this->layout->content = View::make('word-lid.word-lid')
             ->with('steps', $steps)
             ->with('activeStep', $activeStep);

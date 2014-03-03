@@ -24,6 +24,7 @@ class BaseController extends Controller {
             $this->layout->description = '';
             $this->layout->keywords = '';
             $this->layout->bodyID = '';
+            $this->layout->activeMenuItem = '';
         }
     }
 

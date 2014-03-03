@@ -42,5 +42,6 @@ class SessionController extends BaseController {
     public function getLogin()
     {
         $this->layout->content = View::make('users.login');
+        $this->layout->activeMenuItem = 'inloggen';
     }
 }

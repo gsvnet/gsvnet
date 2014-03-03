@@ -57,7 +57,7 @@ $menuitems = [
     'inloggen' => [
         'title' => 'Inloggen',
         'url' => URL::action('SessionController@getLogin'),
-        'params' => ['data-mfp-src' => '#login-dialog'],
+        'params' => ['data-mfp-src' => '#login-dialog', 'id' => 'login-link'],
         'visible' => function(){return Auth::guest();},
         'submenu' => [
             'registreren' => [
@@ -117,7 +117,7 @@ $menuitems = [
         </h1>
         <ul id="main-menu" class="nav-bar-links">
 <?php
-foreach($menuitems as $item)
+foreach($menuitems as $name => $item)
 {
     $itemClassNames = ['top-level-menuitem'];
     $title = '';
@@ -144,12 +144,18 @@ foreach($menuitems as $item)
         $itemClassNames[] = 'has-sub-menu';
     }
 
+    // Check if menu is active
+    if($name == $activeMenuItem)
+    {
+        $itemClassNames[] = 'active-menu';
+    }
+
     if(array_key_exists('params', $item) && is_array($item['params']))
     {
 
         foreach($item['params'] as $key => $value)
         {
-            $params = ' ' . $key . '="' . $value . '"';
+            $params .= ' ' . $key . '="' . $value . '"';
         }
     }
 
@@ -255,11 +261,23 @@ foreach($menuitems as $item)
         </ul>
  -->
     </nav>
+    @if(array_key_exists($activeMenuItem, $menuitems) && array_key_exists('submenu', $menuitems[$activeMenuItem]))
     <nav class="extra-submenu-nav">
         <ul class="extra-submenu">
-            <li class="top-level-menuitem"><a class="top-level-link" href="/">Test 1</a></li>
-            <li class="top-level-menuitem"><a class="top-level-link" href="/">Test 2</a></li>
-            <li class="top-level-menuitem active"><a class="top-level-link" href="/">Test 3</a></li>
+<?php
+        foreach($menuitems[$activeMenuItem]['submenu'] as $subItem)
+        {
+            // Check if item is not visible
+            if(array_key_exists('visible', $subItem) && is_callable($subItem['visible']) && !$subItem['visible']())
+            {
+                continue;
+            }
+
+            // Print item
+            echo '<li class="top-level-menuitem"><a class="top-level-link" href="' . htmlentities($subItem['url']) . '">' . htmlentities($subItem['title']) . '</a></li>';
+        }
+?>
         </ul>
     </nav>
+    @endif
 </header>

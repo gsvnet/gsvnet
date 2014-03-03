@@ -31,8 +31,9 @@ class PhotoController extends BaseController {
         $albums = $this->albums->paginateWithFirstPhoto($photosPerPage);
 
         $this->layout->bodyID = 'albums-page';
-		$this->layout->content = View::make('gallery.albums.index')->with('albums', $albums);
-	}
+        $this->layout->activeMenuItem = 'foto-album';
+        $this->layout->content = View::make('gallery.albums.index')->with('albums', $albums);
+    }
 
     public function showPhotos($slug)
     {
@@ -42,6 +43,7 @@ class PhotoController extends BaseController {
         $photos = $this->photos->byAlbumIdAndPaginate($album->id, $photosPerPage);
 
         $this->layout->bodyID = 'album-page';
+        $this->layout->activeMenuItem = 'foto-album';
         $this->layout->content = View::make('gallery.albums.show')
             ->withAlbum($album)
             ->withPhotos($photos);

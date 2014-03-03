@@ -24,8 +24,10 @@ class EventController extends BaseController {
         $this->layout->title = 'Activiteiten - pagina ' . Input::get('page') . ' - GSVnet';
         $this->layout->description = 'Activiteiten van de GSV';
         $this->layout->keywords = 'Activiteiten, feesten, borrels';
+        $this->layout->activeMenuItem = 'activiteiten';
         $this->layout->bodyID = 'events-page';
-	}
+        
+    }
 
     public function showMonth($year, $strMonth = false)
     {
@@ -59,6 +61,7 @@ class EventController extends BaseController {
         // Setup metadata
         $this->layout->title    = 'Activiteiten in ' . ($strMonth ? $strMonth : '') . ' ' . $year . ' - GSVnet';
         //$this->layout->description = $event->description;
+        $this->layout->activeMenuItem = 'activiteiten';
         $this->layout->keywords = 'Activiteiten, feesten, borrels';
         $this->layout->bodyID = 'events-page';
     }
@@ -74,8 +77,8 @@ class EventController extends BaseController {
         // Setup metadata
         $this->layout->title        = 'Activitiet - ' . $event->title . ' - GSVnet';
         $this->layout->description  = $event->description;
+        $this->layout->activeMenuItem = 'activiteiten';
         $this->layout->keywords     = 'Activiteiten, feesten, borrels';
         $this->layout->bodyID       = 'single-event-page';
     }
-
 }

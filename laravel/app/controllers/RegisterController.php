@@ -16,6 +16,7 @@ class RegisterController extends BaseController {
     {
         $this->layout->bodyID = 'show-register';
         $this->layout->layout = View::make('users.register');
+        $this->layout->activeMenuItem = 'inloggen';
     }
 
     public function store()

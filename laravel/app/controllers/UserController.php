@@ -41,6 +41,7 @@ class UserController extends BaseController {
         $this->layout->content = View::make('users.profile')
             ->with('member', $member)
             ->with('committees', $committees);
+        $this->layout->activeMenuItem = 'intern';
     }
 
 
@@ -76,6 +77,7 @@ class UserController extends BaseController {
             ->with('members', $members)
             ->with('regions', $regions)
             ->with('yearGroups', $yearGroups);
+        $this->layout->activeMenuItem = 'intern';
     }
 
     public function showUser($id)
@@ -87,12 +89,14 @@ class UserController extends BaseController {
         $this->layout->bodyID = 'user-profile-page';
         $this->layout->content = View::make('users.profile')
             ->with('member', $member);
+        $this->layout->activeMenuItem = 'intern';
     }
 
     public function editProfile()
     {
         $this->layout->bodyID = 'edit-profile-page';
         $this->layout->content = View::make('users.edit-profile');
+        $this->layout->activeMenuItem = 'intern';
     }
 
     public function updateProfile()
