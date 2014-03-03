@@ -26,7 +26,7 @@
 					<h3>Commissies</h3>
 					<ul>
 						@foreach ($committees as $committee)
-							<li>{{ link_to_action('AboutController@showCommittee', $committee->name, [$committee->id]) }} van {{{$committee->from_to}}}</li>
+							<li>{{ link_to_action('AboutController@showCommittee', $committee->name, [$committee->unique_name]) }} van {{{$committee->from_to}}}</li>
 						@endforeach
 					</ul>
 				@endif

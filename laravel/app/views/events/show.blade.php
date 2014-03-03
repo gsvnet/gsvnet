@@ -4,7 +4,7 @@
         <h1>{{ $event->title }}</h1>
         <div class="main-content">
             <h3>
-                {{{ $event->formatted_start_date() }}}
+                {{{ $event->start_long() }}}
             </h3>
             <p class="delta">
                 {{ $event->description }}

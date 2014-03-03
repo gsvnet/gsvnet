@@ -21,7 +21,7 @@
 							<div class="event-details">
 								<div class="event-image {{{$types[$event->type] ? 'i-' . $types[$event->type] : ''}}}"></div>
 								<div class="event-date">
-									{{{$event->start_date_formatted}}}
+									{{{$event->start_short}}}
 								</div>
 							</div>
 							<div class="event-body">

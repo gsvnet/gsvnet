@@ -154,7 +154,7 @@
                         <span class="list-title">
                         {{ link_to_action('EventController@showEvent', $event->title, [$event->id])}}
                         </span>
-                        <time class="list-description">{{ $event->start_date }}</time>
+                        <time class="list-description">{{ $event->start_long }}</time>
                     </li>
                 @endforeach
                 </ul>
