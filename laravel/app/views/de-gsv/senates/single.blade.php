@@ -10,8 +10,8 @@
             <div class="content-columns content-column">
                 <h2>Leden</h2>
                 <ul class="unstyled-list small-event-list">
-                    @foreach($currentSenate->members as $member)
-                    <li>{{{$member->full_name}}} ({{{$member->pivot->function}}})</li>
+                    @foreach($members as $member)
+                    <li>{{{$member->full_name}}} ({{{$member->senateFunction}}})</li>
                     @endforeach
                 </ul>
 

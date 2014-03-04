@@ -54,12 +54,14 @@ class AboutController extends BaseController {
     {
         $senates = $this->senates->all();
         $senate = $this->senates->byId($id);
+        $members = $senate->members()->get();
         
         $this->layout->bodyID = 'senate-page';
         $this->layout->activeMenuItem = 'de-gsv';
         $this->layout->content = View::make('de-gsv.senates.single')
             ->with('currentSenate', $senate)
-            ->with('senates', $senates);
+            ->with('senates', $senates)
+            ->with('members', $members);
     }
 
     public function showContact()
