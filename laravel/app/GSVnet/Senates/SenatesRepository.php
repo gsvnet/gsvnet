@@ -48,7 +48,7 @@ class SenatesRepository {
     {
         $committee              = new Senate();
         $committee->name        = $input['name'];
-        $committee->body        = $input['description'];
+        $committee->body        = $input['body'];
 
         $committee->save();
 
