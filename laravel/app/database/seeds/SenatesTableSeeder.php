@@ -5,6 +5,7 @@ class SenatesTableSeeder extends Seeder {
 	public function run()
 	{
 		DB::table('senates')->truncate();
+		DB::table('user_senate')->truncate();
 
 		$senates = [
 			['name' => 'Van de Kamp', 'start_date' => '2013-09-14', 'end_date' => '2014-09-14', 'body' => 'test'],
@@ -15,12 +16,17 @@ class SenatesTableSeeder extends Seeder {
 		DB::table('senates')->insert($senates);
 
 		// Add some users
-		$users = GSVnet\Users\User::take(15)->get();
-		$functions = ['praeses', 'assessor primus', 'assessor secundus', 'abactis', 'fiscus'];
+		$senates = GSVnet\Senates\Senate::all();
+		$number = count($senates);
+		$users = GSVnet\Users\User::take($number*5)->get();
+
 		$i=0;
 		foreach($users as $user)
 		{
-			$user->senates()->attach(floor(($i+1)/5), array('function' => $functions[$i%5]));
+			$user->senates()->attach(
+				$senates[floor($i/5)]->id, 
+				['function' => 1 + ($i % 5)]
+			);
 			$i++;
 		}
 	}

@@ -13,8 +13,10 @@ class EventsTableSeeder extends Seeder {
             $randHour = rand(0, 22);
             $startdate = $faker->dateTimeBetween('now', '+1 year');
 
+            $activiteiten = array('Schaatsen', 'Bijbelkring', 'Voetballen', 'Lezing', 'Soos', 'Je moeder', 'Volleyballen', 'Huishoudelijke vergadering', 'Regiokamp');
+
             GSVnet\Events\Event::create(array(
-                'title' => 'Activiteit ' . $i,
+                'title' => $activiteiten[array_rand($activiteiten, 1)],
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quicquid opinemur.',
                 'location' => '',
                 'type' => rand(0, 3),
