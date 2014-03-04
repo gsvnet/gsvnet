@@ -28,4 +28,10 @@
     </a>
     @endif
 
+    @if (Permission::has('senates.manage'))
+    <a href="{{ URL::action('Admin\SenateController@index') }}" class="list-group-item {{ Request::segment(2) == 'senaten' ? 'active' : '' }}">
+        <i class='glyphicon glyphicon-hdd'></i> Senaten
+    </a>
+    @endif
+
 </div>

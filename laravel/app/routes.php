@@ -98,7 +98,7 @@ Route::group([
 
     Route::resource('files',        'FilesController');
 
-    // Only administraors (web committee members) can manage
+    // Only administrators (web committee members) can manage
     // committees and users
     Route::group(['before' => 'has:admin'], function() {
         Route::resource('commissies',   'CommitteeController',
@@ -110,6 +110,17 @@ Route::group([
 
         Route::delete('commissies/{committee}/members/{member}',
             'Committees\MembersController@destroy');
+
+
+
+        Route::resource('senaten',   'SenateController');
+
+        // Hier nog een route voor ajax calls naar users db
+        Route::post('senaten/{senate}/members',
+            'Senates\MembersController@store');
+
+        Route::delete('senaten/{senate}/members/{member}',
+            'Senates\MembersController@destroy');
 
         Route::group(['prefix' => 'gebruikers'], function() {
             Route::resource('/',      'UsersController');

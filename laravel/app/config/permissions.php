@@ -54,6 +54,10 @@ return [
         ]
     ],
 
+    'senates.manage' => [
+        'committee' => ['webcie']
+    ],
+
     'admin' => [
         'committee' => [
             'webcie'
