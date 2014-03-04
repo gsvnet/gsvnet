@@ -1,29 +1,21 @@
 @section('content')
 
     <div class="column-holder">
+        <h1>Senaten</h1>
         <div class="secondary-column">
-            <strong><a href="{{ URL::action('AboutController@showSenates') }}" alt='Senaten'>Senaten</a></strong>
+            <h2><a href="{{ URL::action('AboutController@showSenates') }}" title="Alle senaten">Senaten</a></h2>
             <div id="senates">
+                @if(count($senates) > 0)
                 <ul id="senates-list" class="list secondary-menu to-select-box">
-                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2013) }}">2013</a></li>
-                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2012) }}">2012</a></li>
-                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2011) }}">2011</a></li>
-                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2010) }}">2010</a></li>
-                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2009) }}">2009</a></li>
-                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2008) }}">2008</a></li>
-                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2007) }}">2007</a></li>
-                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2006) }}">2006</a></li>
-                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2005) }}">2005</a></li>
-                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2004) }}">2004</a></li>
-                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2003) }}">2003</a></li>
-                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2002) }}">2002</a></li>
-                    <li><a class="senate" href="{{ URL::action('AboutController@showSenate', 2001) }}">2001</a></li>
+                    @foreach($senates as $senate)
+                        <li class="senate"><a href="{{{URL::action('AboutController@showSenate', array($senate->id))}}}">{{{$senate->nameWithYear}}}</a></li>
+                    @endforeach
                 </ul>
+                @endif
             </div>
         </div>
         <div class="main-content" role="main">
         @section('senate')
-            <h1>Senaten</h1>
 
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe vel quos iure ipsam sequi quasi accusantium qui quas. Exercitationem, odio ab minima officiis corporis ex blanditiis consequuntur culpa nam quas.
