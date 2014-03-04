@@ -7,7 +7,6 @@
             ->method('PUT')
     }}
         {{ Former::populate( $event->resource ) }}
-        {{ Former::populateField('start_date', $event->startDateYearMonthDay)) }}
 
         @include('admin.events._form')
 

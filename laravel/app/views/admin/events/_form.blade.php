@@ -1,13 +1,12 @@
-{{ Former::text('title')->required()->autofocus() }}
-{{ Former::textarea('description')->required() }}
-{{ Former::text('location') }}
-{{ Former::checkbox('whole_day')->value('1') }}
-{{ Former::date('start_date')->required() }}
-{{ Former::time('start_time')->required() }}
-{{ Former::date('end_date')->required() }}
-{{ Former::time('end_time')->required() }}
+{{ Former::text('title')->required()->autofocus()->label('Titel') }}
+{{ Former::textarea('description')->required()->label('Beschrijving') }}
+{{ Former::text('location')->label('Locatie') }}
+{{ Former::checkbox('whole_day')->value('1')->text('Activiteit heeft niet per se een begintijd nodig')->label(null) }}
+{{ Former::date('start_date')->required()->label('Startdatum') }}
+{{ Former::time('start_time')->required()->label('Starttijd') }}
+{{ Former::date('end_date')->required()->label('Einddatum') }}
 
-{{ Former::checkbox('public')->text('Maak activiteit pulbiek')->label(null) }}
+{{ Former::checkbox('public')->text('Maak activiteit publiek')->label(null) }}
 
 @if (Permission::has('events.publish'))
     {{ Former::checkbox('published')->text('Publiceer activiteit')->label(null) }}

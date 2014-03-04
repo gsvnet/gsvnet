@@ -23,7 +23,7 @@ class EventValidator extends Validator
     {
         $validation = $this->validator->make($data, static::$rules);
 
-        $validation->sometimes(array('start_time', 'end_time'), 'required', function($input){
+        $validation->sometimes(array('start_time'), 'required', function($input){
             return $input->get('whole_day', '0') == '0';
         });
 
