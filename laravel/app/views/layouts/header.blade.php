@@ -1,4 +1,5 @@
 <?php
+$activeMenuItem = isset($activeMenuItem) ? $activeMenuItem : '';
 $menuitems = [
     'de-gsv' => [
         'url' => URL::action('AboutController@showAbout'),

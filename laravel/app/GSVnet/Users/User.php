@@ -76,12 +76,20 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
                     ->withTimestamps();
     }
 
+
     public function committeesSorted()
     {
         // Maybe ->withTimestamps(); ?
         return $this->belongsToMany('GSVnet\Committees\Committee', 'committee_user')
                     ->withPivot('start_date', 'end_date')
                     ->orderBy('committee_user.end_date', 'desc');
+    }
+
+    public function senates()
+    {
+        return $this->belongsToMany('GSVnet\Senates\Senate', 'user_senate')
+                    ->withPivot('function')
+                    ->withTimestamps();
     }
 
     public function profile()

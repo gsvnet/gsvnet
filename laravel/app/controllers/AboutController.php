@@ -1,13 +1,15 @@
 <?php
 
 use GSVnet\Committees\CommitteesRepository;
+use GSVnet\Senates\SenatesRepository;
 
 class AboutController extends BaseController {
 
 
-    public function __construct(CommitteesRepository $committees)
+    public function __construct(CommitteesRepository $committees, SenatesRepository $senates)
     {
         $this->committees = $committees;
+        $this->senates = $senates;
     }
 
 	public function showAbout()
@@ -40,17 +42,24 @@ class AboutController extends BaseController {
 
     public function showSenates()
     {
+        $senates = $this->senates->all();
+
         $this->layout->bodyID = 'senates-page';
         $this->layout->activeMenuItem = 'de-gsv';
-        $this->layout->content = View::make('de-gsv.senates.index');
+        $this->layout->content = View::make('de-gsv.senates.index')
+            ->with('senates', $senates);
     }
 
-    public function showSenate($senate)
+    public function showSenate($id)
     {
+        $senates = $this->senates->all();
+        $senate = $this->senates->byId($id);
+        
         $this->layout->bodyID = 'senate-page';
         $this->layout->activeMenuItem = 'de-gsv';
-        $this->layout->content = View::make('de-gsv.senates.index');
-        $this->layout->content->senate = View::make('de-gsv.senates.' . $senate);
+        $this->layout->content = View::make('de-gsv.senates.single')
+            ->with('currentSenate', $senate)
+            ->with('senates', $senates);
     }
 
     public function showContact()
