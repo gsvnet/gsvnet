@@ -75,7 +75,7 @@ class EventController extends BaseController {
             ->with('types', Config::get('gsvnet.eventTypes'));
 
         // Setup metadata
-        $this->layout->title        = 'Activitiet - ' . $event->title . ' - GSVnet';
+        $this->layout->title        = $event->title . ' - activiteiten - GSVnet';
         $this->layout->description  = $event->description;
         $this->layout->activeMenuItem = 'activiteiten';
         $this->layout->keywords     = 'Activiteiten, feesten, borrels';

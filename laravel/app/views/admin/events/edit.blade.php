@@ -6,7 +6,8 @@
             ->action(action('Admin\EventController@update', $event->id))
             ->method('PUT')
     }}
-        {{ Former::populate( $event ) }}
+        {{ Former::populate( $event->resource ) }}
+        {{ Former::populateField('start_date', $event->startDateYearMonthDay)) }}
 
         @include('admin.events._form')
 

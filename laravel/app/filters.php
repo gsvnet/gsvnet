@@ -14,7 +14,7 @@
 App::before(function($request)
 {
 	// Set locale to Dutch
-	setlocale(LC_ALL, 'nld_nld');
+	setlocale(LC_ALL, 'nl_NL');
 });
 
 

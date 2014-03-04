@@ -8,4 +8,11 @@ class ProfilePresenter extends BasePresenter
     {
         $this->resource = $profile;
     }
+
+    public function birthday()
+    {
+		$day = Carbon::createFromFormat('Y-m-d', $this->resource->birthdate);
+
+    	return $day->formatLocalized('%e %B');
+    }
 }
