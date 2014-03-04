@@ -3,7 +3,7 @@
     <div class="column-holder">
         <h1>{{{$currentSenate->nameWithYear}}}</h1>
         <div class="main-content has-border-bottom" role="main">
-            {{{$currentSenate->body}}}
+            {{ $currentSenate->body }}
         </div>
 
         <div class="secondary-column">

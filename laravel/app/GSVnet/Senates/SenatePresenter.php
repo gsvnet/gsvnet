@@ -18,4 +18,20 @@ class SenatePresenter extends BasePresenter
 
         return $string;
     }
+
+    public function body()
+    {
+        $body = $this->resource->body;
+        //$body = $this->removeDoubleSpaces($body);
+        $body = $this->convertMarkdown($body);
+        // $body = $this->convertNewlines($body);
+        // $body = $this->formatGists($body);
+        // $body = $this->linkify($body);
+        return $body;
+    }
+
+    private function convertMarkdown($content)
+    {
+        return \App::make('GSVnet\Markdown\HtmlMarkdownConvertor')->convertMarkdownToHtml($content);
+    }
 }
