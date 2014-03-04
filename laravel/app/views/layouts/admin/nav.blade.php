@@ -30,7 +30,7 @@
 
     @if (Permission::has('senates.manage'))
     <a href="{{ URL::action('Admin\SenateController@index') }}" class="list-group-item {{ Request::segment(2) == 'senaten' ? 'active' : '' }}">
-        <i class='glyphicon glyphicon-hdd'></i> Senaten
+        <i class='glyphicon glyphicon-tower'></i> Senaten
     </a>
     @endif
 

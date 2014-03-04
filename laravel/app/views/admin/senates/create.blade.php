@@ -1,6 +1,6 @@
 <section class='create-album panel panel-default panel-info'>
     <div class="panel-heading add-item">
-        <h4 class="panel-title"><i class="fa fa-plus"></i> Commissie toevoegen <span class="caret"></span></h4>
+        <h4 class="panel-title"><i class="fa fa-plus"></i> Senaat toevoegen <span class="caret"></span></h4>
     </div>
 
     {{
@@ -10,7 +10,7 @@
             ->class('panel-body add-form')
     }}
 
-        @include('admin.committees._form')
+        @include('admin.senates._form')
 
         <button type='submit' class='btn btn-success'>
             <i class="fa fa-check"></i> Toevoegen

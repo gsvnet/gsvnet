@@ -1,20 +1,20 @@
 @section('content')
-    <h2>Commissie bewerken</h2>
+    <h2>Senaat bewerken</h2>
 
     {{
         Former::vertical_open()
-            ->action(action('Admin\SenateController@update', $committee->id))
+            ->action(action('Admin\SenateController@update', $senate->id))
             ->method('PUT')
     }}
-        {{ Former::populate( $committee ) }}
+        {{ Former::populate( $senate->resource ) }}
 
 
         <button type='submit' class='btn btn-success btn-sm pull-right'>
             <i class="glyphicon glyphicon-ok"></i> Opslaan
         </button>
 
-        @include('admin.committees._form')
-        @include('admin.committees.members._form')
+        @include('admin.senates._form')
+        @include('admin.senates.members._form')
 
         <button type='submit' class='btn btn-success'>
             <i class="glyphicon glyphicon-ok"></i> Opslaan
@@ -27,11 +27,11 @@
         }}
     <hr>
 
-    <p>Of verwijder de commissies.</p>
+    <p>Of verwijder de senaat.</p>
 
     {{
         Former::inline_open()
-          ->action(action('Admin\SenateController@destroy', $committee->id))
+          ->action(action('Admin\SenateController@destroy', $senate->id))
           ->method('DELETE')
     }}
         <button type='submit' class='btn btn-danger'>

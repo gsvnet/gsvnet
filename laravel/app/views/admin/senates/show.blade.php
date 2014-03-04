@@ -1,13 +1,10 @@
 @section('content')
     <!-- <a href="{{ URL::action('Admin\SenateController@index') }}">Terug naar albums</a> -->
     <div class="page-header">
-    <h1>{{{ $senate->name }}}</h1>
-
+      <h1>{{{ $senate->name }}}</h1>
     </div>
 
-    <p>
-        {{{ $senate->body }}}
-    </p>
+    <blockquote> {{ $senate->body }} </blockquote>
 
     <h2>Leden</h2>
     <div class="panel panel-primary">
@@ -19,7 +16,7 @@
                     ->method('POST')
             }}
                 {{ Former::text('member')->placeholder('Naam lid')->id('add-user')->label('Lid') }}
-                {{ Former::date('start_date')->label('Start datum')}}
+                {{ Former::text('function')->placeholder('Functie')->label('Functie') }}
                 {{ Former::hidden('member_id')->id('add-user-id')}}
 
                 <button type='submit' class='btn btn-success btn-sm'>

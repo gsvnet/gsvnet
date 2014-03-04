@@ -70,7 +70,7 @@ class SenateController extends BaseController {
     {
         $senate = $this->senates->byId($id);
         $users = $this->users->all();
-        $members = $senate->users;
+        $members = $senate->members;
 
 
         $this->layout->content = View::make('admin.senates.edit')
