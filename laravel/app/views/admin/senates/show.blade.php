@@ -1,5 +1,5 @@
 @section('content')
-    <!-- <a href="{{ URL::action('Admin\CommitteeController@index') }}">Terug naar albums</a> -->
+    <!-- <a href="{{ URL::action('Admin\SenateController@index') }}">Terug naar albums</a> -->
     <div class="page-header">
     <h1>{{{ $senate->name }}}</h1>
 

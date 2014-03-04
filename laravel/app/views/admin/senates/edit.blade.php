@@ -3,7 +3,7 @@
 
     {{
         Former::vertical_open()
-            ->action(action('Admin\CommitteeController@update', $committee->id))
+            ->action(action('Admin\SenateController@update', $committee->id))
             ->method('PUT')
     }}
         {{ Former::populate( $committee ) }}
@@ -31,7 +31,7 @@
 
     {{
         Former::inline_open()
-          ->action(action('Admin\CommitteeController@destroy', $committee->id))
+          ->action(action('Admin\SenateController@destroy', $committee->id))
           ->method('DELETE')
     }}
         <button type='submit' class='btn btn-danger'>

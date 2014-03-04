@@ -42,11 +42,11 @@ class SenatesRepository {
     * Create committee
     *
     * @param array $input
-    * @return Committee
+    * @return Senate
     */
     public function create(array $input)
     {
-        $committee              = new Committee();
+        $committee              = new Senate();
         $committee->name        = $input['name'];
         $committee->body        = $input['description'];
 
@@ -60,7 +60,7 @@ class SenatesRepository {
     *
     * @param int $id
     * @param array $input
-    * @return Committee
+    * @return Senate
     */
     public function update($id, array $input)
     {

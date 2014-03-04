@@ -5,7 +5,7 @@
 
     {{
         Former::vertical_open()
-            ->action(action('Admin\CommitteeController@store'))
+            ->action(action('Admin\SenateController@store'))
             ->method('POST')
             ->class('panel-body add-form')
     }}
