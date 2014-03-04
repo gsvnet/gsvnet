@@ -9,7 +9,9 @@
 		"fzaninotto/faker": "1.2.*@dev",
 		"intervention/image": "dev-master",
 		"thomaswelton/laravel-gravatar": "dev-master",
-		"mccool/laravel-auto-presenter": "*"
+		"mccool/laravel-auto-presenter": "*",
+        "michelf/php-markdown": "1.4.*@dev",
+        "nickcernis/html-to-markdown": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
