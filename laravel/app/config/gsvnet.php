@@ -35,6 +35,14 @@ return array(
 		'minYear' => date('Y') - 2
 	),
 
+	'senateFunctions' => array(
+		1 => 'Praeses',
+		2 => 'Assessor Primus',
+		3 => 'Assessor Secundus',
+		4 => 'Abactis',
+		5 => 'Fiscus'
+	),
+
 	'months' => array(
         'januari' => '01',
         'februari' => '02',
