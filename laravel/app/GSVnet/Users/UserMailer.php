@@ -6,17 +6,9 @@ use Config;
 class UserMailer extends Mailer {
 
     /**
-    *   Send the user an approve mail
-    */
-    public function approve($user)
-    {
-
-    }
-
-    /**
     *   Sends the user a welcome message when he has registered
     */
-    public function welcome($user)
+    public function registered($user)
     {
         $data = ['user' => $user];
         // Send user a welcome message
@@ -25,12 +17,20 @@ class UserMailer extends Mailer {
         $this->sendTo(Config::get('gsvnet.email.admin'), 'Nieuwe gebruiker', 'emails.admin.registered', $data);
     }
 
-    public function join($user)
+    /**
+    *   Send an email to the user and the membership committee
+    */
+    public function membership($user)
     {
         $data = ['user' => $user];
         $this->sendTo($user->email, 'Aanmelding word verwerkt', 'emails.users.join', $data);
 
-        $this->sendTo($senate, 'Aanmelding: ' . $user->full_name, 'emails.users.application', $data);
+        $this->sendTo(Config::get(
+            'gsvnet.email.membership',
+            'Aanmelding: ' . $user->full_name,
+            'emails.membership.application',
+            $data
+        );
     }
 
     /**
@@ -40,7 +40,7 @@ class UserMailer extends Mailer {
     public function membershipAccepted($user)
     {
         $data = ['user' => $user];
-        $this->sendTo($user->email, 'Welkom', 'emails.users.accepted', $data);
+        $this->sendTo($user->email, 'Aanmelding geaccpeteerd', 'emails.users.accepted', $data);
     }
 
     /**

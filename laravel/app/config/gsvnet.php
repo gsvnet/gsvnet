@@ -59,7 +59,9 @@ return array(
     ),
 
     'email' => array(
-        'admin'  => 'markredeman@gmail.com', //'webcie@gsvnet.nl',
-        'senate' => 'senaat@gsvnet.nl',
+        'admin'         => 'webcie@gsvnet.nl',
+        'senate'        => 'senaat@gsvnet.nl',
+        'membership'    => 'novcie@gsvnet.nl',
+        'profile'       => 'abactis@gsvnet.nl'
     )
 );

@@ -8,8 +8,15 @@ abstract class Mailer {
     {
         Mail::queue($view, $data, function($message) use($email, $subject)
         {
-            $message->to($email)
-                    ->subject($subject);
+            if (is_array($email))
+            {
+                foreach ($email as $m)
+                {
+                    $message->to($m)->subject($subject);
+                }
+            } else {
+                $message->to($email)->subject($subject);
+            }
         });
     }
 

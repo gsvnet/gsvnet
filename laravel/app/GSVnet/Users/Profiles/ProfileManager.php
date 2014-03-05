@@ -73,12 +73,11 @@ class ProfileManager
 
             $this->imageHandler->destroy($profile->photo_path);
             $this->uploadPhoto($input);
-
         }
 
         $profile = $this->profiles->update($id, $input);
 
-        Event::fire('profile.updated', ['profile' => $profile]);
+        Event::fire('profile.changed', ['profile' => $profile]);
 
         return $profile;
     }
