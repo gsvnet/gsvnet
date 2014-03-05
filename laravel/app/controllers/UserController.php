@@ -36,11 +36,13 @@ class UserController extends BaseController {
     {
         $member = Auth::user();
         $committees = $member->committees;
+        $senates = $member->senates;
 
         $this->layout->bodyID = 'own-profile-page';
         $this->layout->content = View::make('users.profile')
             ->with('member', $member)
-            ->with('committees', $committees);
+            ->with('committees', $committees)
+            ->with('senates', $senates);
         $this->layout->activeMenuItem = 'intern';
     }
 
@@ -77,20 +79,6 @@ class UserController extends BaseController {
             ->with('members', $members)
             ->with('regions', $regions)
             ->with('yearGroups', $yearGroups);
-        $this->layout->activeMenuItem = 'intern';
-    }
-
-    public function showUser($id)
-    {
-        $member = GSVnet\Users\User::with('profile.yearGroup', 'committeesSorted')->find($id);
-        $committees = $member->committees;
-
-        //dd($member);
-
-        $this->layout->bodyID = 'user-profile-page';
-        $this->layout->content = View::make('users.profile')
-            ->with('member', $member)
-            ->with('committees', $committees);
         $this->layout->activeMenuItem = 'intern';
     }
 

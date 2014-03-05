@@ -1,12 +1,18 @@
 <?php namespace GSVnet\Senates;
 
-use BasePresenter, Carbon\Carbon;
+use BasePresenter, Carbon\Carbon, Config;
 
 class SenatePresenter extends BasePresenter
 {
     public function __construct(Senate $senate)
     {
         $this->resource = $senate;
+    }
+
+    public function senateFunction()
+    {
+        $functions = Config::get('gsvnet.senateFunctions');
+        return $functions[$this->pivot->function];
     }
 
     public function nameWithYear()

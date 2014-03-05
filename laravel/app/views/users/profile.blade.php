@@ -43,6 +43,17 @@
                     </ul>
 				</div>
 				<div class="content-column">
+					@if(count($senates) > 0)
+						<h2>Senaat</h2>
+						<ul class="unstyled-list title-description-list">
+							@foreach ($senates as $senate)
+								<li>
+									<span class="list-title">{{ link_to_action('AboutController@showSenate', $senate->nameWithYear, [$senate->id]) }}</span>
+									<span class="list-description">{{ $senate->senateFunction }}</span>
+								</li>
+							@endforeach
+						</ul>
+					@endif
 					{{-- Show committees --}}
 					@if(count($committees) > 0)
 						<h2>Commissies</h2>
