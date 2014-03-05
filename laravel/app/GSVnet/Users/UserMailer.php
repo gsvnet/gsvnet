@@ -18,6 +18,16 @@ class UserMailer extends Mailer {
     }
 
     /**
+    *
+    */
+    public function activated($user)
+    {
+        $data = ['user' => $user];
+        // Send user an email informing that his account wasd approved
+        $this->sendTo($user->email, 'Welkom', 'emails.users.approved', $data);
+    }
+
+    /**
     *   Send an email to the user and the membership committee
     */
     public function membership($user)
@@ -25,8 +35,8 @@ class UserMailer extends Mailer {
         $data = ['user' => $user];
         $this->sendTo($user->email, 'Aanmelding word verwerkt', 'emails.users.join', $data);
 
-        $this->sendTo(Config::get(
-            'gsvnet.email.membership',
+        $this->sendTo(
+            Config::get('gsvnet.email.membership'),
             'Aanmelding: ' . $user->full_name,
             'emails.membership.application',
             $data

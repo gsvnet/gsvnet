@@ -9,7 +9,7 @@ class EventsTableSeeder extends Seeder {
 
         $faker = Faker\Factory::create('en_US');
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 200; $i++) {
             $randHour = rand(0, 22);
             $startdate = $faker->dateTimeBetween('now', '+1 year');
 

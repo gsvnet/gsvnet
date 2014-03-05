@@ -50,12 +50,24 @@ class UserManager
     }
 
     /**
+    *
+    */
+    public function activateUser($id)
+    {
+        $user = $this->users->byId($id);
+        $this->users->activateUser($id);
+
+        Event::fire('user.activated', ['user' => $user]);
+    }
+
+    /**
     *   Activates user and sends mail
     */
     public function acceptMembership($id)
     {
+        $user = $this->users->byId($id);
         $this->users->acceptMembership($id);
 
-        Event::fire('user.activated', ['user' => $user]);
+        Event::fire('potential.accepted', ['user' => $user]);
     }
 }

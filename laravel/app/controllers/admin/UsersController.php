@@ -4,6 +4,7 @@ use View, Input, Redirect;
 
 use GSVnet\Users\UsersRepository;
 use GSVnet\Users\UserValidator;
+use GSVnet\Users\UserManager;
 
 class UsersController extends BaseController {
 
@@ -11,9 +12,11 @@ class UsersController extends BaseController {
     protected $validator;
 
     public function __construct(
+        UserManager $userManager,
         UserValidator $validator,
         UsersRepository $users)
     {
+        $this->userManager = $userManager;
         $this->validator = $validator;
         $this->users = $users;
 
@@ -138,4 +141,22 @@ class UsersController extends BaseController {
         return Redirect::action('Admin\UsersController@index')
             ->with('message', '<strong>' . $user->name . '</strong> is succesvol verwijderd.');
     }
+
+    public function activate($id)
+    {
+        $user = $this->userManager->activateUser($id);
+
+        return Redirect::action('Admin\UsersController@index')
+            ->with('message', '<strong>' . $user->name . '</strong> is succesvol geactiveerd.');
+    }
+
+    public function accepted($id)
+    {
+        $user = $this->userManager->acceptedUser($id);
+
+        return Redirect::action('Admin\UsersController@index')
+            ->with('message', '<strong>' . $user->name . '</strong> is succesvol geaccepteerd.');
+    }
+
+
 }

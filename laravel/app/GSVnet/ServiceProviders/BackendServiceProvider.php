@@ -16,11 +16,13 @@ class BackendServiceProvider extends ServiceProvider {
     {
         // Sends email to user and admin group
         Event::listen('user.registered', 'GSVnet\Users\UserMailer@registered');
+        Event::listen('user.activated', 'GSVnet\Users\UserMailer@activated');
         //
         Event::listen('potential.registered', 'GSVnet\Users\UserMailer@membership');
         Event::listen('potential.accepted', 'GSVnet\Users\UserMailer@membershipAccepted');
 
-        Event::listen('profile.changed', 'GSVnet\Users\ProfileMailer@changed');
+        // Send mail to inform people about a possible change of address
+        // Event::listen('profile.changed', 'GSVnet\Users\ProfileMailer@changed');
     }
 
     /**
