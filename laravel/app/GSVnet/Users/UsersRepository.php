@@ -93,6 +93,18 @@ class UsersRepository {
     }
 
     /**
+    *   Activate user's account
+    */
+    public function activateUser($id)
+    {
+        $user = $this->byId($id);
+        $user->approved = true;
+        $user->save();
+
+        return $user;
+    }
+
+    /**
     *   Accept user's membership
     *   This method sets the user's type to member
     */

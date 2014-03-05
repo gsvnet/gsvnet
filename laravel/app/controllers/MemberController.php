@@ -72,11 +72,11 @@ class MemberController extends BaseController {
     public function store()
     {
         $user = Auth::user();
-        $input = Input::except(['potential-image']);
+        $input = Input::except(['photo_path']);
 
-        if (Input::hasFile('potential-image'))
+        if (Input::hasFile('photo_path'))
         {
-            $input['photo'] = Input::file('potential-image');
+            $input['photo_path'] = Input::file('photo_path');
         }
 
         // Construct a date from seperate day, month and year fields.

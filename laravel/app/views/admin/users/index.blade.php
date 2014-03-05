@@ -1,32 +1,39 @@
 @section('content')
-<ul class="nav nav-tabs nav-justified">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <ul class="nav nav-tabs">
+        <li class="{{ Request::segment(3) == '' ? 'active' : '' }}">
+            <a href="{{ URL::action('Admin\UsersController@index') }}">
+                <i class='glyphicon glyphicon-user'></i> Alle
+            </a>
+        </li>
 
         <li class="{{ Request::segment(3) == 'gasten' ? 'active' : '' }}">
-        <a href="{{ URL::action('Admin\UsersController@showGuests') }}">
-            <i class='glyphicon glyphicon-user'></i> Gasten
-        </a>
+            <a href="{{ URL::action('Admin\UsersController@showGuests') }}">
+                <i class='glyphicon glyphicon-user'></i> Gasten
+            </a>
         </li>
 
         <li class="{{ Request::segment(3) == 'potentiaal' ? 'active' : '' }}">
-        <a href="{{ URL::action('Admin\UsersController@showPotentials') }}">
-            <i class='glyphicon glyphicon-user'></i> Potentiaalen
-        </a>
+            <a href="{{ URL::action('Admin\UsersController@showPotentials') }}">
+                <i class='glyphicon glyphicon-user'></i> Potentiaalen
+            </a>
         </li>
 
         <li class="{{ Request::segment(3) == 'leden' ? 'active' : '' }}">
-        <a href="{{ URL::action('Admin\UsersController@showMembers') }}">
-            <i class='glyphicon glyphicon-user'></i> Leden
-        </a>
+            <a href="{{ URL::action('Admin\UsersController@showMembers') }}">
+                <i class='glyphicon glyphicon-user'></i> Leden
+            </a>
         </li>
 
         <li class="{{ Request::segment(3) == 'oud-leden' ? 'active' : '' }}">
-        <a href="{{ URL::action('Admin\UsersController@showFormerMembers') }}">
-            <i class='glyphicon glyphicon-user'></i> Oud leden
-        </a>
+            <a href="{{ URL::action('Admin\UsersController@showFormerMembers') }}">
+                <i class='glyphicon glyphicon-user'></i> Oud leden
+            </a>
         </li>
-</ul>
-    <div class="list-group">
-    </div>
+    </ul>
+</div>
+  <div class="panel-body">
 
     <div class="page-header">
     	<h1>Gebruikers</h1>
@@ -81,5 +88,8 @@
 	</table>
 
 	{{ $users->links() }}
+
+  </div>
+</div>
 
 @stop
