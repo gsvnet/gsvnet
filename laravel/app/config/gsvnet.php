@@ -56,5 +56,10 @@ return array(
         'oktober' => '10',
         'november' => '11',
         'december' => '12'
+    ),
+
+    'email' => array(
+        'admin'  => 'markredeman@gmail.com', //'webcie@gsvnet.nl',
+        'senate' => 'senaat@gsvnet.nl',
     )
 );

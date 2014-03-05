@@ -19,7 +19,7 @@ class SessionController extends BaseController {
             // If becoming member, return correctly.
             if ($becomingMember)
             {
-                $intended = URL::action('MemberController@wordLid') . '#become-member';
+                $intended = URL::action('MemberController@store') . '#become-member';
             }
             return Redirect::intended($intended);
         }
@@ -27,7 +27,7 @@ class SessionController extends BaseController {
         // Auth failure! lets go back to the login
         if ($becomingMember)
         {
-            return Redirect::to(URL::action('MemberController@wordLid') . '#login-form')->with('login_errors', true);
+            return Redirect::to(URL::action('MemberController@store') . '#login-form')->with('login_errors', true);
         }
 
         return Redirect::action('SessionController@getLogin')->with('login_errors', true);
