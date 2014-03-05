@@ -1,5 +1,7 @@
 <?php namespace GSVnet\Users;
 
+use Config;
+
 class UsersRepository {
 
     /**
@@ -86,6 +88,23 @@ class UsersRepository {
     {
         $user = $this->byId($id);
         $user->delete();
+
+        return $user;
+    }
+
+    /**
+    *   Accept user's membership
+    *   This method sets the user's type to member
+    */
+    public function acceptMembership($id)
+    {
+        $user = $this->byId($id);
+        if ($user->type != Config::get('gsvnet.userTypes.potential'))
+        {
+            throw new Exception;
+        }
+        $user->type = Config::get('gsvnet.userTypes.member');
+        $user->save();
 
         return $user;
     }

@@ -1,6 +1,7 @@
 <?php namespace GSVnet\Users;
 
 use Event;
+use Config;
 
 use GSVnet\Users\UserCreatorValidator;
 
@@ -35,7 +36,7 @@ class UserManager
         $user = $this->users->create($input);
 
         // Send email etc.
-        Event::fire('user.regitered');
+        Event::fire('user.registered', ['user' => $user]);
 
         return $user;
     }
@@ -46,5 +47,15 @@ class UserManager
         // Save new properties
         $user = $this->users->update($id, $input);
         return $user;
+    }
+
+    /**
+    *   Activates user and sends mail
+    */
+    public function acceptMembership($id)
+    {
+        $this->users->acceptMembership($id);
+
+        Event::fire('user.activated', ['user' => $user]);
     }
 }
