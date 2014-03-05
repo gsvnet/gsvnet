@@ -7,7 +7,7 @@
         <div id="preview-image">
         </div>
 
-            {{ Former::file('potential-image')->label('Upload een foto van jezelf')->accept('image') }}
+            {{ Former::file('photo_path')->label('Upload een foto van jezelf')->accept('image') }}
             {{ Former::text('potential-address')->label('Adres') }}
             {{ Former::text('potential-zip-code')->label('Postcode')->size(6) }}
             {{ Former::text('potential-town')->label('Woonplaats') }}

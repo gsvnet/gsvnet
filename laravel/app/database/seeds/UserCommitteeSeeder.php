@@ -30,15 +30,17 @@ class UserCommitteeSeeder extends Seeder {
                 $startdate = $faker->dateTimeBetween('-3 years', '-1 month');
                 $user->committees()->attach($committees[$i], array(
                     'start_date' => $startdate->format('Y-m-d'),
-                    'end_date' => $startdate->add(date_interval_create_from_date_string('5 year'))->format('Y-m-d')
+                    'end_date' => $startdate->add(date_interval_create_from_date_string('1 year'))->format('Y-m-d')
                 ));
             }
 
         }
 
+        $startdate = $faker->dateTimeBetween('-3 years', '-1 month');
+
         $mark = GSVnet\Users\User::where('firstname', '=', 'mark')->first();
         $webcie = GSVnet\Committees\Committee::where('unique_name', '=', 'webcie')->first();
-        $mark->committees()->save($webcie);
+        $mark->committees()->save($webcie, array('start_date' => $startdate));
 
         $this->command->info('Added some people to committees ...');
 

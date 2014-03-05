@@ -9,7 +9,7 @@
         <div class="secondary-column">
             <div class="content-columns content-column">
                 <h2>Leden</h2>
-                <ul class="unstyled-list small-event-list">
+                <ul class="unstyled-list title-description-list">
                     @foreach($members as $member)
                     <li>{{{$member->full_name}}} ({{{$member->senateFunction}}})</li>
                     @endforeach
