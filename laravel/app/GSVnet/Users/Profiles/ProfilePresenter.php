@@ -22,4 +22,25 @@ class ProfilePresenter extends BasePresenter
     		return $day->formatLocalized('%e %B');	
 		}
     }
+
+    public function birthdayWithYear()
+    {
+		$day = Carbon::createFromFormat('Y-m-d', $this->resource->birthdate);
+		$today = Carbon::today();
+
+		if($day->format('Y-m') == $today->format('Y-m'))
+		{
+			return 'Vandaag';
+		} else 
+		{
+    		return $day->formatLocalized('%e %B %Y');	
+		}
+    }
+
+    public function genderLocalized()
+    {
+    	$gender = $this->resource->gender;
+
+    	return $gender == 'male' ? 'Man' : 'Vrouw';
+    }
 }

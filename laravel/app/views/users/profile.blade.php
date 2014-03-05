@@ -7,11 +7,17 @@
 
 		<div class="secondary-column">
 			<p>{{ $member->profile->photo }}</p>
+			<h2>Adresgegevens</h2>
+			<address>
+				{{{ $member->full_name }}} <br>
+				{{{ $member->profile->address }}} <br>
+				{{{ $member->profile->zip_code }}} {{{ $member->profile->town }}}
+			</address>
 		</div>
 		<div class="main-content">
 			<div class="content-columns">
 				<div class="content-column with-padding">
-					<h2>Account</h2>
+					<h2>Wat gegevens</h2>
 
                     <ul class="unstyled-list title-description-list">
                         <li>
@@ -23,11 +29,18 @@
                             <span class="list-description">{{{$member->email}}}</span>
                         </li>
                         <li>
+                            <span class="list-title">Telefoonnummer</span>
+                            <span class="list-description"><a href="{{{$member->profile->phone}}}">{{{$member->profile->phone}}}</a></span>
+                        </li>
+                        <li>
+                            <span class="list-title">Lid?</span>
+                            <span class="list-description">{{{$member->membershipType}}}</span>
+                        </li>
+                        <li>
                             <span class="list-title">Op de site sinds</span>
                             <span class="list-description">{{{$member->registeredSince}}}</span>
                         </li>
                     </ul>
-					
 				</div>
 				<div class="content-column">
 					{{-- Show committees --}}
@@ -44,6 +57,47 @@
 					@else
 						<p>Geen commissies</p>
 					@endif
+				</div>
+			</div>
+			<div class="content-columns">
+				<div class="content-column">
+					<h2>Persoonlijke gegevens</h2>
+
+                    <ul class="unstyled-list title-description-list">
+                        <li>
+                            <span class="list-title">Geboortedatum</span>
+                            <span class="list-description">{{{$member->profile->birthdayWithYear}}}</span>
+                        </li>
+                        <li>
+                            <span class="list-title">Geslacht</span>
+                            <span class="list-description">{{{$member->profile->genderLocalized}}}</span>
+                        </li>
+                        <li>
+                            <span class="list-title">Kerkgezindte</span>
+                            <span class="list-description">{{{$member->profile->church}}}</span>
+                        </li>
+                        <li>
+                            <span class="list-title">Studie</span>
+                            <span class="list-description">{{{$member->profile->study}}}</span>
+                        </li>
+                    </ul>
+				</div>
+				<div class="content-column">
+					<h2>Gegevens ouders</h2>
+
+                    <ul class="unstyled-list title-description-list">
+                    	<li>
+                    		<span class="list-title">Adres</span>
+							<address>
+								{{{ $member->profile->parent_address }}} <br>
+								{{{ $member->profile->parent_zip_code }}} {{{ $member->profile->parent_town }}}
+							</address>
+                    	</li>
+                        <li>
+                            <span class="list-title">Telefoon</span>
+                            <span class="list-description">{{{$member->profile->parent_phone}}}</span>
+                        </li>
+                    </ul>
 				</div>
 			</div>
 
