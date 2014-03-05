@@ -1,10 +1,19 @@
-#login-dialog {
+.dialog {
 	background: white;
-	padding: 2em;
 	text-align: left;
-	max-width: 400px;
 	margin: 2em auto;
 	position: relative;
+	max-width: 500px;
+}
+
+.dialog-main {
+	padding: 2em;
+}
+
+.dialog-footer {
+	padding: 2em;
+	background: $lightGrey;
+	border-top: 1px solid $grey;
 }
 
 /**
