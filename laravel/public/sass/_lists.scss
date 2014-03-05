@@ -21,7 +21,7 @@
 	list-style-type: none;
 }
 
-.small-event-list {
+.title-description-list {
 	margin-bottom: 2em;
 
 	li {
@@ -30,7 +30,10 @@
 
 	.list-description {
 		display: block;
-		color: $darkGrey;
+
+		&.grey {
+			color: $darkGrey;
+		}
 	}
 
 	.list-title {
