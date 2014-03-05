@@ -20,4 +20,33 @@ class UserPresenter extends BasePresenter
         $from = \GSVnet\Carbon::createFromFormat('Y-m-d H:i:s', $this->resource->created_at);
     	return $from->diffForHumans();
     }
+
+    public function membershipType()
+    {
+    	$string = '';
+    	switch($this->resource->type)
+    	{
+    		case 'visitor':
+    			$string .= 'Gast';
+			break;
+    		case 'potential':
+    			$string .= 'Noviet';
+			break;
+    		case 'member':
+    			$string .= 'Lid';
+			break;
+    		case 'formerMember':
+    			$string .= 'Oud-lid';
+    			if(isset($this->resource->profile))
+    			{
+    				$string .= $this->resource->profile->reunist == 1 ? ' en reünist' : ', niet reünist';
+    			}
+			break;
+			default:
+				$string .= 'Onbekend';
+			break;
+    	}
+
+    	return $string;
+    }
 }
