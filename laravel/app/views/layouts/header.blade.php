@@ -114,7 +114,7 @@ $menuitems = [
         </div>
 
         <h1 class="logo">
-            <a class="logo-link" href="/"><span>Gereformeerde Studentenvereniging Groningen</span></a>
+            <a class="logo-link i-gsv-top" href="/"><span>Gereformeerde Studentenvereniging Groningen</span></a>
         </h1>
         <ul id="main-menu" class="nav-bar-links">
 <?php

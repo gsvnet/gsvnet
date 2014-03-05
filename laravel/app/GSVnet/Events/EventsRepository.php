@@ -110,6 +110,7 @@ class EventsRepository {
         $event->title       = $properties['title'];
         $event->description = $properties['description'];
         $event->location    = $properties['location'];
+        $event->type        = $properties['type'];
         $event->start_date  = $properties['start_date'];
         $event->end_date    = $properties['end_date'];
         $event->whole_day   = $properties['whole_day'];

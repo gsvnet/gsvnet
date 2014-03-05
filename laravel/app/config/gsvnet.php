@@ -20,7 +20,16 @@ return array(
 		'intellectual',
 		'social',
 		'collegiate',
-		'christian'
+		'christian',
+		'gsv'
+	),
+
+	'eventTypesPresented' => array(
+		'Intellectueel',
+		'Sociaal',
+		'Studentikoos',
+		'Christelijk',
+		'GSV'
 	),
 
 	'regions' => array(
