@@ -83,12 +83,14 @@ class UserController extends BaseController {
     public function showUser($id)
     {
         $member = GSVnet\Users\User::with('profile.yearGroup', 'committeesSorted')->find($id);
+        $committees = $member->committees;
 
         //dd($member);
 
         $this->layout->bodyID = 'user-profile-page';
         $this->layout->content = View::make('users.profile')
-            ->with('member', $member);
+            ->with('member', $member)
+            ->with('committees', $committees);
         $this->layout->activeMenuItem = 'intern';
     }
 

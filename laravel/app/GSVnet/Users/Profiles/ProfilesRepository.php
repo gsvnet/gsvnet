@@ -27,21 +27,28 @@ class ProfilesRepository {
     }
 
     /**
-    *   Search for members
+    *   Search for users + profiles
     *
     *   @param string $search
     *   @param int $region
     *   @param int $yearGroup
+    *   @param int/array $type
     *
     *   @return UserProfile[]
     */
-    private function search($search = '', $region = null, $yearGroup = null)
+    private function search($search = '', $region = null, $yearGroup = null, $type = 2)
     {
-        $member = Config::get('gsvnet.userTypes.member');
-
         // Initialize basic query
-        $query = UserProfile::join('users', function($join) use ($member) {
-            $join->on('users.id', '=', 'user_profiles.user_id')->where('users.type', '=', $member);
+        $query = UserProfile::join('users', function($join) use ($type) {
+            $join->on('users.id', '=', 'user_profiles.user_id');
+
+            if(is_array($type))
+            {
+                $join->whereIn('users.type', $type);
+            } else 
+            {
+                $join->where('users.type', '=', $type);
+            }
         })->orderBy('users.lastname');
 
         if ( ! empty($search))

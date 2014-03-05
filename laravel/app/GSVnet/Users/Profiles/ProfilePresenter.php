@@ -12,7 +12,14 @@ class ProfilePresenter extends BasePresenter
     public function birthday()
     {
 		$day = Carbon::createFromFormat('Y-m-d', $this->resource->birthdate);
+		$today = Carbon::today();
 
-    	return $day->formatLocalized('%e %B');
+		if($day->format('Y-m') == $today->format('Y-m'))
+		{
+			return 'Vandaag';
+		} else 
+		{
+    		return $day->formatLocalized('%e %B');	
+		}
     }
 }

@@ -150,13 +150,13 @@
                 <div class="content-column">
                     @if(count($events) > 0)
                         <h2>Komende activiteiten</h2>
-                        <ul class="unstyled-list small-event-list">
+                        <ul class="unstyled-list title-description-list">
                         @foreach ($events as $event)
                             <li>
                                 <span class="list-title">
                                 {{ link_to_action('EventController@showEvent', $event->title, [$event->id])}}
                                 </span>
-                                <time class="list-description">{{ $event->from_to_short }}</time>
+                                <time class="list-description grey">{{ $event->from_to_short }}</time>
                             </li>
                         @endforeach
                         </ul>
@@ -166,12 +166,12 @@
                 
 
                     <h2>Verjaardagen</h2>
-                    <ul class="unstyled-list small-event-list">
+                    <ul class="unstyled-list title-description-list">
                         @if ($birthdays->count())
                             @foreach ($birthdays as $profile)
                                 <li>
                                     <span class="list-title">{{{ $profile->user->full_name }}}</span>
-                                    <time class="list-description">{{{ $profile->birthday }}}</time>
+                                    <time class="list-description grey">{{{ $profile->birthday }}}</time>
                                 </li>
                             @endforeach
                         @else

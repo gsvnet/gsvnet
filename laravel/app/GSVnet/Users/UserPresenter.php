@@ -14,4 +14,10 @@ class UserPresenter extends BasePresenter
         $functions = Config::get('gsvnet.senateFunctions');
         return $functions[$this->pivot->function];
     }
+
+    public function registeredSince()
+    {
+        $from = \GSVnet\Carbon::createFromFormat('Y-m-d H:i:s', $this->resource->created_at);
+    	return $from->diffForHumans();
+    }
 }
