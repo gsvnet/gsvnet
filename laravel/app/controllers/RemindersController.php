@@ -2,6 +2,13 @@
 
 class RemindersController extends BaseController {
 
+
+    public function __construct()
+    {
+        Former::framework('TwitterBootstrap3');
+    	parent::__construct();
+    }
+
 	/**
 	 * Display the password reminder view.
 	 *

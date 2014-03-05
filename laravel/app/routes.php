@@ -137,4 +137,4 @@ Route::group([
 });
 
 
-Route::controller('password', 'RemindersController');
+Route::controller('wachtwoord-vergeten', 'RemindersController');
