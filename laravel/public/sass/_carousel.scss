@@ -1,17 +1,23 @@
 .carousel {
   position: relative;
 }
-.carousel-make-height {
-  position: relative;
-  padding-bottom: 33.75%;
-}
 .carousel-inner {
-  position: absolute;
+  position: relative;
   overflow: hidden;
   width: 100%;
   top: 0;
   left: 0;
 }
+
+.carousel-make-height {
+  position: relative;
+  padding-bottom: 33.75%;
+
+  .carousel-inner {
+    position: absolute;
+  }
+}
+
 .carousel-inner > .item {
   display: none;
   position: relative;
