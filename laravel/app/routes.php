@@ -125,8 +125,8 @@ Route::group([
         Route::group(['prefix' => 'gebruikers'], function() {
             Route::resource('/',      'UsersController');
 
-            Route::get('/{$user}/activate', 'UsersController@activate');
-            Route::get('/{$user}/accept',   'UsersController@accept');
+            Route::get('/{$user}/activeren', 'UsersController@activate');
+            Route::get('/{$user}/accepteer-lid',   'UsersController@accept');
 
             Route::get('/gasten',     'UsersController@showGuests');
             Route::get('/potentiaal', 'UsersController@showPotentials');
