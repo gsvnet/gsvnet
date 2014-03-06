@@ -148,6 +148,11 @@
         <div class="secondary-column">
             <div class="content-columns">
                 <div class="content-column">
+                    {{--@if(Auth::guest() || !Auth::user()->isOrWasMember())
+                        <h2>Lid worden!</h2>
+                        <p>Je kunt lid worden</p>
+                        <p><a href="/" class="button">Lid worden</a></p>
+                    @endif--}}
                     @if(count($events) > 0)
                         <h2>Komende activiteiten</h2>
                         <ul class="unstyled-list title-description-list">
