@@ -2,7 +2,7 @@
 	<div class="column-holder">
 		<h1>{{{ $member->full_name }}}</h1>
 		@if($member->wasOrIsMember())
-			<p>{{{$member->profile->yearGroup->name}}}, {{{$member->profile->region_name}}}</p>
+			<p>Lid van {{{$member->profile->yearGroup->nameWithYear}}} en {{{$member->profile->region_name}}}</p>
 		@endif
 
 		<div class="secondary-column">
@@ -26,19 +26,15 @@
                         </li>
                         <li>
                             <span class="list-title">Email</span>
-                            <span class="list-description">{{{$member->email}}}</span>
+                            <span class="list-description">{{HTML::mailto($member->email)}}</span>
                         </li>
                         <li>
                             <span class="list-title">Telefoonnummer</span>
-                            <span class="list-description"><a href="{{{$member->profile->phone}}}">{{{$member->profile->phone}}}</a></span>
+                            <span class="list-description"><a href="tel:{{{$member->profile->phone}}}" title="Bel {{{$member->firstname}}}">{{{$member->profile->phone}}}</a></span>
                         </li>
                         <li>
                             <span class="list-title">Lid?</span>
                             <span class="list-description">{{{$member->membershipType}}}</span>
-                        </li>
-                        <li>
-                            <span class="list-title">Op de site sinds</span>
-                            <span class="list-description">{{{$member->registeredSince}}}</span>
                         </li>
                     </ul>
 				</div>
@@ -48,7 +44,7 @@
 						<ul class="unstyled-list title-description-list">
 							@foreach ($senates as $senate)
 								<li>
-									<span class="list-title">{{ link_to_action('AboutController@showSenate', $senate->nameWithYear, [$senate->id]) }}</span>
+									<span class="list-title">{{ link_to_action('AboutController@showSenate', $senate->nameWithYear, [$senate->id], ['title' => 'Meer informatie over Senaat ' . $senate->name]) }}</span>
 									<span class="list-description">{{ $senate->senateFunction }}</span>
 								</li>
 							@endforeach
@@ -60,7 +56,7 @@
 						<ul class="unstyled-list title-description-list">
 							@foreach ($committees as $committee)
 								<li>
-									<span class="list-title">{{ link_to_action('AboutController@showCommittee', $committee->name, [$committee->unique_name]) }}</span>
+									<span class="list-title">{{ link_to_action('AboutController@showCommittee', $committee->name, [$committee->unique_name], ['title' => 'Informatie over de ' . $committee->name]) }}</span>
 									<span class="list-description">{{{$committee->from_to}}}</span>
 								</li>
 							@endforeach
@@ -106,7 +102,7 @@
                     	</li>
                         <li>
                             <span class="list-title">Telefoon</span>
-                            <span class="list-description">{{{$member->profile->parent_phone}}}</span>
+                            <span class="list-description"><a href="tel:{{{$member->profile->parent_phone}}}" title="Bel de ouders van {{{$member->firstname}}}">{{{$member->profile->parent_phone}}}</a></span>
                         </li>
                     </ul>
 				</div>
