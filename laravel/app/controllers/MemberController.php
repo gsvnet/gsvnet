@@ -76,7 +76,7 @@ class MemberController extends BaseController {
 
         if (Input::hasFile('photo_path'))
         {
-            $input['photo_path'] = Input::file('photo_path');
+            $input['photo'] = Input::file('photo_path');
         }
 
         // Construct a date from seperate day, month and year fields.
@@ -85,9 +85,9 @@ class MemberController extends BaseController {
         // Check if parent address is the same as potential address
         if (Input::get('parents-same-address', '0') == '1')
         {
-            $input['parents-address'] = $input['potential-address'];
-            $input['parents-town'] = $input['potential-town'];
-            $input['parents-zip-code'] = $input['potential-zip-code'];
+            $input['parents-address']   = $input['potential-address'];
+            $input['parents-town']      = $input['potential-town'];
+            $input['parents-zip-code']  = $input['potential-zip-code'];
         }
 
         // Create the profile and attach it to the user

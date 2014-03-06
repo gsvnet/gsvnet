@@ -9,7 +9,7 @@ use GSVnet\Users\UsersRepository;
 use GSVnet\Users\User;
 
 use GSVnet\Core\ImageHandler;
-
+use GSVnet\Albums\Photos\PhotoStorageException;
 use Event;
 
 
@@ -44,7 +44,6 @@ class ProfileManager
     public function create(User $user, array $input)
     {
         $this->createValidator->validate($input);
-
         // If photo was uploaded, save it
         if (isset($input['photo']))
         {
