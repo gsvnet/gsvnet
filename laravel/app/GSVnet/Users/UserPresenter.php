@@ -49,4 +49,12 @@ class UserPresenter extends BasePresenter
 
     	return $string;
     }
+
+    public function inCommiteeSince()
+    {
+
+        $since = Carbon::createFromFormat('Y-m-d H:i:s', $this->resource->pivot->start_date);
+
+        return $since->formatLocalized('%B %Y');
+    }
 }

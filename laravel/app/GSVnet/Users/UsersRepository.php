@@ -15,6 +15,11 @@ class UsersRepository {
         return User::findOrFail($id);
     }
 
+    public function byIdWithProfileAndYearGroup($id)
+    {
+        return User::with('profile.yearGroup')->findOrFail($id);
+    }
+
     /**
     * Get all users
     *

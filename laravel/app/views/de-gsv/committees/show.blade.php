@@ -10,10 +10,11 @@
 
             <h2>Leden</h2>
 
-            <ul>
-                @foreach ($committee->active_users as $user)
+            <ul class="unstyled-list title-description-list">
+                @foreach ($activeMembers as $member)
                     <li>
-                        {{ $user->fullname }}
+                        <span class="list-title">{{ link_to_action('UserController@showUser', $member->full_name, [$member->id]) }}</span>
+                        <span class="list-description grey">Sinds {{ $member->inCommiteeSince }}</span>
                     </li>
                 @endforeach
             </ul>
