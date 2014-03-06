@@ -2,7 +2,7 @@
 	<div class="column-holder">
 		<h1>{{{ $member->full_name }}}</h1>
 		@if($member->wasOrIsMember())
-			<p>{{{$member->profile->yearGroup->name}}} - {{{$member->profile->region_name}}}</p>
+			<p>{{{$member->profile->yearGroup->name}}}, {{{$member->profile->region_name}}}</p>
 		@endif
 
 		<div class="secondary-column">

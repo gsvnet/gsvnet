@@ -32,12 +32,14 @@ class AboutController extends BaseController {
     {
         $committee = $this->committees->bySlug($slug);
         $committees = $this->committees->all();
+        $activeMembers = $committee->activeMembers;
 
         $this->layout->bodyID = 'committee-page';
         $this->layout->activeMenuItem = 'de-gsv';
         $this->layout->content = View::make('de-gsv.committees.show')
             ->with('committee', $committee)
-            ->with('committees', $committees);
+            ->with('committees', $committees)
+            ->with('activeMembers', $activeMembers);
     }
 
     public function showSenates()

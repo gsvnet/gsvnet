@@ -34,7 +34,7 @@ class UserController extends BaseController {
      */
     public function showProfile()
     {
-        $member = Auth::user();
+        $member = Auth::user()->with('profile.yearGroup');
         $committees = $member->committees;
         $senates = $member->senates;
 
@@ -79,6 +79,23 @@ class UserController extends BaseController {
             ->with('members', $members)
             ->with('regions', $regions)
             ->with('yearGroups', $yearGroups);
+        $this->layout->activeMenuItem = 'intern';
+    }
+
+    /**
+     * Show the user's profile
+     */
+    public function showUser($id)
+    {
+        $member = $this->users->byIdWithProfileAndYearGroup($id);
+        $committees = $member->committees;
+        $senates = $member->senates;
+
+        $this->layout->bodyID = 'own-profile-page';
+        $this->layout->content = View::make('users.profile')
+            ->with('member', $member)
+            ->with('committees', $committees)
+            ->with('senates', $senates);
         $this->layout->activeMenuItem = 'intern';
     }
 

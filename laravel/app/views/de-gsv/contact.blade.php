@@ -28,26 +28,68 @@
 			<div class="content-columns">
 				<div class="content-column">
 					<h3>Senaat</h3>
-					<ul class="unstyled-list">
-						<li><strong>Senaat der GSV</strong>: {{HTML::mailto('senaat@gsvnet.nl')}}</li>
-						<li><strong>Praeses</strong>: {{HTML::mailto('praeses@gsvnet.nl')}}</li>
-						<li><strong>Assessor primus</strong>: {{HTML::mailto('assessorprimus@gsvnet.nl')}}</li>
-						<li><strong>Fiscus</strong>: {{HTML::mailto('fiscus@gsvnet.nl')}}</li>
-						<li><strong>Abactis</strong>: {{HTML::mailto('abactis@gsvnet.nl')}}</li>
-						<li><strong>Assessor secundus</strong>: {{HTML::mailto('assessorsecundus@gsvnet.nl')}}</li>
+					<ul class="unstyled-list title-description-list">
+						<li>
+							<span class="list-title">Senaat der GSV</span>
+							<span class="list-description">{{HTML::mailto('senaat@gsvnet.nl')}}</span>
+						</li>
+						<li>
+							<span class="list-title">Praeses</span>
+							<span class="list-description">{{HTML::mailto('praeses@gsvnet.nl')}}</span>
+						</li>
+						<li>
+							<span class="list-title">Assessor primus</span>
+							<span class="list-description">{{HTML::mailto('assessorprimus@gsvnet.nl')}}</span>
+						</li>
+						<li>
+							<span class="list-title">Fiscus</span>
+							<span class="list-description">{{HTML::mailto('fiscus@gsvnet.nl')}}</span>
+						</li>
+						<li>
+							<span class="list-title">Abactis</span>
+							<span class="list-description">{{HTML::mailto('abactis@gsvnet.nl')}}</span>
+						</li>
+						<li>
+							<span class="list-title">Assessor secundus</span>
+							<span class="list-description">{{HTML::mailto('assessorsecundus@gsvnet.nl')}}</span>
+						</li>
 					</ul>
 				</div>
 				<div class="content-column">
 					<h3>Commissies</h3>
-					<ul class="unstyled-list">
-						<li><strong>Introductieperiode (Novcie)</strong>: {{HTML::mailto('novcie@gsvnet.nl')}}</li>
-						<li><strong>Promotiecommissie (PRescie)</strong>: {{HTML::mailto('prescie@gsvnet.nl')}}</li>
-						<li><strong>Webbeheerder (Webcie)</strong>: {{HTML::mailto('webcie@gsvnet.nl')}}</li>
-						<li><strong>Amicale banden (ABC)</strong>: {{HTML::mailto('abc@gsvnet.nl')}}</li>
-						<li><strong>Lezingen en debatten (OVcie)</strong>: {{HTML::mailto('ovcie@gsvnet.nl')}}</li>
-						<li><strong>Verenigingsblad (SIC-redactie)</strong>: {{HTML::mailto('sicredactie@gsvnet.nl')}}</li>
-						<li><strong>Acquisities (Commercie)</strong>: {{HTML::mailto('commercie@gsvnet.nl')}}</li>
-						<li><strong>Dies Natalis (Diescie)</strong>: {{HTML::mailto('diescie@gsvnet.nl')}}</li>
+					<ul class="unstyled-list title-description-list">
+						<li>
+							<span class="list-title">Introductieperiode (Novcie)</span>
+							<span class="list-description">{{HTML::mailto('novcie@gsvnet.nl')}}</span>
+						</li>
+						<li>
+							<span class="list-title">Promotiecommissie (PRescie)</span>
+							<span class="list-description">{{HTML::mailto('prescie@gsvnet.nl')}}</span>
+						</li>
+						<li>
+							<span class="list-title">Webbeheerder (Webcie)</span>
+							<span class="list-description">{{HTML::mailto('webcie@gsvnet.nl')}}</span>
+						</li>
+						<li>
+							<span class="list-title">Amicale banden (ABC)</span>
+							<span class="list-description">{{HTML::mailto('abc@gsvnet.nl')}}</span>
+						</li>
+						<li>
+							<span class="list-title">Lezingen en debatten (OVcie)</span>
+							<span class="list-description">{{HTML::mailto('ovcie@gsvnet.nl')}}</span>
+						</li>
+						<li>
+							<span class="list-title">Verenigingsblad (SIC-redactie)</span>
+							<span class="list-description">{{HTML::mailto('sicredactie@gsvnet.nl')}}</span>
+						</li>
+						<li>
+							<span class="list-title">Acquisities (Commercie)</span>
+							<span class="list-description">{{HTML::mailto('commercie@gsvnet.nl')}}</span>
+						</li>
+						<li>
+							<span class="list-title">Dies Natalis (Diescie)</span>
+							<span class="list-description">{{HTML::mailto('diescie@gsvnet.nl')}}</span>
+						</li>
 					</ul>
 				</div>
 			</div>
