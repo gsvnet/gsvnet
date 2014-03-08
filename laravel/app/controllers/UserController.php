@@ -34,7 +34,7 @@ class UserController extends BaseController {
      */
     public function showProfile()
     {
-        $member = Auth::user(); //->with('profile.yearGroup');
+        $member = $this->users->byIdWithProfileAndYearGroup(Auth::user()->id);
         $committees = $member->committees;
         $senates = $member->senates;
 
