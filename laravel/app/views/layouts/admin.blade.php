@@ -30,6 +30,7 @@
       </style>
 
     @show
+    <link rel="shortcut icon" href="/favicon.png" />
   </head>
 
 
