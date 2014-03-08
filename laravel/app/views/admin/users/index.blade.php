@@ -43,7 +43,7 @@
 
 	<h2>Gebruikers bewerken</h2>
     <!-- Hier nog zoiets doen: select count(*), type from users group by type -->
-    <!-- Hier nog zoiets doen: select count(*), type from users where approved = 0 group by type -->
+    <!-- Hier nog zoiets doen: select count(*), type from users where approved = 0   group by type -->
 	<table class='table table-bordered'>
 		<thead>
 			<tr>
@@ -75,7 +75,9 @@
                     {{
                         Former::inline_open()
                           ->action(action('Admin\UsersController@accept', $user->id))
+                          ->style('float: left; margin-right: 1em;')
                     }}
+                    {{-- Die styling is wel heel erg lelijk, maar is nu eerst even puur om het te testen --}}
                         <button type='submit' class='btn btn-danger btn-xs'>
                             <i class="glyphicon glyphicon-ok"></i> Accepteren
                         </button>
