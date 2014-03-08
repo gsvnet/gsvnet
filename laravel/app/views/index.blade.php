@@ -171,7 +171,7 @@
                             @foreach ($birthdays as $profile)
                                 <li>
                                     <span class="list-title">
-                                        @if (Permission::has('member-or-former-member'))
+                                        @if (Permission::has('users.show'))
                                             {{ link_to_action('UserController@showUser', $profile->user->full_name, $profile->user->id) }}
                                         @else
                                             {{{ $profile->user->full_name }}}
