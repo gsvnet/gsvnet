@@ -147,7 +147,7 @@ class UsersController extends BaseController {
         $user = $this->userManager->activateUser($id);
 
         return Redirect::action('Admin\UsersController@index')
-            ->with('message', '<strong>' . $user->name . '</strong> is succesvol geactiveerd.');
+            ->with('message', '<strong>' . $user->full_name . '</strong> is succesvol geactiveerd.');
     }
 
     public function accepted($id)

@@ -36,7 +36,7 @@
   <body>
 
     <div class="navbar navbar-inverse" role="navigation">
-      <div class="container">
+      <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -57,7 +57,7 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container-fluid">
         @if ($errors->any())
               <ul class='list-unstyled errors'>
                   {{ implode('', $errors->all('<li class="alert alert-danger">:message</li>')) }}
@@ -71,13 +71,13 @@
           @endif
       @show
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-lg-2 col-md-3">
 
           <h3>Administratie</h3>
           @include('layouts.admin.nav')
 
         </div>
-        <div class="col-md-9" role="main">
+        <div class="col-lg-10 col-md-9" role="main">
           @yield('content')
         </div>
       </div>
