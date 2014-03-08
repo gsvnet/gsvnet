@@ -48,9 +48,21 @@ $menuitems = [
         'url' => URL::action('MemberController@index'),
         'visible' => function(){return Auth::guest() || !Auth::user()->wasOrIsMember();},
         'submenu' => [
+            'inschrijven' => [
+                'url' => URL::action('MemberController@index'),
+                'title' => 'Inschrijven'
+            ],
             'groningen' => [
-                'url' => URL::action('AboutController@showHistory'),
+                'url' => '#',
                 'title' => 'Groningen'
+            ],
+            'redenen' => [
+                'url' => '#',
+                'title' => '10 goede redenen'
+            ],
+            'moeder' => [
+                'url' => '#',
+                'title' => 'Nog wat'
             ]
         ]
     ],

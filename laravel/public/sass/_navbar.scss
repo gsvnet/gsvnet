@@ -69,16 +69,18 @@
 	}
 
 	&:after {
-		background: transparent url('../images/nav-main-active.png') no-repeat 50% 50%;
-		width: 100%;
-		height: 11px;
+		width: 0;
+		height: 0;
 		content: "";
+		margin-left: -10px;
 		display: block;
 		position: absolute;
-		bottom: -10px;
-		left: 0;
-		right: 0;
+		bottom: -9px;
+		left: 50%;
 		z-index: 1;
+		border-top: 10px solid #2a1443;
+		border-right: 10px solid transparent;
+		border-left: 10px solid transparent;
 	}
 }
 
@@ -171,6 +173,7 @@
 .extra-submenu-nav {
 	background: #FFF;
 	font-family: $font-family-sans;
+	padding-top: 1em;
 }
 
 .extra-submenu {
@@ -261,7 +264,7 @@
 		height: 0;
 		overflow: hidden;
 		content: "";
-		display: block;
+		display: none;
 		position: static;
 		bottom: auto;
 		left: auto;
