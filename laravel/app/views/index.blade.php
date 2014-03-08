@@ -163,14 +163,20 @@
                     @endif
                 </div>
                 <div class="content-column">
-                
+
 
                     <h2>Verjaardagen</h2>
                     <ul class="unstyled-list title-description-list">
                         @if ($birthdays->count())
                             @foreach ($birthdays as $profile)
                                 <li>
-                                    <span class="list-title">{{{ $profile->user->full_name }}}</span>
+                                    <span class="list-title">
+                                        @if (Permission::has('member-or-former-member'))
+                                            {{ link_to_action('UserController@showUser', $profile->user->full_name, $profile->user->id) }}
+                                        @else
+                                            {{{ $profile->user->full_name }}}
+                                        @endif
+                                    </span>
                                     <time class="list-description grey">{{{ $profile->birthday }}}</time>
                                 </li>
                             @endforeach
