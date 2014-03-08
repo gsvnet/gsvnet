@@ -58,6 +58,8 @@ class UserManager
         $this->users->activateUser($id);
 
         Event::fire('user.activated', ['user' => $user]);
+
+        return $user;
     }
 
     /**

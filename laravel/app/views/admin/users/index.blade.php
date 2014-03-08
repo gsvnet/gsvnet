@@ -1,6 +1,4 @@
 @section('content')
-<div class="panel panel-default">
-  <div class="panel-heading">
     <ul class="nav nav-tabs">
         <li class="{{ Request::segment(3) == '' ? 'active' : '' }}">
             <a href="{{ URL::action('Admin\UsersController@index') }}">
@@ -32,8 +30,6 @@
             </a>
         </li>
     </ul>
-</div>
-  <div class="panel-body">
 
     <div class="page-header">
     	<h1>Gebruikers</h1>
@@ -46,13 +42,15 @@
     </a>
 
 	<h2>Gebruikers bewerken</h2>
+    <!-- Hier nog zoiets doen: select count(*), type from users group by type -->
+    <!-- Hier nog zoiets doen: select count(*), type from users where approved = 0 group by type -->
 	<table class='table table-bordered'>
 		<thead>
 			<tr>
 				<th>Naam</th>
                 <td>Email</td>
                 <td>User type</td>
-                <td>Laatst bewerkt</td>
+                <td>Acties</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -73,7 +71,31 @@
                 </td>
 
                 <td>
-                    {{{ $user->updated_at }}}
+                    @if ($user->type == 'potential')
+                    {{
+                        Former::inline_open()
+                          ->action(action('Admin\UsersController@accept', $user->id))
+                    }}
+                        <button type='submit' class='btn btn-danger btn-xs'>
+                            <i class="glyphicon glyphicon-ok"></i> Accepteren
+                        </button>
+                    {{
+                        Former::close();
+                    }}
+                    @endif
+
+                    @if (! $user->approved)
+                    {{
+                        Former::inline_open()
+                          ->action(action('Admin\UsersController@activate', $user->id))
+                    }}
+                        <button type='submit' class='btn btn-success btn-xs'>
+                            <i class="glyphicon glyphicon-ok"></i> Activeren
+                        </button>
+                    {{
+                        Former::close();
+                    }}
+                    @endif
                 </td>
 
 				<!-- <td>
@@ -88,8 +110,5 @@
 	</table>
 
 	{{ $users->links() }}
-
-  </div>
-</div>
 
 @stop

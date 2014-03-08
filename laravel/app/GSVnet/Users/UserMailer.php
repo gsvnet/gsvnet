@@ -18,13 +18,13 @@ class UserMailer extends Mailer {
     }
 
     /**
-    *
+    *   Informs the user that his account was approved
     */
     public function activated($user)
     {
         $data = ['user' => $user];
         // Send user an email informing that his account wasd approved
-        $this->sendTo($user->email, 'Welkom', 'emails.users.approved', $data);
+        $this->sendTo($user->email, 'Account is geactiveerd', 'emails.users.activated', $data);
     }
 
     /**

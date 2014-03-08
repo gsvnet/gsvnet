@@ -34,7 +34,7 @@ class UserController extends BaseController {
      */
     public function showProfile()
     {
-        $member = Auth::user()->with('profile.yearGroup');
+        $member = Auth::user(); //->with('profile.yearGroup');
         $committees = $member->committees;
         $senates = $member->senates;
 
