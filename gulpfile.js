@@ -37,6 +37,7 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('laravel/public/build-javascripts/'))
 });
 
-gulp.task('default', ['css', 'scripts'], function(){
-	gulp.watch('laravel/public/sass/*.scss', ['css']);
+gulp.task('default', ['scripts'], function(){
+  //gulp.watch('laravel/public/sass/*.scss', ['css']);
+	gulp.watch('laravel/public/javascripts/*.js', ['scripts']);
 });

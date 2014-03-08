@@ -6,7 +6,8 @@ WordLid = (function(){
 			submitButton: $('#submit'),
 			canvas: document.createElement('canvas'),
 			parentRadioButtons: $('input[type=radio][name=parents-same-address]'),
-			parentsFormWrapper: $('#parents-info')
+			parentsFormWrapper: $('#parents-info'),
+			formRegOrLog: $('#register-or-login')
 		},
 		width = 308, 
 		url, ctx;
@@ -33,9 +34,45 @@ WordLid = (function(){
 		elements.previewWrap.addClass('has-image').html(canvas);
 	}
 
-	function init() {
-		var img = new Image();
+	function clickTab() {
 
+	}
+
+	function initTabsForLoginOrRegister() {
+		var activeTab = '#login-form';
+		var $login = $('<a data-tab="#login-form" href="#login-form" class="tab active">Login</a>');
+		var $register = $('<a data-tab="#register-form" href="#register-form" class="tab">Registreer</a>');
+		var $wrapWrap = $('<div class="column-holder outer-tab-wrap"></div>');
+		var $tabWrap = $('<div class="tabs"></div>').appendTo($wrapWrap);
+
+		var $registerForm = $('#register-form');
+		var $loginForm = $('#login-form');
+
+		$loginForm.addClass('active-tab-content');
+		$tabWrap.append($login).append($register);
+		elements.formRegOrLog.before($wrapWrap);
+
+		$login.add($register).click(function(){
+			var to = $(this).data('tab');
+
+			if(to == activeTab) return false;
+
+			$login.removeClass("active");
+			$register.removeClass("active");
+			$(activeTab).removeClass('active-tab-content');
+
+			activeTab = to;
+
+			$(this).addClass('active');
+			$(to).addClass('active-tab-content');
+
+
+			return false;
+		})
+
+	}
+
+	function init() {
 		// Initialize canvas wrapper
 		elements.previewWrap.addClass('visible');
 
@@ -63,6 +100,11 @@ WordLid = (function(){
 			elements.submitButton.addClass('disabled').val('Verzenden...');
 		});
 
+		// Check if register-form and login-form exist
+		if(elements.formRegOrLog.length == 1)
+		{
+			initTabsForLoginOrRegister();
+		}
 	}
 
 	return {

@@ -1,0 +1,43 @@
+.outer-tab-wrap {
+	display: none;
+	border-bottom: 1px solid $darkGrey;
+}
+
+.tabs {
+	font-family: $font-family-sans;
+}
+
+.tab {
+	display: inline-block;
+	line-height: 3em;
+	padding: 0 1em;
+	margin-bottom: -1px;
+
+	&.active {
+		border: 1px solid $darkGrey;
+		background: #FFF;
+		border-bottom-color: transparent;
+	}
+}
+
+@media only screen and (max-width: 480px){
+	.js {
+		.tab-content {
+			display: none;
+		}
+
+		.active-tab-content {
+			display: block;
+		}
+
+		.outer-tab-wrap {
+			display: block;
+		}
+	}
+	
+	.has-header {
+		background: #FFF;
+		margin-top: 0;
+		padding-top: 2em;
+	}
+}

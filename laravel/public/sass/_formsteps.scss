@@ -42,9 +42,15 @@
 }
 
 @media only screen and (max-width: $breakpoint){
+
 	.form-steps {
+		ol {
+			width: 100%;
+		}
+
 		li {
 			float: none;
+			margin: .5em 0 0 0;
 		}
 
 		.form-helper-text {
