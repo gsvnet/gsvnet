@@ -30,6 +30,8 @@ class ForumThreadsController extends BaseController implements
         ThreadCreator $threadCreator
     )
     {
+        parent::__construct();
+        
         $this->threads = $threads;
         $this->tags = $tags;
         $this->threadCreator = $threadCreator;

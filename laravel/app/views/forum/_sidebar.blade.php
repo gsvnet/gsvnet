@@ -1,10 +1,10 @@
 <div class="search">
-    {{ Form::open(['action' => 'ForumThreadsController@getSearch', 'method' => 'GET']) }}
-    {{ Form::text('query', isset($query) ? $query : '', ['placeholder' => 'search the laravel.io forum'] )}}
-    {{ Form::close() }}
+    {{ Former::open()->action(action('ForumThreadsController@getSearch'))->method('get') }}
+    {{ Former::text('query')->placeholder('Zoeken op het forum')->label('Zoeken') }}
+    {{ Former::close() }}
 </div>
 
-<ul>
+<ul class="secondary-menu">
     {{-- $forumSections is set in the constructor of the ForumController class --}}
     @foreach($forumSections as $sectionTitle => $attributes)
         <li>
