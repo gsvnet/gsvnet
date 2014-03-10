@@ -5,7 +5,7 @@
 
 .pagination > li {
 	display: inline-block;
-	margin-right: 0.5em;
+	// margin-right: 0.5em;
 }
 
 .pagination > li:last-child {
@@ -14,8 +14,8 @@
 
 .pagination > li > a, .pagination > li > span {
 	display: inline-block;
-	background: $lightPurple;
-	color: #FFF;
+	// background: $lightPurple;
+	// color: #FFF;
 	line-height: 2.5em;
 	padding: 0 1em;
 	text-decoration: none;
@@ -23,6 +23,7 @@
 
 	&:hover {
 		background: $lighterPurple;
+		color: white;
 	}
 
 	&:active {
@@ -34,6 +35,7 @@
 
 .pagination > li.active a, .pagination > li.active > span {
 	background: $darkPurple;
+	color: white;
 
 	&:active {
 		-moz-box-shadow: none;
@@ -41,9 +43,11 @@
 		box-shadow: none;
 	}
 }
-
+.pagination > li.disabled { background: none; }
 .pagination > li.disabled a, .pagination > li.disabled > span {
-	background: $grey;
+	// background: $grey;
+	color: black;
+	background: none;
 
 	&:active {
 		-moz-box-shadow: none;

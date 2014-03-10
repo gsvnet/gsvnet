@@ -15,7 +15,8 @@
                     'EventController@showMonth',
                     $monthName,
                     array($year, $monthName),
-                    array('class' => $searchTimeRange && $month == $monthName  ? 'active' : ''))
+                    array('class' => ($searchTimeRange && $month == $monthName)  ? 'active' : '')
+                    )
                 }}
             </li>
         @endforeach

@@ -23,7 +23,7 @@ ruby_version          = "latest" # Choose what ruby version should be installed 
 ruby_gems             = [        # List any Ruby Gems that you want to install
   #"jekyll",
   #"sass",
-  #"compass",
+  "compass",
 ]
 php_version           = "latest" # Options: latest|previous|distributed   For 12.04. latest=5.5, previous=5.4, distributed=5.3
 composer_packages     = [        # List any global Composer packages that you want to install
