@@ -2,7 +2,7 @@
 
     <div class="forum-post-data">
         <div class="avatar">
-            {{ $reply->author->avatar(80) }}
+            {{ $reply->author->avatar(40) }}
         </div>
         <div class="info">
             <h6><a href="{{ $reply->author->profileUrl }}">{{ $reply->author->fullname }}</a></h6>

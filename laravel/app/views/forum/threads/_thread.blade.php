@@ -1,9 +1,5 @@
 <div class="thread _post">
 
-    <div class="markdown">
-        {{ $thread->body }}
-    </div>
-
     <div class="forum-post-data">
         <div class="avatar">
         	{{ $thread->author->avatar(80) }}
@@ -22,5 +18,9 @@
                 @endif
             </ul>
         </div>
+    </div>
+
+    <div class="markdown">
+        {{ $thread->body }}
     </div>
 </div>

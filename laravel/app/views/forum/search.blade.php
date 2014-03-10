@@ -1,18 +1,15 @@
 @extends('layouts.default')
 
-@section('sidebar')
-@stop
-
 @section('content')
     <div class="column-holder">
+        @if($query)
+            <h1>Zoekresultaten voor "{{ $query }}"</h1>
+            <p class="delta">Als je niet kan vinden wat je zoekt moet je contact opnemen met de webcie.</p>
+        @else
+            <h1>Forum doorzoeken</h1>
+            <p class="delta">Je doorzoek alleen het forum</p>
+        @endif
         <section class="main-content forum">
-            <div class="header">
-                @if($query)
-                    <h1>Forum Search results for "{{ $query }}"</h1>
-                @else
-                    <h1>Forum Search</h1>
-                @endif
-            </div>
 
             @if($query)
                 <div class="threads">
@@ -53,4 +50,5 @@
         <div class="secondary-column">
             @include('forum._sidebar', ['query' => $query])
         </div>
+    </div>
 @stop

@@ -1,9 +1,16 @@
 .forum-post-data {
 	@include clearfix;
-	padding: 1em;
-	background: $lightGrey;
-	margin-bottom: 2em;
+	margin-bottom: 1em;
+	h6 {
+		margin-bottom: 0;
+	}
+}
 
+.thread {
+	.forum-post-data {
+		background: $lightGrey;
+		padding: 1em;
+	}
 }
 
 .reply-form {
