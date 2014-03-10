@@ -8,14 +8,14 @@
     <div class="user">
         {{ $thread->author->thumbnail }}
         <div class="info">
-            <h6><a href="{{ $thread->author->profileUrl }}">{{ $thread->author->name }}</a></h6>
+            <h6><a href="{{ $thread->author->profileUrl }}">{{ $thread->author->username }}</a></h6>
             <ul class="meta">
         <li>{{ $thread->created_ago }}</li>
             </ul>
         </div>
     </div>
 
-    <span style="display:none;" class="_author_name">{{ $thread->author->name }}</span>
+    <span style="display:none;" class="_author_name">{{ $thread->author->username }}</span>
     <span style="display:none;" class="_quote_body">{{ $thread->resource->body }}</span>
 
     <div class="admin-bar">
