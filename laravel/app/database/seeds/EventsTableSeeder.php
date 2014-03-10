@@ -11,7 +11,7 @@ class EventsTableSeeder extends Seeder {
 
         for ($i = 0; $i < 200; $i++) {
             $randHour = rand(0, 22);
-            $startdate = $faker->dateTimeBetween('now', '+1 year');
+            $startdate = $faker->dateTimeBetween('-1 year', '+1 year');
 
             $activiteiten = array('Schaatsen', 'Bijbelkring', 'Voetballen', 'Lezing', 'Soos', 'Je moeder', 'Volleyballen', 'Huishoudelijke vergadering', 'Regiokamp');
 
