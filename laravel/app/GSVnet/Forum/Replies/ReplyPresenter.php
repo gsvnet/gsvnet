@@ -1,4 +1,4 @@
-<?php namespace Lio\Forum\Replies;
+<?php namespace GSVnet\Forum\Replies;
 
 use McCool\LaravelAutoPresenter\BasePresenter;
 use App, Input, Str, Request;
@@ -9,7 +9,7 @@ class ReplyPresenter extends BasePresenter
     {
         $slug = $this->thread->slug;
         $threadUrl = action('ForumThreadsController@getShowThread', [$slug]);
-        return $threadUrl . \App::make('Lio\Forum\Replies\ReplyQueryStringGenerator')->generate($this->resource);
+        return $threadUrl . \App::make('GSVnet\Forum\Replies\ReplyQueryStringGenerator')->generate($this->resource);
     }
 
     public function created_ago()
@@ -26,7 +26,6 @@ class ReplyPresenter extends BasePresenter
     {
         $body = $this->resource->body;
         $body = $this->convertMarkdown($body);
-        $body = $this->formatGists($body);
         $body = $this->linkify($body);
         return $body;
     }
@@ -35,12 +34,7 @@ class ReplyPresenter extends BasePresenter
 
     private function convertMarkdown($content)
     {
-        return App::make('Lio\Markdown\HtmlMarkdownConvertor')->convertMarkdownToHtml($content);
-    }
-
-    private function formatGists($content)
-    {
-        return App::make('Lio\Github\GistEmbedFormatter')->format($content);
+        return App::make('GSVnet\Markdown\HtmlMarkdownConvertor')->convertMarkdownToHtml($content);
     }
 
     private function linkify($content)

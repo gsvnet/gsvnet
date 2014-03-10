@@ -1,9 +1,9 @@
-<?php namespace Lio\Forum\Threads;
+<?php namespace GSVnet\Forum\Threads;
 
 use Illuminate\Support\Collection;
-use Lio\Core\Exceptions\EntityNotFoundException;
+use GSVnet\Core\Exceptions\EntityNotFoundException;
 
-class ThreadRepository extends \Lio\Core\EloquentRepository
+class ThreadRepository extends \GSVnet\Core\EloquentRepository
 {
     public function __construct(Thread $model)
     {

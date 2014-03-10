@@ -1,4 +1,4 @@
-<?php namespace Lio\Forum\Replies;
+<?php namespace GSVnet\Forum\Replies;
 
 /**
 * This class can call the following methods on the observer object:

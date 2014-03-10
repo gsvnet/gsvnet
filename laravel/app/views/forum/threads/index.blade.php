@@ -1,11 +1,9 @@
-@extends('layouts._two_columns_left_sidebar')
-
-@section('sidebar')
-    @include('forum._sidebar')
-@stop
+@extends('layouts.default')
 
 @section('content')
-    <section class="forum">
+<div class="column-holder">
+
+    <section class="main-content forum">
         <div class="header">
             <h1>Forum</h1>
                 {{-- Display select tags --}}
@@ -47,4 +45,9 @@
             {{ $threads->links() }}
         </div>
     </section>
+
+    <div class="secondary-column">
+        @include('forum._sidebar')
+    </div>
+</div>
 @stop

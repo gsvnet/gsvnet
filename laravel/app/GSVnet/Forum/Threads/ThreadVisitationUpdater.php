@@ -1,6 +1,6 @@
-<?php namespace Lio\Forum\Threads;
+<?php namespace GSVnet\Forum\Threads;
 
-use Lio\Accounts\User;
+use GSVnet\Users\User;
 
 class ThreadVisitationUpdater
 {

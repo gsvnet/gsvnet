@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{{ $title }}}</title>
+    <title>{{{ $title or 'GSV' }}}</title>
 
-    <meta name="description" content="{{{ $description }}}" />
-    <meta name="keywords" content="{{{ $keywords }}}" />
+    <meta name="description" content="{{{ $description or 'GSV' }}}" />
+    <meta name="keywords" content="{{{ $keywords or 'GSV' }}}" />
 
     <link rel="shortcut icon" href="/favicon.png" />
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700,400italic">
@@ -43,6 +43,7 @@
 
     @section('javascripts')
         <script src="/build-javascripts/app.js"></script>
+        <script src="/build-javascripts/forum.js"></script>
     @show
 </body>
 </html>

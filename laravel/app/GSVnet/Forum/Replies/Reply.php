@@ -1,13 +1,13 @@
-<?php namespace Lio\Forum\Replies;
+<?php namespace GSVnet\Forum\Replies;
 
-class Reply extends \Lio\Core\Entity
+class Reply extends \GSVnet\Core\Entity
 {
     protected $table      = 'forum_replies';
     protected $fillable   = ['body', 'author_id', 'thread_id'];
     protected $with       = ['author'];
     protected $softDelete = true;
 
-    public $presenter = 'Lio\Forum\Replies\ReplyPresenter';
+    public $presenter = 'GSVnet\Forum\Replies\ReplyPresenter';
 
     protected $validationRules = [
         'body'      => 'required|min:6',
@@ -16,12 +16,12 @@ class Reply extends \Lio\Core\Entity
 
     public function author()
     {
-        return $this->belongsTo('Lio\Accounts\User', 'author_id');
+        return $this->belongsTo('GSVnet\Users\User', 'author_id');
     }
 
     public function thread()
     {
-        return $this->belongsTo('Lio\Forum\Threads\Thread', 'thread_id');
+        return $this->belongsTo('GSVnet\Forum\Threads\Thread', 'thread_id');
     }
 
     public function isManageableBy($user)

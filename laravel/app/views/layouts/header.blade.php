@@ -30,7 +30,7 @@ $menuitems = [
 
     'forum' => [
         'title' => 'Forum',
-        'url' => '#'
+        'url' => URL::action('ForumThreadsController@getIndex')
     ],
 
     'foto-album' => [

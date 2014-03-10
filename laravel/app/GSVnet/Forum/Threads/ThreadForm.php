@@ -1,6 +1,6 @@
-<?php namespace Lio\Forum\Threads;
+<?php namespace GSVnet\Forum\Threads;
 
-use Lio\Core\FormModel;
+use GSVnet\Core\FormModel;
 use App, Validator;
 
 class ThreadForm extends FormModel
@@ -18,7 +18,7 @@ class ThreadForm extends FormModel
         Validator::extend('max_tags', function ($attribute, $tagIds, $params) {
             $maxCount = $params[0];
 
-            $tagRepo = App::make('Lio\Tags\TagRepository');
+            $tagRepo = App::make('GSVnet\Tags\TagRepository');
             $tags = $tagRepo->getTagsByIds($tagIds);
 
             if ($tags->count() > $maxCount) {

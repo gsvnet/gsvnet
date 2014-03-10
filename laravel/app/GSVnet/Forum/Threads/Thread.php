@@ -1,9 +1,9 @@
-<?php namespace Lio\Forum\Threads;
+<?php namespace GSVnet\Forum\Threads;
 
-use Lio\Accounts\User;
+use GSVnet\User;
 use Auth;
-use Lio\Core\Entity;
-use Lio\Forum\Replies\Reply;
+use GSVnet\Core\Entity;
+use GSVnet\Forum\Replies\Reply;
 
 class Thread extends Entity
 {
@@ -12,7 +12,7 @@ class Thread extends Entity
     protected $with       = ['author'];
     protected $softDelete = true;
 
-    public $presenter = 'Lio\Forum\Threads\ThreadPresenter';
+    public $presenter = 'GSVnet\Forum\Threads\ThreadPresenter';
 
     protected $validationRules = [
         'body'      => 'required',
@@ -27,27 +27,27 @@ class Thread extends Entity
 
     public function author()
     {
-        return $this->belongsTo('Lio\Accounts\User', 'author_id');
+        return $this->belongsTo('GSVnet\Users\User', 'author_id');
     }
 
     public function replies()
     {
-        return $this->hasMany('Lio\Forum\Replies\Reply', 'thread_id');
+        return $this->hasMany('GSVnet\Forum\Replies\Reply', 'thread_id');
     }
 
     public function acceptedSolution()
     {
-        return $this->belongsTo('Lio\Forum\Replies\Reply', 'solution_reply_id');
+        return $this->belongsTo('GSVnet\Forum\Replies\Reply', 'solution_reply_id');
     }
 
     public function tags()
     {
-        return $this->belongsToMany('Lio\Tags\Tag', 'tagged_items', 'thread_id', 'tag_id');
+        return $this->belongsToMany('GSVnet\Tags\Tag', 'tagged_items', 'thread_id', 'tag_id');
     }
 
     public function mostRecentReply()
     {
-        return $this->belongsTo('Lio\Forum\Replies\Reply', 'most_recent_reply_id');
+        return $this->belongsTo('GSVnet\Forum\Replies\Reply', 'most_recent_reply_id');
     }
 
     public function setSubjectAttribute($subject)

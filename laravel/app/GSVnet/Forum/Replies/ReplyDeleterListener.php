@@ -1,4 +1,4 @@
-<?php namespace Lio\Forum\Replies;
+<?php namespace GSVnet\Forum\Replies;
 
 interface ReplyDeleterListener
 {

@@ -1,12 +1,12 @@
 <?php
 
-use Lio\Forum\Replies\ReplyForm;
-use Lio\Forum\Replies\ReplyPresenter;
+use GSVnet\Forum\Replies\ReplyForm;
+use GSVnet\Forum\Replies\ReplyPresenter;
 
 class ForumRepliesController extends BaseController implements
-    \Lio\Forum\Replies\ReplyCreatorListener,
-    \Lio\Forum\Replies\ReplyUpdaterListener,
-    \Lio\Forum\Replies\ReplyDeleterListener
+    \GSVnet\Forum\Replies\ReplyCreatorListener,
+    \GSVnet\Forum\Replies\ReplyUpdaterListener,
+    \GSVnet\Forum\Replies\ReplyDeleterListener
 {
     protected $tags;
     protected $sections;
@@ -14,9 +14,9 @@ class ForumRepliesController extends BaseController implements
     protected $repliesPerPage = 20;
 
     public function __construct(
-        \Lio\Forum\Threads\ThreadRepository $threads,
-        \Lio\Forum\Replies\ReplyRepository $replies,
-        \Lio\Tags\TagRepository $tags
+        \GSVnet\Forum\Threads\ThreadRepository $threads,
+        \GSVnet\Forum\Replies\ReplyRepository $replies,
+        \GSVnet\Tags\TagRepository $tags
     ) {
         $this->threads  = $threads;
         $this->replies  = $replies;
@@ -34,7 +34,7 @@ class ForumRepliesController extends BaseController implements
             return Redirect::to('/');
         }
 
-        $generator = App::make('Lio\Forum\Replies\ReplyQueryStringGenerator');
+        $generator = App::make('GSVnet\Forum\Replies\ReplyQueryStringGenerator');
         $queryString = $generator->generate($reply, $this->repliesPerPage);
 
         return Redirect::to(action('ForumThreadsController@getShowThread', [$thread]) . $queryString);
@@ -45,7 +45,7 @@ class ForumRepliesController extends BaseController implements
     {
         $thread = $this->threads->requireBySlug($threadSlug);
 
-        return App::make('Lio\Forum\Replies\ReplyCreator')->create($this, [
+        return App::make('GSVnet\Forum\Replies\ReplyCreator')->create($this, [
             'body'   => Input::get('body'),
             'author' => Auth::user(),
         ], $thread->id, new ReplyForm);
@@ -82,7 +82,7 @@ class ForumRepliesController extends BaseController implements
             return Redirect::to('/');
         }
 
-        return App::make('Lio\Forum\Replies\ReplyUpdater')->update($reply, $this, [
+        return App::make('GSVnet\Forum\Replies\ReplyUpdater')->update($reply, $this, [
             'body' => Input::get('body'),
         ], new ReplyForm);
     }
@@ -118,7 +118,7 @@ class ForumRepliesController extends BaseController implements
             return Redirect::to('/');
         }
 
-        return App::make('Lio\Forum\Replies\ReplyDeleter')->delete($this, $reply);
+        return App::make('GSVnet\Forum\Replies\ReplyDeleter')->delete($this, $reply);
     }
 
     // observer methods

@@ -1,13 +1,13 @@
 <?php
 
-use Lio\Forum\Replies\ReplyRepository;
-use Lio\Forum\Threads\ThreadCreator;
-use Lio\Forum\Threads\ThreadCreatorListener;
-use Lio\Forum\Threads\ThreadDeleterListener;
-use \Lio\Forum\Threads\ThreadForm;
-use Lio\Forum\Threads\ThreadRepository;
-use Lio\Forum\Threads\ThreadUpdaterListener;
-use Lio\Tags\TagRepository;
+use GSVnet\Forum\Replies\ReplyRepository;
+use GSVnet\Forum\Threads\ThreadCreator;
+use GSVnet\Forum\Threads\ThreadCreatorListener;
+use GSVnet\Forum\Threads\ThreadDeleterListener;
+use \GSVnet\Forum\Threads\ThreadForm;
+use GSVnet\Forum\Threads\ThreadRepository;
+use GSVnet\Forum\Threads\ThreadUpdaterListener;
+use GSVnet\Tags\TagRepository;
 
 class ForumThreadsController extends BaseController implements
     ThreadCreatorListener,
@@ -129,7 +129,7 @@ class ForumThreadsController extends BaseController implements
             return Redirect::to('/');
         }
 
-        return App::make('Lio\Forum\Threads\ThreadUpdater')->update($this, $thread, [
+        return App::make('GSVnet\Forum\Threads\ThreadUpdater')->update($this, $thread, [
             'subject' => Input::get('subject'),
             'body' => Input::get('body'),
             'is_question' => Input::get('is_question', 0),
@@ -152,7 +152,7 @@ class ForumThreadsController extends BaseController implements
             return Redirect::to('/');
         }
 
-        return App::make('Lio\Forum\Threads\ThreadUpdater')->update($this, $thread, [
+        return App::make('GSVnet\Forum\Threads\ThreadUpdater')->update($this, $thread, [
             'solution_reply_id' => $reply->id,
         ]);
     }
@@ -165,7 +165,7 @@ class ForumThreadsController extends BaseController implements
             return Redirect::to('/');
         }
 
-        return App::make('Lio\Forum\Threads\ThreadUpdater')->update($this, $thread, [
+        return App::make('GSVnet\Forum\Threads\ThreadUpdater')->update($this, $thread, [
             'solution_reply_id' => null,
         ]);
     }
@@ -204,7 +204,7 @@ class ForumThreadsController extends BaseController implements
             return Redirect::to('/');
         }
 
-        return App::make('Lio\Forum\Threads\ThreadDeleter')->delete($this, $thread);
+        return App::make('GSVnet\Forum\Threads\ThreadDeleter')->delete($this, $thread);
     }
 
     // observer methods
@@ -217,7 +217,7 @@ class ForumThreadsController extends BaseController implements
     public function getSearch()
     {
         $query = Input::get('query');
-        $results = App::make('Lio\Forum\Threads\ThreadSearch')->searchPaginated($query, $this->threadsPerPage);
+        $results = App::make('GSVnet\Forum\Threads\ThreadSearch')->searchPaginated($query, $this->threadsPerPage);
         $results->appends(array('query' => $query));
 
         $this->createSections(Input::get('tags'));
@@ -228,7 +228,7 @@ class ForumThreadsController extends BaseController implements
     // ------------------------- //
     private function createSections($currentSection = null)
     {
-        $forumSections = App::make('Lio\Forum\SectionSidebarCreator')->createSidebar($currentSection);
+        $forumSections = App::make('GSVnet\Forum\SectionSidebarCreator')->createSidebar($currentSection);
         View::share(compact('forumSections'));
     }
 }

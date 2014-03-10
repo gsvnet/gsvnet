@@ -1,4 +1,4 @@
-<?php namespace Lio\Forum;
+<?php namespace GSVnet\Forum;
 
 use Config;
 

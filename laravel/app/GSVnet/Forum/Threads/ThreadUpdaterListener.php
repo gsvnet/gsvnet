@@ -1,4 +1,4 @@
-<?php namespace Lio\Forum\Threads;
+<?php namespace GSVnet\Forum\Threads;
 
 interface ThreadUpdaterListener
 {

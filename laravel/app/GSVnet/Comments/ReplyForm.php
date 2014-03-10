@@ -1,4 +1,4 @@
-<?php namespace GSVnet\Forum\Replies;
+<?php namespace GSVnet\Comments;
 
 use GSVnet\Core\FormModel;
 

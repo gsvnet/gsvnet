@@ -1,6 +1,6 @@
-<?php namespace Lio\Forum\Threads;
+<?php namespace GSVnet\Forum\Threads;
 
-use Lio\Core\Entity;
+use GSVnet\Core\Entity;
 
 class ThreadVisitation extends Entity
 {

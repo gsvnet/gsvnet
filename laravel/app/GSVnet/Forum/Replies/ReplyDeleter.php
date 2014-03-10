@@ -1,6 +1,6 @@
-<?php namespace Lio\Forum\Replies;
+<?php namespace GSVnet\Forum\Replies;
 
-use Lio\Comments\CommentRepository;
+use GSVnet\Comments\CommentRepository;
 
 /**
 * This class can call the following methods on the observer object:

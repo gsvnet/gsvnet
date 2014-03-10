@@ -1,4 +1,4 @@
-<?php namespace Lio\Forum\Threads;
+<?php namespace GSVnet\Forum\Threads;
 
 use McCool\LaravelAutoPresenter\BasePresenter;
 use App, Input, Str, Request;
@@ -28,7 +28,6 @@ class ThreadPresenter extends BasePresenter
     {
         $body = $this->resource->body;
         $body = $this->convertMarkdown($body);
-        $body = $this->formatGists($body);
         $body = $this->linkify($body);
         return $body;
     }
@@ -61,7 +60,7 @@ class ThreadPresenter extends BasePresenter
         if ( ! $this->mostRecentReply) {
             return $this->url;
         }
-        return $this->url . App::make('Lio\Forum\Replies\ReplyQueryStringGenerator')->generate($this->mostRecentReply);
+        return $this->url . App::make('GSVnet\Forum\Replies\ReplyQueryStringGenerator')->generate($this->mostRecentReply);
     }
 
     public function acceptedSolutionUrl()
@@ -70,7 +69,7 @@ class ThreadPresenter extends BasePresenter
             return null;
         }
 
-        return $this->url . App::make('Lio\Forum\Replies\ReplyQueryStringGenerator')->generate($this->acceptedSolution);
+        return $this->url . App::make('GSVnet\Forum\Replies\ReplyQueryStringGenerator')->generate($this->acceptedSolution);
     }
 
     public function editUrl()
@@ -97,12 +96,7 @@ class ThreadPresenter extends BasePresenter
 
     private function convertMarkdown($content)
     {
-        return App::make('Lio\Markdown\HtmlMarkdownConvertor')->convertMarkdownToHtml($content);
-    }
-
-    private function formatGists($content)
-    {
-        return App::make('Lio\Github\GistEmbedFormatter')->format($content);
+        return App::make('GSVnet\Markdown\HtmlMarkdownConvertor')->convertMarkdownToHtml($content);
     }
 
     private function linkify($content)

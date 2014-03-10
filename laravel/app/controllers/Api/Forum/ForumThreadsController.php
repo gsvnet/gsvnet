@@ -1,7 +1,7 @@
 <?php namespace Api;
 
-use Lio\Forum\Threads\ThreadRepository;
-use Lio\Tags\TagRepository;
+use GSVnet\Forum\Threads\ThreadRepository;
+use GSVnet\Tags\TagRepository;
 use BaseController;
 use Input;
 use URL;
