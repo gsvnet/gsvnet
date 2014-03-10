@@ -3,24 +3,15 @@
 @section('content')
     <div class="column-holder">
         <div class="header">
-            <h1>Create Thread</h1>
+            <h1>Nieuw onderwerp</h1>
         </div>
 
         <div class="main-content">
 
-            {{ Form::open(['data-persist' => 'garlic', 'data-expires' => '600']) }}
+            {{ Former::open() }}
             <section class="padding">
-                <div class="form-row">
-                    {{ Form::label('subject', 'Subject', ['class' => 'field-title']) }}
-                    {{ Form::text('subject', null, ['placeholder' => 'Subject']) }}
-                    {{ $errors->first('subject', '<small class="error">:message</small>') }}
-                </div>
-
-                <div class="form-row">
-                    {{ Form::label('body', 'Thread', ['class' => 'field-title']) }}
-                    {{ Form::textarea("body", null) }}
-                    {{ $errors->first('body', '<small class="error">:message</small>') }}
-                </div>
+                {{ Former::text('subject')->placeholder('Onderwerp')->label('Onderwerp') }}
+                {{ Former::textarea('body')->placeholder('Tekst')->label('Tekst') }}
 
                 <div class="form-row">
                     {{ Form::label('is_question', 'What type of thread is this?', ['class' => 'field-title']) }}
@@ -74,7 +65,7 @@
                     {{ Form::button('Save', ['type' => 'submit', 'class' => 'button']) }}
                 </div>
             </section>
-            {{ Form::close() }}
+            {{ Former::close() }}
         </div>
         <div class="secondary-column">
             @include('forum._sidebar')
