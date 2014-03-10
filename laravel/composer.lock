@@ -422,12 +422,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "85428c311b38cf91d6a80a22712a65643920fed4"
+                "reference": "cdfd959d4bf48404a0c46985da801d46c67c6391"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/85428c311b38cf91d6a80a22712a65643920fed4",
-                "reference": "85428c311b38cf91d6a80a22712a65643920fed4",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/cdfd959d4bf48404a0c46985da801d46c67c6391",
+                "reference": "cdfd959d4bf48404a0c46985da801d46c67c6391",
                 "shasum": ""
             },
             "require": {
@@ -531,7 +531,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2014-03-09 03:15:08"
+            "time": "2014-03-10 20:05:42"
         },
         {
             "name": "mccool/laravel-auto-presenter",
@@ -2057,12 +2057,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JeffreyWay/Laravel-4-Generators.git",
-                "reference": "e1d1a3235ba2c712127317bdf01132ea99095995"
+                "reference": "f4bdb309f899b7a5e476e61f14979a5a166b2aa6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JeffreyWay/Laravel-4-Generators/zipball/e1d1a3235ba2c712127317bdf01132ea99095995",
-                "reference": "e1d1a3235ba2c712127317bdf01132ea99095995",
+                "url": "https://api.github.com/repos/JeffreyWay/Laravel-4-Generators/zipball/f4bdb309f899b7a5e476e61f14979a5a166b2aa6",
+                "reference": "f4bdb309f899b7a5e476e61f14979a5a166b2aa6",
                 "shasum": ""
             },
             "require": {
@@ -2096,7 +2096,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-03-08 01:59:28"
+            "time": "2014-03-10 20:57:40"
         }
     ],
     "packages-dev": [

@@ -1,9 +1,16 @@
+<h2>Maak een nieuw topic</h2>
+<p>
+    <a class="button" href="{{ action('ForumThreadsController@getCreateThread') }}">Nieuw topic</a>
+</p>
+
 <div class="search">
+    <h2>Het forum doorzoeken</h2>
     {{ Former::open()->action(action('ForumThreadsController@getSearch'))->method('get') }}
     {{ Former::text('query')->placeholder('Zoeken op het forum')->label('Zoeken') }}
     {{ Former::close() }}
 </div>
 
+<h2>Tags</h2>
 <ul class="secondary-menu">
     {{-- $forumSections is set in the constructor of the ForumController class --}}
     @foreach($forumSections as $sectionTitle => $attributes)

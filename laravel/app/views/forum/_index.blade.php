@@ -1,14 +1,16 @@
 @extends('layouts.default')
 
 @section('content')
+    
     <div class="column-holder">
+        <h1>Forum</h1>
+        
         <section class="main-content forum">
-            <h1>Forum</h1>
 
             @if(Input::has('tags'))
-                <div class="tags">Threads tagged with {{ Input::get('tags') }}.</div>
+                <div class="tags">Onderwerpen met de tags {{ Input::get('tags') }}.</div>
             @else
-                <div class="tags">All threads</div>
+                <div class="tags">Alle ondewerpen</div>
             @endif
 
             @if($threads->count() > 0)
@@ -19,7 +21,7 @@
                 {{ str_replace('%2C', ',', $threads->links()) }}
             @else
                 <div>
-                    There are currently no threads for the selected category.
+                    Er zijn nu geen onderwerpen voor de geselecteerde categorie.
                 </div>
             @endif
         </section>

@@ -2,26 +2,17 @@
 
 @section('content')
 <div class="column-holder">
+    <h1>Forum</h1>
+    <p class="delta">Dit is het GSV-forum, waar het een en ander besproken wordt. Het is hier vreselijk gezellig; eigenlijk net zo gezellig als op soos zelf. Er zijn mensen die liever achter de pc zitten en hier contact houden, dan dat ze naar soos gaan.</p>
 
     <section class="main-content forum">
         <div class="header">
-            <h1>Forum</h1>
-                {{-- Display select tags --}}
-                @if(Input::get('tags', null))
-                    <div class="tags">
-                        {{ Input::get('tags') }}
-                    </div>
-                @endif
-            <a class="button" href="{{ action('ForumThreadsController@getCreateThread') }}">Create Thread</a>
-        </div>
-
-        <div class="filter">
-            <p>Showing:</p>
-            <ul>
-                <li><a href="{{ action('ForumThreadsController@getIndex', '') . $queryString }}" class="{{ Request::path() == 'forum' ? 'current' : '' }}">All</a></li>
-                <li><a href="{{ action('ForumThreadsController@getIndex', 'open') . $queryString }}" class="{{ Request::is('forum/open') ? 'current' : '' }}">Open</a></li>
-                <li><a href="{{ action('ForumThreadsController@getIndex', 'solved') . $queryString }}" class="{{ Request::is('forum/solved') ? 'current' : '' }}">Solved</a></li>
-            </ul>
+            {{-- Display select tags --}}
+            @if(Input::get('tags', null))
+                <div class="tags">
+                    {{ Input::get('tags') }}
+                </div>
+            @endif
         </div>
 
         <div class="threads">
@@ -32,11 +23,11 @@
             @if( ! $threads->count())
                 <div class="empty-state">
                     @if(Input::get('tags'))
-                        <h3>No threads found that are tagged with {{ Input::get('tags') }}</h3>
+                        <h3>Geen onderwerpen gevonden met de tags {{ Input::get('tags') }}</h3>
                     @else
-                        <h3>No threads found.</h3>
+                        <h3>Geen onderwerpen gevonden.</h3>
                     @endif
-                    <a class="button" href="{{ action('ForumThreadsController@getCreateThread') }}">Create a new thread</a>
+                    <a class="button" href="{{ action('ForumThreadsController@getCreateThread') }}">Maak een nieuw topic</a>
                 </div>
             @endif
         </div>

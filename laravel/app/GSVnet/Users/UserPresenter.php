@@ -1,6 +1,6 @@
 <?php namespace GSVnet\Users;
 
-use BasePresenter, Carbon\Carbon, Config;
+use BasePresenter, Carbon\Carbon, Config, Gravatar;
 
 class UserPresenter extends BasePresenter
 {
@@ -56,5 +56,10 @@ class UserPresenter extends BasePresenter
         $since = Carbon::createFromFormat('Y-m-d H:i:s', $this->resource->pivot->start_date);
 
         return $since->formatLocalized('%B %Y');
+    }
+
+    public function avatar($size = 120)
+    {
+        return Gravatar::image($this->resource->email, 'Profielfoto', array('width' => $size, 'height' => $size));
     }
 }

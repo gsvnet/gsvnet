@@ -1,17 +1,11 @@
 @extends('layouts.default')
 
-@section('sidebar')
-@stop
-
 @section('content')
     <div class="column-holder">
+        <h1>{{ $thread->subject }}</h1>
         <div class="main-content">
             <div class="forum">
                 <div class="header">
-                    <h2>Forum</h2>
-                    <div class="tags">
-                        {{ $thread->tags->getTagList() }}
-                    </div>
                     {{ $replies->links() }}
                 </div>
 
@@ -31,12 +25,18 @@
                 @include('forum.replies._create')
             @else
                 <div class="login-cta">
-                    <p>Want to reply to this thread?</p> <a class="button" href="{{ action('AuthController@getLogin') }}">Login with github.</a>
+                    <p>Wil je hierop reageren?</p> <a class="button" href="{{ action('AuthController@getLogin') }}">Log dan in.</a>
                 </div>
             @endif
         </div>
         <div class="secondary-column">
-            @include('forum._sidebar')
+            <h2>Iets specifiekers</h2>
+            <p>Hier kan misschien iets specifiekers staan</p>
+
+            <h2>Zoals tags</h2>
+            <div class="tags">
+                {{ $thread->tags->getTagList() }}
+            </div>
         </div>
     </div>
 @stop

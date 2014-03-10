@@ -1,24 +1,18 @@
 @extends('layouts.default')
 
-@section('sidebar')
-@stop
-
 @section('content')
 <div class="column-holder">
 
-    <div class="header">
-        <h1>Delete Your Reply?</h1>
-    </div>
-
     <div class="main-content">
         <div class="reply-form">
+            <h1>Je reactie verwijderen?</h1>
             {{ Form::model($reply->resource) }}
                 <div class="form-row">
-                    <label class="field-title">Are you sure that you want to delete this reply?</label>
+                    <p><label class="field-title">Weet je het zeker?</label></p>
                 </div>
 
                 <div class="form-row">
-                    {{ Form::button('Delete', ['type' => 'submit', 'class' => 'button']) }}
+                    <p>{{ Form::button('Delete', ['type' => 'submit', 'class' => 'button']) }}</p>
                 </div>
         </div>
     </div>
