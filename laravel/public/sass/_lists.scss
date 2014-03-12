@@ -50,6 +50,35 @@
 	}
 }
 
+.tags-select-list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		display: inline;
+	}
+
+	a:link, a:visited {
+		background: $lightPurple;	
+		color: #FFF;
+		margin-bottom: .5em;
+		padding: .5em 1em;
+		text-decoration: none;
+		border: 0;
+		font-family: $font-family-sans;
+		display: inline-block;
+
+		&.active {
+			background: $lighterPurple;
+		}
+
+		&.disabled {
+			background: $grey;
+			cursor: default;
+		}
+	}
+}
 
 // This is a secondary menu which is on the page itself
 .secondary-menu {

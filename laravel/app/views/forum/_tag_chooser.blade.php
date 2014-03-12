@@ -1,8 +1,9 @@
 <div class="row">
     @if($tags->count() > 0)
-        <h3>Describe your post by clicking up to 3 tags</h3>
+        <h3>Tags</h3>
+        <p>Beschrijf je onderwerp door maximaal drie tags aan te klikken</p>
         {{ $errors->first('tags', '<small class="error">:message</small>') }}
-        <ul class="tags _tag_list">
+        <ul class="tags-select-list tags _tag_list">
             @foreach($tags as $tag)
                 <li>
                     <a href="#" class="tag _tag" title="{{ $tag->name }}">{{ $tag->name }}</a>
@@ -10,7 +11,7 @@
             @endforeach
         </ul>
         <div class="_tag_description_container">
-            <strong>Tags describe this post as containing...</strong>
+            <strong>Dit onderwerp heeft dus betrekking op...</strong>
             <ul class="_tag_descriptions">
             </ul>
         </div>
