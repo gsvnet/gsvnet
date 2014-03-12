@@ -6,17 +6,6 @@
 	}
 }
 
-.thread {
-	.forum-post-data {
-		background: $lightGrey;
-		padding: 1em;
-	}
-}
-
-.reply-form {
-	margin-top: 2em;
-}
-
 .comment {
 	margin-top: 2em;
 	border-top: 1px solid $lightGrey;
@@ -42,6 +31,7 @@
 
 blockquote {
 	margin-left: 0;
+	margin-right: 0;
 	padding-left: 1em;
 	border-left: 4px solid #EEE;
 }

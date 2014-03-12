@@ -141,30 +141,25 @@ Route::controller('wachtwoord-vergeten', 'RemindersController');
 
 // Forum
 Route::group(['before' => 'auth'], function() {
-    Route::get('forum/create-thread', 'ForumThreadsController@getCreateThread');
-    Route::post('forum/create-thread', 'ForumThreadsController@postCreateThread');
+    Route::get('forum/nieuw-onderwerp', 'ForumThreadsController@getCreateThread');
+    Route::post('forum/nieuw-onderwerp', 'ForumThreadsController@postCreateThread');
 
-    Route::get('forum/mark-as-solved/{threadId}/{replyId}', 'ForumThreadsController@getMarkQuestionSolved');
-    Route::get('forum/mark-as-unsolved/{threadId}', 'ForumThreadsController@getMarkQuestionUnsolved');
+    Route::get('forum/bewerk-onderwerp/{threadId}', 'ForumThreadsController@getEditThread');
+    Route::post('forum/bewerk-onderwerp/{threadId}', 'ForumThreadsController@postEditThread');
+    Route::get('forum/bewerk-reactie/{replyId}', 'ForumRepliesController@getEditReply');
+    Route::post('forum/bewerk-reactie/{replyId}', 'ForumRepliesController@postEditReply');
 
-    Route::get('forum/edit-thread/{threadId}', 'ForumThreadsController@getEditThread');
-    Route::post('forum/edit-thread/{threadId}', 'ForumThreadsController@postEditThread');
-    Route::get('forum/edit-reply/{replyId}', 'ForumRepliesController@getEditReply');
-    Route::post('forum/edit-reply/{replyId}', 'ForumRepliesController@postEditReply');
-
-    Route::get('forum/delete/reply/{replyId}', 'ForumRepliesController@getDelete');
-    Route::post('forum/delete/reply/{replyId}', 'ForumRepliesController@postDelete');
-    Route::get('forum/delete/thread/{threadId}', 'ForumThreadsController@getDelete');
-    Route::post('forum/delete/thread/{threadId}', 'ForumThreadsController@postDelete');
+    Route::get('forum/verwijder-reactie/{replyId}', 'ForumRepliesController@getDelete');
+    Route::post('forum/verwijder-reactie/{replyId}', 'ForumRepliesController@postDelete');
+    Route::get('forum/verwijder-onderwerp/{threadId}', 'ForumThreadsController@getDelete');
+    Route::post('forum/verwijder-onderwerp/{threadId}', 'ForumThreadsController@postDelete');
 
     Route::post('forum/{slug}', ['before' => '', 'uses' => 'ForumRepliesController@postCreateReply']);
 });
 
-Route::get('forum/{status?}', 'ForumThreadsController@getIndex')
-    ->where(array('status' => '(|open|solved)'));
-
+Route::get('forum', 'ForumThreadsController@getIndex');
 Route::get('forum/search', 'ForumThreadsController@getSearch');
-Route::get('forum/{slug}/reply/{commentId}', 'ForumRepliesController@getReplyRedirect');
+Route::get('forum/{slug}/reactie/{commentId}', 'ForumRepliesController@getReplyRedirect');
 Route::get('forum/{slug}', ['before' => '', 'uses' => 'ForumThreadsController@getShowThread']);
 
 Route::get('api/forum', 'Api\ForumThreadsController@getIndex');
