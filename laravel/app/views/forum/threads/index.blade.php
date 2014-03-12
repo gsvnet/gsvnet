@@ -31,14 +31,14 @@
                 </div>
             @endif
         </div>
-
-        <div class="pagination">
-            {{ $threads->links() }}
-        </div>
     </section>
 
     <div class="secondary-column">
         @include('forum._sidebar')
     </div>
+</div>
+
+<div class="column-holder">
+    {{ $threads->links() }}
 </div>
 @stop

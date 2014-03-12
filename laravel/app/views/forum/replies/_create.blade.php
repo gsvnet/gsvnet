@@ -1,6 +1,6 @@
 <div class="reply-form">
     <a name="reply_form"></a>
-    {{ Former::open() }}
+    {{ Former::vertical_open() }}
         {{ Former::textarea('body')->placeholder('Tekst')->label('Reactie')->rows(10) }}
         
         <div class="control-group">

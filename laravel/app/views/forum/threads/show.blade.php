@@ -5,9 +5,6 @@
         <h1>{{ $thread->subject }}</h1>
         <div class="main-content">
             <div class="forum">
-                <div class="header">
-                    {{ $replies->links() }}
-                </div>
 
                 @if(Input::get('page') < 2)
                     @include('forum.threads._thread')
@@ -18,14 +15,13 @@
                         @include('forum.replies._show')
                     @endforeach
                 </div>
-                {{ $replies->links() }}
             </div>
 
             @if(Auth::check())
                 @include('forum.replies._create')
             @else
                 <div class="login-cta">
-                    <p>Wil je hierop reageren?</p> <a class="button" href="{{ action('AuthController@getLogin') }}">Log dan in.</a>
+                    <p>Wil je hierop reageren?</p> <a class="button" href="{{ action('SessionController@getLogin') }}">Log dan in.</a>
                 </div>
             @endif
         </div>
@@ -38,5 +34,9 @@
                 {{ $thread->tags->getTagList() }}
             </div>
         </div>
+    </div>
+
+    <div class="column-holder">
+        {{ $replies->links() }}
     </div>
 @stop

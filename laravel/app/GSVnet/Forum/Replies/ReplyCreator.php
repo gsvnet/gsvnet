@@ -45,6 +45,8 @@ class ReplyCreator
 
         $this->updateThreadCounts($reply->thread);
 
+        $reply->thread->setMostRecentReply($reply);
+
         return $observer->replyCreated($reply);
     }
 

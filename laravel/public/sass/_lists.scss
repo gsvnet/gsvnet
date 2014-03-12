@@ -13,6 +13,14 @@
 			content: '';
 		}
 	}
+
+	&.grey {
+		color: $darkGrey;
+
+		& a:link, & a:visited {
+			color: $darkGrey;
+		}
+	}
 }
 
 .unstyled-list {
