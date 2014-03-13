@@ -156,7 +156,7 @@ Route::group(['before' => 'auth'], function() {
     // Create routes
     Route::get('forum/nieuw-onderwerp',  'ForumThreadsController@getCreateThread');
     Route::post('forum/nieuw-onderwerp', 'ForumThreadsController@postCreateThread');
-    Route::post('forum/{slug}', 'ForumRepliesController@postCreateReply']);
+    Route::post('forum/{slug}',          'ForumRepliesController@postCreateReply');
 });
 
 // Forum index, search, show comment, show thread
