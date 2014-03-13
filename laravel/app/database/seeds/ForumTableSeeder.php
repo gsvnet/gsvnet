@@ -1,6 +1,6 @@
 <?php
 
-class ForumTableSeeder extends Seeder implements 
+class ForumTableSeeder extends Seeder implements
     GSVnet\Forum\Threads\ThreadCreatorListener,
     GSVnet\Forum\Replies\ReplyCreatorListener {
 
@@ -11,8 +11,7 @@ class ForumTableSeeder extends Seeder implements
         DB::table('tagged_items')->truncate();
 
         $faker = Faker\Factory::create();
-        $users = GSVnet\Users\User::orderBy(DB::raw('RAND()'))->get();
-        $numUsers = count($users);
+        $users = GSVnet\Users\User::all(); //orderBy(DB::raw('RAND()'))->get();
         $numThreads = 30;
         $maxReplies = 300;
 
@@ -24,17 +23,21 @@ class ForumTableSeeder extends Seeder implements
 	        $thread = App::make('GSVnet\Forum\Threads\ThreadCreator')->create($this, [
 	            'subject' => $faker->text(20),
 	            'body' => $faker->text(500),
-	            'author' => $users[rand(0, $numUsers-1)],
+	            'author' => $faker->randomElement($users),
 	            'tags' => $tags
 	        ]);
 
             // Willekeurige users geven willekeurige reacties
-            for ($i=0; $i < rand(0, $maxReplies); $i++) { 
+            for ($i=0; $i < rand(0, $maxReplies); $i++) {
                 App::make('GSVnet\Forum\Replies\ReplyCreator')->create($this, [
                     'body'   => $faker->text(rand(10, 800)),
-                    'author' => $users[rand(0, $numUsers-1)],
+                    'author' => $faker->randomElement($users),
                 ], $thread->id);
             }
+
+            // Show progress message
+            if ($j % 10 == 0)
+                $this->command->info(($j + 1) . " / $numThreads  threads toegevoegd");
         }
     }
 
