@@ -2,25 +2,17 @@
 
 @section('content')
 <div class="column-holder">
-{{ Form::model($thread->resource) }}
+{{ Former::open()->action(action('ForumThreadsController@postEditThread', [$thread->id])) }}
+    {{ Former::populate($thread->resource) }}
     <div class="header">
-        <h1>Edit Thread</h1>
+        <h1>Bewerk onderwerp</h1>
     </div>
 
     <div class="main-content">
         <div class="padding">
-            <div class="form-row">
-                {{ Form::label('subject', 'Subject', ['class' => 'field-title']) }}
-                {{ Form::text('subject', null, ['placeholder' => 'Subject']) }}
-                {{ $errors->first('subject', '<small class="error">:message</small>') }}
-            </div>
-
-            <div class="form-row">
-                {{ Form::label('body', 'Thread', ['class' => 'field-title']) }}
-                {{ Form::textarea("body", null) }}
-                {{ $errors->first('body', '<small class="error">:message</small>') }}
-                <small><a href="http://laravel.io/forum/01-31-2014-how-to-mark-up-forum-posts" target="_BLANK">Learn how to mark up your post here.</a></small>
-            </div>
+            
+            {{ Former::text('subject')->label('Onderwerp')->placeholder('Onderwerp')->class('form-control wide') }}
+            {{ Former::textarea('body')->label('Tekst')->placeholder('Tekst')->rows(10) }}
 
             <div class="form-row">
                 {{ Form::label('is_question', 'What type of thread is this?', ['class' => 'field-title']) }}
@@ -60,10 +52,11 @@
                 @include('forum._tag_chooser', ['comment' => $thread])
             </div>
 
-            <div class="form-row">
-                {{ Form::button('Save', ['type' => 'submit', 'class' => 'button']) }}
+            <div class="control-group">
+                <input type="submit" value="Bewerk" class="button">
             </div>
-        {{ Form::close() }}
+
+            {{ Former::close() }}
         </div>
     </div>
 

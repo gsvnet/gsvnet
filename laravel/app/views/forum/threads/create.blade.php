@@ -10,7 +10,7 @@
 
             {{ Former::open() }}
             <section class="padding">
-                {{ Former::text('subject')->placeholder('Onderwerp')->label('Onderwerp') }}
+                {{ Former::text('subject')->placeholder('Onderwerp')->label('Onderwerp')->class('form-control wide') }}
                 {{ Former::textarea('body')->placeholder('Tekst')->label('Tekst')->rows(10) }}
 
                 <div class="form-row">

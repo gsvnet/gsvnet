@@ -22,6 +22,11 @@
 .form-control {
 	padding: .2em .5em;
 	border: 1px solid $grey;
+
+	&.wide {
+		width: 100%;
+		box-sizing: border-box;
+	}
 }
 
 textarea.form-control {
