@@ -2,43 +2,21 @@
 	@include clearfix;
 	margin-bottom: 18px;
 	padding-bottom: 18px;
-	border-bottom: 1px solid $lightGrey;
 
 	&:last-child {
 		border-bottom: 0;
 	}
 
-	.img {
-		width: 126px;
-		height: 126px;
-		background: #CCC;
-		float: left;
-		margin-right: 18px;
-	}
-
-	.info {
-		float: left;
-		width: 343px;
-
-		p {
-			margin: 0;
+	&.small-image {
+		.event-details {
+			width: 10%;
+			max-width: 60px;
 		}
 	}
-
-	p.time {
-		float: left;
-		background: $darkPurple;
-		color: #FFF;
-		padding: 18px;
-		width: 90px;
-		height: 90px;
-		margin: 0 18px 0 0;
-	}
-
 	.event-details {
 		float: left;
 		width: 16%;
-		background: $lightGrey;
+		max-width: 100px;
 		text-align: center;
 		box-sizing: border-box;
 
@@ -54,9 +32,12 @@
 		background-color: #FFF;
 	}
 
+
 	.event-body {
-		float: right;
+		float: left;
 		width: 80%;
+		box-sizing: border-box;
+		padding-left: 1em;
 
 		h3 {
 			margin-bottom: 0;

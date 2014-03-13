@@ -1,6 +1,6 @@
 <div class="event-row">
     <div class="event-details">
-        {{ $thread->author->avatar(80) }}
+        {{ $thread->author->avatar(100) }}
     </div>
     <div class="event-body">
         <h3><a href="{{ $thread->url }}">{{ $thread->subject }}</a></h3>

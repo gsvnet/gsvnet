@@ -25,12 +25,12 @@ class CommentPresenter extends BasePresenter
     public function child_count_label()
     {
         if ($this->resource->child_count == 0) {
-            return '0 Responses';
+            return '0 reacties';
         } elseif($this->resource->child_count == 1) {
-            return '1 Response';
+            return '1 reactie';
         }
 
-        return $this->resource->child_count . ' Responses';
+        return $this->resource->child_count . ' reacties';
     }
 
     public function created_ago()
@@ -56,16 +56,6 @@ class CommentPresenter extends BasePresenter
     {
         $summary = Str::words($this->resource->body, 50);
         return App::make('GSVnet\Markdown\HtmlMarkdownConvertor')->convertMarkdownToHtml($summary);
-    }
-
-    public function laravel_version()
-    {
-        if ($this->resource->laravel_version == 3) {
-            return '[L3]';
-        }
-        if ($this->resource->laravel_version == 4) {
-            return '[L4]';
-        }
     }
 
     // ------------------- //

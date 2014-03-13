@@ -159,8 +159,10 @@ Route::group(['before' => 'auth'], function() {
     Route::post('forum/{slug}',          'ForumRepliesController@postCreateReply');
 });
 
+
 // Forum index, search, show comment, show thread
 Route::get('forum',        'ForumThreadsController@getIndex');
 Route::get('forum/search', 'ForumThreadsController@getSearch');
+
 Route::get('forum/{slug}/reactie/{commentId}', 'ForumRepliesController@getReplyRedirect');
 Route::get('forum/{slug}', 'ForumThreadsController@getShowThread');

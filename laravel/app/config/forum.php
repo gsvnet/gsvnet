@@ -2,38 +2,23 @@
 
 return [
     'sections' => [
-        'All Threads' => [
+        'Alle onderwerpen' => [
             'tags' => '',
         ],
-        'Installation / Configuration' => [
-            'tags' => 'installation,configuration'
+        'Discussies' => [
+        	'tags' => 'jaarverbanden,regios'
         ],
-        'Authentication / Security' => [
-            'tags' => 'authentication,security'
+        'GSV / Senaat' => [
+        	'tags' => 'gsv,senaat'
         ],
-        'Requests / Input / Responses' => [
-            'tags' => 'requests,input'
+        'Jaarverbanden / Regio\'s' => [
+        	'tags' => 'jaarverbanden,regios'
         ],
-        'Session / Cache' => [
-            'tags' => 'session,cache'
+        'Maatschappij / Politiek' => [
+        	'tags' => 'maatschappij-en-politiek'
         ],
-        'Database / Eloquent' => [
-            'tags' => 'database,eloquent'
-        ],
-        'Packages / IoC ' => [
-            'tags' => 'packages,ioc'
-        ],
-        'Views / Blade / Forms' => [
-            'tags'  => 'views,blade,forms'
-        ],
-        'Mail / Queues' => [
-            'tags' => 'mail,queues'
-        ],
-        'Local Community Meetups' => [
-            'tags' => 'meetups'
-        ],
-        'Laravel.io Site and Community' => [
-            'tags'  => 'laravelio',
+        'Geloof / Wetenschap' => [
+        	'tags' => 'geloof-en-wetenschap'
         ]
-    ],
+    ]
 ];

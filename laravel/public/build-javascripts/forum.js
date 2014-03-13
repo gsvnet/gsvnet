@@ -67,7 +67,7 @@ function bindTagChooser() {
     $('a._tag').click(function(e) {
         e.preventDefault();
         if ( ! $(this).hasClass('disabled')) {
-            toggleTag($(this).text());
+            toggleTag($(this).attr('title'));
         }
     });
 
@@ -90,25 +90,10 @@ function questionSelectToTag() {
     })
 }
 
-function versionSelectToTag() {
-    var versionTags = $('._version_tags').find('input');
-
-    versionTags.each(function() {
-        if ($(this).prop('checked')) {
-            $(this).closest('label').addClass('selected');
-        }
-    });
-
-    $('._version_tags input').change(function() {
-        $('._version_tags .selected').removeClass('selected');
-        $(this).closest('label').addClass('selected');
-    })
-}
-
 function formatForumQuote(author, quote)
 {
     // add author name
-    quote = "**" + author + "** said:\n\n" + quote;
+    quote = "**" + author + "** zei:\n\n" + quote;
 
     // add markdown quote tags
     quote = quote.replace(/^/g, ">");
@@ -136,7 +121,6 @@ function bindQuoteLinks()
 
 $(function() {
     bindTagChooser();
-    versionSelectToTag();
     questionSelectToTag();
     bindQuoteLinks();
 });

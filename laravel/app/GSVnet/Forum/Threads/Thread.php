@@ -50,16 +50,6 @@ class Thread extends Entity
         $this->attributes['slug'] = $this->generateNewSlug();
     }
 
-    public function scopeSolvedQuestions($q)
-    {
-        return $q->where('is_question', '=', 1)->whereNull('solution_reply_id');
-    }
-
-    public function scopeUnsolvedQuestions($q)
-    {
-        return $q->where('is_question', '=', 1)->whereNotNull('solution_reply_id');
-    }
-
     private function generateNewSlug()
     {
         $i = 0;
@@ -95,16 +85,6 @@ class Thread extends Entity
         return \Str::slug("{$date} - {$this->subject}" . $i);
     }
 
-    public function isQuestion()
-    {
-        return $this->is_question;
-    }
-
-    public function isSolved()
-    {
-        return $this->isQuestion() && ! is_null($this->solution_reply_id);
-    }
-
     public function isManageableBy($user)
     {
         if ( ! $user) return false;
@@ -115,11 +95,6 @@ class Thread extends Entity
     {
         if ( ! $user) return false;
         return $user->id == $this->author_id;
-    }
-
-    public function isReplyTheSolution($reply)
-    {
-        return $reply->id == $this->solution_reply_id;
     }
 
     public function setMostRecentReply(Reply $reply)
