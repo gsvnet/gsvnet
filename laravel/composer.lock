@@ -94,7 +94,7 @@
             ],
             "authors": [
                 {
-                    "name": "Maxime Fabre",
+                    "name": "Anahkiasen",
                     "email": "ehtnam6@gmail.com"
                 }
             ],
@@ -107,12 +107,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mtdowling/ClassPreloader.git",
-                "reference": "1.0.1"
+                "reference": "1a50f7945b725ff2c60f234e51407d1d6e7c77c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mtdowling/ClassPreloader/zipball/1.0.1",
-                "reference": "1.0.1",
+                "url": "https://api.github.com/repos/mtdowling/ClassPreloader/zipball/1a50f7945b725ff2c60f234e51407d1d6e7c77c5",
+                "reference": "1a50f7945b725ff2c60f234e51407d1d6e7c77c5",
                 "shasum": ""
             },
             "require": {
@@ -422,12 +422,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "cdfd959d4bf48404a0c46985da801d46c67c6391"
+                "reference": "3589115ab1c057dde28c10a3a08ec90f5af2bd96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/cdfd959d4bf48404a0c46985da801d46c67c6391",
-                "reference": "cdfd959d4bf48404a0c46985da801d46c67c6391",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/3589115ab1c057dde28c10a3a08ec90f5af2bd96",
+                "reference": "3589115ab1c057dde28c10a3a08ec90f5af2bd96",
                 "shasum": ""
             },
             "require": {
@@ -531,7 +531,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2014-03-10 20:05:42"
+            "time": "2014-03-11 03:33:57"
         },
         {
             "name": "mccool/laravel-auto-presenter",
@@ -2057,6 +2057,73 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JeffreyWay/Laravel-4-Generators.git",
+                "reference": "f4bdb309f899b7a5e476e61f14979a5a166b2aa6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JeffreyWay/Laravel-4-Generators/zipball/f4bdb309f899b7a5e476e61f14979a5a166b2aa6",
+                "reference": "f4bdb309f899b7a5e476e61f14979a5a166b2aa6",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~4.1",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "behat/behat": "v2.5.1",
+                "behat/mink": "v1.5.0",
+                "behat/mink-extension": "*",
+                "behat/mink-goutte-driver": "*",
+                "behat/mink-selenium2-driver": "*",
+                "phpspec/phpspec": "2.0.*@dev",
+                "phpunit/phpunit": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Way\\Generators": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeffrey Way",
+                    "email": "jeffrey@jeffrey-way.com",
+                    "homepage": "http://jeffrye-way.com",
+                    "role": "Developer"
+                }
+            ],
+            "time": "2014-03-10 20:57:40"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "way/generators": 20,
+        "anahkiasen/former": 20,
+        "fzaninotto/faker": 20,
+        "intervention/image": 20,
+        "thomaswelton/laravel-gravatar": 20,
+        "michelf/php-markdown": 20,
+        "nickcernis/html-to-markdown": 20,
+        "misd/linkify": 20
+    },
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}
+,
                 "reference": "f4bdb309f899b7a5e476e61f14979a5a166b2aa6"
             },
             "dist": {

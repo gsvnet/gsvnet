@@ -13,7 +13,6 @@
         "michelf/php-markdown": "1.4.*@dev",
         "nickcernis/html-to-markdown": "dev-master",
         "misd/linkify": "1.1.*@dev"
-
 	},
 	"autoload": {
 		"classmap": [

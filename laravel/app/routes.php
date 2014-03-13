@@ -150,9 +150,9 @@ Route::group(['before' => 'auth'], function() {
     Route::post('forum/bewerk-reactie/{replyId}', 'ForumRepliesController@postEditReply');
 
     Route::get('forum/verwijder-reactie/{replyId}', 'ForumRepliesController@getDelete');
-    Route::post('forum/verwijder-reactie/{replyId}', 'ForumRepliesController@postDelete');
+    Route::delete('forum/verwijder-reactie/{replyId}', 'ForumRepliesController@postDelete');
     Route::get('forum/verwijder-onderwerp/{threadId}', 'ForumThreadsController@getDelete');
-    Route::post('forum/verwijder-onderwerp/{threadId}', 'ForumThreadsController@postDelete');
+    Route::delete('forum/verwijder-onderwerp/{threadId}', 'ForumThreadsController@postDelete');
 
     Route::post('forum/{slug}', ['before' => '', 'uses' => 'ForumRepliesController@postCreateReply']);
 });
