@@ -19,7 +19,7 @@ class ForumTableSeeder extends Seeder implements GSVnet\Forum\Threads\ThreadCrea
 	            'body' => $faker->text(500),
 	            'author' => $user,
 	            'tags' => $tags
-	        ], new GSVnet\Forum\Threads\ThreadForm);
+	        ]);
         	
         }
     }
@@ -32,7 +32,7 @@ class ForumTableSeeder extends Seeder implements GSVnet\Forum\Threads\ThreadCrea
 
     public function threadCreated($thread)
     {
-    	dd($thread);
+    	//dd($thread);
     }
 
 }
