@@ -95,11 +95,6 @@ class Thread extends Entity
         return \Str::slug("{$date} - {$this->subject}" . $i);
     }
 
-    public function getLaravelVersions()
-    {
-        return $this->laravelVersions;
-    }
-
     public function isQuestion()
     {
         return $this->is_question;
