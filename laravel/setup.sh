@@ -4,6 +4,9 @@ echo "--- Setting up gsv.192.168.33.10.xip.io as servername ---"
 sudo vhost -d /vagrant/public -s gsv.192.168.33.10.xip.io
 cd /vagrant
 
+echo "--- Installing composer packages ---"
+composer install
+
 echo "--- Setting storage permissions ---"
 chmod -R 777 app/storage
 
