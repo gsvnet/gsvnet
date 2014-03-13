@@ -31,7 +31,7 @@ class ForumThreadsController extends BaseController implements
     )
     {
         parent::__construct();
-        
+
         $this->threads = $threads;
         $this->tags = $tags;
         $this->threadCreator = $threadCreator;
@@ -78,11 +78,10 @@ class ForumThreadsController extends BaseController implements
     public function getCreateThread()
     {
         $tags = $this->tags->getAllForForum();
-        $versions = $this->threads->getNew()->getLaravelVersions();
         $this->createSections(Input::get('tags'));
 
         $this->title = "Create Forum Thread";
-        $this->view('forum.threads.create', compact('tags', 'versions'));
+        $this->view('forum.threads.create', compact('tags'));
         $this->layout->activeMenuItem = 'forum';
 
     }
@@ -93,8 +92,6 @@ class ForumThreadsController extends BaseController implements
             'subject' => Input::get('subject'),
             'body' => Input::get('body'),
             'author' => Auth::user(),
-            'laravel_version' => Input::get('laravel_version'),
-            'is_question' => Input::get('is_question'),
             'tags' => $this->tags->getTagsByIds(Input::get('tags')),
         ], new ThreadForm);
     }
@@ -119,12 +116,11 @@ class ForumThreadsController extends BaseController implements
         }
 
         $tags = $this->tags->getAllForForum();
-        $versions = $thread->getLaravelVersions();
 
         $this->createSections(Input::get('tags'));
 
         $this->title = "Edit Forum Thread";
-        $this->view('forum.threads.edit', compact('thread', 'tags', 'versions'));
+        $this->view('forum.threads.edit', compact('thread', 'tags'));
         $this->layout->activeMenuItem = 'forum';
 
     }
@@ -140,8 +136,6 @@ class ForumThreadsController extends BaseController implements
         return App::make('GSVnet\Forum\Threads\ThreadUpdater')->update($this, $thread, [
             'subject' => Input::get('subject'),
             'body' => Input::get('body'),
-            'is_question' => Input::get('is_question', 0),
-            'laravel_version' => Input::get('laravel_version'),
             'tags' => $this->tags->getTagsByIds(Input::get('tags')),
         ], new ThreadForm);
     }

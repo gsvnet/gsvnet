@@ -32,19 +32,9 @@ class ThreadPresenter extends BasePresenter
         return $body;
     }
 
-    public function versionSubjectPrefix()
-    {
-        if ($this->laravel_version == 3) {
-            return '[L3] ';
-        }
-    }
-
     public function subject()
     {
-        $prefix = $this->versionSubjectPrefix();
-        $subject = Str::limit($this->resource->subject, 80);
-
-        return $prefix ? $prefix .' '. $subject : $subject;
+        return $subject = Str::limit($this->resource->subject, 80);
     }
 
     public function mostRecentReplier()

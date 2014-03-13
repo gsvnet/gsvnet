@@ -8,7 +8,7 @@ use GSVnet\Forum\Replies\Reply;
 class Thread extends Entity
 {
     protected $table      = 'forum_threads';
-    protected $fillable   = ['subject', 'body', 'author_id', 'is_question', 'solution_reply_id', 'category_slug', 'laravel_version'];
+    protected $fillable   = ['subject', 'body', 'author_id', 'solution_reply_id', 'category_slug'];
     protected $with       = ['author'];
     protected $softDelete = true;
 
@@ -17,12 +17,6 @@ class Thread extends Entity
     protected $validationRules = [
         'body'      => 'required',
         'author_id' => 'required|exists:users,id',
-    ];
-
-    protected $laravelVersions = [
-        4 => "Laravel 4.x",
-        3 => "Laravel 3.x",
-        0 => "Doesn't Matter",
     ];
 
     public function author()

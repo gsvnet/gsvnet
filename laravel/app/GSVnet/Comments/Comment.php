@@ -6,7 +6,7 @@ use Str;
 class Comment extends Entity
 {
     protected $table      = 'comments';
-    protected $fillable   = ['title', 'body', 'author_id', 'parent_id', 'category_slug', 'owner_id', 'owner_type', 'type', 'laravel_version'];
+    protected $fillable   = ['title', 'body', 'author_id', 'parent_id', 'category_slug', 'owner_id', 'owner_type', 'type'];
     protected $with       = ['author'];
     protected $softDelete = true;
 
@@ -15,12 +15,6 @@ class Comment extends Entity
     protected $validatorRules = [
         'body'      => 'required',
         'author_id' => 'required|exists:users,id',
-    ];
-
-    protected $laravelVersions = [
-        0 => "Doesn't Matter",
-        3 => "Laravel 3.x",
-        4 => "Laravel 4.x",
     ];
 
     const TYPE_FORUM   = 0;
@@ -61,11 +55,6 @@ class Comment extends Entity
     {
         //$body = \App::make('GSVnet\Markdown\HtmlMarkdownConvertor')->convertHtmlToMarkdown($content);
         $this->attributes['body'] = $content;
-    }
-
-    public function getLaravelVersions()
-    {
-        return $this->laravelVersions;
     }
 
     public function isManageableBy(\GSVnet\Accounts\User $user)
