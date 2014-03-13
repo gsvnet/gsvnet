@@ -60,22 +60,23 @@
 	}
 
 	a:link, a:visited {
-		background: $lightPurple;	
-		color: #FFF;
+		background: $lightGrey;	
 		margin-bottom: .5em;
-		padding: .5em 1em;
+		padding: .25em .5em;
 		text-decoration: none;
 		border: 0;
 		font-family: $font-family-sans;
 		display: inline-block;
 
 		&.active {
+			color: #FFF;
 			background: $lighterPurple;
 		}
 
 		&.disabled {
-			background: $grey;
+			color: $grey;
 			cursor: default;
+			opacity: .5;
 		}
 	}
 }

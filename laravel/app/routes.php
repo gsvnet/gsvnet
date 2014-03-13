@@ -158,7 +158,7 @@ Route::group(['before' => 'auth'], function() {
 });
 
 Route::get('forum', 'ForumThreadsController@getIndex');
-Route::get('forum/search', 'ForumThreadsController@getSearch');
+Route::get('forum/zoek', 'ForumThreadsController@getSearch');
 Route::get('forum/{slug}/reactie/{commentId}', 'ForumRepliesController@getReplyRedirect');
 Route::get('forum/{slug}', ['before' => '', 'uses' => 'ForumThreadsController@getShowThread']);
 

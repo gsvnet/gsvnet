@@ -69,7 +69,7 @@ class ForumThreadsController extends BaseController implements
 
         $this->createSections($thread->getTags());
 
-        $this->title = ($thread->isSolved() ? '[SOLVED] ' : '') . $thread->subject;
+        $this->title = $thread->subject;
         $this->view('forum.threads.show', compact('thread', 'replies'));
         $this->layout->activeMenuItem = 'forum';
     }
