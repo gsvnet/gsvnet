@@ -2,11 +2,11 @@
 
     <div class="forum-post-data">
         <div class="avatar">
-        	{{ $thread->author->avatar(80) }}
+        	{{ $thread->author->avatar(40) }}
         </div>
         <div class="info">
             <h6><a href="{{ $thread->author->profileUrl }}">{{ $thread->author->fullname }}</a></h6>
-            <ul class="inline-list">
+            <ul class="inline-list grey">
                 <li>{{ $thread->created_ago }}</li>
                 @if($thread->isManageableBy($currentUser))
                     <li><a href="{{ $thread->editUrl }}">Bewerk</a></li>

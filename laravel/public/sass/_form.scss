@@ -3,6 +3,7 @@
 	font-family: $font-family-sans;
 }
 
+
 .control-label {
 	cursor: pointer;
 	display: block;
@@ -21,6 +22,11 @@
 .form-control {
 	padding: .2em .5em;
 	border: 1px solid $grey;
+}
+
+textarea.form-control {
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .has-error {

@@ -52,7 +52,7 @@ class ThreadPresenter extends BasePresenter
         if ( ! $this->mostRecentReply) {
             return null;
         }
-        return $this->mostRecentReply->author->name;
+        return $this->mostRecentReply->author->fullname;
     }
 
     public function latestReplyUrl()

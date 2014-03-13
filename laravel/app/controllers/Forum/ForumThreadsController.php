@@ -39,11 +39,11 @@ class ForumThreadsController extends BaseController implements
     }
 
     // show thread list - clean this method
-    public function getIndex($status = '')
+    public function getIndex()
     {
         // query tags and retrieve the appropriate threads
         $tags = $this->tags->getAllTagsBySlug(Input::get('tags'));
-        $threads = $this->threads->getByTagsAndStatusPaginated($tags, $status, $this->threadsPerPage);
+        $threads = $this->threads->getByTagsAndStatusPaginated($tags, '', $this->threadsPerPage);
 
         // add the tag string to each pagination link
         $tagAppends = ['tags' => Input::get('tags')];
@@ -53,6 +53,7 @@ class ForumThreadsController extends BaseController implements
 
         $this->title = "Forum";
         $this->view('forum.threads.index', compact('threads', 'tags', 'queryString'));
+        $this->layout->activeMenuItem = 'forum';
     }
 
     // show a thread
@@ -70,6 +71,7 @@ class ForumThreadsController extends BaseController implements
 
         $this->title = ($thread->isSolved() ? '[SOLVED] ' : '') . $thread->subject;
         $this->view('forum.threads.show', compact('thread', 'replies'));
+        $this->layout->activeMenuItem = 'forum';
     }
 
     // create a thread
@@ -81,6 +83,8 @@ class ForumThreadsController extends BaseController implements
 
         $this->title = "Create Forum Thread";
         $this->view('forum.threads.create', compact('tags', 'versions'));
+        $this->layout->activeMenuItem = 'forum';
+
     }
 
     public function postCreateThread()
@@ -121,6 +125,8 @@ class ForumThreadsController extends BaseController implements
 
         $this->title = "Edit Forum Thread";
         $this->view('forum.threads.edit', compact('thread', 'tags', 'versions'));
+        $this->layout->activeMenuItem = 'forum';
+
     }
 
     public function postEditThread($threadId)
@@ -138,38 +144,6 @@ class ForumThreadsController extends BaseController implements
             'laravel_version' => Input::get('laravel_version'),
             'tags' => $this->tags->getTagsByIds(Input::get('tags')),
         ], new ThreadForm);
-    }
-
-    public function getMarkQuestionSolved($threadId, $solvedByReplyId)
-    {
-        $thread = $this->threads->requireById($threadId);
-
-        if ( ! $thread->isQuestion() || ! $thread->isManageableBy(Auth::user())) {
-            return Redirect::to('/');
-        }
-
-        $reply = $this->replies->requireById($solvedByReplyId);
-
-        if ( ! $reply || $reply->thread_id != $thread->id) {
-            return Redirect::to('/');
-        }
-
-        return App::make('GSVnet\Forum\Threads\ThreadUpdater')->update($this, $thread, [
-            'solution_reply_id' => $reply->id,
-        ]);
-    }
-
-    public function getMarkQuestionUnsolved($threadId)
-    {
-        $thread = $this->threads->requireById($threadId);
-
-        if ( ! $thread->isQuestion() || ! $thread->isManageableBy(Auth::user())) {
-            return Redirect::to('/');
-        }
-
-        return App::make('GSVnet\Forum\Threads\ThreadUpdater')->update($this, $thread, [
-            'solution_reply_id' => null,
-        ]);
     }
 
     // observer methods
@@ -225,6 +199,7 @@ class ForumThreadsController extends BaseController implements
         $this->createSections(Input::get('tags'));
         $this->title = "Forum Search";
         $this->view('forum.search', compact('query', 'results'));
+        $this->layout->activeMenuItem = 'forum';
     }
 
     // ------------------------- //

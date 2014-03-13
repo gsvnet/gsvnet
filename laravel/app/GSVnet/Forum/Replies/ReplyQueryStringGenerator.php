@@ -12,7 +12,7 @@ class ReplyQueryStringGenerator
 
         // return Redirect::to(action('ForumThreadsController@getShowThread', [$thread]) . "?page={$page}#thread-{$threadId}");
 
-        return "?page={$pageNumber}#reply-{$reply->id}";
+        return "?page={$pageNumber}#reactie-{$reply->id}";
     }
 
     private function getPageNumber($count, $perPage)

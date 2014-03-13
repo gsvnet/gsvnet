@@ -11,7 +11,7 @@
             {{ Former::open() }}
             <section class="padding">
                 {{ Former::text('subject')->placeholder('Onderwerp')->label('Onderwerp') }}
-                {{ Former::textarea('body')->placeholder('Tekst')->label('Tekst') }}
+                {{ Former::textarea('body')->placeholder('Tekst')->label('Tekst')->rows(10) }}
 
                 <div class="form-row">
                     {{ Form::label('is_question', 'What type of thread is this?', ['class' => 'field-title']) }}
@@ -68,7 +68,8 @@
             {{ Former::close() }}
         </div>
         <div class="secondary-column">
-            @include('forum._sidebar')
+            <h2>ijoaegj ooeaijgro</h2>
+            <p>Probeer een titel te verzinnen die een goede beschrijving is van het onderwerp.</p>
         </div>
     </div>
 @stop

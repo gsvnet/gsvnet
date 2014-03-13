@@ -1,6 +1,6 @@
 <?php namespace GSVnet\Users;
 
-use BasePresenter, Carbon\Carbon, Config, Gravatar;
+use BasePresenter, Carbon\Carbon, Config, Gravatar, URL;
 
 class UserPresenter extends BasePresenter
 {
@@ -61,5 +61,10 @@ class UserPresenter extends BasePresenter
     public function avatar($size = 120)
     {
         return Gravatar::image($this->resource->email, 'Profielfoto', array('width' => $size, 'height' => $size));
+    }
+
+    public function profileUrl()
+    {
+        return URL::action('UserController@showUser', [$this->resource->id]);
     }
 }

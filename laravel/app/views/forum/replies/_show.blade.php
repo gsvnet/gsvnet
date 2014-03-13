@@ -1,4 +1,4 @@
-<div class="comment _post" id="reply-{{ $reply->id }}">
+<div class="comment _post" id="reactie-{{ $reply->id }}">
 
     <div class="forum-post-data">
         <div class="avatar">
@@ -6,7 +6,7 @@
         </div>
         <div class="info">
             <h6><a href="{{ $reply->author->profileUrl }}">{{ $reply->author->fullname }}</a></h6>
-            <ul class="inline-list">
+            <ul class="inline-list grey">
                 <li><a href="{{ $reply->url }}">{{ $reply->created_ago }}</a></li>
 
                 @if(Auth::check())
