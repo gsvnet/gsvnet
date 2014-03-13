@@ -8,12 +8,15 @@ class ForumTableSeeder extends Seeder implements
     {
         DB::table('forum_threads')->truncate();
         DB::table('forum_replies')->truncate();
+        DB::table('tagged_items')->truncate();
 
         $faker = Faker\Factory::create();
         $users = GSVnet\Users\User::orderBy(DB::raw('RAND()'))->get();
         $numUsers = count($users);
         $numThreads = 30;
         $maxReplies = 300;
+
+        $this->command->info('Bezig '.$numThreads.' topics toe te voegen met maximaal ' . $maxReplies . ' replies');
 
         for($j=0; $j<$numThreads; $j++)
         {

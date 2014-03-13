@@ -7,30 +7,21 @@ class UsersTableSeeder extends Seeder {
         DB::table('users')->truncate();
         DB::table('user_profiles')->truncate();
 
-        $mark = GSVnet\Users\User::create(array(
-            'email'         => 'markredeman@gmail.com',
-            'password'      => 'helloworld',
-            'firstname'     => 'Mark',
-            'lastname'      => 'Redeman',
-            'middlename'    => 'Sietse',
-            'username'      => 'mredeman',
-            'type'          => 2
-        ));
-
         $count = 200;
 
         $faker = Faker\Factory::create('en_US');
-
         $faker->addProvider(new Faker\Provider\en_US\Person($faker));
         $faker->addProvider(new Faker\Provider\en_US\Address($faker));
         $faker->addProvider(new Faker\Provider\Internet($faker));
 
-        $this->command->info('Inserting '.$count.' sample records using Faker ...');
+        $this->command->info('Bezig '.$count.' users toe te voegen');
 
         $yearGroupIds = DB::table('year_groups')->lists('id');
 
         for( $x=0 ; $x<$count; $x++ )
         {
+            $type = rand(0,3);
+
             $user = GSVnet\Users\User::create(array(
                 'firstname' => $faker->firstName,
                 'middlename' => 'van',
@@ -41,28 +32,45 @@ class UsersTableSeeder extends Seeder {
                 'type' => rand(0,3)
             ));
 
-            $k = array_rand($yearGroupIds);
+            if($type == 2 || $type == 3)
+            {
 
-            GSVnet\Users\Profiles\UserProfile::create(array(
-                'user_id' => $user->id,
-                'year_group_id' => $yearGroupIds[$k],
-                'region' => rand(1,4),
-                'phone' => $faker->phoneNumber,
-                'address' => $faker->streetAddress,
-                'zip_code' => $faker->postcode,
-                'town' => $faker->city,
-                'study' => 'Technische Wiskunde',
-                'birthdate' => $faker->dateTimeThisCentury->format('Y-m-d'),
-                'church' => 'GKV',
-                'gender' => 'male',
-                'start_date_rug' => $faker->dateTimeThisCentury->format('Y-m-d'),
-                'reunist' => rand(0,1),
-                'parent_address' => $faker->streetAddress,
-                'parent_zip_code' => $faker->postcode,
-                'parent_town' => $faker->city,
-                'parent_phone' => $faker->phoneNumber
-            ));
+                $k = array_rand($yearGroupIds);
+
+                GSVnet\Users\Profiles\UserProfile::create(array(
+                    'user_id' => $user->id,
+                    'year_group_id' => $yearGroupIds[$k],
+                    'region' => rand(1,4),
+                    'phone' => $faker->phoneNumber,
+                    'address' => $faker->streetAddress,
+                    'zip_code' => $faker->postcode,
+                    'town' => $faker->city,
+                    'study' => 'Technische Wiskunde',
+                    'birthdate' => $faker->dateTimeThisCentury->format('Y-m-d'),
+                    'church' => 'GKV',
+                    'gender' => 'male',
+                    'start_date_rug' => $faker->dateTimeThisCentury->format('Y-m-d'),
+                    'reunist' => rand(0,1),
+                    'parent_address' => $faker->streetAddress,
+                    'parent_zip_code' => $faker->postcode,
+                    'parent_town' => $faker->city,
+                    'parent_phone' => $faker->phoneNumber
+                ));
+                
+            }
         }
+
+
+
+        $mark = GSVnet\Users\User::create(array(
+            'email'         => 'markredeman@gmail.com',
+            'password'      => 'helloworld',
+            'firstname'     => 'Mark',
+            'lastname'      => 'Redeman',
+            'middlename'    => 'Sietse',
+            'username'      => 'mredeman',
+            'type'          => 2
+        ));
 
         GSVnet\Users\Profiles\UserProfile::create(array(
             'user_id' => $mark->id,

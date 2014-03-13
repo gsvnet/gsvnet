@@ -15,7 +15,37 @@ app = (function() {
 	}
 
 	function home() {
+		var videoSlide = $('#homepage-video-slide'),
+		    videoPlayingClass = 'video-playing',
+		    video = document.getElementById('home-video'),
+		    carousel = $('#homepage-carousel'),
+		    play = function() {
+				carousel.carousel('pause');
+				videoSlide.addClass(videoPlayingClass);
+				video.play();
+		    },
+		    pause = function() {
+				carousel.carousel('cycle');
+				videoSlide.removeClass(videoPlayingClass);
+				video.pause();
+		    };
 
+		// Play/pause video on click.
+		$('#play-video-link').click(function(){
+			if (video.paused) {
+				play();
+			} else {
+				pause();
+			}
+		});
+
+		// Pause video if it is playing
+		$('#homepage-carousel').on('slide.bs.carousel', function () {
+			if(!video.paused)
+			{
+				pause();
+			}
+		});
 	}
 
 	function editProfile() {

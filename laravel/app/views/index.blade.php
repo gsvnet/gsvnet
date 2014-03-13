@@ -12,7 +12,31 @@
             <!-- Wrapper for slides -->
             <div class="carousel-make-height">
                 <div class="carousel-inner">
-                    <a href="#" class="item active">
+                    <div id="homepage-video-slide" href="#" class="item active">
+
+                        <div class="slider-video-wrap">
+                            <video id="home-video" class="slider-video" preload="none">
+                                <source src="videos/big_buck_bunny.mp4" type="video/mp4">
+                                <source src="videos/big_buck_bunny.webm" type="video/webm">
+                                <source src="videos/big_buck_bunny.ogv" type="video/ogg">
+                            </video>
+                        </div>
+
+                        <a href="#" id="play-video-link" class="play-video" title="Speel de film">
+                            <span class="shadow"></span>
+                            <div class="video-button"></div>
+                            <span data-picture data-alt="Een geweldig plaatje">
+                                <span data-src="/images/nogeen-480.jpg"></span>
+                                <span data-src="/images/nogeen-600.jpg" data-media="(min-width: 480px)"></span>
+                                <span data-src="/images/nogeen-1024.jpg" data-media="(min-width: 600px)"></span>
+                                <span data-src="/images/nogeen-1600.jpg" data-media="(min-width: 1024px)"></span>
+                                <noscript>
+                                    <img src="/images/nogeen-480.jpg" alt="Geweldig plaatje" width="480" height="360">
+                                </noscript>
+                            </span>
+                        </a>
+
+                        
                         <div class="slide-description-wrapper">
                             <div class="slide-description">
                                 <div class="slide-description-box">
@@ -21,18 +45,8 @@
                                 </div>
                             </div>
                         </div>
-                        <span class="shadow"></span>
-                        <div class="video-button"></div>
-                        <span data-picture data-alt="Een geweldig plaatje">
-                            <span data-src="/images/nogeen-480.jpg"></span>
-                            <span data-src="/images/nogeen-600.jpg" data-media="(min-width: 480px)"></span>
-                            <span data-src="/images/nogeen-1024.jpg" data-media="(min-width: 600px)"></span>
-                            <span data-src="/images/nogeen-1600.jpg" data-media="(min-width: 1024px)"></span>
-                            <noscript>
-                                <img src="/images/nogeen-480.jpg" alt="Geweldig plaatje" width="480" height="360">
-                            </noscript>
-                        </span>
-                    </a>
+
+                    </div>
                     <div href="#" class="item">
                         <div class="slide-description-wrapper">
                             <div class="slide-description">
