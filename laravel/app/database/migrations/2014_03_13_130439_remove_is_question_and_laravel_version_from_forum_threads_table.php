@@ -26,9 +26,9 @@ class RemoveIsQuestionAndLaravelVersionFromForumThreadsTable extends Migration {
 	 */
 	public function down()
 	{
-	    Schema::table('forum_threads', function(Blueprint $table) {
-            $table->('is_question');
-            $table->('laravel_version');
+        Schema::table('forum_threads', function(Blueprint $table) {
+            $table->boolean('is_question');
+            $table->integer('laravel_version');
         });
 	}
 
