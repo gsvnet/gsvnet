@@ -3,6 +3,29 @@ use Illuminate\Pagination\BootstrapPresenter;
 
 class PaginationPresenter extends BootstrapPresenter {
 
+
+    /**
+     * Render the Pagination contents.
+     *
+     * @return string
+     */
+    public function render()
+    {
+        // The hard-coded thirteen represents the minimum number of pages we need to
+        // be able to create a sliding page window. If we have less than that, we
+        // will just render a simple range of page links insteadof the sliding.
+        if ($this->lastPage < 9)
+        {
+            $content = $this->getPageRange(1, $this->lastPage);
+        }
+        else
+        {
+            $content = $this->getPageSlider();
+        }
+
+        return $this->getPrevious().$content.$this->getNext();
+    }
+
     /**
      * Create a pagination slider link window.
      *
