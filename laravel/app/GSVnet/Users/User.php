@@ -133,4 +133,10 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
         $key = array_search ($type, $types);
         return $key;
     }
+
+    // Tijdelijk
+    public function isForumAdmin()
+    {
+        return false;
+    }
 }

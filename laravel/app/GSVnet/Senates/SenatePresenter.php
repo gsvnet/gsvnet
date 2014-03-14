@@ -31,7 +31,6 @@ class SenatePresenter extends BasePresenter
         //$body = $this->removeDoubleSpaces($body);
         $body = $this->convertMarkdown($body);
         // $body = $this->convertNewlines($body);
-        // $body = $this->formatGists($body);
         // $body = $this->linkify($body);
         return $body;
     }

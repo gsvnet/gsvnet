@@ -13,6 +13,14 @@
 			content: '';
 		}
 	}
+
+	&.grey {
+		color: $darkGrey;
+
+		& a:link, & a:visited {
+			color: $darkGrey;
+		}
+	}
 }
 
 .unstyled-list {
@@ -42,6 +50,36 @@
 	}
 }
 
+.tags-select-list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		display: inline;
+	}
+
+	a:link, a:visited {
+		background: $lightGrey;	
+		margin-bottom: .5em;
+		padding: .25em .5em;
+		text-decoration: none;
+		border: 0;
+		font-family: $font-family-sans;
+		display: inline-block;
+
+		&.active {
+			color: #FFF;
+			background: $lighterPurple;
+		}
+
+		&.disabled {
+			color: $grey;
+			cursor: default;
+			opacity: .5;
+		}
+	}
+}
 
 // This is a secondary menu which is on the page itself
 .secondary-menu {
