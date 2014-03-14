@@ -20,9 +20,13 @@ gulp.task('css', function(){
 });
 
 gulp.task('images', function(){
-    gulp.src('laravel/public/images/**/*.jpg')
-        .pipe(imagemin())
-        .pipe(gulp.dest('laravel/public/images/'));
+  return gulp.src([
+      'laravel/public/images/**/*.jpg',
+      'laravel/public/images/**/*.png',
+      'laravel/public/images/**/*.gif'
+    ])
+    .pipe(imagemin())
+    .pipe(gulp.dest('laravel/public/images-min/'));
 })
 
 gulp.task('scripts', function() {
