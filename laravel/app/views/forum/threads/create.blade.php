@@ -17,6 +17,12 @@
                     @include('forum._tag_chooser')
                 </div>
 
+                @if (Permission::has('threads.show-private'))
+                <div>
+                    {{ Former::checkbox('public')->text('Maak topic publiek voor niet-GSV leden')->label('Publiek') }}
+                </div>
+                @endif
+
                 <div class="control-group">
                     <input type="submit" value="Opslaan" class="button">
                 </div>

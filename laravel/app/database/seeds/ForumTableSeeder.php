@@ -24,7 +24,8 @@ class ForumTableSeeder extends Seeder implements
 	            'subject' => $faker->text(20),
 	            'body' => $this->randomBody($faker),
 	            'author' => $faker->randomElement($users),
-	            'tags' => $tags
+	            'tags' => $tags,
+                'public' => $faker->boolean(70)
 	        ]);
 
             // Willekeurige users geven willekeurige reacties

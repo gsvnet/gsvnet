@@ -43,7 +43,7 @@ class ForumThreadsController extends BaseController implements
     {
         // query tags and retrieve the appropriate threads
         $tags = $this->tags->getAllTagsBySlug(Input::get('tags'));
-        $threads = $this->threads->getByTagsAndStatusPaginated($tags, '', $this->threadsPerPage);
+        $threads = $this->threads->getByTagsPaginated($tags, '', $this->threadsPerPage);
 
         // add the tag string to each pagination link
         $tagAppends = ['tags' => Input::get('tags')];
@@ -93,6 +93,7 @@ class ForumThreadsController extends BaseController implements
             'body' => Input::get('body'),
             'author' => Auth::user(),
             'tags' => $this->tags->getTagsByIds(Input::get('tags')),
+            'public' => Input::get('public', false)
         ], new ThreadForm);
     }
 
@@ -137,6 +138,7 @@ class ForumThreadsController extends BaseController implements
             'subject' => Input::get('subject'),
             'body' => Input::get('body'),
             'tags' => $this->tags->getTagsByIds(Input::get('tags')),
+            'public' => Input::get('public', false)
         ], new ThreadForm);
     }
 

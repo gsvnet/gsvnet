@@ -66,5 +66,9 @@ return [
 
     'users.show' => [
         'type' => ['member', 'formerMember']
+    ],
+
+    'threads.show-private' => [
+        'type' => ['member', 'formerMember']
     ]
 ];

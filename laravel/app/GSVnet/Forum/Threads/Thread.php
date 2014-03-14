@@ -8,7 +8,7 @@ use GSVnet\Forum\Replies\Reply;
 class Thread extends Entity
 {
     protected $table      = 'forum_threads';
-    protected $fillable   = ['subject', 'body', 'author_id', 'solution_reply_id', 'category_slug'];
+    protected $fillable   = ['subject', 'body', 'author_id', 'solution_reply_id', 'category_slug', 'public'];
     protected $with       = ['author'];
     protected $softDelete = true;
 
@@ -126,4 +126,15 @@ class Thread extends Entity
     {
         return $this->tags->lists('slug');
     }
+
+    public function scopePublic($query)
+    {
+        return $query->wherePublic(true);
+    }
+
+    public function getPublicAttribute($value)
+    {
+        return $value == 1 ? true : null;
+    }
+
 }
