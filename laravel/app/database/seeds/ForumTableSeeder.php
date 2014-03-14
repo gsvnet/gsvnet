@@ -22,7 +22,7 @@ class ForumTableSeeder extends Seeder implements
         	$tags = GSVnet\Tags\Tag::orderBy(DB::raw('RAND()'))->take(rand(1,3))->get();
 	        $thread = App::make('GSVnet\Forum\Threads\ThreadCreator')->create($this, [
 	            'subject' => $faker->text(20),
-	            'body' => $faker->text(500),
+	            'body' => $this->randomBody($faker),
 	            'author' => $faker->randomElement($users),
 	            'tags' => $tags
 	        ]);
@@ -30,7 +30,7 @@ class ForumTableSeeder extends Seeder implements
             // Willekeurige users geven willekeurige reacties
             for ($i=0; $i < rand(0, $maxReplies); $i++) {
                 App::make('GSVnet\Forum\Replies\ReplyCreator')->create($this, [
-                    'body'   => $faker->text(rand(10, 800)),
+                    'body' => $this->randomBody($faker),
                     'author' => $faker->randomElement($users),
                 ], $thread->id);
             }
@@ -63,4 +63,8 @@ class ForumTableSeeder extends Seeder implements
         return $reply;
     }
 
+    private function randomBody($faker)
+    {
+        return $faker->paragraphs(rand(1, 5), true);
+    }
 }
