@@ -1,6 +1,6 @@
 <?php namespace GSVnet\Forum\Threads;
 
-use DB;
+use DB, Permission;
 
 class ThreadSearch
 {
@@ -15,12 +15,20 @@ class ThreadSearch
     // a real search system
     public function searchPaginated($query, $perPage)
     {
-        return $this->model->with(['mostRecentReply', 'tags'])
+        $query = $this->model->with(['mostRecentReply', 'tags'])
             ->where(function($q) use ($query) {
                 $q->where('subject', 'like', '%' . $query . '%')
                   ->orWhere('body', 'like', '%' . $query . '%');
             })
-            ->orderBy('updated_at', 'desc')
-            ->paginate($perPage, ['forum_threads.*']);
+            ->orderBy('updated_at', 'desc');
+
+        // Only show public threads when the user does not
+        // have permission to see private threads
+        if (Permission::has('threads.show-private'))
+        {
+            $query = $query->public();
+        }
+
+        return $query->paginate($perPage, ['forum_threads.*']);
     }
 }
