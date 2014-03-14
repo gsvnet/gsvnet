@@ -47,7 +47,6 @@ class EventPresenter extends BasePresenter
         $string = '';
         $from = Carbon::createFromFormat('Y-m-d', $this->resource->start_date);
         $to = Carbon::createFromFormat('Y-m-d', $this->resource->end_date);
-        $time = Carbon::createFromFormat('H:i:s', $this->resource->start_time);
 
         $string .= $from->formatLocalized('%e');        
 
@@ -68,6 +67,7 @@ class EventPresenter extends BasePresenter
 
         if($this->resource->whole_day == '0')
         {
+            $time = Carbon::createFromFormat('H:i:s', $this->resource->start_time);
             $string .= ' om ' . $time->format('H:i');
         }
 
@@ -83,7 +83,6 @@ class EventPresenter extends BasePresenter
         $string = '';
         $from = Carbon::createFromFormat('Y-m-d', $this->resource->start_date);
         $to = Carbon::createFromFormat('Y-m-d', $this->resource->end_date);
-        $time = Carbon::createFromFormat('H:i:s', $this->resource->start_time);
 
         $string .= $from->formatLocalized('%e');        
 
@@ -104,6 +103,7 @@ class EventPresenter extends BasePresenter
 
         if($this->resource->whole_day == '0')
         {
+            $time = Carbon::createFromFormat('H:i:s', $this->resource->start_time);
             $string .= ' om ' . $time->format('H:i');
         }
 

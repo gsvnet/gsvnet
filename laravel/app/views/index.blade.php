@@ -15,7 +15,7 @@
                     <div id="homepage-video-slide" href="#" class="item active">
 
                         <div class="slider-video-wrap">
-                            <video id="home-video" class="slider-video" preload="metadata">
+                            <video id="home-video" class="slider-video" preload="metadata" poster="/images/nogeen-1600.jpg">
                                 <source src="videos/big_buck_bunny.mp4" type="video/mp4">
                                 <source src="videos/big_buck_bunny.webm" type="video/webm">
                                 <source src="videos/big_buck_bunny.ogv" type="video/ogg">
