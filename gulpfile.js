@@ -4,6 +4,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var compass = require('gulp-compass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var imagemin = require('gulp-imagemin');
 
 gulp.task('css', function(){
 	return gulp.src('laravel/public/sass/screen.scss')
@@ -17,6 +18,12 @@ gulp.task('css', function(){
  		.pipe(autoprefixer('last 20 versions', '> 5%'))
 		.pipe(gulp.dest('laravel/public/stylesheets/'));
 });
+
+gulp.task('images', function(){
+    gulp.src('laravel/public/images/**/*.jpg')
+        .pipe(imagemin())
+        .pipe(gulp.dest('laravel/public/images/'));
+})
 
 gulp.task('scripts', function() {
   return gulp.src([
