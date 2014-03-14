@@ -143,5 +143,8 @@ Route::group(['before' => 'auth'], function() {
 Route::get('forum',        'ForumThreadsController@getIndex');
 Route::get('forum/search', 'ForumThreadsController@getSearch');
 
-Route::get('forum/{slug}/reactie/{commentId}', 'ForumRepliesController@getReplyRedirect');
-Route::get('forum/{slug}', 'ForumThreadsController@getShowThread');
+// Make sure non members can't show private topics
+Route::get('forum/{slug}/reactie/{commentId}', 'ForumRepliesController@getReplyRedirect')
+    ->before('threads.show');
+Route::get('forum/{slug}', 'ForumThreadsController@getShowThread')
+    ->before('threads.show');

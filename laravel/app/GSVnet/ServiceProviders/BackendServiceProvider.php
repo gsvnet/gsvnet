@@ -1,9 +1,7 @@
 <?php namespace GSVnet\ServiceProviders;
 
 use Illuminate\Support\ServiceProvider;
-use App;
-use Auth;
-use Event;
+use App, Auth, Event, Route;
 
 class BackendServiceProvider extends ServiceProvider {
 
@@ -23,6 +21,8 @@ class BackendServiceProvider extends ServiceProvider {
 
         // Send mail to inform people about a possible change of address
         // Event::listen('profile.changed', 'GSVnet\Users\ProfileMailer@changed');
+
+        Route::filter('threads.show', 'GSVnet\Forum\Threads\ShowThreadFilter');
     }
 
     /**
