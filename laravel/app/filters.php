@@ -190,3 +190,12 @@ Route::filter('canBecomeMember', function()
 		throw new \GSVnet\Permissions\NoPermissionException;
 	}
 });
+
+// User has to be approved
+Route::filter('approved', function() {
+
+    if ( ! Auth::user()->approved)
+    {
+        throw new \GSVnet\Permissions\NoPermissionException;
+    }
+});

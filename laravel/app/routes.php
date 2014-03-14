@@ -119,7 +119,7 @@ Route::group([
 Route::controller('wachtwoord-vergeten', 'RemindersController');
 
 // Forum
-Route::group(['before' => 'auth'], function() {
+Route::group(['before' => ['auth', 'approved']], function() {
     // Edit rotues
     Route::get('forum/bewerk-onderwerp/{threadId}',  'ForumThreadsController@getEditThread');
     Route::post('forum/bewerk-onderwerp/{threadId}', 'ForumThreadsController@postEditThread');

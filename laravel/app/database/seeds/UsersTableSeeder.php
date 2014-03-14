@@ -29,7 +29,9 @@ class UsersTableSeeder extends Seeder {
                 'username' => $faker->userName,
                 'password' => 'testen',
                 'email' => $faker->companyEmail,
-                'type' => rand(0,3)
+                'type' => rand(0,3),
+                // make the user approved 90% of the time
+                'approved' => $faker->boolean(90)
             ));
 
             if($type == 2 || $type == 3)
@@ -56,11 +58,9 @@ class UsersTableSeeder extends Seeder {
                     'parent_town' => $faker->city,
                     'parent_phone' => $faker->phoneNumber
                 ));
-                
+
             }
         }
-
-
 
         $mark = GSVnet\Users\User::create(array(
             'email'         => 'markredeman@gmail.com',
@@ -69,7 +69,8 @@ class UsersTableSeeder extends Seeder {
             'lastname'      => 'Redeman',
             'middlename'    => 'Sietse',
             'username'      => 'mredeman',
-            'type'          => 2
+            'type'          => 2,
+            'approved'      => true
         ));
 
         GSVnet\Users\Profiles\UserProfile::create(array(
