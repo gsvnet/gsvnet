@@ -26,8 +26,10 @@ Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
     Route::group(['before' => 'has:users.show'], function() {
         Route::get('jaarbundel',             'UserController@showUsers');
         Route::get('jaarbundel/gsver-{id}',  'UserController@showUser')->where('id', '[0-9]+');
-        Route::get('jaarbundel/{id}/foto',   'MemberController@showPhoto');
+
     });
+    // Shows photo corresponding to profile with id
+    Route::get('jaarbundel/{id}/foto',   'MemberController@showPhoto')->before('');
 });
 
 // De GSV

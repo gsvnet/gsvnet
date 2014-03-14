@@ -105,6 +105,12 @@ class MemberController extends BaseController {
     // Show original (resized) photo
     public function showPhoto($profile_id)
     {
+        // Guests and Potentials are not allowed to see private photos
+        // but a potential can see his / her own photo
+        if ( ! Permission::has('users.show') && Auth::user()->profile->id !== $id)
+        {
+            throw new \GSVnet\Permissions\NoPermissionException;
+        }
         return $this->photoResponse($profile_id);
     }
     /**
@@ -116,9 +122,9 @@ class MemberController extends BaseController {
     */
     private function photoResponse($id)
     {
-        $profile    = $this->profiles->byId($id);
-        $image      = $this->imageHandler->get($profile->photo_path);
-        $response   = $image->response();
+        $profile  = $this->profiles->byId($id);
+        $image    = $this->imageHandler->get($profile->photo_path);
+        $response = $image->response();
 
         $path = $this->imageHandler->getStoragePath($profile->photo_path);
         $name = $profile->user->full_name;
