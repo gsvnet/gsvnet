@@ -31,7 +31,7 @@ class EventsRepository {
 
     public function upcoming($amount = 5, $published = true)
     {
-        $events = Event::where('end_date', '>=', new \DateTime('now'))
+        $events = Event::where('end_date', '>=', date('Y-m-d'))
             ->orderBy('start_date', 'asc')
             ->published($published);
 
@@ -124,7 +124,6 @@ class EventsRepository {
         if ($properties['whole_day'] == '0')
         {
             $event->start_time  = $properties['start_time'];
-            $event->end_time    = $properties['end_time'];
         }
 
         return $event;

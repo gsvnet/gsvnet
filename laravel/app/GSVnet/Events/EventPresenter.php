@@ -44,28 +44,43 @@ class EventPresenter extends BasePresenter
      */
     public function from_to_short()
     {
+        $showMonth = false;
         $string = '';
         $from = Carbon::createFromFormat('Y-m-d', $this->resource->start_date);
         $to = Carbon::createFromFormat('Y-m-d', $this->resource->end_date);
 
-        $string .= $from->formatLocalized('%e');        
 
-        // Display month and year only twice if necessary
-        // Hopefully an events doesnt take more than a year :G
-        if($from->month != $to->month)
+        // 'vandaag', 'morgen', '[day] [mnth]'
+        if( $from->isToday() )
         {
-            $string .= $from->formatLocalized(' %b');
+            $string .= 'Vandaag';
+        } elseif( $from->isTomorrow() )
+        {
+            $string .= 'Morgen';
+        } else 
+        {
+            $showMonth = true;
+
+            $string .= $from->formatLocalized('%e');        
+
+            // Display month and year only twice if necessary
+            // Hopefully an events doesnt take more than a year :G
+            if($from->month != $to->month)
+            {
+                $string .= $from->formatLocalized(' %b');
+            }
+            
         }
 
         // Check if the end date is different
-        if($from->format('Y-m-d') != $to->format('Y-m-d'))
+        if( $from->format('Y-m-d') != $to->format('Y-m-d') )
         {
             $string .= ' tot ' . $to->formatLocalized('%e %b');
-        } else {
+        } elseif($showMonth) {
             $string .= $from->formatLocalized(' %b');
         }
 
-        if($this->resource->whole_day == '0')
+        if( $this->resource->whole_day == '0' && !is_null($this->resource->start_time) )
         {
             $time = Carbon::createFromFormat('H:i:s', $this->resource->start_time);
             $string .= ' om ' . $time->format('H:i');
@@ -108,5 +123,16 @@ class EventPresenter extends BasePresenter
         }
 
         return $string;
+    }
+
+    public function startHourMinute()
+    {
+        if( !is_null($this->resource->start_time) )
+        {
+            $time = Carbon::createFromFormat('H:i:s', $this->resource->start_time);
+            return $time->format('H:i:s');
+        }
+
+        return '';
     }
 }

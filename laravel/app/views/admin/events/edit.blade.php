@@ -7,6 +7,7 @@
             ->method('PUT')
     }}
         {{ Former::populate( $event->resource ) }}
+        {{ Former::populateField('start_time', $event->startHourMinute) }}
 
         @include('admin.events._form')
 
