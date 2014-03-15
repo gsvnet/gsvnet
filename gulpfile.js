@@ -31,6 +31,7 @@ gulp.task('images', function(){
 
 gulp.task('scripts', function() {
   return gulp.src([
+      'laravel/public/javascripts/components/modernizr.js',
       'laravel/public/javascripts/components/jquery-1.10.1.min.js',
       'laravel/public/javascripts/components/list-to-menu.js',
       'laravel/public/javascripts/components/load-image.min.js',

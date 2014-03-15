@@ -186,8 +186,6 @@ app = (function() {
 		init: function() {
 			var id = document.body.id;
 
-			$(document.body).addClass('js');
-
 			// First execute overall scripts
 			overall();
 
