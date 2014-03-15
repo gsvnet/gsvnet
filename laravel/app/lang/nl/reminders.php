@@ -19,4 +19,6 @@ return array(
 
     "token"    => "Dit wachtwoord reset token is niet geldig.",
 
+    "sent" => "Er is een mail gestuurd met een link om je wachtwoord te resetten.",
+
 );

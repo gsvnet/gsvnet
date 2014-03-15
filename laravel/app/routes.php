@@ -73,6 +73,14 @@ Route::get('activiteiten/bekijk-{id}',     'EventController@showEvent');
 // Hier filter je of de opgegeven jaar en datum goed zijn
 Route::get('activiteiten/{year}/{month?}', 'EventController@showMonth')->before('checkDate');
 
+Route::group(['prefix' => 'wachtwoord-vergeten'], function() {
+    Route::get('herinner', 'RemindersController@getRemind');
+    Route::post('herinner', 'RemindersController@postRemind');
+    Route::get('reset/{token}', 'RemindersController@getReset');
+    Route::post('reset', 'RemindersController@postReset');
+});
+
+
 // TODO: check if user has album permissions
 Route::group([
         'prefix' => 'admin',
@@ -116,9 +124,6 @@ Route::group([
         });
     });
 });
-
-
-Route::controller('wachtwoord-vergeten', 'RemindersController');
 
 // Forum
 Route::group(['before' => ['auth', 'approved']], function() {
