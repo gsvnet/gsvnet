@@ -37,7 +37,7 @@
 
                                 <div class="panel panel-default">
                                     <div class="panel-body">
-                                        <a href="{{ URL::action('Admin\PhotoController@show', [$album->id, $photo->id]) }}" alt="{{{ $photo->name }}}" class="thumbnail">
+                                        <a href="{{ URL::action('Admin\PhotoController@show', [$album->id, $photo->id]) }}" alt="{{{ $photo->name }}}">
                                           <img src="{{ $photo->small_image_url }}" alt="{{{ $photo->name }}}">
                                         </a>
                                     </div>
