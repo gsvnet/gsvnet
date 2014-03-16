@@ -6,9 +6,9 @@
         <h3><a href="{{ $thread->url }}">{{ $thread->subject }}</a></h3>
 
         <ul class="inline-list grey">
-            <li>door <a href="{{ $thread->author->profileUrl }}">{{ $thread->author->fullname }}</a></li>
+            <li>door <a href="{{ $thread->author->profileUrl }}">{{ $thread->author->username }}</a></li>
             @if($thread->mostRecentReply)
-                <li>laatste reactie {{ $thread->updated_ago }} by {{ $thread->mostRecentReplier }}</li>
+                <li><a href="{{$thread->latestReplyUrl}}" title="Ga naar de laatste reactie van het onderwerp {{{$thread->title}}}">laatste reactie</a> {{ $thread->updated_ago }} door {{ $thread->mostRecentReplier }}</li>
             @endif
         </ul>
     </div>

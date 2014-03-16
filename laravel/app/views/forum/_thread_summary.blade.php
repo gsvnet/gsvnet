@@ -5,7 +5,7 @@
     <div class="info">
         <h3><a href="{{ $thread->url }}">{{ $thread->subject }}</a></h3>
         <ul class="meta">
-            <li>posted by <a href="{{ $thread->author->profileUrl }}">{{ $thread->author->name }}</a></li>
+            <li>posted by <a href="{{ $thread->author->profileUrl }}">{{{ $thread->author->username }}}</a></li>
             <li>updated {{ $thread->updated_ago }}</li>
         </ul>
     </div>

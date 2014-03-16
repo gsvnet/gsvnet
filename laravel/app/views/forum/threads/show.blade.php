@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="column-holder">
-        <h1>{{ $thread->subject }}</h1>
-        <p class="delta">Een onderwerp gestart door {{ $thread->author->fullname }} </p>
+        <h1>{{{ $thread->subject }}}</h1>
+        <p class="delta">Een onderwerp gestart door {{{ $thread->author->username }}} </p>
         <div class="main-content">
             <div class="forum">
 

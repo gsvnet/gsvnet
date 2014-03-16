@@ -5,7 +5,7 @@
             {{ $reply->author->avatar(40) }}
         </div>
         <div class="info">
-            <h6><a href="{{ $reply->author->profileUrl }}">{{ $reply->author->fullname }}</a></h6>
+            <h6><a href="{{ $reply->author->profileUrl }}">{{{ $reply->author->username }}}</a></h6>
             <ul class="inline-list grey">
                 <li><a href="{{ $reply->url }}">{{ $reply->created_ago }}</a></li>
 
