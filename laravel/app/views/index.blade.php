@@ -109,10 +109,10 @@
 
             <!-- Controls -->
             <a class="left carousel-control" href="#homepage-carousel" data-slide="prev">
-                <span class="fa fa-arrow-left icon-prev"></span>
+                <span class="i-back icon-prev"></span>
             </a>
             <a class="right carousel-control" href="#homepage-carousel" data-slide="next">
-                <span class="fa fa-arrow-right icon-next"></span>
+                <span class="i-forward icon-next"></span>
             </a>
         </div>
         <div class="slideshow-spacer"></div>

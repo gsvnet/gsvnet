@@ -67,8 +67,8 @@
   left: 0;
   bottom: 0;
   width: 15%;
-  opacity: 0.5;
-  filter: alpha(opacity=30);
+  opacity: 0.2;
+  filter: alpha(opacity=20);
   font-size: 20px;
   color: #ffffff;
   text-align: center;
@@ -94,12 +94,9 @@
 }
 .carousel-control:hover,
 .carousel-control:focus {
-  color: #ffffff;
-  text-decoration: none;
-  opacity: 0.9;
-  filter: alpha(opacity=90);
+  opacity: 0.8;
+  filter: alpha(opacity=80);
 }
-.carousel-control .glyphicon,
 .carousel-control .icon-prev,
 .carousel-control .icon-next {
   position: absolute;
@@ -111,7 +108,15 @@
   height: 20px;
   margin-top: -10px;
   margin-left: -10px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-radius: 100%;
+  background-position: 44% center;
 }
+.carousel-control .icon-next {
+  background-position: 56% center;
+}
+
 .carousel-indicators {
   position: absolute;
   bottom: 10px;
@@ -162,14 +167,13 @@
 }
 
 @media screen and (min-width: 768px) {
-  .carousel-control .glyphicon,
   .carousel-control .icon-prev,
   .carousel-control .icon-next {
-    width: 30px;
-    height: 30px;
-    margin-top: -15px;
-    margin-left: -15px;
-    font-size: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #FFF;
+    margin-top: -30px;
+    margin-left: -30px;
   }
   .carousel-caption {
     left: 20%;

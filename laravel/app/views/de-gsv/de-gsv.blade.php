@@ -45,10 +45,10 @@
 
             <!-- Controls -->
             <a class="left carousel-control" href="#about-slideshow" data-slide="prev">
-                <span class="fa fa-arrow-left icon-prev"></span>
+                <span class="i-back icon-prev"></span>
             </a>
             <a class="right carousel-control" href="#about-slideshow" data-slide="next">
-                <span class="fa fa-arrow-right icon-next"></span>
+                <span class="i-forward icon-next"></span>
             </a>
         </div>
 
