@@ -16,6 +16,7 @@ class AboutController extends BaseController {
 	{
 		$this->layout->content = View::make('de-gsv.de-gsv');
         $this->layout->activeMenuItem = 'de-gsv';
+        $this->layout->activeSubMenuItem = 'over-de-gsv';
     }
 
     public function showCommittees()
@@ -24,6 +25,7 @@ class AboutController extends BaseController {
 
         $this->layout->bodyID = 'committees-page';
         $this->layout->activeMenuItem = 'de-gsv';
+        $this->layout->activeSubMenuItem = 'commissies';
         $this->layout->content = View::make('de-gsv.committees.index')
             ->with('committees', $committees);
     }
@@ -36,6 +38,7 @@ class AboutController extends BaseController {
 
         $this->layout->bodyID = 'committee-page';
         $this->layout->activeMenuItem = 'de-gsv';
+        $this->layout->activeSubMenuItem = 'commissies';
         $this->layout->content = View::make('de-gsv.committees.show')
             ->with('committee', $committee)
             ->with('committees', $committees)
@@ -48,6 +51,7 @@ class AboutController extends BaseController {
 
         $this->layout->bodyID = 'senates-page';
         $this->layout->activeMenuItem = 'de-gsv';
+        $this->layout->activeSubMenuItem = 'senaten';
         $this->layout->content = View::make('de-gsv.senates.index')
             ->with('senates', $senates);
     }
@@ -60,6 +64,7 @@ class AboutController extends BaseController {
         
         $this->layout->bodyID = 'senate-page';
         $this->layout->activeMenuItem = 'de-gsv';
+        $this->layout->activeSubMenuItem = 'senaten';
         $this->layout->content = View::make('de-gsv.senates.single')
             ->with('currentSenate', $senate)
             ->with('senates', $senates)
@@ -70,6 +75,7 @@ class AboutController extends BaseController {
     {
         $this->layout->bodyID = 'contact-page';
         $this->layout->activeMenuItem = 'de-gsv';
+        $this->layout->activeSubMenuItem = 'contact';
         $this->layout->content = View::make('de-gsv.contact');
     }
 
@@ -77,6 +83,7 @@ class AboutController extends BaseController {
     {
         $this->layout->bodyID = 'pillars-page';
         $this->layout->activeMenuItem = 'de-gsv';
+        $this->layout->activeSubMenuItem = 'pijlers';
         $this->layout->content = View::make('de-gsv.pillars');
     }
 
@@ -84,6 +91,7 @@ class AboutController extends BaseController {
     {
         $this->layout->bodyID = 'history-page';
         $this->layout->activeMenuItem = 'de-gsv';
+        $this->layout->activeSubMenuItem = 'geschiedenis';
         $this->layout->content = View::make('de-gsv.history');
     }
 }

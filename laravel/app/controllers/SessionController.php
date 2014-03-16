@@ -43,5 +43,6 @@ class SessionController extends BaseController {
     {
         $this->layout->content = View::make('users.login');
         $this->layout->activeMenuItem = 'inloggen';
+        $this->layout->activeSubMenuItem = 'inloggen';
     }
 }

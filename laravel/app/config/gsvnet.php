@@ -72,5 +72,122 @@ return array(
         'senate'        => 'senaat@gsvnet.nl',
         'membership'    => 'novcie@gsvnet.nl',
         'profile'       => 'abactis@gsvnet.nl'
-    )
+    ),
+
+    'menuItems' => [
+	    'de-gsv' => [
+	        'url' => URL::action('AboutController@showAbout'),
+	        'title' => 'De GSV',
+	        'submenu' => [
+	            'over-de-gsv' => [
+	                'title' => 'Over de GSV',
+	                'url' => URL::action('AboutController@showAbout')
+	            ],
+	            'geschiedenis' => [
+	                'title' => 'Geschiedenis',
+	                'url' => URL::action('AboutController@showHistory')
+	            ],
+	            'pijlers' => [
+	                'title' => 'Pijlers',
+	                'url' => URL::action('AboutController@showPillars')
+	            ],
+	            'senaten' => [
+	                'title' => 'Senaten',
+	                'url' => URL::action('AboutController@showSenates')
+	            ],
+	            'commissies' => [
+	                'title' => 'Commissies',
+	                'url' => URL::action('AboutController@showCommittees')
+	            ],
+	            'contact' => [
+	                'title' => 'Contact',
+	                'url' => URL::action('AboutController@showContact')
+	            ]
+	        ]
+	    ],
+
+	    'forum' => [
+	        'title' => 'Forum',
+	        'url' => URL::action('ForumThreadsController@getIndex')
+	    ],
+
+	    'foto-album' => [
+	        'title' => 'Fotoalbum',
+	        'url' => URL::action('PhotoController@showAlbums')
+	    ],
+
+	    'activiteiten' => [
+	        'title' => 'Activiteiten',
+	        'url' => URL::action('EventController@showIndex')
+	    ],
+
+	    'lid-worden' => [
+	        'title' => 'Lid worden?',
+	        'url' => URL::action('MemberController@index'),
+	        'visible' => function(){return Auth::guest() || !Auth::user()->wasOrIsMember();},
+	        'submenu' => [
+	            'inschrijven' => [
+	                'url' => URL::action('MemberController@index'),
+	                'title' => 'Inschrijven'
+	            ],
+	            'groningen' => [
+	                'url' => '#',
+	                'title' => 'Groningen'
+	            ],
+	            'redenen' => [
+	                'url' => '#',
+	                'title' => '10 goede redenen'
+	            ],
+	            'moeder' => [
+	                'url' => '#',
+	                'title' => 'Nog wat'
+	            ]
+	        ]
+	    ],
+
+	    'inloggen' => [
+	        'title' => 'Inloggen',
+	        'url' => URL::action('SessionController@getLogin'),
+	        'params' => ['data-mfp-src' => '#login-dialog', 'id' => 'login-link'],
+	        'visible' => function(){return Auth::guest();},
+	        'submenu' => [
+	            'registreren' => [
+	                'title' => 'Registreren',
+	                'url' => URL::action('RegisterController@create')
+	            ],
+	            'inloggen' => [
+	                'title' => 'Inloggen',
+	                'url' => URL::action('RegisterController@create')
+	            ]
+	        ]
+	    ],
+
+	    'intern' => [
+	        'title' => function(){
+	            return Gravatar::image(Auth::user()->email, 'Profiel', array('class' => 'nav-profile-image', 'width' => 24, 'height' => 24)) . Auth::user()->firstname;
+	        },
+	        'url' => URL::action('UserController@showProfile'),
+	        'visible' => function(){return Auth::check();},
+	        'submenu' => [
+	            'jaarbundel' => [
+	                'title' => 'Jaarbundel',
+	                'url' => URL::action('UserController@showUsers'),
+	                'visible' => function(){
+	                    return Permission::has('users.show');
+	                }
+	            ],
+	            'docs' => [
+	                'title' => 'GSVdocs',
+	                'url' => URL::action('FilesController@index'),
+	                'visible' => function(){
+	                    return Permission::has('docs.show');
+	                }
+	            ],
+	            'uitloggen' => [
+	                'title' => 'Uitloggen',
+	                'url' => URL::action('SessionController@getLogout')
+	            ]
+	        ]
+	    ]
+	]
 );

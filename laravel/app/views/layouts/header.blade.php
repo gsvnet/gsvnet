@@ -1,121 +1,7 @@
 <?php
 $activeMenuItem = isset($activeMenuItem) ? $activeMenuItem : '';
-$menuitems = [
-    'de-gsv' => [
-        'url' => URL::action('AboutController@showAbout'),
-        'title' => 'De GSV',
-        'submenu' => [
-            'over-de-gsv' => [
-                'title' => 'Over de GSV',
-                'url' => URL::action('AboutController@showAbout')
-            ],
-            'geschiedenis' => [
-                'title' => 'Geschiedenis',
-                'url' => URL::action('AboutController@showHistory')
-            ],
-            'pijlers' => [
-                'title' => 'Pijlers',
-                'url' => URL::action('AboutController@showPillars')
-            ],
-            'senaten' => [
-                'title' => 'Senaten',
-                'url' => URL::action('AboutController@showSenates')
-            ],
-            'commissies' => [
-                'title' => 'Commissies',
-                'url' => URL::action('AboutController@showCommittees')
-            ],
-            'contact' => [
-                'title' => 'Contact',
-                'url' => URL::action('AboutController@showContact')
-            ]
-        ]
-    ],
-
-    'forum' => [
-        'title' => 'Forum',
-        'url' => URL::action('ForumThreadsController@getIndex')
-    ],
-
-    'foto-album' => [
-        'title' => 'Fotoalbum',
-        'url' => URL::action('PhotoController@showAlbums')
-    ],
-
-    'activiteiten' => [
-        'title' => 'Activiteiten',
-        'url' => URL::action('EventController@showIndex')
-    ],
-
-    'lid-worden' => [
-        'title' => 'Lid worden?',
-        'url' => URL::action('MemberController@index'),
-        'visible' => function(){return Auth::guest() || !Auth::user()->wasOrIsMember();},
-        'submenu' => [
-            'inschrijven' => [
-                'url' => URL::action('MemberController@index'),
-                'title' => 'Inschrijven'
-            ],
-            'groningen' => [
-                'url' => '#',
-                'title' => 'Groningen'
-            ],
-            'redenen' => [
-                'url' => '#',
-                'title' => '10 goede redenen'
-            ],
-            'moeder' => [
-                'url' => '#',
-                'title' => 'Nog wat'
-            ]
-        ]
-    ],
-
-    'inloggen' => [
-        'title' => 'Inloggen',
-        'url' => URL::action('SessionController@getLogin'),
-        'params' => ['data-mfp-src' => '#login-dialog', 'id' => 'login-link'],
-        'visible' => function(){return Auth::guest();},
-        'submenu' => [
-            'registreren' => [
-                'title' => 'Registreren',
-                'url' => URL::action('RegisterController@create')
-            ],
-            'inloggen' => [
-                'title' => 'Inloggen',
-                'url' => URL::action('RegisterController@create')
-            ]
-        ]
-    ],
-
-    'intern' => [
-        'title' => function(){
-            return Gravatar::image(Auth::user()->email, 'Profiel', array('class' => 'nav-profile-image', 'width' => 24, 'height' => 24)) . Auth::user()->firstname;
-        },
-        'url' => URL::action('UserController@showProfile'),
-        'visible' => function(){return Auth::check();},
-        'submenu' => [
-            'jaarbundel' => [
-                'title' => 'Jaarbundel',
-                'url' => URL::action('UserController@showUsers'),
-                'visible' => function(){
-                    return Permission::has('users.show');
-                }
-            ],
-            'docs' => [
-                'title' => 'GSVdocs',
-                'url' => URL::action('FilesController@index'),
-                'visible' => function(){
-                    return Permission::has('docs.show');
-                }
-            ],
-            'uitloggen' => [
-                'title' => 'Uitloggen',
-                'url' => URL::action('SessionController@getLogout')
-            ]
-        ]
-    ]
-];
+$activeSubMenuItem = isset($activeSubMenuItem) ? $activeSubMenuItem : '';
+$menuitems = Config::get('gsvnet.menuItems', []);
 ?>
 
 
@@ -210,16 +96,17 @@ foreach($menuitems as $name => $item)
     <nav class="extra-submenu-nav">
         <ul class="extra-submenu">
 <?php
-        foreach($menuitems[$activeMenuItem]['submenu'] as $subItem)
+        foreach($menuitems[$activeMenuItem]['submenu'] as $name => $item)
         {
             // Check if item is not visible
-            if(array_key_exists('visible', $subItem) && is_callable($subItem['visible']) && !$subItem['visible']())
+            if(array_key_exists('visible', $item) && is_callable($item['visible']) && !$item['visible']())
             {
                 continue;
             }
 
             // Print item
-            echo '<li class="top-level-menuitem"><a class="top-level-link" href="' . htmlentities($subItem['url']) . '">' . htmlentities($subItem['title']) . '</a></li>';
+            echo '<li class="top-level-menuitem' . ($activeSubMenuItem == $name ? ' active' :  '') . '">';
+            echo '<a class="top-level-link" href="' . htmlentities($item['url']) . '">' . htmlentities($item['title']) . '</a></li>';
         }
 ?>
         </ul>
