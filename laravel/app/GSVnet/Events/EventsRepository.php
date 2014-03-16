@@ -24,9 +24,9 @@ class EventsRepository {
     {
         if (Permission::has('events.show-private'))
         {
-            return Event::published($published)->paginate($amount);
+            return Event::published($published)->orderBy('start_date')->paginate($amount);
         }
-        return Event::published($published)->public()->paginate($amount);
+        return Event::published($published)->public()->orderBy('start_date')->paginate($amount);
     }
 
     public function upcoming($amount = 5, $published = true)

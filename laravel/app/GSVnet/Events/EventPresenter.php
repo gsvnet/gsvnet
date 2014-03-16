@@ -90,10 +90,10 @@ class EventPresenter extends BasePresenter
     }
 
     /*
-     * Without year: [day] [mnth] tot [day] [mnth]
+     * [day] [mnth] tot [day] [mnth]
      * Shows first month only when it is different
      */
-    public function from_to_long()
+    public function from_to_long($year = false)
     {
         $string = '';
         $from = Carbon::createFromFormat('Y-m-d', $this->resource->start_date);
@@ -102,10 +102,15 @@ class EventPresenter extends BasePresenter
         $string .= $from->formatLocalized('%e');        
 
         // Display month and year only twice if necessary
-        // Hopefully an events doesnt take more than a year :G
         if($from->month != $to->month)
         {
             $string .= $from->formatLocalized(' %B');
+        }
+
+        // Check if year is different and then display it
+        if($year and $from->year != $to->year)
+        {
+            $string .= $from->format(' Y');
         }
 
         // Check if the end date is different
@@ -113,9 +118,16 @@ class EventPresenter extends BasePresenter
         {
             $string .= ' tot ' . $to->formatLocalized('%e %B');
         } else {
-            $string .= $from->formatLocalized(' %B');
+            $string .= $to->formatLocalized(' %B');
         }
 
+        // Add the year if necessary
+        if($year)
+        {
+            $string .= $to->format(' Y');
+        }
+
+        // Show time
         if($this->resource->whole_day == '0')
         {
             $time = Carbon::createFromFormat('H:i:s', $this->resource->start_time);

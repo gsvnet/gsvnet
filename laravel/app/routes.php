@@ -12,9 +12,9 @@ Route::get('/mail', function(){
 });
 
 // Login and logout routes
-Route::get('login', 'SessionController@getLogin');
-Route::post('login', 'SessionController@postLogin')->before('csrf');
-Route::get('logout', 'SessionController@getLogout')->before('auth');
+Route::get('inloggen', 'SessionController@getLogin');
+Route::post('inloggen', 'SessionController@postLogin')->before('csrf');
+Route::get('uitloggen', 'SessionController@getLogout')->before('auth');
 
 // Intern
 Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
@@ -32,7 +32,7 @@ Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
     // Only logged in users can view the member list if they have permission
     Route::group(['before' => 'has:users.show'], function() {
         Route::get('jaarbundel',             'UserController@showUsers');
-        Route::get('jaarbundel/gsver-{id}',  'UserController@showUser')->where('id', '[0-9]+');
+        Route::get('jaarbundel/{id}',  'UserController@showUser')->where('id', '[0-9]+');
 
     });
     // Shows photo corresponding to profile with id
@@ -76,7 +76,7 @@ Route::group(array('prefix' => 'albums/{album}/photo/{photo}'), function() {
 
 // Events
 Route::get('activiteiten',                 'EventController@showIndex');
-Route::get('activiteiten/bekijk-{id}',     'EventController@showEvent');
+Route::get('activiteiten/{id}',     'EventController@showEvent');
 // Hier filter je of de opgegeven jaar en datum goed zijn
 Route::get('activiteiten/{year}/{month?}', 'EventController@showMonth')->before('checkDate');
 

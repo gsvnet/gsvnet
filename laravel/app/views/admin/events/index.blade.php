@@ -7,16 +7,15 @@
 	@include('admin.events.create')
 
 	<h2>Activiteiten bewerken</h2>
-	<table class='table table-bordered'>
+	<table class='table table-striped table-hover'>
 		<thead>
 			<tr>
 				<th>Titel</th>
-				<th>Van</th>
-				<th>Tot</th>
-				<th>Hele dag?</th>
-                <th>Laatst bewerkt</th>
-                <th>Prive activiteit</th>
+				<th>Datum en tijd</th>
+                <th>Publiek</th>
                 <th>Gepubliceerd</th>
+                <th>Laatst bewerkt</th>
+                <th>Acties</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -26,32 +25,21 @@
 					{{{ $event->title }}}
 				</a></td>
 				<td>
-					{{{ $event->start_date }}}
-					@if($event->whole_day == '0')
-					{{{ $event->start_time }}}
-					@endif
+					{{{ $event->from_to_long(true) }}}
 				</td>
-				<td>
-					{{{ $event->end_date }}}
-					@if($event->whole_day == '0')
-					{{{ $event->end_time }}}
-					@endif
-				</td>
-
-				<td>{{ $event->whole_day == '1' ? '<span class="glyphicon glyphicon-check"></span>' : '<span class="glyphicon glyphicon-unchecked"></span>' }}</td>
-
+                <td>
+                    {{ $event->public ? '<span class="label label-danger">Ja</span>' : '<span class="label label-success">Nee</span>' }}
+                </td>
+                <td>
+                    {{ $event->published ? '<span class="label label-success">Ja</span>' : '<span class="label label-danger">Nee</span>' }}
+                </td>
                 <td>
                     {{{ $event->updated_at }}}
                 </td>
-
                 <td>
-                    {{{ $event->public ? 'Nee' : 'Ja' }}}
+                    <a href="{{ URL::action('Admin\EventController@edit', $event->id) }}" class="btn btn-primary btn-xs" role="button">Bewerk</a>
+                    <a href="{{ URL::action('Admin\EventController@destroy', $event->id) }}" class="btn btn-danger btn-xs" role="button">Verwijder</a>
                 </td>
-                <td>
-                    {{{ $event->published ? 'Ja' : 'Nee' }}}
-                </td>
-
-
 			</tr>
 			@endforeach
 		</tbody>

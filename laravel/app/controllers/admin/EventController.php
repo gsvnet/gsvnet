@@ -25,7 +25,7 @@ class EventController extends BaseController {
     public function index()
     {
         // Get all paginated events which are not necessarily published
-        $events = $this->events->paginate(10, false);
+        $events = $this->events->paginate(50, false);
 
         $this->layout->content = View::make('admin.events.index')
             ->withEvents($events);
@@ -35,7 +35,7 @@ class EventController extends BaseController {
     {
         $input = Input::all();
         $input['location'] = Input::get('location', '');
-        $input['whole_day'] = Input::get('whole_day', '');
+        $input['whole_day'] = Input::get('whole_day', '0');
         $input['public'] = Input::get('public', false);
         $input['published'] = Input::get('published', false);
 
@@ -67,7 +67,7 @@ class EventController extends BaseController {
     {
         $input = Input::all();
         $input['location'] = Input::get('location', '');
-        $input['whole_day'] = Input::get('whole_day', '');
+        $input['whole_day'] = Input::get('whole_day', '0');
         $input['public'] = Input::get('public', false);
         $input['published'] = Input::get('published', false);
 

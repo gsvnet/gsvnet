@@ -147,18 +147,20 @@
 	padding: 0;
 	background: #FFF;
 	z-index: $gsvnet-z-index-base + 1;
-	width: 200px;
 	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.1);
 	max-height: 0;
 	height: 0;
+	width: 0;
 	overflow: hidden;
 	transition: max-height 0.26s ease;
 	-webkit-transition: max-height 0.26s ease;
 }
 
 .active-sub-menu .sub-level-menu{
-	max-height: 300px;
+	max-height: 360px;
 	height: auto;
+	width: auto;
+	display: block;
 }
 
 .sub-level-link, a.sub-level-link:link, a.sub-level-link:visited {
