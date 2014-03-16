@@ -162,7 +162,7 @@ a.block-link {
 
 /** Responsive **/
 @media only screen and (max-width: $firstbreakpoint){
-	.column-holder {
+	.column-holder, .nav-bar {
 		width: auto;
 		padding-left: 36px;
 		padding-right: 36px;
