@@ -1,7 +1,7 @@
 @section('content')
 	<div class="column-holder">
 		<h1>{{{ $member->full_name }}}</h1>
-		@if($member->wasOrIsMember())
+		@if( isset($member->profile) )
 			<p>Lid van {{{$member->profile->yearGroup->nameWithYear}}} en {{{$member->profile->region_name}}}</p>
 		@endif
 
