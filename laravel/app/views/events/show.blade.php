@@ -1,29 +1,23 @@
 @section('content')
     <div class="column-holder" role="main">
 
-        <h1>{{ $event->title }}</h1>
+        <h1>{{{ $event->title }}}</h1>
         <div class="main-content">
-            <h3>
-                {{{ $event->from_to_long() }}}
-            </h3>
-            <p class="delta">
+            <ul class="inline-list delta">
+               <li>{{{ $event->from_to_long() }}}</li> 
+                @if( !empty($event->location) )
+                    <li>{{{ $event->location }}}</li>
+                @endif
+            </ul>
+            <p>
                 {{ $event->description }}
             </p>
-
-            @if (! empty($event->location))
-            <strong>Locatie: {{ $event->location }}</strong>
-            @endif
-
-            @if (! $event->public)
-                <strong>Prive activiteit</strong>
-            @endif
         </div>
 
         <div class="secondary-column">
-            @if (isset($types[$event->type]))
-                <div class="single-event-details {{$types[$event->type]}}">
-                    Dit is nou typische een activiteit met zo'n kleur
-                </div>
+            @if (! $event->public)
+                <h2>Privé</h2>
+                <p>Deze activiteit is alleen zichtbaar voor GSV'ers</p>
             @endif
         </div>
     </div>
