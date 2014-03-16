@@ -102,7 +102,9 @@
 		</div>
     </div>
     
-    <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=nl&amp;geocode=&amp;q=Hereweg+40,+Herewegbuurt,+Groningen,+Nederland&amp;aq=0&amp;oq=hereweg+40&amp;sll=37.0625,-95.677068&amp;sspn=63.255964,135.263672&amp;ie=UTF8&amp;hq=&amp;hnear=Hereweg+40,+9725+AE+Herewegwijk+en+Helpman,+Groningen,+Nederland&amp;t=m&amp;z=14&amp;ll=53.209373,6.572308&amp;output=embed"></iframe>
+    <div class="maps-1600x540">
+    	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9557.74407821405!2d6.57623206715855!3d53.21003010224121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c832aab5b8d675%3A0xff64bbce520f0fc5!2sHereweg+40A!5e0!3m2!1snl!2snl!4v1395009442604" width="1600" height="540" frameborder="0" style="border:0"></iframe>
+    </div>
 
 @stop
 
