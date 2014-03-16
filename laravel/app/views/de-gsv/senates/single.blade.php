@@ -11,7 +11,7 @@
                 <h2>Leden</h2>
                 <ul class="unstyled-list title-description-list">
                     @foreach($members as $member)
-                    <li>{{{$member->full_name}}} ({{{$member->senateFunction}}})</li>
+                    <li><a href="{{URL::action('UserController@showUser', [$member->id])}}" title="Bekijk het profiel van {{{$member->full_name}}}">{{{$member->full_name}}} ({{{$member->senateFunction}}})</a></li>
                     @endforeach
                 </ul>
 
