@@ -5,6 +5,10 @@ $menuitems = [
         'url' => URL::action('AboutController@showAbout'),
         'title' => 'De GSV',
         'submenu' => [
+            'over-de-gsv' => [
+                'title' => 'Over de GSV',
+                'url' => URL::action('AboutController@showAbout')
+            ],
             'geschiedenis' => [
                 'title' => 'Geschiedenis',
                 'url' => URL::action('AboutController@showHistory')
