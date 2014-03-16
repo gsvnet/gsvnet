@@ -1,6 +1,7 @@
 <?php
     // Dit moet even mooier gedaan worden hoor
     $classes = ['', 'last-2', 'last-3', 'last-2', 'wide last-2 last-3', '', 'last-2', 'last-3', 'wide last-2', 'last-2 last-3'];
+    $number = count($classes);
 ?>
 
 @section('content')
@@ -10,7 +11,7 @@
 
         <div class="photos">
             @for($i=0; $i<count($photos); $i++)
-                @include('gallery._album', array('album' => $photos[$i], 'wide' => ($i==4 || $i==8), 'class' => $classes[$i]))
+                @include('gallery._album', array('album' => $photos[$i], 'wide' => $i%10==4 || $i%10==8, 'class' => $classes[$i % $number]))
             @endfor
         </div>
 

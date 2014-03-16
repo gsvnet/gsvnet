@@ -8,5 +8,5 @@ return [
     ],
 
     // The amount of photos to display per paginated page
-    'photos_per_page' => 10
+    'photos_per_page' => 20
 ];
