@@ -40,6 +40,7 @@ gulp.task('scripts', function() {
   		'laravel/public/javascripts/components/list.min.js',
   		'laravel/public/javascripts/components/carousel.js',
       'laravel/public/javascripts/components/magnific-popup-0.9.9.js',
+      'laravel/public/javascripts/components/magnific-popup-translation.js',
   		'laravel/public/javascripts/menu.js',
   		'laravel/public/javascripts/word-lid.js',
   		'laravel/public/javascripts/app.js'

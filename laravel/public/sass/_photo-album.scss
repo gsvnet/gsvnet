@@ -11,12 +11,16 @@
 		vertical-align: bottom;
 	}
 
-	&.wide {
+	&.tile-number-4, &.tile-number-8 {
 		width: 634px;
 	}
 
-	&.last-3 {
+	&.tile-number-2, &.tile-number-4, &.tile-number-7, &.tile-number-9 {
 		padding-right: 0;
+	}
+
+	&.tile-number-0, &.tile-number-3, &.tile-number-5, &.tile-number-8 {
+		clear: left;
 	}
 
 	.photo-description {
@@ -56,11 +60,11 @@
 		width: 33%;
 		height: auto;
 
-		&.wide {
+		&.tile-number-4, &.tile-number-8 {
 			width: 66%;
 		}
 
-		&.last-3 {
+		&.tile-number-2, &.tile-number-4, &.tile-number-7, &.tile-number-9 {
 			padding-right: 18px;
 		}
 
@@ -90,13 +94,18 @@
 
 		width: 50%;
 
-		&.wide {
+		&.tile-number-4, &.tile-number-8 {
 			width: 50%;
 			overflow: hidden;
 
 			img {
-				width: 205%;
+				width: 206%;
 			}
 		}
+
+		&.tile-number-0, &.tile-number-3, &.tile-number-5, &.tile-number-8 {
+			clear: none;
+		}
+
 	}
 }

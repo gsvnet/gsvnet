@@ -50,12 +50,18 @@ Menu = (function(){
 
 	return {
 		// Initializes the menu
-		// TODO IMPLEMENT TOUCH START!!
 		init: function(menu, carets, toggler) {
 			$mainMenu = menu;
 
-			carets.on('click touchstart', showSubMenu);
-			toggler.on('click touchstart', showMenu);
+			if(Modernizr.touch)
+			{
+				carets.on('touchstart', showSubMenu);
+				toggler.on('touchstart', showMenu);
+			} else {
+				carets.on('click', showSubMenu);
+				toggler.on('click', showMenu);				
+			}
+
 
 
 			menu.click(function(e){
