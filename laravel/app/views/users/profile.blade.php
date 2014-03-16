@@ -2,41 +2,88 @@
 	<div class="column-holder">
 		<h1>{{{ $member->full_name }}}</h1>
 		@if( isset($member->profile) )
-			<p>Lid van {{{$member->profile->yearGroup->nameWithYear}}} en {{{$member->profile->region_name}}}</p>
+			<p>
+				Lid van 
+				@if( isset($member->profile->yearGroup) )
+					{{{$member->profile->yearGroup->nameWithYear}}} en 
+				@endif
+				{{{$member->profile->region_name}}}
+			</p>
 		@endif
 
 		<div class="secondary-column">
-			<p>{{ $member->profile->photo }}</p>
+			@if( isset($member->profile) )
+				<p>{{ $member->profile->photo }}</p>
+			@endif
+
 			<h2>Adresgegevens</h2>
 			<address>
 				{{{ $member->full_name }}} <br>
-				{{{ $member->profile->address }}} <br>
-				{{{ $member->profile->zip_code }}} {{{ $member->profile->town }}}
+				@if( isset($member->profile) )
+					{{{ $member->profile->address }}} <br>
+					{{{ $member->profile->zip_code }}} {{{ $member->profile->town }}}
+				@endif
 			</address>
 		</div>
 		<div class="main-content">
 			<div class="content-columns">
 				<div class="content-column with-padding">
-					<h2>Wat gegevens</h2>
+					<h2>Gegevens</h2>
 
-                    <ul class="unstyled-list title-description-list">
-                        <li>
-                            <span class="list-title">Gebruiksnaam</span>
-                            <span class="list-description">{{{$member->username}}}</span>
-                        </li>
-                        <li>
-                            <span class="list-title">Email</span>
-                            <span class="list-description">{{HTML::mailto($member->email)}}</span>
-                        </li>
-                        <li>
-                            <span class="list-title">Telefoonnummer</span>
-                            <span class="list-description"><a href="tel:{{{$member->profile->phone}}}" title="Bel {{{$member->firstname}}}">{{{$member->profile->phone}}}</a></span>
-                        </li>
-                        <li>
-                            <span class="list-title">Lid?</span>
-                            <span class="list-description">{{{$member->membershipType}}}</span>
-                        </li>
-                    </ul>
+					<ul class="unstyled-list title-description-list">
+						<li>
+							<span class="list-title">Lid?</span>
+							<span class="list-description">{{{$member->membershipType}}}</span>
+						</li>
+						<li>
+							<span class="list-title">Gebruiksnaam</span>
+							<span class="list-description">{{{$member->username}}}</span>
+						</li>
+						<li>
+							<span class="list-title">Email</span>
+							<span class="list-description">{{HTML::mailto($member->email)}}</span>
+						</li>
+
+						@if( isset($member->profile) )
+							<li>
+								<span class="list-title">Telefoonnummer</span>
+								<span class="list-description"><a href="tel:{{{$member->profile->phone}}}" title="Bel {{{$member->firstname}}}">{{{$member->profile->phone}}}</a></span>
+							</li>
+							<li>
+								<span class="list-title">Geboortedatum</span>
+								<span class="list-description">{{{$member->profile->birthdayWithYear}}}</span>
+							</li>
+							<li>
+								<span class="list-title">Geslacht</span>
+								<span class="list-description">{{{$member->profile->genderLocalized}}}</span>
+							</li>
+							<li>
+								<span class="list-title">Kerkgezindte</span>
+								<span class="list-description">{{{$member->profile->church}}}</span>
+							</li>
+							<li>
+								<span class="list-title">Studie</span>
+								<span class="list-description">{{{$member->profile->study}}}</span>
+							</li>
+						@endif
+					</ul>
+					@if( isset($member->profile) )
+						<h2>Gegevens ouders</h2>
+
+						<ul class="unstyled-list title-description-list">
+							<li>
+								<span class="list-title">Adres</span>
+								<address>
+									{{{ $member->profile->parent_address }}} <br>
+									{{{ $member->profile->parent_zip_code }}} {{{ $member->profile->parent_town }}}
+								</address>
+							</li>
+							<li>
+								<span class="list-title">Telefoon</span>
+								<span class="list-description"><a href="tel:{{{$member->profile->parent_phone}}}" title="Bel de ouders van {{{$member->firstname}}}">{{{$member->profile->parent_phone}}}</a></span>
+							</li>
+						</ul>
+					@endif
 				</div>
 				<div class="content-column">
 					@if(count($senates) > 0)
@@ -61,50 +108,7 @@
 								</li>
 							@endforeach
 						</ul>
-					@else
-						<p>Geen commissies</p>
 					@endif
-				</div>
-			</div>
-			<div class="content-columns">
-				<div class="content-column">
-					<h2>Persoonlijke gegevens</h2>
-
-                    <ul class="unstyled-list title-description-list">
-                        <li>
-                            <span class="list-title">Geboortedatum</span>
-                            <span class="list-description">{{{$member->profile->birthdayWithYear}}}</span>
-                        </li>
-                        <li>
-                            <span class="list-title">Geslacht</span>
-                            <span class="list-description">{{{$member->profile->genderLocalized}}}</span>
-                        </li>
-                        <li>
-                            <span class="list-title">Kerkgezindte</span>
-                            <span class="list-description">{{{$member->profile->church}}}</span>
-                        </li>
-                        <li>
-                            <span class="list-title">Studie</span>
-                            <span class="list-description">{{{$member->profile->study}}}</span>
-                        </li>
-                    </ul>
-				</div>
-				<div class="content-column">
-					<h2>Gegevens ouders</h2>
-
-                    <ul class="unstyled-list title-description-list">
-                    	<li>
-                    		<span class="list-title">Adres</span>
-							<address>
-								{{{ $member->profile->parent_address }}} <br>
-								{{{ $member->profile->parent_zip_code }}} {{{ $member->profile->parent_town }}}
-							</address>
-                    	</li>
-                        <li>
-                            <span class="list-title">Telefoon</span>
-                            <span class="list-description"><a href="tel:{{{$member->profile->parent_phone}}}" title="Bel de ouders van {{{$member->firstname}}}">{{{$member->profile->parent_phone}}}</a></span>
-                        </li>
-                    </ul>
 				</div>
 			</div>
 
