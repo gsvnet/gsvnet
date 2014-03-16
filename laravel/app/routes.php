@@ -4,6 +4,13 @@ Route::get('/', ['as' => 'home',
     'uses' => 'HomeController@showIndex'
 ]);
 
+Route::get('/mail', function(){
+    Mail::send('emails.testmail', [], function($message)
+    {
+        $message->to('markredeman@gmail.com', 'Harmen Stoppels')->subject('Testmail! Dit is om alles te testen');
+    });
+});
+
 // Login and logout routes
 Route::get('login', 'SessionController@getLogin');
 Route::post('login', 'SessionController@postLogin')->before('csrf');

@@ -12,7 +12,8 @@
 		"mccool/laravel-auto-presenter": "*",
         "michelf/php-markdown": "1.4.*@dev",
         "nickcernis/html-to-markdown": "dev-master",
-        "misd/linkify": "1.1.*@dev"
+        "misd/linkify": "1.1.*@dev",
+        "fedeisas/laravel-mail-css-inliner": "1.*"
 	},
 	"autoload": {
 		"classmap": [

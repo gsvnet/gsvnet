@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "ce0fc5c3dc50dd15a1d34168523352ea",
+    "hash": "e500655b3fd682df1887f9f4269ffa15",
     "packages": [
         {
             "name": "anahkiasen/former",
@@ -94,7 +94,7 @@
             ],
             "authors": [
                 {
-                    "name": "Anahkiasen",
+                    "name": "Maxime Fabre",
                     "email": "ehtnam6@gmail.com"
                 }
             ],
@@ -181,6 +181,58 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "time": "2014-01-17 12:21:18"
+        },
+        {
+            "name": "fedeisas/laravel-mail-css-inliner",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fedeisas/laravel-mail-css-inliner.git",
+                "reference": "3942ddf806d65d535b602cb20d12754f5975515e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fedeisas/laravel-mail-css-inliner/zipball/3942ddf806d65d535b602cb20d12754f5975515e",
+                "reference": "3942ddf806d65d535b602cb20d12754f5975515e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "4.1.*",
+                "php": ">=5.3.2",
+                "tijsverkoyen/css-to-inline-styles": "1.2.*"
+            },
+            "require-dev": {
+                "jakub-onderka/php-console-highlighter": "dev-master",
+                "jakub-onderka/php-parallel-lint": "dev-master",
+                "mockery/mockery": "0.9.*",
+                "phpmd/phpmd": "1.5.*",
+                "phpunit/phpunit": "3.7.*",
+                "squizlabs/php_codesniffer": "1.*",
+                "swiftmailer/swiftmailer": "5.0.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fedeisas\\LaravelMailCssInliner\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fede Isas",
+                    "email": "fedeisas@hotmail.com"
+                }
+            ],
+            "description": "Inline the CSS of your HTML emails using Laravel",
+            "keywords": [
+                "css",
+                "laravel",
+                "mailer"
+            ],
+            "time": "2014-02-09 20:13:25"
         },
         {
             "name": "filp/whoops",
@@ -422,12 +474,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "a81c3074753f1b5f575ece6686276f9f86e46cee"
+                "reference": "4627414a458158bbf68bd83a2158bbaddba048c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/a81c3074753f1b5f575ece6686276f9f86e46cee",
-                "reference": "a81c3074753f1b5f575ece6686276f9f86e46cee",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/4627414a458158bbf68bd83a2158bbaddba048c4",
+                "reference": "4627414a458158bbf68bd83a2158bbaddba048c4",
                 "shasum": ""
             },
             "require": {
@@ -531,7 +583,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2014-03-13 16:06:32"
+            "time": "2014-03-15 21:55:19"
         },
         {
             "name": "mccool/laravel-auto-presenter",
@@ -1790,12 +1842,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "1848a3977972fa40c1e8e1912be88535692e2b0c"
+                "reference": "fa18e426ad43ba9409fbb4b3668cce4dfdb64c83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Process/zipball/1848a3977972fa40c1e8e1912be88535692e2b0c",
-                "reference": "1848a3977972fa40c1e8e1912be88535692e2b0c",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/fa18e426ad43ba9409fbb4b3668cce4dfdb64c83",
+                "reference": "fa18e426ad43ba9409fbb4b3668cce4dfdb64c83",
                 "shasum": ""
             },
             "require": {
@@ -1830,7 +1882,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "http://symfony.com",
-            "time": "2014-03-12 18:29:58"
+            "time": "2014-03-13 05:40:32"
         },
         {
             "name": "symfony/routing",
@@ -2057,17 +2109,61 @@
             "time": "2014-03-02 19:52:06"
         },
         {
+            "name": "tijsverkoyen/css-to-inline-styles",
+            "version": "dev-master",
+            "target-dir": "TijsVerkoyen/CssToInlineStyles",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tijsverkoyen/CssToInlineStyles.git",
+                "reference": "4bf7879cedfed8ac3d66f98a98b68fc557f7c1f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/4bf7879cedfed8ac3d66f98a98b68fc557f7c1f7",
+                "reference": "4bf7879cedfed8ac3d66f98a98b68fc557f7c1f7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "TijsVerkoyen\\CssToInlineStyles": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Tijs Verkoyen",
+                    "email": "css_to_inline_styles@verkoyen.eu",
+                    "role": "Developer"
+                }
+            ],
+            "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
+            "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
+            "time": "2013-06-12 11:47:48"
+        },
+        {
             "name": "way/generators",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JeffreyWay/Laravel-4-Generators.git",
-                "reference": "b3c2974a87891ddf48bae27b1d5176168016ef94"
+                "reference": "5697d896577c8bd8cbab2a17e4e86f193189cff9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JeffreyWay/Laravel-4-Generators/zipball/b3c2974a87891ddf48bae27b1d5176168016ef94",
-                "reference": "b3c2974a87891ddf48bae27b1d5176168016ef94",
+                "url": "https://api.github.com/repos/JeffreyWay/Laravel-4-Generators/zipball/5697d896577c8bd8cbab2a17e4e86f193189cff9",
+                "reference": "5697d896577c8bd8cbab2a17e4e86f193189cff9",
                 "shasum": ""
             },
             "require": {
@@ -2101,7 +2197,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-03-13 17:48:09"
+            "time": "2014-03-16 15:40:46"
         }
     ],
     "packages-dev": [

@@ -112,6 +112,7 @@ return array(
         'Intervention\Image\ImageServiceProvider',
         'Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider',
         'McCool\LaravelAutoPresenter\LaravelAutoPresenterServiceProvider',
+        'Fedeisas\LaravelMailCssInliner\LaravelMailCssInlinerServiceProvider',
 
         'GSVnet\ServiceProviders\BackendServiceProvider',
         'GSVnet\ServiceProviders\AlbumServiceProvider',
