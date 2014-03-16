@@ -5,5 +5,9 @@
         @else
             <img src="{{ $album->small_image_url }}" alt="{{ $album->name }}" width="308" width="308" />
         @endif
+
+        @if( !empty($album->description) )
+        	<p class="photo-description">{{ $album->description }}</p>
+        @endif
     </a>
 </div>
