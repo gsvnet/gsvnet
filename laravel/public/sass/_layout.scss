@@ -55,7 +55,7 @@
 		@extend .delta;
 	}
 
-	aside.note {
+	.note {
 		float: right;
 		width: 180px;
 		margin: 18px 0 18px 18px;
@@ -235,6 +235,17 @@ a.block-link {
 	.secondary-column .content-column, .content-column {
 		width: 100%;
 		float: none;
+	}
+
+	.artikel .note {
+		float: none;
+		width: auto;
+		margin: 18px 0;
+		font-size: 20px;
+		padding: 18px;
+		background: transparent;
+		border-top: 1px solid #EEE;
+		border-bottom: 1px solid #EEE;
 	}
 
 }
