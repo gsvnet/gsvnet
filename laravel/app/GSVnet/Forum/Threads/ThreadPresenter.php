@@ -42,7 +42,7 @@ class ThreadPresenter extends BasePresenter
         if ( ! $this->mostRecentReply) {
             return null;
         }
-        return $this->mostRecentReply->author->fullname;
+        return $this->mostRecentReply->author->username;
     }
 
     public function latestReplyUrl()
@@ -50,16 +50,19 @@ class ThreadPresenter extends BasePresenter
         if ( ! $this->mostRecentReply) {
             return $this->url;
         }
-        return $this->url . App::make('GSVnet\Forum\Replies\ReplyQueryStringGenerator')->generate($this->mostRecentReply);
-    }
 
-    public function acceptedSolutionUrl()
-    {
-        if ( ! $this->acceptedSolution) {
-            return null;
+        $page = 1 + floor($this->resource->reply_count / 20);
+        $id = $this->resource->most_recent_reply_id;
+        $url = $this->url;
+        
+        if( $page > 1)
+        {
+            $url .= '?page=' . $page;
         }
 
-        return $this->url . App::make('GSVnet\Forum\Replies\ReplyQueryStringGenerator')->generate($this->acceptedSolution);
+        $url .= '#reactie-' . $id;
+
+        return $url;
     }
 
     public function editUrl()
@@ -70,16 +73,6 @@ class ThreadPresenter extends BasePresenter
     public function deleteUrl()
     {
         return action('ForumThreadsController@getDelete', [$this->id]);
-    }
-
-    public function markAsSolutionUrl($replyId)
-    {
-        return action('ForumThreadsController@getMarkQuestionSolved', [$this->resource->id, $replyId]);
-    }
-
-    public function markAsUnsolvedUrl()
-    {
-        return action('ForumThreadsController@getMarkQuestionUnsolved', [$this->resource->id]);
     }
 
     // ------------------- //

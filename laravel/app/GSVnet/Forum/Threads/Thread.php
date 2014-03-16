@@ -9,7 +9,7 @@ class Thread extends Entity
 {
     protected $table      = 'forum_threads';
     protected $fillable   = ['subject', 'body', 'author_id', 'solution_reply_id', 'category_slug', 'public'];
-    protected $with       = ['author'];
+    protected $with       = ['author', 'mostRecentReply'];
     protected $softDelete = true;
 
     public $presenter = 'GSVnet\Forum\Threads\ThreadPresenter';
@@ -27,11 +27,6 @@ class Thread extends Entity
     public function replies()
     {
         return $this->hasMany('GSVnet\Forum\Replies\Reply', 'thread_id');
-    }
-
-    public function acceptedSolution()
-    {
-        return $this->belongsTo('GSVnet\Forum\Replies\Reply', 'solution_reply_id');
     }
 
     public function tags()
