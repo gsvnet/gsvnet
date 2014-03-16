@@ -1,12 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{{ $title or 'GSV' }}}</title>
 
     <meta name="description" content="{{{ $description or 'GSV' }}}" />
-    <meta name="keywords" content="{{{ $keywords or 'GSV' }}}" />
 
     <link rel="shortcut icon" href="/favicon.png" />
 
