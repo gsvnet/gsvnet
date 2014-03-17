@@ -111,7 +111,10 @@ app = (function() {
 
 	function committees() {
 		var list = new List('committees', {
-			valueNames: ['committee']
+			valueNames: ['committee', 'slug'], 
+  			plugins: [ 
+  				['fuzzySearch', {threshold: 1, distance: 100}]
+  			] 
 		});
 	}
 
