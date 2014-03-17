@@ -1,7 +1,7 @@
 WordLid = (function(){
 	var elements = {
 			previewWrap: $('#preview-image'),
-			fileField: $('#potential-image'),
+			fileField: $('#photo_path'),
 			form: $('#become-member'),
 			submitButton: $('#submit'),
 			canvas: document.createElement('canvas'),
