@@ -65,8 +65,7 @@ return [
     ],
 
     'users.show' => [
-        //'type' => ['member', 'formerMember']
-        'committee' => ['webcie', 'prescie']
+        'type' => ['member', 'formerMember']
     ],
 
     'threads.show-private' => [
