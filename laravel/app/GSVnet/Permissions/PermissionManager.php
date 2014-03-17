@@ -11,8 +11,8 @@ class PermissionManager implements PermissionManagerInterface
     protected $user;
     protected $guard;
     protected $committees;
-
     protected $permissions;
+    protected $permissionCache = [];
 
     public function __construct(CommitteesRepository $committee)
     {
@@ -32,6 +32,25 @@ class PermissionManager implements PermissionManagerInterface
         {
             throw new PermissionNotFoundException;
         }
+
+        // Return result away if the permission has already been looked up
+        if( $this->inCache($permission) )
+        {
+            return $this->getCachedResult($permission);
+        }
+
+        // If the result was not cached: look it up
+        $has = $this->hasPermission($permission);
+
+
+        // Cache the result for further use
+        $this->permissionCache[$permission] = $has;
+
+        return $has;
+    }
+
+    private function hasPermission($permission)
+    {
 
         // Get the permission's criteria
         $criteria = $this->permissions[$permission];
@@ -57,6 +76,22 @@ class PermissionManager implements PermissionManagerInterface
         }
 
         return false;
+    }
+
+    /**
+     * Checks if a permission has already been looked up for the user
+     */
+    private function inCache($permission)
+    {
+        return array_key_exists($permission, $this->permissionCache);
+    }
+
+    /**
+     * Returns whether an entity has the permission or not (from cache)
+     */
+    private function getCachedResult($permission)
+    {
+        return $this->permissionCache[$permission];
     }
 
     private function checkTypeCriteria(array $criteria)
