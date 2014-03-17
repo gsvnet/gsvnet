@@ -1,7 +1,6 @@
 app = (function() {
 	var pages = {
 		'home-page': home,
-		'user-index-page': userIndex,
 		'become-member-page': becomeMember,
 		'committees-page': committees,
 		'albums-page': photos,
@@ -118,14 +117,6 @@ app = (function() {
 		});
 	}
 
-	function userIndex() {
-		var list = new List('user-list', {
-			valueNames: ['search-users', 'phone'],
-			searchClass: 'search-user-input',
-			listClass: 'user-profile-list'
-		});
-	}
-
 	function photos() {
 		$('.photos').magnificPopup({
 			delegate: '.photo-link',
@@ -153,12 +144,20 @@ app = (function() {
 	}
 
 	function userListPage() {
-		console.log('test');
 		$searchForm = $('#user-search-form');
 
 
 		$('#user-search-form-toggler').click(function(){
 			$searchForm.toggleClass('visible');
+		});
+		
+		var list = new List('user-list', {
+			valueNames: ['search-users', 'phone'],
+			searchClass: 'search-user-input',
+			listClass: 'user-profile-list', 
+  			plugins: [ 
+  				['fuzzySearch', {threshold: 1, distance: 100}]
+  			] 
 		});
 	}
 
