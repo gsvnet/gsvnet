@@ -13,7 +13,12 @@
             <ul class="unstyled-list title-description-list">
                 @foreach ($activeMembers as $member)
                     <li>
-                        <span class="list-title">{{ link_to_action('UserController@showUser', $member->full_name, [$member->id]) }}</span>
+                        @if( Permission::has('users.show') )
+                            <a href="{{ URL::action('UserController@showUser', [$member->id]) }}" title="Bekijk het profiel van {{{ $member->full_name }}}" class="list-title">{{{ $member->full_name }}}</a>
+                        @else
+                            <span class="list-title">{{{ $member->full_name }}}</span>
+                        @endif
+
                         <span class="list-description grey">Sinds {{ $member->inCommiteeSince }}</span>
                     </li>
                 @endforeach
