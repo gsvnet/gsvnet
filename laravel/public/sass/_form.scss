@@ -66,21 +66,35 @@ textarea.form-control {
 
 // SPECIFIC FORMS
 
-#user-search-form-toggler {
+#user-search-form-toggler span {
 	display: none;
 }
 
 @media only screen and (max-width: $firstbreakpoint){
+	.js #user-search-form-toggler {
+		cursor: pointer;
 
-	#user-search-form-toggler {
-		display: inline;
+		span {
+			display: inline-block;
+			width: 0;
+			height: 0;
+			border-left: 8px solid transparent;
+			border-right: 8px solid transparent;
+			border-top: 8px solid $darkPurple;
+			text-indent: -999px;
+			vertical-align: middle;
+		}
 	}
 
 	.js #user-search-form {
-		display: none;
+		height: 0;
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height .3s ease;
 
 		&.visible {
-			display: block;
+			height: auto;
+			max-height: 400px;
 		}
 	}
 }
