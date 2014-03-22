@@ -45,9 +45,10 @@
 }
 .pagination > li.disabled { background: none; }
 .pagination > li.disabled a, .pagination > li.disabled > span {
-	// background: $grey;
-	color: black;
+	color: $grey;
 	background: none;
+	user-select: none;
+	cursor: default;
 
 	&:active {
 		-moz-box-shadow: none;

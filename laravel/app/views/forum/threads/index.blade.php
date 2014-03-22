@@ -3,17 +3,15 @@
 @section('content')
 <div class="column-holder">
     <h1>Forum</h1>
-    <p class="delta">Dit is het GSV-forum, waar het een en ander besproken wordt. Het is hier vreselijk gezellig; eigenlijk net zo gezellig als op soos zelf. Er zijn mensen die liever achter de pc zitten en hier contact houden, dan dat ze naar soos gaan.</p>
+    @if(Input::get('tags', null))
+        <p class="delta">
+            Onderwerpen met de tags {{ Input::get('tags') }}
+        </p>
+    @else
+        <p class="delta">Dit is het forum van de GSV hier kan worden gepost over activiteiten, vraag en aanbod, interne en externe aangelegenheid en praktisch alles wat je kwijt wil.</p>
+    @endif
 
     <section class="main-content forum">
-        <div class="header">
-            {{-- Display select tags --}}
-            @if(Input::get('tags', null))
-                <div class="tags">
-                    {{ Input::get('tags') }}
-                </div>
-            @endif
-        </div>
 
         <div class="threads">
             {{-- Loop over the threads and display the thread summary partial --}}

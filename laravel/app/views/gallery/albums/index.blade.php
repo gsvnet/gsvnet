@@ -7,7 +7,7 @@
 @section('content')
 	<div class="column-holder" role="main">
 		<h1>Fotogallerij</h1>
-		<p class="delta">Krijg een impressie van de meest geweldige studentenvereniging zus en zo en bla die bla. En zus en zo!</p>
+		<p class="delta">Krijg een impressie van de leukste studentenvereniging van Groningen</p>
 
 		<div class="gallery">
 			@for($i=0; $i<count($albums); $i++)

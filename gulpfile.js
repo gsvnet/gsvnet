@@ -4,6 +4,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var compass = require('gulp-compass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var beautify = require('gulp-beautify');
 var imagemin = require('gulp-imagemin');
 
 gulp.task('css', function(){
@@ -46,8 +47,8 @@ gulp.task('scripts', function() {
   		'laravel/public/javascripts/word-lid.js',
   		'laravel/public/javascripts/app.js'
   	])
-  	.pipe(uglify())
     .pipe(concat("app.js"))
+  	.pipe(uglify())
     .pipe(gulp.dest('laravel/public/build-javascripts/'))
 });
 

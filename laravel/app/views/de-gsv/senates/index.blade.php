@@ -2,6 +2,7 @@
 
     <div class="column-holder">
         <h1>Senaten</h1>
+        <p class="delta">Aan het hoofd van de vereniging staat de Senaat, bestaande uit drie tot vijf leden. Deze Senaat bestuurt de GSV en houdt het overzicht over haar vele activiteiten.</p>
         <div class="secondary-column">
             @include('de-gsv.senates._list')
         </div>
@@ -9,11 +10,8 @@
         @section('senate')
 
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe vel quos iure ipsam sequi quasi accusantium qui quas. Exercitationem, odio ab minima officiis corporis ex blanditiis consequuntur culpa nam quas.
-            </p>
+                De vijf functies binnen de Senaat zijn die van praeses, abactis, fiscus, assessor primus en assessor secundus. Deze vijf houden zich respectievelijk bezig met het voorzitten van de vereniging, het bijhouden van de ledenadministratie en de post, de financiële kant van de GSV, de externe relaties en de interne commissies. Samen vormen zij een jaar lang een hecht team dat elk jaar probeert het beste uit de vereniging te halen.
 
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, reprehenderit, quaerat facilis possimus perspiciatis maxime id saepe laboriosam vitae rem totam nulla sapiente sed fuga sequi. Suscipit, itaque, facere quas ipsa ratione pariatur quibusdam voluptatum qui fugit tempora maiores sint provident optio laborum aperiam harum saepe natus numquam inventore debitis ab distinctio reprehenderit perspiciatis et officiis molestiae incidunt obcaecati dolores nulla iure sed earum illum odio nobis dolorum nesciunt accusamus quia dolore consectetur aspernatur. Ratione fugit molestiae autem quia aspernatur.
             </p>
         @show
         </div>

@@ -130,33 +130,33 @@
 
             <div class="content-columns">
                 <div class="content-column">
-                    <a href="#" class="block-link">
+                    <a href="/de-gsv/pijlers#christelijk" class="block-link">
                         <h3>Christelijk</h3>
                         <div class="icon i-christian"></div>
-                        <p>Als hier nou ieman wat schrijft dan zou dat fantastisch zijn.</p>
+                        <p>De belangrijkste pijler van de vereniging is de christelijke pijler. Op de GSV speelt het christelijk geloof en christelijke verdieping een centrale rol. </p>
                     </a>
                 </div>
                 <div class="content-column">
-                    <a href="#" class="block-link">
+                    <a href="/de-gsv/pijlers#sociaal" class="block-link">
                         <h3>Sociaal</h3>
                         <div class="icon i-social"></div>
-                        <p>Hier geldt eigenlijk precies hetzelfde voor, even kijken wat er gebeurt als ik de tekst wat langer maak zodat hij meerdere regels beslaat.</p>
+                        <p>Een studentenvereniging is er natuurlijk voor de gezelligheid. Alleen al op onze Sociëteit kun je elkaar elke donderdagavond ontmoeten om een biertje te drinken.</p>
                     </a>
                 </div>
             </div>
             <div class="content-columns">
                 <div class="content-column">
-                    <a href="#" class="block-link">
+                    <a href="/de-gsv/pijlers#intellectueel" class="block-link">
                         <h3>Intellectueel</h3>
                         <div class="icon i-intellectual"></div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet cumque sapiente dolor corporis nam earum necessitatibus voluptatem! Placeat, expedita, qui ab et deleniti aut iste repellendus omnis pariatur perspiciatis unde.</p>
+                        <p>Als academische vereniging is intellectualiteit belangrijk binnen de vereniging. Het is leuk om elkaar uit te dagen kritisch na te denken over wetenschap, maar ook het geloof.</p>
                     </a>
                 </div>
                 <div class="content-column">
-                    <a href="#" class="block-link">
+                    <a href="/de-gsv/pijlers#studentikoos" class="block-link">
                         <h3>Studentikoos</h3>
                         <div class="icon i-collegiate"></div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, dolor?</p>
+                        <p>Een studentenverenging is geen studentenvereniging zonder een goede dosis studentikoziteit. Ook de GSV kent haar eigen mores en lange tradities die zij met verve hoog houdt. </p>
                     </a>
                 </div>
             </div>
@@ -164,11 +164,6 @@
         <div class="secondary-column">
             <div class="content-columns">
                 <div class="content-column">
-                    {{--@if(Auth::guest() || !Auth::user()->isOrWasMember())
-                        <h2>Lid worden!</h2>
-                        <p>Je kunt lid worden</p>
-                        <p><a href="/" class="button">Lid worden</a></p>
-                    @endif--}}
                     @if(count($events) > 0)
                         <h2>Komende activiteiten</h2>
                         <ul class="unstyled-list title-description-list">

@@ -65,6 +65,19 @@ class ThreadPresenter extends BasePresenter
         return $url;
     }
 
+    public function lastPageUrl()
+    {
+        $page = 1 + floor($this->resource->reply_count / 20);
+        $url = $this->url;
+        
+        if( $page > 1)
+        {
+            $url .= '?page=' . $page;
+        }
+
+        return $url;
+    }
+
     public function editUrl()
     {
         return action('ForumThreadsController@getEditThread', [$this->id]);

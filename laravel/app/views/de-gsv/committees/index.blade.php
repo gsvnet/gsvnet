@@ -1,11 +1,12 @@
 @section('content')
 
-    <div class="column-holder" role="main">
 
+    <div class="column-holder" role="main">
+        
         <h1>Commissies</h1>
 
         <div class="main-content">
-            <p class="delta">De GSV heeft honderdmiljoen commissies, waar tweedejaars in kunnen</p>
+            <p class="delta">De GSV heeft heel veel commissies die de vele activiteiten van de vereniging organiseren waarin gemotiveerde leden zich inzetten om de vereniging tot een groot succes te maken.</p>
         </div>
 
         <div class="secondary-column">

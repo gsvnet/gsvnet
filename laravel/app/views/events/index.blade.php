@@ -1,7 +1,7 @@
 @section('content')
 	<div class="column-holder" role="main">
-		<h1>Activiteiten, feesten en borrels</h1>
-		<p class="delta">De GSV bruist van leuke activiteiten en clich&eacute;beschrijvingen die niemand leest. Geef je op en kom langs!</p>
+		<h1>Activiteiten</h1>
+		<p class="delta">Bekijk de agenda van de GSV</p>
 
 		@include('events.sidebar')
 
