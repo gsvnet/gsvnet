@@ -1,6 +1,6 @@
 <?php namespace GSVnet\Users\Profiles;
 
-use BasePresenter, Carbon\Carbon;
+use BasePresenter, Carbon\Carbon, Gravatar, URL;
 
 class ProfilePresenter extends BasePresenter
 {
@@ -42,5 +42,17 @@ class ProfilePresenter extends BasePresenter
     	$gender = $this->resource->gender;
 
     	return $gender == 'male' ? 'Man' : 'Vrouw';
+    }
+
+    public function xsmallProfileImage()
+    {
+        // Should return url
+        // or img html with url generated
+        if ($this->photo_path != '')
+        {
+            $url = URL::action('MemberController@showPhoto', [$this->resource->user->profile->id, 'x-small']);
+            return '<img src="' . $url . '" width="102" height="102" alt="Profielfoto">';
+        }
+        return Gravatar::image($this->user->email, 'Profielfoto', array('width' => 102, 'height' => 102));
     }
 }

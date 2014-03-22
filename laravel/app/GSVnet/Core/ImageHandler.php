@@ -63,13 +63,13 @@ class ImageHandler
         $path = $this->basePath . str_replace('.' . $ext, '', $path);
 
         // Delete old photo files
-        if (File::exists($path . '.' . $ext))
+        if (File::isFile($path . '.' . $ext))
             File::delete($path . '.' . $ext);
         // ugh this does not work as there are exentions..
-        if (File::exists($path . '-small' . '.' . $ext))
+        if (File::isFile($path . '-small' . '.' . $ext))
             File::delete($path . '-small' . '.' . $ext);
 
-        if (File::exists($path . '-wide' . '.' . $ext))
+        if (File::isFile($path . '-wide' . '.' . $ext))
             File::delete($path . '-wide' . '.' . $ext);
     }
 
@@ -84,7 +84,7 @@ class ImageHandler
         $dimensions = Config::get('photos.dimensions');
 
         // Check if we can find the original image's path, if not, throw an exception error
-        if (! File::exists($fullPath))
+        if (! File::isFile($fullPath))
         {
             throw new ImageFileNotFoundException;
             return 'error... hier moet nog iets goeds komen';
@@ -101,7 +101,7 @@ class ImageHandler
         $newPath = str_replace('.' . $ext, '', $path) . '-' . $dimension . '.' . $ext;
 
         // If we can't find the file, resize the original photo and return the new path
-        if (! File::exists($this->basePath . $newPath))
+        if (! File::isFile($this->basePath . $newPath))
         {
             $img = Image::make($fullPath);
 

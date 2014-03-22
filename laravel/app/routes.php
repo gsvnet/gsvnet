@@ -36,7 +36,7 @@ Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
 
     });
     // Shows photo corresponding to profile with id
-    Route::get('jaarbundel/{id}/foto',   'MemberController@showPhoto')->before('');
+    Route::get('jaarbundel/{id}/foto/{size?}',   'MemberController@showPhoto')->before('');
 });
 
 // De GSV

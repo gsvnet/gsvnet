@@ -1,6 +1,6 @@
 <li class="user-profile-item">
     <div class="profile-image">
-        {{ $member->photo }}
+        {{ $member->xsmallProfileImage }}
     </div>
     <div class="user-details">
         <h3>

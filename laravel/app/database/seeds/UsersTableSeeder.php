@@ -93,6 +93,37 @@ class UsersTableSeeder extends Seeder {
             'parent_phone' => '0800-223344'
         ));
 
+        $tiny = GSVnet\Users\User::create(array(
+            'email'         => 'tiny@gmail.com',
+            'password'      => 'helloworld',
+            'firstname'     => 'Tiny',
+            'lastname'      => 'eagaegr',
+            'middlename'    => 'aegearg',
+            'username'      => 'ttttiiiiny',
+            'type'          => 2,
+            'approved'      => true
+        ));
+
+        GSVnet\Users\Profiles\UserProfile::create(array(
+            'user_id' => $tiny->id,
+            'year_group_id' => $yearGroupIds[array_rand($yearGroupIds)],
+            'region' => rand(1,4),
+            'phone' => '050-4040544',
+            'address' => 'Mooistraat 2',
+            'zip_code' => '9712AX',
+            'town' => 'Groningen',
+            'study' => 'Technische Wiskunde',
+            'birthdate' => '1992-10-10',
+            'church' => 'GKV',
+            'gender' => 'male',
+            'start_date_rug' => '2011-08-01',
+            'reunist' => 0,
+            'parent_address' => 'Mooiestraat 3',
+            'parent_zip_code' => '9556EX',
+            'parent_town' => 'Opende',
+            'parent_phone' => '0800-223344'
+        ));
+
         $this->command->info('Person table seeded using Faker ...');
     }
 }

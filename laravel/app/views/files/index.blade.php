@@ -269,7 +269,7 @@ table th[class*="col-"] {
                 </ul>
 
 
-                <button type='submit' class='button' style='display:block; width:100%;'>
+                <button type='submit' class='button'>
                     <i class='fa fa-search'></i>
                     Zoeken
                 </button>

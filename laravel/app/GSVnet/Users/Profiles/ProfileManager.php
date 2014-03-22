@@ -68,8 +68,8 @@ class ProfileManager
         {
             // Delete the old photo file and store the new one
             $profile = $this->profiles->byId($id);
-            // If uploading new photo, destroy old one and upload new photo
 
+            // If uploading new photo, destroy old one and upload new photo
             $this->imageHandler->destroy($profile->photo_path);
             $this->uploadPhoto($input);
         }
