@@ -14,18 +14,22 @@ Dropzone.options.uploadmultiple = {
 
 $(document).ready(function(){
 	var form = $('#uploadmultiple');
-	var theDropzone = new Dropzone(form.get(0));
-	var btn = $('<button class="btn btn-success"><i class="fa fa-check"></i> Uploaden die hap</button>');
+	if(form.length == 1)
+	{
+		var theDropzone = new Dropzone(form.get(0));
+		var btn = $('<button class="btn btn-success"><i class="fa fa-check"></i> Uploaden die hap</button>');
 
-	form.submit(function(){
-		theDropzone.processQueue();
+		form.submit(function(){
+			theDropzone.processQueue();
 
-		return false;
-	});
+			return false;
+		});
 
-	btn.click(function(){
-		theDropzone.processQueue();
-	});
+		btn.click(function(){
+			theDropzone.processQueue();
+		});
 
-	form.after(btn);
+		form.after(btn);
+
+	}
 });

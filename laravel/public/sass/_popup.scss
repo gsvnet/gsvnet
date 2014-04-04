@@ -95,6 +95,7 @@ $caption-subtitle-color:          #BDBDBD !default;
   position: fixed;
   outline: none !important;
   -webkit-backface-visibility: hidden; // fixes webkit bug that can cause "false" scrollbar
+  -webkit-transform: translateZ(0); // webkit bug fix
 }
 
 // Root container

@@ -3,6 +3,7 @@ app = (function() {
 		'home-page': home,
 		'become-member-page': becomeMember,
 		'committees-page': committees,
+		'committee-page': committees,
 		'albums-page': photos,
 		'album-page': photos,
 		'user-list-page': userListPage,
