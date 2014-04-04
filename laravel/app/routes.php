@@ -7,7 +7,7 @@ Route::get('/', ['as' => 'home',
 Route::get('/mail', function(){
     Mail::send('emails.testmail', [], function($message)
     {
-        $message->to('markredeman@gmail.com', 'Harmen Stoppels')->subject('Testmail! Dit is om alles te testen');
+        $message->to('haampie@gmail.com', 'Harmen Stoppels')->subject('Testmail! Dit is om alles te testen');
     });
 });
 
