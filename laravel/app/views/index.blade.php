@@ -15,7 +15,7 @@
                     <div id="homepage-video-slide" class="item active">
 
                         <div class="slider-video-wrap">
-                            <video id="home-video" class="slider-video" preload="metadata">
+                            <video id="home-video" class="slider-video" preload="none">
                                 <source src="videos/big_buck_bunny.mp4" type="video/mp4">
                                 <source src="videos/big_buck_bunny.webm" type="video/webm">
                                 <source src="videos/big_buck_bunny.ogv" type="video/ogg">
@@ -124,7 +124,7 @@
     <div class="column-holder" role="main">
         <p class="delta">Denk je na over een actief studentenleven in Groningen? Dan ben je hier aan het juiste adres. De GSV is dé perfecte combinatie van christelijke waarden en het echte studentenleven.</p>
         <div class="main-content has-border-bottom">
-            <p>Op deze site kun je meer lezen over de GSV en wat er allemaal valt te beleven bij onze studentenverenging. Wil je lid worden, of ben je gewoon nieuwsgierig? <a href="#" class="more">Klik dan snel hier</a></p>
+            <p>Op deze site kun je meer lezen over de GSV en wat er allemaal valt te beleven bij onze studentenverenging. Wil je lid worden, of ben je gewoon nieuwsgierig? <a href="/word-lid" class="more" title="Lid worden">Lees waarom</a></p>
             <h2>Over de GSV</h2>
             <p>De GSV, de Gereformeerde Studentenvereniging, is een christelijke studentenvereniging met een gereformeerde basis. De vereniging bestaat uit een hechte groep van zo’n 200 studenten die elke week bij elkaar komen op bijbelkring en tijdens soosavonden. </p>
 
