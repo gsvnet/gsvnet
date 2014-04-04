@@ -163,6 +163,7 @@ Route::filter('checkDate', function($route, $request)
 		App::abort('404');
 	}
 
+
 	if(!empty($month) && !array_key_exists($month, $months))
 	{
 		App::abort('404');

@@ -30,7 +30,7 @@ class UsersController extends BaseController {
 
     public function index()
     {
-        $users = $this->users->paginate(20);
+        $users = $this->users->paginateLatelyRegistered(20);
 
         $this->layout->content = View::make('admin.users.index')
             ->withUsers($users);

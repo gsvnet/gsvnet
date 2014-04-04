@@ -12,7 +12,7 @@
             <!-- Wrapper for slides -->
             <div class="carousel-make-height">
                 <div class="carousel-inner">
-                    <div id="homepage-video-slide" href="#" class="item active">
+                    <div id="homepage-video-slide" class="item active">
 
                         <div class="slider-video-wrap">
                             <video id="home-video" class="slider-video" preload="metadata">
@@ -47,7 +47,7 @@
                         </div>
 
                     </div>
-                    <div href="#" class="item">
+                    <div class="item">
                         <div class="slide-description-wrapper">
                             <div class="slide-description">
                                 <div class="slide-description-box">
@@ -66,7 +66,7 @@
                             </noscript>
                         </span>
                     </div>
-                    <div href="#" class="item">
+                    <div class="item">
                         <div class="slide-description-wrapper">
                             <div class="slide-description">
                                 <div class="slide-description-box">
@@ -85,7 +85,7 @@
                             </noscript>
                         </span>
                     </div>
-                    <div href="#" class="item">
+                    <div class="item">
                         <div class="slide-description-wrapper">
                             <div class="slide-description">
                                 <div class="slide-description-box">

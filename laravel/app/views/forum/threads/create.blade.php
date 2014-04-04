@@ -19,7 +19,7 @@
 
                 @if (Permission::has('threads.show-private'))
                 <div>
-                    {{ Former::checkbox('public')->text('Maak topic publiek voor niet-GSV leden')->label('Publiek') }}
+                    {{ Former::checkbox('public')->text('Maak topic zichtbaar voor externen')->label('Publiek?') }}
                 </div>
                 @endif
 

@@ -11,7 +11,7 @@
             @endforeach
         </ul>
         <div class="_tag_description_container">
-            <strong>Dit onderwerp heeft dus betrekking op...</strong>
+            <strong>Het topic is dus ongeveer zo te beschrijven:</strong>
             <ul class="_tag_descriptions">
             </ul>
         </div>

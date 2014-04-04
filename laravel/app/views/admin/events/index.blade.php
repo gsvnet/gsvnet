@@ -2,9 +2,21 @@
     <div class="page-header">
     	<h1>Activiteiten</h1>
     </div>
-	<p class="delta">Voeg een activiteit toe of bewerk een activiteit</p>
-
-	@include('admin.events.create')
+    <p class="delta">Voeg een activiteit toe of bewerk een activiteit</p>
+    <div class="spacer row">
+        <div class="col-xs-12 col-md-6">
+           @include('admin.events.create')
+        </div>
+        <div class="col-xs-12 col-md-6">
+    	   <h2>Tips voor het toevoegen</h2>
+           <ul>
+               <li>Je titel moet even goed zijn</li>
+               <li>De beschrijving wordt straks opgedeeld in korte en lange beschrijving, dat is handig.</li>
+               <li>De soort die je kiest bepaalt het plaatje dat erbij komt</li>
+               <li><strong>Niet iedereen kan publiceren!</strong> Alleen de senaat/webcie kan een activiteit publiceren :)</li>
+           </ul>
+        </div>
+    </div>
 
 	<h2>Activiteiten bewerken</h2>
 	<table class='table table-striped table-hover'>

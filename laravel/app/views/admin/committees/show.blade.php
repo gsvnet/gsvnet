@@ -1,67 +1,72 @@
 @section('content')
-    <!-- <a href="{{ URL::action('Admin\CommitteeController@index') }}">Terug naar albums</a> -->
-    <div class="page-header">
-    <h1>{{{ $committee->name }}}</h1>
 
+  <div class="spacer row">
+    <div class="col-xs-12 col-md-6">
+      <div class="page-header">
+      <h1>{{{ $committee->name }}}</h1>
+
+      </div>
+
+      <p class=''>
+          {{{ $committee->description }}}
+      </p>
+
+      <a href="{{ URL::action('Admin\CommitteeController@edit', $committee->id) }}" alt="Bewerk {{{ $committee->name }}}" class='btn btn-default'>
+          <i class="fa fa-pencil"></i> Commissie informatie bewerken
+      </a>
     </div>
+    <div class="col-xs-12 col-md-6">
 
-    <p class=''>
-        {{{ $committee->description }}}
-    </p>
 
-    <h2>Leden</h2>
-    <div class="panel panel-primary">
-        <div class="panel-heading">Lid toevoegen</div>
-        <div class="panel-body">
-            {{
-                Former::vertical_open()
-                    ->action(action('Admin\Committees\MembersController@store', $committee->id))
-                    ->method('POST')
-            }}
-                {{ Former::text('member')->placeholder('Naam lid')->id('add-user')->label('Lid') }}
-                {{ Former::date('start_date')->label('Start datum')}}
-                {{ Former::hidden('member_id')->id('add-user-id')}}
+      <h2>Leden</h2>
+      <div class="panel panel-primary">
+          <div class="panel-heading">Lid toevoegen</div>
+          <div class="panel-body">
+              {{
+                  Former::vertical_open()
+                      ->action(action('Admin\Committees\MembersController@store', $committee->id))
+                      ->method('POST')
+              }}
+                  {{ Former::text('member')->placeholder('Naam lid')->id('add-user')->label('Lid') }}
+                  {{ Former::date('start_date')->label('Start datum')}}
+                  {{ Former::hidden('member_id')->id('add-user-id')}}
 
-                <button type='submit' class='btn btn-success btn-sm'>
-                    <i class="glyphicon glyphicon-ok"></i> Opslaan
-                </button>
+                  <button type='submit' class='btn btn-success btn-sm'>
+                      <i class="glyphicon glyphicon-ok"></i> Opslaan
+                  </button>
 
-            {{ Former::close() }}
-        </div>
+              {{ Former::close() }}
+          </div>
 
-        @if ($members->count() > 0)
-            <hr>
+          @if ($members->count() > 0)
+              <hr>
 
-            <ul class="list-group">
-                @foreach ($members as $member)
-                    <li class="list-group-item clearfix">
-                        {{ $member->full_name }}
+              <ul class="list-group">
+                  @foreach ($members as $member)
+                      <li class="list-group-item clearfix">
+                          {{ $member->full_name }}
 
-                        {{
-                            Former::inline_open()
-                              ->action(action('Admin\Committees\MembersController@destroy', [$committee->id, $member->id]))
-                              ->method('DELETE')
-                              ->class('pull-right')
-                        }}
-                            <button type='submit' class='btn btn-danger btn-xs'>
-                                Verwijderen
-                                <i class="glyphicon glyphicon-remove"></i>
-                            </button>
+                          {{
+                              Former::inline_open()
+                                ->action(action('Admin\Committees\MembersController@destroy', [$committee->id, $member->id]))
+                                ->method('DELETE')
+                                ->class('pull-right')
+                          }}
+                              <button type='submit' class='btn btn-danger btn-xs'>
+                                  Verwijderen
+                                  <i class="glyphicon glyphicon-remove"></i>
+                              </button>
 
-                        {{
-                            Former::close();
-                        }}
-                    </li>
-                @endforeach
-            </ul>
-        @endif
+                          {{
+                              Former::close();
+                          }}
+                      </li>
+                  @endforeach
+              </ul>
+          @endif
+      </div>
     </div>
-
-    <a href="{{ URL::action('Admin\CommitteeController@edit', $committee->id) }}" alt="Bewerk {{{ $committee->name }}}" class='btn btn-default'>
-        <i class="fa fa-pencil"></i> Commissie informatie bewerken
-    </a>
-
-    {{-- $users->links() --}}
+  </div>
 @stop
 
 @section('javascripts')
@@ -138,15 +143,15 @@
     <script src="/javascripts/components/typeahead.js"></script>
 
     <script>
-        console.log({{ $users->toJson() }});
-        var users = {{ $users->toJson() }};
+        var list = {{-- User::all()->toJson() --}};
+        console.log(list);
 
         // instantiate the bloodhound suggestion engine
         var users = new Bloodhound({
           // De tokenizer bepaalt waarop gezocht word
           datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.firstname + ' ' + d.middlename + ' ' + d.lastname) },
           queryTokenizer: Bloodhound.tokenizers.whitespace,
-          local: users
+          local: list
         });
 
         // initialize the bloodhound suggestion engine

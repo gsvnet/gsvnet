@@ -76,7 +76,7 @@ Route::group(array('prefix' => 'albums/{album}/photo/{photo}'), function() {
 
 // Events
 Route::get('activiteiten',                 'EventController@showIndex');
-Route::get('activiteiten/{id}',     'EventController@showEvent');
+Route::get('activiteiten/activiteit-{id}',     'EventController@showEvent');
 // Hier filter je of de opgegeven jaar en datum goed zijn
 Route::get('activiteiten/{year}/{month?}', 'EventController@showMonth')->before('checkDate');
 
@@ -125,7 +125,7 @@ Route::group([
             Route::post('{user}/accepteer-lid',   'UsersController@accept');
 
             Route::get('/gasten',     'UsersController@showGuests');
-            Route::get('/potentiaal', 'UsersController@showPotentials');
+            Route::get('/novieten', 'UsersController@showPotentials');
             Route::get('/leden',      'UsersController@showMembers');
             Route::get('/oud-leden',  'UsersController@showFormerMembers');
         });

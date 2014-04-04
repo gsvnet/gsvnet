@@ -80,7 +80,7 @@ class ForumThreadsController extends BaseController implements
         $tags = $this->tags->getAllForForum();
         $this->createSections(Input::get('tags'));
 
-        $this->title = "Create Forum Thread";
+        $this->title = "Nieuw topic";
         $this->view('forum.threads.create', compact('tags'));
         $this->layout->activeMenuItem = 'forum';
 
@@ -120,7 +120,7 @@ class ForumThreadsController extends BaseController implements
 
         $this->createSections(Input::get('tags'));
 
-        $this->title = "Edit Forum Thread";
+        $this->title = "Bewerk topic";
         $this->view('forum.threads.edit', compact('thread', 'tags'));
         $this->layout->activeMenuItem = 'forum';
 

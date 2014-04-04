@@ -33,7 +33,7 @@
         {{ $replies->links() }}
     </div>
 
-    <div id="reageer" class="hero-unit grey">
+    <div id="reageer" class="hero-unit grey {{$replies->getCurrentPage() != $replies->getLastPage() ? 'hidden-form' : ''}}">
         <div class="column-holder">
             <h2>U hebt ook een mening!</h2>
             <p>Uw mening is mogelijk belangrijker, dus reageer!</p>

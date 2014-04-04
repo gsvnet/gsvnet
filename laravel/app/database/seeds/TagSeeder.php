@@ -18,11 +18,14 @@ class TagSeeder extends Seeder
             'Discussie' => 'voor onderwerpen die een discussie te weeg brengen',
             'Senaat' => 'huidige en oude senaten, vragen aan de senaat',
             
-            'Maatschappij en politiek' => 'onderwerpen met betrekking tot maatschappij en politiek',
-            'Geloof en wetenchap' => 'onderwerpen met betrekking tot geloof en wetenchap',
-            'Vraag en aanbod' => 'voor mensen die een kamer zoeken of aanbieden, en andere dingen',
+            'Politiek' => 'onderwerpen met betrekking tot politiek',
+            'Maatschappij' => 'voor maatschappelijke stages, et cetera',
+            'Geloof' => 'onderwerpen met betrekking tot geloof en wetenchap',
+            'Wetenschap' => 'onderwerpen met betrekking tot geloof en wetenchap',
+            'Vraag' => 'op zoek naar een kamer, gereedschap, een boek, of iets anders',
+            'Aanbod' => 'kamer aangeboden of iets anders',
             
-            'Regio' => 'onderwerpen met betrekking tot een der regionen',
+            'Regio' => 'onderwerpen met betrekking tot één der regionen',
             'Jaarverband' => 'onderwerpen met betrekking tot een jaarverband',
         ];
 

@@ -13,6 +13,7 @@ class UsersTableSeeder extends Seeder {
         $faker->addProvider(new Faker\Provider\en_US\Person($faker));
         $faker->addProvider(new Faker\Provider\en_US\Address($faker));
         $faker->addProvider(new Faker\Provider\Internet($faker));
+        $faker->addProvider(new Faker\Provider\Miscellaneous($faker));
 
         $this->command->info('Bezig '.$count.' users toe te voegen');
 

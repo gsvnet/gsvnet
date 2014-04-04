@@ -47,6 +47,11 @@ class UsersRepository {
             ->paginate($amount);
     }
 
+    public function paginateLatelyRegistered($amount)
+    {
+        return User::orderBy('created_at', 'DESC')->paginate($amount);
+    }
+
     /**
     * Create user
     *

@@ -1,13 +1,11 @@
-<section class='create-album panel panel-default panel-info'>
-    <div class="panel-heading add-item">
-        <h4 class="panel-title"><i class="fa fa-plus"></i> Commissie toevoegen <span class="caret"></span></h4>
-    </div>
+<section class="create-committee">
+    <h2><i class="fa fa-plus"></i> Commissie toevoegen</h2>
 
     {{
         Former::vertical_open()
             ->action(action('Admin\CommitteeController@store'))
             ->method('POST')
-            ->class('panel-body add-form')
+            ->class('add-form')
     }}
 
         @include('admin.committees._form')
