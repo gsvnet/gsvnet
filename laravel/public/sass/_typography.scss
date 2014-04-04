@@ -390,7 +390,7 @@ a {
 		font-style:italic;
 
 		&::after {
-			content: "›";
+			content: "\203A";
 			padding-left: 6px;
 			display: inline-block;
 		}
