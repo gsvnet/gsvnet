@@ -54,6 +54,7 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
 		img {outline:none; text-decoration:none; -ms-interpolation-mode: bicubic;}
 		a img {border:none;}
 		.image_fix {display:block;}
+		.left {float: left; margin-right: 18px; }
 
 		/** Yahoo paragraph fix: removes the proper spacing or the paragraph (p) tag. To correct we set the top/bottom margin to 1em in the head of the document. Simple fix with little effect on other styling. NOTE: It is also common to use two breaks instead of the paragraph tag but I think this way is cleaner and more semantic. NOTE: This example recommends 1em. More info on setting web defaults: http://www.w3.org/TR/CSS21/sample.html or http://meiert.com/en/blog/20070922/user-agent-style-sheets/
 
@@ -102,37 +103,34 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
 		/* Styling your links has become much simpler with the new Yahoo.  In fact, it falls in line with the main credo of styling in email, bring your styles inline.  Your link colors will be uniform across clients when brought inline.
 
 		Bring inline: Yes. */
-		a {color: orange;}
-
-		/* Or to go the gold star route...
-		a:link { color: orange; }
-		a:visited { color: blue; }
-		a:hover { color: green; }
-		*/
+		a {color: #2a1443;}
+		a:visited { color: #2a1443; }
+		a:hover { color: #5b2b92; text-decoration: underline; }
+		a:active { color: #8e56cd; }
 	</style>
 </head>
 <body style="width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0; background: #EEE;">
-	<!-- Wrapper/Container Table: Use a wrapper table to control the width and the background color consistently of your email. Use this approach instead of setting attributes on the body tag. -->
 	<table cellpadding="0" cellspacing="0" border="0" id="backgroundTable" style="margin:0; padding:0; width:100% !important; line-height: 100% !important; background: #EEE;padding-top:54px">
 	<tr>
 		<td height="56" width="600"></td>
 	</tr>
 	<tr>
 		<td>
-
-		<!-- Tables are the most common way to format your email consistently. Set your table widths inside cells and in most cases reset cellpadding, cellspacing, and border to zero. Use nested tables as a way to space effectively in your message. -->
-		<table cellpadding="36px" cellspacing="0" border="0" align="center" style="background:#FFF;">
-			<tr>
-				<td width="600" valign="top" style="border-top:2px solid #2a1443;">
-					@yield('header')
-				</td>
-			</tr>
-			<tr>
-				<td width="600" valign="top">
-					@yield('content')
-				</td>
-			</tr>
-		</table>
+			<table cellpadding="0" cellspacing="0" border="0" align="center" style="background:#FFF;">
+				<tr>
+					<td width="600" valign="top" style="border-top:2px solid #2a1443; padding: 0 36px;">
+						<h1>
+							<img class="image_fix left" src="http://beta.gsvnet.nl/images/logo-90.png" alt="GSV logo" title="Gereformeerde Studentenvereniging Groningen" width="72" height="72" />
+							@yield('header')
+						</h1>
+					</td>
+				</tr>
+				<tr>
+					<td width="600" valign="top" style="padding: 0 36px;">
+						@yield('content')
+					</td>
+				</tr>
+			</table>
 		</td>
 	</tr>
 	<tr>

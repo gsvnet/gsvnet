@@ -1,7 +1,7 @@
 @extends('emails.layout')
 
 @section('header')
-    <h1>Gefeliciteerd met je verjaardag!</h1>
+    Gefeliciteerd met je verjaardag!
 @stop
 
 @section('content')

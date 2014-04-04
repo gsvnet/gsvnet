@@ -1,7 +1,7 @@
 @extends('emails.layout')
 
 @section('header')
-    <h1>Welkom op GSVnet</h1>
+    Welkom op GSVnet
 @stop
 
 @section('content')

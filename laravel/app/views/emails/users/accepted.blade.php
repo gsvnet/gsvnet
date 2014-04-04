@@ -1,7 +1,7 @@
 @extends('emails.layout')
 
 @section('header')
-    <h1>Aanmelding word geaccepteerd</h1>
+    Je bent lid!
 @stop
 
 @section('content')

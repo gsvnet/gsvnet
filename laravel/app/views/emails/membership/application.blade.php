@@ -1,7 +1,7 @@
 @extends('emails.layout')
 
 @section('header')
-    <h1>Aanmelding</h1>
+    Aanmelding
 @stop
 
 @section('content')
