@@ -50,7 +50,8 @@ return [
 
     'events.publish' => [
         'committee' => [
-            'webcie'
+            'webcie',
+            'prescie'
         ]
     ],
 
@@ -65,6 +66,10 @@ return [
     ],
 
     'users.show' => [
+        'type' => ['member', 'formerMember']
+    ],
+
+    'users.edit-profile' => [
         'type' => ['member', 'formerMember']
     ],
 
