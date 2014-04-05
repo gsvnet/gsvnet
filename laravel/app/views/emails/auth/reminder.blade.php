@@ -1,7 +1,9 @@
-@section('content')
-	<h2>Password Reset</h2>
+@extends('emails.layout')
 
-	<div>
-		To reset your password, complete this form: {{ URL::to('password/reset', array($token)) }}.
-	</div>
+@section('title')
+Wachtwoord resetten
+@stop
+
+@section('content')
+	Klik hier om je wachtwoord te veranderen: {{ URL::to('password/reset', array($token)) }}.
 @stop
