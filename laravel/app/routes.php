@@ -122,7 +122,7 @@ Route::group([
             Route::resource('/',      'UsersController');
 
             Route::post('{user}/activeren', 'UsersController@activate');
-            Route::post('{user}/accepteer-lid',   'UsersController@accept');
+            Route::post('{user}/accepteer-lid', 'UsersController@accept');
 
             Route::get('/gasten',     'UsersController@showGuests');
             Route::get('/novieten', 'UsersController@showPotentials');

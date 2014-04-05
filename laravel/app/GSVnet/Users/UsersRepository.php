@@ -121,9 +121,9 @@ class UsersRepository {
     public function acceptMembership($id)
     {
         $user = $this->byId($id);
-        if ($user->type != Config::get('gsvnet.userTypes.potential'))
+        if ($user->type != 'potential')
         {
-            throw new Exception;
+            throw new \Exception;
         }
         $user->type = Config::get('gsvnet.userTypes.member');
         $user->save();
