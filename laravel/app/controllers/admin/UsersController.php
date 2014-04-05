@@ -155,7 +155,7 @@ class UsersController extends BaseController {
         $user = $this->userManager->acceptMembership($id);
 
         return Redirect::action('Admin\UsersController@index')
-            ->with('message', 'Noviet <strong>' . $user->name . '</strong> is succesvol geïnstalleerd.');
+            ->with('message', 'Noviet <strong>' . $user->full_name . '</strong> is succesvol geïnstalleerd.');
     }
 
 
