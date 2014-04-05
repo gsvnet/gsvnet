@@ -2,17 +2,17 @@
 
 class BetaTestersTableSeeder extends Seeder {
 
-	public function run()
-	{
-		$reebocie = GSVnet\Committees\Committee::where('unique_name', '=', 'reebocie')->first();
-		$prescie = GSVnet\Committees\Committee::where('unique_name', '=', 'prescie')->first();
-		$fromto = array(
-			'start_date' => '2014-01-01',
-			'end_date' => '2015-01-01'
-		);
+    public function run()
+    {
+        $reebocie = GSVnet\Committees\Committee::where('unique_name', '=', 'reebocie')->first();
+        $prescie = GSVnet\Committees\Committee::where('unique_name', '=', 'prescie')->first();
+        $fromto = array(
+            'start_date' => '2014-01-01',
+            'end_date' => '2015-01-01'
+        );
 
-		// jorieke
-		$jaarverband = GSVnet\Users\YearGroup::where('year', '=', 2011)->first();
+        // jorieke
+        $jaarverband = GSVnet\Users\YearGroup::where('year', '=', 2011)->first();
 
         $jorieke = GSVnet\Users\User::create(array(
             'email'         => 'joriekelindner@hotmail.fr',
@@ -45,8 +45,8 @@ class BetaTestersTableSeeder extends Seeder {
             'parent_phone' => '0800-223344'
         ));
 
-		// jacob
-		$jaarverband = GSVnet\Users\YearGroup::where('year', '=', 2012)->first();
+        // jacob
+        $jaarverband = GSVnet\Users\YearGroup::where('year', '=', 2012)->first();
 
         $jacob = GSVnet\Users\User::create(array(
             'email'         => 'jacobvenema@hotmail.com',
@@ -81,8 +81,8 @@ class BetaTestersTableSeeder extends Seeder {
             'parent_phone' => '0800-223344'
         ));
 
-		// jasper
-		$jaarverband = GSVnet\Users\YearGroup::where('year', '=', 2010)->first();
+        // jasper
+        $jaarverband = GSVnet\Users\YearGroup::where('year', '=', 2010)->first();
 
         $jasper = GSVnet\Users\User::create(array(
             'email'         => 'jaspermann@gmail.com',
@@ -115,8 +115,8 @@ class BetaTestersTableSeeder extends Seeder {
             'parent_phone' => '0800-223344'
         ));
 
-		// maurice
-		$jaarverband = GSVnet\Users\YearGroup::where('year', '=', 2011)->first();
+        // maurice
+        $jaarverband = GSVnet\Users\YearGroup::where('year', '=', 2011)->first();
 
         $maurice = GSVnet\Users\User::create(array(
             'email'         => 'mausblanco@hotmail.com',
@@ -149,8 +149,8 @@ class BetaTestersTableSeeder extends Seeder {
             'parent_phone' => '0800-223344'
         ));
 
-		// basm
-		$jaarverband = GSVnet\Users\YearGroup::where('year', '=', 2012)->first();
+        // basm
+        $jaarverband = GSVnet\Users\YearGroup::where('year', '=', 2012)->first();
 
         $basm = GSVnet\Users\User::create(array(
             'email'         => 'mausblanco@hotmail.com',
@@ -185,8 +185,8 @@ class BetaTestersTableSeeder extends Seeder {
             'parent_phone' => '0800-223344'
         ));
 
-		// laura
-		$jaarverband = GSVnet\Users\YearGroup::where('year', '=', 2010)->first();
+        // laura
+        $jaarverband = GSVnet\Users\YearGroup::where('year', '=', 2010)->first();
 
         $laura = GSVnet\Users\User::create(array(
             'email'         => 'llaurabrands@gmail.com',
@@ -219,8 +219,8 @@ class BetaTestersTableSeeder extends Seeder {
             'parent_phone' => '0800-223344'
         ));
 
-		// robertt
-		$jaarverband = GSVnet\Users\YearGroup::where('year', '=', 2009)->first();
+        // robertt
+        $jaarverband = GSVnet\Users\YearGroup::where('year', '=', 2009)->first();
 
         $robertt = GSVnet\Users\User::create(array(
             'email'         => 'tempelman.robert@gmail.com',
@@ -252,6 +252,108 @@ class BetaTestersTableSeeder extends Seeder {
             'parent_town' => 'Opende',
             'parent_phone' => '0800-223344'
         ));
-	}
+
+        // stephanie
+        $jaarverband = GSVnet\Users\YearGroup::where('year', '=', 2012)->first();
+
+        $stephanie = GSVnet\Users\User::create(array(
+            'email'         => 'stephanieokedan@gmail.com',
+            'password'      => 'stephanie',
+            'firstname'     => 'Stephanie',
+            'lastname'      => 'Brands',
+            'middlename'    => '',
+            'username'      => 'steef',
+            'type'          => 2,
+            'approved'      => true
+        ));
+
+        GSVnet\Users\Profiles\UserProfile::create(array(
+            'user_id' => $stephanie->id,
+            'year_group_id' => $jaarverband->id,
+            'region' => 4,
+            'phone' => '050-4040544',
+            'address' => 'Mooistraat 2',
+            'zip_code' => '9712AX',
+            'town' => 'Groningen',
+            'study' => 'Technische Wiskunde',
+            'birthdate' => '1992-10-10',
+            'church' => 'GKV',
+            'gender' => 'male',
+            'start_date_rug' => '2011-08-01',
+            'reunist' => 0,
+            'parent_address' => 'Mooiestraat 3',
+            'parent_zip_code' => '9556EX',
+            'parent_town' => 'Opende',
+            'parent_phone' => '0800-223344'
+        ));
+
+        // pieter
+        $jaarverband = GSVnet\Users\YearGroup::where('year', '=', 2011)->first();
+
+        $pieter = GSVnet\Users\User::create(array(
+            'email'         => 'pieterevenhuis@gmail.com',
+            'password'      => 'pieter',
+            'firstname'     => 'Pieter',
+            'lastname'      => 'Evenhuis',
+            'middlename'    => '',
+            'username'      => 'pietertje',
+            'type'          => 2,
+            'approved'      => true
+        ));
+
+        GSVnet\Users\Profiles\UserProfile::create(array(
+            'user_id' => $pieter->id,
+            'year_group_id' => $jaarverband->id,
+            'region' => 1,
+            'phone' => '050-4040544',
+            'address' => 'Mooistraat 2',
+            'zip_code' => '9712AX',
+            'town' => 'Groningen',
+            'study' => 'Technische Wiskunde',
+            'birthdate' => '1992-10-10',
+            'church' => 'GKV',
+            'gender' => 'male',
+            'start_date_rug' => '2011-08-01',
+            'reunist' => 0,
+            'parent_address' => 'Mooiestraat 3',
+            'parent_zip_code' => '9556EX',
+            'parent_town' => 'Opende',
+            'parent_phone' => '0800-223344'
+        ));
+
+        // charlotte
+        $jaarverband = GSVnet\Users\YearGroup::where('year', '=', 2010)->first();
+
+        $charlotte = GSVnet\Users\User::create(array(
+            'email'         => 'chzwarts@gmail.com',
+            'password'      => 'charlotte',
+            'firstname'     => 'Charlotte',
+            'lastname'      => 'Zwarts',
+            'middlename'    => '',
+            'username'      => 'charlotte',
+            'type'          => 2,
+            'approved'      => true
+        ));
+
+        GSVnet\Users\Profiles\UserProfile::create(array(
+            'user_id' => $charlotte->id,
+            'year_group_id' => $jaarverband->id,
+            'region' => 3,
+            'phone' => '050-4040544',
+            'address' => 'Mooistraat 2',
+            'zip_code' => '9712AX',
+            'town' => 'Groningen',
+            'study' => 'Technische Wiskunde',
+            'birthdate' => '1992-10-10',
+            'church' => 'GKV',
+            'gender' => 'male',
+            'start_date_rug' => '2011-08-01',
+            'reunist' => 0,
+            'parent_address' => 'Mooiestraat 3',
+            'parent_zip_code' => '9556EX',
+            'parent_town' => 'Opende',
+            'parent_phone' => '0800-223344'
+        ));
+    }
 
 }
