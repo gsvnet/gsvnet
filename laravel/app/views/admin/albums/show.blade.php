@@ -4,7 +4,7 @@
     <h1>{{{ $album->name }}}</h1>
     <p>{{{ $album->description }}}</p>
     <p>{{ $album->public ? 'Publiek album' : 'Privéalbum'}}</p>
-
+    <p><a href="{{ URL::action('Admin\AlbumController@edit', [$album->id]) }}" class="btn btn-default" title="Bewerk album">Albuminformatie bewerken</a></p>
     </div>
 
     <section class="spacer row">
