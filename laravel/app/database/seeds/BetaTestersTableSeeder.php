@@ -153,7 +153,7 @@ class BetaTestersTableSeeder extends Seeder {
         $jaarverband = GSVnet\Users\YearGroup::where('year', '=', 2012)->first();
 
         $basm = GSVnet\Users\User::create(array(
-            'email'         => 'mausblanco@hotmail.com',
+            'email'         => 'basmeijndert@hotmail.com',
             'password'      => 'bas',
             'firstname'     => 'Bas',
             'lastname'      => 'Meijndert',
