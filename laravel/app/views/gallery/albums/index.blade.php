@@ -1,7 +1,6 @@
 <?php
 	// Dit moet even mooier gedaan worden hoor
-	$classes = ['', 'last-2', 'last-3', 'last-2', 'wide last-2 last-3', '', 'last-2', 'last-3', 'wide last-2', 'last-2 last-3'];
-	$number = count($classes);
+    $repeatsAfter = 10;
 ?>
 
 @section('content')
@@ -11,7 +10,8 @@
 
 		<div class="gallery">
 			@for($i=0; $i<count($albums); $i++)
-				@include('gallery._album', array('album' => $albums[$i], 'wide' => ($i==4 || $i==8), 'class' => $classes[$i % $number]))
+				@include('gallery._album', array('album' => $albums[$i], 'wide' => $i % $repeatsAfter == 4 || $i % $repeatsAfter == 8, 'class' => 'tile-number-' . ($i % $repeatsAfter)))
+
 			@endfor
 		</div>
 
