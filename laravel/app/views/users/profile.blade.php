@@ -7,7 +7,7 @@
 				@if( isset($member->profile->yearGroup) )
 					{{{$member->profile->yearGroup->nameWithYear}}} en 
 				@endif
-				{{{$member->profile->region_name}}}
+				{{{$member->profile->regionName}}}
 			</p>
 		@endif
 
