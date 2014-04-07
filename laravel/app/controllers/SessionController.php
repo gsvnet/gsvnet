@@ -15,7 +15,7 @@ class SessionController extends BaseController {
         // Attempt to login user else redirect as intended
         if (Auth::attempt($userdata))
         {
-            $intended = '/';
+            $intended = URL::previous();
             // If becoming member, return correctly.
             if ($becomingMember)
             {
