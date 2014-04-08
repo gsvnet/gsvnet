@@ -157,7 +157,7 @@ return array(
 	            ],
 	            'inloggen' => [
 	                'title' => 'Inloggen',
-	                'url' => URL::action('RegisterController@create')
+	                'url' => URL::action('SessionController@getLogin'),
 	            ]
 	        ]
 	    ],
