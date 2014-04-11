@@ -2,14 +2,15 @@
 
 @section('content')
 <div class="column-holder">
-{{ Former::open()->action(action('ForumThreadsController@postEditThread', [$thread->id])) }}
-    {{ Former::populate($thread->resource) }}
     <div class="header">
         <h1>Bewerk onderwerp</h1>
     </div>
 
     <div class="main-content">
         <div class="padding">
+
+            {{ Former::open()->action(action('ForumThreadsController@postEditThread', [$thread->id])) }}
+            {{ Former::populate($thread->resource) }}
             {{ Former::text('subject')->label('Onderwerp')->placeholder('Onderwerp')->class('form-control wide') }}
             {{ Former::textarea('body')->label('Tekst')->placeholder('Tekst')->rows(10) }}
 

@@ -56,12 +56,15 @@ Route::group(array('prefix' => 'de-gsv'), function() {
 });
 
 // Register
-Route::get('registreer',    'RegisterController@create');
-Route::post('registreer',   'RegisterController@store');
+Route::get('registreer',            'RegisterController@create');
+Route::post('registreer',           'RegisterController@store');
 
 // Word lid
-Route::get('word-lid',      'MemberController@index')->before('canBecomeMember');
-Route::post('word-lid',     'MemberController@store');
+Route::group(array('prefix' => 'word-lid'), function() {
+    Route::get('/',            'MemberController@index');
+    Route::get('inschrijven',  'MemberController@becomeMember')->before('canBecomeMember');
+    Route::post('inschrijven', 'MemberController@store');
+});
 
 // Albums
 Route::get('albums',         'PhotoController@showAlbums');

@@ -33,7 +33,7 @@
     @section('word-lid')
         @if (Auth::guest() || !Auth::user()->wasOrIsMember())
         <div class="hero-unit purple">
-            <p class="center"><a href="{{ URL::action('MemberController@index') }}" class="button">Word lid!</a></p>
+            <p class="center"><a href="{{ URL::action('MemberController@becomeMember') }}" class="button">Word lid!</a></p>
         </div>
         @endif
     @show

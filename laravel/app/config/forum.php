@@ -5,20 +5,23 @@ return [
         'Alle onderwerpen' => [
             'tags' => '',
         ],
-        'Discussies' => [
-        	'tags' => 'jaarverbanden,regios'
+        'Discussies en nieuws' => [
+        	'tags' => 'discussies,nieuws'
         ],
-        'GSV / Senaat' => [
+        'GSV algemeen' => [
         	'tags' => 'gsv,senaat'
         ],
-        'Jaarverbanden / Regio\'s' => [
-        	'tags' => 'jaarverbanden,regios'
+        'Jaarverbanden en regio\'s' => [
+        	'tags' => 'jaarverband,regio'
         ],
-        'Maatschappij / Politiek' => [
-        	'tags' => 'maatschappij-en-politiek'
+        'Maatschappij en politiek' => [
+        	'tags' => 'maatschappij,politiek'
         ],
-        'Geloof / Wetenschap' => [
-        	'tags' => 'geloof-en-wetenschap'
+        'Geloof en wetenschap' => [
+            'tags' => 'geloof,wetenschap'
+        ],
+        'Vraag en aanbod' => [
+            'tags' => 'vraag,aanbod'
         ]
     ]
 ];

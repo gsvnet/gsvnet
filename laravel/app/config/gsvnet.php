@@ -126,21 +126,13 @@ return array(
 	        'url' => URL::action('MemberController@index'),
 	        'visible' => function(){return Auth::guest() || !Auth::user()->wasOrIsMember();},
 	        'submenu' => [
-	            'inschrijven' => [
+	            'lid-worden' => [
 	                'url' => URL::action('MemberController@index'),
+	                'title' => 'Lid worden?'
+	            ],
+	            'inschrijven' => [
+	                'url' => URL::action('MemberController@becomeMember'),
 	                'title' => 'Inschrijven'
-	            ],
-	            'groningen' => [
-	                'url' => '#',
-	                'title' => 'Groningen'
-	            ],
-	            'redenen' => [
-	                'url' => '#',
-	                'title' => '10 goede redenen'
-	            ],
-	            'moeder' => [
-	                'url' => '#',
-	                'title' => 'Nog wat'
 	            ]
 	        ]
 	    ],

@@ -11,10 +11,10 @@
 
                 @if(Auth::check())
                     @if($reply->isManageableBy($currentUser))
-                        <li><a href="{{ action('ForumRepliesController@getEditReply', [$reply->id]) }}">Bewerk</a></li>
-                        <li><a href="{{ action('ForumRepliesController@getDelete', [$reply->id]) }}">Verwijder</a></li>
+                        <li><a href="{{ action('ForumRepliesController@getEditReply', [$reply->id]) }}">bewerk</a></li>
+                        <li><a href="{{ action('ForumRepliesController@getDelete', [$reply->id]) }}">verwijder</a></li>
                     @endif
-                    <li><a href="#" class="quote _quote_forum_post">Quote</a></li>
+                    <li><a href="#" class="quote _quote_forum_post">quote</a></li>
                 @endif
             </ul>
         </div>

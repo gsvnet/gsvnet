@@ -18,6 +18,8 @@ class ForumRepliesController extends BaseController implements
         \GSVnet\Forum\Replies\ReplyRepository $replies,
         \GSVnet\Tags\TagRepository $tags
     ) {
+        parent::__construct();
+        
         $this->threads  = $threads;
         $this->replies  = $replies;
         $this->tags     = $tags;
@@ -71,6 +73,7 @@ class ForumRepliesController extends BaseController implements
             return Redirect::to('/');
         }
 
+        $this->title = "Reactie bewerken";
         $this->view('forum.replies.edit', compact('reply'));
     }
 

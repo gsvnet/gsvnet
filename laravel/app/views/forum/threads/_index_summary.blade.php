@@ -1,8 +1,8 @@
-<div class="event-row">
-    <div class="event-details">
-        {{ $thread->author->avatar(100) }}
+<div class="media-row img-40">
+    <div class="media-details">
+        {{ $thread->author->avatar(40) }}
     </div>
-    <div class="event-body">
+    <div class="media-body">
         <h3><a href="{{ $thread->lastPageUrl }}" title="Forum topic {{{ $thread->subject }}}">{{{ $thread->subject }}}</a></h3>
 
         <ul class="inline-list grey">

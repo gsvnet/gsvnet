@@ -28,6 +28,14 @@ class MemberController extends BaseController {
 
     public function index()
     {
+        $this->layout->bodyID = 'become-member-index-page';
+        $this->layout->activeMenuItem = 'lid-worden';
+        $this->layout->activeSubMenuItem = 'lid-worden';
+        $this->layout->content = View::make('word-lid.index');
+    }
+
+    public function becomeMember()
+    {
         // if user allready is a member, show some message
 
         // if user isn't member but has registered, do stuff
@@ -64,6 +72,7 @@ class MemberController extends BaseController {
 
         $this->layout->bodyID = 'become-member-page';
         $this->layout->activeMenuItem = 'lid-worden';
+        $this->layout->activeSubMenuItem = 'inschrijven';
         $this->layout->content = View::make('word-lid.word-lid')
             ->with('steps', $steps)
             ->with('activeStep', $activeStep);
