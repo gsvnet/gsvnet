@@ -103,6 +103,56 @@
 	display: none;
 }
 
+.media-row {
+	@include clearfix;
+	margin-bottom: 18px;
+	padding-bottom: 18px;
+
+	&:last-child {
+		border-bottom: 0;
+	}
+
+	&.img-40 {
+		.media-details {
+			width: 10%;
+			max-width: 40px;
+		}
+	}
+	.media-details {
+		float: left;
+		width: 16%;
+		max-width: 100px;
+		text-align: center;
+		box-sizing: border-box;
+
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+	}
+
+	.media-image {
+		@extend .icon-scale;
+		width: 100%;
+		background-color: #FFF;
+	}
+
+
+	.media-body {
+		float: left;
+		width: 80%;
+		box-sizing: border-box;
+		padding-left: 1em;
+
+		h3 {
+			margin-bottom: 0;
+		}
+
+		.inline-list {
+			font-family: $font-family-sans;
+		}
+	}
+}
 
 @media only screen and (max-width: $firstbreakpoint){
 	.js .to-select-box {
