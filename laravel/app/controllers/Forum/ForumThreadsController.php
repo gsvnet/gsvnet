@@ -72,7 +72,7 @@ class ForumThreadsController extends BaseController implements
         // Visit the thread
         if( Auth::check() )
         {
-            $this->thread->visit(Auth::user());
+            App::make('GSVnet\Forum\Threads\ThreadVisitationUpdater')->update($thread, Auth::user());
         }
 
         $this->title = $thread->subject;
