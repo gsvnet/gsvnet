@@ -1,6 +1,7 @@
-<div class="media-row img-40">
+<div class="media-row img-45">
     <div class="media-details">
-        {{ $thread->author->avatar(40) }}
+        {{ $thread->author->avatar(45) }}
+        {{ $thread->replyCounter }}
     </div>
     <div class="media-body">
         <h3><a href="{{ $thread->lastPageUrl }}" title="Forum topic {{{ $thread->subject }}}">{{{ $thread->subject }}}</a></h3>
@@ -12,5 +13,4 @@
             @endif
         </ul>
     </div>
-
 </div>

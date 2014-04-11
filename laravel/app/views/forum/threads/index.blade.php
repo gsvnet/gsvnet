@@ -13,7 +13,7 @@
 
     <section class="main-content forum">
 
-        <div class="threads">
+        <div class="threads media-rows has-counters">
             {{-- Loop over the threads and display the thread summary partial --}}
             @each('forum.threads._index_summary', $threads, 'thread')
 
