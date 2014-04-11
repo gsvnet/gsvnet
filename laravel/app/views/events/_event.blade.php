@@ -9,7 +9,7 @@
             </a>
         </h3>
         <ul class="inline-list grey">
-            <li>{{{ $event->start_short }}}</li>
+            <li>{{{ $event->from_to_long }}}</li>
             @if( !empty($event->location) )
                 <li>{{{ $event->location }}}</li>
             @endif
