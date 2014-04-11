@@ -88,6 +88,18 @@ class ThreadPresenter extends BasePresenter
         return action('ForumThreadsController@getDelete', [$this->id]);
     }
 
+    public function replyCounter()
+    {
+        $count = $this->resource->reply_count;
+        $class = 'media-counter';
+        if($count >= 100)
+        {
+            $class .= ' small';
+        }
+
+        return '<span class="' . $class . '">' . $count . '</span>';
+    }
+
     // ------------------- //
 
     private function convertMarkdown($content)
