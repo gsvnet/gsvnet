@@ -90,3 +90,11 @@ require app_path().'/filters.php';
 */
 
 require app_path().'/errors.php';
+
+/*
+|--------------------------------------------------------------------------
+| Require The Helpers File
+|--------------------------------------------------------------------------
+*/
+
+require app_path().'/helpers.php';
