@@ -31,7 +31,7 @@ class CommitteesRepository {
     */
     public function all()
     {
-        return Committee::orderBy('updated_at', 'DESC')->get();
+        return Committee::orderBy('name', 'ASC')->get();
     }
 
     /**
@@ -41,7 +41,7 @@ class CommitteesRepository {
      */
     public function paginate($amount)
     {
-        return Committee::orderBy('updated_at', 'DESC')->paginate($amount);
+        return Committee::orderBy('name', 'ASC')->paginate($amount);
     }
 
     public function members($id)
