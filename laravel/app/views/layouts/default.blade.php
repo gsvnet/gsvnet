@@ -23,7 +23,6 @@
 </head>
 <body id="{{{ $bodyID or '' }}}">
     <div class="overal-header">
-
         @include('layouts.header')
         @yield('top-slideshow')
     </div>

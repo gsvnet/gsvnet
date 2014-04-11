@@ -12,7 +12,7 @@ Route::get('/mail', function(){
 });
 
 // Login and logout routes
-Route::get('inloggen', 'SessionController@getLogin');
+Route::get('inloggen', 'SessionController@getLogin')->before('guest');
 Route::post('inloggen', 'SessionController@postLogin')->before('csrf');
 Route::get('uitloggen', 'SessionController@getLogout')->before('auth');
 
