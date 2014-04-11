@@ -39,11 +39,12 @@ class UserController extends BaseController {
         $senates = $member->senates;
 
         $this->layout->bodyID = 'own-profile-page';
+        $this->layout->activeMenuItem = 'intern';
+        $this->layout->activeSubMenuItem = 'jaarbundel';
         $this->layout->content = View::make('users.profile')
             ->with('member', $member)
             ->with('committees', $committees)
             ->with('senates', $senates);
-        $this->layout->activeMenuItem = 'intern';
     }
 
 
@@ -75,11 +76,12 @@ class UserController extends BaseController {
 
         // Create the view
         $this->layout->bodyID = 'user-list-page';
+        $this->layout->activeMenuItem = 'intern';
+        $this->layout->activeSubMenuItem = 'jaarbundel';
         $this->layout->content = View::make('users.index')
             ->with('members', $members)
             ->with('regions', $regions)
             ->with('yearGroups', $yearGroups);
-        $this->layout->activeMenuItem = 'intern';
     }
 
     /**
@@ -92,18 +94,20 @@ class UserController extends BaseController {
         $senates = $member->senates;
 
         $this->layout->bodyID = 'own-profile-page';
+        $this->layout->activeMenuItem = 'intern';
+        $this->layout->activeSubMenuItem = 'jaarbundel';
         $this->layout->content = View::make('users.profile')
             ->with('member', $member)
             ->with('committees', $committees)
             ->with('senates', $senates);
-        $this->layout->activeMenuItem = 'intern';
     }
 
     public function editProfile()
     {
         $this->layout->bodyID = 'edit-profile-page';
-        $this->layout->content = View::make('users.edit-profile');
         $this->layout->activeMenuItem = 'intern';
+        $this->layout->activeSubMenuItem = 'jaarbundel';
+        $this->layout->content = View::make('users.edit-profile');
     }
 
     public function updateProfile()

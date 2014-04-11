@@ -45,6 +45,7 @@ class FilesController extends BaseController {
         $this->layout->bodyID = 'files-page';
 
         $this->layout->activeMenuItem = 'intern';
+        $this->layout->activeSubMenuItem = 'docs';
         $this->layout->content =  View::make('files.index')
         	->withFiles($files)
         	->withLabels($labels);
