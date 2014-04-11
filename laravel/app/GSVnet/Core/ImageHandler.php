@@ -39,12 +39,16 @@ class ImageHandler
     // Get the photo corresponding to the given dimension
     public function get($path, $dimension = '')
     {
-        return Image::make($this->basePath . $this->grab($path, $dimension));
+        return Image::make($this->getStoragePath($path, $dimension));
     }
+
 
     public function getStoragePath($path, $dimension = '')
     {
-        return $this->basePath . $this->grab($path, $dimension);
+        if ($this->dimensionIsValid($dimension))
+        {
+            return $this->basePath . $this->grab($path, $dimension);
+        }
     }
 
     // Update de foto, waarbij file weer een input bestand is, new path de plek waar de foto geplaatst moet worden
@@ -179,6 +183,23 @@ class ImageHandler
             }
         }
 
+        return true;
+    }
+
+    /**
+    *   Checks if a given dimension is valid
+    *
+    *   @param string $dimension
+    *   @throws InvalidArgumentException
+    */
+    private function dimensionIsValid($dimension = '')
+    {
+        $dimensions = Config::get('photos.dimensions');
+        // An empty dimension is handled as the original image
+        if ( $dimension !== '' and ! array_key_exists($dimension, $dimensions))
+        {
+            throw new \InvalidArgumentException("The given dimension: '$dimension' is not valid");
+        }
         return true;
     }
 

@@ -24,19 +24,21 @@ Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
     Route::post('profiel/bewerken',   'UserController@updateProfile');
 
     // GSVdocs
-    Route::group(['before' => 'has:member-or-former-member'], function() {
-        Route::get('bestanden',      'FilesController@index');
-        Route::get('bestanden/{id}', 'FilesController@show');
-    });
+    Route::get('bestanden', 'FilesController@index')->before('has:docs.show');
 
     // Only logged in users can view the member list if they have permission
     Route::group(['before' => 'has:users.show'], function() {
         Route::get('jaarbundel',             'UserController@showUsers');
         Route::get('jaarbundel/{id}',  'UserController@showUser')->where('id', '[0-9]+');
-
     });
+});
+
+Route::group(['prefix' => 'uploads'], function() {
+    Route::get('bestanden/{id}', 'FilesController@show')->before('has:docs.show');
+    // Shows photo corresponding to photo id
+    Route::get('fotos/{id}/{type?}', 'PhotoController@showPhoto')->before('photos.show');
     // Shows photo corresponding to profile with id
-    Route::get('jaarbundel/{id}/foto/{size?}',   'MemberController@showPhoto')->before('');
+    Route::get('gebruikers/{id}/{type?}', 'MemberController@showPhoto');
 });
 
 // De GSV
@@ -70,13 +72,6 @@ Route::group(array('prefix' => 'word-lid'), function() {
 Route::get('albums',         'PhotoController@showAlbums');
 Route::get('albums/{album}', 'PhotoController@showPhotos');
 
-// Get photo images
-Route::group(array('prefix' => 'albums/{album}/photo/{photo}'), function() {
-    Route::get('/',      'PhotoController@showPhoto');
-    Route::get('/wide',  'PhotoController@showPhotoWide');
-    Route::get('/small', 'PhotoController@showPhotoSmall');
-});
-
 // Events
 Route::get('activiteiten',                 'EventController@showIndex');
 Route::get('activiteiten/activiteit-{id}',     'EventController@showEvent');
@@ -90,8 +85,6 @@ Route::group(['prefix' => 'wachtwoord-vergeten'], function() {
     Route::post('reset', 'RemindersController@postReset');
 });
 
-
-// TODO: check if user has album permissions
 Route::group([
         'prefix' => 'admin',
         'namespace' => 'Admin',

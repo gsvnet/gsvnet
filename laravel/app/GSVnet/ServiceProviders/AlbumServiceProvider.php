@@ -15,7 +15,7 @@ class AlbumServiceProvider extends ServiceProvider {
         Route::filter('albums.manage', 'GSVnet\Albums\Filters\ManageAlbumsFilter');
 
         // Photo filters
-        Route::filter('photos.show', 'GSVnet\Albums\Photos\Filters\ShowPhotosFilter');
+        Route::filter('photos.show', 'GSVnet\Albums\Photos\Filters\ShowPhotoFilter');
         Route::filter('photos.manage', 'GSVnet\Albums\Photos\Filters\ManagePhotosFilter');
     }
 }

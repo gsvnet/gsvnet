@@ -112,7 +112,7 @@ class MemberController extends BaseController {
     }
 
     // Show original (resized) photo
-    public function showPhoto($profile_id, $size = '')
+    public function showPhoto($profile_id, $type = '')
     {
         // Guests and Potentials are not allowed to see private photos
         // but a potential can see his / her own photo
@@ -120,56 +120,21 @@ class MemberController extends BaseController {
         {
             throw new \GSVnet\Permissions\NoPermissionException;
         }
-        return $this->photoResponse($profile_id, $size);
+        return $this->photoResponse($profile_id, $type);
     }
     /**
     *
     *   Returns an image response
     *
     *   @param int $id
-    *   @param string $type ('', 'small', or 'wide')
+    *   @param string $type
     */
-    private function photoResponse($id, $size='')
+    private function photoResponse($id, $type = '')
     {
         $profile  = $this->profiles->byId($id);
-        $image    = $this->imageHandler->get($profile->photo_path, $size);
-        $response = $image->response();
-
-        $path = $this->imageHandler->getStoragePath($profile->photo_path);
+        $path = $this->imageHandler->getStoragePath($profile->photo_path, $type);
         $name = $profile->user->full_name;
 
-         if (is_null($name)) {
-            $name = basename($path);
-        }
-
-        $filetime = filemtime($path);
-        $etag = md5($filetime . $path);
-        $time = gmdate('r', $filetime);
-        // Keep images 1 month
-        $lifetime = 60*60*24*30;
-        $expires = gmdate('r', $filetime + $lifetime);
-        // $expires = '+1 month';
-        $length = filesize($path);
-
-        $headers = array(
-            'Content-Disposition' => 'inline; filename="' . $name . '"',
-            'Last-Modified' => $time,
-            'Cache-Control' => 'must-revalidate',
-            'Expires' => $expires,
-            'Pragma' => 'public',
-            'Etag' => $etag,
-        );
-        $headerTest1 = isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) && $_SERVER['HTTP_IF_MODIFIED_SINCE'] == $time;
-        $headerTest2 = isset($_SERVER['HTTP_IF_NONE_MATCH']) && str_replace('"', '', stripslashes($_SERVER['HTTP_IF_NONE_MATCH'])) == $etag;
-        //image is cached by the browser, we dont need to send it again
-        if ($headerTest1 || $headerTest2) {
-            return Response::make('', 304, $headers);
-        }
-
-        foreach ($headers as $header => $value) {
-            $response->header($header, $value);
-        }
-
-        return $response;
+        return Response::inlinePhoto($path, $name);
     }
 }
