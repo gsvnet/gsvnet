@@ -12,7 +12,7 @@
         <section class="main-content forum">
 
             @if($query)
-                <div class="threads">
+                <div class="threads media-rows has-counters">
                     @if($results->count() > 0)
                         {{-- Loop over the threads and display the thread summary partial --}}
                         @foreach($results as $result)
@@ -25,7 +25,7 @@
                     @else
                         {{-- If no comments are found display a message --}}
                         <div class="empty-state">
-                            <h3>No results found on the forum for "{{ $query }}"</h3>
+                            <h3>Geen resultaten voor "{{ $query }}"</h3>
                         </div>
                     @endif
                 </div>
