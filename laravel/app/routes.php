@@ -129,29 +129,29 @@ Route::group([
 });
 
 // Forum
-Route::group(['before' => ['auth', 'approved']], function() {
+Route::group(['prefix' => 'forum', 'before' => ['auth', 'approved']], function() {
     // Edit rotues
-    Route::get('forum/bewerk-onderwerp/{threadId}',  'ForumThreadsController@getEditThread');
-    Route::post('forum/bewerk-onderwerp/{threadId}', 'ForumThreadsController@postEditThread');
-    Route::get('forum/bewerk-reactie/{replyId}',     'ForumRepliesController@getEditReply');
-    Route::post('forum/bewerk-reactie/{replyId}',    'ForumRepliesController@postEditReply');
+    Route::get('bewerk-onderwerp/{threadId}',  'ForumThreadsController@getEditThread');
+    Route::post('bewerk-onderwerp/{threadId}', 'ForumThreadsController@postEditThread');
+    Route::get('bewerk-reactie/{replyId}',     'ForumRepliesController@getEditReply');
+    Route::post('bewerk-reactie/{replyId}',    'ForumRepliesController@postEditReply');
 
     // Delete routes
-    Route::get('forum/verwijder-reactie/{replyId}',       'ForumRepliesController@getDelete');
-    Route::delete('forum/verwijder-reactie/{replyId}',    'ForumRepliesController@postDelete');
-    Route::get('forum/verwijder-onderwerp/{threadId}',    'ForumThreadsController@getDelete');
-    Route::delete('forum/verwijder-onderwerp/{threadId}', 'ForumThreadsController@postDelete');
+    Route::get('verwijder-reactie/{replyId}',       'ForumRepliesController@getDelete');
+    Route::delete('verwijder-reactie/{replyId}',    'ForumRepliesController@postDelete');
+    Route::get('verwijder-onderwerp/{threadId}',    'ForumThreadsController@getDelete');
+    Route::delete('verwijder-onderwerp/{threadId}', 'ForumThreadsController@postDelete');
 
     // Create routes
-    Route::get('forum/nieuw-onderwerp',  'ForumThreadsController@getCreateThread');
-    Route::post('forum/nieuw-onderwerp', 'ForumThreadsController@postCreateThread');
-    Route::post('forum/{slug}',          'ForumRepliesController@postCreateReply');
+    Route::get('nieuw-onderwerp',  'ForumThreadsController@getCreateThread');
+    Route::post('nieuw-onderwerp', 'ForumThreadsController@postCreateThread');
+    Route::post('{slug}',          'ForumRepliesController@postCreateReply');
 });
 
 
 // Forum index, search, show comment, show thread
 Route::get('forum',        'ForumThreadsController@getIndex');
-Route::get('forum/search', 'ForumThreadsController@getSearch');
+Route::get('forum/zoek', 'ForumThreadsController@getSearch');
 
 // Make sure non members can't show private topics
 Route::get('forum/{slug}/reactie/{commentId}', 'ForumRepliesController@getReplyRedirect')
