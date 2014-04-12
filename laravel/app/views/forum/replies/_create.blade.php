@@ -1,4 +1,4 @@
-<div class="main-content">
+<div class="main-content has-border-bottom">
     {{ Former::vertical_open() }}
         {{ Former::textarea('body')->placeholder('Tekst')->label('Reactie')->rows(10) }}
         
