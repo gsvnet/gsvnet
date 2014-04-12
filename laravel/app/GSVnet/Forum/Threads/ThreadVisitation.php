@@ -12,4 +12,9 @@ class ThreadVisitation extends Entity
         'thread_id' => 'required|exists:forum_threads,id',
         'visited_at' => 'required',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('GSVnet\Users\User', 'user_id');
+    }
 }

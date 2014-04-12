@@ -7,7 +7,7 @@ class ThreadVisitationUpdater
     public function update(Thread $thread, User $user)
     {
         $visitation = $this->getVisitation($thread, $user);
-        $visitation->visited_at = strtotime('now');
+        $visitation->visited_at = date('Y-m-d H:i:s');
         $visitation->save();
     }
 

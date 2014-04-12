@@ -1,4 +1,4 @@
-<div class="media-row img-45">
+<div class="media-row img-45 {{ $thread->visited }}">
     <div class="media-details">
         {{ $thread->author->avatar(45) }}
         {{ $thread->replyCounter }}

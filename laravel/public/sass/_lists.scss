@@ -120,14 +120,16 @@
 		}
 	}
 
-	.media-counter {
+	.media-counter, a.media-counter:link, a.media-counter:visited {
 		position: absolute;
 		top: 0;
 		right: 0;
 		margin-top: 18px;
 		width: 45px;
 		line-height: 45px;
+		color: lighten($body-copy-color, 30%);
 		background: #EEE;
+		text-decoration: none;
 		display: block;
 		border-radius: 2px;
 		font-family: $font-family-sans;
@@ -135,8 +137,10 @@
 		&.small {
 			font-size: .7em;
 		}
+	}
 
-		&.active {
+	&.new {
+		.media-counter, a.media-counter:link, a.media-counter:visited {
 			background: $darkPurple;
 			color: #FFF;
 		}

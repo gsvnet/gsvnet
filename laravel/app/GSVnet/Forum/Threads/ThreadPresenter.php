@@ -3,6 +3,7 @@
 use McCool\LaravelAutoPresenter\BasePresenter;
 use App, Input, Str, Request;
 use Misd\Linkify\Linkify;
+use Carbon\Carbon, Auth;
 
 class ThreadPresenter extends BasePresenter
 {
@@ -97,7 +98,37 @@ class ThreadPresenter extends BasePresenter
             $class .= ' small';
         }
 
-        return '<span class="' . $class . '">' . $count . '</span>';
+        return '<a class="' . $class . '" href="' . $this->lastPageUrl . '">' . $count . '</a>';
+    }
+
+    public function visited()
+    {
+        if( !Auth::check() )
+        {
+            return '';
+        }
+
+        if( !isset($this->resource->visitations) )
+        {
+            return 'new';
+        }
+
+        $updated = $this->resource->updated_at;
+        $visitations = $this->resource->visitations;
+        
+        if( count($visitations) == 0 )
+        {
+            return 'new';
+        }
+
+        $lastVisit = new Carbon($visitations[0]->visited_at);
+        if( $updated->gt($lastVisit) )
+        {
+            return 'new';
+        }
+
+        return '';
+
     }
 
     // ------------------- //

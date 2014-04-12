@@ -34,6 +34,11 @@ class Thread extends Entity
         return $this->belongsToMany('GSVnet\Tags\Tag', 'tagged_items', 'thread_id', 'tag_id');
     }
 
+    public function visitations()
+    {
+        return $this->hasMany('GSVnet\Forum\Threads\ThreadVisitation', 'thread_id');
+    }
+
     public function mostRecentReply()
     {
         return $this->belongsTo('GSVnet\Forum\Replies\Reply', 'most_recent_reply_id');

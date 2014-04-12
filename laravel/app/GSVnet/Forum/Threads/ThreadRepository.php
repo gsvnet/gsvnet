@@ -4,6 +4,7 @@ use Illuminate\Support\Collection;
 use GSVnet\Core\Exceptions\EntityNotFoundException;
 
 use Permission;
+use Auth;
 use GSVnet\Permissions\NoPermissionException;
 
 class ThreadRepository extends \GSVnet\Core\EloquentRepository
@@ -25,6 +26,15 @@ class ThreadRepository extends \GSVnet\Core\EloquentRepository
         if ( ! Permission::has('threads.show-private'))
         {
             $query = $query->public();
+        }
+
+        if ( Auth::check() )
+        {
+            $id = Auth::user()->id;
+            $query->with(['visitations' => function($q) use ($id)
+            {
+                $q->where('user_id', $id);
+            }]);
         }
 
         $query->groupBy('forum_threads.id')
