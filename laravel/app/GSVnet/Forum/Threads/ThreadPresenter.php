@@ -52,7 +52,7 @@ class ThreadPresenter extends BasePresenter
             return $this->url;
         }
 
-        $page = 1 + floor($this->resource->reply_count / 20);
+        $page = ceil($this->resource->reply_count / 20);
         $id = $this->resource->most_recent_reply_id;
         $url = $this->url;
         
@@ -68,7 +68,7 @@ class ThreadPresenter extends BasePresenter
 
     public function lastPageUrl()
     {
-        $page = 1 + floor($this->resource->reply_count / 20);
+        $page = ceil($this->resource->reply_count / 20);
         $url = $this->url;
         
         if( $page > 1)
