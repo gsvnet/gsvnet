@@ -13,7 +13,7 @@
 
 		<div class="secondary-column">
 			@if( isset($member->profile) )
-				<p>{{ $member->profile->photo }}</p>
+				<p>{{ $member->profile->xsmallProfileImage }}</p>
 			@endif
 
 			<h2>Adresgegevens</h2>
