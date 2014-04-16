@@ -13,7 +13,7 @@ class SessionController extends BaseController {
         );
 
         // Attempt to login user else redirect as intended
-        if (Auth::attempt($userdata))
+        if (Auth::attempt($userdata, Input::get('remember', false)))
         {
             $intended = URL::previous();
             // If becoming member, return correctly.
