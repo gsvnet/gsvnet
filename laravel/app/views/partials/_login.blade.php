@@ -9,8 +9,8 @@
 </div>
 
 <div class="form-group">
-    <label class="checkbox">
-        <input type="checkbox"> Onthoud mij
+    <label class="checkbox" for="remember">
+        <input type="checkbox" id="remember" name="remember"> Onthoud mij
     </label>
 </div>
 

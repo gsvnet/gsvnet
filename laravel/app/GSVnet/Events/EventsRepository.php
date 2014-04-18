@@ -1,6 +1,7 @@
 <?php namespace GSVnet\Events;
 
 use Permission;
+use GSVnet\Permissions\NoPermissionException;
 
 class EventsRepository {
     public function byId($id)
