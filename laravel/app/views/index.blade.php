@@ -26,12 +26,12 @@
                             <span class="shadow"></span>
                             <div class="video-button"></div>
                             <span data-picture data-alt="Een geweldig plaatje">
-                                <span data-src="/images/banner/nogeen-480.jpg"></span>
-                                <span data-src="/images/banner/nogeen-600.jpg" data-media="(min-width: 480px)"></span>
-                                <span data-src="/images/banner/nogeen-1024.jpg" data-media="(min-width: 600px)"></span>
-                                <span data-src="/images/banner/nogeen-1600.jpg" data-media="(min-width: 1024px)"></span>
+                                <span data-src="/images/banner/gala-2011-480.jpg"></span>
+                                <span data-src="/images/banner/gala-2011-600.jpg" data-media="(min-width: 480px)"></span>
+                                <span data-src="/images/banner/gala-2011-1024.jpg" data-media="(min-width: 600px)"></span>
+                                <span data-src="/images/banner/gala-2011-1600.jpg" data-media="(min-width: 1024px)"></span>
                                 <noscript>
-                                    <img src="/images/banner/nogeen-480.jpg" alt="Geweldig plaatje" width="480" height="360">
+                                    <img src="/images/banner/gala-2011-480.jpg" alt="Geweldig plaatje" width="480" height="360">
                                 </noscript>
                             </span>
                         </a>
@@ -51,18 +51,18 @@
                         <div class="slide-description-wrapper">
                             <div class="slide-description">
                                 <div class="slide-description-box">
-                                    <p class="slide-title">Hier wat leuks!</p>
-                                    <p class="slide-description-text">En hier wat!</p>
+                                    <p class="slide-title">Studentikoos</p>
+                                    <p class="slide-description-text">*knipoog</p>
                                 </div>
                             </div>
                         </div>
                         <span data-picture data-alt="Een geweldig plaatje">
-                            <span data-src="/images/banner/meisje-480.jpg"></span>
-                            <span data-src="/images/banner/meisje-600.jpg" data-media="(min-width: 480px)"></span>
-                            <span data-src="/images/banner/meisje-1024.jpg" data-media="(min-width: 600px)"></span>
-                            <span data-src="/images/banner/meisje-1600.jpg" data-media="(min-width: 1024px)"></span>
+                            <span data-src="/images/banner/gala-2013-480.jpg"></span>
+                            <span data-src="/images/banner/gala-2013-600.jpg" data-media="(min-width: 480px)"></span>
+                            <span data-src="/images/banner/gala-2013-1024.jpg" data-media="(min-width: 600px)"></span>
+                            <span data-src="/images/banner/gala-2013-1600.jpg" data-media="(min-width: 1024px)"></span>
                             <noscript>
-                                <img src="/images/banner/meisje-480.jpg" alt="Geweldig plaatje" width="480" height="360">
+                                <img src="/images/banner/gala-2013-480.jpg" alt="Geweldig plaatje" width="480" height="360">
                             </noscript>
                         </span>
                     </div>
@@ -89,18 +89,18 @@
                         <div class="slide-description-wrapper">
                             <div class="slide-description">
                                 <div class="slide-description-box">
-                                    <p class="slide-title">Hier wat leuks!</p>
-                                    <p class="slide-description-text">En hier wat!</p>
+                                    <p class="slide-title">Christelijk</p>
+                                    <p class="slide-description-text">!!!!</p>
                                 </div>
                             </div>
                         </div>
                         <span data-picture data-alt="Een geweldig plaatje">
-                            <span data-src="/images/banner/leuke-480.jpg"></span>
-                            <span data-src="/images/banner/leuke-600.jpg" data-media="(min-width: 480px)"></span>
-                            <span data-src="/images/banner/leuke-1024.jpg" data-media="(min-width: 600px)"></span>
-                            <span data-src="/images/banner/leuke-1600.jpg" data-media="(min-width: 1024px)"></span>
+                            <span data-src="/images/banner/christelijk-480.jpg"></span>
+                            <span data-src="/images/banner/christelijk-600.jpg" data-media="(min-width: 480px)"></span>
+                            <span data-src="/images/banner/christelijk-1024.jpg" data-media="(min-width: 600px)"></span>
+                            <span data-src="/images/banner/christelijk-1600.jpg" data-media="(min-width: 1024px)"></span>
                             <noscript>
-                                <img src="/images/banner/leuke-480.jpg" alt="Geweldig plaatje" width="480" height="360">
+                                <img src="/images/banner/christelijk-480.jpg" alt="Geweldig plaatje" width="480" height="360">
                             </noscript>
                         </span>
                     </div>
