@@ -20,13 +20,13 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="/images/over/christelijk-1.jpg" alt="Bezinningsweekend">
+                    <img width="960" height="640" src="/images/over/christelijk-1.jpg" alt="Bezinningsweekend">
                     <div class="carousel-caption">
                         Bezinningsweekend
                     </div>
                 </div>
                 <div class="item">
-                    <img src="/images/over/christelijk-2.jpg" alt="Paasviering">
+                    <img width="960" height="640" src="/images/over/christelijk-2.jpg" alt="Paasviering">
                     <div class="carousel-caption">
                         Paasviering
                     </div>
@@ -51,7 +51,7 @@
         <div class="carousel slide article-slideshow">
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="/images/over/intellectueel.jpg" alt="Lezing 'De Onlogische God' door J.A. Riemersma">
+                    <img width="960" height="640" src="/images/over/intellectueel.jpg" alt="Lezing 'De Onlogische God' door J.A. Riemersma">
                     <div class="carousel-caption">
                         Lezing 'De Onlogische God' door J.A. Riemersma
                     </div>
@@ -76,19 +76,19 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="/images/over/sociaal-1.jpg" alt="Sociëteit &mdash; voorzaal">
+                    <img width="960" height="640" src="/images/over/sociaal-1.jpg" alt="Sociëteit &mdash; voorzaal">
                     <div class="carousel-caption">
                         Sociëteit &mdash; voorzaal
                     </div>
                 </div>
                 <div class="item">
-                    <img src="/images/over/sociaal-2.jpg" alt="Themafeestje">
+                    <img width="960" height="640" src="/images/over/sociaal-2.jpg" alt="Themafeestje">
                     <div class="carousel-caption">
                         Themafeestje
                     </div>
                 </div>
                 <div class="item">
-                    <img src="/images/over/sociaal-3.jpg" alt="Spelletjesavond">
+                    <img width="960" height="640" src="/images/over/sociaal-3.jpg" alt="Spelletjesavond">
                     <div class="carousel-caption">
                         Spelletjesavond
                     </div>
@@ -121,19 +121,19 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="/images/over/studentikoos-1.jpg" alt="Huishoudelijke vergadering">
+                    <img width="960" height="640" src="/images/over/studentikoos-1.jpg" alt="Huishoudelijke vergadering">
                     <div class="carousel-caption">
                         Huishoudelijke vergadering
                     </div>
                 </div>
                 <div class="item">
-                    <img src="/images/over/studentikoos-2.jpg" alt="Dies Natalis">
+                    <img width="960" height="640" src="/images/over/studentikoos-2.jpg" alt="Dies Natalis">
                     <div class="carousel-caption">
                         Dies Natalis
                     </div>
                 </div>
                 <div class="item">
-                    <img src="/images/over/studentikoos-3.jpg" alt="Dies Natalis: jaarverbandsfoto">
+                    <img width="960" height="640" src="/images/over/studentikoos-3.jpg" alt="Dies Natalis: jaarverbandsfoto">
                     <div class="carousel-caption">
                         Dies Natalis: jaarverbandsfoto
                     </div>
