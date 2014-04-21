@@ -202,7 +202,7 @@
 
 @media only screen and (max-width: 480px){
 	.media-row {
-		.media-counter {
+		.media-counter, a.media-counter:link, a.media-counter:visited {
 			position: static;
 			width: auto;
 			line-height: inherit;
