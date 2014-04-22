@@ -113,7 +113,13 @@ class ThreadPresenter extends BasePresenter
             return 'new';
         }
 
-        $updated = $this->resource->mostRecentReply->created_at;
+        if( !isset($this->resource->mostRecentReply) )
+        {
+            $updated = $this->resource->created_at;
+        } else {
+            $updated = $this->resource->mostRecentReply->created_at;
+        }
+
         $visitations = $this->resource->visitations;
         
         if( count($visitations) == 0 )

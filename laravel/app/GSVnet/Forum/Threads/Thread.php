@@ -50,7 +50,7 @@ class Thread extends Entity
         $this->attributes['slug'] = $this->generateNewSlug();
     }
 
-    private function generateNewSlug()
+    public function generateNewSlug()
     {
         $i = 0;
 
@@ -77,9 +77,9 @@ class Thread extends Entity
         if ($i == 0) $i = '';
 
         if ($this->created_at) {
-            $date = date('m-d-Y', strtotime($this->created_at));
+            $date = date('d-m-Y', strtotime($this->created_at));
         } else {
-            $date = date('m-d-Y');
+            $date = date('d-m-Y');
         }
 
         return \Str::slug("{$date} - {$this->subject}" . $i);
