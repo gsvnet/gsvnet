@@ -5,10 +5,12 @@ use App, Input, Str, Request;
 
 class ReplyPresenter extends BasePresenter
 {
+    // don't use this with $thread->replies, because it fires 4 queries per reply extra
     public function url()
     {
         $slug = $this->thread->slug;
         $threadUrl = action('ForumThreadsController@getShowThread', [$slug]);
+
         return $threadUrl . \App::make('GSVnet\Forum\Replies\ReplyQueryStringGenerator')->generate($this->resource);
     }
 

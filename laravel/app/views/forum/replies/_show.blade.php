@@ -7,7 +7,7 @@
         <div class="info">
             <h6><a href="{{ $reply->author->profileUrl }}">{{{ $reply->author->username }}}</a></h6>
             <ul class="inline-list grey">
-                <li><a href="{{ $reply->url }}">{{ $reply->created_ago }}</a></li>
+                <li><a href="#reactie-{{ $reply->id }}">{{ $reply->created_ago }}</a></li>
 
                 @if(Auth::check())
                     @if($reply->isManageableBy($currentUser))

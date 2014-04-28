@@ -92,6 +92,7 @@ class ProfilesRepository {
 
         $profiles = UserProfile::whereRaw("$birthday between \"{$from}\" and \"{$to}\"")
             ->orderBy(\DB::raw($birthday))
+            ->remember(10)
             ->get(array('*', \DB::raw("{$birthday} as birthday")));
 
         return $profiles;

@@ -115,6 +115,16 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
         return $this->hasOne('GSVnet\Users\Profiles\UserProfile');
     }
 
+    public function replies()
+    {
+        return $this->hasMany('GSVnet\Forum\Replies\Reply');
+    }
+
+    public function threads()
+    {
+        return $this->hasMany('GSVnet\Forum\Threads\Thread');
+    }
+
     /**
      * Type 2 and 3 are members
      */

@@ -16,7 +16,7 @@ class ThreadRepository extends \GSVnet\Core\EloquentRepository
 
     public function getByTagsPaginated(Collection $tags, $perPage = 20)
     {
-        $query = $this->model->with(['mostRecentReply', 'tags']);
+        $query = $this->model->with(['mostRecentReply', 'mostRecentReply.author', 'tags']);
 
         if ($tags->count() > 0) {
             $query->join('tagged_items', 'forum_threads.id', '=', 'tagged_items.thread_id')
@@ -37,15 +37,14 @@ class ThreadRepository extends \GSVnet\Core\EloquentRepository
             }]);
         }
 
-        $query->groupBy('forum_threads.id')
-            ->orderBy('updated_at', 'desc');
+        $query->orderBy('updated_at', 'desc');
 
         return $query->paginate($perPage, ['forum_threads.*']);
     }
 
     public function getThreadRepliesPaginated(Thread $thread, $perPage = 20)
     {
-        return $thread->replies()->paginate(20);
+        return $thread->replies()->with('author')->paginate($perPage);
     }
 
     public function requireBySlug($slug)

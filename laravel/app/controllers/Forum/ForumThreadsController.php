@@ -45,6 +45,7 @@ class ForumThreadsController extends BaseController implements
         $tags = $this->tags->getAllTagsBySlug(Input::get('tags'));
         $threads = $this->threads->getByTagsPaginated($tags, '', $this->threadsPerPage);
 
+
         // add the tag string to each pagination link
         $tagAppends = ['tags' => Input::get('tags')];
         $queryString = !empty($tagAppends['tags']) ? '?tags=' . implode(',', (array)$tagAppends['tags']) : '';
@@ -61,6 +62,7 @@ class ForumThreadsController extends BaseController implements
     {
         $thread = $this->threads->getBySlug($threadSlug);
 
+
         if ( ! $thread) {
             return $this->redirectAction('ForumThreadsController@getIndex');
         }
@@ -68,7 +70,6 @@ class ForumThreadsController extends BaseController implements
         $replies = $this->threads->getThreadRepliesPaginated($thread, $this->repliesPerPage);
 
         $this->createSections($thread->getTags());
-
         // Visit the thread
         if( Auth::check() )
         {
