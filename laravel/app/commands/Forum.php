@@ -44,6 +44,7 @@ class Forum extends Command {
 		foreach($threads as $thread)
 		{
 			$thread->slug = $thread->generateNewSlug();
+			$thread->timestamps = false;
 			$thread->save();
 		}
 	}

@@ -9,7 +9,7 @@
         <ul class="inline-list grey">
             <li>door <a href="{{ $thread->author->profileUrl }}">{{{ $thread->author->username }}}</a></li>
             @if($thread->mostRecentReply)
-                <li><a href="{{$thread->latestReplyUrl}}" title="Ga naar de laatste reactie van het onderwerp {{{$thread->title}}}">laatste reactie</a> {{{ $thread->updated_ago }}} door {{{ $thread->mostRecentReplier }}}</li>
+                <li><a href="{{$thread->latestReplyUrl}}" title="Ga naar de laatste reactie van het onderwerp {{{$thread->title}}}">laatste reactie</a> {{{ $thread->mostRecentReply->updated_ago }}} door {{{ $thread->mostRecentReplier }}}</li>
             @endif
         </ul>
     </div>
