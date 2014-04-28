@@ -113,6 +113,7 @@ return array(
         'Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider',
         'McCool\LaravelAutoPresenter\LaravelAutoPresenterServiceProvider',
         'Fedeisas\LaravelMailCssInliner\LaravelMailCssInlinerServiceProvider',
+        'Mews\Purifier\PurifierServiceProvider',
 
         'GSVnet\ServiceProviders\BackendServiceProvider',
         'GSVnet\ServiceProviders\AlbumServiceProvider',
@@ -189,6 +190,7 @@ return array(
         'Image'           => 'Intervention\Image\Facades\Image',
 		'Gravatar'        => 'Thomaswelton\LaravelGravatar\Facades\Gravatar',
 		'BasePresenter'   => 'McCool\LaravelAutoPresenter\BasePresenter',
+		'Purifier'        => 'Mews\Purifier\Facades\Purifier',
 
         'Permission'      => 'GSVnet\Permissions\Permission'
 

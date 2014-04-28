@@ -1,6 +1,7 @@
 <?php namespace GSVnet\Markdown;
 
 use HTML_To_Markdown;
+use Purifier;
 
 class HtmlMarkdownConvertor
 {
@@ -13,6 +14,7 @@ class HtmlMarkdownConvertor
         $this->htmlParser->set_option('header_style', 'atx');
 
         $this->markdownParser = new \Michelf\MarkdownExtra;
+        $this->markdownParser->no_markup = true;
     }
 
     public function convertHtmlToMarkdown($html)
@@ -22,6 +24,6 @@ class HtmlMarkdownConvertor
 
     public function convertMarkdownToHtml($markdown)
     {
-        return $this->markdownParser->transform($markdown);
+        return Purifier::clean($this->markdownParser->transform($markdown));
     }
 }

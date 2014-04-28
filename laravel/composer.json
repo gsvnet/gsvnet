@@ -11,6 +11,7 @@
 		"thomaswelton/laravel-gravatar": "dev-master",
 		"mccool/laravel-auto-presenter": "*",
         "michelf/php-markdown": "1.4.*@dev",
+        "mews/purifier": "dev-master",
         "nickcernis/html-to-markdown": "dev-master",
         "misd/linkify": "1.1.*@dev",
         "fedeisas/laravel-mail-css-inliner": "1.*"
