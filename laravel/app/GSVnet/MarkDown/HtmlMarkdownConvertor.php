@@ -13,7 +13,6 @@ class HtmlMarkdownConvertor
         $this->htmlParser->set_option('header_style', 'atx');
 
         $this->markdownParser = new \Michelf\MarkdownExtra;
-        $this->markdownParser->no_markup = true;
     }
 
     public function convertHtmlToMarkdown($html)
