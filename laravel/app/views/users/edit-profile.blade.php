@@ -25,7 +25,7 @@
 				<h2>Vul vooral meer in</h2>
 				{{ Former::text('profile[church]')->label('Kerkgezindte') }}
 	            {{ Former::text('profile[study]')->label('Naam van studie') }}
-	            {{ Former::select('profile[start_date_rug]')->range(date('Y')+1, date('Y')-4)->label('Jaar waarin je begon of begint met studeren') }}
+	            {{ Former::text('profile[student_number]')->label('Studentnummer') }}
 
 	            {{ Former::text('profile[address]')->label('Adres') }}
 	            {{ Former::text('profile[zip_code]')->label('Postcode')->size(6) }}

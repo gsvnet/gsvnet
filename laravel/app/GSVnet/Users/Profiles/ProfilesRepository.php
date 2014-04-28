@@ -120,7 +120,7 @@ class ProfilesRepository {
         $profile->birthdate        = $input['potential-birthdate'];
         $profile->church           = $input['potential-church'];
         $profile->gender           = $input['potential-gender'];
-        $profile->start_date_rug   = $input['potential-study-year'];
+        $profile->student_number   = $input['potential-student-number'];
 
         $profile->parent_phone     = $input['parents-phone'];
         $profile->parent_address   = $input['parents-address'];

@@ -24,7 +24,7 @@ class UserProfile extends \Eloquent {
         'birthdate',
         'church',
         'gender',
-        'start_date_rug',
+        'student_number',
         'reunist',
         'parent_address',
         'parent_zip_code',
