@@ -1,7 +1,7 @@
 <?php namespace GSVnet\Forum\Replies;
 
 use McCool\LaravelAutoPresenter\BasePresenter;
-use App, Input, Str, Request;
+use App, Input, Str, Request, Purifier;
 
 class ReplyPresenter extends BasePresenter
 {
@@ -28,7 +28,7 @@ class ReplyPresenter extends BasePresenter
     {
         $body = $this->resource->body;
         $body = $this->convertMarkdown($body);
-        $body = $this->linkify($body);
+        $body = $this->purify($body);
         return $body;
     }
 
@@ -43,5 +43,10 @@ class ReplyPresenter extends BasePresenter
     {
         $linkify = new \Misd\Linkify\Linkify();
         return $linkify->process($content);
+    }
+
+    private function purify($content)
+    {
+        return Purifier::clean($content);
     }
 }

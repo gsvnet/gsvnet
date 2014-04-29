@@ -3,7 +3,7 @@
 use McCool\LaravelAutoPresenter\BasePresenter;
 use App, Input, Str, Request;
 use Misd\Linkify\Linkify;
-use Carbon\Carbon, Auth;
+use Carbon\Carbon, Auth, Purifier;
 
 class ThreadPresenter extends BasePresenter
 {
@@ -29,7 +29,7 @@ class ThreadPresenter extends BasePresenter
     {
         $body = $this->resource->body;
         $body = $this->convertMarkdown($body);
-        $body = $this->linkify($body);
+        $body = $this->purify($body);
         return $body;
     }
 
@@ -148,5 +148,10 @@ class ThreadPresenter extends BasePresenter
     {
         $linkify = new Linkify();
         return $linkify->process($content);
+    }
+
+    private function purify($content)
+    {
+        return Purifier::clean($content);
     }
 }
