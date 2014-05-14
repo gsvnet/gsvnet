@@ -6,7 +6,7 @@ use App, Validator;
 class ThreadForm extends FormModel
 {
     protected $validationRules = [
-        'subject' => 'required|min:10',
+        'subject' => 'required|min:3',
         'body' => 'required',
         'tags' => 'required|max_tags:3',
     ];

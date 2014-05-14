@@ -5,7 +5,7 @@ use GSVnet\Core\Entity;
 class Tag extends Entity
 {
     protected $table    = 'tags';
-    protected $fillable = ['name', 'slug'];
+    protected $fillable = ['name', 'slug', 'description', 'articles', 'forum'];
 
     public $timestamps = false;
 

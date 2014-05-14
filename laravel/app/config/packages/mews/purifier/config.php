@@ -16,7 +16,7 @@ return array(
         'default' => array(
             'HTML.Doctype'             => 'XHTML 1.0 Strict',
             'HTML.Allowed'             => 'div,b,blockquote,cite,strong,i,em,a[href|title],ul,ol,li,p[style],br,span[style],img[width|height|alt|src]',
-            'AutoFormat.AutoParagraph' => false,
+            'AutoFormat.AutoParagraph' => true,
             'AutoFormat.RemoveEmpty'   => true,
             'AutoFormat.Linkify'       => true,
             'HTML.Nofollow'            => true

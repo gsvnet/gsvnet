@@ -25,6 +25,11 @@ class ProfilePresenter extends BasePresenter
 
     public function birthdayWithYear()
     {
+        if( is_null($this->resource->birthdate) )
+        {
+            return 'Op een dag';
+        }
+
 		$day = Carbon::createFromFormat('Y-m-d', $this->resource->birthdate);
 		$today = Carbon::today();
 
@@ -80,5 +85,16 @@ class ProfilePresenter extends BasePresenter
         } else {
             return 'geen regio';
         }
+    }
+
+    public function student_number()
+    {
+        $nr = $this->resource->student_number;
+        if( is_null($nr) || empty($nr) )
+        {
+            return 'Onbekend';
+        }
+
+        return $nr;
     }
 }

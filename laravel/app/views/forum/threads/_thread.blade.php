@@ -9,12 +9,12 @@
             <ul class="inline-list grey">
                 <li>{{ $thread->created_ago }}</li>
                 @if($thread->isManageableBy($currentUser))
-                    <li><a href="{{ $thread->editUrl }}">Bewerk</a></li>
-                    <li><a href="{{ $thread->deleteUrl }}">Verwijder</a></li>
+                    <li><a href="{{ $thread->editUrl }}">bewerk</a></li>
+                    <li><a href="{{ $thread->deleteUrl }}">verwijder</a></li>
                 @endif
 
                 @if(Auth::user())
-                    <li><a href="#" class="quote _quote_forum_post">Quote</a></li>
+                    <li><a href="#" class="quote _quote_forum_post">quote</a></li>
                 @endif
             </ul>
         </div>

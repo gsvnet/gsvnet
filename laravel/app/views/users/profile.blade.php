@@ -65,6 +65,10 @@
 								<span class="list-title">Studie</span>
 								<span class="list-description">{{{$member->profile->study}}}</span>
 							</li>
+							<li>
+								<span class="list-title">Studentennummer</span>
+								<span class="list-description">{{{$member->profile->student_number}}}</span>
+							</li>
 						@endif
 					</ul>
 					@if( isset($member->profile) )
