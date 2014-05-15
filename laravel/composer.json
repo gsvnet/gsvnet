@@ -4,7 +4,7 @@
 	"keywords": ["framework", "laravel"],
 	"require": {
 		"laravel/framework": "4.1.*",
-		"way/generators": "dev-master",
+		"way/generators": "2.*",
 		"anahkiasen/former": "dev-master",
 		"fzaninotto/faker": "1.2.*@dev",
 		"intervention/image": "dev-master",

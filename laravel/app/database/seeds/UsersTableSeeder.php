@@ -52,7 +52,7 @@ class UsersTableSeeder extends Seeder {
                     'birthdate' => $faker->dateTimeThisCentury->format('Y-m-d'),
                     'church' => 'GKV',
                     'gender' => 'male',
-                    'student_number' => 's' . (string) random(1000000, 3000000),
+                    'student_number' => 's' . (string) rand(1000000, 3000000),
                     'reunist' => rand(0,1),
                     'parent_address' => $faker->streetAddress,
                     'parent_zip_code' => $faker->postcode,
