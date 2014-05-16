@@ -130,13 +130,14 @@ class EventsRepository {
     private function setEventProperties($event, $properties)
     {
         // Set properties
-        $event->title       = $properties['title'];
-        $event->description = $properties['description'];
-        $event->location    = $properties['location'];
-        $event->type        = $properties['type'];
-        $event->start_date  = $properties['start_date'];
-        $event->end_date    = $properties['end_date'];
-        $event->whole_day   = $properties['whole_day'];
+        $event->title            = $properties['title'];
+        $event->meta_description = $properties['meta_description'];
+        $event->description      = $properties['description'];
+        $event->location         = $properties['location'];
+        $event->type             = $properties['type'];
+        $event->start_date       = $properties['start_date'];
+        $event->end_date         = $properties['end_date'];
+        $event->whole_day        = $properties['whole_day'];
 
         if (Permission::has('events.publish'))
         {

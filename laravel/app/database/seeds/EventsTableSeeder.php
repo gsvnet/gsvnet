@@ -17,7 +17,7 @@ class EventsTableSeeder extends Seeder {
             $plekken = array('Soos', 'Het Heerenhuis', '', '', '', 'Vinkhuizen', 'Oosterkerk');
             
             $title = $activiteiten[array_rand($activiteiten, 1)];
-            $slug = $startdate->format('Y-m-d-' . \Str::slug($title));
+            $slug = $startdate->format('Y-m-d') . '-' . $title;
 
             GSVnet\Events\Event::create(array(
                 'title' => $title,
@@ -30,7 +30,7 @@ class EventsTableSeeder extends Seeder {
                 'end_date' => $startdate->add(date_interval_create_from_date_string(rand(0,2) . ' days'))->format('Y-m-d'),
                 'published' => rand(1,10) > 3,
                 'public' => rand(1,10) > 3,
-                'slug' => $slug,
+                'slug' => \Str::slug($slug),
                 'meta_description' => 'Hier komt een beschrijving van ' . $title
             ));
         }

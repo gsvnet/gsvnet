@@ -14,6 +14,6 @@
                 <li>{{{ $event->location }}}</li>
             @endif
         </ul>
-        <p>{{ $event->description }}</p>
+        <p>{{ $event->meta_description }}</p>
     </div>
 </div>
