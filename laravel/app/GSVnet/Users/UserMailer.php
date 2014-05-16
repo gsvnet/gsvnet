@@ -37,7 +37,7 @@ class UserMailer extends Mailer {
 
         $this->sendTo(
             Config::get('gsvnet.email.membership'),
-            'Aanmelding: ' . $user->full_name,
+            'Aanmelding: ' . $user->fullName,
             'emails.membership.application',
             $data
         );

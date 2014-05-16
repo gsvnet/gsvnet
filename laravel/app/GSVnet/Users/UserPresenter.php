@@ -9,6 +9,11 @@ class UserPresenter extends BasePresenter
         $this->resource = $user;
     }
 
+    public function fullName()
+    {
+        return $this->resource->firstname . ' ' . $this->resource->middlename . ' ' . $this->resource->lastname;
+    }
+
     public function senateFunction()
     {
         $functions = Config::get('gsvnet.senateFunctions');

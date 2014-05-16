@@ -1,6 +1,6 @@
 @section('content')
 	<div class="column-holder">
-		<h1>{{{ $member->full_name }}}</h1>
+		<h1>{{{ $member->fullName }}}</h1>
 		@if( isset($member->profile) )
 			<p>
 				Lid van 
@@ -18,7 +18,7 @@
 
 			<h2>Adresgegevens</h2>
 			<address>
-				{{{ $member->full_name }}} <br>
+				{{{ $member->fullName }}} <br>
 				@if( isset($member->profile) )
 					{{{ $member->profile->address }}} <br>
 					{{{ $member->profile->zip_code }}} {{{ $member->profile->town }}}

@@ -74,11 +74,6 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
         return 'remember_token';
     }
 
-    public function getFullnameAttribute()
-    {
-        return $this->firstname . ' ' . $this->middlename . ' ' . $this->lastname;
-    }
-
     /**
      * Set the password to be hashed when saved
      */

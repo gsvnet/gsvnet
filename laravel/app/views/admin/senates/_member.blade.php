@@ -5,6 +5,6 @@
             checked="checked"
         @endif
         >
-        {{{ $user->full_name }}}
+        {{{ $user->fullName }}}
 </label>
 </li>

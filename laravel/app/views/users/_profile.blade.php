@@ -4,7 +4,7 @@
     </div>
     <div class="user-details">
         <h3>
-            {{ link_to_action('UserController@showUser', $member->user->full_name, [$member->id], ['class' => 'search-users']) }}
+            {{ link_to_action('UserController@showUser', $member->user->fullName, [$member->id], ['class' => 'search-users']) }}
         </h3>
         <ul class="user-details-list">
             <li>
@@ -13,7 +13,7 @@
             </li>
             <li class="phone">
                 <i class="fa fa-phone"></i>
-                <a href="tel:{{{$member->phone}}}" title="Bel {{{$member->user->full_name}}}">{{{$member->phone}}}</a>
+                <a href="tel:{{{$member->phone}}}" title="Bel {{{$member->user->fullName}}}">{{{$member->phone}}}</a>
             </li>
             <li>
                 <span class="dot-after">{{{$member->yearGroup->name or 'Geen jaarverband'}}}</span>

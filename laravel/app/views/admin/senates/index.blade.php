@@ -24,7 +24,7 @@
 				<td>
 					<ul>
 						@foreach($senate->members as $member)
-							<li>{{{ $member->full_name }}}</li>
+							<li>{{{ $member->fullName }}}</li>
 						@endforeach
 					</ul>
 				</td>

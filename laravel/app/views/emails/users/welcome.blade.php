@@ -5,6 +5,6 @@
 @stop
 
 @section('content')
-    <h2>Welkom {{{ $user->full_name }}}</h2>
+    <h2>Welkom {{{ $user->fullName }}}</h2>
 	<p>Je hebt je succesvol aangemeld voor de website van de GSV.</p>
 @stop

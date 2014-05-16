@@ -1,17 +1,20 @@
 @section('content')
-
     <div class="column-holder">
+        <h1>Wachtwoord resetten</h1>
+        <p class="delta">Vul je nieuwe wachtwoord in</p>
         @if (Session::has('error'))
             {{ Session::get('error') }}
         @endif
 
         {{ Former::open()->action(action('RemindersController@postReset'))}}
             {{ Former::hidden('token', $token)}}
-            {{ Former::email('email') }}
-            {{ Former::password('password') }}
-            {{ Former::password('password_confirmation') }}
+            {{ Former::email('email')->label('Je emailadres') }}
+            {{ Former::password('password')->label('Nieuw wachtwoord') }}
+            {{ Former::password('password_confirmation')->label('Nieuw wachtwoord herhalen') }}
 
-            <input type="submit" value="Reset Password">
+            <div class="form-group">
+                <input type="submit" class="button" value="Resetten" />
+            </div>
         {{ Former::close() }}
     </div>
 @stop

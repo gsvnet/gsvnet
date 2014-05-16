@@ -47,8 +47,8 @@
 			@foreach($users as $user)
 			<tr>
 				<td>
-                <a href="{{ URL::action('Admin\UsersController@show', $user->id) }}" alt="{{ $user->full_name }}">
-					{{{ $user->full_name }}}
+                <a href="{{ URL::action('Admin\UsersController@show', $user->id) }}" alt="{{ $user->fullName }}">
+					{{{ $user->fullName }}}
 				</a>
                 </td>
 

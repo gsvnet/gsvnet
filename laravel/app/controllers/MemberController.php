@@ -133,7 +133,7 @@ class MemberController extends BaseController {
     {
         $profile  = $this->profiles->byId($id);
         $path = $this->imageHandler->getStoragePath($profile->photo_path, $type);
-        $name = $profile->user->full_name;
+        $name = $profile->user->fullName;
 
         return Response::inlinePhoto($path, $name);
     }
