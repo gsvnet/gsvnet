@@ -21,6 +21,28 @@ class EventsRepository {
         return $event;
     }
 
+    public function bySlug($slug)
+    {
+        $event = Event::where('slug', '=', $slug)->first();
+
+        if( ! $event )
+        {
+            App::abort(404);
+        }
+
+        if (! $event->public and ! Permission::has('events.show-private'))
+        {
+            throw new NoPermissionException;
+        }
+
+        if (! $event->published and ! Permission::has('events.publish'))
+        {
+            throw new NoPermissionException;
+        }
+
+        return $event;
+    }
+
     public function paginate($amount = 5, $published = true)
     {
         if (Permission::has('events.show-private'))
@@ -126,6 +148,9 @@ class EventsRepository {
         {
             $event->start_time  = $properties['start_time'];
         }
+
+        // Slug
+        $event->slug = $event->generateNewSlug();
 
         return $event;
     }

@@ -39,7 +39,7 @@ class ProfilesRepository {
     private function search($search = '', $region = null, $yearGroup = null, $type = 2)
     {
         // Initialize basic query
-        $query = UserProfile::join('users', function($join) use ($type) {
+        $query = UserProfile::with('user', 'yearGroup')->join('users', function($join) use ($type) {
             $join->on('users.id', '=', 'user_profiles.user_id');
 
             if(is_array($type))

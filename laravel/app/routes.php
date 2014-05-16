@@ -74,7 +74,7 @@ Route::get('albums/{album}', 'PhotoController@showPhotos');
 
 // Events
 Route::get('activiteiten',                 'EventController@showIndex');
-Route::get('activiteiten/activiteit-{id}',     'EventController@showEvent');
+Route::get('activiteiten/{slug}',          'EventController@showEvent');
 // Hier filter je of de opgegeven jaar en datum goed zijn
 Route::get('activiteiten/{year}/{month?}', 'EventController@showMonth')->before('checkDate');
 

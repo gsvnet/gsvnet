@@ -35,7 +35,7 @@ class EventController extends BaseController {
     {
         $input = Input::all();
         $input['location'] = Input::get('location', '');
-        $input['whole_day'] = Input::get('whole_day', '0');
+        $input['whole_day'] = Input::get('whole_day', false);
         $input['public'] = Input::get('public', false);
         $input['published'] = Input::get('published', false);
 
