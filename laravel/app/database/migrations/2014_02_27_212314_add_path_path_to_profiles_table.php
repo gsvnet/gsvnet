@@ -24,7 +24,7 @@ class AddPathPathToProfilesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('profiles', function(Blueprint $table) {
+		Schema::table('user_profiles', function(Blueprint $table) {
 			$table->dropColumn('photo_path');
 		});
 	}
