@@ -71,6 +71,8 @@ class MemberController extends BaseController {
         }
 
         $this->layout->bodyID = 'become-member-page';
+        $this->layout->title = 'Lid worden!';
+        $this->layout->description = 'Wil jij een vereniging waar het geloof een centrale rol speelt, een vereniging met vele toffe, diverse activiteiten en weekenden en waar je vrienden voor het leven maakt? Meld je aan!';
         $this->layout->activeMenuItem = 'lid-worden';
         $this->layout->activeSubMenuItem = 'inschrijven';
         $this->layout->content = View::make('word-lid.word-lid')

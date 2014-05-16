@@ -22,6 +22,8 @@ class HomeController extends BaseController {
         $birthdays = $this->profiles->byUpcomingBirthdays(1);
 
         $this->layout->bodyID = 'home-page';
+        $this->layout->title = 'Gereformeerde Studenten Vereniging te Groningen';
+        $this->layout->description = 'Denk je na over een actief studentenleven in Groningen? Dan ben je hier aan het juiste adres. De GSV is dé perfecte combinatie van christelijke waarden en het echte studentenleven.';
 		$this->layout->content = View::make('index')->with([
             'events'    => $events,
             'birthdays' => $birthdays

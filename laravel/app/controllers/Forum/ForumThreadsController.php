@@ -53,6 +53,7 @@ class ForumThreadsController extends BaseController implements
         $this->createSections(Input::get('tags'));
 
         $this->title = "Forum";
+        $this->layout->description = "Op het forum van de GSV kun je posts plaatsen en vinden over activiteiten, vraag en aanbod (van bijvoorbeeld kamers) en allerlei andere zaken.";
         $this->view('forum.threads.index', compact('threads', 'tags', 'queryString'));
         $this->layout->activeMenuItem = 'forum';
     }
