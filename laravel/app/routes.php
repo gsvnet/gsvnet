@@ -115,16 +115,16 @@ Route::group([
 
         // Gebruikers
         Route::group(['prefix' => 'gebruikers'], function() {
-            Route::resource('/',      'UsersController');
-
-            Route::post('{user}/activeren', 'UsersController@activate');
-            Route::post('{user}/accepteer-lid', 'UsersController@accept');
+            Route::post('/{user}/activeren', 'UsersController@activate');
+            Route::post('/{user}/accepteer-lid', 'UsersController@accept');
 
             Route::get('/gasten',     'UsersController@showGuests');
             Route::get('/novieten', 'UsersController@showPotentials');
             Route::get('/leden',      'UsersController@showMembers');
             Route::get('/oud-leden',  'UsersController@showFormerMembers');
         });
+
+        Route::resource('/gebruikers',      'UsersController');
     });
 });
 
