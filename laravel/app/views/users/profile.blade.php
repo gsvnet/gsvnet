@@ -9,22 +9,18 @@
 				@endif
 				{{{$member->profile->regionName}}}
 			</p>
-		@endif
 
 		<div class="secondary-column">
-			@if( isset($member->profile) )
-				<p>{{ $member->profile->xsmallProfileImage }}</p>
-			@endif
+			<p>{{ $member->profile->xsmallProfileImage }}</p>
 
 			<h2>Adresgegevens</h2>
 			<address>
 				{{{ $member->fullName }}} <br>
-				@if( isset($member->profile) )
-					{{{ $member->profile->address }}} <br>
-					{{{ $member->profile->zip_code }}} {{{ $member->profile->town }}}
-				@endif
+				{{{ $member->profile->address }}} <br>
+				{{{ $member->profile->zip_code }}} {{{ $member->profile->town }}}
 			</address>
 		</div>
+		@endif
 		<div class="main-content">
 			<div class="content-columns">
 				<div class="content-column with-padding">

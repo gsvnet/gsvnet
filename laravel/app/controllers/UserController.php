@@ -5,6 +5,7 @@ use GSVnet\Users\UsersRepository;
 use GSVnet\Users\UserManager;
 use GSVnet\Users\Profiles\ProfileManager;
 use GSVnet\Users\YearGroupRepository;
+use GSVnet\Permissions\Permission;
 
 class UserController extends BaseController {
 
@@ -130,7 +131,11 @@ class UserController extends BaseController {
 
         // Create the profile and attach it to the user
         $profile = $this->userManager->update($user->id, $input);
-        $profile = $this->profileManager->update($user->profile->id, $input['profile']);
+
+        if(Permission::has('users.edit-profile'))
+        {
+            $profile = $this->profileManager->update($user->profile->id, $input['profile']);
+        }
 
         // Redirct to the become-member page: it shows the 3rd step [done] as active page
         return Redirect::action('UserController@showProfile');

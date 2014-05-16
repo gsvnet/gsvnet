@@ -1,7 +1,7 @@
 @section('content')
 	<div class="column-holder">
 		<h1>Verander je profiel</h1>
-		<p class="delta">ALS EEN MODDERFOKKER!</p>
+		<p class="delta">!!</p>
 
 		{{ Former::open_vertical_for_files()
             ->action(action('UserController@updateProfile'))
