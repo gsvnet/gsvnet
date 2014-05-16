@@ -26,7 +26,7 @@ class RemoveFunctionFieldFromUserSenateTable extends Migration {
 	public function down()
 	{
 	    Schema::table('user_senate', function(Blueprint $table) {
-            
+            $table->text('function');
         });
 	}
 
