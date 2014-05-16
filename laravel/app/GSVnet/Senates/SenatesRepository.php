@@ -30,7 +30,7 @@ class SenatesRepository {
      */
     public function paginate($amount)
     {
-        return Senate::orderBy('updated_at', 'DESC')->paginate($amount);
+        return Senate::with('members')->orderBy('updated_at', 'DESC')->paginate($amount);
     }
 
     public function members($id)
