@@ -63,6 +63,32 @@ class UserPresenter extends BasePresenter
         return $since->formatLocalized('%B %Y');
     }
 
+    public function committeeFromTo()
+    {
+        $from = Carbon::createFromFormat('Y-m-d H:i:s', $this->resource->pivot->start_date);
+
+        $string = $from->formatLocalized("%Y");
+
+        if( is_null($this->resource->pivot->end_date) )
+        {
+            $string .= ' tot heden';
+        } else
+        {
+
+            $to = Carbon::createFromFormat('Y-m-d H:i:s', $this->resource->pivot->end_date);
+            if($to->isFuture())
+            {
+                $string .= ' tot heden';
+            }
+            else 
+            {
+                $string .= ' tot ';
+                $string .= $to->formatLocalized("%Y");
+            }
+        }
+        return $string;
+    }
+
     public function avatar($size = 120)
     {
         return Gravatar::image($this->resource->email, 'Profielfoto', array('width' => $size, 'height' => $size));

@@ -46,10 +46,10 @@ return array(
 
 	'senateFunctions' => array(
 		1 => 'Praeses',
-		2 => 'Assessor Primus',
-		3 => 'Assessor Secundus',
-		4 => 'Abactis',
-		5 => 'Fiscus'
+		2 => 'Abactis',
+		3 => 'Fiscus',
+		4 => 'Assessor Primus',
+		5 => 'Assessor Secundus'
 	),
 
 	'months' => array(

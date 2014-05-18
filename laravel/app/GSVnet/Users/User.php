@@ -154,6 +154,11 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
         return $key;
     }
 
+    public function getFullNameAttribute()
+    {
+        return $this->firstname . ' ' . $this->middlename . ' ' . $this->lastname;
+    }
+
     // Tijdelijk
     public function isForumAdmin()
     {

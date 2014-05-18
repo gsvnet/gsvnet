@@ -59,6 +59,13 @@ class SenateController extends BaseController {
         $members = $this->senates->members($id);
 
         $users = $this->users->all();
+        $users = $users->map(function($user)
+        {
+            return [
+                'id' => $user->id, 
+                'name' => $user->fullName
+            ];
+        });
 
         $this->layout->content = View::make('admin.senates.show')
             ->withSenate($senate)
@@ -69,9 +76,16 @@ class SenateController extends BaseController {
     public function edit($id)
     {
         $senate = $this->senates->byId($id);
-        $users = $this->users->all();
         $members = $senate->members;
 
+        $users = $this->users->all();
+        $users = $users->map(function($user)
+        {
+            return [
+                'id' => $user->id, 
+                'name' => $user->fullName
+            ];
+        });
 
         $this->layout->content = View::make('admin.senates.edit')
             ->withSenate($senate)

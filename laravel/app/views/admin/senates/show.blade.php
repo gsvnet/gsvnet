@@ -3,6 +3,9 @@
     <div class="page-header">
       <h1>{{{ $senate->name }}}</h1>
     </div>
+    <a href="{{ URL::action('Admin\SenateController@edit', $senate->id) }}" alt="Bewerk {{{ $senate->name }}}" class='btn btn-default'>
+        <i class="fa fa-pencil"></i> Senaatsinformatie bewerken
+    </a>
 
     <blockquote> {{ $senate->body }} </blockquote>
 
@@ -16,7 +19,7 @@
                     ->method('POST')
             }}
                 {{ Former::text('member')->placeholder('Naam lid')->id('add-user')->label('Lid') }}
-                {{ Former::text('function')->placeholder('Functie')->label('Functie') }}
+                {{ Former::select('function')->options(Config::get('gsvnet.senateFunctions'))->label('Functie') }}
                 {{ Former::hidden('member_id')->id('add-user-id')}}
 
                 <button type='submit' class='btn btn-success btn-sm'>
@@ -32,7 +35,7 @@
             <ul class="list-group">
                 @foreach ($members as $member)
                     <li class="list-group-item clearfix">
-                        {{ $member->fullName }}
+                        {{ $member->fullName }} <span class="text-muted">({{ $member->senateFunction }})</span>
 
                         {{
                             Former::inline_open()
@@ -54,94 +57,78 @@
         @endif
     </div>
 
-    <a href="{{ URL::action('Admin\SenateController@edit', $senate->id) }}" alt="Bewerk {{{ $senate->name }}}" class='btn btn-default'>
-        <i class="fa fa-pencil"></i> Senaatsinformatie bewerken
-    </a>
-
     {{-- $users->links() --}}
 @stop
 
 @section('javascripts')
     @parent
     <style>
-    .typeahead,
-    .tt-query,
-    .tt-hint {
-      width: 396px;
-      height: 30px;
-      padding: 8px 12px;
-      font-size: 24px;
-      line-height: 30px;
-      border: 2px solid #ccc;
-      -webkit-border-radius: 8px;
-         -moz-border-radius: 8px;
-              border-radius: 8px;
-      outline: none;
-    }
-
-    .typeahead {
-      background-color: #fff;
-    }
-
-    .typeahead:focus {
-      border: 2px solid #0097cf;
-    }
-
-    .tt-query {
-      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-         -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-              box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    }
-
-    .tt-hint {
-      color: #999
-    }
-
-    .tt-dropdown-menu {
-      width: 422px;
-      margin-top: 12px;
-      padding: 8px 0;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border: 1px solid rgba(0, 0, 0, 0.2);
-      -webkit-border-radius: 8px;
-         -moz-border-radius: 8px;
-              border-radius: 8px;
-      -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-         -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-              box-shadow: 0 5px 10px rgba(0,0,0,.2);
-    }
-
-    .tt-suggestion {
-      padding: 3px 20px;
-      font-size: 18px;
-      line-height: 24px;
-    }
-
-    .tt-suggestion.tt-cursor {
-      color: #fff;
-      background-color: #0097cf;
-
-    }
-
-    .tt-suggestion p {
-      margin: 0;
-    }
-
-    .gist {
-      font-size: 14px;
-    }
+.twitter-typeahead .tt-hint {
+  color: #999999;
+}
+.twitter-typeahead .tt-input {
+  z-index: 2;
+}
+.twitter-typeahead .tt-input[disabled],
+.twitter-typeahead .tt-input[readonly],
+fieldset[disabled] .twitter-typeahead .tt-input {
+  cursor: not-allowed;
+  background-color: #eeeeee !important;
+}
+.tt-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  min-width: 160px;
+  width: 100%;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 14px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+}
+.tt-dropdown-menu .tt-suggestion {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333333;
+  white-space: nowrap;
+}
+.tt-dropdown-menu .tt-suggestion.tt-cursor {
+  text-decoration: none;
+  outline: 0;
+  background-color: #f5f5f5;
+  color: #262626;
+}
+.tt-dropdown-menu .tt-suggestion.tt-cursor a {
+  color: #262626;
+}
+.tt-dropdown-menu .tt-suggestion p {
+  margin: 0;
+}
     </style>
     <script src="/javascripts/components/typeahead.js"></script>
 
     <script>
-        console.log({{ $users->toJson() }});
         var users = {{ $users->toJson() }};
+
+        console.log(users);
 
         // instantiate the bloodhound suggestion engine
         var users = new Bloodhound({
           // De tokenizer bepaalt waarop gezocht word
-          datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.firstname + ' ' + d.middlename + ' ' + d.lastname) },
+          datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.name) },
           queryTokenizer: Bloodhound.tokenizers.whitespace,
           local: users
         });
@@ -152,11 +139,11 @@
         $('#add-user').typeahead(null, {
           name: 'twitter-oss',
           // displayKey: 'firstname',
-          displayKey: function(d) { return d.firstname + ' ' + d.middlename + ' ' + d.lastname},
+          displayKey: function(d) { return d.name},
           source: users.ttAdapter(),
           templates: {
             suggestion: Handlebars.compile([
-              '<p class="user-fullname">@{{firstname}} @{{middlename}} @{{lastname}}</p>',
+              '<p class="user-fullname">@{{name}}</p>',
             ].join(''))
           }
         });

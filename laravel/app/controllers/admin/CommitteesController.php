@@ -43,7 +43,11 @@ class CommitteeController extends BaseController {
     public function store()
     {
         $input = Input::all();
-        $input['public'] = Input::get('public', false);
+        
+        if( ! Input::has('currently_member') )
+        {
+            $input['currently_member'] = 0;
+        }
 
         $this->validator->validate($input);
         $committee = $this->committees->create($input);
@@ -62,20 +66,13 @@ class CommitteeController extends BaseController {
 
         // TODO: filter current members
         $users = $this->users->all();
-
-        // $users = $users->filter(function($user) use ($members)
-        // {
-        //     if ($members->contains($user->id))
-        //         return false;
-        //     return true;
-        // });
-
-
-        // Select the user's fullname as we're only interested in that
-        // $users = $users->map(function($user)
-        // {
-        //     return ['user' => $user->firstname . ' ' . $user->middlename . ' ' . $user->lastname];
-        // });
+        $users = $users->map(function($user)
+        {
+            return [
+                'id' => $user->id, 
+                'name' => $user->firstname . ' ' . $user->middlename . ' ' . $user->lastname
+            ];
+        });
 
         $this->layout->content = View::make('admin.committees.show')
             ->withCommittee($committee)
