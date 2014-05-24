@@ -42,7 +42,7 @@ class ReplyPresenter extends BasePresenter
 
     private function convertEmoticons($content)
     {
-        return App::make('GSVnet\Emoticons\EmoticonsConverter')->convertEmoticionsToHTML($content);
+        return App::make('GSVnet\Emoticons\Emoticon')->toHTML($content);
     }
 
     private function linkify($content)
