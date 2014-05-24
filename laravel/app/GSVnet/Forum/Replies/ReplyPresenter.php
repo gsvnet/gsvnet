@@ -28,6 +28,7 @@ class ReplyPresenter extends BasePresenter
     {
         $body = $this->resource->body;
         $body = $this->convertMarkdown($body);
+        $body = $this->convertEmoticons($body);
         $body = $this->purify($body);
         return $body;
     }
@@ -37,6 +38,11 @@ class ReplyPresenter extends BasePresenter
     private function convertMarkdown($content)
     {
         return App::make('GSVnet\Markdown\HtmlMarkdownConvertor')->convertMarkdownToHtml($content);
+    }
+
+    private function convertEmoticons($content)
+    {
+        return App::make('GSVnet\Emoticons\EmoticonsConverter')->convertEmoticionsToHTML($content);
     }
 
     private function linkify($content)
