@@ -105,6 +105,17 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
                     ->withTimestamps();
     }
 
+    public function activeSenate()
+    {
+        return $this->belongsToMany('GSVnet\Senates\Senate', 'user_senate')
+            ->where('start_date', '<=', new \DateTime('now'))
+            ->where(function($q) {
+                return $q->where('end_date', '>=', new \DateTime('now'))
+                         ->orWhereNull('end_date');
+            })
+            ->withPivot('function');
+    }
+
     public function profile()
     {
         return $this->hasOne('GSVnet\Users\Profiles\UserProfile');

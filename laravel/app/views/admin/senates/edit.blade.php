@@ -14,7 +14,6 @@
         </button>
 
         @include('admin.senates._form')
-        @include('admin.senates.members._form')
 
         <button type='submit' class='btn btn-success'>
             <i class="glyphicon glyphicon-ok"></i> Opslaan

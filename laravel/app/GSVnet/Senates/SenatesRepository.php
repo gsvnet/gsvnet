@@ -39,20 +39,22 @@ class SenatesRepository {
     }
 
     /**
-    * Create committee
+    * Create senate
     *
     * @param array $input
     * @return Senate
     */
     public function create(array $input)
     {
-        $committee              = new Senate();
-        $committee->name        = $input['name'];
-        $committee->body        = $input['body'];
+        $senate              = new Senate();
+        $senate->name        = $input['name'];
+        $senate->body        = $input['body'];
+        $senate->start_date  = $input['start_date'];
+        $senate->end_date    = $input['end_date'];
 
-        $committee->save();
+        $senate->save();
 
-        return $committee;
+        return $senate;
     }
 
     /**
@@ -68,16 +70,14 @@ class SenatesRepository {
 
         $senate->name        = $input['name'];
         $senate->body        = $input['body'];
+        $senate->start_date  = $input['start_date'];
+        $senate->end_date    = $input['end_date'];
 
         $senate->save();
 
         if (isset($input['members']))
         {
             $senate->members()->sync($input['members']);
-        }
-        else
-        {
-            $senate->members()->sync(array());
         }
 
         return $senate;
