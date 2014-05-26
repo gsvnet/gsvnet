@@ -27,7 +27,7 @@ class EventsRepository {
 
         if( ! $event )
         {
-            App::abort(404);
+            \App::abort(404);
         }
 
         if (! $event->public and ! Permission::has('events.show-private'))
