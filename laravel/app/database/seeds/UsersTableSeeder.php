@@ -9,9 +9,9 @@ class UsersTableSeeder extends Seeder {
 
         $count = 200;
 
-        $faker = Faker\Factory::create('nl_NL');
-        $faker->addProvider(new Faker\Provider\nl_NL\Person($faker));
-        $faker->addProvider(new Faker\Provider\nl_NL\Address($faker));
+        $faker = Faker\Factory::create();
+        $faker->addProvider(new Faker\Provider\en_US\Person($faker));
+        $faker->addProvider(new Faker\Provider\en_US\Address($faker));
         $faker->addProvider(new Faker\Provider\Internet($faker));
         $faker->addProvider(new Faker\Provider\Miscellaneous($faker));
 
