@@ -3,18 +3,19 @@
 	"description": "The Laravel Framework.",
 	"keywords": ["framework", "laravel"],
 	"require": {
-		"laravel/framework": "4.1.*",
+		"laravel/framework": "4.2.*",
 		"way/generators": "2.*",
 		"anahkiasen/former": "dev-master",
 		"fzaninotto/faker": "1.2.*@dev",
 		"intervention/image": "dev-master",
 		"thomaswelton/laravel-gravatar": "dev-master",
-		"mccool/laravel-auto-presenter": "*",
         "michelf/php-markdown": "1.4.*@dev",
         "mews/purifier": "dev-master",
         "nickcernis/html-to-markdown": "dev-master",
         "misd/linkify": "1.1.*@dev",
-        "fedeisas/laravel-mail-css-inliner": "1.*"
+        "fedeisas/laravel-mail-css-inliner": "1.*",
+        "guzzlehttp/guzzle": "~4.0",
+        "laracasts/presenter": "0.1.*"
 	},
 	"autoload": {
 		"classmap": [
