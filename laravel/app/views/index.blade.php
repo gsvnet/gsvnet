@@ -15,7 +15,7 @@
                     <div id="homepage-video-slide" class="item active">
 
                         <div class="slider-video-wrap">
-                            <video id="home-video" class="slider-video" preload="none" width="100%" height="100%">
+                            <video id="home-video" class="slider-video" preload="metadata" width="100%" height="100%">
                                 <source src="videos/big_buck_bunny.mp4" type="video/mp4">
                                 <source src="videos/big_buck_bunny.webm" type="video/webm">
                                 <source src="videos/big_buck_bunny.ogv" type="video/ogg">
