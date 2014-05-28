@@ -65,7 +65,7 @@ return array(
 	|
 	*/
 
-	'key' => 'oMPctU3ecbsEZ5uvVSm10qlqr3bouZZ8',
+	'key' => 'fq2MLn8l3bDOdaLRi7ZbqUw5gCKIXfyN',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -111,7 +111,6 @@ return array(
 		'Former\FormerServiceProvider',
         'Intervention\Image\ImageServiceProvider',
         'Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider',
-        'McCool\LaravelAutoPresenter\LaravelAutoPresenterServiceProvider',
         'Fedeisas\LaravelMailCssInliner\LaravelMailCssInlinerServiceProvider',
         'Mews\Purifier\PurifierServiceProvider',
 
@@ -189,7 +188,6 @@ return array(
         'Former'          => 'Former\Facades\Former',
         'Image'           => 'Intervention\Image\Facades\Image',
 		'Gravatar'        => 'Thomaswelton\LaravelGravatar\Facades\Gravatar',
-		'BasePresenter'   => 'McCool\LaravelAutoPresenter\BasePresenter',
 		'Purifier'        => 'Mews\Purifier\Facades\Purifier',
 
         'Permission'      => 'GSVnet\Permissions\Permission'
