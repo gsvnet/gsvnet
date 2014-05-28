@@ -16,9 +16,9 @@
 
                         <div class="slider-video-wrap">
                             <video id="home-video" class="slider-video" preload="metadata" width="100%" height="100%">
-                                <source src="videos/big_buck_bunny.mp4" type="video/mp4">
-                                <source src="videos/big_buck_bunny.webm" type="video/webm">
-                                <source src="videos/big_buck_bunny.ogv" type="video/ogg">
+                                <source src="http://harmenstoppels.nl/videos/big_buck_bunny.mp4" type="video/mp4">
+                                <source src="http://harmenstoppels.nl/videos/big_buck_bunny.webm" type="video/webm">
+                                <source src="http://harmenstoppels.nl/videos/big_buck_bunny.ogv" type="video/ogg">
                             </video>
                         </div>
 
