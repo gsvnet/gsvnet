@@ -39,7 +39,7 @@
     @extend .delta;
   }
 
-  .slider-video {
+  .slider-video-wrap {
     position: absolute;
     top: 0;
     left: 0;
@@ -48,6 +48,14 @@
     background: rgba(0,0,0,0);
 
     transition: background 2s ease;
+  }
+
+  .slider-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
   }
 }
 
@@ -114,7 +122,7 @@
     opacity: 0;
   }
 
-  .slider-video {
+  .slider-video-wrap {
     background: rgba(0,0,0,1);
   }
 
