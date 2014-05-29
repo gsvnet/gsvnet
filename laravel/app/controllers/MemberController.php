@@ -16,12 +16,12 @@ class MemberController extends BaseController {
     public function __construct(
         UserManager $userManager,
         ProfilesRepository $profiles,
-        ProfileManager $profileManger,
+        ProfileManager $profileManager,
         ImageHandler $imageHandler)
     {
         parent::__construct();
         $this->userManager = $userManager;
-        $this->profileManger = $profileManger;
+        $this->profileManager = $profileManager;
         $this->profiles = $profiles;
         $this->imageHandler = $imageHandler;
     }
@@ -87,7 +87,9 @@ class MemberController extends BaseController {
 
         if (Input::hasFile('photo_path'))
         {
-            $input['photo'] = Input::file('photo_path');
+            $input['photo_path'] = Input::file('photo_path');
+        } else {
+            $input['photo_path'] = null;
         }
 
         // Construct a date from seperate day, month and year fields.
@@ -102,10 +104,10 @@ class MemberController extends BaseController {
         }
 
         // Create the profile and attach it to the user
-        $profile = $this->profileManger->create($user, $input);
+        $profile = $this->profileManager->create($user, $input);
 
-        // Redirct to the become-member page: it shows the 3rd step [done] as active page
-        return Redirect::action('MemberController@index');
+        // Redirect to the become-member page: it shows the 3rd step [done] as active page
+        return Redirect::action('MemberController@becomeMember');
     }
 
     public function why()

@@ -107,7 +107,7 @@ class ProfilesRepository {
     */
     public function create(User $user, array $input)
     {
-        $profile = UserProfile::firstOrNew(array('user_id' => $user->id));
+        $profile = UserProfile::create(array('user_id' => $user->id));
         $profile->user_id = $user->id;
         $profile->reunist = 0;
         $profile->region  = 0;
@@ -127,7 +127,7 @@ class ProfilesRepository {
         $profile->parent_zip_code  = $input['parents-zip-code'];
         $profile->parent_town      = $input['parents-town'];
 
-        $profile->photo_path = $input['photo_path'];
+        $profile->photo_path       = $input['photo_path'];
 
         $profile->save();
         // Set user as potential
