@@ -8,50 +8,61 @@ var beautify = require('gulp-beautify');
 var imagemin = require('gulp-imagemin');
 
 gulp.task('css', function(){
-	return gulp.src('laravel/public/sass/screen.scss')
+	return gulp.src('assets/src/sass/screen.scss')
 		.pipe(compass({
-			config_file: 'laravel/public/config.rb',
-			sass: 'laravel/public/sass',
-      css: 'laravel/public/stylesheets'
+			config_file: 'config.rb',
+			sass: 'assets/src/sass',
+      css: 'public/stylesheets'
 		}))
+    .on('error', function(err) {
+      console.log('Compass error: ' + err);
+    })
  		.pipe(minify())
  		.pipe(autoprefixer('last 20 versions', '> 5%'))
-		.pipe(gulp.dest('laravel/public/stylesheets/'));
+		.pipe(gulp.dest('public/tmp/'));
 });
 
 gulp.task('images', function(){
   return gulp.src([
-      'laravel/public/images/**/*.jpg',
-      'laravel/public/images/**/*.png',
-      'laravel/public/images/**/*.gif'
+      'assets/src/images/**/*.jpg',
+      'assets/src/images/**/*.png',
+      'assets/src/images/**/*.gif'
     ])
     .pipe(imagemin())
-    .pipe(gulp.dest('laravel/public/images-min/'));
+    .pipe(gulp.dest('public/images-min/'));
 })
 
 gulp.task('scripts', function() {
   return gulp.src([
-      'laravel/public/javascripts/components/modernizr.js',
-      'laravel/public/javascripts/components/jquery-1.10.1.min.js',
-      'laravel/public/javascripts/components/list-to-menu.js',
-      'laravel/public/javascripts/components/load-image.min.js',
-      'laravel/public/javascripts/components/matchmedia.js',
-  		'laravel/public/javascripts/components/picturefill.js',
-      'laravel/public/javascripts/components/list.min.js',
-  		'laravel/public/javascripts/components/list.fuzzysearch.min.js',
-  		'laravel/public/javascripts/components/carousel.js',
-      'laravel/public/javascripts/components/magnific-popup-0.9.9.js',
-      'laravel/public/javascripts/components/magnific-popup-translation.js',
-  		'laravel/public/javascripts/menu.js',
-  		'laravel/public/javascripts/word-lid.js',
-  		'laravel/public/javascripts/app.js'
+      'assets/javascripts/components/modernizr.js',
+      'assets/javascripts/components/jquery-1.10.1.min.js',
+      'assets/javascripts/components/list-to-menu.js',
+      'assets/javascripts/components/load-image.min.js',
+      'assets/javascripts/components/matchmedia.js',
+  		'assets/javascripts/components/picturefill.js',
+      'assets/javascripts/components/list.min.js',
+  		'assets/javascripts/components/list.fuzzysearch.min.js',
+  		'assets/javascripts/components/carousel.js',
+      'assets/javascripts/components/magnific-popup-0.9.9.js',
+      'assets/javascripts/components/magnific-popup-translation.js',
+  		'assets/javascripts/menu.js',
+  		'assets/javascripts/word-lid.js',
+  		'assets/javascripts/app.js'
   	])
     .pipe(concat("app.js"))
   	.pipe(uglify())
-    .pipe(gulp.dest('laravel/public/build-javascripts/'))
+    .pipe(gulp.dest('public/build-javascripts/'))
 });
 
-gulp.task('default', ['scripts'], function(){
-  //gulp.watch('laravel/public/sass/*.scss', ['css']);
-	gulp.watch('laravel/public/javascripts/*.js', ['scripts']);
+gulp.task('default', ['scripts', 'css'], function(){
+  gulp.watch('assets/javascripts/**/*.js', ['scripts']);
+  gulp.watch('assets/src/sass/**/*.scss', ['css']);
+});
+
+gulp.task('watch-scripts', ['scripts'], function(){
+  gulp.watch('assets/javascripts/*.js', ['scripts']);
+});
+
+gulp.task('watch-css', ['css'], function(){
+  gulp.watch('assets/src/sass/**/*.scss', ['css']);
 });

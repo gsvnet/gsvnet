@@ -16,24 +16,15 @@
 
                         <div class="slider-video-wrap">
                             <video id="home-video" class="slider-video" preload="metadata" width="100%" height="100%">
-                                <source src="http://harmenstoppels.nl/videos/big_buck_bunny.mp4" type="video/mp4">
-                                <source src="http://harmenstoppels.nl/videos/big_buck_bunny.webm" type="video/webm">
-                                <source src="http://harmenstoppels.nl/videos/big_buck_bunny.ogv" type="video/ogg">
+                                <source src="/videos/big_buck_bunny.mp4" type="video/mp4">
+                                <source src="/videos/big_buck_bunny.webm" type="video/webm">
+                                <source src="/videos/big_buck_bunny.ogv" type="video/ogg">
                             </video>
                         </div>
 
                         <a href="#" id="play-video-link" class="play-video" title="Speel de film">
                             <span class="shadow"></span>
                             <div class="video-button"></div>
-                            <span data-picture data-alt="Een geweldig plaatje">
-                                <span data-src="/images/banner/gala-2011-480.jpg"></span>
-                                <span data-src="/images/banner/gala-2011-600.jpg" data-media="(min-width: 480px)"></span>
-                                <span data-src="/images/banner/gala-2011-1024.jpg" data-media="(min-width: 600px)"></span>
-                                <span data-src="/images/banner/gala-2011-1600.jpg" data-media="(min-width: 1024px)"></span>
-                                <noscript>
-                                    <img src="/images/banner/gala-2011-480.jpg" alt="Geweldig plaatje" width="480" height="360">
-                                </noscript>
-                            </span>
                         </a>
 
                         
