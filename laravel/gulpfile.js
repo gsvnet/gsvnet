@@ -6,6 +6,17 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var beautify = require('gulp-beautify');
 var imagemin = require('gulp-imagemin');
+var sprite = require('gulp-sprite');
+
+gulp.task('sprite', function(){
+  return gulp.src('assets/src/sprite-images/**/*.png')
+    .pipe(sprite('sprite.png', {
+      imagePath: 'public/images/',
+      cssPath: 'assets/src/sass/icons',
+      preprocessor: 'scss'
+    }))
+    .pipe(gulp.dest('public/images/'));
+});
 
 gulp.task('css', function(){
 	return gulp.src('assets/src/sass/screen.scss')
