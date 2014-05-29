@@ -7,7 +7,7 @@
 		"way/generators": "2.*",
 		"anahkiasen/former": "dev-master",
 		"fzaninotto/faker": "1.2.*@dev",
-		"intervention/image": "dev-master",
+		"intervention/image": "2.*",
 		"thomaswelton/laravel-gravatar": "dev-master",
         "michelf/php-markdown": "1.4.*@dev",
         "mews/purifier": "dev-master",

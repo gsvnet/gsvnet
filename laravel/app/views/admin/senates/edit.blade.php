@@ -6,7 +6,7 @@
             ->action(action('Admin\SenateController@update', $senate->id))
             ->method('PUT')
     }}
-        {{ Former::populate( $senate->resource ) }}
+        {{ Former::populate( $senate ) }}
 
 
         <button type='submit' class='btn btn-success btn-sm pull-right'>

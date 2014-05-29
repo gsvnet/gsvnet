@@ -67,11 +67,18 @@ return array(
         'december' => '12'
     ),
 
+    // 'email' => array(
+    //     'admin'         => 'webcie@gsvnet.nl',
+    //     'senate'        => 'senaat@gsvnet.nl',
+    //     'membership'    => 'novcie@gsvnet.nl',
+    //     'profile'       => 'abactis@gsvnet.nl'
+    // ),
+
     'email' => array(
-        'admin'         => 'webcie@gsvnet.nl',
-        'senate'        => 'senaat@gsvnet.nl',
-        'membership'    => 'novcie@gsvnet.nl',
-        'profile'       => 'abactis@gsvnet.nl'
+        'admin'         => 'haampie@gmail.com',
+        'senate'        => 'haampie@gmail.com',
+        'membership'    => 'haampie@gmail.com',
+        'profile'       => 'haampie@gmail.com'
     ),
 
     'menuItems' => [

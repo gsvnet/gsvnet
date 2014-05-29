@@ -1,10 +1,10 @@
 <li class="user-profile-item">
     <div class="profile-image">
-        {{ $member->xsmallProfileImage }}
+        {{ $member->present()->xsmallProfileImage }}
     </div>
     <div class="user-details">
         <h3>
-            {{ link_to_action('UserController@showUser', $member->user->fullName, [$member->id], ['class' => 'search-users']) }}
+            {{ link_to_action('UserController@showUser', $member->user->present()->fullName, [$member->id], ['class' => 'search-users']) }}
         </h3>
         <ul class="user-details-list">
             <li>

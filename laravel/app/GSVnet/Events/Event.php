@@ -1,6 +1,11 @@
 <?php namespace GSVnet\Events;
 
+use Laracasts\Presenter\PresentableTrait;
+
 class Event extends \Eloquent {
+
+    use PresentableTrait;
+    
     protected $guarded = array();
 
     public $presenter = 'GSVnet\Events\EventPresenter';

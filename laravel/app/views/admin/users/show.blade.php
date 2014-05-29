@@ -1,7 +1,7 @@
 @section('content')
     <!-- <a href="{{ URL::action('Admin\UsersController@index') }}">Terug naar gebruikers</a> -->
     <div class="page-header">
-        <h1>{{{ $user->fullName }}}</h1>
+        <h1>{{{ $user->present()->fullName }}}</h1>
     </div>
 
     <dl class="dl-horizontal">

@@ -147,7 +147,7 @@ class UsersController extends BaseController {
         $user = $this->userManager->activateUser($id);
 
         return Redirect::action('Admin\UsersController@index')
-            ->with('message', 'Account van <strong>' . $user->fullName . '</strong> is succesvol geactiveerd.');
+            ->with('message', 'Account van <strong>' . $user->present()->fullName . '</strong> is succesvol geactiveerd.');
     }
 
     public function accept($id)
@@ -155,7 +155,7 @@ class UsersController extends BaseController {
         $user = $this->userManager->acceptMembership($id);
 
         return Redirect::action('Admin\UsersController@index')
-            ->with('message', 'Noviet <strong>' . $user->fullName . '</strong> is succesvol geïnstalleerd.');
+            ->with('message', 'Noviet <strong>' . $user->present()->fullName . '</strong> is succesvol geïnstalleerd.');
     }
 
 

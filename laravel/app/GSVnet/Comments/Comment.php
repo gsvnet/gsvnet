@@ -2,9 +2,12 @@
 
 use GSVnet\Core\Entity;
 use Str;
+use Laracasts\Presenter\PresentableTrait;
 
 class Comment extends Entity
 {
+    use PresentableTrait;
+    
     protected $table      = 'comments';
     protected $fillable   = ['title', 'body', 'author_id', 'parent_id', 'category_slug', 'owner_id', 'owner_type', 'type'];
     protected $with       = ['author'];

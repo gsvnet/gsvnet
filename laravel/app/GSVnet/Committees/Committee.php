@@ -1,6 +1,11 @@
 <?php namespace GSVnet\Committees;
 
+use Laracasts\Presenter\PresentableTrait;
+
 class Committee extends \Eloquent {
+    
+    use PresentableTrait;
+
     protected $guarded = array();
 
     public static $rules = array();

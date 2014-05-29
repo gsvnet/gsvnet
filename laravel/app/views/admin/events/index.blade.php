@@ -37,7 +37,7 @@
 					{{{ $event->title }}}
 				</a></td>
 				<td>
-					{{{ $event->from_to_long(true) }}}
+					{{{ $event->present()->from_to_long(true) }}}
 				</td>
                 <td>
                     {{ $event->public ? '<span class="label label-danger">Ja</span>' : '<span class="label label-success">Nee</span>' }}

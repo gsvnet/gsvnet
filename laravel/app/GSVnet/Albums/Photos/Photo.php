@@ -22,7 +22,7 @@ class Photo extends \Eloquent {
     // Return the path to the original image
     public function getShowURLAttribute()
     {
-        return URL::action('PhotoController@showPhoto', [$this->id]);
+        return URL::action('PhotoController@showPhoto', [$this->id, 'large']);
     }
 
     // Return the path to the original image

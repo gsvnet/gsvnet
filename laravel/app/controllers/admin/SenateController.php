@@ -63,7 +63,7 @@ class SenateController extends BaseController {
         {
             return [
                 'id' => $user->id, 
-                'name' => $user->fullName
+                'name' => $user->present()->fullName
             ];
         });
 
@@ -83,7 +83,7 @@ class SenateController extends BaseController {
         {
             return [
                 'id' => $user->id, 
-                'name' => $user->fullName
+                'name' => $user->present()->fullName
             ];
         });
 

@@ -10,7 +10,11 @@ class UserMailer extends Mailer {
     */
     public function registered($user)
     {
-        $data = ['user' => $user];
+        $data = [
+            'fullname' => $user->present()->fullName,
+            'user' => $user
+        ];
+        
         // Send user a welcome message
         $this->sendTo($user->email, 'Welkom', 'emails.users.welcome', $data);
         // Notify administrators about the new user
@@ -22,7 +26,11 @@ class UserMailer extends Mailer {
     */
     public function activated($user)
     {
-        $data = ['user' => $user];
+        $data = [
+            'fullname' => $user->present()->fullName,
+            'user' => $user
+        ];
+
         // Send user an email informing that his account wasd approved
         $this->sendTo($user->email, 'Account is geactiveerd', 'emails.users.activated', $data);
     }
@@ -32,12 +40,16 @@ class UserMailer extends Mailer {
     */
     public function membership($user)
     {
-        $data = ['user' => $user];
+        $data = [
+            'fullname' => $user->present()->fullName,
+            'user' => $user
+        ];
+
         $this->sendTo($user->email, 'Aanmelding word verwerkt', 'emails.users.join', $data);
 
         $this->sendTo(
             Config::get('gsvnet.email.membership'),
-            'Aanmelding: ' . $user->fullName,
+            'Aanmelding: ' . $user->present()->fullName,
             'emails.membership.application',
             $data
         );
@@ -49,7 +61,11 @@ class UserMailer extends Mailer {
     */
     public function membershipAccepted($user)
     {
-        $data = ['user' => $user];
+        $data = [
+            'fullname' => $user->present()->fullName,
+            'user' => $user
+        ];
+
         $this->sendTo($user->email, 'Aanmelding geaccpeteerd', 'emails.users.accepted', $data);
     }
 
@@ -58,7 +74,11 @@ class UserMailer extends Mailer {
     */
     public function birthday($user)
     {
-        $data = ['user' => $user];
+        $data = [
+            'fullname' => $user->present()->fullName,
+            'user' => $user
+        ];
+        
         $this->sendTo($user->email, 'Gefeliciteerd met je verjaardag!', 'emails.users.birthday', $data);
     }
 }

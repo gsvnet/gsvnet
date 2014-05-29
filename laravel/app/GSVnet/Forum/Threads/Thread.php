@@ -4,9 +4,12 @@ use GSVnet\User;
 use Auth;
 use GSVnet\Core\Entity;
 use GSVnet\Forum\Replies\Reply;
+use Laracasts\Presenter\PresentableTrait;
 
 class Thread extends Entity
 {
+    use PresentableTrait;
+    
     protected $table      = 'forum_threads';
     protected $fillable   = ['subject', 'body', 'author_id', 'solution_reply_id', 'category_slug', 'public'];
     protected $with       = ['author', 'mostRecentReply'];

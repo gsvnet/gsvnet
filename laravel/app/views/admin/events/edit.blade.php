@@ -6,8 +6,8 @@
                 ->action(action('Admin\EventController@update', $event->id))
                 ->method('PUT')
         }}
-        {{ Former::populate( $event->resource ) }}
-        {{ Former::populateField('start_time', $event->startHourMinute) }}
+        {{ Former::populate( $event ) }}
+        {{ Former::populateField('start_time', $event->present()->startHourMinute) }}
 
         @include('admin.events._form')
 

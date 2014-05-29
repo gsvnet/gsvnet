@@ -51,8 +51,8 @@
       <tbody>
         @foreach ($members as $member)
           <tr{{ is_null($member->pivot->end_date) || strtotime($member->pivot->end_date) > strtotime('now') ? ' class="success"' : '' }}>
-            <td>{{ $member->fullName }}</td>
-            <td>{{ $member->committeeFromTo }}</td>
+            <td>{{ $member->present()->fullName }}</td>
+            <td>{{ $member->present()->committeeFromTo }}</td>
             <td>
               {{ Former::inline_open()->action(action('Admin\Committees\MembersController@destroy', [$committee->id, $member->id]))->method('DELETE')->class('pull-right') }}
               <button type='submit' class='btn btn-danger btn-xs'>Verwijderen <i class="glyphicon glyphicon-remove"></i></button>

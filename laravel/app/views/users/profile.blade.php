@@ -1,21 +1,21 @@
 @section('content')
 	<div class="column-holder">
-		<h1>{{{ $member->fullName }}}</h1>
+		<h1>{{{ $member->present()->fullName }}}</h1>
 		@if( isset($member->profile) )
 			<p>
 				Lid van 
 				@if( isset($member->profile->yearGroup) )
-					{{{$member->profile->yearGroup->nameWithYear}}} en 
+					{{{$member->profile->yearGroup->present()->nameWithYear}}} en 
 				@endif
-				{{{$member->profile->regionName}}}
+				{{{$member->profile->present()->regionName}}}
 			</p>
 
 		<div class="secondary-column">
-			<p>{{ $member->profile->xsmallProfileImage }}</p>
+			<p>{{ $member->profile->present()->xsmallProfileImage }}</p>
 
 			<h2>Adresgegevens</h2>
 			<address>
-				{{{ $member->fullName }}} <br>
+				{{{ $member->present()->fullName }}} <br>
 				{{{ $member->profile->address }}} <br>
 				{{{ $member->profile->zip_code }}} {{{ $member->profile->town }}}
 			</address>
@@ -29,7 +29,7 @@
 					<ul class="unstyled-list title-description-list">
 						<li>
 							<span class="list-title">Lid?</span>
-							<span class="list-description">{{{$member->membershipType}}}</span>
+							<span class="list-description">{{{$member->present()->membershipType}}}</span>
 						</li>
 						<li>
 							<span class="list-title">Gebruiksnaam</span>
@@ -47,11 +47,11 @@
 							</li>
 							<li>
 								<span class="list-title">Geboortedatum</span>
-								<span class="list-description">{{{$member->profile->birthdayWithYear}}}</span>
+								<span class="list-description">{{{$member->profile->present()->birthdayWithYear}}}</span>
 							</li>
 							<li>
 								<span class="list-title">Geslacht</span>
-								<span class="list-description">{{{$member->profile->genderLocalized}}}</span>
+								<span class="list-description">{{{$member->profile->present()->genderLocalized}}}</span>
 							</li>
 							<li>
 								<span class="list-title">Kerkgezindte</span>
@@ -91,7 +91,7 @@
 						<ul class="unstyled-list title-description-list">
 							@foreach ($senates as $senate)
 								<li>
-									<span class="list-title">{{ link_to_action('AboutController@showSenate', $senate->nameWithYear, [$senate->id], ['title' => 'Meer informatie over Senaat ' . $senate->name]) }}</span>
+									<span class="list-title">{{ link_to_action('AboutController@showSenate', $senate->present()->nameWithYear, [$senate->id], ['title' => 'Meer informatie over Senaat ' . $senate->name]) }}</span>
 									<span class="list-description">{{ $senate->senateFunction }}</span>
 								</li>
 							@endforeach
@@ -104,7 +104,7 @@
 							@foreach ($committees as $committee)
 								<li>
 									<span class="list-title">{{ link_to_action('AboutController@showCommittee', $committee->name, [$committee->unique_name], ['title' => 'Informatie over de ' . $committee->name]) }}</span>
-									<span class="list-description">{{{$committee->from_to}}}</span>
+									<span class="list-description">{{{$committee->present()->from_to}}}</span>
 								</li>
 							@endforeach
 						</ul>

@@ -2,12 +2,12 @@
 
     <div class="forum-post-data">
         <div class="avatar">
-        	{{ $thread->author->avatar(40) }}
+        	{{ $thread->author->present()->avatar(40) }}
         </div>
         <div class="info">
             <h6><a href="{{ $thread->author->profileUrl }}">{{{ $thread->author->username }}}</a></h6>
             <ul class="inline-list grey">
-                <li>{{ $thread->created_ago }}</li>
+                <li>{{ $thread->present()->created_ago }}</li>
                 @if($thread->isManageableBy($currentUser))
                     <li><a href="{{ $thread->editUrl }}">bewerk</a></li>
                     <li><a href="{{ $thread->deleteUrl }}">verwijder</a></li>
@@ -21,6 +21,6 @@
     </div>
 
     <div class="markdown">
-        {{ $thread->body }}
+        {{ $thread->present()->bodyFormatted }}
     </div>
 </div>

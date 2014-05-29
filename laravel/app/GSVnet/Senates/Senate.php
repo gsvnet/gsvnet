@@ -1,6 +1,11 @@
 <?php namespace GSVnet\Senates;
 
+use Laracasts\Presenter\PresentableTrait;
+
 class Senate extends \Eloquent {
+
+	use PresentableTrait;
+
     protected $guarded = array();
 
     public static $rules = array();

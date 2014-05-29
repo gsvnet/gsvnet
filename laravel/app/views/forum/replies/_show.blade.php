@@ -2,12 +2,12 @@
 
     <div class="forum-post-data">
         <div class="avatar">
-            {{ $reply->author->avatar(40) }}
+            {{ $reply->author->present()->avatar(40) }}
         </div>
         <div class="info">
-            <h6><a href="{{ $reply->author->profileUrl }}">{{{ $reply->author->username }}}</a></h6>
+            <h6><a href="{{ $reply->author->present()->profileUrl }}">{{{ $reply->author->username }}}</a></h6>
             <ul class="inline-list grey">
-                <li><a href="#reactie-{{ $reply->id }}">{{ $reply->created_ago }}</a></li>
+                <li><a href="#reactie-{{ $reply->id }}">{{ $reply->present()->created_ago }}</a></li>
 
                 @if(Auth::check())
                     @if($reply->isManageableBy($currentUser))
@@ -20,6 +20,6 @@
         </div>
     </div>
     <div class="markdown">
-        {{ $reply->body }}
+        {{ $reply->present()->bodyFormatted }}
     </div>
 </div>

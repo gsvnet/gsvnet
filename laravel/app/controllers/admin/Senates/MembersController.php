@@ -34,7 +34,7 @@ class MembersController extends BaseController {
             'function' => $input['function']
         ]);
 
-        $message = "$member->fullName succesvol toegevoegd aan $senate->name";
+        $message = "$member->present()->fullName succesvol toegevoegd aan $senate->name";
         return Redirect::action('Admin\SenateController@show', $senate->id)
             ->withMessage($message);
     }
@@ -44,7 +44,7 @@ class MembersController extends BaseController {
         $member = $this->users->byId($member);
         $member->senates()->detach($senate);
 
-        $message = '<strong>' . $member->fullName . '</strong> is succesvol uit de senaat geknikkerd.';
+        $message = '<strong>' . $member->present()->fullName . '</strong> is succesvol uit de senaat geknikkerd.';
         
         return Redirect::action('Admin\SenateController@show', $senate)->withMessage($message);
     }

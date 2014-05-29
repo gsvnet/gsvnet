@@ -47,7 +47,7 @@ class ImageHandler
     {
         if ($this->dimensionIsValid($dimension))
         {
-            return $this->basePath . $this->grab($path, $dimension);
+            return $this->basePath . $this->getOrCreate($path, $dimension);
         }
     }
 
@@ -79,10 +79,10 @@ class ImageHandler
 
 
     /**
-    * Either create or return the resized image of the original image
+    * Either create+return or return the resized image of the original image
     * @param string $dimension either small or wide
     */
-    private function grab($path, $dimension = '')
+    private function getOrCreate($path, $dimension = '')
     {
         $fullPath = $this->basePath . $path;
         $dimensions = Config::get('photos.dimensions');
@@ -113,7 +113,7 @@ class ImageHandler
             $this->rotateByExifData($img);
 
             // Resize the image while maintaining correct aspect ratio
-            $img->grab($dimensions[$dimension][0], $dimensions[$dimension][1]);
+            $img->fit($dimensions[$dimension][0], $dimensions[$dimension][1]);
             // finally we save the image as a new image
             $img->save($this->basePath . $newPath);
         }
@@ -134,7 +134,7 @@ class ImageHandler
         // Get the max width and height
         $dimensions = Config::get('photos.dimensions.max');
         // If the image which was found is larger than the given max dimensions, then resize it
-        if ($img->width > $dimensions[0] or $img->height > $dimensions[1])
+        if ($img->width() > $dimensions[0] or $img->height() > $dimensions[1])
         {
             // Resize the image while maintaining correct aspect ratio
             $img->resize($dimensions[0], $dimensions[1], true);

@@ -1,6 +1,10 @@
 <?php namespace GSVnet\Users;
 
+use Laracasts\Presenter\PresentableTrait;
+
 class YearGroup extends \Eloquent {
+
+    use PresentableTrait;
 
     /**
      * The database table used by the model.

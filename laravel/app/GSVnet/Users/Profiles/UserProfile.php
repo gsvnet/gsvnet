@@ -2,8 +2,11 @@
 
 use Config;
 use Gravatar;
+use Laracasts\Presenter\PresentableTrait;
 
 class UserProfile extends \Eloquent {
+
+    use PresentableTrait;
 
     /**
      * The database table used by the model.

@@ -3,8 +3,11 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Config;
+use Laracasts\Presenter\PresentableTrait;
 
 class User extends \Eloquent implements UserInterface, RemindableInterface {
+
+    use PresentableTrait;
 
     /**
      * The database table used by the model.
@@ -27,7 +30,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
     protected $hidden = array('password');
 
 
-    public $presenter = 'GSVnet\Users\UserPresenter';
+    protected $presenter = 'GSVnet\Users\UserPresenter';
 
     /**
      * Get the unique identifier for the user.
@@ -163,11 +166,6 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
         $types = Config::get('gsvnet.userTypes');
         $key = array_search ($type, $types);
         return $key;
-    }
-
-    public function getFullNameAttribute()
-    {
-        return $this->firstname . ' ' . $this->middlename . ' ' . $this->lastname;
     }
 
     // Tijdelijk

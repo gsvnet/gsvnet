@@ -1,11 +1,11 @@
 <?php namespace GSVnet\Forum\Threads;
 
-use McCool\LaravelAutoPresenter\BasePresenter;
+use Laracasts\Presenter\Presenter;
 use App, Input, Str, Request;
 use Misd\Linkify\Linkify;
 use Carbon\Carbon, Auth, Purifier;
 
-class ThreadPresenter extends BasePresenter
+class ThreadPresenter extends Presenter
 {
     public function url()
     {
@@ -25,9 +25,9 @@ class ThreadPresenter extends BasePresenter
         return $this->updated_at->diffForHumans();
     }
 
-    public function body()
+    public function bodyFormatted()
     {
-        $body = $this->resource->body;
+        $body = $this->body;
         $body = $this->convertMarkdown($body);
         $body = $this->convertEmoticons($body);
         //$body = $this->purify($body);
@@ -36,7 +36,7 @@ class ThreadPresenter extends BasePresenter
 
     public function subject()
     {
-        return $subject = Str::limit($this->resource->subject, 80);
+        return $subject = Str::limit($this->subject, 80);
     }
 
     public function mostRecentReplier()
@@ -53,8 +53,8 @@ class ThreadPresenter extends BasePresenter
             return $this->url;
         }
 
-        $page = ceil($this->resource->reply_count / 20);
-        $id = $this->resource->most_recent_reply_id;
+        $page = ceil($this->reply_count / 20);
+        $id = $this->most_recent_reply_id;
         $url = $this->url;
         
         if( $page > 1)
@@ -69,7 +69,7 @@ class ThreadPresenter extends BasePresenter
 
     public function lastPageUrl()
     {
-        $page = ceil($this->resource->reply_count / 20);
+        $page = ceil($this->reply_count / 20);
         $url = $this->url;
         
         if( $page > 1)
@@ -92,7 +92,7 @@ class ThreadPresenter extends BasePresenter
 
     public function replyCounter()
     {
-        $count = $this->resource->reply_count;
+        $count = $this->reply_count;
         $class = 'media-counter';
         if($count >= 100)
         {
@@ -109,19 +109,19 @@ class ThreadPresenter extends BasePresenter
             return '';
         }
 
-        if( !isset($this->resource->visitations) )
+        if( !isset($this->visitations) )
         {
             return 'new';
         }
 
-        if( !isset($this->resource->mostRecentReply) )
+        if( !isset($this->mostRecentReply) )
         {
-            $updated = $this->resource->created_at;
+            $updated = $this->created_at;
         } else {
-            $updated = $this->resource->mostRecentReply->created_at;
+            $updated = $this->mostRecentReply->created_at;
         }
 
-        $visitations = $this->resource->visitations;
+        $visitations = $this->visitations;
         
         if( count($visitations) == 0 )
         {

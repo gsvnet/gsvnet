@@ -1,16 +1,12 @@
 <?php namespace GSVnet\Users;
 
-use BasePresenter, Carbon\Carbon;
+use Laracasts\Presenter\Presenter, Carbon\Carbon;
 
-class YearGroupPresenter extends BasePresenter
+class YearGroupPresenter extends Presenter
 {
-    public function __construct(YearGroup $yeargroup)
-    {
-        $this->resource = $yeargroup;
-    }
 
     public function nameWithYear()
     {
-        return $this->resource->name . ' (' . $this->resource->year . ')';
+        return $this->name . ' (' .   $this->year . ')';
     }
 }
