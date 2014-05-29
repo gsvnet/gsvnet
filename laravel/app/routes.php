@@ -30,7 +30,7 @@ Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
 
     // Only logged in users can view the member list if they have permission
     Route::group(['before' => 'has:users.show'], function() {
-        Route::get('jaarbundel',             'UserController@showUsers');
+        Route::get('jaarbundel',       'UserController@showUsers');
         Route::get('jaarbundel/{id}',  'UserController@showUser')->where('id', '[0-9]+');
     });
 });

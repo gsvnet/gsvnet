@@ -71,7 +71,7 @@ return [
     ],
 
     'users.edit-profile' => [
-        'type' => ['member', 'formerMember']
+        'type' => ['potential', 'member', 'formerMember']
     ],
 
     'threads.show-private' => [

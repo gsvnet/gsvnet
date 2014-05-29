@@ -114,11 +114,11 @@ class UserController extends BaseController {
     public function updateProfile()
     {
         $user = Auth::user();
-        $input = Input::except(['potential-image']);
+        $input = Input::except(['photo_path']);
 
-        if (Input::hasFile('photo'))
+        if (Input::hasFile('photo_path'))
         {
-            $input['profile']['photo'] = Input::file('photo');
+            $input['profile']['photo_path'] = Input::file('photo_path');
         }
 
         // Check if parent address is the same as potential address

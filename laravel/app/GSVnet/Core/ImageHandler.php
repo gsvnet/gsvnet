@@ -48,6 +48,9 @@ class ImageHandler
         if ($this->dimensionIsValid($dimension))
         {
             return $this->basePath . $this->getOrCreate($path, $dimension);
+        } else 
+        {
+            throw new ImageDimensionNotValidException;
         }
     }
 
@@ -85,6 +88,7 @@ class ImageHandler
     private function getOrCreate($path, $dimension = '')
     {
         $fullPath = $this->basePath . $path;
+
         $dimensions = Config::get('photos.dimensions');
 
         // Check if we can find the original image's path, if not, throw an exception error

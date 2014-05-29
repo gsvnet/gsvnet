@@ -52,7 +52,7 @@
 		<div class="secondary-column">
 			@if(Permission::has('users.edit-profile'))
 				<h2>Je profielfoto</h2>
-	            {{ Former::file('photo')->label('Upload een foto van jezelf')->accept('image') }}
+	            {{ Former::file('photo_path')->label('Upload een foto van jezelf')->accept('image') }}
 	        @endif
 
 			<h2>Je avatar</h2>

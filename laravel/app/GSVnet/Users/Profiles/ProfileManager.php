@@ -45,7 +45,7 @@ class ProfileManager
     {
         $this->createValidator->validate($input);
         // If photo was uploaded, save it
-        if (isset($input['photo']))
+        if (isset($input['photo_path']))
         {
             // Store photo and set it's new path in the input variable
             $this->uploadPhoto($input);
@@ -64,7 +64,7 @@ class ProfileManager
     {
         $this->updateValidator->validate($input);
         // Optionally update the photo's file
-        if (isset($input['photo']))
+        if (isset($input['photo_path']))
         {
             // Delete the old photo file and store the new one
             $profile = $this->profiles->byId($id);
@@ -85,7 +85,7 @@ class ProfileManager
     // Uploads a photo and adjust the input's src_path accordingly
     private function uploadPhoto(&$input)
     {
-        if (! $input['photo_path'] = $this->imageHandler->make( $input['photo'],
+        if (! $input['photo_path'] = $this->imageHandler->make( $input['photo_path'],
             "/uploads/images/users/"))
         {
             throw new PhotoStorageException;
