@@ -9,11 +9,10 @@ var imagemin = require('gulp-imagemin');
 
 gulp.task('css', function(){
 	return gulp.src('laravel/public/sass/screen.scss')
-		// TODO: werkt nog niet :(
 		.pipe(compass({
 			config_file: 'laravel/public/config.rb',
-			css: 'laravel/public/stylesheets',
-			sass: 'laravel/public/sass'
+			sass: 'laravel/public/sass',
+      css: 'laravel/public/stylesheets'
 		}))
  		.pipe(minify())
  		.pipe(autoprefixer('last 20 versions', '> 5%'))
