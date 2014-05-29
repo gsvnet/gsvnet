@@ -56,7 +56,8 @@ return [
     ],
 
     'senates.manage' => [
-        'committee' => ['webcie']
+        'committee' => ['webcie'],
+        'senate' => true
     ],
 
     'admin' => [
@@ -70,7 +71,7 @@ return [
     ],
 
     'users.edit-profile' => [
-        'type' => ['member', 'formerMember']
+        'type' => ['potential', 'member', 'formerMember']
     ],
 
     'threads.show-private' => [

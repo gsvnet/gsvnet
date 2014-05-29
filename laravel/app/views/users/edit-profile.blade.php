@@ -1,7 +1,7 @@
 @section('content')
 	<div class="column-holder">
 		<h1>Verander je profiel</h1>
-		<p class="delta">ALS EEN MODDERFOKKER!</p>
+		<p class="delta">!!</p>
 
 		{{ Former::open_vertical_for_files()
             ->action(action('UserController@updateProfile'))
@@ -25,7 +25,7 @@
 				<h2>Vul vooral meer in</h2>
 				{{ Former::text('profile[church]')->label('Kerkgezindte') }}
 	            {{ Former::text('profile[study]')->label('Naam van studie') }}
-	            {{ Former::select('profile[start_date_rug]')->range(date('Y')+1, date('Y')-4)->label('Jaar waarin je begon of begint met studeren') }}
+	            {{ Former::text('profile[student_number]')->label('Studentnummer') }}
 
 	            {{ Former::text('profile[address]')->label('Adres') }}
 	            {{ Former::text('profile[zip_code]')->label('Postcode')->size(6) }}
@@ -52,7 +52,7 @@
 		<div class="secondary-column">
 			@if(Permission::has('users.edit-profile'))
 				<h2>Je profielfoto</h2>
-	            {{ Former::file('photo')->label('Upload een foto van jezelf')->accept('image') }}
+	            {{ Former::file('photo_path')->label('Upload een foto van jezelf')->accept('image') }}
 	        @endif
 
 			<h2>Je avatar</h2>

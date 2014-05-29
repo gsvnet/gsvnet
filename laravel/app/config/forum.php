@@ -9,10 +9,16 @@ return [
         	'tags' => 'discussies,nieuws'
         ],
         'GSV algemeen' => [
-        	'tags' => 'gsv,senaat'
+            'tags' => 'gsv,senaat'
         ],
         'Jaarverbanden en regio\'s' => [
-        	'tags' => 'jaarverband,regio'
+            'tags' => 'jaarverband,regio'
+        ],
+        'Amicaal Nederland' => [
+            'tags' => 'amicaal'
+        ],
+        'Oud-leden' => [
+            'tags' => 'oud-leden'
         ],
         'Maatschappij en politiek' => [
         	'tags' => 'maatschappij,politiek'

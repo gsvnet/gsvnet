@@ -23,11 +23,7 @@
         <div class="secondary-column">
             <div class="content-columns">
                 <div class="content-column">
-                    <h2>Iets specifiekers</h2>
-                    <p>Hier kan misschien iets specifiekers staan</p>
-                </div>
-                <div class="content-column">
-                    <h2>Zoals tags</h2>
+                    <h2>Tags</h2>
                     <div class="tags">
                         {{ $thread->tags->getTagList() }}
                     </div>  

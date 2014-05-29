@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{{ $title or 'GSV' }}}</title>
 
-    <meta name="description" content="{{{ $description or 'GSV' }}}" />
+    <meta name="description" content="{{{ $description or 'Gereformeerde Studenten Vereniging Groningen' }}}" />
 
     <link rel="shortcut icon" href="/favicon.png" />
 

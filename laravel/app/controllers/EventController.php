@@ -21,9 +21,14 @@ class EventController extends BaseController {
             ->with('types', Config::get('gsvnet.eventTypes'));
 
         // Setup metadata
-        $this->layout->title = 'Activiteiten - pagina ' . Input::get('page') . ' - GSVnet';
-        $this->layout->description = 'Activiteiten van de GSV';
-        $this->layout->keywords = 'Activiteiten, feesten, borrels';
+        if(Input::has('page'))
+        {
+            $this->layout->title = 'Activiteiten - pagina ' . Input::get('page');
+        } else 
+        {
+            $this->layout->title = 'Activiteiten van de GSV';
+        }
+        $this->layout->description = 'Hier is te vinden welke activiteiten de GSV allemaal op haar agenda heeft staan.';
         $this->layout->activeMenuItem = 'activiteiten';
         $this->layout->bodyID = 'events-page';
         
@@ -59,24 +64,24 @@ class EventController extends BaseController {
             ->with('types',           Config::get('gsvnet.eventTypes'));
 
         // Setup metadata
-        $this->layout->title    = 'Activiteiten in ' . ($strMonth ? $strMonth : '') . ' ' . $year . ' - GSVnet';
-        //$this->layout->description = $event->description;
+        $this->layout->title    = 'Activiteiten in ' . ($strMonth . ' ' ? $strMonth : '') . $year;
+        $this->layout->description = 'Activiteiten in ' . ($strMonth . ' ' ? $strMonth : '') . $year;
         $this->layout->activeMenuItem = 'activiteiten';
         $this->layout->keywords = 'Activiteiten, feesten, borrels';
         $this->layout->bodyID = 'events-page';
     }
 
-    public function showEvent($id)
+    public function showEvent($slug)
     {
-        $event  = $this->events->byId($id);
+        $event  = $this->events->bySlug($slug);
 
         $this->layout->content = View::make('events.show')
             ->with('event', $event)
             ->with('types', Config::get('gsvnet.eventTypes'));
 
         // Setup metadata
-        $this->layout->title        = $event->title . ' - activiteiten - GSVnet';
-        $this->layout->description  = $event->description;
+        $this->layout->title        = $event->title . ' - activiteiten';
+        $this->layout->description  = $event->meta_description;
         $this->layout->activeMenuItem = 'activiteiten';
         $this->layout->keywords     = 'Activiteiten, feesten, borrels';
         $this->layout->bodyID       = 'single-event-page';

@@ -4,7 +4,7 @@
         <h1>{{{ $event->title }}}</h1>
         <div class="main-content">
             <ul class="inline-list delta">
-               <li>{{{ $event->from_to_long() }}}</li> 
+               <li>{{{ $event->present()->from_to_long() }}}</li> 
                 @if( !empty($event->location) )
                     <li>{{{ $event->location }}}</li>
                 @endif

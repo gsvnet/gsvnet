@@ -2,8 +2,11 @@
 
 use Config;
 use Gravatar;
+use Laracasts\Presenter\PresentableTrait;
 
 class UserProfile extends \Eloquent {
+
+    use PresentableTrait;
 
     /**
      * The database table used by the model.
@@ -24,7 +27,7 @@ class UserProfile extends \Eloquent {
         'birthdate',
         'church',
         'gender',
-        'start_date_rug',
+        'student_number',
         'reunist',
         'parent_address',
         'parent_zip_code',

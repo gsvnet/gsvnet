@@ -7,6 +7,6 @@
 @section('content')
     <p>Hier info over een nieuwe aanmelding.</p>
     <pre>
-        {{ var_dump($user->toArray()) }}
+        {{ var_dump($user) }}
     </pre>
 @stop

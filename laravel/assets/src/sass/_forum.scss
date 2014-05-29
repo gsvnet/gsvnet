@@ -1,0 +1,54 @@
+.forum-post-data {
+	@include clearfix;
+	margin-bottom: .5em;
+	h6 {
+		margin-bottom: 0;
+	}
+}
+
+.comment {
+	margin-bottom: 2em;
+	border-bottom: 1px solid $lightGrey;
+
+	&:last-child {
+		margin-bottom: 0;
+		border-bottom: 0;
+	}
+}
+
+.thread {
+	margin-bottom: 2em;
+	border-bottom: 1px solid $lightGrey;
+}
+
+.avatar {
+	float: left;
+	margin-right: 1em;
+}
+
+.markdown {
+	img {
+		max-width: 100%;
+	}
+}
+
+._post {
+	.info {
+		font-family: $font-family-sans;
+	}
+}
+
+.hidden-form {
+	display: none;
+}
+
+blockquote {
+	margin-left: 0;
+	margin-right: 0;
+	padding-left: 1em;
+	border-left: 4px solid #EEE;
+}
+
+img.emo {
+	vertical-align: baseline;
+}

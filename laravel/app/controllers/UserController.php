@@ -5,6 +5,7 @@ use GSVnet\Users\UsersRepository;
 use GSVnet\Users\UserManager;
 use GSVnet\Users\Profiles\ProfileManager;
 use GSVnet\Users\YearGroupRepository;
+use GSVnet\Permissions\Permission;
 
 class UserController extends BaseController {
 
@@ -113,11 +114,11 @@ class UserController extends BaseController {
     public function updateProfile()
     {
         $user = Auth::user();
-        $input = Input::except(['potential-image']);
+        $input = Input::except(['photo_path']);
 
-        if (Input::hasFile('photo'))
+        if (Input::hasFile('photo_path'))
         {
-            $input['profile']['photo'] = Input::file('photo');
+            $input['profile']['photo_path'] = Input::file('photo_path');
         }
 
         // Check if parent address is the same as potential address
@@ -130,7 +131,11 @@ class UserController extends BaseController {
 
         // Create the profile and attach it to the user
         $profile = $this->userManager->update($user->id, $input);
-        $profile = $this->profileManager->update($user->profile->id, $input['profile']);
+
+        if(Permission::has('users.edit-profile'))
+        {
+            $profile = $this->profileManager->update($user->profile->id, $input['profile']);
+        }
 
         // Redirct to the become-member page: it shows the 3rd step [done] as active page
         return Redirect::action('UserController@showProfile');

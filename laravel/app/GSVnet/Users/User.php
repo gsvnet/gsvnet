@@ -3,8 +3,11 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Config;
+use Laracasts\Presenter\PresentableTrait;
 
 class User extends \Eloquent implements UserInterface, RemindableInterface {
+
+    use PresentableTrait;
 
     /**
      * The database table used by the model.
@@ -27,7 +30,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
     protected $hidden = array('password');
 
 
-    public $presenter = 'GSVnet\Users\UserPresenter';
+    protected $presenter = 'GSVnet\Users\UserPresenter';
 
     /**
      * Get the unique identifier for the user.
@@ -74,11 +77,6 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
         return 'remember_token';
     }
 
-    public function getFullnameAttribute()
-    {
-        return $this->firstname . ' ' . $this->middlename . ' ' . $this->lastname;
-    }
-
     /**
      * Set the password to be hashed when saved
      */
@@ -110,9 +108,30 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
                     ->withTimestamps();
     }
 
+    public function activeSenate()
+    {
+        return $this->belongsToMany('GSVnet\Senates\Senate', 'user_senate')
+            ->where('start_date', '<=', new \DateTime('now'))
+            ->where(function($q) {
+                return $q->where('end_date', '>=', new \DateTime('now'))
+                         ->orWhereNull('end_date');
+            })
+            ->withPivot('function');
+    }
+
     public function profile()
     {
         return $this->hasOne('GSVnet\Users\Profiles\UserProfile');
+    }
+
+    public function replies()
+    {
+        return $this->hasMany('GSVnet\Forum\Replies\Reply');
+    }
+
+    public function threads()
+    {
+        return $this->hasMany('GSVnet\Forum\Threads\Thread');
     }
 
     /**

@@ -16,12 +16,12 @@ class MemberController extends BaseController {
     public function __construct(
         UserManager $userManager,
         ProfilesRepository $profiles,
-        ProfileManager $profileManger,
+        ProfileManager $profileManager,
         ImageHandler $imageHandler)
     {
         parent::__construct();
         $this->userManager = $userManager;
-        $this->profileManger = $profileManger;
+        $this->profileManager = $profileManager;
         $this->profiles = $profiles;
         $this->imageHandler = $imageHandler;
     }
@@ -71,6 +71,8 @@ class MemberController extends BaseController {
         }
 
         $this->layout->bodyID = 'become-member-page';
+        $this->layout->title = 'Lid worden!';
+        $this->layout->description = 'Wil jij een vereniging waar het geloof een centrale rol speelt, een vereniging met vele toffe, diverse activiteiten en weekenden en waar je vrienden voor het leven maakt? Meld je aan!';
         $this->layout->activeMenuItem = 'lid-worden';
         $this->layout->activeSubMenuItem = 'inschrijven';
         $this->layout->content = View::make('word-lid.word-lid')
@@ -85,7 +87,9 @@ class MemberController extends BaseController {
 
         if (Input::hasFile('photo_path'))
         {
-            $input['photo'] = Input::file('photo_path');
+            $input['photo_path'] = Input::file('photo_path');
+        } else {
+            $input['photo_path'] = null;
         }
 
         // Construct a date from seperate day, month and year fields.
@@ -100,10 +104,10 @@ class MemberController extends BaseController {
         }
 
         // Create the profile and attach it to the user
-        $profile = $this->profileManger->create($user, $input);
+        $profile = $this->profileManager->create($user, $input);
 
-        // Redirct to the become-member page: it shows the 3rd step [done] as active page
-        return Redirect::action('MemberController@index');
+        // Redirect to the become-member page: it shows the 3rd step [done] as active page
+        return Redirect::action('MemberController@becomeMember');
     }
 
     public function why()
@@ -116,7 +120,7 @@ class MemberController extends BaseController {
     {
         // Guests and Potentials are not allowed to see private photos
         // but a potential can see his / her own photo
-        if ( ! Permission::has('users.show') && Auth::user()->profile->id !== $id)
+        if ( Auth::user()->profile->id !== $profile_id && ! Permission::has('users.show') )
         {
             throw new \GSVnet\Permissions\NoPermissionException;
         }
@@ -133,7 +137,7 @@ class MemberController extends BaseController {
     {
         $profile  = $this->profiles->byId($id);
         $path = $this->imageHandler->getStoragePath($profile->photo_path, $type);
-        $name = $profile->user->full_name;
+        $name = $profile->user->present()->fullName;
 
         return Response::inlinePhoto($path, $name);
     }

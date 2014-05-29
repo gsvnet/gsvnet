@@ -46,7 +46,7 @@ class CommitteesRepository {
 
     public function members($id)
     {
-        return $this->byId($id)->members;
+        return $this->byId($id)->members()->orderBy('start_date', 'DESC')->paginate(50);
     }
 
     /**

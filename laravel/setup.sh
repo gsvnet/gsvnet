@@ -4,6 +4,9 @@ echo "--- Setting up gsv.192.168.33.10.xip.io as servername ---"
 sudo vhost -d /vagrant/public -s gsv.192.168.33.10.xip.io
 cd /vagrant
 
+sudo sed -i "s@#ProxyPassMatch.*@ProxyPassMatch ^/(.*\\\.php(/.*)?)$ fcgi://127.0.0.1:9000/vagrant/public/\$1@" /etc/apache2/sites-available/gsv.192.168.33.10.xip.io.conf
+
+
 echo "--- Installing composer packages ---"
 composer install
 

@@ -1,14 +1,9 @@
 <?php namespace GSVnet\Senates;
 
-use BasePresenter, Carbon\Carbon, Config;
+use Laracasts\Presenter\Presenter, Carbon\Carbon, Config;
 
-class SenatePresenter extends BasePresenter
+class SenatePresenter extends Presenter
 {
-    public function __construct(Senate $senate)
-    {
-        $this->resource = $senate;
-    }
-
     public function senateFunction()
     {
         $functions = Config::get('gsvnet.senateFunctions');
@@ -17,9 +12,9 @@ class SenatePresenter extends BasePresenter
 
     public function nameWithYear()
     {
-        $string = $this->resource->name;
+        $string =   $this->name;
         $string .= ' (';
-    	$string .= Carbon::createFromFormat('Y-m-d', $this->resource->start_date)->format('Y');
+    	$string .= Carbon::createFromFormat('Y-m-d',   $this->start_date)->format('Y');
         $string .= ')';
 
         return $string;
@@ -27,7 +22,7 @@ class SenatePresenter extends BasePresenter
 
     public function body()
     {
-        $body = $this->resource->body;
+        $body =   $this->body;
         //$body = $this->removeDoubleSpaces($body);
         $body = $this->convertMarkdown($body);
         // $body = $this->convertNewlines($body);

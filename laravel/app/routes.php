@@ -5,9 +5,11 @@ Route::get('/', ['as' => 'home',
 ]);
 
 Route::get('/mail', function(){
+    echo 'mail verzenden';
     Mail::send('emails.testmail', [], function($message)
     {
-        $message->to('haampie@gmail.com', 'Harmen Stoppels')->subject('Testmail! Dit is om alles te testen');
+        $message->to('iemairgroi1j2@aoeigjaeorijgaorj-aegaegerg.nl', 'Harmen Stoppels')->subject('Testmail! Dit is om alles te testen');
+        $message->getHeaders()->addTextHeader('X-Mailgun-Campaign-Id', 'cga81');
     });
 });
 
@@ -28,7 +30,7 @@ Route::group(['prefix' => 'intern', 'before' => 'auth'], function() {
 
     // Only logged in users can view the member list if they have permission
     Route::group(['before' => 'has:users.show'], function() {
-        Route::get('jaarbundel',             'UserController@showUsers');
+        Route::get('jaarbundel',       'UserController@showUsers');
         Route::get('jaarbundel/{id}',  'UserController@showUser')->where('id', '[0-9]+');
     });
 });
@@ -74,7 +76,7 @@ Route::get('albums/{album}', 'PhotoController@showPhotos');
 
 // Events
 Route::get('activiteiten',                 'EventController@showIndex');
-Route::get('activiteiten/activiteit-{id}',     'EventController@showEvent');
+Route::get('activiteiten/{slug}',          'EventController@showEvent');
 // Hier filter je of de opgegeven jaar en datum goed zijn
 Route::get('activiteiten/{year}/{month?}', 'EventController@showMonth')->before('checkDate');
 
@@ -115,16 +117,16 @@ Route::group([
 
         // Gebruikers
         Route::group(['prefix' => 'gebruikers'], function() {
-            Route::resource('/',      'UsersController');
-
-            Route::post('{user}/activeren', 'UsersController@activate');
-            Route::post('{user}/accepteer-lid', 'UsersController@accept');
+            Route::post('/{user}/activeren', 'UsersController@activate');
+            Route::post('/{user}/accepteer-lid', 'UsersController@accept');
 
             Route::get('/gasten',     'UsersController@showGuests');
             Route::get('/novieten', 'UsersController@showPotentials');
             Route::get('/leden',      'UsersController@showMembers');
             Route::get('/oud-leden',  'UsersController@showFormerMembers');
         });
+
+        Route::resource('/gebruikers',      'UsersController');
     });
 });
 

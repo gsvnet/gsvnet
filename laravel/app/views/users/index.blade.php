@@ -49,5 +49,4 @@
 	<div class="column-holder">
 		{{ $members->links() }}
 	</div>
-
 @stop

@@ -1,15 +1,15 @@
 <div class="media-row img-45 {{ $thread->visited }}">
     <div class="media-details">
-        {{ $thread->author->avatar(45) }}
-        {{ $thread->replyCounter }}
+        {{ $thread->author->present()->avatar(45) }}
+        {{ $thread->present()->replyCounter }}
     </div>
     <div class="media-body">
-        <h3><a href="{{ $thread->lastPageUrl }}" title="Forum topic {{{ $thread->subject }}}">{{{ $thread->subject }}}</a></h3>
+        <h3><a href="{{ $thread->present()->lastPageUrl }}" title="Forum topic {{{ $thread->subject }}}">{{{ $thread->subject }}}</a></h3>
 
         <ul class="inline-list grey">
             <li>door <a href="{{ $thread->author->profileUrl }}">{{{ $thread->author->username }}}</a></li>
             @if($thread->mostRecentReply)
-                <li><a href="{{$thread->latestReplyUrl}}" title="Ga naar de laatste reactie van het onderwerp {{{$thread->title}}}">laatste reactie</a> {{{ $thread->updated_ago }}} door {{{ $thread->mostRecentReplier }}}</li>
+                <li><a href="{{$thread->latestReplyUrl}}" title="Ga naar de laatste reactie van het onderwerp {{{$thread->title}}}">laatste reactie</a> {{{ $thread->mostRecentReply->updated_ago }}} door {{{ $thread->present()->mostRecentReplier }}}</li>
             @endif
         </ul>
     </div>

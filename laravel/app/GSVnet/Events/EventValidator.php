@@ -6,6 +6,7 @@ class EventValidator extends Validator
 {
     static $rules = array(
         'title' => 'required',
+        'meta_description' => 'required',
         'description' => 'required',
         'type' => 'required',
         'start_date' => 'required|date_format:Y-m-d',

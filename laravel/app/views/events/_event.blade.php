@@ -4,16 +4,16 @@
     </div>
     <div class="event-body">
         <h3>
-            <a href="{{ URL::action('EventController@showEvent', $event->id) }}">
+            <a href="{{ URL::action('EventController@showEvent', $event->slug) }}">
                 {{{ $event->title}}}
             </a>
         </h3>
         <ul class="inline-list grey">
-            <li>{{{ $event->from_to_long }}}</li>
+            <li>{{{ $event->present()->from_to_long }}}</li>
             @if( !empty($event->location) )
                 <li>{{{ $event->location }}}</li>
             @endif
         </ul>
-        <p>{{ $event->description }}</p>
+        <p>{{ $event->meta_description }}</p>
     </div>
 </div>

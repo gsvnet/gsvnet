@@ -1,25 +1,17 @@
 <?php namespace GSVnet\Events;
 
-use BasePresenter, Carbon\Carbon;
+use Laracasts\Presenter\Presenter, Carbon\Carbon;
 
-class EventPresenter extends BasePresenter
+class EventPresenter extends Presenter
 {
-    public function __construct(Event $event)
+   public function start_long()
     {
-        $this->resource = $event;
-    }
-
-    /*
-     *
-     */
-    public function start_long()
-    {
-    	$string = Carbon::createFromFormat('Y-m-d', $this->resource->start_date)
+    	$string = Carbon::createFromFormat('Y-m-d',   $this->start_date)
                      ->toFormattedDateString();
 
-    	if($this->resource->whole_day == '0')
+    	if(  $this->whole_day == '0')
     	{
-    		$string .= ' om ' . Carbon::createFromFormat('H:i:s', $this->resource->start_time)->format('H:i');
+    		$string .= ' om ' . Carbon::createFromFormat('H:i:s',   $this->start_time)->format('H:i');
     	}
 
         return $string;
@@ -27,12 +19,12 @@ class EventPresenter extends BasePresenter
 
     public function start_short()
     {
-    	$string = Carbon::createFromFormat('Y-m-d', $this->resource->start_date)
+    	$string = Carbon::createFromFormat('Y-m-d',   $this->start_date)
                      ->formatLocalized('%d %b');
 
-    	if($this->resource->whole_day == '0')
+    	if(  $this->whole_day == '0')
     	{
-    		$string .= ' ' . Carbon::createFromFormat('H:i:s', $this->resource->start_time)->format('H:i');
+    		$string .= ' ' . Carbon::createFromFormat('H:i:s',   $this->start_time)->format('H:i');
     	}
 
         return $string;
@@ -46,8 +38,8 @@ class EventPresenter extends BasePresenter
     {
         $showMonth = false;
         $string = '';
-        $from = Carbon::createFromFormat('Y-m-d', $this->resource->start_date);
-        $to = Carbon::createFromFormat('Y-m-d', $this->resource->end_date);
+        $from = Carbon::createFromFormat('Y-m-d',   $this->start_date);
+        $to = Carbon::createFromFormat('Y-m-d',   $this->end_date);
 
 
         // 'vandaag', 'morgen', '[day] [mnth]'
@@ -80,9 +72,9 @@ class EventPresenter extends BasePresenter
             $string .= $from->formatLocalized(' %b');
         }
 
-        if( $this->resource->whole_day == '0' && !is_null($this->resource->start_time) )
+        if(   $this->whole_day == '0' && !is_null(  $this->start_time) )
         {
-            $time = Carbon::createFromFormat('H:i:s', $this->resource->start_time);
+            $time = Carbon::createFromFormat('H:i:s',   $this->start_time);
             $string .= ' om ' . $time->format('H:i');
         }
 
@@ -96,8 +88,8 @@ class EventPresenter extends BasePresenter
     public function from_to_long($year = false)
     {
         $string = '';
-        $from = Carbon::createFromFormat('Y-m-d', $this->resource->start_date);
-        $to = Carbon::createFromFormat('Y-m-d', $this->resource->end_date);
+        $from = Carbon::createFromFormat('Y-m-d',   $this->start_date);
+        $to = Carbon::createFromFormat('Y-m-d',   $this->end_date);
 
         $string .= $from->formatLocalized('%e');        
 
@@ -128,9 +120,9 @@ class EventPresenter extends BasePresenter
         }
 
         // Show time
-        if($this->resource->whole_day == '0')
+        if(  $this->whole_day == '0')
         {
-            $time = Carbon::createFromFormat('H:i:s', $this->resource->start_time);
+            $time = Carbon::createFromFormat('H:i:s',   $this->start_time);
             $string .= ' om ' . $time->format('H:i');
         }
 
@@ -139,9 +131,9 @@ class EventPresenter extends BasePresenter
 
     public function startHourMinute()
     {
-        if( !is_null($this->resource->start_time) )
+        if( !is_null(  $this->start_time) )
         {
-            $time = Carbon::createFromFormat('H:i:s', $this->resource->start_time);
+            $time = Carbon::createFromFormat('H:i:s',   $this->start_time);
             return $time->format('H:i:s');
         }
 

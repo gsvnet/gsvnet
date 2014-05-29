@@ -45,6 +45,7 @@ class ForumThreadsController extends BaseController implements
         $tags = $this->tags->getAllTagsBySlug(Input::get('tags'));
         $threads = $this->threads->getByTagsPaginated($tags, '', $this->threadsPerPage);
 
+
         // add the tag string to each pagination link
         $tagAppends = ['tags' => Input::get('tags')];
         $queryString = !empty($tagAppends['tags']) ? '?tags=' . implode(',', (array)$tagAppends['tags']) : '';
@@ -52,6 +53,7 @@ class ForumThreadsController extends BaseController implements
         $this->createSections(Input::get('tags'));
 
         $this->title = "Forum";
+        $this->layout->description = "Op het forum van de GSV kun je posts plaatsen en vinden over activiteiten, vraag en aanbod (van bijvoorbeeld kamers) en allerlei andere zaken.";
         $this->view('forum.threads.index', compact('threads', 'tags', 'queryString'));
         $this->layout->activeMenuItem = 'forum';
     }
@@ -61,6 +63,7 @@ class ForumThreadsController extends BaseController implements
     {
         $thread = $this->threads->getBySlug($threadSlug);
 
+
         if ( ! $thread) {
             return $this->redirectAction('ForumThreadsController@getIndex');
         }
@@ -68,7 +71,6 @@ class ForumThreadsController extends BaseController implements
         $replies = $this->threads->getThreadRepliesPaginated($thread, $this->repliesPerPage);
 
         $this->createSections($thread->getTags());
-
         // Visit the thread
         if( Auth::check() )
         {

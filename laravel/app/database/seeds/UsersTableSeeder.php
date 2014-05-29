@@ -9,7 +9,7 @@ class UsersTableSeeder extends Seeder {
 
         $count = 200;
 
-        $faker = Faker\Factory::create('en_US');
+        $faker = Faker\Factory::create();
         $faker->addProvider(new Faker\Provider\en_US\Person($faker));
         $faker->addProvider(new Faker\Provider\en_US\Address($faker));
         $faker->addProvider(new Faker\Provider\Internet($faker));
@@ -52,7 +52,7 @@ class UsersTableSeeder extends Seeder {
                     'birthdate' => $faker->dateTimeThisCentury->format('Y-m-d'),
                     'church' => 'GKV',
                     'gender' => 'male',
-                    'start_date_rug' => $faker->dateTimeThisCentury->format('Y-m-d'),
+                    'student_number' => 's' . (string) rand(1000000, 3000000),
                     'reunist' => rand(0,1),
                     'parent_address' => $faker->streetAddress,
                     'parent_zip_code' => $faker->postcode,
@@ -86,7 +86,7 @@ class UsersTableSeeder extends Seeder {
             'birthdate' => '1992-10-10',
             'church' => 'GKV',
             'gender' => 'male',
-            'start_date_rug' => '2011-08-01',
+            'student_number' => 's2151934',
             'reunist' => 0,
             'parent_address' => 'Mooiestraat 3',
             'parent_zip_code' => '9556EX',

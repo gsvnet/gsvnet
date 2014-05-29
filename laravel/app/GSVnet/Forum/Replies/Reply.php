@@ -1,7 +1,11 @@
 <?php namespace GSVnet\Forum\Replies;
 
+use Laracasts\Presenter\PresentableTrait;
+
 class Reply extends \GSVnet\Core\Entity
 {
+    use PresentableTrait;
+    
     protected $table      = 'forum_replies';
     protected $fillable   = ['body', 'author_id', 'thread_id'];
     protected $with       = ['author'];

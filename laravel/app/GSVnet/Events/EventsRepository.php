@@ -21,6 +21,28 @@ class EventsRepository {
         return $event;
     }
 
+    public function bySlug($slug)
+    {
+        $event = Event::where('slug', '=', $slug)->first();
+
+        if( ! $event )
+        {
+            \App::abort(404);
+        }
+
+        if (! $event->public and ! Permission::has('events.show-private'))
+        {
+            throw new NoPermissionException;
+        }
+
+        if (! $event->published and ! Permission::has('events.publish'))
+        {
+            throw new NoPermissionException;
+        }
+
+        return $event;
+    }
+
     public function paginate($amount = 5, $published = true)
     {
         if (Permission::has('events.show-private'))
@@ -108,13 +130,14 @@ class EventsRepository {
     private function setEventProperties($event, $properties)
     {
         // Set properties
-        $event->title       = $properties['title'];
-        $event->description = $properties['description'];
-        $event->location    = $properties['location'];
-        $event->type        = $properties['type'];
-        $event->start_date  = $properties['start_date'];
-        $event->end_date    = $properties['end_date'];
-        $event->whole_day   = $properties['whole_day'];
+        $event->title            = $properties['title'];
+        $event->meta_description = $properties['meta_description'];
+        $event->description      = $properties['description'];
+        $event->location         = $properties['location'];
+        $event->type             = $properties['type'];
+        $event->start_date       = $properties['start_date'];
+        $event->end_date         = $properties['end_date'];
+        $event->whole_day        = $properties['whole_day'];
 
         if (Permission::has('events.publish'))
         {
@@ -126,6 +149,9 @@ class EventsRepository {
         {
             $event->start_time  = $properties['start_time'];
         }
+
+        // Slug
+        $event->slug = $event->generateNewSlug();
 
         return $event;
     }

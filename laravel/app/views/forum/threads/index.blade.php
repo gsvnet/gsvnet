@@ -29,14 +29,12 @@
                 </div>
             @endif
         </div>
+
+        {{ $threads->links() }}
     </section>
 
     <div class="secondary-column">
         @include('forum._sidebar')
     </div>
-</div>
-
-<div class="column-holder">
-    {{ $threads->links() }}
 </div>
 @stop

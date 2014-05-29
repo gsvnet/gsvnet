@@ -35,7 +35,7 @@ class MembersController extends BaseController {
             'end_date' => null
         ]);
 
-        $message = "$member->full_name succesvol toegevoegd aan $committee->name";
+        $message = "$member->present()->fullName succesvol toegevoegd aan $committee->name";
         return Redirect::action('Admin\CommitteeController@show', $committee->id)
             ->withMessage($message);
     }
@@ -46,7 +46,7 @@ class MembersController extends BaseController {
         $committee = $this->committees->byId($committee);
         $committee->members()->detach($member->id);
 
-        $message = '<strong>' . $member->full_name . '</strong> is succesvol verwijderd.';
+        $message = '<strong>' . $member->present()->fullName . '</strong> is succesvol verwijderd.';
             return Redirect::action('Admin\CommitteeController@show', $committee->id)
                 ->withMessage($message);
     }

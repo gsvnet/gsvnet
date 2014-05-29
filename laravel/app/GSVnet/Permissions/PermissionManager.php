@@ -68,9 +68,16 @@ class PermissionManager implements PermissionManagerInterface
             return true;
         }
 
-        // Check if commitee criteria is matched
+        // Check if committee criteria is matched
         if (array_key_exists('committee', $criteria) and
             $this->checkCommitteeCriteria($criteria['committee']))
+        {
+            return true;
+        }
+
+        // Check senate criteria
+        if (array_key_exists('senate', $criteria) and
+            $this->checkSenateCriteria())
         {
             return true;
         }
@@ -108,5 +115,13 @@ class PermissionManager implements PermissionManagerInterface
         // Post::find(1)->comments()->where('title', '=', 'foo')->first();
         $total = $this->user->activeCommittees()->whereIn('unique_name', $committees)->count();
         return  $total > 0;
+    }
+
+    public function checkSenateCriteria()
+    {
+        $total = $this->user->activeSenate->count();
+
+        return $total > 0;
+
     }
 }

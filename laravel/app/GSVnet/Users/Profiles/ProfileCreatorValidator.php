@@ -13,7 +13,7 @@ class ProfileCreatorValidator extends Validator
             'potential-gender' => 'required|in:male,female',
             'potential-birthdate' => 'required|date_format:Y-m-d',
             'potential-church' => 'required',
-            'potential-study-year' => 'required|date_format:Y',
+            'potential-student-number' => '',
             'potential-study' => 'required',
             'parents-address' => 'required_if:parents-same-address,0',
             'parents-zip-code' => 'required_if:parents-same-address,0',

@@ -34,7 +34,7 @@ class MembersController extends BaseController {
             'function' => $input['function']
         ]);
 
-        $message = "$member->full_name succesvol toegevoegd aan $senate->name";
+        $message = "$member->present()->fullName succesvol toegevoegd aan $senate->name";
         return Redirect::action('Admin\SenateController@show', $senate->id)
             ->withMessage($message);
     }
@@ -42,11 +42,10 @@ class MembersController extends BaseController {
     public function destroy($senate, $member)
     {
         $member = $this->users->byId($member);
-        $senate = $this->committees->byId($senate);
-        $senate->members()->detach($member->id);
+        $member->senates()->detach($senate);
 
-        $message = '<strong>' . $member->full_name . '</strong> is succesvol verwijderd.';
-            return Redirect::action('Admin\SenateController@show', $senate->id)
-                ->withMessage($message);
+        $message = '<strong>' . $member->present()->fullName . '</strong> is succesvol uit de senaat geknikkerd.';
+        
+        return Redirect::action('Admin\SenateController@show', $senate)->withMessage($message);
     }
 }

@@ -14,9 +14,9 @@
                 @foreach ($activeMembers as $member)
                     <li>
                         @if( Permission::has('users.show') )
-                            <a href="{{ URL::action('UserController@showUser', [$member->id]) }}" title="Bekijk het profiel van {{{ $member->full_name }}}" class="list-title">{{{ $member->full_name }}}</a>
+                            <a href="{{ URL::action('UserController@showUser', [$member->id]) }}" title="Bekijk het profiel van {{{ $member->fullName }}}" class="list-title">{{{ $member->fullName }}}</a>
                         @else
-                            <span class="list-title">{{{ $member->full_name }}}</span>
+                            <span class="list-title">{{{ $member->fullName }}}</span>
                         @endif
 
                         <span class="list-description grey">Sinds {{ $member->inCommiteeSince }}</span>

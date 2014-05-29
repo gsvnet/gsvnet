@@ -5,14 +5,14 @@
         </div>
 
             {{ Former::file('photo_path')->label('Upload een foto van jezelf')->accept('image') }}
-            {{ Former::text('potential-address')->label('Adres') }}
-            {{ Former::text('potential-zip-code')->label('Postcode')->size(6) }}
-            {{ Former::text('potential-town')->label('Woonplaats') }}
-            {{ Former::text('potential-phone')->label('Telefoon') }}
-            {{ Former::select('potential-gender')->label('Geslacht')->options(array('male' => 'Man', 'female' => 'Vrouw')) }}
+            {{ Former::text('potential-address')->label('Adres')->required() }}
+            {{ Former::text('potential-zip-code')->label('Postcode')->size(6)->required() }}
+            {{ Former::text('potential-town')->label('Woonplaats')->required() }}
+            {{ Former::text('potential-phone')->label('Telefoon')->required() }}
+            {{ Former::select('potential-gender')->label('Geslacht')->options(array('male' => 'Man', 'female' => 'Vrouw'))->required() }}
 
             <div class="inline-form-row {{$errors->has('potential-birthdate') ? ' has-error' : ''}}">
-                <label for="potential-birth-day" class="control-label">Geboortedatum</label>
+                <label for="potential-birth-day" class="control-label">Geboortedatum<sup>*</sup></label>
                 {{
                     Former::select('potential-birth-day')->label('')->range(1, 31);
                 }}
@@ -40,9 +40,9 @@
 
             </div>
 
-            {{ Former::text('potential-church')->label('Kerkgezindte') }}
-            {{ Former::text('potential-study')->label('Naam van studie') }}
-            {{ Former::select('potential-study-year')->range(date('Y')+1, date('Y')-4)->label('Jaar waarin je begon of begint met studeren') }}
+            {{ Former::text('potential-church')->label('Kerkgezindte')->required() }}
+            {{ Former::text('potential-study')->label('Naam van studie')->required() }}
+            {{ Former::text('potential-student-number')->label('Studentnummer (alleen als je dat al hebt)')->placeholder('s1234567') }}
 
         <h2>Gegevens over je ouders</h2>
 
@@ -65,7 +65,7 @@
                 }}
             </div>
             {{
-                Former::text('parents-phone')->label('Telefoon')
+                Former::text('parents-phone')->label('Telefoon')->required()
             }}
 
     </div>

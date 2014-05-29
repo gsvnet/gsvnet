@@ -1,6 +1,6 @@
 <div class="thread-summary">
     <div class="avatar">
-    	{{ $thread->author->avatar(40) }}
+    	{{ $thread->author->present()->avatar(40) }}
     </div>
     <div class="info">
         <h3><a href="{{ $thread->url }}">{{ $thread->subject }}</a></h3>

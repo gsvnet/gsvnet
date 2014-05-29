@@ -39,7 +39,7 @@ class ProfilesRepository {
     private function search($search = '', $region = null, $yearGroup = null, $type = 2)
     {
         // Initialize basic query
-        $query = UserProfile::join('users', function($join) use ($type) {
+        $query = UserProfile::with('user', 'yearGroup')->join('users', function($join) use ($type) {
             $join->on('users.id', '=', 'user_profiles.user_id');
 
             if(is_array($type))
@@ -92,6 +92,7 @@ class ProfilesRepository {
 
         $profiles = UserProfile::whereRaw("$birthday between \"{$from}\" and \"{$to}\"")
             ->orderBy(\DB::raw($birthday))
+            ->remember(10)
             ->get(array('*', \DB::raw("{$birthday} as birthday")));
 
         return $profiles;
@@ -106,7 +107,7 @@ class ProfilesRepository {
     */
     public function create(User $user, array $input)
     {
-        $profile = UserProfile::firstOrNew(array('user_id' => $user->id));
+        $profile = UserProfile::create(array('user_id' => $user->id));
         $profile->user_id = $user->id;
         $profile->reunist = 0;
         $profile->region  = 0;
@@ -119,14 +120,14 @@ class ProfilesRepository {
         $profile->birthdate        = $input['potential-birthdate'];
         $profile->church           = $input['potential-church'];
         $profile->gender           = $input['potential-gender'];
-        $profile->start_date_rug   = $input['potential-study-year'];
+        $profile->student_number   = $input['potential-student-number'];
 
         $profile->parent_phone     = $input['parents-phone'];
         $profile->parent_address   = $input['parents-address'];
         $profile->parent_zip_code  = $input['parents-zip-code'];
         $profile->parent_town      = $input['parents-town'];
 
-        $profile->photo_path = $input['photo_path'];
+        $profile->photo_path       = $input['photo_path'];
 
         $profile->save();
         // Set user as potential

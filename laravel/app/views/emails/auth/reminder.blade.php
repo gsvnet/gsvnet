@@ -1,9 +1,10 @@
 @extends('emails.layout')
 
-@section('title')
+@section('header')
 Wachtwoord resetten
 @stop
 
 @section('content')
-	Klik hier om je wachtwoord te veranderen: {{ URL::to('password/reset', array($token)) }}.
+	<p>Klik hier om je wachtwoord te veranderen: {{ URL::action('RemindersController@getReset', array($token)) }}.</p>
+	<p>Vriendelijke groetjes van de webcie.</p>
 @stop

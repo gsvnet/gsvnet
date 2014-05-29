@@ -37,6 +37,8 @@ class PhotoController extends BaseController {
         $albums = $this->albums->paginateWithFirstPhoto($photosPerPage);
 
         $this->layout->bodyID = 'albums-page';
+        $this->layout->title = 'Fotoalbum';
+        $this->layout->description = 'Bekijk hier foto\'s van soosavonden, sing-ins, kampen, weekenden, wedstrijden, lezingen en al wat de GSV nog meer te bieden heeft.';
         $this->layout->activeMenuItem = 'foto-album';
         $this->layout->content = View::make('gallery.albums.index')->with('albums', $albums);
     }
@@ -47,6 +49,10 @@ class PhotoController extends BaseController {
         // Get the album's photos
         $photosPerPage = Config::get('photos.photos_per_page');
         $photos = $this->photos->byAlbumIdAndPaginate($album->id, $photosPerPage);
+
+
+        $this->layout->title = $album->name;
+        $this->layout->description = $album->description;
 
         $this->layout->bodyID = 'album-page';
         $this->layout->activeMenuItem = 'foto-album';

@@ -12,7 +12,7 @@
         {{ Former::open()->action(URL::action('RemindersController@postRemind')) }}
         {{ Former::text('email')->label('Je emailadres') }}
         <div class="control-group">
-            <input type="submit" id="submit" value="Stuur nieuw wachtwoord" class="button">
+            <input type="submit" id="submit" value="Stuur mij een reset-link" class="button">
         </div>
         {{ Former::close() }}
     </div>
