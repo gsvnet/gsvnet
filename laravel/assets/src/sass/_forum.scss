@@ -26,7 +26,9 @@
 	margin-right: 1em;
 }
 
-.markdown {
+.body {
+	margin-bottom: 1.5em;
+
 	img {
 		max-width: 100%;
 	}
@@ -35,6 +37,11 @@
 ._post {
 	.info {
 		font-family: $font-family-sans;
+	}
+
+	.author {
+		display: block;
+		line-height: 1;
 	}
 }
 

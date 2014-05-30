@@ -11,7 +11,7 @@
         <p class="delta">Dit is het forum van de GSV hier kan worden gepost over activiteiten, vraag en aanbod, interne en externe aangelegenheid en praktisch alles wat je kwijt wil.</p>
     @endif
 
-    <section class="main-content forum">
+    <section class="main-content forum has-border-bottom">
 
         <div class="threads media-rows has-counters">
             {{-- Loop over the threads and display the thread summary partial --}}

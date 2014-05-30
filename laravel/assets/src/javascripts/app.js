@@ -11,7 +11,8 @@ app = (function() {
 		'senate-page': senate,
 		'events-page': events,
 		'event-page': events,
-		'edit-profile-page': editProfile
+		'edit-profile-page': editProfile,
+		'thread-page': thread
 	}
 
 	function home() {
@@ -30,22 +31,24 @@ app = (function() {
 				video.pause();
 		    };
 
-		// Play/pause video on click.
-		$('#play-video-link').click(function(){
-			if (video.paused) {
-				play();
-			} else {
-				pause();
-			}
-		});
+		if( video ) {
+			// Play/pause video on click.
+			$('#play-video-link').click(function(){
+				if (video.paused) {
+					play();
+				} else {
+					pause();
+				}
+			});
 
-		// Pause video if it is playing
-		$('#homepage-carousel').on('slide.bs.carousel', function () {
-			if(!video.paused)
-			{
-				pause();
-			}
-		});
+			// Pause video if it is playing
+			$('#homepage-carousel').on('slide.bs.carousel', function () {
+				if(!video.paused)
+				{
+					pause();
+				}
+			});
+		}
 	}
 
 	function editProfile() {
@@ -182,6 +185,33 @@ app = (function() {
 		});
 
 		Menu.init($mainMenu, $('.top-caret'), $('#navbar-toggler'));
+	}
+
+	function thread() {
+        var replyForm = $('#body');
+		function formatForumQuote(author, quote)
+		{
+			// add author name
+			quote = "**" + author + "** schreef:\n\n" + quote;
+
+			// add markdown quote tags
+			quote = quote.replace(/^/g, ">");
+			quote = quote.replace(/\n/g, "\n>");
+
+			return quote;
+		}
+
+		$('._quote_forum_post').click(function(e) {
+	        var quoteBody = $(this).closest('._post').data('quote-body');
+	        var authorName = $(this).closest('._post').data('author-name');
+
+	        var quoteText = formatForumQuote($.parseJSON(authorName), $.parseJSON(quoteBody));
+
+	        replyForm.val(replyForm.val() + quoteText).focus();
+	        $('html,body').animate({
+				scrollTop: replyForm.offset().top
+			}, 300);
+	    });
 	}
 
 	return {

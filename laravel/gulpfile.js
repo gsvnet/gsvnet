@@ -6,16 +6,14 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var beautify = require('gulp-beautify');
 var imagemin = require('gulp-imagemin');
-var sprite = require('gulp-sprite');
+var sprite = require('gulp-spritesmith');
 
 gulp.task('sprite', function(){
   return gulp.src('assets/src/sprite-images/**/*.png')
     .pipe(sprite('sprite.png', {
-      imagePath: 'public/images/',
-      cssPath: 'assets/src/sass/icons',
-      preprocessor: 'scss'
-    }))
-    .pipe(gulp.dest('public/images/'));
+      destImg: 'public/images/',
+      destCSS: 'assets/src/sass/'
+    }));
 });
 
 gulp.task('css', function(){
@@ -30,7 +28,7 @@ gulp.task('css', function(){
     })
  		.pipe(minify())
  		.pipe(autoprefixer('last 20 versions', '> 5%'))
-		.pipe(gulp.dest('public/tmp/'));
+		.pipe(gulp.dest('public/stylesheets/'));
 });
 
 gulp.task('images', function(){
@@ -45,20 +43,20 @@ gulp.task('images', function(){
 
 gulp.task('scripts', function() {
   return gulp.src([
-      'assets/javascripts/components/modernizr.js',
-      'assets/javascripts/components/jquery-1.10.1.min.js',
-      'assets/javascripts/components/list-to-menu.js',
-      'assets/javascripts/components/load-image.min.js',
-      'assets/javascripts/components/matchmedia.js',
-  		'assets/javascripts/components/picturefill.js',
-      'assets/javascripts/components/list.min.js',
-  		'assets/javascripts/components/list.fuzzysearch.min.js',
-  		'assets/javascripts/components/carousel.js',
-      'assets/javascripts/components/magnific-popup-0.9.9.js',
-      'assets/javascripts/components/magnific-popup-translation.js',
-  		'assets/javascripts/menu.js',
-  		'assets/javascripts/word-lid.js',
-  		'assets/javascripts/app.js'
+      'assets/src/javascripts/components/modernizr.js',
+      'assets/src/javascripts/components/jquery-1.10.1.min.js',
+      'assets/src/javascripts/components/list-to-menu.js',
+      'assets/src/javascripts/components/load-image.min.js',
+      'assets/src/javascripts/components/matchmedia.js',
+  		'assets/src/javascripts/components/picturefill.js',
+      'assets/src/javascripts/components/list.min.js',
+  		'assets/src/javascripts/components/list.fuzzysearch.min.js',
+  		'assets/src/javascripts/components/carousel.js',
+      'assets/src/javascripts/components/magnific-popup-0.9.9.js',
+      'assets/src/javascripts/components/magnific-popup-translation.js',
+  		'assets/src/javascripts/menu.js',
+  		'assets/src/javascripts/word-lid.js',
+  		'assets/src/javascripts/app.js'
   	])
     .pipe(concat("app.js"))
   	.pipe(uglify())
@@ -66,12 +64,12 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('default', ['scripts', 'css'], function(){
-  gulp.watch('assets/javascripts/**/*.js', ['scripts']);
+  gulp.watch('assets/src/javascripts/**/*.js', ['scripts']);
   gulp.watch('assets/src/sass/**/*.scss', ['css']);
 });
 
 gulp.task('watch-scripts', ['scripts'], function(){
-  gulp.watch('assets/javascripts/*.js', ['scripts']);
+  gulp.watch('assets/src/javascripts/*.js', ['scripts']);
 });
 
 gulp.task('watch-css', ['css'], function(){

@@ -78,6 +78,7 @@ class ForumThreadsController extends BaseController implements
         }
 
         $this->title = $thread->subject;
+        $this->layout->bodyID = 'thread-page';
         $this->view('forum.threads.show', compact('thread', 'replies'));
         $this->layout->activeMenuItem = 'forum';
     }

@@ -4,6 +4,7 @@
 .carousel-inner {
   position: relative;
   overflow: hidden;
+  height: 100%;
   width: 100%;
   top: 0;
   left: 0;
@@ -22,6 +23,10 @@
   display: none;
   position: relative;
   transition: 0.6s ease-in-out left;
+
+  &.video-item {
+    height: 100%;
+  }
 
   @media all and (-webkit-transform-3d) {
     -webkit-transition: 0.6s -webkit-transform ease-in-out;

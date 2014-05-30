@@ -173,6 +173,12 @@
   .slideshow-wrap {
     overflow: hidden;
   }
+
+  .video-playing {
+    .slide-description-wrapper {
+      opacity: 1;
+    }
+  }
 }
 
 
