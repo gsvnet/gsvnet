@@ -1,4 +1,4 @@
-<div class="comment _post" id="reactie-{{ $reply->id }}" data-author-name='{{ json_encode($thread->author->username, JSON_HEX_QUOT|JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS) }}' data-quote-body='{{ json_encode($thread->body, JSON_HEX_QUOT|JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS) }}'>
+<div class="comment _post" id="reactie-{{ $reply->id }}" data-author-name='{{ json_encode($reply->author->username, JSON_HEX_QUOT|JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS) }}' data-quote-body='{{ json_encode($reply->body, JSON_HEX_QUOT|JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS) }}'>
     <div class="forum-post-data">
         <div class="avatar">
             {{ $reply->author->present()->avatar(40) }}

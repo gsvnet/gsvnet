@@ -110,6 +110,7 @@ class ForumRepliesController extends BaseController implements
             return Redirect::to('/');
         }
 
+        $this->title = "Reactie verwijderen";
         $this->view('forum.replies.delete', compact('reply'));
     }
 

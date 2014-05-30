@@ -8,7 +8,7 @@
 
     <div class="main-content">
         {{ Former::open()->action(action('ForumRepliesController@postEditReply', [$reply->id])) }}
-        {{ Former::populate($reply->resource) }}
+        {{ Former::populate($reply) }}
         {{ Former::textarea('body')->label('Reactie')->placeholder('Reactie')->rows(10) }}
 
         <div class="control-group">

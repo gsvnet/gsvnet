@@ -9,7 +9,7 @@
 
     <div class="main-content">
         <div class="reply-form">
-            {{ Form::model($thread->resource) }}
+            {{ Form::model($thread, ['method' => 'delete']) }}
                 <div class="form-row">
                     <label class="field-title">Weet je het heel zeker?</label>
                 </div>

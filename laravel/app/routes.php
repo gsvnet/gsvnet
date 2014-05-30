@@ -132,7 +132,7 @@ Route::group([
 
 // Forum
 Route::group(['prefix' => 'forum', 'before' => ['auth', 'approved']], function() {
-    // Edit rotues
+    // Edit routes
     Route::get('bewerk-onderwerp/{threadId}',  'ForumThreadsController@getEditThread');
     Route::post('bewerk-onderwerp/{threadId}', 'ForumThreadsController@postEditThread');
     Route::get('bewerk-reactie/{replyId}',     'ForumRepliesController@getEditReply');
@@ -159,4 +159,6 @@ Route::get('forum/zoek', 'ForumThreadsController@getSearch');
 Route::get('forum/{slug}/reactie/{commentId}', 'ForumRepliesController@getReplyRedirect')
     ->before('threads.show');
 Route::get('forum/{slug}', 'ForumThreadsController@getShowThread')
+    ->before('threads.show');
+Route::get('forum-api/reactie/{commentId?}', 'ForumThreadsController@getUnformattedJson')
     ->before('threads.show');
