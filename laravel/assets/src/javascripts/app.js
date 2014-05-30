@@ -208,9 +208,9 @@ app = (function() {
 	        var quoteText = formatForumQuote($.parseJSON(authorName), $.parseJSON(quoteBody));
 
 	        replyForm.val(replyForm.val() + quoteText).focus();
-	        $('html,body').animate({
-				scrollTop: replyForm.offset().top
-			}, 300);
+			// $('html,body').animate({
+			// 	scrollTop: replyForm.offset().top
+			// }, 300);
 	    });
 	}
 

@@ -160,5 +160,3 @@ Route::get('forum/{slug}/reactie/{commentId}', 'ForumRepliesController@getReplyR
     ->before('threads.show');
 Route::get('forum/{slug}', 'ForumThreadsController@getShowThread')
     ->before('threads.show');
-Route::get('forum-api/reactie/{commentId?}', 'ForumThreadsController@getUnformattedJson')
-    ->before('threads.show');

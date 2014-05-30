@@ -8,10 +8,11 @@ class ReplyPresenter extends Presenter
     // don't use this with $thread->replies, because it fires 4 queries per reply extra
     public function url()
     {
+
         $slug = $this->thread->slug;
         $threadUrl = action('ForumThreadsController@getShowThread', [$slug]);
 
-        return $threadUrl . \App::make('GSVnet\Forum\Replies\ReplyQueryStringGenerator')->generate( $this );
+        return $threadUrl . \App::make('GSVnet\Forum\Replies\ReplyQueryStringGenerator')->generate( $this->entity );
     }
 
     public function created_ago()

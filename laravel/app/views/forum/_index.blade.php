@@ -7,7 +7,7 @@
         @if(Input::has('tags'))
             <p class="tags delta">Onderwerpen met de tags {{{ Input::get('tags') }}}.</p>
         @else
-            <p class="tags">Alle ondewerpen</p>
+            <p class="tags">Alle onderwerpen</p>
         @endif
         
         <section class="main-content forum">

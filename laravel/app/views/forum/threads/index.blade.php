@@ -3,9 +3,9 @@
 @section('content')
 <div class="column-holder">
     <h1>Forum</h1>
-    @if(Input::get('tags', null))
+    @if(Input::has('tags'))
         <p class="delta">
-            Onderwerpen met de tags {{ Input::get('tags') }}
+            Onderwerpen met de tags {{{ str_replace(',', ', ', Input::get('tags')) }}}
         </p>
     @else
         <p class="delta">Dit is het forum van de GSV hier kan worden gepost over activiteiten, vraag en aanbod, interne en externe aangelegenheid en praktisch alles wat je kwijt wil.</p>
@@ -20,8 +20,8 @@
             {{-- If no comments are found display a message --}}
             @if( ! $threads->count())
                 <div class="empty-state">
-                    @if(Input::get('tags'))
-                        <h3>Geen onderwerpen gevonden met de tags {{ Input::get('tags') }}</h3>
+                    @if(Input::has('tags'))
+                        <h3>Geen onderwerpen gevonden met de tags {{{ str_replace(',', ', ', Input::get('tags')) }}}</h3>
                     @else
                         <h3>Geen onderwerpen gevonden.</h3>
                     @endif

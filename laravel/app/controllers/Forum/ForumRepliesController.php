@@ -60,8 +60,7 @@ class ForumRepliesController extends BaseController implements
 
     public function replyCreated($reply)
     {
-        $replyPresenter = new ReplyPresenter($reply);
-        return $this->redirectTo($replyPresenter->url);
+        return $this->redirectTo($replyPresenter->present()->url);
     }
 
     // edit a reply
@@ -98,7 +97,7 @@ class ForumRepliesController extends BaseController implements
 
     public function replyUpdated($reply)
     {
-        return $this->redirectAction('ForumThreadsController@getShowThread', [$reply->thread->slug]);
+        return $this->redirectTo($reply->present()->url);
     }
 
     // reply deletion
