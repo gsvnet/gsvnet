@@ -103,7 +103,7 @@ class AlbumsRepository
         $album->name        = $input['name'];
         $album->description = $input['description'];
         $album->public      = $input['public'];
-        $album->slug        = $this->generateNewSlug();
+        $album->slug        = $album->generateNewSlug();
 
         $album->save();
 
