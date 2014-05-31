@@ -6,7 +6,7 @@
 	@include('admin.files.create')
 
 	<h2>Bestanden</h2>
-	<table class='table table-bordered'>
+	<table class='table table-striped table-hover sort-table'>
 		<thead>
 			<tr>
 				<th>Naam</th>

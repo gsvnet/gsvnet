@@ -6,21 +6,12 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var beautify = require('gulp-beautify');
 var imagemin = require('gulp-imagemin');
-var sprite = require('gulp-spritesmith');
-
-gulp.task('sprite', function(){
-  return gulp.src('assets/src/sprite-images/**/*.png')
-    .pipe(sprite('sprite.png', {
-      destImg: 'public/images/',
-      destCSS: 'assets/src/sass/'
-    }));
-});
 
 gulp.task('css', function(){
-	return gulp.src('assets/src/sass/screen.scss')
+	return gulp.src('assets/src/front/sass/screen.scss')
 		.pipe(compass({
 			config_file: 'config.rb',
-			sass: 'assets/src/sass',
+			sass: 'assets/src/front/sass',
       css: 'public/stylesheets'
 		}))
     .on('error', function(err) {
@@ -43,35 +34,41 @@ gulp.task('images', function(){
 
 gulp.task('scripts', function() {
   return gulp.src([
-      'assets/src/javascripts/components/modernizr.js',
-      'assets/src/javascripts/components/jquery-1.10.1.min.js',
-      'assets/src/javascripts/components/list-to-menu.js',
-      'assets/src/javascripts/components/load-image.min.js',
-      'assets/src/javascripts/components/matchmedia.js',
-  		'assets/src/javascripts/components/picturefill.js',
-      'assets/src/javascripts/components/list.min.js',
-  		'assets/src/javascripts/components/list.fuzzysearch.min.js',
-  		'assets/src/javascripts/components/carousel.js',
-      'assets/src/javascripts/components/magnific-popup-0.9.9.js',
-      'assets/src/javascripts/components/magnific-popup-translation.js',
-  		'assets/src/javascripts/menu.js',
-  		'assets/src/javascripts/word-lid.js',
-  		'assets/src/javascripts/app.js'
-  	])
+      'assets/src/components/javascripts/modernizr.js',
+      'assets/src/components/javascripts/jquery-1.10.1.min.js',
+      'assets/src/components/javascripts/list-to-menu.js',
+      'assets/src/components/javascripts/load-image.min.js',
+      'assets/src/components/javascripts/matchmedia.js',
+  		'assets/src/components/javascripts/picturefill.js',
+      'assets/src/components/javascripts/list.min.js',
+  		'assets/src/components/javascripts/list.fuzzysearch.min.js',
+  		'assets/src/components/javascripts/carousel.js',
+      'assets/src/components/javascripts/magnific-popup-0.9.9.js',
+      'assets/src/components/javascripts/magnific-popup-translation.js',
+      'assets/src/front/javascripts/menu.js',
+      'assets/src/front/javascripts/word-lid.js',
+      'assets/src/front/javascripts/app.js'
+    ])
     .pipe(concat("app.js"))
-  	.pipe(uglify())
+    .pipe(uglify())
+    .pipe(gulp.dest('public/build-javascripts/'))
+});
+
+gulp.task('backend-scripts', function() {
+  return gulp.src([
+      'assets/src/components/javascripts/jquery-1.10.1.min.js',
+      'assets/src/components/javascripts/bootstrap.js',
+      'assets/src/components/javascripts/dropzone.js',
+      'assets/src/components/javascripts/jquery.tablesorter.min.js',
+      'assets/src/back/javascripts/multi-upload.js',
+      'assets/src/back/javascripts/general.js'
+    ])
+    .pipe(concat("admin.js"))
+    .pipe(uglify())
     .pipe(gulp.dest('public/build-javascripts/'))
 });
 
 gulp.task('default', ['scripts', 'css'], function(){
-  gulp.watch('assets/src/javascripts/**/*.js', ['scripts']);
-  gulp.watch('assets/src/sass/**/*.scss', ['css']);
-});
-
-gulp.task('watch-scripts', ['scripts'], function(){
-  gulp.watch('assets/src/javascripts/*.js', ['scripts']);
-});
-
-gulp.task('watch-css', ['css'], function(){
-  gulp.watch('assets/src/sass/**/*.scss', ['css']);
+  gulp.watch('assets/src/front/javascripts/**/*.js', ['scripts']);
+  gulp.watch('assets/src/front/sass/**/*.scss', ['css']);
 });

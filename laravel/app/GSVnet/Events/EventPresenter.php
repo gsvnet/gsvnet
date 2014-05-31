@@ -133,10 +133,30 @@ class EventPresenter extends Presenter
     {
         if( !is_null(  $this->start_time) )
         {
-            $time = Carbon::createFromFormat('H:i:s',   $this->start_time);
+            $time = Carbon::createFromFormat('H:i:s', $this->start_time);
             return $time->format('H:i:s');
         }
 
         return '';
+    }
+
+    public function startDateISO8601()
+    {
+
+        if( $this->whole_day && ! is_null( $this->start_time ) )
+        {
+            $startDate = Carbon::createFromFormat('Y-m-d', $this->start_date);
+            $startTime = Carbon::createFromFormat('H:i:s', $this->start_time);
+            $startDate->setTime($startTime->hour, $startTime->minute, $startTime->second);
+
+            return $startDate->toISO8601String();
+        }
+
+        return $this->start_date;
+    }
+
+    public function endDateISO8601()
+    {
+        return $this->end_date;
     }
 }

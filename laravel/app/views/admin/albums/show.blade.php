@@ -73,9 +73,3 @@
         </div>
     </section>
 @stop
-
-@section('javascripts')
-    @parent
-    <script src="/javascripts/magnific-popup-0.9.4.js"></script>
-    <script src="/javascripts/fotos.js"></script>
-@stop

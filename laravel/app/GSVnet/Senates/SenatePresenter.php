@@ -14,10 +14,15 @@ class SenatePresenter extends Presenter
     {
         $string =   $this->name;
         $string .= ' (';
-    	$string .= Carbon::createFromFormat('Y-m-d',   $this->start_date)->format('Y');
+        $string .= Carbon::createFromFormat('Y-m-d',   $this->start_date)->format('Y');
         $string .= ')';
 
         return $string;
+    }
+
+    public function year()
+    {
+        return Carbon::createFromFormat('Y-m-d',   $this->start_date)->format('Y');
     }
 
     public function body()

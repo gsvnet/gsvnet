@@ -7,10 +7,11 @@
 	@include('admin.senates.create')
 
 	<h2>Senaten bewerken</h2>
-	<table class='table table-bordered'>
+	<table class='table table-striped table-hover sort-table'>
 		<thead>
 			<tr>
 				<th>Naam</th>
+				<th>Jaar</th>
 				<td>Leden</td>
                 <td>Laatst bewerkt</td>
 			</tr>
@@ -21,6 +22,10 @@
 				<td><a href="{{ URL::action('Admin\SenateController@show', $senate->id) }}" alt="{{ $senate->name }}">
 					{{{ $senate->name }}}
 				</a></td>
+
+				<td>
+					{{{ $senate->present()->year }}}
+				</td>
 				<td>
 					<ul>
 						@foreach($senate->members as $member)

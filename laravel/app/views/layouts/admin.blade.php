@@ -13,21 +13,7 @@
       <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <link rel="stylesheet" href="/stylesheets/admin.css">
 
-      <style type="text/css">
-        .add-form {
-          /*display: none;*/
-        }
-      </style>
-
-      <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.0/journal/bootstrap.min.css"> -->
       <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.0/yeti/bootstrap.min.css">
-      <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.0/lumen/bootstrap.min.css"> -->
-
-      <style>
-      body {
-        font-size: 150%;
-      }
-      </style>
 
     @show
     <link rel="shortcut icon" href="/favicon.png" />
@@ -87,23 +73,7 @@
 
 
     @section('javascripts')
-      <!-- Bootstrap core JavaScript
-      ================================================== -->
-      <!-- Placed at the end of the document so the pages load faster -->
-      <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-      <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-      <script src="/javascripts/components/dropzone.js"></script>
-      <script src="/javascripts/multi-upload.js"></script>
-
-      <script>
-        $(document).ready(function() {
-            $('.add-item').on('click', function () {
-                $('.add-form').toggle('fast');
-            });
-            // Hide success message after 2.5 seconds
-            $('.alert.alert-success').delay(2500).slideUp(500);
-        });
-    </script>
+      <script src="/build-javascripts/admin.js"></script>
     @show
   </body>
 </html>

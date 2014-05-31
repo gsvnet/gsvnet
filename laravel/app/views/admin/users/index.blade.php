@@ -34,10 +34,12 @@
 	<h2>Lijst met mensen</h2>
     <!-- Hier nog zoiets doen: select count(*), type from users group by type -->
     <!-- Hier nog zoiets doen: select count(*), type from users where approved = 0   group by type -->
-	<table class='table table-bordered'>
+	<table class='table table-striped table-hover sort-table' style="width:auto;">
 		<thead>
 			<tr>
-				<th>Naam</th>
+				<th>Voornaam</th>
+                <th>tussenvoegsel</th>
+                <th>Achternaam</th>
                 <th>Email</th>
                 <th>Soort</th>
                 <th>Superkrachten</th>
@@ -46,10 +48,18 @@
 		<tbody>
 			@foreach($users as $user)
 			<tr>
-				<td>
+                <td>
                 <a href="{{ URL::action('Admin\UsersController@show', $user->id) }}" alt="{{ $user->present()->fullName }}">
-					{{{ $user->present()->fullName }}}
-				</a>
+                    {{{ $user->firstname }}}
+                </a>
+                </td>
+
+                <td>
+                {{{ $user->middlename }}}
+                </td>
+
+                <td>
+                {{{ $user->lastname }}}
                 </td>
 
                 <td>

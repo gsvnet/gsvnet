@@ -7,7 +7,7 @@
 	<div class="spacer row">
 		<div class="col-xs-12 col-md-6">
 			<h2>Commissies bewerken</h2>
-			<table class='table table-bordered'>
+			<table class='table table-striped table-hover sort-table'>
 				<thead>
 					<tr>
 						<th>Naam</th>

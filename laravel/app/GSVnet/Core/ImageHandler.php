@@ -141,7 +141,9 @@ class ImageHandler
         if ($img->width() > $dimensions[0] or $img->height() > $dimensions[1])
         {
             // Resize the image while maintaining correct aspect ratio
-            $img->resize($dimensions[0], $dimensions[1], true);
+            $img->resize($dimensions[0], $dimensions[1], function($constraint) {
+                $constraint->aspectRatio();
+            });
             // finally we save the image as a new image
             $img->save($this->basePath . $path);
         }
@@ -170,9 +172,13 @@ class ImageHandler
         }
 
         // Check for exif data and rotate if needed
-        $orientation = $img->exif('Orientation');
+        try {
+            $orientation = $img->exif('Orientation');
+        } catch (\Intervention\Image\Exception\NotSupportedException $e) {
+            return false;
+        }
 
-        if(!is_null($orientation))
+        if( $orientation )
         {
             switch($orientation) {
                 case 8:
