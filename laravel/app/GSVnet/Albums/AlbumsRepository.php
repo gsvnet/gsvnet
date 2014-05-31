@@ -103,7 +103,7 @@ class AlbumsRepository
         $album->name        = $input['name'];
         $album->description = $input['description'];
         $album->public      = $input['public'];
-        $album->slug        = $this->createSlug($album->name);
+        $album->slug        = $this->generateNewSlug();
 
         $album->save();
 
@@ -123,8 +123,8 @@ class AlbumsRepository
 
         $album->name        = $input['name'];
         $album->description = $input['description'];
-        $album->public       = $input['public'];
-        $album->slug        = $this->createSlug($album->name);
+        $album->public      = $input['public'];
+        $album->slug        = $album->generateNewSlug();
 
         $album->save();
 
@@ -147,20 +147,5 @@ class AlbumsRepository
         // App::make('PhotoManager')->deleteAlbumPhotos($id)
 
         return $album;
-    }
-
-    /**
-    * Create slug from name
-    * Add an integer if the name's slug is nog unique
-    *
-    * @param string $name
-    * @return string $slug
-    */
-    private function createSlug($name)
-    {
-        $slug = Str::slug($name);
-        $count = Album::count() + 1;
-
-        return $count . '-' . $slug;
     }
 }

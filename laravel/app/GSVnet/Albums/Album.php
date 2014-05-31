@@ -61,4 +61,39 @@ class Album extends \Eloquent {
     {
         return $value == 1 ? true : null;
     }
+
+    public function generateNewSlug()
+    {
+        $i = 0;
+
+        while ($this->getCountBySlug($this->generateSlugByIncrementer($i)) > 0) {
+            $i++;
+        }
+
+        return $this->generateSlugByIncrementer($i);
+    }
+
+    private function getCountBySlug($slug)
+    {
+        $query = static::where('slug', '=', $slug);
+
+        if ($this->exists) {
+            $query->where('id', '!=', $this->id);
+        }
+
+        return $query->count();
+    }
+
+    private function generateSlugByIncrementer($i)
+    {
+        if ($i == 0)
+        {
+            $append = '';
+        } else
+        {
+            $append = '-' . $i;
+        }
+
+        return \Str::slug("{$this->name}" . $append);
+    }
 }
