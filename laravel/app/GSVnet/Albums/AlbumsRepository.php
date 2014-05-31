@@ -86,7 +86,7 @@ class AlbumsRepository
      */
     public function bySLug($slug)
     {
-        return Album::whereSlug($slug)->firstOrFail();
+        return Album::where('slug', '=', $slug)->first();
     }
 
 
