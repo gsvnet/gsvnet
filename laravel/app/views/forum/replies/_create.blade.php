@@ -9,5 +9,5 @@
 </div>
 <div class="secondary-column">
     <h2>Een reactie schrijven</h2>
-    <p>De opmaak van je reactie gaat met behulp van Markdown. Dat heeft er vooral mee te maken dat de mede-oprichter van de site Mark heet, maar het is ook handig. Google maar even.</p>
+    <p>De opmaak van je reactie gaat met behulp van Markdown. Op internet staat wel hoe dat werkt.</p>
 </div>
