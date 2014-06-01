@@ -72,8 +72,7 @@ Route::group(array('prefix' => 'word-lid'), function() {
 
 // Albums
 Route::get('albums',         'PhotoController@showAlbums');
-// Route::get('albums/{slug}',  'PhotoController@showPhotos');
-
+Route::get('albums/{slug}',  'PhotoController@showPhotos');
 // Events
 Route::get('activiteiten',                 'EventController@showIndex');
 Route::get('activiteiten/{slug}',          'EventController@showEvent');
