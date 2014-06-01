@@ -126,6 +126,7 @@ class FilesRepository
         {
             $file->published = $input['published'];
         }
+        
         $file->save();
 
         // Reset the selected labels

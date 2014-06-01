@@ -81,9 +81,9 @@ class FilesController extends BaseController {
 
     public function update($id)
     {
-        $input = Input::all();
+        $input = Input::except('published');
         $input['file'] = Input::file('file');
-        $input['published'] = Input::get('published', false);
+        $input['published'] = Input::get('published', false) == '1';
 
         $file = $this->manager->update($id, $input);
 
