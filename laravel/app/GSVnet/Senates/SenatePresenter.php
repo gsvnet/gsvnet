@@ -27,7 +27,7 @@ class SenatePresenter extends Presenter
 
     public function bodyFormatted()
     {
-        return $this->convertMarkdown($this->$body);
+        return $this->convertMarkdown($this->body);
     }
 
     private function convertMarkdown($content)
