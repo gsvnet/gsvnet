@@ -25,10 +25,7 @@ $app = new Illuminate\Foundation\Application;
 */
 
 $env = $app->detectEnvironment(array(
-
-	'local' => array('local'),
-	'harmenconfig' => array('Harmen_Laptop')
-
+	'local' => array('homestead')
 ));
 
 /*
