@@ -1,28 +1,30 @@
 @section('content')
 
     <div class="column-holder" role="main">
-        <h1>{{ $committee->name }}</h1>
+        <h1>{{{ $committee->name }}}</h1>
 
         <div class="main-content">
             <p>
-                {{ $committee->description }}
+                {{{ $committee->description }}}
             </p>
 
-            <h2>Leden</h2>
+            @if( $activeMembers->count() > 0 )
+                <h2>Leden</h2>
 
-            <ul class="unstyled-list title-description-list">
-                @foreach ($activeMembers as $member)
-                    <li>
-                        @if( Permission::has('users.show') )
-                            <a href="{{ URL::action('UserController@showUser', [$member->id]) }}" title="Bekijk het profiel van {{{ $member->fullName }}}" class="list-title">{{{ $member->fullName }}}</a>
-                        @else
-                            <span class="list-title">{{{ $member->fullName }}}</span>
-                        @endif
+                <ul class="unstyled-list title-description-list">
+                    @foreach ($activeMembers as $member)
+                        <li>
+                            @if( Permission::has('users.show') )
+                                <a href="{{ URL::action('UserController@showUser', [$member->id]) }}" title="Bekijk het profiel van {{{ $member->fullName }}}" class="list-title">{{{ $member->present()->fullName }}}</a>
+                            @else
+                                <span class="list-title">{{{ $member->present()->fullName }}}</span>
+                            @endif
 
-                        <span class="list-description grey">Sinds {{ $member->inCommiteeSince }}</span>
-                    </li>
-                @endforeach
-            </ul>
+                            <span class="list-description grey">Sinds {{ $member->present()->inCommiteeSince }}</span>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
         </div>
 
         <div id="committees" class="secondary-column">

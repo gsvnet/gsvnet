@@ -41,7 +41,7 @@ class AboutController extends BaseController {
         $activeMembers = $committee->activeMembers;
 
         $this->layout->bodyID = 'committee-page';
-        $this->layout->title = $committee . ' - Commissies van de GSV';
+        $this->layout->title = $committee->name . ' - Commissies van de GSV';
         $this->layout->description = $committee->description;
         $this->layout->activeMenuItem = 'de-gsv';
         $this->layout->activeSubMenuItem = 'commissies';
