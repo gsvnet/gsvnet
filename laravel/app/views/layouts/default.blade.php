@@ -42,16 +42,18 @@
         <address class="address-info" itemscope itemtype="http://data-vocabulary.org/Organization">
             <p>
                 <span itemprop="name">Gereformeerde Studenten Vereniging</span>. 
-                <span itemprop="address" itemscope 
-                  itemtype="http://data-vocabulary.org/Address">
-                  <span itemprop="street-address">Hereweg 40</span>, 
-                  <span itemprop="locality">Groningen</span>.
+                <span itemprop="address" itemscope itemtype="http://data-vocabulary.org/Address">
+                    <span itemprop="street-address">Hereweg 40</span>, 
+                    <span itemprop="locality">Groningen</span>.
+                    <meta itemprop="region" content="Groningen" />
+                    <meta itemprop="country-name" content="Nederland" />
                 </span>
                 <a href="http://www.gsvnet.nl/" itemprop="url">gsvnet.nl</a>.
+                <a href="/de-gsv/contact" title="Contact">Contactgegevens</a>
             </p>
-            <meta itemprop="region" content="Groningen" />
             <meta itemprop="latitude" content="53.2093731" />
             <meta itemprop="longitude" content="6.5723083" />
+            <p></p>
         </address>
     </footer>
 
