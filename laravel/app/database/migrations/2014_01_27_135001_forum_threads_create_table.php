@@ -17,9 +17,7 @@ class ForumThreadsCreateTable extends Migration {
 			$t->integer('author_id');
 			$t->string('subject');
 			$t->text('body');
-			$t->string('slug');
-			$t->string('category_slug');
-			$t->integer('laravel_version');
+			$t->string('slug')->unique();
 			$t->integer('most_recent_reply_id');
 			$t->integer('reply_count');
 			$t->timestamps();

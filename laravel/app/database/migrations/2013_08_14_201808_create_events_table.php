@@ -16,17 +16,17 @@ class CreateEventsTable extends Migration {
 			$table->increments('id');
 			$table->string('title');
 			$table->text('description');
+			$table->string('meta_description');
+			$table->string('slug')->index();
 			$table->string('location')->default('');
-
 			$table->boolean('whole_day');
-
-			$table->datetime('start_date');
-			$table->datetime('end_date');
-
-			$table->time('start_time')->nullable();
-			$table->time('end_time')->nullable();
-
+			$table->date('start_date')->index();
+			$table->time('start_time');
+			$table->date('end_date');
+			$table->integer('type')->default(0);
 			$table->string('image')->default('');
+			$table->boolean('public')->default(false);
+			$table->boolean('published')->default(false);
 
 			$table->timestamps();
 		});
