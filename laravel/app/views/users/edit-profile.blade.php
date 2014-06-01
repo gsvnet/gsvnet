@@ -1,8 +1,7 @@
 @section('content')
 	<div class="column-holder">
 		<h1>Verander je profiel</h1>
-		<p class="delta">!!</p>
-
+		
 		{{ Former::open_vertical_for_files()
             ->action(action('UserController@updateProfile'))
             ->id('edit-profile-form')
@@ -52,6 +51,7 @@
 		<div class="secondary-column">
 			@if(Permission::has('users.edit-profile'))
 				<h2>Je profielfoto</h2>
+				<p>{{ $member->profile->present()->xsmallProfileImage }}</p>
 	            {{ Former::file('photo_path')->label('Upload een foto van jezelf')->accept('image') }}
 	        @endif
 

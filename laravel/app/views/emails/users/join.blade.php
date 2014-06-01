@@ -6,7 +6,8 @@
 
 @section('content')
     <h2>Hoi {{{ $fullname }}}</h2>
-    <p>Je hebt je aangemeld bij de GSV</p>
-    <p>Je krijgt meer info van de novcie</p>
-    <p>Groetjes namens de webcie</p>
+    <p>Je hebt zojuist een goede keuzen in je leven gemaakt door je officieel aan te melden bij de GSV!</p>
+    <p>De Novcie zal zo spoedig mogelijk contact met je opnemen en je meer informatie geven over het novitiaat.</p>
+    <p>Vriendelijke groeten,</p>
+    <p>De Webcie</p>
 @stop
