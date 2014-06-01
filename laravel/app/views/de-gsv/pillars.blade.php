@@ -63,7 +63,7 @@
 
         <h2 id="sociaal">Sociale pijler</h2>
         <div class="i-social icon"></div>
-        <p>Alle activiteiten van de GSV zijn natuurlijk sociale activiteiten en de sociale pijler is dan ook heel belangrijk voor de vereniging. Als eerste is er standaard als kernactiviteit op donderdag ‘soos’ waar je je verenigingsgenoten ontmoet, potentiële leden spreekt en waar je ook je studievrienden mee naartoe kan nemen. Daarnaast valt er genoeg te borrelen met je bijbelkring, je regio (vaste groepen van vier à vijf bijbelkringen) of op een van de vele weekenden met de GSV.</p>
+        <p>Alle activiteiten van de GSV zijn natuurlijk sociale activiteiten en de sociale pijler is dan ook heel belangrijk voor de vereniging. Als eerste is er standaard als kernactiviteit op donderdag soos waar je je verenigingsgenoten ontmoet, potentiële leden spreekt en waar je ook je studievrienden mee naartoe kan nemen. Daarnaast valt er genoeg te borrelen met je bijbelkring, je regio (vaste groepen van vier à vijf bijbelkringen) of op een van de vele weekenden met de GSV.</p>
 
         <div id="sociaal-slideshow" class="carousel slide article-slideshow">
             <!-- Indicators -->

@@ -140,14 +140,17 @@
 /** Responsive **/
 @media only screen and (max-width: $firstbreakpoint){
   .slideshow-spacer {
-    height: 70px;
+    height: 100px;
     background: $darkPurple;
   }
 
   .slideshow {
+    .slide-description {
+      width: auto;
+    }
+    
     .slide-description-wrapper {
-      bottom: -70px;
-      height: 70px;
+      top: 100%;
     }
 
     .slide-description-box {
@@ -183,6 +186,10 @@
 
 
 @media only screen and (max-width: 480px){
+  .slideshow-spacer {
+    height: 115px;
+  }
+
   .video-button {
     -webkit-transform:scale(0.8);
     -moz-transform:scale(0.8);

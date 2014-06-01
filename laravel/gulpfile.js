@@ -41,11 +41,13 @@ gulp.task('scripts', function() {
       'assets/src/components/javascripts/matchmedia.js',
   		'assets/src/components/javascripts/picturefill.js',
       'assets/src/components/javascripts/list.min.js',
-  		'assets/src/components/javascripts/list.fuzzysearch.min.js',
+      'assets/src/components/javascripts/list.fuzzysearch.min.js',
+  		'assets/src/components/javascripts/jquery.touchSwipe.min.js',
   		'assets/src/components/javascripts/carousel.js',
       'assets/src/components/javascripts/magnific-popup-0.9.9.js',
       'assets/src/components/javascripts/magnific-popup-translation.js',
       'assets/src/front/javascripts/menu.js',
+      'assets/src/front/javascripts/touch-on-carousel.js',
       'assets/src/front/javascripts/word-lid.js',
       'assets/src/front/javascripts/app.js'
     ])
