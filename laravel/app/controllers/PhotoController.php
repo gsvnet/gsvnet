@@ -18,10 +18,10 @@ class PhotoController extends BaseController {
         $this->albums = $albums;
         $this->photos = $photos;
 
-        $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
-        $this->beforeFilter('albums.show',
-            ['only' => ['showPhotos']]
-        );
+        // $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
+        // $this->beforeFilter('albums.show',
+        //     ['only' => ['showPhotos']]
+        // );
 
         // The corresponding photo should be public or the current use should have permission to show private phtoos
         // $this->beforeFilter('photos.show',
