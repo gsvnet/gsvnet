@@ -1,6 +1,7 @@
 <?php namespace GSVnet\Events;
 
 use Laracasts\Presenter\PresentableTrait;
+use Carbon\Carbon;
 
 class Event extends \Eloquent {
 
@@ -51,12 +52,13 @@ class Event extends \Eloquent {
 
     private function getCountBySlug($slug)
     {
-        $query = static::where('slug', '=', $slug);
-
-        if ($this->exists) {
-            $query->where('id', '!=', $this->id);
-        }
-
+        $date = Carbon::parse($this->start_date);
+        $start = $date->format('Y-m-01');
+        $end = $date->format('Y-m-t');
+        $query = static::where('slug', '=', $slug)
+                       ->where('id', '!=', $this->id)
+                       ->where('start_date', '<=', $end)
+                       ->where('start_date', '>=', $start);
         return $query->count();
     }
 

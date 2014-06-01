@@ -76,7 +76,7 @@ Route::get('albums/{slug}',  'PhotoController@showPhotos');
 // Events
 Route::get('activiteiten',                       'EventController@showIndex');
 Route::get('activiteiten/{year}/{month?}',       'EventController@showMonth')->before('checkDate');
-Route::get('activiteiten/{year}/{month}/{slug}', 'EventController@showEvent');
+Route::get('activiteiten/{year}/{month}/{slug}', 'EventController@showEvent')->before('checkDate');
 
 Route::group(['prefix' => 'wachtwoord-vergeten'], function() {
     Route::get('herinner', 'RemindersController@getRemind');

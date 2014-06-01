@@ -74,17 +74,8 @@ class EventController extends BaseController {
 
     public function showEvent($year, $month, $slug)
     {
-        $event = $this->events->bySlug($slug);
-        $date = Carbon::parse($event->start_date);
-        $months = Config::get('gsvnet.months');
-
-        if( !array_key_exists($month, $months)
-            || $date->month != (int) $months[$month] 
-            || $date->year != $year )
-        {
-            return \App::abort('404', 'Activiteit niet gevonden');
-        }
-
+        $date = Carbon::createFromDate($year, Config::get("gsvnet.months.$month"), 1);
+        $event = $this->events->byYearMonthSlug($date, $slug);
 
         $this->layout->content = View::make('events.show')
             ->with('event', $event)
