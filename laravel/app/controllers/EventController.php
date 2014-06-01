@@ -73,7 +73,7 @@ class EventController extends BaseController {
 
     public function showEvent($slug)
     {
-        $event  = $this->events->bySlug($slug);
+        $event = $this->events->bySlug($slug);
 
         $this->layout->content = View::make('events.show')
             ->with('event', $event)

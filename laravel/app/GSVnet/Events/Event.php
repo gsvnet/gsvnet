@@ -60,12 +60,12 @@ class Event extends \Eloquent {
         return $query->count();
     }
 
-    private function generateSlugByIncrementer($prepend)
+    private function generateSlugByIncrementer($i)
     {
-        if ($prepend == 0) {
-            $i = '';
+        if ($i == 0) {
+            $append = '';
         } else {
-            $i = '-' . $i;
+            $append = '-' . $i;
         }
 
         if ($this->start_date) {
@@ -74,6 +74,6 @@ class Event extends \Eloquent {
             $date = date('d-m-Y');
         }
 
-        return \Str::slug($date . "-" . $this->title . $i);
+        return \Str::slug($date . "-" . $this->title . $append);
     }
 }
