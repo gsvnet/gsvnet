@@ -14,7 +14,7 @@ class RemoveUniqueKeySlugFromEventsTable extends Migration {
 	{
 		Schema::table('events', function(Blueprint $table)
 		{
-			$table->dropUnique('slug');
+			$table->dropUnique('events_slug_unique');
 		});
 	}
 
