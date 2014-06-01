@@ -3,7 +3,7 @@
     @if(count($senates) > 0)
     <ul id="senates-list" class="list secondary-menu to-select-box">
         @foreach($senates as $senate)
-            <li class="senate"><a href="{{{URL::action('AboutController@showSenate', array($senate->id))}}}">{{{$senate->nameWithYear}}}</a></li>
+            <li class="senate"><a href="{{{URL::action('AboutController@showSenate', array($senate->id))}}}">{{{$senate->present()->nameWithYear}}}</a></li>
         @endforeach
     </ul>
     @endif
