@@ -159,4 +159,19 @@ class EventPresenter extends Presenter
     {
         return $this->end_date;
     }
+
+    public function url()
+    {
+        $start = Carbon::parse($this->start_date);
+
+        // Get month string
+        $keys = array_keys(\Config::get('gsvnet.months'));
+        $month = $keys[$start->month - 1];
+
+        return \URL::action('EventController@showEvent', [
+            $start->year,
+            $month,
+            $this->slug
+        ]);
+    }
 }

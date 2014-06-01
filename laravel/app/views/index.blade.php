@@ -179,7 +179,7 @@
                         @foreach ($events as $event)
                             <li>
                                 <span class="list-title">
-                                {{ link_to_action('EventController@showEvent', $event->title, [$event->id])}}
+                                {{ HTML::link($event->present()->url, $event->title) }}
                                 </span>
                                 <time class="list-description grey">{{ $event->present()->from_to_short }}</time>
                             </li>

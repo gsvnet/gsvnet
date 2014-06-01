@@ -74,10 +74,9 @@ Route::group(array('prefix' => 'word-lid'), function() {
 Route::get('albums',         'PhotoController@showAlbums');
 Route::get('albums/{slug}',  'PhotoController@showPhotos');
 // Events
-Route::get('activiteiten',                 'EventController@showIndex');
-Route::get('activiteiten/{slug}',          'EventController@showEvent');
-// Hier filter je of de opgegeven jaar en datum goed zijn
-Route::get('activiteiten/{year}/{month?}', 'EventController@showMonth')->before('checkDate');
+Route::get('activiteiten',                       'EventController@showIndex');
+Route::get('activiteiten/{year}/{month?}',       'EventController@showMonth')->before('checkDate');
+Route::get('activiteiten/{year}/{month}/{slug}', 'EventController@showEvent');
 
 Route::group(['prefix' => 'wachtwoord-vergeten'], function() {
     Route::get('herinner', 'RemindersController@getRemind');

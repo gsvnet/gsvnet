@@ -157,7 +157,6 @@ Route::filter('checkDate', function($route, $request)
 	$year = (int) $route->getParameter('year');
 	$month = $route->getParameter('month', '');
 
-
 	if($year < $min or $year > $max)
 	{
 		App::abort('404');
