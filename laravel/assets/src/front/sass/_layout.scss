@@ -163,6 +163,10 @@ a.block-link {
 	@include container;
 }
 
+.address-info {
+	font-size: smaller;
+}
+
 
 /** Responsive **/
 @media only screen and (max-width: $firstbreakpoint){

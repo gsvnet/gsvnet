@@ -11,8 +11,8 @@
             <!-- Wrapper for slides -->
             <div class="carousel-make-height">
                 <div class="carousel-inner">
-<!--                     <div id="homepage-video-slide" class="item video-item">
-
+{{--
+                     <div id="homepage-video-slide" class="item video-item">
                         <div class="slider-video-wrap">
                             <video id="home-video" class="slider-video" preload="metadata" width="100%" height="100%">
                                 <source src="/videos/big_buck_bunny.mp4" type="video/mp4">
@@ -35,17 +35,9 @@
                                 </div>
                             </div>
                         </div>
-
-                    </div> -->
+                    </div>
+--}}
                     <div class="item active">
-                        <div class="slide-description-wrapper">
-                            <div class="slide-description">
-                                <div class="slide-description-box">
-                                    <p class="slide-title">Studentikoos</p>
-                                    <p class="slide-description-text">*knipoog</p>
-                                </div>
-                            </div>
-                        </div>
                         <span data-picture data-alt="Een geweldig plaatje">
                             <span data-src="/images/banner/gala-2013-480.jpg"></span>
                             <span data-src="/images/banner/gala-2013-600.jpg" data-media="(min-width: 480px)"></span>
@@ -55,16 +47,54 @@
                                 <img src="/images/banner/gala-2013-480.jpg" alt="Geweldig plaatje" width="480" height="360">
                             </noscript>
                         </span>
-                    </div>
-                    <div class="item">
                         <div class="slide-description-wrapper">
                             <div class="slide-description">
                                 <div class="slide-description-box">
-                                    <p class="slide-title">Hier wat leuks!</p>
-                                    <p class="slide-description-text">En hier wat!</p>
+                                    <p class="slide-title">Sociaal</p>
+                                    <p class="slide-description-text">Elke donderdag soos. Weekendjes weg. Goede feesten.</p>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="item">
+                        <span data-picture data-alt="Christelijke studentenvereniging Groningen">
+                            <span data-src="/images/banner/christelijk-480.jpg"></span>
+                            <span data-src="/images/banner/christelijk-600.jpg" data-media="(min-width: 480px)"></span>
+                            <span data-src="/images/banner/christelijk-1024.jpg" data-media="(min-width: 600px)"></span>
+                            <span data-src="/images/banner/christelijk-1600.jpg" data-media="(min-width: 1024px)"></span>
+                            <noscript>
+                                <img src="/images/banner/christelijk-480.jpg" alt="Christelijke studentenvereniging Groningen" width="480" height="360">
+                            </noscript>
+                        </span>
+                        <div class="slide-description-wrapper">
+                            <div class="slide-description">
+                                <div class="slide-description-box">
+                                    <p class="slide-title">Christelijk</p>
+                                    <p class="slide-description-text">Elke dinsdag Bijbelkring. Sing-ins. Bezinningsweekend.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <span data-picture data-alt="Studentikoze vereniging">
+                            <span data-src="/images/banner/gala-2013-480.jpg"></span>
+                            <span data-src="/images/banner/gala-2013-600.jpg" data-media="(min-width: 480px)"></span>
+                            <span data-src="/images/banner/gala-2013-1024.jpg" data-media="(min-width: 600px)"></span>
+                            <span data-src="/images/banner/gala-2013-1600.jpg" data-media="(min-width: 1024px)"></span>
+                            <noscript>
+                                <img src="/images/banner/gala-2013-480.jpg" alt="Studentikoze vereniging" width="480" height="360">
+                            </noscript>
+                        </span>
+                        <div class="slide-description-wrapper">
+                            <div class="slide-description">
+                                <div class="slide-description-box">
+                                    <p class="slide-title">Studentikoos</p>
+                                    <p class="slide-description-text">Bijna 50 jaar oude tradities. Dies Natalis. Mores. Keiharde feesten.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
                         <span data-picture data-alt="Een geweldig plaatje">
                             <span data-src="/images/banner/mensen-480.jpg"></span>
                             <span data-src="/images/banner/mensen-600.jpg" data-media="(min-width: 480px)"></span>
@@ -74,25 +104,14 @@
                                 <img src="/images/nogeen-480.jpg" alt="Geweldig plaatje" width="480" height="360">
                             </noscript>
                         </span>
-                    </div>
-                    <div class="item">
                         <div class="slide-description-wrapper">
                             <div class="slide-description">
                                 <div class="slide-description-box">
-                                    <p class="slide-title">Christelijk</p>
-                                    <p class="slide-description-text">!!!!</p>
+                                    <p class="slide-title">Intellectueel</p>
+                                    <p class="slide-description-text">Academische vereniging. Lezingen. Goede discussies.</p>
                                 </div>
                             </div>
                         </div>
-                        <span data-picture data-alt="Een geweldig plaatje">
-                            <span data-src="/images/banner/christelijk-480.jpg"></span>
-                            <span data-src="/images/banner/christelijk-600.jpg" data-media="(min-width: 480px)"></span>
-                            <span data-src="/images/banner/christelijk-1024.jpg" data-media="(min-width: 600px)"></span>
-                            <span data-src="/images/banner/christelijk-1600.jpg" data-media="(min-width: 1024px)"></span>
-                            <noscript>
-                                <img src="/images/banner/christelijk-480.jpg" alt="Geweldig plaatje" width="480" height="360">
-                            </noscript>
-                        </span>
                     </div>
                 </div>
             </div>

@@ -19,14 +19,14 @@ app = (function() {
 		var videoSlide = $('#homepage-video-slide'),
 		    videoPlayingClass = 'video-playing',
 		    video = document.getElementById('home-video'),
-		    carousel = $('#homepage-carousel'),
+		    homeCarousel = $('#homepage-carousel'),
 		    play = function() {
-				carousel.carousel('pause');
+				homeCarousel.carousel('pause');
 				videoSlide.addClass(videoPlayingClass);
 				video.play();
 		    },
 		    pause = function() {
-				carousel.carousel('cycle');
+				homeCarousel.carousel('cycle');
 				videoSlide.removeClass(videoPlayingClass);
 				video.pause();
 		    };
@@ -42,13 +42,15 @@ app = (function() {
 			});
 
 			// Pause video if it is playing
-			$('#homepage-carousel').on('slide.bs.carousel', function () {
+			homeCarousel.on('slide.bs.carousel', function () {
 				if(!video.paused)
 				{
 					pause();
 				}
 			});
 		}
+
+		TouchOnCarousel.enableOn(homeCarousel.first('.carousel-inner'), homeCarousel);
 	}
 
 	function editProfile() {

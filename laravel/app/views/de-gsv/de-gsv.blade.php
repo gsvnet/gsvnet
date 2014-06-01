@@ -26,21 +26,21 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="images/foto.jpg" alt="...">
+                    <img src="images/foto2.jpg" alt="De GSV" width="960" height="640">
                     <div class="carousel-caption">
-                    Mountainbiken
+                    De GSV
                     </div>
                 </div>
                 <div class="item">
-                    <img src="images/foto2.jpg" alt="...">
+                    <img src="images/foto.jpg" alt="Mountenbiken op zomerkamp" width="960" height="640">
                     <div class="carousel-caption">
-                    Nog iets
+                    Mountainbiken op zomerkamp
                     </div>
                 </div>
                 <div class="item">
-                    <img src="images/foto.jpg" alt="...">
+                    <img src="http://maps.googleapis.com/maps/api/staticmap?center=Hereweg%2040,Groningen,Nederland&amp;size=480x320&amp;zoom=14&amp;sensor=false&amp;markers=color:purple%7Clabel:S%7CHereweg%2040,Groningen,Nederland&amp;key=***REMOVED***&amp;scale=2" alt="Adres sociëteit" width="960" height="640">
                     <div class="carousel-caption">
-                    Opnieuw
+                    Sociëteit bij Hereweg 40 in Groningen
                     </div>
                 </div>
             </div>
