@@ -2,6 +2,7 @@
 
 use Permission;
 use GSVnet\Permissions\NoPermissionException;
+use Carbon\Carbon;
 
 class EventsRepository {
     public function byId($id)
@@ -24,6 +25,34 @@ class EventsRepository {
     public function bySlug($slug)
     {
         $event = Event::where('slug', '=', $slug)->first();
+
+        if( ! $event )
+        {
+            \App::abort(404);
+        }
+
+        if (! $event->public and ! Permission::has('events.show-private'))
+        {
+            throw new NoPermissionException;
+        }
+
+        if (! $event->published and ! Permission::has('events.publish'))
+        {
+            throw new NoPermissionException;
+        }
+
+        return $event;
+    }
+
+    public function byYearMonthSlug(Carbon $date, $slug)
+    {
+        $start = $date->format('Y-m-01');
+        $end = $date->format('Y-m-t');
+
+        $event = Event::where('slug', '=', $slug)
+                    ->where('start_date', '<=', $end)
+                    ->where('start_date', '>=', $start)
+                    ->first();
 
         if( ! $event )
         {
