@@ -25,14 +25,9 @@ class SenatePresenter extends Presenter
         return Carbon::createFromFormat('Y-m-d',   $this->start_date)->format('Y');
     }
 
-    public function body()
+    public function bodyFormatted()
     {
-        $body =   $this->body;
-        //$body = $this->removeDoubleSpaces($body);
-        $body = $this->convertMarkdown($body);
-        // $body = $this->convertNewlines($body);
-        // $body = $this->linkify($body);
-        return $body;
+        return $this->convertMarkdown($this->$body);
     }
 
     private function convertMarkdown($content)

@@ -1,9 +1,9 @@
 @section('content')
 
     <div class="column-holder">
-        <h1>{{{$currentSenate->nameWithYear}}}</h1>
+        <h1>{{{$currentSenate->present()->nameWithYear}}}</h1>
         <div class="main-content has-border-bottom" role="main">
-            {{ $currentSenate->body }}
+            {{ $currentSenate->present()->bodyFormatted }}
         </div>
 
         <div class="secondary-column">
@@ -13,11 +13,11 @@
                     @foreach($members as $member)
                     <li>
                         @if( Permission::has('users.show'))
-                            <a href="{{URL::action('UserController@showUser', [$member->id])}}" title="Bekijk het profiel van {{{$member->fullName}}}" class="list-title">{{{$member->fullName}}}</a>
+                            <a href="{{URL::action('UserController@showUser', [$member->id])}}" title="Bekijk het profiel van {{{$member->present()->fullName}}}" class="list-title">{{{$member->present()->fullName}}}</a>
                         @else
-                            <span class="list-title">{{{$member->fullName}}}</span>
+                            <span class="list-title">{{{$member->present()->fullName}}}</span>
                         @endif
-                        <span class="list-description grey">{{{$member->senateFunction}}}</span>
+                        <span class="list-description grey">{{{$member->present()->senateFunction}}}</span>
                     </li>
                     @endforeach
                 </ul>
