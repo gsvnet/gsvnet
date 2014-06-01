@@ -1,6 +1,7 @@
 <?php
 
 use GSVnet\Events\EventsRepository;
+use Carbon\Carbon;
 
 class EventController extends BaseController {
 
@@ -71,9 +72,19 @@ class EventController extends BaseController {
         $this->layout->bodyID = 'events-page';
     }
 
-    public function showEvent($slug)
+    public function showEvent($year, $month, $slug)
     {
         $event = $this->events->bySlug($slug);
+        $date = Carbon::parse($event->start_date);
+        $months = Config::get('gsvnet.months');
+
+        if( !array_key_exists($month, $months)
+            || $date->month != (int) $months[$month] 
+            || $date->year != $year )
+        {
+            return \App::abort('404', 'Activiteit niet gevonden');
+        }
+
 
         $this->layout->content = View::make('events.show')
             ->with('event', $event)

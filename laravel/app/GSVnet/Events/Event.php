@@ -68,12 +68,6 @@ class Event extends \Eloquent {
             $append = '-' . $i;
         }
 
-        if ($this->start_date) {
-            $date = date('d-m-Y', strtotime($this->start_date));
-        } else {
-            $date = date('d-m-Y');
-        }
-
-        return \Str::slug($date . "-" . $this->title . $append);
+        return \Str::slug($this->title . $append);
     }
 }

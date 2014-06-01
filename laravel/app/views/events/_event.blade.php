@@ -4,7 +4,7 @@
     </div>
     <div class="event-body">
         <h3>
-            <a href="{{ URL::action('EventController@showEvent', $event->slug) }}" itemprop="url">
+            <a href="{{ $event->present()->url }}" itemprop="url">
                 {{{ $event->title}}}
             </a>
         </h3>
