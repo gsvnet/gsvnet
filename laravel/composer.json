@@ -15,7 +15,8 @@
         "misd/linkify": "1.1.*@dev",
         "fedeisas/laravel-mail-css-inliner": "1.*",
         "guzzlehttp/guzzle": "~4.0",
-        "laracasts/presenter": "0.1.*"
+        "laracasts/presenter": "0.1.*",
+		"pda/pheanstalk": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
