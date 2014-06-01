@@ -12,7 +12,7 @@ class Thread extends Entity
     
     protected $table      = 'forum_threads';
     protected $fillable   = ['subject', 'body', 'author_id', 'solution_reply_id', 'category_slug', 'public'];
-    protected $with       = ['author', 'mostRecentReply'];
+    protected $with       = ['author'];
     protected $softDelete = true;
 
     public $presenter = 'GSVnet\Forum\Threads\ThreadPresenter';

@@ -13,7 +13,7 @@ class ThreadVisitationUpdater
 
     public function getVisitation(Thread $thread, User $user)
     {
-    	return ThreadVisitation::firstOrCreate([
+    	return ThreadVisitation::firstOrNew([
     		'user_id' => $user->id,
     		'thread_id' => $thread->id
     	]);

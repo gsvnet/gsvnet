@@ -5,9 +5,9 @@
 			<p>
 				Lid van 
 				@if( isset($member->profile->yearGroup) )
-					{{{$member->profile->yearGroup->present()->nameWithYear}}} en 
+					{{ link_to_action('UserController@showUsers', $member->profile->yearGroup->present()->nameWithYear, ['yeargroup' => $member->profile->yearGroup->id]) }} en 
 				@endif
-				{{{$member->profile->present()->regionName}}}
+				{{ link_to_action('UserController@showUsers', $member->profile->present()->regionName, ['region' => $member->profile->region]) }}
 			</p>
 
 		<div class="secondary-column">

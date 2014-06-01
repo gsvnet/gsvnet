@@ -38,7 +38,6 @@ class UserProfile extends \Eloquent {
 
     public $presenter = 'GSVnet\Users\Profiles\ProfilePresenter';
 
-    // Blah dit is niet zo mooi, maar voorlopig werkt dit wel
     public function scopeSearch($query, $search)
     {
         return $query->whereRaw("MATCH(users.firstname, users.middlename, users.lastname) AGAINST(? IN BOOLEAN MODE)", [$search]);

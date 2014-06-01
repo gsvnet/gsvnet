@@ -8,8 +8,8 @@ class ThreadVisitation extends Entity
     protected $fillable   = ['user_id', 'thread_id', 'visited_at'];
 
     protected $validationRules = [
-        'user_id'   => 'required|exists:users,id',
-        'thread_id' => 'required|exists:forum_threads,id',
+        'user_id'   => 'required',
+        'thread_id' => 'required',
         'visited_at' => 'required',
     ];
 
