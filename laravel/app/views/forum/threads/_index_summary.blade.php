@@ -1,6 +1,6 @@
 <div class="media-row img-45 {{ $thread->visited }}">
     <div class="media-details">
-        {{ $thread->author->present()->avatar(45) }}
+        {{ $thread->author->present()->avatarDeferred(45) }}
         {{ $thread->present()->replyCounter }}
     </div>
     <div class="media-body">

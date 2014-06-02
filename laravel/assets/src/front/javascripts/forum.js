@@ -136,8 +136,22 @@ var Forum = (function()
         questionSelectToTag();
     }
 
+    function loadDeferredAvatars() {
+        $(window).load(function() {
+            $('[data-gravatar-url]').prepend(function(){
+                var $this = $(this), url, size;
+                
+                url = $this.attr('data-gravatar-url');
+                size = $this.attr('data-gravatar-size');
+
+                return '<img width="' + size + '" height="' + size + '" alt="Avatar" src="' + url + '">';
+            });
+        });
+    }
+
     return {
         initThreadPage: initThreadPage,
-        initCreateOrUpdatePage: initCreateOrUpdatePage
+        initCreateOrUpdatePage: initCreateOrUpdatePage,
+        loadDeferredAvatars: loadDeferredAvatars
     };
 })();

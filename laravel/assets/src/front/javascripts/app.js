@@ -13,6 +13,7 @@ app = (function() {
 		'event-page': events,
 		'edit-profile-page': editProfile,
 		'thread-page': thread,
+		'thread-index-page': threadsIndex,
 		'thread-create-page': createAndUpdateThread,
 		'thread-update-page': createAndUpdateThread,
 	}
@@ -194,6 +195,11 @@ app = (function() {
 	function thread() {
 
 		Forum.initThreadPage();
+		Forum.loadDeferredAvatars();
+	}
+
+	function threadsIndex() {
+		Forum.loadDeferredAvatars();
 	}
 
 	function createAndUpdateThread()
