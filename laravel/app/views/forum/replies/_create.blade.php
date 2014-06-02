@@ -1,9 +1,9 @@
 <div class="main-content has-border-bottom">
-    {{ Former::vertical_open() }}
+    {{ Former::vertical_open()->id('reply-form') }}
         {{ Former::textarea('body')->placeholder('Tekst')->label('Reactie')->rows(10) }}
         
         <div class="control-group">
-            <input type="submit" id="edit-profile-submit" value="Reageer" class="button">
+            <input type="submit" id="submit-reply" value="Reageer" class="button">
         </div>
     {{ Former::close() }}
 </div>
