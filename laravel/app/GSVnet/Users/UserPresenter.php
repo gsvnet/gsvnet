@@ -93,7 +93,7 @@ class UserPresenter extends Presenter
     public function avatarDeferred($size = 120)
     {
         $url = Gravatar::src($this->email, array('width' => $size, 'height' => $size));
-        return '<span data-gravatar-url="' . $url . '" data-gravatar-size="' . $size . '"></span>';
+        return '<span class="img-wrap" data-gravatar-url="' . $url . '" data-gravatar-size="' . $size . '"></span>';
     }
 
     public function profileUrl()
