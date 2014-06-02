@@ -1,7 +1,6 @@
 <?php
 
 use GSVnet\Forum\Replies\ReplyForm;
-use GSVnet\Forum\Replies\ReplyPresenter;
 
 class ForumRepliesController extends BaseController implements
     \GSVnet\Forum\Replies\ReplyCreatorListener,
@@ -60,7 +59,7 @@ class ForumRepliesController extends BaseController implements
 
     public function replyCreated($reply)
     {
-        return $this->redirectTo($replyPresenter->present()->url);
+        return $this->redirectTo($reply->present()->url);
     }
 
     // edit a reply
