@@ -61,8 +61,7 @@
     @endif
 
     @section('javascripts')
-        <script src="/build-javascripts/app.js"></script>
-        <script src="/build-javascripts/forum.js"></script>
+        <script async src="/build-javascripts/app.js"></script>
     @show
 </body>
 </html>

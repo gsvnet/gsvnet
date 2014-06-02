@@ -91,6 +91,7 @@ class ForumThreadsController extends BaseController implements
 
         $this->title = "Nieuw topic";
         $this->view('forum.threads.create', compact('tags'));
+        $this->layout->bodyID = 'thread-create-page';
         $this->layout->activeMenuItem = 'forum';
 
     }
@@ -131,6 +132,7 @@ class ForumThreadsController extends BaseController implements
 
         $this->title = "Bewerk topic";
         $this->view('forum.threads.edit', compact('thread', 'tags'));
+        $this->layout->bodyID = 'thread-update-page';
         $this->layout->activeMenuItem = 'forum';
 
     }

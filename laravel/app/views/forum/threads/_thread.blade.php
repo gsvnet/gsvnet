@@ -9,8 +9,8 @@
             <ul class="inline-list grey">
                 <li>{{ $thread->present()->created_ago }}</li>
                 @if($thread->isManageableBy($currentUser))
-                    <li><a href="{{ $thread->editUrl }}">bewerk</a></li>
-                    <li><a href="{{ $thread->deleteUrl }}">verwijder</a></li>
+                    <li><a href="{{ $thread->present()->editUrl }}">bewerk</a></li>
+                    <li><a href="{{ $thread->present()->deleteUrl }}">verwijder</a></li>
                 @endif
 
                 @if(Auth::user())
