@@ -90,6 +90,12 @@ class UserPresenter extends Presenter
         return Gravatar::image($this->email, 'Profielfoto', array('width' => $size, 'height' => $size));
     }
 
+    public function avatarDeferred($size = 120)
+    {
+        $url = Gravatar::src($this->email, array('width' => $size, 'height' => $size));
+        return '<span data-gravatar-url="' . $url . '" data-gravatar-size="' . $size . '"></span>';
+    }
+
     public function profileUrl()
     {
         return URL::action('UserController@showUser', [$this->id]);
