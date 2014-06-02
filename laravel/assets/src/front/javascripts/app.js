@@ -12,7 +12,9 @@ app = (function() {
 		'events-page': events,
 		'event-page': events,
 		'edit-profile-page': editProfile,
-		'thread-page': thread
+		'thread-page': thread,
+		'thread-create-page': createAndUpdateThread,
+		'thread-update-page': createAndUpdateThread,
 	}
 
 	function home() {
@@ -190,34 +192,13 @@ app = (function() {
 	}
 
 	function thread() {
-        var replyField = $('#body'),
-            replyForm = $('#reply-form'),
-            submitReply = $('#submit-reply');
 
-        replyForm.submit(function(){
-        	submitReply.addClass('disabled').val('Wordt verstuurd...');
-        });
+		Forum.initThreadPage();
+	}
 
-		function formatForumQuote(author, quote)
-		{
-			// add author name
-			quote = "**" + author + "** schreef:\n\n" + quote;
-
-			// add markdown quote tags
-			quote = quote.replace(/^/g, ">");
-			quote = quote.replace(/\n/g, "\n>");
-
-			return quote;
-		}
-
-		$('._quote_forum_post').click(function(e) {
-	        var quoteBody = $(this).closest('._post').data('quote-body');
-	        var authorName = $(this).closest('._post').data('author-name');
-
-	        var quoteText = formatForumQuote($.parseJSON(authorName), $.parseJSON(quoteBody));
-
-	        replyField.val(replyField.val() + quoteText).focus();
-	    });
+	function createAndUpdateThread()
+	{
+		Forum.initCreateOrUpdatePage();
 	}
 
 	return {
