@@ -190,7 +190,14 @@ app = (function() {
 	}
 
 	function thread() {
-        var replyForm = $('#body');
+        var replyField = $('#body'),
+            replyForm = $('#reply-form'),
+            submitReply = $('#submit-reply');
+
+        replyForm.submit(function(){
+        	submitReply.addClass('disabled').val('Wordt verstuurd...');
+        });
+
 		function formatForumQuote(author, quote)
 		{
 			// add author name
@@ -209,10 +216,7 @@ app = (function() {
 
 	        var quoteText = formatForumQuote($.parseJSON(authorName), $.parseJSON(quoteBody));
 
-	        replyForm.val(replyForm.val() + quoteText).focus();
-			// $('html,body').animate({
-			// 	scrollTop: replyForm.offset().top
-			// }, 300);
+	        replyField.val(replyField.val() + quoteText).focus();
 	    });
 	}
 
