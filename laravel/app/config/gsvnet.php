@@ -129,13 +129,17 @@ return array(
 	    ],
 
 	    'lid-worden' => [
-	        'title' => 'Lid worden?',
+	        'title' => 'Word lid!',
 	        'url' => URL::action('MemberController@index'),
 	        'visible' => function(){return Auth::guest() || !Auth::user()->wasOrIsMember();},
 	        'submenu' => [
 	            'lid-worden' => [
 	                'url' => URL::action('MemberController@index'),
 	                'title' => 'Lid worden?'
+	            ],
+	            'faq' => [
+	            	'url' => URL::action('MemberController@faq'),
+	            	'title' => 'Veel gestelde vragen'
 	            ],
 	            'inschrijven' => [
 	                'url' => URL::action('MemberController@becomeMember'),
