@@ -206,7 +206,7 @@ class ForumThreadsController extends BaseController implements
         $results->appends(array('query' => $query));
 
         $this->createSections(Input::get('tags'));
-        $this->title = "Forum Search";
+        $this->title = "Forum doorzoeken";
         $this->view('forum.search', compact('query', 'results'));
         $this->layout->activeMenuItem = 'forum';
     }
