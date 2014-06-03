@@ -65,7 +65,8 @@ Route::post('registreer',           'RegisterController@store')->before('csrf');
 
 // Word lid
 Route::group(array('prefix' => 'word-lid'), function() {
-    Route::get('/',            'MemberController@index');
+    Route::get('/',                     'MemberController@index');
+    Route::get('/veel-gestelde-vragen', 'MemberController@faq');
     Route::get('inschrijven',  'MemberController@becomeMember')->before('canBecomeMember');
     Route::post('inschrijven', 'MemberController@store')->before('csrf');
 });

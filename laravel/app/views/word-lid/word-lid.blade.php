@@ -13,7 +13,8 @@
         @if($activeStep == 'login-or-register')
             <div class="column-holder" role="main">
                 <h1>Word lid!</h1>
-                <p class="delta">Voordat je je aan kunt melden bij de Gereformeerde Studentenvereniging Groningen, moet je eerst een account aanmaken op de website</p>
+                <p class="delta">Supermooi dat je interesse hebt in de GSV! Volg de stappen om je aan te melden voor ons novitiaat. Dat duurt dit jaar van <strong>18 tot 27 augustus</strong>, houd deze dagen dus vrij!</p>
+                <p>Voel je vooral vrij om voorafgaand aan het novitiaat mee te genieten van alle activiteiten die wij organiseren tijdens de KEIweek(link naar keiweek pagina).</p>
             </div>
             @include('word-lid.login-or-register')
 
@@ -29,7 +30,7 @@
                 <h1>Gefeliciteerd!</h1>
                 <p class="delta">Je hebt je officieel aangemeld bij de GSV</p>
 
-                <p>Je ontvangt zo spoedig mogelijk een mail met belangrijke informatie.</p>
+                <p>Alvast bedankt voor je opgave! Wij nemen zo spoedig mogelijk per mail contact met je op voor specifieke informatie.</p>
             </div>
         @endif
     </div>

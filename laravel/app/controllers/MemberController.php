@@ -110,9 +110,14 @@ class MemberController extends BaseController {
         return Redirect::action('MemberController@becomeMember');
     }
 
-    public function why()
+    public function faq()
     {
-        return 'Why not?';
+        $this->layout->bodyID = 'faq-page';
+        $this->layout->title = 'Veelgestelde vragen!';
+        $this->layout->description = 'Wat je moet weten over de studentenvereniging GSV';
+        $this->layout->activeMenuItem = 'lid-worden';
+        $this->layout->activeSubMenuItem = 'faq';
+        $this->layout->content = View::make('word-lid.faq');
     }
 
     // Show original (resized) photo
