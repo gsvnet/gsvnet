@@ -3,7 +3,7 @@
     <article class="artikel column-holder" role="main">
         <div>
             <h1>Geschiedenis</h1>
-            <p class="lead">[hier nog een samenvatting?]</p>
+            <p class="lead">Al meer dan 115 jaar is er sprake van een Gereformeerde Studentenvereniging in Groningen. Door veranderingen in kerk en maatschappij is de GSV van nu (sinds 1966) verre van hetzelfde als de oorspronkelijke ‘GSV’ uit 1899 (SSR Vera Et Recti Amici). Echter ondanks een tweetal afscheidingen in de afgelopen eeuw zijn de studentikoziteit en de tradities gebleven. De GSV is nog steeds een plaats waar christelijke academici (gezellig) samenkomen om in de ‘zandbak’ van het studentenleven voorbereid te worden op het leven daarna. Uiteraard op de manier die wij al jarenlang gewend zijn: met een kritische kijk op onszelf en de wereld om ons heen.</p>
         </div>
 
         <h2>Ontstaan</h2>
