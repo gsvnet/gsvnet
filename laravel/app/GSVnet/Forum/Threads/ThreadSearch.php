@@ -24,7 +24,7 @@ class ThreadSearch
 
         // Only show public threads when the user does not
         // have permission to see private threads
-        if (Permission::has('threads.show-private'))
+        if (! Permission::has('threads.show-private'))
         {
             $query = $query->public();
         }
