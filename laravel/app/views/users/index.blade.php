@@ -23,7 +23,7 @@
 				<select name="yeargroup" id="yeargroup">
 					<option value="0">Doet er niet toe</option>
 					@foreach ($yearGroups as $yearGroup)
-						<option value="{{{$yearGroup->id}}}" {{{Input::get('yeargroup') == $yearGroup->id ? 'selected="selected"' : ''}}}>{{{$yearGroup->nameWithYear}}}</option>
+						<option value="{{{$yearGroup->id}}}" {{{Input::get('yeargroup') == $yearGroup->id ? 'selected="selected"' : ''}}}>{{{$yearGroup->present()->nameWithYear}}}</option>
 					@endforeach
 				</select>
 			</div>
