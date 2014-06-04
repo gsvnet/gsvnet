@@ -15,11 +15,23 @@
         <div class="main-content">
             <p>De GSV is de meest hechte christelijke studentenvereniging van Groningen. 
             Onze vereniging biedt de perfecte combinatie van christelijke waarden en het echte studentenleven.</p>
-            <p>Je voelt je bij ons snel thuis te midden van actieve en betrokken medestudenten. 
-            Wil jij een vereniging waar het geloof een centrale rol speelt, een vereniging met vele toffe, diverse activiteiten en weekenden en waar je vrienden voor het leven maakt?</p>
+            <p>Door onze lange historie heen hebben wij keer op keer bewezen de beste match te zijn tussen het échte studentenleven en het christelijk geloof.</p>
+
+            <h2>Open soos</h2>
+            <p>Een aantal keer per jaar organiseert de GSV een open sociëteitsavond waar je op je gemak kunt kennismaken met de vereniging en het pand kunt bekijken. Vaak organiseren we voorafgaand aan een open soos een andere activiteit die een van de aspecten van onze vereniging belicht. Ook kun je op een normale donderdagavond mee als introducé van een van onze leden.</p> 
+
+            <p>Kijk gauw in het jaarschema hieronder wat we dit jaar allemaal speciaal voor jou organiseren:</p>
+            <ul>
+                <li>Open soos: 5 juni</li>
+                <li>Keiweek 11-15 augustus</li>
+            </ul>
         </div>
         <div class="secondary-column">
-            <p>Test</p>
+            <h2>Gelijk inschrijven</h2>
+            <p><a href="{{ URL::action('MemberController@becomeMember') }}" class="button" title="Meld je aan">Meld je aan!</a></p>
+
+            <h2>Vragen?</h2>
+            <p>Kijk op de <a href="{{ URL::action('MemberController@faq') }}" title="Veel gestelde vragen">FAQ-pagina</a></p>
         </div>
     </div>
 @stop
