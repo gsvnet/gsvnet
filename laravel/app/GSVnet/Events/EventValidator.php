@@ -1,6 +1,7 @@
 <?php namespace GSVnet\Events;
 
 use GSVnet\Core\Validator;
+use GSVnet\Core\Exceptions\ValidationException;
 
 class EventValidator extends Validator
 {
