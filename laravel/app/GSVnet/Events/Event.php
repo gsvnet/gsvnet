@@ -56,9 +56,13 @@ class Event extends \Eloquent {
         $start = $date->format('Y-m-01');
         $end = $date->format('Y-m-t');
         $query = static::where('slug', '=', $slug)
-                       ->where('id', '!=', $this->id)
                        ->where('start_date', '<=', $end)
                        ->where('start_date', '>=', $start);
+
+        if ($this->exists) {
+            $query->where('id', '!=', $this->id);
+        }
+        
         return $query->count();
     }
 
