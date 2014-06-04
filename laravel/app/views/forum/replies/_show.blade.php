@@ -4,7 +4,13 @@
             {{ $reply->author->present()->avatarDeferred(40) }}
         </div>
         <div class="info">
-            <strong class="author"><a href="{{ $reply->author->present()->profileUrl }}">{{{ $reply->author->username }}}</a></strong>
+            <strong class="author">
+                @if(Permission::has('users.show'))
+                    <a href="{{ $thread->author->present()->profileUrl }}">{{{ $thread->author->username }}}</a>
+                @else
+                    {{{ $thread->author->username }}}
+                @endif
+            </strong>
             <ul class="inline-list grey">
                 <li><a href="#reactie-{{ $reply->id }}">{{ $reply->present()->created_ago }}</a></li>
 
