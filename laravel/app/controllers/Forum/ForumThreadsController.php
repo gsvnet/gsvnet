@@ -209,6 +209,7 @@ class ForumThreadsController extends BaseController implements
         $this->title = "Forum doorzoeken";
         $this->view('forum.search', compact('query', 'results'));
         $this->layout->activeMenuItem = 'forum';
+        $this->layout->bodyID = 'thread-search-page';
     }
 
     // ------------------------- //

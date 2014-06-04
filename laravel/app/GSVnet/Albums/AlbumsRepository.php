@@ -39,9 +39,6 @@ class AlbumsRepository
         if (Permission::has('photos.show-private'))
             return Album::with('photos')->latest()->paginate($amount);
         return Album::with('photos')->latest()->public()->paginate($amount);
-        return Album::has('photos')
-            ->latest()
-            ->paginate($amount);
     }
 
     /**

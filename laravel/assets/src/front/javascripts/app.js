@@ -14,6 +14,7 @@ app = (function() {
 		'edit-profile-page': editProfile,
 		'thread-page': thread,
 		'thread-index-page': threadsIndex,
+		'thread-search-page': threadsIndex,
 		'thread-create-page': createAndUpdateThread,
 		'thread-update-page': createAndUpdateThread,
 	}
