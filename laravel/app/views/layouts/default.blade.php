@@ -1,13 +1,21 @@
 <!doctype html>
-<html lang="nl">
+<html lang="nl" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{{ $title or 'GSV' }}}</title>
 
-    <meta name="description" content="{{{ $description or 'Gereformeerde Studenten Vereniging Groningen' }}}" />
+    <meta property="og:site_name" content="Gereformeerde Studenten Vereniging Groningen">
+    <meta name="description" content="{{{ $description or 'Gereformeerde Studenten Vereniging Groningen' }}}" >
+    <meta property="og:title" content="{{{ $description or 'Gereformeerde Studenten Vereniging Groningen' }}}">
+    <meta property="og:url" content="{{{Request::url()}}}">
+    <meta property="og:type" content="{{ Request::is('/') ? 'website' : 'article' }}">
+    <meta property="og:image" content="http://gsvnet.nl/images/logo-90.png">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="90">
+    <meta property="og:image:height" content="90">
 
-    <link rel="shortcut icon" href="/favicon.png" />
+    <link rel="shortcut icon" href="/favicon.png">
 
     <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
