@@ -109,26 +109,24 @@ class ThreadPresenter extends Presenter
             return '';
         }
 
-        if( !isset($this->visitations) )
+        $visitations = $this->visitations;
+        $mostRecentReply = $this->mostRecentReply;
+
+        if( ! isset($visitations) || $visitations->count() == 0)
         {
             return 'new';
         }
 
-        if( !isset($this->mostRecentReply) )
+
+        if( !isset($mostRecentReply) )
         {
             $updated = $this->created_at;
         } else {
             $updated = $this->mostRecentReply->created_at;
         }
 
-        $visitations = $this->visitations;
-        
-        if( count($visitations) == 0 )
-        {
-            return 'new';
-        }
-
         $lastVisit = new Carbon($visitations[0]->visited_at);
+
         if( $updated->gt($lastVisit) )
         {
             return 'new';
