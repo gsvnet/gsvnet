@@ -1,4 +1,4 @@
-<div class="media-row img-45 {{ $thread->visited }}">
+<div class="media-row img-45 {{ $thread->present()->visited }}">
     <div class="media-details">
         {{ $thread->author->present()->avatarDeferred(45) }}
         {{ $thread->present()->replyCounter }}
