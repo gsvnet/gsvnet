@@ -63,7 +63,7 @@
 
         <h2 id="sociaal">Sociale pijler</h2>
         <div class="i-social icon"></div>
-        <p>Alle activiteiten van de GSV zijn natuurlijk sociale activiteiten en de sociale pijler is dan ook heel belangrijk voor de vereniging. Als eerste is er standaard als kernactiviteit op donderdag soos waar je je verenigingsgenoten ontmoet, potentiële leden spreekt en waar je ook je studievrienden mee naartoe kan nemen. Daarnaast valt er genoeg te borrelen met je bijbelkring, je regio (vaste groepen van vier à vijf bijbelkringen) of op een van de vele weekenden met de GSV.</p>
+        <p>Alle activiteiten van de GSV zijn natuurlijk sociale activiteiten en de sociale pijler is dan ook heel belangrijk voor de vereniging. Als eerste is er standaard als kernactiviteit op donderdag soos waar je in de eerste plaats je verenigingsgenoten ontmoet, maar waar je ook andere (studie)vrienden mee naar toe kunt nemen. Daarnaast valt er genoeg te borrelen met je bijbelkring, je regio (vaste groepen van vier à vijf bijbelkringen) of op een van de vele weekenden met de GSV.</p>
 
         <div id="sociaal-slideshow" class="carousel slide article-slideshow">
             <!-- Indicators -->
@@ -149,7 +149,7 @@
             </a>
         </div>
 
-        <p>Studentikoziteit is soms niet makkelijk aan te wijzen, maar er zijn zeker activiteiten op de vereniging gericht op het studentikoze karakter. Ten eerste hebben we een novitiaat, een ontgroeningsperiode die alle leden doorlopen en waar studentikoziteit een belangrijke rol speelt. Daarnaast zijn er tal van tradities, hoogwaardigheidsbekleders, liederen en gebruiken die elk lid van de GSV kent. Er is elk jaar een Dies Natalis, een gala ter ere van de verjaardag van de GSV en ook de barspeeches, Huishoudelijke Vergaderingen en verenigingskleding dragen bij aan een studentikoze uitstraling.</p>
+        <p>Het Studentikoze karakter van de vereniging werkt door in verschillende activiteiten. Ten eerste hebben we een novitiaat, een ontgroeningsperiode die alle leden doorlopen en waar studentikoziteit een belangrijke rol speelt. Daarnaast zijn er tal van tradities, hoogwaardigheidsbekleders, liederen en gebruiken die elk lid van de GSV kent. Er is elk jaar een Dies Natalis, een gala ter ere van de verjaardag van de GSV en ook de barspeeches, Huishoudelijke Vergaderingen en verenigingskleding dragen bij aan een studentikoze uitstraling.</p>
 
 
 
