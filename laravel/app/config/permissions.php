@@ -76,5 +76,11 @@ return [
 
     'threads.show-private' => [
         'type' => ['member', 'formerMember']
+    ],
+
+    'threads.manage' => [
+        'committee' => [
+            'webcie'
+        ]
     ]
 ];
