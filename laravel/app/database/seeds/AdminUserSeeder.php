@@ -31,7 +31,7 @@ class AdminUserSeeder extends Seeder {
             'study' => 'Technische Wiskunde',
             'birthdate' => '1992-10-10',
             'church' => 'GKV',
-            'gender' => 'male',
+            'gender' => 0,
             'student_number' => 's1111111',
             'reunist' => 0,
             'parent_address' => 'Mooiestraat 3',

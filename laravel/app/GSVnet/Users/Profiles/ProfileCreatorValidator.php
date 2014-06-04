@@ -10,7 +10,7 @@ class ProfileCreatorValidator extends Validator
             'potential-zip-code' => 'required',
             'potential-town' => 'required',
             'potential-phone' => 'required',
-            'potential-gender' => 'required|in:male,female',
+            'potential-gender' => 'required|in:0,1',
             'potential-birthdate' => 'required|date_format:Y-m-d',
             'potential-church' => 'required',
             'potential-student-number' => '',
