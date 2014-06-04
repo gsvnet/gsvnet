@@ -118,7 +118,6 @@ fieldset[disabled] .twitter-typeahead .tt-input {
   margin: 0;
 }
     </style>
-    <script src="/javascripts/components/typeahead.js"></script>
 
     <script>
         var users = {{ $users->toJson() }};

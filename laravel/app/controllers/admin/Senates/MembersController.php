@@ -34,9 +34,8 @@ class MembersController extends BaseController {
             'function' => $input['function']
         ]);
 
-        $message = "$member->present()->fullName succesvol toegevoegd aan $senate->name";
-        return Redirect::action('Admin\SenateController@show', $senate->id)
-            ->withMessage($message);
+        $message = "{$member->present()->fullName} succesvol toegevoegd aan {$senate->name}";
+        return Redirect::action('Admin\SenateController@show', $senate->id)->withMessage($message);
     }
 
     public function destroy($senate, $member)
