@@ -5,7 +5,13 @@
         	{{ $thread->author->present()->avatar(40) }}
         </div>
         <div class="info">
-            <strong class="author"><a href="{{ $thread->author->present()->profileUrl }}">{{{ $thread->author->username }}}</a></strong>
+            <strong class="author">
+            @if(Permission::has('users.show'))
+                <a href="{{ $thread->author->present()->profileUrl }}">{{{ $thread->author->username }}}</a>
+            @else
+                {{{ $thread->author->username }}}
+            @endif
+            </strong>
             <ul class="inline-list grey">
                 <li>{{ $thread->present()->created_ago }}</li>
                 @if($thread->isManageableBy($currentUser))
