@@ -105,15 +105,23 @@ class UserController extends BaseController {
 
     public function editProfile()
     {
+        $user = Auth::user();
+        $profile = $user->profile;
+
+
         $this->layout->bodyID = 'edit-profile-page';
         $this->layout->activeMenuItem = 'intern';
         $this->layout->activeSubMenuItem = 'jaarbundel';
-        $this->layout->content = View::make('users.edit-profile');
+        $this->layout->content = View::make('users.edit-profile')->with([
+            'user' => $user,
+            'profile' => $profile
+        ]);
     }
 
     public function updateProfile()
     {
         $user = Auth::user();
+        $profile = $user->profile;
         $input = Input::except(['photo_path']);
 
         if (Input::hasFile('photo_path'))
@@ -130,9 +138,9 @@ class UserController extends BaseController {
         }
 
         // Create the profile and attach it to the user
-        $profile = $this->userManager->update($user->id, $input);
+        $user = $this->userManager->update($user->id, $input);
 
-        if(Permission::has('users.edit-profile'))
+        if(isset($profile) && Permission::has('users.edit-profile'))
         {
             $profile = $this->profileManager->update($user->profile->id, $input['profile']);
         }

@@ -19,7 +19,7 @@
 			{{ Former::text('username')->label('Gebruikersnaam')->disabled() }}
 			{{ Former::text('email')->label('Email') }}
 
-			@if(Permission::has('users.edit-profile'))
+			@if( Permission::has('users.edit-profile') && isset($profile) )
 
 				<h2>Vul vooral meer in</h2>
 				{{ Former::text('profile[church]')->label('Kerkgezindte') }}
@@ -46,10 +46,12 @@
 	            </div>
 
                 {{ Former::text('profile[parent_phone]')->label('Telefoon ouders') }}
+	        @else
+	        	<p>De rest van je GSV-profielgegevens worden binnekort toegevoegd!</p>
 	        @endif
 		</div>
 		<div class="secondary-column">
-			@if(Permission::has('users.edit-profile'))
+			@if(Permission::has('users.edit-profile') && isset($profile))
 				<h2>Je profielfoto</h2>
 				<p>{{ Auth::user()->profile->present()->xsmallProfileImage }}</p>
 	            {{ Former::file('photo_path')->label('Upload een foto van jezelf')->accept('image') }}
@@ -59,7 +61,7 @@
 			<p>Je avatar kun je aanpassen op <a href="http://nl.gravatar.com/" title="Je avatar aanpassen">Gravatar</a>.</p>
 
 			<h2>Dingen die je niet kunt veranderen</h2>
-			<p>Als je je naam, verjaardag of iets anders wat je niet kunt veranderen toch per se wil veranderen, dan moet je even contact op nemen met de abactis.</p>
+			<p>Als je je naam, verjaardag of iets anders wat je niet kunt veranderen toch per se wil veranderen, dan moet je even contact op nemen met de webcie of de abactis.</p>
 		</div>
 
 	</div>

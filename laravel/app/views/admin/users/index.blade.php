@@ -37,6 +37,7 @@
 	<table class='table table-striped table-hover sort-table' style="width:auto;">
 		<thead>
 			<tr>
+                <th>Gebruikersnaam</th>
 				<th>Voornaam</th>
                 <th>tussenvoegsel</th>
                 <th>Achternaam</th>
@@ -50,25 +51,15 @@
 			<tr>
                 <td>
                 <a href="{{ URL::action('Admin\UsersController@show', $user->id) }}" alt="{{ $user->present()->fullName }}">
-                    {{{ $user->firstname }}}
+                    {{{ $user->username }}}
                 </a>
                 </td>
 
-                <td>
-                {{{ $user->middlename }}}
-                </td>
-
-                <td>
-                {{{ $user->lastname }}}
-                </td>
-
-                <td>
-                    {{{ $user->email }}}
-                </td>
-
-                <td>
-                    {{{ $user->present()->membershipType }}}
-                </td>
+                <td>{{{ $user->firstname }}}</td>
+                <td>{{{ $user->middlename }}}</td>
+                <td>{{{ $user->lastname }}}</td>
+                <td>{{{ $user->email }}}</td>
+                <td>{{{ $user->present()->membershipType }}}</td>
 
                 <td>
 
