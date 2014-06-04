@@ -26,7 +26,7 @@ class CreateUserProfileTable extends Migration {
 			$table->string('study')->nullable();
 			$table->date('birthdate')->nullable();
 			$table->string('church')->nullable();
-			$table->enum('gender', array('male', 'female'))->nullable();
+			$table->boolean('gender')->nullable();
 			$table->datetime('start_date_rug')->nullable();
 			$table->boolean('reunist')->default(0);
 

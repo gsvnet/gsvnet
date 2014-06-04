@@ -39,9 +39,7 @@ class ProfilePresenter extends Presenter
 
     public function genderLocalized()
     {
-    	$gender =   $this->gender;
-
-    	return $gender == 'male' ? 'Man' : 'Vrouw';
+    	return $this->gender == 0 ? 'Man' : 'Vrouw';
     }
 
     public function xsmallProfileImage()
