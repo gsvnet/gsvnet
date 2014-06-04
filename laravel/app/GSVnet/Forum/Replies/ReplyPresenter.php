@@ -2,6 +2,7 @@
 
 use Laracasts\Presenter\Presenter;
 use App, Input, Str, Request, Purifier;
+use GSVnet\Carbon as GSVCarbon;
 
 class ReplyPresenter extends Presenter
 {
@@ -17,12 +18,14 @@ class ReplyPresenter extends Presenter
 
     public function created_ago()
     {
-        return $this->created_at->diffForHumans();
+        $created = new GSVCarbon($this->created_at);
+        return $created->diffForHumans();
     }
 
     public function updated_ago()
     {
-        return $this->updated_at->diffForHumans();
+        $updated = new GSVCarbon($this->updated_at);
+        return $updated->diffForHumans();
     }
 
     public function bodyFormatted()
