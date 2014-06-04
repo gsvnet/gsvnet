@@ -14,7 +14,7 @@ if(isset($_GET['id']) && isset($_GET['Itemid']) && isset($_GET['option']) && $_G
 		header("Location: /");
 		exit();
 	}
-	if($id == 2 && $Itemid==148){
+	if($id == 2 && $Itemid==148 || $id == 79 && $Itemid == 147){
 		header("HTTP/1.1 301 Moved Permanently"); 
 		header("Location: /de-gsv");
 		exit();
@@ -55,6 +55,18 @@ if(isset($_GET['id']) && isset($_GET['Itemid']) && isset($_GET['option']) && $_G
 		header("Location: /de-gsv/commissies");
 		exit();
 	}
+
+	if($id == 79 && $Itemid == 147) {
+		header("HTTP/1.1 301 Moved Permanently"); 
+		header("Location: /de-gsv");
+		exit();
+	}
+
+	if($id == 74 && $Itemid==328) {
+		header("HTTP/1.1 301 Moved Permanently"); 
+		header("Location: /de-gsv/senaten/3");
+		exit();
+	}
 }
 
 if(isset($_GET['option'])){
@@ -91,4 +103,6 @@ if(isset($_GET['option'])){
 }
 
 header("HTTP/1.0 404 Not Found");
-exit();
+
+echo '<h1>Pagina niet gevonden</h1>';
+echo '<p>De GSV-site is vernieuwd, waarschijnlijk komt het daardoor. <a href="/">Ga terug naar de homepage</a></p>';
