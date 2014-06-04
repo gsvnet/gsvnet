@@ -25,6 +25,6 @@ class Emoticon
 
     private function initializeReplacements($image, $name)
     {
-    	$this->replacements[] = '<img src="' . self::$dir . $image . '" class="emo" alt="' . $name . '" />';
+    	$this->replacements[] = '<img src="' . self::$dir . $image . '" class="emo" alt="' . $name . '" title="' . $name . '" />';
     }
 }
