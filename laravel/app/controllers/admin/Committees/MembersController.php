@@ -35,7 +35,7 @@ class MembersController extends BaseController {
             'end_date' => null
         ]);
 
-        $message = "$member->present()->fullName succesvol toegevoegd aan $committee->name";
+        $message = "{$member->present()->fullName} succesvol toegevoegd aan {$committee->name}";
         return Redirect::action('Admin\CommitteeController@show', $committee->id)
             ->withMessage($message);
     }

@@ -61,6 +61,7 @@ gulp.task('backend-scripts', function() {
   return gulp.src([
       'assets/src/components/javascripts/jquery-1.10.1.min.js',
       'assets/src/components/javascripts/bootstrap.js',
+      'assets/src/components/javascripts/typeahead.js',
       'assets/src/components/javascripts/dropzone.js',
       'assets/src/components/javascripts/jquery.tablesorter.min.js',
       'assets/src/back/javascripts/multi-upload.js',
