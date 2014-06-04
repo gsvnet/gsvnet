@@ -6,9 +6,9 @@
         <div class="info">
             <strong class="author">
                 @if(Permission::has('users.show'))
-                    <a href="{{ $thread->author->present()->profileUrl }}">{{{ $thread->author->username }}}</a>
+                    <a href="{{ $reply->author->present()->profileUrl }}">{{{ $reply->author->username }}}</a>
                 @else
-                    {{{ $thread->author->username }}}
+                    {{{ $reply->author->username }}}
                 @endif
             </strong>
             <ul class="inline-list grey">
