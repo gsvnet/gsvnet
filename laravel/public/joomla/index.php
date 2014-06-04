@@ -89,3 +89,6 @@ if(isset($_GET['option'])){
 		exit();
 	}
 }
+
+header("HTTP/1.0 404 Not Found");
+exit();
