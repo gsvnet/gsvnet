@@ -14,7 +14,7 @@
             <div class="column-holder" role="main">
                 <h1>Word lid!</h1>
                 <p class="delta">Supermooi dat je interesse hebt in de GSV! Volg de stappen om je aan te melden voor ons novitiaat. Dat duurt dit jaar van <strong>18 tot 27 augustus</strong>, houd deze dagen dus vrij!</p>
-                <p>Voel je vooral vrij om voorafgaand aan het novitiaat mee te genieten van alle activiteiten die wij organiseren tijdens de KEIweek(link naar keiweek pagina).</p>
+                <p>Voel je vooral vrij om voorafgaand aan het novitiaat mee te genieten van alle activiteiten die wij organiseren tijdens de KEIweek.</p>
             </div>
             @include('word-lid.login-or-register')
 

@@ -1,6 +1,13 @@
 @section('content')
 	<div class="column-holder">
 		<h1>Verander je profiel</h1>
+
+		@if($errors->count() > 0)
+			<strong>Oeps!</strong>
+			@foreach($errors->all() as $error)
+				<p style="color: red;">{{$error}}</p>
+			@endforeach
+		@endif
 		
 		{{ Former::open_vertical_for_files()
             ->action(action('UserController@updateProfile'))
@@ -22,30 +29,30 @@
 			@if( Permission::has('users.edit-profile') && isset($profile) )
 
 				<h2>Vul vooral meer in</h2>
-				{{ Former::text('profile[church]')->label('Kerkgezindte') }}
-	            {{ Former::text('profile[study]')->label('Naam van studie') }}
-	            {{ Former::text('profile[student_number]')->label('Studentnummer') }}
+				{{ Former::text('profile.church')->label('Kerkgezindte') }}
+	            {{ Former::text('profile.study')->label('Naam van studie') }}
+	            {{ Former::text('profile.student_number')->label('Studentnummer') }}
 
-	            {{ Former::text('profile[address]')->label('Adres') }}
-	            {{ Former::text('profile[zip_code]')->label('Postcode')->size(6) }}
-	            {{ Former::text('profile[town]')->label('Woonplaats') }}
-	            {{ Former::text('profile[phone]')->label('Telefoon') }}
-	            {{ Former::select('profile[gender]')->label('Geslacht')->options(array('0' => 'Man', '1' => 'Vrouw')) }}
+	            {{ Former::text('profile.address')->label('Adres') }}
+	            {{ Former::text('profile.zip_code')->label('Postcode')->size(6) }}
+	            {{ Former::text('profile.town')->label('Woonplaats') }}
+	            {{ Former::text('profile.phone')->label('Telefoon') }}
+	            {{ Former::select('profile.gender')->label('Geslacht')->options(array('0' => 'Man', '1' => 'Vrouw')) }}
 
 	            <h2>Adres van je ouders</h2>
 	            {{
-	                Former::stacked_radios('parents-same-address')->radios(array(
-	                    'Ja' => array('name' => 'parents-same-address', 'value' => '1'),
-	                    'Nee' => array('name' => 'parents-same-address', 'value' => '0'),
+	                Former::stacked_radios('parent_same_address')->radios(array(
+	                    'Ja' => array('name' => 'parent_same_address', 'value' => '1'),
+	                    'Nee' => array('name' => 'parent_same_address', 'value' => '0'),
 	                ))->label('Woon je bij je ouders/verzorgers?')->check('0')
 	            }}
 	            <div id="parents-info">
-	    			{{ Former::text('profile[parent_address]')->label('Adres ouders') }}
-	                {{ Former::text('profile[parent_zip_code]')->label('Postcode ouders')->size(6) }}
-	                {{ Former::text('profile[parent_town]')->label('Woonplaats ouders') }}
+	    			{{ Former::text('profile.parent_address')->label('Adres ouders') }}
+	                {{ Former::text('profile.parent_zip_code')->label('Postcode ouders')->size(6) }}
+	                {{ Former::text('profile.parent_town')->label('Woonplaats ouders') }}
 	            </div>
 
-                {{ Former::text('profile[parent_phone]')->label('Telefoon ouders') }}
+                {{ Former::text('profile.parent_phone')->label('Telefoon ouders') }}
 	        @else
 	        	<p>De rest van je GSV-profielgegevens worden binnekort toegevoegd!</p>
 	        @endif
@@ -54,7 +61,7 @@
 			@if(Permission::has('users.edit-profile') && isset($profile))
 				<h2>Je profielfoto</h2>
 				<p>{{ Auth::user()->profile->present()->xsmallProfileImage }}</p>
-	            {{ Former::file('photo_path')->label('Upload een foto van jezelf')->accept('image') }}
+	            {{ Former::file('profile.photo_path')->label('Upload een foto van jezelf')->accept('image') }}
 	        @endif
 
 			<h2>Je avatar</h2>

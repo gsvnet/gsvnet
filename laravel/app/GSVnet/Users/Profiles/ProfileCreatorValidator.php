@@ -20,6 +20,6 @@ class ProfileCreatorValidator extends Validator
             'parents-town' => 'required_if:parents-same-address,0',
             'parents-phone' => 'required',
 
-            'photo' => 'image',
+            'photo_path' => 'image',
     ];
 }

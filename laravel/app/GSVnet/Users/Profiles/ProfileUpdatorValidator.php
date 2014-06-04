@@ -5,8 +5,8 @@ use GSVnet\Core\Validator;
 class ProfileUpdatorValidator extends Validator
 {
     static $rules = [
-            'photo' => 'image',
-            'church' => 'required',
+            'photo_path' => 'image',
+            'church' => '',
             'study' => 'required',
             'address' => 'required',
             'zip_code' => 'required',

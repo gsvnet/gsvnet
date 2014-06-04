@@ -122,19 +122,34 @@ class UserController extends BaseController {
     {
         $user = Auth::user();
         $profile = $user->profile;
-        $input = Input::except(['photo_path']);
+        $input = Input::except(['profile_photo_path']);
 
-        if (Input::hasFile('photo_path'))
+        $profileInput = [
+            'church' => $input['profile_church'],
+            'study' => $input['profile_study'],
+            'student_number' => $input['profile_student_number'],
+            'address' => $input['profile_address'],
+            'zip_code' => $input['profile_zip_code'],
+            'town' => $input['profile_town'],
+            'phone' => $input['profile_phone'],
+            'gender' => $input['profile_gender'],
+            'parent_address' => $input['profile_parent_address'],
+            'parent_zip_code' => $input['profile_parent_zip_code'],
+            'parent_town' => $input['profile_parent_town'],
+            'parent_phone' => $input['profile_parent_phone']
+        ];
+
+        if (Input::hasFile('profile_photo_path'))
         {
-            $input['profile']['photo_path'] = Input::file('photo_path');
+            $profileInput['photo_path'] = Input::file('profile_photo_path');
         }
 
         // Check if parent address is the same as potential address
-        if (Input::get('parents-same-address', '0') == '1')
+        if (Input::get('parent_same_address', '0') == '1')
         {
-            $input['parents-address'] = $input['potential-address'];
-            $input['parents-town'] = $input['potential-town'];
-            $input['parents-zip-code'] = $input['potential-zip-code'];
+            $profileInput['parent_address'] = $input['profile_address'];
+            $profileInput['parent_town'] = $input['profile_town'];
+            $profileInput['parent_zip_code'] = $input['profile_zip_code'];
         }
 
         // Create the profile and attach it to the user
@@ -142,7 +157,7 @@ class UserController extends BaseController {
 
         if(isset($profile) && Permission::has('users.edit-profile'))
         {
-            $profile = $this->profileManager->update($user->profile->id, $input['profile']);
+            $profile = $this->profileManager->update($profile->id, $profileInput);
         }
 
         // Redirct to the become-member page: it shows the 3rd step [done] as active page
