@@ -4,6 +4,8 @@ return [
 	'mysql.database' => 'gsvnet',
 	'mysql.username' => 'homestead',
 	'mysql.password' => 'secret',
+	'mailgun.username' => 'secret',
+	'mailgun.password' => 'secret',
 	'queue.driver'   => 'sync',
 	'url'            => 'http://localhost',
 	'debug'          => true,
