@@ -120,7 +120,7 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
 				<tr>
 					<td width="600" valign="top" style="border-top:2px solid #2a1443; padding: 0 36px;">
 						<h1>
-							<img class="image_fix left" src="http://harmenstoppels.nl/images/logo-60.png" alt="GSV logo" title="Gereformeerde Studentenvereniging Groningen" width="60" height="60" style="vertical-align:bottom;" />
+							<img class="image_fix left" src="http://gsvnet.nl/images/logo-60.png" alt="GSV logo" title="Gereformeerde Studentenvereniging Groningen" width="60" height="60" style="vertical-align:bottom;" />
 							@yield('header')
 						</h1>
 					</td>
