@@ -68,7 +68,7 @@ return array(
     ),
 
     'email' => array(
-        'admin'         => 'webcie@gmail.com',
+        'admin'         => 'webcie@gsvnet.nl',
         'senate'        => 'abactis@gsvnet.nl',
         'membership'    => 'novcie2014@gmail.com',
         'profile'       => 'abactis@gsvnet.nl'
