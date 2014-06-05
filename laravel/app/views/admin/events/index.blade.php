@@ -19,7 +19,7 @@
     </div>
 
 	<h2>Activiteiten bewerken</h2>
-	<table class='table table-striped table-hover'>
+	<table class='table table-striped table-hover sort-table'>
 		<thead>
 			<tr>
 				<th>Titel</th>
