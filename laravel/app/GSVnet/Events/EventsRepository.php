@@ -167,6 +167,7 @@ class EventsRepository {
         $event->start_date       = $properties['start_date'];
         $event->end_date         = $properties['end_date'];
         $event->whole_day        = $properties['whole_day'];
+        $event->public           = $properties['public'];
 
         if (Permission::has('events.publish'))
         {
