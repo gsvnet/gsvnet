@@ -1,10 +1,9 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
-        "This file is @generated automatically"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "0cb7e0197a38b19f608d32186b967289",
+    "hash": "881ba0b94bb522fbd74c457452a5d0e2",
     "packages": [
         {
             "name": "anahkiasen/former",
@@ -1025,6 +1024,55 @@
                 "psr-3"
             ],
             "time": "2014-05-29 15:04:35"
+        },
+        {
+            "name": "msurguy/honeypot",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/msurguy/Honeypot.git",
+                "reference": "a28df74ea18947adaef23370c277ecfa5c946b59"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/msurguy/Honeypot/zipball/a28df74ea18947adaef23370c277ecfa5c946b59",
+                "reference": "a28df74ea18947adaef23370c277ecfa5c946b59",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "4.*",
+                "illuminate/support": "4.*",
+                "illuminate/translation": "4.*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "4.0.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Msurguy\\Honeypot\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maksim Surguy",
+                    "email": "m.surguy@gmail.com"
+                }
+            ],
+            "description": "Honeypot spam prevention",
+            "keywords": [
+                "Forms",
+                "Honeypot",
+                "laravel",
+                "spam"
+            ],
+            "time": "2014-04-18 16:26:59"
         },
         {
             "name": "nesbot/carbon",
@@ -2564,7 +2612,8 @@
         "mews/purifier": 20,
         "nickcernis/html-to-markdown": 20,
         "misd/linkify": 20,
-        "pda/pheanstalk": 20
+        "pda/pheanstalk": 20,
+        "msurguy/honeypot": 20
     },
     "platform": [
 

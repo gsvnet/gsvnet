@@ -9,6 +9,8 @@ class UserCreatorValidator extends Validator
         'register-firstname'    => 'required',
         'register-lastname'     => 'required',
         'register-email'        => 'required|email|unique:users,email',
-        'register-password'     => 'required|confirmed'
+        'register-password'     => 'required|confirmed',
+        'register-website'      => 'honeypot',
+        'register-address'      => 'required|honeytime:5',
     ];
 }
