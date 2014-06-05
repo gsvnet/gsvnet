@@ -92,7 +92,7 @@
 							@foreach ($senates as $senate)
 								<li>
 									<span class="list-title">{{ link_to_action('AboutController@showSenate', $senate->present()->nameWithYear, [$senate->id], ['title' => 'Meer informatie over Senaat ' . $senate->name]) }}</span>
-									<span class="list-description">{{ $senate->senateFunction }}</span>
+									<span class="list-description">{{ $senate->present()->senateFunction }}</span>
 								</li>
 							@endforeach
 						</ul>
