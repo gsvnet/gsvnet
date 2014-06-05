@@ -24,9 +24,9 @@ gulp.task('css', function(){
 
 gulp.task('images', function(){
   return gulp.src([
-      'assets/src/images/**/*.jpg',
-      'assets/src/images/**/*.png',
-      'assets/src/images/**/*.gif'
+      'assets/src/front/images/**/*.jpg',
+      'assets/src/front/images/**/*.png',
+      'assets/src/front/images/**/*.gif'
     ])
     .pipe(imagemin())
     .pipe(gulp.dest('public/images-min/'));
