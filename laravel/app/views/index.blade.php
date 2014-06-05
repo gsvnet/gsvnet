@@ -40,12 +40,12 @@
 --}}
                     <div class="item active">
                         <span data-picture data-alt="Een geweldig plaatje">
-                            <span data-src="/images/banner/gala-2013-480.jpg"></span>
-                            <span data-src="/images/banner/gala-2013-600.jpg" data-media="(min-width: 480px)"></span>
-                            <span data-src="/images/banner/gala-2013-1024.jpg" data-media="(min-width: 600px)"></span>
-                            <span data-src="/images/banner/gala-2013-1600.jpg" data-media="(min-width: 1024px)"></span>
+                            <span data-src="/images/banner/sociaal480.jpg"></span>
+                            <span data-src="/images/banner/sociaal600.jpg" data-media="(min-width: 480px)"></span>
+                            <span data-src="/images/banner/sociaal1024.jpg" data-media="(min-width: 600px)"></span>
+                            <span data-src="/images/banner/sociaal1600.jpg" data-media="(min-width: 1024px)"></span>
                             <noscript>
-                                <img src="/images/banner/gala-2013-480.jpg" alt="Geweldig plaatje" width="480" height="360">
+                                <img src="/images/banner/sociaal480.jpg" alt="Geweldig plaatje" width="480" height="360">
                             </noscript>
                         </span>
                         <div class="slide-description-wrapper">
@@ -97,12 +97,12 @@
                     </div>
                     <div class="item">
                         <span data-picture data-alt="Een geweldig plaatje">
-                            <span data-src="/images/banner/mensen-480.jpg"></span>
-                            <span data-src="/images/banner/mensen-600.jpg" data-media="(min-width: 480px)"></span>
-                            <span data-src="/images/banner/mensen-1024.jpg" data-media="(min-width: 600px)"></span>
-                            <span data-src="/images/banner/mensen-1600.jpg" data-media="(min-width: 1024px)"></span>
+                            <span data-src="/images/banner/intellectueel480.jpg"></span>
+                            <span data-src="/images/banner/intellectueel600.jpg" data-media="(min-width: 480px)"></span>
+                            <span data-src="/images/banner/intellectueel1024.jpg" data-media="(min-width: 600px)"></span>
+                            <span data-src="/images/banner/intellectueel1600.jpg" data-media="(min-width: 1024px)"></span>
                             <noscript>
-                                <img src="/images/nogeen-480.jpg" alt="Geweldig plaatje" width="480" height="360">
+                                <img src="/images/intellectueel480.jpg" alt="Geweldig plaatje" width="480" height="360">
                             </noscript>
                         </span>
                         <div class="slide-description-wrapper">
