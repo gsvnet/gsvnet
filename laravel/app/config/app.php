@@ -113,6 +113,7 @@ return array(
         'Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider',
         'Fedeisas\LaravelMailCssInliner\LaravelMailCssInlinerServiceProvider',
         'Mews\Purifier\PurifierServiceProvider',
+        'Msurguy\Honeypot\HoneypotServiceProvider',
 
         'GSVnet\ServiceProviders\BackendServiceProvider',
         'GSVnet\ServiceProviders\AlbumServiceProvider',
