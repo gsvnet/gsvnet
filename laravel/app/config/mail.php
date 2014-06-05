@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'postmaster@sandbox81735.mailgun.org',
+	'username' => $_ENV['mailgun.username'],
 
 
 	/*
@@ -94,7 +94,7 @@ return array(
 	|
 	*/
 
-	'password' => '8xzd01hl-0c3',
+	'password' => $_ENV['mailgun.password'],
 
 	/*
 	|--------------------------------------------------------------------------
