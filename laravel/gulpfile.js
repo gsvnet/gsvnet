@@ -29,7 +29,7 @@ gulp.task('images', function(){
       'assets/src/front/images/**/*.gif'
     ])
     .pipe(imagemin())
-    .pipe(gulp.dest('public/images-min/'));
+    .pipe(gulp.dest('public/images/'));
 })
 
 gulp.task('scripts', function() {
