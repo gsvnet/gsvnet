@@ -1,10 +1,12 @@
 <div class="list-group">
-    @if (Permission::has('admin'))
-    <div></div>
+
+    @if (Permission::has('users.manage'))
     <a href="{{ URL::action('Admin\UsersController@index') }}" class="list-group-item {{ Request::segment(2) == 'gebruikers' ? 'active' : '' }}">
         <i class='glyphicon glyphicon-user'></i> Gebruikers
     </a>
+    @endif
 
+    @if (Permission::has('committees.manage'))
     <a href="{{ URL::action('Admin\CommitteeController@index') }}" class="list-group-item {{ Request::segment(2) == 'commissies' ? 'active' : '' }}">
         <i class='glyphicon glyphicon-list-alt'></i> Commissies
     </a>

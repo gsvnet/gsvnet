@@ -14,6 +14,16 @@ return [
         'type' => ['visitor']
     ],
 
+    'users.manage' => [
+        'committee' => ['webcie', 'novcie'],
+        'senate' => true
+    ],
+
+    'committees.manage' => [
+        'committee' => ['webcie'],
+        'senate' => true
+    ],
+
     'photos.show-private' => [
         'type' => ['member', 'formerMember']
     ],
@@ -37,7 +47,8 @@ return [
     'docs.publish' => [
         'committee' => [
             'webcie'
-        ]
+        ],
+        'senate' => true
     ],
 
     'events.show-private' => [
@@ -52,7 +63,8 @@ return [
         'committee' => [
             'webcie',
             'prescie'
-        ]
+        ],
+        'senate' => true
     ],
 
     'senates.manage' => [

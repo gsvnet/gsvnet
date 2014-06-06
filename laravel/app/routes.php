@@ -99,22 +99,19 @@ Route::group([
     Route::resource('albums.photo', 'PhotoController',  ['except' => ['index', 'create']]);
     Route::resource('files',        'FilesController');
 
-    // Only administrators (web committee members) can manage  committees and users
-    Route::group(['before' => 'has:admin'], function() {
+    // Committees
+    Route::group(['before' => 'has:committees.manage'], function() {
 
         // Commissies
         Route::resource('commissies',   'CommitteeController', ['except' => ['create']]);
+
         // Hier nog een route voor ajax calls naar users db
         Route::post('commissies/{committee}/members',            'Committees\MembersController@store');
         Route::delete('commissies/{committee}/members/{member}', 'Committees\MembersController@destroy');
+    });
 
-        // Senaten
-        Route::resource('senaten',   'SenateController');
-        // Hier nog een route voor ajax calls naar users db
-        Route::post('senaten/{senate}/members',            'Senates\MembersController@store');
-        Route::delete('senaten/{senate}/members/{member}', 'Senates\MembersController@destroy');
-
-        // Gebruikers
+    // Users
+    Route::group(['before' => 'has:users.manage'], function() {
         Route::group(['prefix' => 'gebruikers'], function() {
             Route::post('/{user}/activeren', 'UsersController@activate');
             Route::post('/{user}/accepteer-lid', 'UsersController@accept');
@@ -126,6 +123,14 @@ Route::group([
         });
 
         Route::resource('/gebruikers',      'UsersController');
+    });
+
+    Route::group(['before' => 'has:senates.manage'], function() {
+        // Senaten
+        Route::resource('senaten',   'SenateController');
+        // Hier nog een route voor ajax calls naar users db
+        Route::post('senaten/{senate}/members',            'Senates\MembersController@store');
+        Route::delete('senaten/{senate}/members/{member}', 'Senates\MembersController@destroy');
     });
 });
 
