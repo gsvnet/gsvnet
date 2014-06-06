@@ -30,6 +30,13 @@ class UsersRepository {
         return User::orderBy('lastname', 'ASC')->get();
     }
 
+    public function byType($type)
+    {
+        return User::where('type', $type)
+            ->orderBy('lastname', 'ASC')
+            ->get();
+    }
+
     /**
      * Get paginated users
      *
