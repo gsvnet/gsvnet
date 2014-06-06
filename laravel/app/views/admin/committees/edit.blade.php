@@ -14,7 +14,6 @@
         </button>
 
         @include('admin.committees._form')
-        @include('admin.committees.members._form')
 
         <button type='submit' class='btn btn-success'>
             <i class="glyphicon glyphicon-ok"></i> Opslaan

@@ -33,7 +33,7 @@ class CommitteeController extends BaseController {
     public function index()
     {
         $committees = $this->committees->paginate(20);
-        $users = $this->users->all();
+        $users = $this->users->byType(2);
 
         $this->layout->content = View::make('admin.committees.index')
             ->withCommittees($committees)
