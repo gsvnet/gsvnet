@@ -8,11 +8,11 @@
         <dt>Voornaam</dt>
         <dd>{{{ $user->firstname }}}</dd>
 
-        <dt>Achternaam</dt>
-        <dd>{{{ $user->lastname }}}</dd>
-
         <dt>Tussenvoegsel</dt>
         <dd>{{{ $user->middlename }}}</dd>
+
+        <dt>Achternaam</dt>
+        <dd>{{{ $user->lastname }}}</dd>
 
         <dt>Email</dt>
         <dd>{{{ $user->email }}}</dd>
