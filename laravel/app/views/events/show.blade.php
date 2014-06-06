@@ -13,9 +13,9 @@
                     <li itemprop="location">{{{ $event->location }}}</li>
                 @endif
             </ul>
-            <p itemprop="description">
-                {{ $event->description }}
-            </p>
+            <div itemprop="description">
+                {{ $event->present()->descriptionFormatted }}
+            </div>
         </div>
 
         <div class="secondary-column">
