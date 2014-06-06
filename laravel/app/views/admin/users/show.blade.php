@@ -29,6 +29,7 @@
     <div class="page-header">
         <h2>Profiel informatie</h2>
     </div>
+    {{ $profile->present()->xsmallProfileImage }}
 
     <dl class="dl-horizontal">
         @if ($profile->yearGroup)
