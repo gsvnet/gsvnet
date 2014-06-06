@@ -7,18 +7,8 @@
 }
 
 .comment {
-	margin-bottom: 2em;
-	border-bottom: 1px solid $lightGrey;
-
-	&:last-child {
-		margin-bottom: 0;
-		border-bottom: 0;
-	}
-}
-
-.thread {
-	margin-bottom: 2em;
-	border-bottom: 1px solid $lightGrey;
+	padding-top: 2em;
+	border-top: 1px solid $lightGrey;
 }
 
 .avatar {
