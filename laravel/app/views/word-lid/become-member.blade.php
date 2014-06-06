@@ -9,7 +9,7 @@
             {{ Former::text('potential-zip-code')->label('Postcode')->size(6)->required() }}
             {{ Former::text('potential-town')->label('Woonplaats')->required() }}
             {{ Former::text('potential-phone')->label('Telefoon')->required() }}
-            {{ Former::select('potential-gender')->label('Geslacht')->options(array('male' => 'Man', 'female' => 'Vrouw'))->required() }}
+            {{ Former::select('potential-gender')->label('Geslacht')->options(array('1' => 'Man', '0' => 'Vrouw'))->required() }}
 
             <div class="inline-form-row {{$errors->has('potential-birthdate') ? ' has-error' : ''}}">
                 <label for="potential-birth-day" class="control-label">Geboortedatum<sup>*</sup></label>
