@@ -16,15 +16,15 @@
     <meta property="og:image:height" content="90">
 
     <link rel="shortcut icon" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/images/AppIcon60x60.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/images/AppIcon60x60-2x.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/images/AppIcon76x76.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/images/AppIcon72x72-2x.png">
-    <link rel="apple-touch-icon" sizes="29x29" href="/images/AppIcon29x29.png">
-    <link rel="apple-touch-icon" sizes="58x58" href="/images/AppIcon29x29-2x.png">
-    <link rel="apple-touch-icon" sizes="40x40" href="/images/AppIcon40x40.png">
-    <link rel="apple-touch-icon" sizes="80x80" href="/images/AppIcon40x40-2x.png">
-    <link rel="icon" sizes="192x192" href="/images/192.png">
+    <link rel="apple-touch-icon" href="/images/app-icons/AppIcon60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/app-icons/AppIcon60x60-2x.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/app-icons/AppIcon76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/app-icons/AppIcon72x72-2x.png">
+    <link rel="apple-touch-icon" sizes="29x29" href="/images/app-icons/AppIcon29x29.png">
+    <link rel="apple-touch-icon" sizes="58x58" href="/images/app-icons/AppIcon29x29-2x.png">
+    <link rel="apple-touch-icon" sizes="40x40" href="/images/app-icons/AppIcon40x40.png">
+    <link rel="apple-touch-icon" sizes="80x80" href="/images/app-icons/AppIcon40x40-2x.png">
+    <link rel="icon" sizes="192x192" href="/images/app-icons/192.png">
 
     <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
