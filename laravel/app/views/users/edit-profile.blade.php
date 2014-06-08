@@ -37,7 +37,7 @@
 	            {{ Former::text('profile.zip_code')->label('Postcode')->size(6) }}
 	            {{ Former::text('profile.town')->label('Woonplaats') }}
 	            {{ Former::text('profile.phone')->label('Telefoon') }}
-	            {{ Former::select('profile.gender')->label('Geslacht')->options(array('0' => 'Man', '1' => 'Vrouw')) }}
+	            {{ Former::select('profile.gender')->label('Geslacht')->options(array('1' => 'Man', '0' => 'Vrouw')) }}
 
 	            <h2>Adres van je ouders</h2>
 	            {{
