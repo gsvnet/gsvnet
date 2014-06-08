@@ -4,5 +4,7 @@ if(empty($_GET) || (isset($_GET['search_id']) && $_GET['search_id'] == 'active_t
 	header("Location: /forum"); 
 	exit();
 } else {
-	header("HTTP/1.0 404 Not Found");
+	header("HTTP/1.0 410 Gone");
+	echo '<h1>Pagina bestaat niet meer / is niet gevonden</h1>';
+	echo '<p>De GSV-site is vernieuwd, waarschijnlijk komt het daardoor. <a href="/">Ga terug naar de homepage</a></p>';
 }
