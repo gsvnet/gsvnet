@@ -19,7 +19,8 @@ return array(
             'AutoFormat.AutoParagraph' => true,
             'AutoFormat.RemoveEmpty'   => true,
             'AutoFormat.Linkify'       => true,
-            'HTML.Nofollow'            => true
+            'HTML.Nofollow'            => true,
+            'HTML.TargetBlank'         => true
         ),
     ),
 );
