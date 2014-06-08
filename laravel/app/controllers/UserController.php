@@ -41,7 +41,7 @@ class UserController extends BaseController {
 
         $this->layout->bodyID = 'own-profile-page';
         $this->layout->activeMenuItem = 'intern';
-        $this->layout->activeSubMenuItem = 'jaarbundel';
+        $this->layout->activeSubMenuItem = 'profiel';
         $this->layout->content = View::make('users.profile')
             ->with('member', $member)
             ->with('committees', $committees)

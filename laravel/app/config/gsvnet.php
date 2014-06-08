@@ -165,6 +165,13 @@ return array(
 	        'url' => URL::action('UserController@showProfile'),
 	        'visible' => function(){return Auth::check();},
 	        'submenu' => [
+	            'profiel' => [
+	                'title' => 'Profiel',
+	                'url' => URL::action('UserController@showProfile'),
+	                'visible' => function(){
+	                    return Permission::has('users.edit-profile');
+	                }
+	            ],
 	            'jaarbundel' => [
 	                'title' => 'Jaarbundel',
 	                'url' => URL::action('UserController@showUsers'),
