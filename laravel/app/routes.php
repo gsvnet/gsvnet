@@ -125,6 +125,7 @@ Route::group([
         Route::resource('/gebruikers',      'UsersController');
     });
 
+    // Senates
     Route::group(['before' => 'has:senates.manage'], function() {
         // Senaten
         Route::resource('senaten',   'SenateController');
@@ -156,7 +157,7 @@ Route::group(['prefix' => 'forum', 'before' => ['auth', 'approved']], function()
 
 
 // Forum index, search, show comment, show thread
-Route::get('forum',        'ForumThreadsController@getIndex');
+Route::get('forum',      'ForumThreadsController@getIndex');
 Route::get('forum/zoek', 'ForumThreadsController@getSearch');
 
 // Make sure non members can't show private topics
