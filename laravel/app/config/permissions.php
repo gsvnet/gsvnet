@@ -24,6 +24,10 @@ return [
         'senate' => true
     ],
 
+    'committees.show-novcie' => [
+        'type' => ['member', 'formerMember']
+    ],
+
     'photos.show-private' => [
         'type' => ['member', 'formerMember']
     ],

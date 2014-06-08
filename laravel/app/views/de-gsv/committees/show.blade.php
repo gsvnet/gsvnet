@@ -8,7 +8,7 @@
                 {{{ $committee->description }}}
             </p>
 
-            @if( $activeMembers->count() > 0 )
+            @if( $activeMembers->count() > 0 && ($committee->unique_name != 'novcie' || Permission::has('committees.show-novcie')) )
                 <h2>Leden</h2>
 
                 <ul class="unstyled-list title-description-list">
