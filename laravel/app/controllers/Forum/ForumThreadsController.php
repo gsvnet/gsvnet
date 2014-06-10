@@ -8,6 +8,8 @@ use \GSVnet\Forum\Threads\ThreadForm;
 use GSVnet\Forum\Threads\ThreadRepository;
 use GSVnet\Forum\Threads\ThreadUpdaterListener;
 use GSVnet\Tags\TagRepository;
+use GSVnet\Users\UsersRepository;
+use GSVnet\Users\User;
 
 class ForumThreadsController extends BaseController implements
     ThreadCreatorListener,
@@ -16,6 +18,7 @@ class ForumThreadsController extends BaseController implements
 {
     protected $threads;
     protected $tags;
+    protected $users;
     protected $currentSection;
     protected $threadCreator;
     private $replies;
@@ -27,6 +30,7 @@ class ForumThreadsController extends BaseController implements
         ThreadRepository $threads,
         ReplyRepository $replies,
         TagRepository $tags,
+        UsersRepository $users,
         ThreadCreator $threadCreator
     )
     {
@@ -34,6 +38,7 @@ class ForumThreadsController extends BaseController implements
 
         $this->threads = $threads;
         $this->tags = $tags;
+        $this->users = $users;
         $this->threadCreator = $threadCreator;
         $this->replies = $replies;
     }
@@ -210,6 +215,20 @@ class ForumThreadsController extends BaseController implements
         $this->view('forum.search', compact('query', 'results'));
         $this->layout->activeMenuItem = 'forum';
         $this->layout->bodyID = 'thread-search-page';
+    }
+
+    public function statistics()
+    {
+
+        // MONTH
+        $perMonthUsers = $this->users->mostPostsPreviousMonth();
+        $perWeekUsers = $this->users->mostPostsPreviousWeek();
+        $allTimeUsers = $this->users->mostPostsAllTime();
+
+        $this->title = "Statistieken!!1";
+        $this->layout->activeMenuItem = 'forum';
+        $this->layout->bodyID = 'forum-statistics-page';
+        $this->view('forum.stats', compact('perMonthUsers', 'perWeekUsers', 'allTimeUsers'));
     }
 
     // ------------------------- //
