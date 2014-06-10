@@ -7,7 +7,9 @@ class UserPresenter extends Presenter
 
     public function fullName()
     {
-        if(empty($this->lastname) && empty($this->firstname)) {
+        $fullName = $this->firstname . ' ' . $this->middlename . ' ' . $this->lastname;
+
+        if($fullName == '  ') {
             return 'onbekend';
         } else {
             return $this->firstname . ' ' . $this->middlename . ' ' . $this->lastname;
