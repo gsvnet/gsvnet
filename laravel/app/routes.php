@@ -137,6 +137,9 @@ Route::group([
 
 // Forum
 Route::group(['prefix' => 'forum', 'before' => ['auth', 'approved']], function() {
+
+    Route::get('stats', 'ForumThreadsController@statistics');
+
     // Edit routes
     Route::get('bewerk-onderwerp/{threadId}',  'ForumThreadsController@getEditThread');
     Route::post('bewerk-onderwerp/{threadId}', 'ForumThreadsController@postEditThread');
