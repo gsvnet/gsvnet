@@ -12,7 +12,7 @@ class UserPresenter extends Presenter
         if($fullName == '  ') {
             return 'onbekend';
         } else {
-            return $this->firstname . ' ' . $this->middlename . ' ' . $this->lastname;
+            return $fullName;
         }
     }
 

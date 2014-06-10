@@ -165,7 +165,7 @@ class UsersRepository {
 
         $from = $pastWeek->subDays($dayOfWeek)->format('Y-m-d 00:00:00');
         $to = $pastWeek->addDays(6)->format('Y-m-d 23:59:59');
-        $users = User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.username, users.firstname, users.lastname'))
+        $users = User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.username, users.firstname, users.middlename, users.lastname'))
             ->join('forum_replies', 'users.id', '=', 'forum_replies.author_id')
             ->groupBy('forum_replies.author_id')
             ->whereBetween('forum_replies.created_at', [$from, $to])
@@ -181,7 +181,7 @@ class UsersRepository {
 
     public function mostPostsAllTime($num = 250)
     {
-        return User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.username, users.firstname, users.lastname'))
+        return User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.username, users.firstname, users.middlename, users.lastname'))
             ->join('forum_replies', 'users.id', '=', 'forum_replies.author_id')
             ->groupBy('forum_replies.author_id')
             ->orderBy('num', 'DESC')
