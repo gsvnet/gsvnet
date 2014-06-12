@@ -28,13 +28,16 @@ class UsersRepository {
     */
     public function all()
     {
-        return User::orderBy('lastname', 'ASC')->get();
+        return User::orderBy('lastname', 'ASC')
+            ->orderBy('firstname', 'ASC')
+            ->get();
     }
 
     public function byType($type)
     {
         return User::where('type', $type)
             ->orderBy('lastname', 'ASC')
+            ->orderBy('firstname', 'ASC')
             ->get();
     }
 
@@ -51,6 +54,7 @@ class UsersRepository {
     public function paginateWhereType($type, $amount)
     {
         return User::orderBy('lastname', 'ASC')
+            ->orderBy('firstname', 'ASC')
             ->where('type', $type)
             ->paginate($amount);
     }
