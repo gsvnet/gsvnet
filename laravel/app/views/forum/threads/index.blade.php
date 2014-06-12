@@ -8,7 +8,7 @@
             Onderwerpen met de tags {{{ str_replace(',', ', ', Input::get('tags')) }}}
         </p>
     @else
-        <p class="delta">Dit is het forum van de GSV hier kan worden gepost over activiteiten, vraag en aanbod, interne en externe aangelegenheid en praktisch alles wat je kwijt wil.</p>
+        <p class="delta">Op het actieve forum van de GSV staat informatie over activiteiten en aanbod van kamers in Groningen. Je kunt er praktisch alles kwijt.</p>
     @endif
 
     <section class="main-content forum has-border-bottom">
