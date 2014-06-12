@@ -49,7 +49,7 @@ class ProfilesRepository {
             {
                 $join->where('users.type', '=', $type);
             }
-        })->orderBy('users.lastname');
+        })->orderBy('users.lastname')->orderBy('users.firstname');
 
         if ( ! empty($search))
         {
