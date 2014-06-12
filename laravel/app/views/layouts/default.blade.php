@@ -23,8 +23,7 @@
     <link rel="apple-touch-icon" sizes="29x29" href="/images/app-icons/AppIcon29x29.png">
     <link rel="apple-touch-icon" sizes="58x58" href="/images/app-icons/AppIcon29x29-2x.png">
     <link rel="apple-touch-icon" sizes="40x40" href="/images/app-icons/AppIcon40x40.png">
-    <link rel="apple-touch-icon" sizes="80x80" href="/images/app-icons/AppIcon40x40-2x.png">
-    <link rel="icon" sizes="192x192" href="/images/app-icons/192.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/app-icons/144.png">
 
     <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
