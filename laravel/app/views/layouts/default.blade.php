@@ -16,14 +16,14 @@
     <meta property="og:image:height" content="90">
 
     <link rel="shortcut icon" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/images/app-icons/AppIcon60x60.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/images/app-icons/AppIcon60x60-2x.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/images/app-icons/AppIcon76x76.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/images/app-icons/AppIcon72x72-2x.png">
-    <link rel="apple-touch-icon" sizes="29x29" href="/images/app-icons/AppIcon29x29.png">
-    <link rel="apple-touch-icon" sizes="58x58" href="/images/app-icons/AppIcon29x29-2x.png">
-    <link rel="apple-touch-icon" sizes="40x40" href="/images/app-icons/AppIcon40x40.png">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/app-icons/144.png">
+    <link rel="apple-touch-icon" href="http://gsvnet.nl/images/app-icons/AppIcon60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://gsvnet.nl/images/app-icons/AppIcon60x60-2x.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://gsvnet.nl/images/app-icons/AppIcon76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://gsvnet.nl/images/app-icons/AppIcon72x72-2x.png">
+    <link rel="apple-touch-icon" sizes="29x29" href="http://gsvnet.nl/images/app-icons/AppIcon29x29.png">
+    <link rel="apple-touch-icon" sizes="58x58" href="http://gsvnet.nl/images/app-icons/AppIcon29x29-2x.png">
+    <link rel="apple-touch-icon" sizes="40x40" href="http://gsvnet.nl/images/app-icons/AppIcon40x40.png">
+    <link rel="apple-touch-icon-precomposed" href="http://gsvnet.nl/images/app-icons/144.png">
 
     <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
