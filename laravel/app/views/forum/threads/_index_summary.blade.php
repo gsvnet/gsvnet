@@ -16,7 +16,7 @@
             </li>
 
             @if($thread->mostRecentReply)
-                <li><a href="{{$thread->present()->latestReplyUrl}}" title="Ga naar de laatste reactie van het onderwerp {{{$thread->title}}}">{{{ $thread->mostRecentReply->present()->updated_ago }}}</a> door {{{ $thread->present()->mostRecentReplier }}}</li>
+                <li><a href="{{$thread->present()->latestReplyUrl}}" title="Ga naar de laatste reactie van het onderwerp {{{$thread->title}}}"><time datetime="{{{$thread->mostRecentReply->created_at->toISO8601String()}}}" title="{{{$thread->mostRecentReply->created_at->formatLocalized('%A %e %B %Y %T')}}}">{{ $thread->mostRecentReply->present()->updated_ago }}</time></a> door {{{ $thread->present()->mostRecentReplier }}}</li>
             @endif
         </ul>
     </div>

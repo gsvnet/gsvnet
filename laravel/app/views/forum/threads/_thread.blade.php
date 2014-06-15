@@ -13,7 +13,7 @@
             @endif
             </strong>
             <ul class="inline-list grey">
-                <li>{{ $thread->present()->created_ago }}</li>
+                <li><time datetime="{{{$thread->created_at->toISO8601String()}}}" title="{{{$thread->created_at->formatLocalized('%A %e %B %Y %T')}}}">{{ $thread->present()->created_ago }}</time></li>
                 @if($thread->isManageableBy($currentUser))
                     <li><a href="{{ $thread->present()->editUrl }}">bewerk</a></li>
                     <li><a href="{{ $thread->present()->deleteUrl }}">verwijder</a></li>
