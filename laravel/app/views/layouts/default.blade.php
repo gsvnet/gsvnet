@@ -7,13 +7,14 @@
 
     <meta name="description" content="{{{ $description or 'Gereformeerde Studenten Vereniging Groningen' }}}" >
     <meta property="og:site_name" content="Gereformeerde Studenten Vereniging Groningen">
-    <meta property="og:title" content="{{{ $description or 'Gereformeerde Studenten Vereniging Groningen' }}}">
+    <meta property="og:title" content="{{{ $title or 'GSV' }}}">
+    <meta property="og:description" content="{{{ $description or 'Gereformeerde Studenten Vereniging Groningen' }}}">
     <meta property="og:url" content="{{{Request::url()}}}">
     <meta property="og:type" content="{{ Request::is('/') ? 'website' : 'article' }}">
-    <meta property="og:image" content="http://gsvnet.nl/images/logo-90.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="90">
-    <meta property="og:image:height" content="90">
+    <meta property="og:image" content="http://gsvnet.nl/images/facebook.jpg">
+    <meta property="og:image:type" content="image/jpg">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
 
     <link rel="shortcut icon" sizes="57x57" href="http://gsvnet.nl/images/app-icons/AppIcon57x57.png">
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://gsvnet.nl/images/app-icons/AppIcon57x57.png">
