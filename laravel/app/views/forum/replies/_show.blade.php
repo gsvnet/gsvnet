@@ -12,7 +12,8 @@
                 @endif
             </strong>
             <ul class="inline-list grey">
-                <li><a href="#reactie-{{ $reply->id }}">{{ $reply->present()->created_ago }}</a></li>
+                <li><a href="#reactie-{{ $reply->id }}">
+                <time datetime="{{{$reply->created_at->toISO8601String()}}}" title="{{{$reply->created_at->formatLocalized('%A %e %B %Y %T')}}}">{{ $reply->present()->created_ago }}</time></a></li>
 
                 @if(Auth::check())
                     @if($reply->isManageableBy($currentUser))
