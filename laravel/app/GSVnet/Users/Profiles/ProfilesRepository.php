@@ -91,6 +91,9 @@ class ProfilesRepository {
         $birthday = "date_format(birthdate, \"{$year}-%m-%d\")";
 
         $profiles = UserProfile::whereRaw("$birthday between \"{$from}\" and \"{$to}\"")
+            ->whereHas('user', function($q) {
+                $q->where('type', '=', '2');
+            })
             ->orderBy(\DB::raw($birthday))
             ->remember(10)
             ->get(array('*', \DB::raw("{$birthday} as birthday")));
