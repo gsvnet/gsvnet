@@ -8,7 +8,7 @@
         <p class="delta">Een onderwerp gestart door {{{ $thread->author->username }}} </p>
         <div class="main-content has-border-bottom">
 
-            {{ $replies->links() }}
+            {{-- $replies->links() --}}
 
             <div class="forum">
 
