@@ -47,6 +47,6 @@
 	</div>
 
 	<div class="column-holder">
-		{{ $members->links() }}
+		{{ $members->appends(Input::except(array('page')))->links() }}
 	</div>
 @stop
