@@ -7,7 +7,7 @@
         <h1>Onderwerp verwijderen?</h1>
     </div>
 
-    <div class="main-content">
+    <div class="main-content has-border-bottom">
         <div class="reply-form">
             {{ Form::model($thread, ['method' => 'delete']) }}
                 <div class="form-row">
