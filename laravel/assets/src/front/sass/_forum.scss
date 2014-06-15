@@ -1,3 +1,14 @@
+.back-link {
+	float: left;
+	display: block;
+	width: 22px;
+	height: 60px;
+	height: 3.33333rem;
+	margin-right: 18px;
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
 .forum-post-data {
 	@include clearfix;
 	margin-bottom: .5em;
