@@ -6,7 +6,7 @@
         <h1>Bewerk onderwerp</h1>
     </div>
 
-    <div class="main-content">
+    <div class="main-content has-border-bottom">
         <div class="padding">
 
             {{ Former::open()->action(action('ForumThreadsController@postEditThread', [$thread->id])) }}
