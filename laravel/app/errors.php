@@ -10,6 +10,11 @@ App::error(function(GSVnet\Permissions\NoPermissionException $exception) {
     return Response::view('errors.unauthorized', $data, 401);
 });
 
+App::error(function(Illuminate\Session\TokenMismatchException $exception) {
+    $message = 'Het token is ongeldig.';
+    return Redirect::back()->withInput()->withErrors($message);
+});
+
 // Dit is best wel lelijk en moet eigenlijk in een service provider oid
 
 App::error(function(Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
