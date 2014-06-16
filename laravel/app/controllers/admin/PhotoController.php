@@ -17,7 +17,7 @@ class PhotoController extends BaseController {
         $this->photos = $photos;
         $this->manager = $manager;
 
-        $this->beforeFilter('maxUploadSize', ['only' => array('store', 'update')]);
+        //$this->beforeFilter('maxUploadSize', ['only' => array('store', 'update')]);
         $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
 
         $this->beforeFilter('photos.manage');
