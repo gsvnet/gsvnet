@@ -55,7 +55,7 @@ foreach($menuitems as $name => $item)
 
     if(array_key_exists('params', $item) && is_array($item['params']))
     {
-
+        $params = '';
         foreach($item['params'] as $key => $value)
         {
             $params .= ' ' . $key . '="' . $value . '"';
@@ -81,7 +81,7 @@ foreach($menuitems as $name => $item)
 
             if(array_key_exists('params', $subItem) && is_array($subItem['params']))
             {
-
+                $params = '';
                 foreach($subItem['params'] as $key => $value)
                 {
                     $params .= ' ' . $key . '="' . $value . '"';
