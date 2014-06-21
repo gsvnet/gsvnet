@@ -16,6 +16,6 @@
     </div>
     <div class="dialog-footer">
         <h3>Geen account?</h3>
-        {{ link_to_action('RegisterController@create', 'Registreer je dan nu!') }}
+        <a href="{{ URL::action('RegisterController@create') }}" rel="nofollow" title="Registreer je">Registreer je dan nu!</a>
     </div>
 </div>

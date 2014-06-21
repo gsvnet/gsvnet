@@ -144,15 +144,18 @@ return array(
 	    'inloggen' => [
 	        'title' => 'Inloggen',
 	        'url' => URL::action('SessionController@getLogin'),
-	        'params' => ['data-mfp-src' => '#login-dialog', 'id' => 'login-link'],
+	        'params' => ['data-mfp-src' => '#login-dialog', 'id' => 'login-link', 'rel' => 'nofollow'],
 	        'visible' => function(){return Auth::guest();},
+	        'rel' => 'nofollow',
 	        'submenu' => [
 	            'registreren' => [
 	                'title' => 'Registreren',
+	       			'params' => ['rel' => 'nofollow'],
 	                'url' => URL::action('RegisterController@create')
 	            ],
 	            'inloggen' => [
 	                'title' => 'Inloggen',
+	       			'params' => ['rel' => 'nofollow'],
 	                'url' => URL::action('SessionController@getLogin'),
 	            ]
 	        ]

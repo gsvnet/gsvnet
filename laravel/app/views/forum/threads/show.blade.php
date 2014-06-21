@@ -27,9 +27,13 @@
 
             <div id="reageer" class="{{$replies->getCurrentPage() != $replies->getLastPage() && $replies->getLastPage() > 1 ? 'hidden-form' : ''}}">
                 @if(Auth::check())
-                    @include('forum.replies._create')
+                    @if(Auth::user()->approved)
+                        @include('forum.replies._create')
+                    @else
+                        <p>Je kan nog niet reageren omdat je account nog niet is goedgekeurd.</p>
+                    @endif
                 @else
-                    <p><a class="button" href="{{ action('SessionController@getLogin') }}">Log in om te reageren</a>
+                    <p><a class="button" href="{{ action('SessionController@getLogin') }}" rel="nofollow">Log in om te reageren</a>
                 @endif
             </div>
         </div>
