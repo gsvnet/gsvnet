@@ -79,8 +79,17 @@ foreach($menuitems as $name => $item)
                 continue;
             }
 
+            if(array_key_exists('params', $subItem) && is_array($subItem['params']))
+            {
+
+                foreach($subItem['params'] as $key => $value)
+                {
+                    $params .= ' ' . $key . '="' . $value . '"';
+                }
+            }
+
             // Print item
-            echo '<li><a class="sub-level-link" href="' . htmlentities($subItem['url']) . '">' . htmlentities($subItem['title']) . '</a></li>';
+            echo '<li><a class="sub-level-link" href="' . htmlentities($subItem['url']) . '"' . $params . '>' . htmlentities($subItem['title']) . '</a></li>';
         }
         echo '</ul>';
 

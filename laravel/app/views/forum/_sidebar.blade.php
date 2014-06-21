@@ -2,7 +2,7 @@
     <div class="content-column">
         <h2>Maak een nieuw topic</h2>
         <p>
-            <a class="button" href="{{ action('ForumThreadsController@getCreateThread') }}">Nieuw topic</a>
+            <a class="button" href="{{ action('ForumThreadsController@getCreateThread') }}" rel="nofollow">Nieuw topic</a>
         </p>
 
         <div class="search">
