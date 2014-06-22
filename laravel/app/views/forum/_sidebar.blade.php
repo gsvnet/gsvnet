@@ -13,6 +13,10 @@
         </div>
     </div>
     <div class="content-column">
+        @if( Permission::has('threads.show-private') )
+            <h2>Forumstatistieken</h2>
+            <p><a href="{{ URL::action('ForumThreadsController@statistics') }}" title="Toplijsten forumposters" class="button">Toplijsten</a></p>
+        @endif
         <h2>Tags</h2>
         <ul class="secondary-menu">
             {{-- $forumSections is set in the constructor of the ForumController class --}}
