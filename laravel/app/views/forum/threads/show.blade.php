@@ -45,10 +45,6 @@
                         {{ $thread->tags->getTagList() }}
                     </div>  
                 </div>
-                <div class="content-column">
-                    <h2>Terug</h2>
-                    <p><a href="{{ URL::action('ForumThreadsController@getIndex') }}" title="Terug naar de laatste topics">Terug naar het overzicht</a></p>
-                </div>
             </div>
         </div>
     </div>
