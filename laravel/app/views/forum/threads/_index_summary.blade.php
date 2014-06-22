@@ -1,7 +1,7 @@
 <div class="media-row img-45 {{ $thread->present()->visited }}">
     <div class="media-details">
         @if($thread->mostRecentReply)
-            {{ $thread->mostRecentReply->author->present()->avatarDeferred(45) }}
+            <a href="{{$thread->present()->latestReplyUrl}}" title="Ga naar de laatste reactie van het onderwerp {{{$thread->subject}}}">{{ $thread->mostRecentReply->author->present()->avatarDeferred(45) }}</a>
         @else
             {{ $thread->author->present()->avatarDeferred(45) }}
         @endif
@@ -20,7 +20,7 @@
             </li>
 
             @if($thread->mostRecentReply)
-                <li><a href="{{$thread->present()->latestReplyUrl}}" title="Ga naar de laatste reactie van het onderwerp {{{$thread->title}}}"><time datetime="{{{$thread->mostRecentReply->created_at->toISO8601String()}}}" title="{{{$thread->mostRecentReply->created_at->formatLocalized('%A %e %B %Y %T')}}}">{{ $thread->mostRecentReply->present()->updated_ago }}</time></a> door {{{ $thread->present()->mostRecentReplier }}}</li>
+                <li><a href="{{$thread->present()->latestReplyUrl}}" title="Ga naar de laatste reactie van het onderwerp {{{$thread->subject}}}"><time datetime="{{{$thread->mostRecentReply->created_at->toISO8601String()}}}" title="{{{$thread->mostRecentReply->created_at->formatLocalized('%A %e %B %Y %T')}}}">{{ $thread->mostRecentReply->present()->updated_ago }}</time> door {{{ $thread->present()->mostRecentReplier }}}</a></li>
             @endif
         </ul>
     </div>
