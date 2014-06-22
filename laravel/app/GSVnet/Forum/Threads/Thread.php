@@ -103,7 +103,6 @@ class Thread extends Entity
     public function setMostRecentReply(Reply $reply)
     {
         $this->most_recent_reply_id = $reply->id;
-        $this->updateReplyCount();
         $this->save();
     }
 

@@ -1,6 +1,10 @@
 <div class="media-row img-45 {{ $thread->present()->visited }}">
     <div class="media-details">
-        {{ $thread->author->present()->avatarDeferred(45) }}
+        @if($thread->mostRecentReply)
+            {{ $thread->mostRecentReply->author->present()->avatarDeferred(45) }}
+        @else
+            {{ $thread->author->present()->avatarDeferred(45) }}
+        @endif
         {{ $thread->present()->replyCounter }}
     </div>
     <div class="media-body">

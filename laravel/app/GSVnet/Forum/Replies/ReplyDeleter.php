@@ -22,6 +22,10 @@ class ReplyDeleter
         $reply->delete();
 
         $thread->updateReplyCount();
+        
+        // Update last reply.
+        $last = $thread->replies()->orderBy('created_at', 'DESC')->first();
+        $thread->setMostRecentReply($last);
 
         return $observer->replyDeleted($thread);
     }
