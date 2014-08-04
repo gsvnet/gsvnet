@@ -7,6 +7,7 @@
                 <li data-target="#homepage-carousel" data-slide-to="1"></li>
                 <li data-target="#homepage-carousel" data-slide-to="2"></li>
                 <li data-target="#homepage-carousel" data-slide-to="3"></li>
+                <li data-target="#homepage-carousel" data-slide-to="4"></li>
             </ol>
 
             <!-- Wrapper for slides -->
@@ -39,6 +40,29 @@
                     </div>
 --}}
                     <div class="item active">
+
+                        <a href="{{ URL::action('EventController@showIndex') }}" title="Alle activiteiten tijdens de KEI-week">
+                            <span data-picture data-alt="Een geweldig plaatje">
+                                <span data-src="/images/banner/kei-480.jpg"></span>
+                                <span data-src="/images/banner/kei-600.jpg" data-media="(min-width: 480px)"></span>
+                                <span data-src="/images/banner/kei-1024.jpg" data-media="(min-width: 600px)"></span>
+                                <span data-src="/images/banner/kei-1600.jpg" data-media="(min-width: 1024px)"></span>
+                                <noscript>
+                                    <img src="/images/banner/kei-480.jpg" alt="Geweldig plaatje" width="480" height="360">
+                                </noscript>
+                            </span>
+                        </a>
+
+                        <div class="slide-description-wrapper">
+                            <div class="slide-description">
+                                <div class="slide-description-box">
+                                        <p class="slide-title">KEI-week Groningen</p>
+                                        <p class="slide-description-text">Bekijk alle activiteiten!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
                         <span data-picture data-alt="Een geweldig plaatje">
                             <span data-src="/images/banner/sociaal480.jpg"></span>
                             <span data-src="/images/banner/sociaal600.jpg" data-media="(min-width: 480px)"></span>
@@ -57,6 +81,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="item">
                         <span data-picture data-alt="Christelijke studentenvereniging Groningen">
                             <span data-src="/images/banner/christelijk-480.jpg"></span>
