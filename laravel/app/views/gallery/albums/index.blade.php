@@ -10,7 +10,7 @@
 
 		<div class="gallery">
 			@for($i=0; $i<count($albums); $i++)
-				@include('gallery._album', array('album' => $albums[$i], 'wide' => $i % $repeatsAfter == 4 || $i % $repeatsAfter == 8, 'class' => 'tile-number-' . ($i % $repeatsAfter)))
+				@include('gallery._album', array('album' => $albums[$i], 'description' => $albums[$i]->name, 'wide' => $i % $repeatsAfter == 4 || $i % $repeatsAfter == 8, 'class' => 'tile-number-' . ($i % $repeatsAfter)))
 
 			@endfor
 		</div>

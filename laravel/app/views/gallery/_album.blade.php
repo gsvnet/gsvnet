@@ -6,8 +6,8 @@
             <img src="{{ $album->small_image_url }}" alt="{{ $album->name }}" width="308" height="308" />
         @endif
 
-        @if( !empty($album->description) )
-        	<p class="photo-description">{{ $album->description }}</p>
+        @if( !empty($description) )
+        	<p class="photo-description">{{ $description }}</p>
         @endif
     </a>
 </div>
