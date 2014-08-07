@@ -10,6 +10,16 @@ App::error(function(GSVnet\Permissions\NoPermissionException $exception) {
     return Response::view('errors.unauthorized', $data, 401);
 });
 
+App::error(function(GSVnet\Permissions\UserAccountNotApprovedException $exception) {
+    $data = [
+        'title' => 'Helaas, u heeft niet voldoende rechten om deze pagina te bekijken.',
+        'description' => '',
+        'keywords' => ''
+    ];
+
+    return Response::view('errors.not-approved', $data, 401);
+});
+
 App::error(function(Illuminate\Session\TokenMismatchException $exception) {
     $message = 'Het token is ongeldig.';
     return Redirect::back()->withInput()->withErrors($message);
