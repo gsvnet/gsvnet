@@ -19,7 +19,7 @@ class SessionController extends BaseController {
             // If becoming member, return correctly.
             if ($becomingMember)
             {
-                $intended = URL::action('MemberController@store') . '#become-member';
+                $intended = URL::action('MemberController@store') . '#lid-worden';
             }
             return Redirect::intended($intended);
         }

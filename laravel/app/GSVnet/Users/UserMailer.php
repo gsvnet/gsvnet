@@ -38,11 +38,13 @@ class UserMailer extends Mailer {
     /**
     *   Send an email to the user and the membership committee
     */
-    public function membership($user)
+    public function membership($user, $profile, $input)
     {
         $data = [
             'fullname' => $user->present()->fullName,
-            'user' => $user
+            'user' => $user,
+            'profile' => $profile,
+            'input' => $input
         ];
 
         $this->sendTo($user->email, 'Aanmelding word verwerkt', 'emails.users.join', $data);

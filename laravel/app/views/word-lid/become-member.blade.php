@@ -42,6 +42,7 @@
 
             {{ Former::text('potential-church')->label('Kerkgezindte')->required() }}
             {{ Former::text('potential-study')->label('Naam van studie')->required() }}
+            {{ Former::select('potential-study-start-year')->label('Jaar van inschrijving bij de RuG')->range(date('Y')+1, date('Y')-10); }}
             {{ Former::text('potential-student-number')->label('Studentnummer (alleen als je dat al hebt)')->placeholder('s1234567') }}
 
         <h2>Gegevens over je ouders</h2>
@@ -55,18 +56,23 @@
 
             <div id="parents-info">
                 {{
-                    Former::text('parents-address')->label('Adres')
+                    Former::text('parents-address')->label('Adres ouders')
                 }}
                 {{
-                    Former::text('parents-zip-code')->label('Postcode')->size(6)
+                    Former::text('parents-zip-code')->label('Postcode ouders')->size(6)
                 }}
                 {{
-                    Former::text('parents-town')->label('Woonplaats')
+                    Former::text('parents-town')->label('Woonplaats ouders')
                 }}
             </div>
             {{
-                Former::text('parents-phone')->label('Telefoon')->required()
+                Former::text('parents-email')->label('Emailadres ouders')->required()
             }}
+            {{
+                Former::text('parents-phone')->label('Telefoon ouders')->required()
+            }}
+
+            {{ Former::textarea('additional-information')->rows(4)->cols(50)->style('width:auto')->label('Vragen of opmerkingen?') }}
 
     </div>
     <div class="column-holder">

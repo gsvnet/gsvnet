@@ -55,7 +55,11 @@ class ProfileManager
         $profile = $this->profiles->create($user, $input);
 
         // Send email etc.
-        Event::fire('potential.registered', ['user' => $user]);
+        Event::fire('potential.registered', [
+            'user' => $user,
+            'profile' => $profile,
+            'input' => $input
+        ]);
 
         return $profile;
     }

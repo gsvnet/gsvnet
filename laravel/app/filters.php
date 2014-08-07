@@ -196,6 +196,6 @@ Route::filter('approved', function() {
 
     if ( ! Auth::user()->approved)
     {
-        throw new \GSVnet\Permissions\NoPermissionException;
+        throw new \GSVnet\Permissions\UserAccountNotApprovedException;
     }
 });
