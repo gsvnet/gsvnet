@@ -73,7 +73,7 @@
 
 
     @section('javascripts')
-      <script src="/build-javascripts/admin.js"></script>
+      <script src="/build-javascripts/admin.js?v=1.1"></script>
     @show
   </body>
 </html>
