@@ -5,14 +5,14 @@
 
         <div class="main-content">
             <p>
-                Download coole bestanden.
+                Al wat u ontbreekt, schenkt GSVdocs als u erom smeekt.
             </p>
             <div class='table-responsive'>
             <table class='table table-bordered table-hover table-condensed'>
                 <thead>
                     <tr>
                         <th>Naam</th>
-                        <th>Bijgewerkt op</th>
+                        <th>Laatste update</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,7 +25,7 @@
                            </a>
                         </td>
                         <td>
-                            {{{ $file->updated_at }}}
+                            {{{ $file->present()->updated_ago }}}
                         </td>
                     </tr>
                     @endforeach

@@ -1,9 +1,12 @@
 <?php namespace GSVnet\Files;
 
 use GSVnet\Files\FileHandler;
+use Laracasts\Presenter\PresentableTrait;
 
 class File extends \Eloquent {
     protected $fillable = array('name', 'file_path', 'published');
+
+    protected $presenter = 'GSVnet\Files\FilePresenter';
 
     public static $rules = array(
         'name' => 'required'
