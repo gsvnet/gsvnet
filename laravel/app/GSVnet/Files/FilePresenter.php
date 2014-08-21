@@ -3,7 +3,7 @@
 use Laracasts\Presenter\Presenter;
 use GSVnet\Carbon as GSVCarbon;
 
-class EventPresenter extends Presenter
+class FilePresenter extends Presenter
 {
     public function updated_ago()
     {
