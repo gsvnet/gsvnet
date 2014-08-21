@@ -21,7 +21,7 @@ class FilesRepository
      */
     public function paginate($amount, $published = true)
     {
-        return File::published($published)->orderBy('update_at', 'desc')->paginate($amount);
+        return File::published($published)->orderBy('updated_at', 'desc')->paginate($amount);
     }
 
     /**
@@ -36,7 +36,7 @@ class FilesRepository
         //  on the labels
         if ($count == 0)
         {
-            return File::published($published)->paginate($amount);
+            return File::published($published)->orderBy('updated_at', 'desc')->paginate($amount);
         }
         // Get the ids of files which belong to all the specified labels
         $file_ids = \DB::table('file_label')
@@ -45,7 +45,7 @@ class FilesRepository
             ->havingRaw('count(*) = ' . $count)
             ->lists('file_id');
         // Return all files with the found ids
-        return File::published($published)->whereIn('id', $file_ids)->paginate($amount);
+        return File::published($published)->whereIn('id', $file_ids)->orderBy('updated_at', 'desc')->paginate($amount);
     }
 
     public function getPublishedAndSearchWithLabelsAndPaginate($search, $labels, $amount = 5)
@@ -62,7 +62,7 @@ class FilesRepository
             $query = $query->withLabels($labels);
         }
 
-        return $query->paginate($amount);
+        return $query->orderBy('updated_at', 'desc')->paginate($amount);
     }
 
     /**
