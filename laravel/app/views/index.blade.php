@@ -39,7 +39,7 @@
                     </div>
 --}}
 
-                    <div class="item">
+                    <div class="item active">
                         <span data-picture data-alt="Een geweldig plaatje">
                             <span data-src="/images/banner/sociaal480.jpg"></span>
                             <span data-src="/images/banner/sociaal600.jpg" data-media="(min-width: 480px)"></span>
@@ -98,7 +98,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="item">
                         <span data-picture data-alt="Een geweldig plaatje">
                             <span data-src="/images/banner/intellectueel480.jpg"></span>
