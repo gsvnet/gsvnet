@@ -4,6 +4,8 @@ use GSVnet\Files\FileHandler;
 use Laracasts\Presenter\PresentableTrait;
 
 class File extends \Eloquent {
+    use PresentableTrait;
+
     protected $fillable = array('name', 'file_path', 'published');
 
     protected $presenter = 'GSVnet\Files\FilePresenter';
