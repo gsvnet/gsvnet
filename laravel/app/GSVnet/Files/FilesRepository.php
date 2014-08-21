@@ -21,7 +21,7 @@ class FilesRepository
      */
     public function paginate($amount, $published = true)
     {
-        return File::published($published)->paginate($amount)->orderBy('update_at', 'desc');
+        return File::published($published)->paginate($amount)->orderBy('update_at', 'asc');
     }
 
     /**
