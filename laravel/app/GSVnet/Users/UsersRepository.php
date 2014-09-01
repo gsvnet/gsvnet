@@ -93,7 +93,7 @@ class UsersRepository {
     public function update($id, array $input)
     {
         $user = $this->byId($id);
-        $user->email = $input['email'];
+        $user->update($input);
         $user->save();
 
         return $user;

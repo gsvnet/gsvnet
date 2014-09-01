@@ -124,6 +124,7 @@ class UserController extends BaseController {
         $profile = $user->profile;
         $input = Input::except(['profile_photo_path']);
 
+        // Profile specific input
         $profileInput = [
             'church' => $input['profile_church'],
             'study' => $input['profile_study'],
@@ -152,8 +153,13 @@ class UserController extends BaseController {
             $profileInput['parent_zip_code'] = $input['profile_zip_code'];
         }
 
+        // User specific input
+        $userInput = [
+            'email' => $input['email']
+        ];
+
         // Create the profile and attach it to the user
-        $user = $this->userManager->update($user->id, $input);
+        $user = $this->userManager->update($user->id, $userInput);
 
         if(isset($profile) && Permission::has('users.edit-profile'))
         {

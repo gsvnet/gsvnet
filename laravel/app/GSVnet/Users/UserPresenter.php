@@ -1,6 +1,10 @@
 <?php namespace GSVnet\Users;
 
-use Laracasts\Presenter\Presenter, Carbon\Carbon, Config, Gravatar, URL;
+use Laracasts\Presenter\Presenter;
+use Carbon\Carbon; 
+use Config;
+use Gravatar;
+use URL;
 
 class UserPresenter extends Presenter
 {
@@ -33,16 +37,16 @@ class UserPresenter extends Presenter
     	$string = '';
     	switch($this->type)
     	{
-    		case 'visitor':
+    		case User::VISITOR :
     			$string .= 'Gast';
 			break;
-    		case 'potential':
+    		case User::POTENTIAL :
     			$string .= 'Noviet';
 			break;
-    		case 'member':
+    		case User::MEMBER:
     			$string .= 'Lid';
 			break;
-    		case 'formerMember':
+    		case User::FORMERMEMBER:
     			$string .= 'Oud-lid';
     			if(isset($this->profile))
     			{

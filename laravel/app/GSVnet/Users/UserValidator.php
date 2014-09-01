@@ -4,8 +4,11 @@ use GSVnet\Core\Validator;
 
 class UserValidator extends Validator
 {
-    // static $rules = [
-    //     'name' => 'required',
-    //     'file' => 'required'
-    // ];
+    static $rules = [
+        'username' => 'required',
+        'firstname' => 'required',
+        'lastname' => 'required',
+        'email' => 'required',
+        'password' => 'sometimes|confirmed'
+    ];
 }

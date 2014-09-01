@@ -1,4 +1,6 @@
 <?php
+use GSVnet\Users\User as User;
+
 /**
 *
 *   Permission configuration
@@ -7,7 +9,7 @@
 */
 return [
     'member-or-former-member' => [
-        'type' => ['member', 'formerMember']
+        'type' => [User::MEMBER, User::FORMERMEMBER]
     ],
 
     'user.become-member' => [
@@ -25,11 +27,11 @@ return [
     ],
 
     'committees.show-novcie' => [
-        'type' => ['member', 'formerMember']
+        'type' => [User::MEMBER, User::FORMERMEMBER]
     ],
 
     'photos.show-private' => [
-        'type' => ['member', 'formerMember']
+        'type' => [User::MEMBER, User::FORMERMEMBER]
     ],
 
     'photos.manage' => [
@@ -41,11 +43,11 @@ return [
     ],
 
     'docs.show' => [
-        'type' => ['member', 'formerMember']
+        'type' => [User::MEMBER, User::FORMERMEMBER]
     ],
 
     'docs.manage' => [
-        'type' => ['member', 'formerMember']
+        'type' => [User::MEMBER, User::FORMERMEMBER]
     ],
 
     'docs.publish' => [
@@ -56,11 +58,11 @@ return [
     ],
 
     'events.show-private' => [
-        'type' => ['member', 'formerMember'],
+        'type' => [User::MEMBER, User::FORMERMEMBER],
     ],
 
     'events.manage' => [
-        'type' => ['member', 'formerMember'],
+        'type' => [User::MEMBER, User::FORMERMEMBER],
     ],
 
     'events.publish' => [
@@ -83,15 +85,15 @@ return [
     ],
 
     'users.show' => [
-        'type' => ['member', 'formerMember']
+        'type' => [User::MEMBER, User::FORMERMEMBER]
     ],
 
     'users.edit-profile' => [
-        'type' => ['potential', 'member', 'formerMember']
+        'type' => ['potential', User::MEMBER, User::FORMERMEMBER]
     ],
 
     'threads.show-private' => [
-        'type' => ['member', 'formerMember']
+        'type' => [User::MEMBER, User::FORMERMEMBER]
     ],
 
     'threads.manage' => [

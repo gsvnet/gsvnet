@@ -5,20 +5,34 @@ use View, Input, Redirect;
 use GSVnet\Users\UsersRepository;
 use GSVnet\Users\UserValidator;
 use GSVnet\Users\UserManager;
+use GSVnet\Users\YearGroupRepository;
+use GSVnet\Users\Profiles\UserProfile;
+use GSVnet\Users\Profiles\AdminProfileCreatorValidator;
+use GSVnet\Users\Profiles\AdminProfileUpdaterValidator;
 
 class UsersController extends BaseController {
 
     protected $users;
+    protected $yearGroups;
     protected $validator;
+    protected $profileCreatorValidator;
+    protected $profileUpdaterValidator;
+    protected $userManager;
 
     public function __construct(
         UserManager $userManager,
         UserValidator $validator,
-        UsersRepository $users)
+        AdminProfileCreatorValidator $profileCreatorValidator,
+        AdminProfileUpdaterValidator $profileUpdaterValidator,
+        UsersRepository $users,
+        YearGroupRepository $yearGroups)
     {
         $this->userManager = $userManager;
         $this->validator = $validator;
+        $this->profileCreatorValidator = $profileCreatorValidator;
+        $this->profileUpdaterValidator = $profileUpdaterValidator;
         $this->users = $users;
+        $this->yearGroups = $yearGroups;
 
         $this->beforeFilter('csrf', ['only' => ['store', 'update', 'delete']]);
         $this->beforeFilter('users.create', ['on' => 'store']);
@@ -101,35 +115,34 @@ class UsersController extends BaseController {
     public function edit($id)
     {
         $user = $this->users->byId($id);
-        $users = $this->users->all();
-
-        // Dit moet eigenlijk via een repository
-        $members = $user->users;
-
-        // Wat uitprobeersels
-        // $new = $users->filter(function($user) use ($members)
-        // {
-        //     if ($members->contains($user->id))
-        //         return true;
-        // });
-        // dd($users->intersect($members)->toArray());
-        // dd($new->toArray());
-
+        $yearGroups = $this->yearGroups->all();
+        $profile = $user->profile;
 
         $this->layout->content = View::make('admin.users.edit')
-            ->withUser($user)
-            ->withUsers($users)
-            ->withMembers($members);
+            ->with([
+                'user' => $user,
+                'profile' => $profile,
+                'yearGroups' => $yearGroups
+            ]);
     }
 
     public function update($id)
     {
-        $input = Input::all();
+        $userData = Input::only('type', 'username', 'firstname', 'middlename', 'lastname', 'email');
+        
+        // Check if password is to be set
+        $password = Input::get('password', '');
 
-        $this->validator->validate($input);
-        $user = $this->users->update($id, $input);
+        if(!empty($password))
+        {
+            $userData['password'] = $password;
+            $userData['password_confirmation'] = Input::get('password_confirmation', '');
+        }
 
-        $message = '<strong>' . $user->name . '</strong> is succesvol bewerkt.';
+        $this->validator->validate($userData);
+        $user = $this->users->update($id, $userData);
+
+        $message = '<strong>' . $user->present()->fullName . '</strong> is succesvol bewerkt.';
         return Redirect::action('Admin\UsersController@show', $id)
             ->withMessage($message);
     }
@@ -140,6 +153,46 @@ class UsersController extends BaseController {
 
         return Redirect::action('Admin\UsersController@index')
             ->with('message', '<strong>' . $user->name . '</strong> is succesvol verwijderd.');
+    }
+
+    public function storeProfile($id)
+    {
+        $input = [];
+        $input['user_id'] = $id;
+
+        // volgende moet eigenlijk naar een repo
+        $this->profileCreatorValidator->validate($input);
+        $user = $this->users->byId($id);
+        $profile = UserProfile::create($input);
+
+        $message = '<strong>' . $user->present()->fullName . '</strong> heeft een GSV-profiel.';
+        return Redirect::action('Admin\UsersController@edit', $user->id)->withMessage($message);
+    }
+
+    public function destroyProfile($id)
+    {
+        $user = $this->users->byId($id);
+        $user->profile()->delete();
+
+        return Redirect::action('Admin\UsersController@edit', $user->id)
+            ->with('message', 'Profiel van <strong>' . $user->present()->fullName . '</strong> is succesvol verwijderd.');
+    }
+
+    public function updateProfile($id)
+    {
+        $input = Input::only('region', 'year_group_id', 'phone', 'address', 'zip_code', 'town', 'study', 'student_number', 'birthdate', 'church', 'gender', 'parent_phone', 'parent_address', 'parent_zip_code', 'parent_town');
+        $input['user_id'] = $id;
+        $input['reunist'] = Input::get('reunist', false) == '1';
+        $this->profileUpdaterValidator->validate($input);
+
+        $user = $this->users->byId($id);
+        $user->profile()->update($input);
+
+        $message = 'Profiel van <strong>' . $user->present()->fullName . '</strong> is succesvol bijgewerkt.';
+        return Redirect::action('Admin\UsersController@show', $id)
+            ->withMessage($message);
+
+
     }
 
     public function activate($id)

@@ -33,6 +33,12 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 
     protected $presenter = 'GSVnet\Users\UserPresenter';
 
+    // User types
+    const VISITOR = 0;
+    const POTENTIAL = 1;
+    const MEMBER = 2;
+    const FORMERMEMBER = 2;
+
     /**
      * Get the unique identifier for the user.
      *
@@ -148,7 +154,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
      */
     public function wasOrIsMember()
     {
-        return $this->type == 'member' || $this->type == 'formerMember';
+        return $this->type == static::MEMBER || $this->type == static::FORMERMEMBER;
     }
 
     public function activeCommittees()
@@ -160,13 +166,6 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
                     ->orWhereNull('committee_user.end_date');
             })
             ->withPivot('start_date', 'end_date');
-    }
-
-    public function getTypeAttribute($type)
-    {
-        $types = Config::get('gsvnet.userTypes');
-        $key = array_search ($type, $types);
-        return $key;
     }
 
     // Tijdelijk
