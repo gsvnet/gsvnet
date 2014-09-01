@@ -16,6 +16,13 @@ return array(
 		'formerMember' => 3
 	),
 
+	'userTypesFormatted' => array(
+		0 => 'Gast',
+		1 => 'Noviet',
+		2 => 'Lid',
+		3 => 'Oud-lid'
+	),
+
 	'eventTypes' => array(
 		'intellectual',
 		'social',

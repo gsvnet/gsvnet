@@ -115,6 +115,9 @@ Route::group([
         Route::group(['prefix' => 'gebruikers'], function() {
             Route::post('/{user}/activeren', 'UsersController@activate');
             Route::post('/{user}/accepteer-lid', 'UsersController@accept');
+            Route::post('/{user}/profiel/create', 'UsersController@storeProfile');
+            Route::put('/{user}/profiel', 'UsersController@updateProfile');
+            Route::delete('/{user}/profiel', 'UsersController@destroyProfile');
 
             Route::get('/gasten',     'UsersController@showGuests');
             Route::get('/novieten', 'UsersController@showPotentials');

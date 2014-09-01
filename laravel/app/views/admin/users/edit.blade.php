@@ -1,41 +1,93 @@
 @section('content')
-    <h2>Commissie bewerken</h2>
+    <h1>Gegevens van {{ $user->present()->fullName }} bewerken</h1>
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <h2>Accountgegevens bewerken</h2>
 
-    {{
-        Former::vertical_open()
-            ->action(action('Admin\CommitteeController@update', $committee->id))
-            ->method('PUT')
-    }}
-        {{ Former::populate( $committee ) }}
+            {{
+                Former::vertical_open()
+                    ->action(action('Admin\UsersController@update', $user->id))
+                    ->method('PUT')
+            }}
+            {{ Former::populate( $user ) }}
 
+                @include('admin.users._form')
 
-        <button type='submit' class='btn btn-success btn-sm pull-right'>
-            <i class="glyphicon glyphicon-ok"></i> Opslaan
-        </button>
+                <button type='submit' class='btn btn-success'>
+                    <i class="glyphicon glyphicon-ok"></i> Accountgegevens opslaan
+                </button>
 
-        @include('admin.committees._form')
-        @include('admin.committees.members._form')
+                <a class='btn btn-default' href="{{ URL::previous() }}">Terug</a>
 
-        <button type='submit' class='btn btn-success'>
-            <i class="glyphicon glyphicon-ok"></i> Opslaan
-        </button>
+            {{
+                Former::close()
+            }}
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <h2>Profielgegevens bewerken</h2>
+            @if ($profile)
+                {{
+                    Former::vertical_open()
+                        ->action(action('Admin\UsersController@updateProfile', $user->id))
+                        ->method('PUT')
+                }}
+                {{ Former::populate( $profile ) }}
+                    @include('admin.users._profile')
 
-        <a class='btn btn-default' href="{{ URL::previous() }}">Terug</a>
+                    <button type='submit' class='btn btn-success'>
+                        <i class="glyphicon glyphicon-ok"></i> Profiel bijwerken
+                    </button>
 
-        {{
-            Former::close()
-        }}
+                    <a class='btn btn-default' href="{{ URL::previous() }}">Terug</a>
+
+                {{
+                    Former::close()
+                }}
+            @else
+                {{
+                    Former::inline_open()
+                      ->action(action('Admin\UsersController@storeProfile', $user->id))
+                      ->method('POST')
+                }}
+                    <button type='submit' class='btn btn-success'>
+                        <i class="glyphicon glyphicon-plus"></i> Maak GSV-profiel aan
+                    </button>
+
+                {{
+                    Former::close();
+                }}
+            @endif
+        </div>
+    </div>
+
     <hr>
 
-    <p>Of verwijder de commissies.</p>
+    <p>Profiel alleen</p>
 
     {{
-        Former::inline_open()
-          ->action(action('Admin\CommitteeController@destroy', $committee->id))
+        Former::open()
+          ->action(action('Admin\UsersController@destroyProfile', $user->id))
           ->method('DELETE')
     }}
         <button type='submit' class='btn btn-danger'>
-            <i class="glyphicon glyphicon-trash"></i> Verwijderen
+            <i class="glyphicon glyphicon-trash"></i> Verwijderen zijn profiel alleen
+        </button>
+
+    {{
+        Former::close();
+    }}
+
+    <hr>       
+
+    <p>Verwijder de gebruiker.</p>     
+
+    {{
+        Former::open()
+          ->action(action('Admin\UsersController@destroy', $user->id))
+          ->method('DELETE')
+    }}
+        <button type='submit' class='btn btn-danger'>
+            <i class="glyphicon glyphicon-trash"></i> Verwijder complete gebruiker
         </button>
 
     {{

@@ -1,7 +1,7 @@
 @section('content')
     <!-- <a href="{{ URL::action('Admin\UsersController@index') }}">Terug naar gebruikers</a> -->
     <div class="page-header">
-        <h1>{{{ $user->present()->fullName }}}</h1>
+        <h1>{{{ $user->present()->fullName }}} <a href="{{ URL::action('Admin\UsersController@edit', $user->id) }}" alt="Bewerk {{{ $user->fullName }}}" class='btn btn-default'><i class="fa fa-pencil"></i> Account bewerken</a></h1>
     </div>
 
     <dl class="dl-horizontal">
@@ -14,35 +14,26 @@
         <dt>Type</dt>
         <dd>{{{ $user->type }}}</dd>
     </dl>
-    <a href="{{ URL::action('Admin\UsersController@edit', $user->id) }}" alt="Bewerk {{{ $user->fullName }}}" class='btn btn-default'>
-        <i class="fa fa-pencil"></i> Account bewerken
-    </a>
 
-    {{-- Show profile info if user has a profile --}}
     @if ($profile)
-    <div class="page-header">
-        <h2>Profiel informatie</h2>
-    </div>
-    {{ $profile->present()->xsmallProfileImage }}
+        <div class="page-header">
+            <h2>{{ $profile->present()->xsmallProfileImage }} GSV-profiel</h2>
+        </div>
 
-    <dl class="dl-horizontal">
-        @if ($profile->yearGroup)
-            <dt>Jaarverband</dt>
-            <dd>{{ $profile->yearGroup->name }}</dd>
-        @endif
-
-        @foreach ($profile->getAttributes() as $key => $value)
-            {{-- Only show attribute if value is set --}}
-            @if ($value)
-                <dt>{{{ $key }}}</dt>
-                <dd>{{{ $value }}} &nbsp;</dd>
+        <dl class="dl-horizontal">
+            @if ($profile->yearGroup)
+                <dt>Jaarverband</dt>
+                <dd>{{ $profile->yearGroup->name }}</dd>
             @endif
-        @endforeach
-    </dl>
 
-    <a href="{{ URL::action('Admin\UsersController@edit', $user->id) }}" alt="Bewerk {{{ $user->fullName }}}" class='btn btn-default'>
-        <i class="fa fa-pencil"></i> Profiel bewerken
-    </a>
+            @foreach ($profile->getAttributes() as $key => $value)
+                {{-- Only show attribute if value is set --}}
+                @if ($value)
+                    <dt>{{{ $key }}}</dt>
+                    <dd>{{{ $value }}} &nbsp;</dd>
+                @endif
+            @endforeach
+        </dl>
     @endif
 
     @if ($committees->count() > 0)
