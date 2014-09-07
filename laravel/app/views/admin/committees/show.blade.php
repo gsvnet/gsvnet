@@ -23,9 +23,9 @@
                         ->method('POST')
                 }}
                 {{ Former::text('member')->placeholder('Naam lid')->id('add-user')->label('Lid')->required() }}
-                {{ Former::date('start_date')->label('Geïnstalleerd op')->required() }}
+                {{ Former::date('start_date')->label('Geïnstalleerd op')->help('dd-mm-jjjj')->required() }}
                 {{ Former::checkbox('currently_member')->value('1')->text('Momenteel actief?')->label(null)->checked(); }}
-                {{ Former::date('end_date')->label('Gedechargeerd op')->help('Je mag dit veld leeg laten als degene nog niet gedechargeerd is') }}
+                {{ Former::date('end_date')->label('Gedechargeerd op')->help('dd-mm-jjj. Je mag dit veld leeg laten als degene nog niet gedechargeerd is') }}
                 {{ Former::hidden('member_id')->id('add-user-id')}}
 
                 <button type='submit' class='btn btn-success btn-sm'>
