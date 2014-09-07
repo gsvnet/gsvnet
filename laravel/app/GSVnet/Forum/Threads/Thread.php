@@ -5,15 +5,18 @@ use Auth;
 use GSVnet\Core\Entity;
 use GSVnet\Forum\Replies\Reply;
 use Laracasts\Presenter\PresentableTrait;
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
+
 
 class Thread extends Entity
 {
     use PresentableTrait;
+    use SoftDeletingTrait;
     
     protected $table      = 'forum_threads';
     protected $fillable   = ['subject', 'body', 'author_id', 'solution_reply_id', 'category_slug', 'public'];
     protected $with       = ['author'];
-    protected $softDelete = true;
+    protected $dates      = ['deleted_at'];    
 
     public $presenter = 'GSVnet\Forum\Threads\ThreadPresenter';
 
