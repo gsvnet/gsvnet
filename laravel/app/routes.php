@@ -143,6 +143,8 @@ Route::group(['prefix' => 'forum', 'before' => ['auth', 'approved']], function()
 
     Route::get('stats', 'ForumThreadsController@statistics');
 
+    Route::get('prullenbak', 'ForumThreadsController@getTrashed');
+
     // Edit routes
     Route::get('bewerk-onderwerp/{threadId}',  'ForumThreadsController@getEditThread');
     Route::post('bewerk-onderwerp/{threadId}', 'ForumThreadsController@postEditThread');
@@ -165,9 +167,4 @@ Route::group(['prefix' => 'forum', 'before' => ['auth', 'approved']], function()
 // Forum index, search, show comment, show thread
 Route::get('forum',      'ForumThreadsController@getIndex');
 Route::get('forum/zoek', 'ForumThreadsController@getSearch');
-
-// Make sure non members can't show private topics
-Route::get('forum/{slug}/reactie/{commentId}', 'ForumRepliesController@getReplyRedirect')
-    ->before('threads.show');
-Route::get('forum/{slug}', 'ForumThreadsController@getShowThread')
-    ->before('threads.show');
+Route::get('forum/{slug}', 'ForumThreadsController@getShowThread');

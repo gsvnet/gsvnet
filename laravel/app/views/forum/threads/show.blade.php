@@ -40,6 +40,13 @@
         <div class="secondary-column">
             <div class="content-columns">
                 <div class="content-column">
+
+                    @if($thread->trashed())
+                        <h2>VERWIJDERD!</h2>
+                        <p>DIT TOPIC IS VERWIJDERD!</p>
+                        <p>Een volgende webcie kan dit misschien duidelijker aangeven met mooie rode letters, maar dit topic is dus verwijderd en alleen zichtbaar voor mensen met speciale rechten</p>
+                    @endif
+                    
                     <h2>Tags</h2>
                     <div class="tags">
                         {{ $thread->tags->getTagList() }}

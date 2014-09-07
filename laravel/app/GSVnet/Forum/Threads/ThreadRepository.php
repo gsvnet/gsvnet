@@ -60,6 +60,37 @@ class ThreadRepository extends \GSVnet\Core\EloquentRepository
 
     public function getBySlug($slug)
     {
-        return $this->model->where('slug', '=', $slug)->first();
+        $query = $this->model->where('slug', '=', $slug);
+        
+        // Include removed ones if permissions allow
+        if ( Permission::has('threads.manage'))
+        {
+            $query = $query->withTrashed();
+        }
+
+        return $query->first();
+    }
+
+    public function getTrashedPaginated($perPage = 20)
+    {
+        $query = $this->model->onlyTrashed()->with(['mostRecentReply', 'mostRecentReply.author', 'tags']);
+
+        if ( ! Permission::has('threads.show-private'))
+        {
+            $query = $query->public();
+        }
+
+        if ( Auth::check() )
+        {
+            $id = Auth::user()->id;
+            $query->with(['visitations' => function($q) use ($id)
+            {
+                $q->where('user_id', $id);
+            }]);
+        }
+
+        $query->orderBy('updated_at', 'desc');
+
+        return $query->paginate($perPage, ['forum_threads.*']);
     }
 }

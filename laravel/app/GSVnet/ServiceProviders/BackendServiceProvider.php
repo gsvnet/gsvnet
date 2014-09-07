@@ -21,8 +21,6 @@ class BackendServiceProvider extends ServiceProvider {
 
         // Send mail to inform people about a possible change of address
         // Event::listen('profile.changed', 'GSVnet\Users\ProfileMailer@changed');
-
-        Route::filter('threads.show', 'GSVnet\Forum\Threads\ShowThreadFilter');
     }
 
     /**

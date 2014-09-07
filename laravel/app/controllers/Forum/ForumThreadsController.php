@@ -10,6 +10,7 @@ use GSVnet\Forum\Threads\ThreadUpdaterListener;
 use GSVnet\Tags\TagRepository;
 use GSVnet\Users\UsersRepository;
 use GSVnet\Users\User;
+use \Permission;
 
 class ForumThreadsController extends BaseController implements
     ThreadCreatorListener,
@@ -70,9 +71,13 @@ class ForumThreadsController extends BaseController implements
     {
         $thread = $this->threads->getBySlug($threadSlug);
 
-
         if ( ! $thread) {
             return $this->redirectAction('ForumThreadsController@getIndex');
+        }
+
+        if ( ! $thread->public && ! Permission::has('threads.show-private'))
+        {
+            throw new \GSVnet\Permissions\NoPermissionException;
         }
 
         $replies = $this->threads->getThreadRepliesPaginated($thread, $this->repliesPerPage);
@@ -229,6 +234,17 @@ class ForumThreadsController extends BaseController implements
         $this->layout->activeMenuItem = 'forum';
         $this->layout->bodyID = 'forum-statistics-page';
         $this->view('forum.stats', compact('perMonthUsers', 'perWeekUsers', 'allTimeUsers'));
+    }
+
+    public function getTrashed()
+    {
+        $threads = $this->threads->getTrashedPaginated();
+        $this->createSections();
+
+        $this->title = "Verwijderde topics";
+        $this->view('forum.threads.thrashed', compact('threads'));
+        $this->layout->activeMenuItem = 'forum';
+        $this->layout->bodyID = 'thread-index-page';
     }
 
     // ------------------------- //
