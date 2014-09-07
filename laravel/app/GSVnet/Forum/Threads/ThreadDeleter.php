@@ -16,7 +16,7 @@ class ThreadDeleter
 
     public function delete(ThreadDeleterListener $observer, $thread)
     {
-        $this->deleteReplies($thread);
+        //$this->deleteReplies($thread);
 
         $this->threads->delete($thread);
         return $observer->threadDeleted();
