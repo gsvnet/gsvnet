@@ -156,18 +156,8 @@ app = (function() {
 	function userListPage() {
 		$searchForm = $('#user-search-form');
 
-
 		$('#user-search-form-toggler').click(function(){
 			$searchForm.toggleClass('visible');
-		});
-		
-		var list = new List('user-list', {
-			valueNames: ['search-users', 'phone'],
-			searchClass: 'search-user-input',
-			listClass: 'user-profile-list', 
-  			plugins: [ 
-  				['fuzzySearch', {threshold: 1, distance: 100}]
-  			] 
 		});
 	}
 
