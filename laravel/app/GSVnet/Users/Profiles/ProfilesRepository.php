@@ -36,7 +36,7 @@ class ProfilesRepository {
     *
     *   @return UserProfile[]
     */
-    private function search($search = '', $region = null, $yearGroup = null, $type = 2)
+    private function search($keyword = '', $region = null, $yearGroup = null, $type = 2)
     {
         // Initialize basic query
         $query = UserProfile::with('user', 'yearGroup')->join('users', function($join) use ($type) {
@@ -51,12 +51,12 @@ class ProfilesRepository {
             }
         })->orderBy('users.lastname')->orderBy('users.firstname');
 
-        if ( ! empty($search))
+        if ( ! empty($keyword))
         {
-            // $terms = explode(' ', $search);
-            // $search = implode("*", $terms);
+            $words = explode(' ', $keyword);
+            $search = '*' . implode('* *', $words) . '*';
 
-            $query = $query->search('*' . $search . '*');
+            $query = $query->searchNameAndPhone($search);
         }
 
         // Search for members inside region if region is valid
