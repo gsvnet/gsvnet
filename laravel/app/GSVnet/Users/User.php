@@ -37,7 +37,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
     const VISITOR = 0;
     const POTENTIAL = 1;
     const MEMBER = 2;
-    const FORMERMEMBER = 2;
+    const FORMERMEMBER = 3;
 
     /**
      * Get the unique identifier for the user.
