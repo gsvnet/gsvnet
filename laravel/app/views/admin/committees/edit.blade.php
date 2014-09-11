@@ -8,11 +8,6 @@
     }}
         {{ Former::populate( $committee ) }}
 
-
-        <button type='submit' class='btn btn-success btn-sm pull-right'>
-            <i class="glyphicon glyphicon-ok"></i> Opslaan
-        </button>
-
         @include('admin.committees._form')
 
         <button type='submit' class='btn btn-success'>
