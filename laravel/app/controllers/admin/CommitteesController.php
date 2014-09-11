@@ -3,7 +3,8 @@
 use View, Input, Redirect;
 
 use GSVnet\Committees\CommitteesRepository;
-use GSVnet\Committees\CommitteeValidator;
+use GSVnet\Committees\CommitteeCreatorValidator;
+use GSVnet\Committees\CommitteeUpdaterValidator;
 
 use GSVnet\Users\UsersRepository;
 
@@ -11,15 +12,18 @@ class CommitteeController extends BaseController {
 
     protected $committees;
     protected $users;
-    protected $validator;
+    protected $creatorValidator;
+    protected $updaterValidator;
 
     public function __construct(
         CommitteesRepository $committees,
-        CommitteeValidator $validator,
+        CommitteeCreatorValidator $creatorValidator,
+        CommitteeUpdaterValidator $updaterValidator,
         UsersRepository $users)
     {
         $this->committees = $committees;
-        $this->validator = $validator;
+        $this->creatorValidator = $creatorValidator;
+        $this->updaterValidator = $updaterValidator;
         $this->users = $users;
 
         $this->beforeFilter('csrf', ['only' => ['store', 'update', 'delete']]);
@@ -42,14 +46,10 @@ class CommitteeController extends BaseController {
 
     public function store()
     {
-        $input = Input::all();
-        
-        if( ! Input::has('currently_member') )
-        {
-            $input['currently_member'] = 0;
-        }
+        $input = Input::only('name', 'description');
+        $input['unique_name'] = Str::slug('unique_name');
 
-        $this->validator->validate($input);
+        $this->creatorValidator->validate($input);
         $committee = $this->committees->create($input);
 
         $message = '<strong>' . $committee->name . '</strong> is succesvol opgeslagen.';
@@ -83,31 +83,24 @@ class CommitteeController extends BaseController {
     public function edit($id)
     {
         $committee = $this->committees->byId($id);
-        $users = $this->users->all();
 
         // Dit moet eigenlijk via een repository
         $members = $committee->users;
 
-        // Wat uitprobeersels
-        // $new = $users->filter(function($user) use ($members)
-        // {
-        //     if ($members->contains($user->id))
-        //         return true;
-        // });
-        // dd($users->intersect($members)->toArray());
-        // dd($new->toArray());
-
-
         $this->layout->content = View::make('admin.committees.edit')
             ->withCommittee($committee)
-            ->withUsers($users)
             ->withMembers($members);
     }
 
     public function update($id)
     {
-        $input = Input::all();
-        $this->validator->validate($input);
+        $input = Input::only('name', 'description');
+        $input['id'] = $id;
+        $input['unique_name'] = Str::slug('unique_name');
+
+        $this->updaterValidator->forCommittee($id);
+        $this->updaterValidator->validate($input);
+        
         $committee = $this->committees->update($id, $input);
 
         $message = '<strong>' . $committee->name . '</strong> is succesvol bewerkt.';
