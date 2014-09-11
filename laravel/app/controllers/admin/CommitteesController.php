@@ -47,7 +47,7 @@ class CommitteeController extends BaseController {
     public function store()
     {
         $input = Input::only('name', 'description');
-        $input['unique_name'] = Str::slug('unique_name');
+        $input['unique_name'] = \Str::slug(Input::get('unique_name'));
 
         $this->creatorValidator->validate($input);
         $committee = $this->committees->create($input);
@@ -96,7 +96,7 @@ class CommitteeController extends BaseController {
     {
         $input = Input::only('name', 'description');
         $input['id'] = $id;
-        $input['unique_name'] = Str::slug('unique_name');
+        $input['unique_name'] = \Str::slug(Input::get('unique_name'));
 
         $this->updaterValidator->forCommittee($id);
         $this->updaterValidator->validate($input);

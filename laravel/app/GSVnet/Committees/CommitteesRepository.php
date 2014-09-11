@@ -59,6 +59,7 @@ class CommitteesRepository {
     {
         $committee              = new Committee();
         $committee->name        = $input['name'];
+        $committee->unique_name = $input['unique_name'];
         $committee->description = $input['description'];
 
         $committee->save();
@@ -78,6 +79,7 @@ class CommitteesRepository {
         $committee              = $this->byId($id);
 
         $committee->name        = $input['name'];
+        $committee->unique_name = $input['unique_name'];
         $committee->description = $input['description'];
 
         $committee->save();
