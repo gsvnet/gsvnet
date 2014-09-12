@@ -1,8 +1,10 @@
 <?php namespace Admin\Committees;
 
 use GSVnet\Committees\CommitteesRepository;
+use GSVnet\Committees\CommitteeMembership\CommitteeMembershipRepository;
+use GSVnet\Committees\CommitteeMembership\MemberCreatorValidator;
+use GSVnet\Committees\CommitteeMembership\MemberUpdaterValidator;
 use GSVnet\Users\UsersRepository;
-use GSVnet\Committees\MemberValidator;
 
 use Admin\BaseController;
 use Redirect, Input, View;
@@ -11,90 +13,93 @@ class MembersController extends BaseController {
 
 
     protected $committees;
+    protected $committeeMembership;
     protected $users;
-    protected $validator;
+    protected $creatorValidator;
 
     public function __construct(
         CommitteesRepository $committees,
+        CommitteeMembershipRepository $committeeMembership,
         UsersRepository $users,
-        MemberValidator $validator)
+        MemberCreatorValidator $creatorValidator,
+        MemberUpdaterValidator $updaterValidator)
     {
         $this->committees = $committees;
+        $this->committeeMembership = $committeeMembership;
         $this->users = $users;
-        $this->validator = $validator;
+        $this->creatorValidator = $creatorValidator;
+        $this->updaterValidator = $updaterValidator;
 
         parent::__construct();
     }
 
-    public function store($committee)
+    public function store()
     {
-        $input = Input::only('member_id', 'start_date', 'end_date');
+        $input = Input::only('member_id', 'committee_id', 'start_date', 'end_date');
         $input['currently_member'] = Input::get('currently_member', '0');
 
-        $this->validator->validate($input);
+        $this->creatorValidator->validate($input);
 
         if( $input['currently_member'] != '0' )
         {
             $input['end_date'] = null;
         }
 
-        $member_id = $input['member_id'];
-        $committee = $this->committees->byId($committee);
-        $member = $this->users->byId($member_id);
+        $committee = $this->committees->byId($input['committee_id']);
+        $member = $this->users->byId($input['member_id']);
 
-        $committee->members()->attach($input['member_id'],  [
-            'start_date' => $input['start_date'],
-            'end_date' => $input['end_date']
-        ]);
+        $this->committeeMembership->create($member, $committee, $input);
 
         $message = "{$member->present()->fullName} succesvol toegevoegd aan {$committee->name}";
-        return Redirect::action('Admin\CommitteeController@show', $committee->id)
-            ->withMessage($message);
+        return Redirect::action('Admin\CommitteeController@show', $committee->id)->withMessage($message);
     }
 
-    public function destroy($committee, $member)
+    public function destroy($id)
     {
-        $member = $this->users->byId($member);
-        $committee = $this->committees->byId($committee);
-        $committee->members()->detach($member->id);
+        $membership = $this->committeeMembership->byId($id);
+        $committee = $membership->committee;
+        $member = $membership->member;
 
-        $message = '<strong>' . $member->present()->fullName . '</strong> is succesvol verwijderd.';
-            return Redirect::action('Admin\CommitteeController@show', $committee->id)
-                ->withMessage($message);
+        $this->committeeMembership->delete($id);
+
+        $message = '<strong>' . $member->present()->fullName . '</strong> succesvol verwijderd uit <strong>' . $committee->name . '</strong>';
+
+        return Redirect::action('Admin\CommitteeController@show', $committee->id)->withMessage($message);
     }
 
-    public function edit($committee, $member)
+    public function edit($id)
     {
-        $committee = $this->committees->byId($id);
+        $membership = $this->committeeMembership->byId($id);
+        $member = $membership->member;
+        $committee = $membership->committee;
 
-        $this->layout->content = View::make('admin.committees.edit')
+        $this->layout->content = View::make('admin.committees.edit-membership')
+            ->withMembership($membership)
             ->withCommittee($committee)
             ->withMember($member);
     }
 
-    public function update($committee, $member)
+    public function update($id)
     {
-        $input = Input::only('member_id', 'start_date', 'end_date');
+        $input = Input::only('start_date', 'end_date');
         $input['currently_member'] = Input::get('currently_member', '0');
 
-        $this->validator->validate($input);
+        $this->updaterValidator->validate($input);
 
         if( $input['currently_member'] != '0' )
         {
             $input['end_date'] = null;
         }
 
-        $user = $this->users->byId($member);
-        $committee = $this->committees->byId($committee);
+        $membership = $this->committeeMembership->byId($id);
 
-        // Moet eigenlijk in repository!
-        $user->committees()->updateExistingPivot($committee->id, [
-            'start_date' => $input['start_date'],
-            'end_date' => $input['end_date']
-        ]);
+        $user = $membership->member;
+        $committee = $membership->committee;
+
+        $this->committeeMembership->update($id, $input);
         
-        $message = '<strong>' . $committee->name . '</strong> is succesvol bewerkt.';
-        return Redirect::action('Admin\CommitteeController@show', $id)
-            ->withMessage($message);
+        $message = '<strong>' . $user->present()->fullName . '</strong> z\'n commissiewerk voor <strong>' . $committee->name . '</strong> is succesvol bijgewerkt.';
+        
+        return Redirect::action('Admin\CommitteeController@show', $committee->id)->withMessage($message);
     }
 }

@@ -106,8 +106,9 @@ Route::group([
         Route::resource('commissies',   'CommitteeController', ['except' => ['create']]);
 
         // Hier nog een route voor ajax calls naar users db
-        Route::post('commissies/{committee}/members',            'Committees\MembersController@store');
-        Route::delete('commissies/{committee}/members/{member}', 'Committees\MembersController@destroy');
+        Route::resource('commissies/lidmaatschap', 'Committees\MembersController');
+        // Route::post('commissies/{committee}/members',            'Committees\MembersController@store');
+        // Route::delete('commissies/{committee}/members/{member}', 'Committees\MembersController@destroy');
     });
 
     // Users

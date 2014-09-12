@@ -16,7 +16,7 @@ class Committee extends \Eloquent {
     public function members()
     {
         return $this->belongsToMany('GSVnet\Users\User', 'committee_user')
-            ->withPivot('start_date', 'end_date');
+            ->withPivot('id', 'start_date', 'end_date');
     }
 
     public function activeMembers()
