@@ -28,10 +28,8 @@
 
             @foreach ($profile->getAttributes() as $key => $value)
                 {{-- Only show attribute if value is set --}}
-                @if ($value)
-                    <dt>{{{ $key }}}</dt>
-                    <dd>{{{ $value }}} &nbsp;</dd>
-                @endif
+                <dt>{{{ $key }}}</dt>
+                <dd>{{{ $value }}} &nbsp;</dd>
             @endforeach
         </dl>
     @endif

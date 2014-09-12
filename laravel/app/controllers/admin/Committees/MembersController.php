@@ -62,4 +62,39 @@ class MembersController extends BaseController {
             return Redirect::action('Admin\CommitteeController@show', $committee->id)
                 ->withMessage($message);
     }
+
+    public function edit($committee, $member)
+    {
+        $committee = $this->committees->byId($id);
+
+        $this->layout->content = View::make('admin.committees.edit')
+            ->withCommittee($committee)
+            ->withMember($member);
+    }
+
+    public function update($committee, $member)
+    {
+        $input = Input::only('member_id', 'start_date', 'end_date');
+        $input['currently_member'] = Input::get('currently_member', '0');
+
+        $this->validator->validate($input);
+
+        if( $input['currently_member'] != '0' )
+        {
+            $input['end_date'] = null;
+        }
+
+        $user = $this->users->byId($member);
+        $committee = $this->committees->byId($committee);
+
+        // Moet eigenlijk in repository!
+        $user->committees()->updateExistingPivot($committee->id, [
+            'start_date' => $input['start_date'],
+            'end_date' => $input['end_date']
+        ]);
+        
+        $message = '<strong>' . $committee->name . '</strong> is succesvol bewerkt.';
+        return Redirect::action('Admin\CommitteeController@show', $id)
+            ->withMessage($message);
+    }
 }
