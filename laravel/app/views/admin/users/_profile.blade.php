@@ -10,7 +10,7 @@
 {{ Former::text('student_number')->label('Studentnummer') }}
 {{ Former::text('birthdate')->label('Geboortedatum') }}
 {{ Former::text('church')->label('Kerk') }}
-{{ Former::text('gender')->label('Geslacht') }}
+{{ Former::select('gender')->label('Geslacht')->options(array('1' => 'Man', '0' => 'Vrouw')) }}
 <div class="well">Onderstaande gaat alleen over ouders</div>
 {{ Former::text('parent_phone')->label('Telefoon ouders') }}
 {{ Former::text('parent_address')->label('Adres ouders') }}
