@@ -19,9 +19,11 @@
         <div class="panel-body">
                 {{
                     Former::vertical_open()
-                        ->action(action('Admin\Committees\MembersController@store', $committee->id))
+                        ->action(action('Admin\Committees\MembersController@store'))
                         ->method('POST')
                 }}
+
+                {{ Former::hidden('committee_id')->value($committee->id) }}
                 {{ Former::text('member')->placeholder('Naam lid')->id('add-user')->label('Lid')->required() }}
                 {{ Former::date('start_date')->label('Geïnstalleerd op')->help('jjjj-mm-dd')->required() }}
                 {{ Former::checkbox('currently_member')->value('1')->text('Momenteel actief?')->label(null)->checked(); }}
@@ -54,9 +56,11 @@
             <td>{{ $member->present()->fullName }}</td>
             <td>{{ $member->present()->committeeFromTo }}</td>
             <td>
-              {{ Former::inline_open()->action(action('Admin\Committees\MembersController@destroy', [$committee->id, $member->id]))->method('DELETE')->class('pull-right') }}
-              <button type='submit' class='btn btn-danger btn-xs'>Verwijderen <i class="glyphicon glyphicon-remove"></i></button>
+              {{ Former::inline_open()->action(action('Admin\Committees\MembersController@destroy', [$member->pivot->id]))->method('DELETE')->class('pull-right') }}
+              <button type='submit' class='btn btn-danger btn-xs'><i class="glyphicon glyphicon-remove"></i> Verwijderen</button>
               {{ Former::close(); }}
+
+              <a href="{{URL::action('Admin\Committees\MembersController@edit', $member->pivot->id)}}" class="btn btn-default btn-xs pull-right"><i class="fa fa-pencil"></i> Bewerk</button></a>
             </td>
           </tr>
         @endforeach      
