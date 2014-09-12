@@ -1,6 +1,6 @@
 {{ Former::select('region')->label('Gebruikerssoort')->options(Config::get('gsvnet.regions'))->placeholder('Geen') }}
 {{ Former::select('year_group_id')->label('Jaarverband')->fromQuery($yearGroups, 'name', 'id') }}
-{{ Former::checkbox('reunist')->text('Reunist')->label('') }}
+{{ Former::select('reunist')->text('Reunist')->options(['0' => 'Nee', '1' => 'Ja']) }}
 
 {{ Former::text('phone')->label('Telefoon') }}
 {{ Former::text('address')->label('Adres') }}
