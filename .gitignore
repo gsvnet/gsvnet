@@ -9,3 +9,4 @@ laravel/app/storage/uploads/photos/
 laravel/app/storage/uploads/files/
 layout/
 node_modules/
+.idea/

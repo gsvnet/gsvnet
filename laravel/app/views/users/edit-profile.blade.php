@@ -19,9 +19,9 @@
 
 			<span for="potential-birth-day" class="control-label">Naam</span>
 			<div class="inline-form-row">
-				{{ Former::text('firstname')->label('')->disabled() }}
-				{{ Former::text('middlename')->label('')->disabled()->size(5) }}
-				{{ Former::text('lastname')->label('')->disabled() }}
+				{{ Former::text('firstname')->label('') }}
+				{{ Former::text('middlename')->label('')->size(5) }}
+				{{ Former::text('lastname')->label('') }}
 			</div>
 			{{ Former::text('username')->label('Gebruikersnaam')->disabled() }}
 			{{ Former::text('email')->label('Email') }}
