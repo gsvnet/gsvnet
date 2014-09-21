@@ -57,7 +57,7 @@
             <td>{{ $member->present()->committeeFromTo }}</td>
             <td>
               {{ Former::inline_open()->action(action('Admin\Committees\MembersController@destroy', [$member->pivot->id]))->method('DELETE')->class('pull-right') }}
-              <button type='submit' class='btn btn-danger btn-xs'><i class="glyphicon glyphicon-remove"></i> Verwijderen</button>
+              <button type='submit' class='btn btn-danger btn-xs'><i class="glyphicon glyphicon-remove"></i> Verwijderen </button>
               {{ Former::close(); }}
 
               <a href="{{URL::action('Admin\Committees\MembersController@edit', $member->pivot->id)}}" class="btn btn-default btn-xs pull-right"><i class="fa fa-pencil"></i> Bewerk</button></a>

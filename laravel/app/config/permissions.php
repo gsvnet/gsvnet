@@ -22,9 +22,8 @@ return [
     ],
 
     'committees.manage' => [
-        'type' => [User::MEMBER, User::FORMERMEMBER]
-        //'committee' => ['webcie'],
-        //'senate' => true
+        'committee' => ['webcie'],
+        'senate' => true
     ],
 
     'committees.show-novcie' => [
