@@ -174,6 +174,11 @@ class UserController extends BaseController {
             $eventData['newProfile'] = $newProfile;
         }
 
+        Event::fire('user.updated', [
+            'old' => $user,
+            'new' => $newUser
+        ]);
+
         Event::fire('profile.updatedByOwner', $eventData);
 
         // Redirct to the become-member page: it shows the 3rd step [done] as active page
