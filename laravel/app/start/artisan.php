@@ -12,3 +12,4 @@
 */
 
 Artisan::add(new Forum);
+Artisan::resolve('BulkNewsletterSubscriptions');

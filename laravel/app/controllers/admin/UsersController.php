@@ -1,6 +1,8 @@
 <?php namespace Admin;
 
-use View, Input, Redirect;
+use GSVnet\Newsletters\NewsletterList;
+use GSVnet\Users\User;
+use View, Input, Redirect, Event;
 
 use GSVnet\Users\UsersRepository;
 use GSVnet\Users\UserValidator;
@@ -126,8 +128,16 @@ class UsersController extends BaseController {
             ]);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     * @throws \GSVnet\Core\Exceptions\ValidationException
+     * @throws \Laracasts\Presenter\Exceptions\PresenterException
+     */
     public function update($id)
     {
+        $oldUser = $this->users->byId($id);
+
         $userData = Input::only('type', 'username', 'firstname', 'middlename', 'lastname', 'email');
         
         // Check if password is to be set
@@ -140,11 +150,16 @@ class UsersController extends BaseController {
         }
 
         $this->validator->validate($userData);
+
         $user = $this->users->update($id, $userData);
 
+        Event::fire('user.updated', [
+            'old' => $oldUser,
+            'new' => $user
+        ]);
+
         $message = '<strong>' . $user->present()->fullName . '</strong> is succesvol bewerkt.';
-        return Redirect::action('Admin\UsersController@show', $id)
-            ->withMessage($message);
+        return Redirect::action('Admin\UsersController@show', $id)->withMessage($message);
     }
 
     public function destroy($id)
