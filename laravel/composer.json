@@ -16,7 +16,7 @@
         "fedeisas/laravel-mail-css-inliner": "1.*",
         "guzzlehttp/guzzle": "~4.0",
         "laracasts/presenter": "0.1.*",
-		"pda/pheanstalk": "dev-master",
+		"pda/pheanstalk": "2.0.*",
 		"msurguy/honeypot": "dev-master",
 		"mailchimp/mailchimp": "2.0.4"
 	},
