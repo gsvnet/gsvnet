@@ -20,6 +20,17 @@ class UserPresenter extends Presenter
         }
     }
 
+    public function fullLastname(){
+        if(empty($this->middlename))
+        {
+            return $this->lastname;
+        }
+        else
+        {
+            return $this->middlename . ' ' . $this->lastname;
+        }
+    }
+
     public function senateFunction()
     {
         $functions = Config::get('gsvnet.senateFunctions');

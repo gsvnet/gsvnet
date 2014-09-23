@@ -108,7 +108,6 @@ class UserController extends BaseController {
         $user = Auth::user();
         $profile = $user->profile;
 
-
         $this->layout->bodyID = 'edit-profile-page';
         $this->layout->activeMenuItem = 'intern';
         $this->layout->activeSubMenuItem = 'jaarbundel';
@@ -159,12 +158,23 @@ class UserController extends BaseController {
         ];
 
         // Create the profile and attach it to the user
-        $user = $this->userManager->update($user->id, $userInput);
+        $newUser = $this->userManager->update($user->id, $userInput);
+
+        $eventData = [
+            'oldUser' => $user,
+            'newUser' => $newUser,
+            'oldProfile' => false,
+            'newProfile' => false
+        ];
 
         if(isset($profile) && Permission::has('users.edit-profile'))
         {
-            $profile = $this->profileManager->update($profile->id, $profileInput);
+            $newProfile = $this->profileManager->update($profile->id, $profileInput);
+            $eventData['oldProfile'] = $profile;
+            $eventData['newProfile'] = $newProfile;
         }
+
+        Event::fire('profile.updatedByOwner', $eventData);
 
         // Redirct to the become-member page: it shows the 3rd step [done] as active page
         return Redirect::action('UserController@showProfile');

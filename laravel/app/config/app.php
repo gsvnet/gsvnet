@@ -120,6 +120,7 @@ return array(
         'GSVnet\ServiceProviders\FilesServiceProvider',
         'GSVnet\ServiceProviders\CommitteesServiceProvider',
         'GSVnet\ServiceProviders\EventsServiceProvider',
+        'GSVnet\Newsletters\NewsletterServiceProvider'
 	),
 
 	/*

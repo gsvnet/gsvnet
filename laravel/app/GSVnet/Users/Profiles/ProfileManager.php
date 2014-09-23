@@ -80,8 +80,6 @@ class ProfileManager
 
         $profile = $this->profiles->update($id, $input);
 
-        Event::fire('profile.changed', ['profile' => $profile]);
-
         return $profile;
     }
 

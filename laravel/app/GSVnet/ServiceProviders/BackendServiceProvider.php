@@ -19,8 +19,8 @@ class BackendServiceProvider extends ServiceProvider {
         Event::listen('potential.registered', 'GSVnet\Users\UserMailer@membership');
         Event::listen('potential.accepted', 'GSVnet\Users\UserMailer@membershipAccepted');
 
-        // Send mail to inform people about a possible change of address
-        // Event::listen('profile.changed', 'GSVnet\Users\ProfileMailer@changed');
+        Event::listen('user.updated', 'GSVnet\Newsletters\NewsletterManager@userUpdated');
+        Event::listen('profile.updatedByOwner', 'GSVnet\Users\UserMailer@updatedByOwner');
     }
 
     /**

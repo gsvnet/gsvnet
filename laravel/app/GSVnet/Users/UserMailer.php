@@ -2,6 +2,7 @@
 
 use GSVnet\Core\Mailer;
 use Config;
+use GSVnet\Users\Profiles\UserProfile;
 
 class UserMailer extends Mailer {
 
@@ -82,5 +83,46 @@ class UserMailer extends Mailer {
         ];
         
         $this->sendTo($user->email, 'Gefeliciteerd met je verjaardag!', 'emails.users.birthday', $data);
+    }
+
+    public function updatedByOwner(User $oldUser, User $newUser, UserProfile $oldProfile, UserProfile $newProfile)
+    {
+        $userFields = [
+            'email' => 'Email',
+            'firstname' => 'Voornaam',
+            'middlename' => 'Tussenvoegsel',
+            'lastname' => 'Achternaam',
+            'username' => 'Gebruikersnaam'
+        ];
+
+        $profileFields = [
+            'phone' => 'Telefoon',
+            'address' => 'Adres',
+            'zip_code' => 'Postcode',
+            'town' => 'Woonplaats',
+            'study' => 'Studie',
+            'birthdate' => 'Geboortedatum',
+            'church' => 'Kerk',
+            'gender' => 'Geslacht',
+            'student_number' => 'Studentnummer',
+            'parent_address' => 'Adres ouders',
+            'parent_zip_code' => 'Postcode ouders',
+            'parent_town' => 'Woonplaats ouders',
+            'parent_phone' => 'Telefoon ouders'
+        ];
+
+        $data = [
+            'fullname' => $newUser->present()->fullname,
+            'oldUser' => $oldUser->toArray(),
+            'newUser' => $newUser->toArray(),
+            'oldProfile' => $oldProfile->toArray(),
+            'newProfile' => $newProfile->toArray(),
+            'userFields' => $userFields,
+            'profileFields' => $profileFields
+        ];
+
+        $subject = 'Profielupdate ' . $data['fullname'];
+
+        $this->sendTo(Config::get('gsvnet.email.profile'), $subject, 'emails.users.profile-update', $data);
     }
 }
