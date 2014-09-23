@@ -21,7 +21,8 @@ class UserPresenter extends Presenter
     }
 
     public function fullLastname(){
-        if(empty($this->middlename))
+        $middlename = $this->middlename;
+        if(empty($middlename))
         {
             return $this->lastname;
         }
