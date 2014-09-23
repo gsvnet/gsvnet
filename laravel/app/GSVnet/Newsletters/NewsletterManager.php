@@ -2,7 +2,7 @@
 
 use GSVnet\Users\User;
 use GSVnet\Users\UserTransformer;
-use Queue, App;
+use Queue, App, Log;
 
 class NewsletterManager {
 
