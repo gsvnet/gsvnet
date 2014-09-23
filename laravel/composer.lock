@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3cc09b88fa28d23e0d574f59010816b9",
+    "hash": "32da3c4c1c24226f3f161add6f0e6713",
     "packages": [
         {
             "name": "anahkiasen/former",
@@ -1328,33 +1328,25 @@
         },
         {
             "name": "pda/pheanstalk",
-            "version": "dev-master",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pda/pheanstalk.git",
-                "reference": "221de9e8ce2b5065e1e8682f9d26a3e51de6d4e5"
+                "reference": "e920e179cc4061defdab397f9dc59580f214a600"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pda/pheanstalk/zipball/221de9e8ce2b5065e1e8682f9d26a3e51de6d4e5",
-                "reference": "221de9e8ce2b5065e1e8682f9d26a3e51de6d4e5",
+                "url": "https://api.github.com/repos/pda/pheanstalk/zipball/e920e179cc4061defdab397f9dc59580f214a600",
+                "reference": "e920e179cc4061defdab397f9dc59580f214a600",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev"
-                }
-            },
             "autoload": {
-                "psr-4": {
-                    "Pheanstalk\\": "src/"
+                "psr-0": {
+                    "Pheanstalk": "classes/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1374,7 +1366,7 @@
             "keywords": [
                 "beanstalkd"
             ],
-            "time": "2014-08-15 00:55:44"
+            "time": "2013-03-25 20:50:19"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -2048,12 +2040,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Finder.git",
-                "reference": "56c59cafc65116b4551de2893f4e3a7391e0e0d7"
+                "reference": "17194ce42d60ecdf433e59119d235ebaf39cfaef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Finder/zipball/56c59cafc65116b4551de2893f4e3a7391e0e0d7",
-                "reference": "56c59cafc65116b4551de2893f4e3a7391e0e0d7",
+                "url": "https://api.github.com/repos/symfony/Finder/zipball/17194ce42d60ecdf433e59119d235ebaf39cfaef",
+                "reference": "17194ce42d60ecdf433e59119d235ebaf39cfaef",
                 "shasum": ""
             },
             "require": {
@@ -2086,7 +2078,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "http://symfony.com",
-            "time": "2014-09-22 15:28:36"
+            "time": "2014-09-23 05:25:11"
         },
         {
             "name": "symfony/http-foundation",
@@ -2219,12 +2211,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "da40c305a4c93376e930a3f1a43d2b99c8dc9158"
+                "reference": "8a1ec96c4e519cee0fb971ea48a1eb7369dda54b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Process/zipball/da40c305a4c93376e930a3f1a43d2b99c8dc9158",
-                "reference": "da40c305a4c93376e930a3f1a43d2b99c8dc9158",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/8a1ec96c4e519cee0fb971ea48a1eb7369dda54b",
+                "reference": "8a1ec96c4e519cee0fb971ea48a1eb7369dda54b",
                 "shasum": ""
             },
             "require": {
@@ -2257,7 +2249,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "http://symfony.com",
-            "time": "2014-09-22 09:14:18"
+            "time": "2014-09-23 05:25:11"
         },
         {
             "name": "symfony/routing",
@@ -2395,12 +2387,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Translation.git",
-                "reference": "7e5828240367dccb9d3351013d12972decf6100e"
+                "reference": "170c0d895616e1a6a35681ffb0b9e339f58ab928"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Translation/zipball/7e5828240367dccb9d3351013d12972decf6100e",
-                "reference": "7e5828240367dccb9d3351013d12972decf6100e",
+                "url": "https://api.github.com/repos/symfony/Translation/zipball/170c0d895616e1a6a35681ffb0b9e339f58ab928",
+                "reference": "170c0d895616e1a6a35681ffb0b9e339f58ab928",
                 "shasum": ""
             },
             "require": {
@@ -2442,7 +2434,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "http://symfony.com",
-            "time": "2014-09-22 15:28:36"
+            "time": "2014-09-23 05:25:11"
         },
         {
             "name": "thomaswelton/gravatarlib",
@@ -2647,7 +2639,6 @@
         "mews/purifier": 20,
         "nickcernis/html-to-markdown": 20,
         "misd/linkify": 20,
-        "pda/pheanstalk": 20,
         "msurguy/honeypot": 20
     },
     "prefer-stable": false,
