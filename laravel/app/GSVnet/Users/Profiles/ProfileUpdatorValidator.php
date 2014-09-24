@@ -13,7 +13,7 @@ class ProfileUpdatorValidator extends Validator
             'town' => 'required',
             'phone' => 'required',
             'gender' => 'required|in:0,1',
-            // 'study-year' => 'required|date_format:Y',
+            'birthdate' => 'date',
             'parent_address' => 'required_if:parent_same_address,0',
             'parent_zip_code' => 'required_if:parent_same_address,0',
             'parent_town' => 'required_if:parent_same_address,0',
