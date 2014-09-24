@@ -133,6 +133,7 @@ class UserController extends BaseController {
             'town' => $input['profile_town'],
             'phone' => $input['profile_phone'],
             'gender' => $input['profile_gender'],
+            'birthdate' => $input['profile_birthdate'],
             'parent_address' => $input['profile_parent_address'],
             'parent_zip_code' => $input['profile_parent_zip_code'],
             'parent_town' => $input['profile_parent_town'],

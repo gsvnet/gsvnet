@@ -3,11 +3,13 @@
 		<h1>Verander je profiel</h1>
 
 		@if($errors->count() > 0)
-			<strong>Oeps!</strong>
-			@foreach($errors->all() as $error)
-				<p style="color: red;">{{$error}}</p>
-			@endforeach
-		@endif
+		    <div style="padding:1em;background:#FF5F5F">
+                <strong>Je hebt iets verkeerd ingevuld!</strong>
+                @foreach($errors->all() as $error)
+                    <p>{{$error}}</p>
+                @endforeach
+		    </div>
+        @endif
 		
 		{{ Former::open_vertical_for_files()
             ->action(action('UserController@updateProfile'))
@@ -29,6 +31,7 @@
 			@if( Permission::has('users.edit-profile') && isset($profile) )
 
 				<h2>Vul vooral meer in</h2>
+	            {{ Former::text('profile.birthdate')->label('Geboortedatum')->help('jjjj-mm-dd') }}
 				{{ Former::text('profile.church')->label('Kerkgezindte') }}
 	            {{ Former::text('profile.study')->label('Naam van studie') }}
 	            {{ Former::text('profile.student_number')->label('Studentnummer') }}
