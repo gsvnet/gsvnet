@@ -212,6 +212,8 @@
                             <li>Geen verjaardagen deze week.</li>
                         @endif
                     </ul>
+                    <h2>Sponsors</h2>
+                    <img src="/images/ads/patrimonium.gif" title="Patrimonium" />
                 </div>
             </div>
         </div>
