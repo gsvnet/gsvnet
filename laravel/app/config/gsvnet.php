@@ -43,7 +43,17 @@ return array(
 		1 => 'Regio 1',
 		2 => 'Regio 2',
 		3 => 'Regio 3',
-		4 => 'Regio IV'
+        4 => 'Regio IV',
+        5 => 'Rood',
+        6 => 'Oranje',
+        7 => 'Geel',
+        8 => 'Groen',
+        9 => 'Blauw',
+        10 => 'Paars',
+        11 => 'A',
+        12 => 'B',
+        13 => 'C',
+        14 => 'D'
 	),
 
 	'events' => array(
