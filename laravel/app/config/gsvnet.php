@@ -206,7 +206,7 @@ return array(
 	            ],
                 'boek-reviews' => [
                     'title' => 'BK-boek-reviews',
-                    'url' => 'https://www.dropbox.com/home/TBS/Boekrecensies',
+                    'url' => 'https://www.dropbox.com/sh/tqkhgnuh4v88xim/AADDLG1IPXFGbfPVXRrnjkjxa?dl=0',
                     'visible' => function(){
                         return Permission::has('users.show');
                     }
