@@ -204,6 +204,13 @@ return array(
 	                    return Permission::has('users.show');
 	                }
 	            ],
+                'boek-reviews' => [
+                    'title' => 'BK-boek-reviews',
+                    'url' => 'https://www.dropbox.com/home/TBS/Boekrecensies',
+                    'visible' => function(){
+                        return Permission::has('users.show');
+                    }
+                ],
 	            'docs' => [
 	                'title' => 'GSVdocs',
 	                'url' => URL::action('FilesController@index'),
