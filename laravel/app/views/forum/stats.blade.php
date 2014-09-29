@@ -9,7 +9,7 @@
             <p class="delta">{{$perWeekUsers['from']->formatLocalized('%A %e %B')}} - {{$perWeekUsers['to']->formatLocalized('%A %e %B') }}</p>
             <ol>
                 @foreach ($perWeekUsers['users'] as $user)
-                    <li>{{$user->username}}: <strong>{{$user->num}}</strong> <br/> <small>Echte naam {{$user->present()->fullname}}</small></li>
+                    <li>{{{$user->present()->fullname}}} ({{{$user->username}}}): <strong>{{$user->num}}</strong></li>
                 @endforeach
             </ol>
             
@@ -17,14 +17,14 @@
             <p class="delta">{{$perMonthUsers['to']->formatLocalized('%B %Y') }}</p>
             <ol>
                 @foreach ($perMonthUsers['users'] as $user)
-                    <li>{{$user->username}}: <strong>{{$user->num}}</strong> <br/> <small>Echte naam {{$user->present()->fullname}}</small></li>
+                    <li>{{{$user->present()->fullname}}} ({{{$user->username}}}): <strong>{{$user->num}}</strong></li>
                 @endforeach
             </ol>
 
             <h2>De top 250 allertijden</h2>
             <ol>
                 @foreach ($allTimeUsers as $user)
-                    <li>{{$user->username}}: <strong>{{$user->num}}</strong> <br/> <small>Echte naam {{$user->present()->fullname}}</small></li>
+                    <li>{{{$user->present()->fullname}}} ({{{$user->username}}}): <strong>{{$user->num}}</strong></li>
                 @endforeach
             </ol>
         </section>

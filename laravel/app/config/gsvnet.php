@@ -206,9 +206,9 @@ return array(
 	            ],
                 'boek-reviews' => [
                     'title' => 'BK-boek-reviews',
-                    'url' => 'https://www.dropbox.com/sh/tqkhgnuh4v88xim/AADDLG1IPXFGbfPVXRrnjkjxa?dl=0',
+                    'url' => 'https://www.dropbox.com/sh/q92kk0dmwc0siub/AADkdfpK54C9r9tWH96Y-shfa?dl=0',
                     'visible' => function(){
-                        return Permission::has('users.show');
+                        return Permission::has('docs.show');
                     }
                 ],
 	            'docs' => [
