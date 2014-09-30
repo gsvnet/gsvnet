@@ -1,5 +1,7 @@
 <?php namespace GSVnet\Committees;
 
+use GSVnet\Users\User;
+
 class CommitteesRepository {
 
     /**
@@ -22,6 +24,11 @@ class CommitteesRepository {
     public function bySlug($slug)
     {
         return Committee::where('unique_name', '=', $slug)->firstOrFail();
+    }
+
+    public function byUserOrderByRecent(User $user)
+    {
+        return $user->committees()->orderBy('end_date', 'DESC')->get();
     }
 
     /**
