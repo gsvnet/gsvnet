@@ -28,7 +28,7 @@ class CommitteesRepository {
 
     public function byUserOrderByRecent(User $user)
     {
-        return $user->committees()->orderBy(\DB::raw('end_date IS NULL', 'DESC'))->orderBy('end_date', 'DESC')->get();
+        return $user->committees()->orderBy(\DB::raw('end_date IS NULL'), 'desc')->orderBy('end_date', 'DESC')->get();
     }
 
     /**
