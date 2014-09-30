@@ -1,5 +1,6 @@
 <?php
 
+use GSVnet\Committees\CommitteesRepository;
 use GSVnet\Users\Profiles\ProfilesRepository;
 use GSVnet\Users\UsersRepository;
 use GSVnet\Users\UserManager;
@@ -11,6 +12,7 @@ class UserController extends BaseController {
 
     protected $users;
     protected $profiles;
+    protected $committees;
     protected $yearGroups;
     protected $profileManager;
     protected $userManager;
@@ -18,6 +20,7 @@ class UserController extends BaseController {
     public function __construct(
         ProfilesRepository $profiles,
         UsersRepository $users,
+        CommitteesRepository $committees,
         UserManager $userManager,
         ProfileManager $profileManager,
         YearGroupRepository $yearGroups)
@@ -25,9 +28,11 @@ class UserController extends BaseController {
         parent::__construct();
         $this->profiles = $profiles;
         $this->users = $users;
+        $this->committees = $committees;
         $this->yearGroups = $yearGroups;
         $this->userManager = $userManager;
         $this->profileManager = $profileManager;
+        $this->committees = $committees;
     }
 
     /**
@@ -36,7 +41,7 @@ class UserController extends BaseController {
     public function showProfile()
     {
         $member = $this->users->byIdWithProfileAndYearGroup(Auth::user()->id);
-        $committees = $member->committees;
+        $committees = $this->committees->byUserOrderByRecent($member);
         $senates = $member->senates;
 
         $this->layout->bodyID = 'own-profile-page';
@@ -91,7 +96,7 @@ class UserController extends BaseController {
     public function showUser($id)
     {
         $member = $this->users->byIdWithProfileAndYearGroup($id);
-        $committees = $member->committees;
+        $committees = $this->committees->byUserOrderByRecent($member);
         $senates = $member->senates;
 
         $this->layout->bodyID = 'own-profile-page';
