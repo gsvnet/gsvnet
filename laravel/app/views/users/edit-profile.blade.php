@@ -71,7 +71,7 @@
 			<p>Je avatar kun je aanpassen op <a href="http://nl.gravatar.com/" title="Je avatar aanpassen">Gravatar</a>.</p>
 
 			<h2>Dingen die je niet kunt veranderen</h2>
-			<p>Als je je naam, verjaardag of iets anders wat je niet kunt veranderen toch per se wil veranderen, dan moet je even contact op nemen met de webcie of de abactis.</p>
+			<p>Als je regio/lidmaatschap niet klopt of je je gebruikersnaam wilt veranderen, dan moet je even contact op nemen met de webcie of de abactis.</p>
 		</div>
 
 	</div>
