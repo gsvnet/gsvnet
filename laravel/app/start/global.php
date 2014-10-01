@@ -70,6 +70,53 @@ App::down(function()
 });
 
 /*
+|------------
+| Response type csv
+|------------
+*/
+
+Response::macro('csv', function($data, $filename = 'data.csv', $status = 200, $delimiter = ",", $linebreak = "\n", $headers = array())
+{
+    return Response::stream(function () use ($data, $delimiter, $linebreak)
+    {
+        $i = 0;
+        foreach ($data as $row) {
+            $keys = array(); $values = array();
+
+            foreach ($row as $k => $v)
+            {
+                if ($i == 0)
+                {
+                    $keys[] = is_string($k) ? '"' . str_replace('"', '""', $k) . '"' : $k;
+                }
+
+                $values[] = is_string($v) ? '"' . str_replace('"', '""', $v) . '"' : $v;
+            }
+
+            if (count($keys) > 0)
+            {
+                echo implode($delimiter, $keys) . $linebreak;
+            }
+
+            if (count($values) > 0)
+            {
+                echo implode($delimiter, $values) . $linebreak;
+            }
+
+            $i++;
+        }
+    }, 200, array_merge(array(
+        'Content-type' => 'application/csv',
+        'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
+        'Content-Description' => 'File Transfer',
+        'Content-type' => 'text/csv',
+        'Content-Disposition' => 'attachment; filename=' . $filename,
+        'Expires' => '0',
+        'Pragma' => 'public',
+    ), $headers));
+});
+
+/*
 |--------------------------------------------------------------------------
 | Require The Filters File
 |--------------------------------------------------------------------------

@@ -2,6 +2,8 @@
 
 use GSVnet\Newsletters\NewsletterList;
 use GSVnet\Users\User;
+use GSVnet\Users\UserTransformer;
+use Illuminate\Http\Response;
 use View, Input, Redirect, Event;
 
 use GSVnet\Users\UsersRepository;
@@ -37,9 +39,7 @@ class UsersController extends BaseController {
         $this->yearGroups = $yearGroups;
 
         $this->beforeFilter('csrf', ['only' => ['store', 'update', 'delete']]);
-        $this->beforeFilter('users.create', ['on' => 'store']);
-        $this->beforeFilter('users.update', ['only' => ['update', 'edit']]);
-        $this->beforeFilter('users.delete', ['on' => 'destroy']);
+        $this->beforeFilter('has:users.manage', ['except' => ['index', 'showGuests', 'showPotentials', 'showMembers', 'showFormerMembers']]);
 
         parent::__construct();
     }
@@ -70,18 +70,30 @@ class UsersController extends BaseController {
 
     public function showMembers()
     {
-        $users = $this->users->paginateWhereType(2, 30);
+        if(Input::get('output') == 'csv')
+        {
+            $users = $this->users->getAllByType(User::MEMBER);
+            $transformer = new UserTransformer;
+            return \Response::csv($transformer->batchCsv($users), 'leden.csv');
+        }
 
-        $this->layout->content = View::make('admin.users.index')
-            ->with(['users' => $users]);
+        $users = $this->users->paginateWhereType(User::MEMBER, 30);
+
+        $this->layout->content = View::make('admin.users.index')->with(['users' => $users]);
     }
 
     public function showFormerMembers()
     {
+        if(Input::get('output') == 'csv')
+        {
+            $users = $this->users->getAllByType(User::FORMERMEMBER);
+            $transformer = new UserTransformer;
+            return \Response::csv($transformer->batchCsv($users), 'oud-leden.csv');
+        }
+
         $users = $this->users->paginateWhereType(3, 30);
 
-        $this->layout->content = View::make('admin.users.index')
-            ->with(['users' => $users]);
+        $this->layout->content = View::make('admin.users.index')->with(['users' => $users]);
     }
 
     public function create()

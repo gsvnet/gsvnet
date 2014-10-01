@@ -19,13 +19,15 @@
 			<h2>Persoonlijke gegevens</h2>
 			{{ Former::populate(Auth::user()) }}
 
-			<span for="potential-birth-day" class="control-label">Naam</span>
-			<div class="inline-form-row">
-				{{ Former::text('firstname')->label('') }}
-				{{ Former::text('middlename')->label('')->size(5) }}
-				{{ Former::text('lastname')->label('') }}
-			</div>
 			{{ Former::text('username')->label('Gebruikersnaam')->disabled() }}
+			<label for="firstname" class="control-label">Voornaam, tussenvoegsel, achternaam</label>
+			<div class="inline-form-row">
+				{{ Former::text('firstname')->label('')->disabled() }}
+				{{ Former::text('middlename')->label('')->size(5)->disabled() }}
+				{{ Former::text('lastname')->label('')->disabled() }}
+			</div>
+
+			{{ Former::text('initials')->label('Initialen')->size(5) }}
 			{{ Former::text('email')->label('Email') }}
 
 			@if( Permission::has('users.edit-profile') && isset($profile) )

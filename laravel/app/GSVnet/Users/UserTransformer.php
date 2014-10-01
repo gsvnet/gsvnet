@@ -62,4 +62,45 @@ class UserTransformer {
 
         return $batch;
     }
+
+    public function csv(User $user)
+    {
+        $hasProfile = ! empty($user->profile);
+        $hasYearGroup = $hasProfile && ! empty($user->profile->yearGroup);
+
+        return [
+            'Voornaam' => $user->firstname,
+            'Tussenvoegsel' => $user->middlename,
+            'Achternaam' => $user->lastname,
+            'Regio' => $hasProfile ? $user->profile->present()->regionName : '',
+            'Jaarverband' => $hasYearGroup ? $user->profile->yearGroup->name : '',
+            'Jaar van lidmaatschap' => $hasYearGroup ? (int) $user->profile->yearGroup->year : '',
+            'Status' => $user->present()->membershipType(false),
+            'Email' => $user->email,
+            'Geslacht' => $hasProfile ? $user->profile->present()->genderLocalized : '',
+            'Geboortedatum' => $hasProfile ? $user->profile->birthdate : '',
+            'Telefoon' => $hasProfile ? $user->profile->phone : '',
+            'Adres' => $hasProfile ? $user->profile->address : '',
+            'Postcode' => $hasProfile ? $user->profile->zip_code : '',
+            'Woonplaats' => $hasProfile ? $user->profile->town : '',
+            'Studie' => $hasProfile ? $user->profile->study : '',
+            'Studentnummer' => $hasProfile ? $user->profile->student_number : '',
+            'Telefoon ouders' => $hasProfile ? $user->profile->parent_phone : '',
+            'Adres ouders' => $hasProfile ? $user->profile->parent_address : '',
+            'Postcode ouders' => $hasProfile ? $user->profile->parent_zip_code : '',
+            'Woonplaats ouders' => $hasProfile ? $user->profile->parent_town : '',
+            'Gebruikersnaam' => $user->username
+        ];
+    }
+
+    public function batchCsv(Collection $users)
+    {
+        $batch = [];
+        foreach($users as $user)
+        {
+            $batch[] = $this->csv($user);
+        }
+
+        return $batch;
+    }
 }
