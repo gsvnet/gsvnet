@@ -1,4 +1,5 @@
 <?php
+
 // We keep the home route name as some build in functions use the 'home' name
 Route::get('/', ['as' => 'home',
     'uses' => 'HomeController@showIndex'
@@ -112,7 +113,7 @@ Route::group([
     });
 
     // Users
-    Route::group(['before' => 'has:users.manage'], function() {
+    Route::group(['before' => 'has:users.show'], function() {
         Route::group(['prefix' => 'gebruikers'], function() {
             Route::post('/{user}/activeren', 'UsersController@activate');
             Route::post('/{user}/accepteer-lid', 'UsersController@accept');

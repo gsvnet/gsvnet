@@ -44,7 +44,7 @@ class UserPresenter extends Presenter
     	return $from->diffForHumans();
     }
 
-    public function membershipType()
+    public function membershipType($showReunist = true)
     {
     	$string = '';
     	switch($this->type)
@@ -60,7 +60,7 @@ class UserPresenter extends Presenter
 			break;
     		case User::FORMERMEMBER:
     			$string .= 'Oud-lid';
-    			if(isset($this->profile))
+    			if($showReunist && isset($this->profile))
     			{
     				$string .= $this->profile->reunist == 1 ? ' en reünist' : ', niet reünist';
     			}

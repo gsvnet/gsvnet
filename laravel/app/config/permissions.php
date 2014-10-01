@@ -16,6 +16,11 @@ return [
         'type' => ['visitor']
     ],
 
+    'users.show' => [
+        'committee' => ['webcie', 'novcie', 'reebocie', 'jaarbundelcommissie'],
+        'senate' => true
+    ],
+
     'users.manage' => [
         'committee' => ['webcie', 'novcie'],
         'senate' => true

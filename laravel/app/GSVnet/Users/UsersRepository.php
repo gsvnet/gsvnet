@@ -59,6 +59,15 @@ class UsersRepository {
             ->paginate($amount);
     }
 
+    public function getAllByType($type)
+    {
+        return User::with('profile.yearGroup')
+            ->orderBy('lastname', 'ASC')
+            ->orderBy('firstname', 'ASC')
+            ->where('type', $type)
+            ->get();
+    }
+
     public function paginateLatelyRegistered($amount)
     {
         return User::orderBy('created_at', 'DESC')->paginate($amount);

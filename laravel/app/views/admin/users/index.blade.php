@@ -32,8 +32,12 @@
     </ul>
 
 	<h2>Lijst met mensen</h2>
-    <!-- Hier nog zoiets doen: select count(*), type from users group by type -->
-    <!-- Hier nog zoiets doen: select count(*), type from users where approved = 0   group by type -->
+
+	<p>
+	    <a href="{{ URL::action('Admin\UsersController@showMembers', ['output' => 'csv']) }}" class="btn btn-sm btn-primary"><i class="fa fa-download"></i> Exporteer leden</a>
+	    <a href="{{ URL::action('Admin\UsersController@showFormerMembers', ['output' => 'csv']) }}" class="btn btn-sm btn-default"><i class="fa fa-download"></i> Exporteer oud-leden</a>
+	</p>
+
 	<table class='table table-striped table-hover sort-table' style="width:auto;">
 		<thead>
 			<tr>
