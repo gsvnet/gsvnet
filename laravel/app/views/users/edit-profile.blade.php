@@ -27,7 +27,7 @@
 				{{ Former::text('lastname')->label('')->disabled() }}
 			</div>
 
-			{{ Former::text('initials')->label('Initialen')->size(5) }}
+			{{-- Former::text('initials')->label('Initialen')->size(5) --}}
 			{{ Former::text('email')->label('Email') }}
 
 			@if( Permission::has('users.edit-profile') && isset($profile) )
