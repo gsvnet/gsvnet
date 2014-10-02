@@ -6,6 +6,9 @@
         <h1>{{{ $thread->subject }}}</h1>
         
         <p class="delta">Een onderwerp gestart door {{{ $thread->author->username }}} </p>
+
+        @include('partials.ads')
+
         <div class="main-content has-border-bottom">
 
             {{-- $replies->links() --}}
