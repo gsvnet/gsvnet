@@ -11,6 +11,7 @@
         @endif
         
         <section class="main-content forum">
+            @include('partials.ads')
 
             @if($threads->count() > 0)
                 @foreach($threads as $thread)

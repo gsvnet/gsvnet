@@ -11,6 +11,8 @@
         <p class="delta">Op het actieve forum van de GSV staat informatie over activiteiten en aanbod van kamers in Groningen. Je kunt er praktisch alles kwijt.</p>
     @endif
 
+    @include('partials.ads')
+
     <section class="main-content forum has-border-bottom">
 
         <div class="threads media-rows has-counters">
