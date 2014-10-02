@@ -8,8 +8,8 @@ use GSVnet\Users\User as User;
 *    then the user has the permission
 */
 return [
-    'ads.show' => [
-        'type' => [User::VISITOR]
+    'ads.hide' => [
+        'type' => [User::MEMBER, User::FORMERMEMBER]
     ],
 
     'member-or-former-member' => [
