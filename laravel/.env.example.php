@@ -6,6 +6,7 @@ return [
 	'mysql.password' => 'secret',
 	'mailgun.domain' => 'secret',
 	'mailgun.secret' => 'secret',
+    'mandrill.secret' => 'secret',
     'MAILCHIMP_APIKEY' => 'secret',
 	'queue.driver'   => 'sync',
 	'url'            => 'http://localhost',
