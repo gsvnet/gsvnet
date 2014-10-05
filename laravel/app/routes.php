@@ -5,14 +5,13 @@ Route::get('/', ['as' => 'home',
     'uses' => 'HomeController@showIndex'
 ]);
 
-// Route::get('/mail', function(){
-//     echo 'mail verzenden';
-//     Mail::send('emails.testmail', [], function($message)
-//     {
-//         $message->to('iemairgroi1j2@aoeigjaeorijgaorj-aegaegerg.nl', 'Harmen Stoppels')->subject('Testmail! Dit is om alles te testen');
-//         $message->getHeaders()->addTextHeader('X-Mailgun-Campaign-Id', 'cga81');
-//     });
-// });
+ Route::get('/mail', function(){
+     echo 'mail verzenden';
+     Mail::send('emails.testmail', [], function($message)
+     {
+         $message->to('haampie@gmail.com', 'Harmen Stoppels')->subject('Testmail! Dit is om alles te testen');
+     });
+ });
 
 // Login and logout routes
 Route::get('inloggen', 'SessionController@getLogin')->before('guest');
