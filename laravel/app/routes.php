@@ -5,13 +5,13 @@ Route::get('/', ['as' => 'home',
     'uses' => 'HomeController@showIndex'
 ]);
 
- Route::get('/mail', function(){
-     echo 'mail verzenden';
-     Mail::send('emails.testmail', [], function($message)
-     {
-         $message->to('haampie@gmail.com', 'Harmen Stoppels')->subject('Testmail! Dit is om alles te testen');
-     });
- });
+// Route::get('/mail', function(){
+//     echo 'mail verzenden';
+//     Mail::send('emails.testmail', [], function($message)
+//     {
+//         $message->to('haampie@gmail.com', 'Harmen Stoppels')->subject('Testmail! Dit is om alles te testen');
+//     });
+// });
 
 // Login and logout routes
 Route::get('inloggen', 'SessionController@getLogin')->before('guest');
