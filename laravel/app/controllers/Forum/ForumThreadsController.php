@@ -115,7 +115,7 @@ class ForumThreadsController extends BaseController implements
             'body' => Input::get('body'),
             'author' => Auth::user(),
             'tags' => $this->tags->getTagsByIds(Input::get('tags')),
-            'public' => Input::get('public', true)
+            'public' => Input::get('public', false)
         ], new ThreadForm);
     }
 
