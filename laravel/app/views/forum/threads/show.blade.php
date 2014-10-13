@@ -28,9 +28,12 @@
 
             {{ $replies->links() }}
 
-            <div id="reageer" class="{{$replies->getCurrentPage() != $replies->getLastPage() && $replies->getLastPage() > 1 ? 'hidden-form' : ''}}">
+            <div id="reageer">
                 @if(Auth::check())
                     @if(Auth::user()->approved)
+                        @if($replies->getCurrentPage() != $replies->getLastPage() && $replies->getLastPage() > 1)
+                            <p>Dit is niet de laatste pagina!</p>
+                        @endif
                         @include('forum.replies._create')
                     @else
                         <p>Je kan nog niet reageren omdat je account nog niet is goedgekeurd.</p>
