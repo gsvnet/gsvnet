@@ -54,7 +54,7 @@ class UsersController extends BaseController {
 
     public function showGuests()
     {
-        $users = $this->users->paginateWhereType(0, 30);
+        $users = $this->users->paginateWhereType(0, 300);
 
         $this->layout->content = View::make('admin.users.index')
             ->with(['users' => $users]);
@@ -62,7 +62,7 @@ class UsersController extends BaseController {
 
     public function showPotentials()
     {
-        $users = $this->users->paginateWhereType(1, 30);
+        $users = $this->users->paginateWhereType(1, 300);
 
         $this->layout->content = View::make('admin.users.index')
             ->with(['users' => $users]);
@@ -77,7 +77,7 @@ class UsersController extends BaseController {
             return \Response::csv($transformer->batchCsv($users), 'leden.csv');
         }
 
-        $users = $this->users->paginateWhereType(User::MEMBER, 30);
+        $users = $this->users->paginateWhereType(User::MEMBER, 300);
 
         $this->layout->content = View::make('admin.users.index')->with(['users' => $users]);
     }
@@ -91,7 +91,7 @@ class UsersController extends BaseController {
             return \Response::csv($transformer->batchCsv($users), 'oud-leden.csv');
         }
 
-        $users = $this->users->paginateWhereType(3, 30);
+        $users = $this->users->paginateWhereType(3, 300);
 
         $this->layout->content = View::make('admin.users.index')->with(['users' => $users]);
     }
