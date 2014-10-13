@@ -38,74 +38,76 @@
 	    <a href="{{ URL::action('Admin\UsersController@showFormerMembers', ['output' => 'csv']) }}" class="btn btn-sm btn-default"><i class="fa fa-download"></i> Exporteer oud-leden</a>
 	</p>
 
-	<table class='table table-striped table-hover sort-table' style="width:auto;">
-		<thead>
-			<tr>
-                <th>Gebruikersnaam</th>
-				<th>Voornaam</th>
-                <th>tussenvoegsel</th>
-                <th>Achternaam</th>
-                <th>Email</th>
-                <th>Soort</th>
-                <th>Superkrachten</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach($users as $user)
-			<tr>
-                <td>
-                <a href="{{ URL::action('Admin\UsersController@show', $user->id) }}" alt="{{ $user->present()->fullName }}">
-                    {{{ $user->username }}}
-                </a>
-                </td>
-
-                <td>{{{ $user->firstname }}}</td>
-                <td>{{{ $user->middlename }}}</td>
-                <td>{{{ $user->lastname }}}</td>
-                <td>{{{ $user->email }}}</td>
-                <td>{{{ $user->present()->membershipType }}}</td>
-
-                <td>
-
-                    @if (! $user->approved)
-                    {{
-                        Former::inline_open()
-                          ->action(action('Admin\UsersController@activate', $user->id))
-                    }}
-                        <button type='submit' class='btn btn-success btn-xs'>
-                            <i class="glyphicon glyphicon-ok"></i> Registratie goedkeuren
-                        </button>
-                    {{
-                        Former::close();
-                    }}
-                    @endif
-
-                    @if ($user->type == 'potential')
-                    {{
-                        Former::inline_open()
-                          ->action(action('Admin\UsersController@accept', $user->id))
-                          ->style('float: left; margin-right: 1em;')
-                    }}
-                    {{-- Die styling is wel heel erg lelijk, maar is nu eerst even puur om het te testen --}}
-                        <button type='submit' class='btn btn-warning btn-xs'>
-                            <i class="glyphicon glyphicon-ok"></i> Lid installeren
-                        </button>
-                    {{
-                        Former::close();
-                    }}
-                    @endif
-                </td>
-
-				<!-- <td>
-                    <a href="{{ URL::action('Admin\UsersController@edit', $user->id) }}" alt="Bewerk {{{ $user->name }}}" class='btn btn-default'>
-                        <i class="fa fa-pencil"></i> Album informatie bewerken
+	<div class="table-responsive">
+        <table class='table table-striped table-hover sort-table' style="width:auto;">
+            <thead>
+                <tr>
+                    <th>Gebruikersnaam</th>
+                    <th>Voornaam</th>
+                    <th>tussenvoegsel</th>
+                    <th>Achternaam</th>
+                    <th>Email</th>
+                    <th>Soort</th>
+                    <th>Superkrachten</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($users as $user)
+                <tr>
+                    <td>
+                    <a href="{{ URL::action('Admin\UsersController@show', $user->id) }}" alt="{{ $user->present()->fullName }}">
+                        {{{ $user->username }}}
                     </a>
-                </td> -->
+                    </td>
 
-			</tr>
-			@endforeach
-		</tbody>
-	</table>
+                    <td>{{{ $user->firstname }}}</td>
+                    <td>{{{ $user->middlename }}}</td>
+                    <td>{{{ $user->lastname }}}</td>
+                    <td>{{{ $user->email }}}</td>
+                    <td>{{{ $user->present()->membershipType }}}</td>
+
+                    <td>
+
+                        @if (! $user->approved)
+                        {{
+                            Former::inline_open()
+                              ->action(action('Admin\UsersController@activate', $user->id))
+                        }}
+                            <button type='submit' class='btn btn-success btn-xs'>
+                                <i class="glyphicon glyphicon-ok"></i> Registratie goedkeuren
+                            </button>
+                        {{
+                            Former::close();
+                        }}
+                        @endif
+
+                        @if ($user->type == 'potential')
+                        {{
+                            Former::inline_open()
+                              ->action(action('Admin\UsersController@accept', $user->id))
+                              ->style('float: left; margin-right: 1em;')
+                        }}
+                        {{-- Die styling is wel heel erg lelijk, maar is nu eerst even puur om het te testen --}}
+                            <button type='submit' class='btn btn-warning btn-xs'>
+                                <i class="glyphicon glyphicon-ok"></i> Lid installeren
+                            </button>
+                        {{
+                            Former::close();
+                        }}
+                        @endif
+                    </td>
+
+                    <!-- <td>
+                        <a href="{{ URL::action('Admin\UsersController@edit', $user->id) }}" alt="Bewerk {{{ $user->name }}}" class='btn btn-default'>
+                            <i class="fa fa-pencil"></i> Album informatie bewerken
+                        </a>
+                    </td> -->
+
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 
 	{{ $users->links() }}
 
