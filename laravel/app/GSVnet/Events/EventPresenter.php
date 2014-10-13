@@ -134,7 +134,7 @@ class EventPresenter extends Presenter
         if( !is_null(  $this->start_time) )
         {
             $time = Carbon::createFromFormat('H:i:s', $this->start_time);
-            return $time->format('H:i:s');
+            return $time->format('H:i');
         }
 
         return '';
