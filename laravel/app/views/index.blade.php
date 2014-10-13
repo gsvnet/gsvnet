@@ -213,7 +213,8 @@
                         @endif
                     </ul>
                     <h2>Sponsors</h2>
-                    <img src="/images/ads/patrimonium.gif" title="Patrimonium" />
+                    <p><img src="/images/ads/patrimonium.gif" title="Patrimonium" /></p>
+                    <p><img src="/images/ads/oudman.png" title="Oudman keukens" /></p>
                 </div>
             </div>
         </div>
