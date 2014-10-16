@@ -36,11 +36,14 @@ class ProfileManager
     }
 
     /**
-    * Validate input, create user model and store user file
-    *
-    * @param array $input
-    * @return User
-    */
+     * Validate input, create user model and store user file
+     *
+     * @param User $user
+     * @param array $input
+     * @throws PhotoStorageException
+     * @throws \GSVnet\Core\Exceptions\ValidationException
+     * @return User
+     */
     public function create(User $user, array $input)
     {
         $this->createValidator->validate($input);

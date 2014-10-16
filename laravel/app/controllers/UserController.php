@@ -132,6 +132,7 @@ class UserController extends BaseController {
         $profileInput = [
             'church' => $input['profile_church'],
             'study' => $input['profile_study'],
+            'initials' => $input['profile_initials'],
             'student_number' => $input['profile_student_number'],
             'address' => $input['profile_address'],
             'zip_code' => $input['profile_zip_code'],

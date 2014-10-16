@@ -96,6 +96,7 @@ class UserMailer extends Mailer {
         ];
 
         $profileFields = [
+            'initials' => 'Initialen',
             'phone' => 'Telefoon',
             'address' => 'Adres',
             'zip_code' => 'Postcode',

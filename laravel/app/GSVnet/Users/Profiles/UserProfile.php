@@ -19,6 +19,7 @@ class UserProfile extends \Eloquent {
         'user_id',
         'year_group_id',
         'region',
+        'initials',
         'phone',
         'address',
         'zip_code',
