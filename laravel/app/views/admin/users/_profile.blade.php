@@ -2,6 +2,7 @@
 {{ Former::select('year_group_id')->label('Jaarverband')->fromQuery($yearGroups, 'name', 'id') }}
 {{ Former::select('reunist')->text('Reunist')->options(['0' => 'Nee', '1' => 'Ja']) }}
 
+{{ Former::text('initials')->label('Initialen') }}
 {{ Former::text('phone')->label('Telefoon') }}
 {{ Former::text('address')->label('Adres') }}
 {{ Former::text('zip_code')->label('Postcode') }}

@@ -27,12 +27,12 @@
 				{{ Former::text('lastname')->label('')->disabled() }}
 			</div>
 
-			{{-- Former::text('initials')->label('Initialen')->size(5) --}}
 			{{ Former::text('email')->label('Email') }}
 
 			@if( Permission::has('users.edit-profile') && isset($profile) )
 
 				<h2>Vul vooral meer in</h2>
+			    {{ Former::text('profile.initials')->label('Initialen')->size(5) }}
 	            {{ Former::text('profile.birthdate')->label('Geboortedatum')->help('jjjj-mm-dd') }}
 				{{ Former::text('profile.church')->label('Kerkgezindte') }}
 	            {{ Former::text('profile.study')->label('Naam van studie') }}

@@ -207,7 +207,7 @@ class UsersController extends BaseController {
 
     public function updateProfile($id)
     {
-        $input = Input::only('region', 'year_group_id', 'phone', 'address', 'zip_code', 'town', 'study', 'student_number', 'birthdate', 'church', 'gender', 'parent_phone', 'parent_address', 'parent_zip_code', 'parent_town');
+        $input = Input::only('region', 'year_group_id', 'initials', 'phone', 'address', 'zip_code', 'town', 'study', 'student_number', 'birthdate', 'church', 'gender', 'parent_phone', 'parent_address', 'parent_zip_code', 'parent_town');
         $input['user_id'] = $id;
         $input['reunist'] = Input::get('reunist', false) == '1';
         $this->profileUpdaterValidator->validate($input);

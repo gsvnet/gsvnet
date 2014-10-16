@@ -7,6 +7,6 @@ class AdminProfileCreatorValidator extends Validator
     static $rules = [
         'user_id' => 'exists:users,id|unique:user_profiles,user_id',
         'year_group_id' => 'exists:year_groups,id',
-        'region' => 'in:1,2,3,4'
+        'region' => 'integer'
     ];
 }

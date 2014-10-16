@@ -42,6 +42,10 @@
 
 						@if( isset($member->profile) )
 							<li>
+								<span class="list-title">Initialen</span>
+								<span class="list-description">{{{$member->profile->initials}}}</span>
+							</li>
+							<li>
 								<span class="list-title">Telefoonnummer</span>
 								<span class="list-description"><a href="tel:{{{$member->profile->phone}}}" title="Bel {{{$member->firstname}}}">{{{$member->profile->phone}}}</a></span>
 							</li>

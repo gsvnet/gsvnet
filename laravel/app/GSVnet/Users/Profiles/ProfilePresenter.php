@@ -6,10 +6,10 @@ class ProfilePresenter extends Presenter
 {
     public function birthday()
     {
-		$day = Carbon::createFromFormat('Y-m-d',   $this->birthdate);
+		$day = Carbon::createFromFormat('Y-m-d', $this->birthdate);
 		$today = Carbon::today();
 
-		if($day->format('Y-m') == $today->format('Y-m'))
+		if($day->format('m-d') == $today->format('m-d'))
 		{
 			return 'Vandaag';
 		} else 
@@ -25,7 +25,7 @@ class ProfilePresenter extends Presenter
             return 'Op een dag';
         }
 
-		$day = Carbon::createFromFormat('Y-m-d',   $this->birthdate);
+		$day = Carbon::createFromFormat('Y-m-d', $this->birthdate);
 		$today = Carbon::today();
 
 		if($day->format('Y-m') == $today->format('Y-m'))
