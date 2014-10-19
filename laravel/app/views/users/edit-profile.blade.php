@@ -59,7 +59,7 @@
 
                 {{ Former::text('profile.parent_phone')->label('Telefoon ouders') }}
 	        @else
-	        	<p>De rest van je GSV-profielgegevens worden binnekort toegevoegd!</p>
+	        	<p>De rest van je GSV-profielgegevens worden binnenkort toegevoegd!</p>
 	        @endif
 		</div>
 		<div class="secondary-column">
