@@ -108,7 +108,7 @@
 
         <h2 id="studentikoos">Studentikoze pijler</h2>
         <div class="i-collegiate icon"></div>
-        <p>Bij een studentenvereniging hoort studentikoziteit. Dit wordt door veel leden gewaardeerd en het kenmerkt de GSV met haar lange tradities en gewoontes als een echte studentenvereniging. De mores van onze vereniging worden bewaard door de Magister Morem en ze worden ons voorgespiegeld door de Monarch. Daarnaast is er een College dat uitspraken doet in verenigingszaken en voorlichting geeft over de juiste studentikoze leefregels van de vereniging.</p>
+        <p>Bij een studentenvereniging hoort studentikoziteit. Dit wordt door veel leden gewaardeerd en het kenmerkt de GSV met haar lange tradities en gewoontes als een echte studentenvereniging. De mores van onze vereniging worden bewaard door de Magister Morum en ze worden ons voorgespiegeld door de Monarch. Daarnaast is er een College dat uitspraken doet in verenigingszaken en voorlichting geeft over de juiste studentikoze leefregels van de vereniging.</p>
 
         <div id="studentikoos-slideshow" class="carousel slide article-slideshow">
             <!-- Indicators -->
