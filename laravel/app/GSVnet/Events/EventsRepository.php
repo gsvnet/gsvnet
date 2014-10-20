@@ -72,7 +72,7 @@ class EventsRepository {
         return $event;
     }
 
-    public function paginate($amount = 5, $published = true)
+    public function paginate($amount = 10, $published = true)
     {
         if (Permission::has('events.show-private'))
         {
@@ -81,7 +81,7 @@ class EventsRepository {
         return Event::published($published)->public()->orderBy('start_date', 'desc')->orderBy('start_time', 'desc')->paginate($amount);
     }
 
-    public function upcoming($amount = 5, $published = true)
+    public function upcoming($amount = 10, $published = true)
     {
         $events = Event::where('end_date', '>=', date('Y-m-d'))
             ->orderBy('start_date', 'asc')
@@ -96,7 +96,7 @@ class EventsRepository {
         return $events->paginate($amount);
     }
 
-    public function between($start, $end, $amount = 5, $published = true)
+    public function between($start, $end, $amount = 10, $published = true)
     {
         $events = Event::where('start_date', '<=', $end)
             ->where('end_date', '>=', $start)
