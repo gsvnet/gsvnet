@@ -14,7 +14,7 @@ class Reply extends \GSVnet\Core\Entity
     public $presenter = 'GSVnet\Forum\Replies\ReplyPresenter';
 
     protected $validationRules = [
-        'body'      => 'required|min:6',
+        'body'      => 'required|min:2',
         'author_id' => 'required|exists:users,id',
     ];
 
