@@ -214,7 +214,7 @@
                     </ul>
                     <h2>Sponsors</h2>
                     <p><img src="/images/ads/patrimonium.gif" title="Patrimonium" /></p>
-                    <p><img src="/images/ads/oudman.png" title="Oudman keukens" /></p>
+                    <p><a href="http://www.oudmankeukens.nl/" title="Oudman Keukens" rel="nofollow"><img src="/images/ads/oudman.png" title="Oudman keukens" /></a></p>
                 </div>
             </div>
         </div>
