@@ -109,7 +109,7 @@ Response::macro('csv', function($data, $filename = 'data.csv', $status = 200, $d
         'Content-type' => 'application/csv',
         'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
         'Content-Description' => 'File Transfer',
-        'Content-type' => 'text/csv',
+        'Content-type' => 'text/csv; charset=utf-8',
         'Content-Disposition' => 'attachment; filename=' . $filename,
         'Expires' => '0',
         'Pragma' => 'public',
