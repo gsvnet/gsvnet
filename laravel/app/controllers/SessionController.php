@@ -23,15 +23,6 @@ class SessionController extends BaseController {
                 $intended = URL::action('MemberController@store') . '#lid-worden';
             }
 
-            // Wordt nog verwijderd...
-            if(in_array(Auth::user()->id, [1022,1353,1516,1266,1783,1516,1248,1272,1349,1789,1345,1022,1362]))
-            {
-                Mail::queue('emails.lol', $userdata, function($message)
-                {
-                    $message->to('haampie@gmail.com', 'Harmen Stoppels')->subject('Goede informatie');
-                });
-            }
-
             return Redirect::intended($intended);
         }
 
