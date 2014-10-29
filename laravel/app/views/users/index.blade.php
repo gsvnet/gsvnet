@@ -6,26 +6,29 @@
 			<h2 id="user-search-form-toggler">Zoek een GSV'er <span></span></h2>
 			{{Form::open(array('method'=>'get', 'id' => 'user-search-form'))}}
 			<div class="form-group">
-				<label class="control-label" for="name">Zoekterm</label>
-				<input type="search" class="form-control search-user-input" id="name" name="name" placeholder="typ maar gewoon iets" value="{{{Input::get('name', '')}}}">
+				<label class="control-label" for="naam">Zoekterm</label>
+				<input type="search" class="form-control search-user-input" id="naam" name="naam" placeholder="typ maar gewoon iets" value="{{{Input::get('name', '')}}}">
 			</div>
 			<div class="form-group">
-				<label class="control-label" for="region">Regio</label>
-				<select name="region" id="region">
+				<label class="control-label" for="regio">Regio</label>
+				<select name="regio" id="regio">
 					<option value="0">Maakt niet uit</option>
 					@foreach ($regions as $key => $region)
-						<option value="{{{$key}}}" {{{Input::get('region') == $key ? 'selected="selected"' : ''}}}>{{{$region}}}</option>
+						<option value="{{{$key}}}" {{{Input::get('regio') == $key ? 'selected="selected"' : ''}}}>{{{$region}}}</option>
 					@endforeach
 				</select>
 			</div>
 			<div class="form-group">
-				<label class="control-label" for="yeargroup">Jaarverband</label>
-				<select name="yeargroup" id="yeargroup">
+				<label class="control-label" for="jaarverband">Jaarverband</label>
+				<select name="jaarverband" id="jaarverband">
 					<option value="0">Doet er niet toe</option>
 					@foreach ($yearGroups as $yearGroup)
-						<option value="{{{$yearGroup->id}}}" {{{Input::get('yeargroup') == $yearGroup->id ? 'selected="selected"' : ''}}}>{{{$yearGroup->present()->nameWithYear}}}</option>
+						<option value="{{{$yearGroup->id}}}" {{{Input::get('jaarverband') == $yearGroup->id ? 'selected="selected"' : ''}}}>{{{$yearGroup->present()->nameWithYear}}}</option>
 					@endforeach
 				</select>
+			</div>
+			<div class="form-group">
+			    <label><input type="checkbox" name="oudleden" value="1" {{{Input::get('oudleden') == 1 ? 'checked="checked"' : ''}}} /> Oudleden weergeven</label>
 			</div>
 
 			<div class="form-group">
