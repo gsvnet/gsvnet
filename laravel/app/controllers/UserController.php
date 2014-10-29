@@ -79,7 +79,7 @@ class UserController extends BaseController {
             $type = [User::MEMBER, User::FORMERMEMBER];
         }
 
-        $perPage = 200;
+        $perPage = 50;
         $members = $this->profiles->searchAndPaginate($search, $region, $yeargroup, $type, $perPage);
 
         // Select year groups
