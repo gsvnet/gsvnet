@@ -2,6 +2,7 @@
 
 use GSVnet\Committees\CommitteesRepository;
 use GSVnet\Users\Profiles\ProfilesRepository;
+use GSVnet\Users\User;
 use GSVnet\Users\UsersRepository;
 use GSVnet\Users\UserManager;
 use GSVnet\Users\Profiles\ProfileManager;
@@ -59,23 +60,27 @@ class UserController extends BaseController {
      */
     public function showUsers()
     {
-        $search = Input::get('name', '');
-
+        $search = Input::get('naam', '');
+        $type = User::MEMBER;
         $regions = Config::get('gsvnet.regions');
+        $oudLeden = Input::get('oudleden');
 
-        if (! ($region = Input::get('region') and array_key_exists($region, $regions)))
-        {
+        if (!($region = Input::get('regio') and array_key_exists($region, $regions))) {
             $region = null;
         }
 
         // Enable search on yeargroup
-        if (! ($yeargroup = Input::get('yeargroup') and $this->yearGroups->exists($yeargroup)))
-        {
+        if (!($yeargroup = Input::get('jaarverband') and $this->yearGroups->exists($yeargroup))) {
             $yeargroup = null;
         }
 
+        if ($oudLeden == '1')
+        {
+            $type = [User::MEMBER, User::FORMERMEMBER];
+        }
+
         $perPage = 200;
-        $members = $this->profiles->searchAndPaginate($search, $region, $yeargroup, $perPage);
+        $members = $this->profiles->searchAndPaginate($search, $region, $yeargroup, $type, $perPage);
 
         // Select year groups
         $yearGroups = $this->yearGroups->all();

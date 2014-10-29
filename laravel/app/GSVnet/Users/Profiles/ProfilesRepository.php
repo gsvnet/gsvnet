@@ -12,44 +12,47 @@ class ProfilesRepository {
     }
 
     /**
-    *   Search for members and paginate
-    *
-    *   @param string $search
-    *   @param int $region
-    *   @param int $yearGroup
-    *   @param int $amount
-    *
-    *   @return UserProfile[]
-    */
-    public function searchAndPaginate($search, $region = null, $yearGroup = null, $amount = 20)
+     *   Search for members and paginate
+     *
+     * @param string $search
+     * @param int $region
+     * @param int $yearGroup
+     * @param int|array $type
+     * @param int $amount
+     *
+     * @return UserProfile[]
+     */
+    public function searchAndPaginate($search, $region = null, $yearGroup = null, $type = 2, $amount = 20)
     {
-        return $this->search($search, $region, $yearGroup)->paginate($amount);
+        return $this->search($search, $region, $yearGroup, $type)->paginate($amount);
     }
 
     /**
-    *   Search for users + profiles
-    *
-    *   @param string $search
-    *   @param int $region
-    *   @param int $yearGroup
-    *   @param int/array $type
-    *
-    *   @return UserProfile[]
-    */
+     *   Search for users + profiles
+     *
+     * @param string $keyword
+     * @param int $region
+     * @param int $yearGroup
+     * @param int $type
+     *
+     * @return UserProfile[]
+     */
     private function search($keyword = '', $region = null, $yearGroup = null, $type = 2)
     {
         // Initialize basic query
         $query = UserProfile::with('user', 'yearGroup')->join('users', function($join) use ($type) {
             $join->on('users.id', '=', 'user_profiles.user_id');
+        });
 
-            if(is_array($type))
-            {
-                $join->whereIn('users.type', $type);
-            } else 
-            {
-                $join->where('users.type', '=', $type);
-            }
-        })->orderBy('users.lastname')->orderBy('users.firstname');
+        if(is_array($type))
+        {
+            $query->whereIn('users.type', $type);
+        } else
+        {
+            $query->where('users.type', '=', $type);
+        }
+
+        $query->orderBy('users.lastname')->orderBy('users.firstname');
 
         if ( ! empty($keyword))
         {
