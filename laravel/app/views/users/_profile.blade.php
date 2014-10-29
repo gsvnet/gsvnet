@@ -17,7 +17,7 @@
             </li>
             <li>
                 <span class="dot-after">{{{$member->yearGroup->name or 'Geen jaarverband'}}}</span>
-                Regio {{{$member->region}}}
+                {{{$member->present()->regionName}}}
             </li>
         </ul>
     </div>
