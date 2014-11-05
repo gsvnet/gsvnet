@@ -128,11 +128,6 @@ return array(
 	        'url' => URL::action('ForumThreadsController@getIndex')
 	    ],
 
-	    'op-kamers' => [
-	    	'title' => 'Op kamers!',
-	    	'url' => 'http://gsvnet.nl/forum/03-07-2014-kamer-aanbodvraag-overzicht'
-	    ],
-
 	    'foto-album' => [
 	        'title' => 'Fotoalbum',
 	        'url' => URL::action('PhotoController@showAlbums')
