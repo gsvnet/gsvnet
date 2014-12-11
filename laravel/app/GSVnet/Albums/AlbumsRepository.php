@@ -3,13 +3,12 @@
 use Str;
 use Permission;
 
-class AlbumsRepository
-{
+class AlbumsRepository {
     /**
-    * Get all albums
-    *
-    * @return Collection
-    */
+     * Get all albums
+     *
+     * @return Collection
+     */
     public function all()
     {
         if (Permission::has('photos.show-private'))
@@ -55,10 +54,10 @@ class AlbumsRepository
     }
 
     /**
-    * Get first album
-    *
-    * @return Album
-    */
+     * Get first album
+     *
+     * @return Album
+     */
     public function first()
     {
         return Album::orderBy('updated_at', 'DESC')->firstOrFail();
@@ -87,20 +86,19 @@ class AlbumsRepository
     }
 
 
-
     /**
-    * Create album
-    *
-    * @param array $input
-    * @return Album
-    */
+     * Create album
+     *
+     * @param array $input
+     * @return Album
+     */
     public function create(array $input)
     {
-        $album              = new Album();
-        $album->name        = $input['name'];
+        $album = new Album();
+        $album->name = $input['name'];
         $album->description = $input['description'];
-        $album->public      = $input['public'];
-        $album->slug        = $album->generateNewSlug();
+        $album->public = $input['public'];
+        $album->slug = $album->generateNewSlug();
 
         $album->save();
 
@@ -108,20 +106,20 @@ class AlbumsRepository
     }
 
     /**
-    * Update album
-    *
-    * @param int $id
-    * @param array $input
-    * @return Album
-    */
+     * Update album
+     *
+     * @param int $id
+     * @param array $input
+     * @return Album
+     */
     public function update($id, array $input)
     {
-        $album              = $this->byId($id);
+        $album = $this->byId($id);
 
-        $album->name        = $input['name'];
+        $album->name = $input['name'];
         $album->description = $input['description'];
-        $album->public      = $input['public'];
-        $album->slug        = $album->generateNewSlug();
+        $album->public = $input['public'];
+        $album->slug = $album->generateNewSlug();
 
         $album->save();
 
@@ -129,13 +127,13 @@ class AlbumsRepository
     }
 
     /**
-    * Delete album
-    *
-    * @param int $id
-    * @param array $input
-    * @return Album
-    * @TODO: delete all photos
-    */
+     * Delete album
+     *
+     * @param int $id
+     * @param array $input
+     * @return Album
+     * @TODO: delete all photos
+     */
     public function delete($id)
     {
         $album = $this->byId($id);
