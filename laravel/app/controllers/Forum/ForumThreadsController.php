@@ -62,8 +62,8 @@ class ForumThreadsController extends BaseController implements
         $this->layout->bodyID = 'thread-index-page';
 
         $this->layout->description = "Op zoek naar een kamer in Groningen? Vind het op het forum van de GSV. Ook voor activiteiten en discussies.";
-        $this->view('forum.threads.index', compact('threads', 'tags', 'queryString'));
         $this->layout->activeMenuItem = 'forum';
+        $this->view('forum.threads.index', compact('threads', 'tags', 'queryString'));
     }
 
     // show a thread
