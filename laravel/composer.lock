@@ -4,11 +4,11 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "be42bf9ed930943a058228b8bd9dfb51",
+    "hash": "1d9785a335b5d863f7fc4bae1967e403",
     "packages": [
         {
             "name": "anahkiasen/former",
-            "version": "dev-master",
+            "version": "3.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Anahkiasen/former.git",
@@ -187,16 +187,16 @@
         },
         {
             "name": "erusev/parsedown",
-            "version": "dev-master",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/erusev/parsedown.git",
-                "reference": "38cc1ca7e0f563546a2178a9c615fc8fe291eb86"
+                "reference": "495e7ac73bb5fde6b857b88ff2bb1b5e79a4263a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/erusev/parsedown/zipball/38cc1ca7e0f563546a2178a9c615fc8fe291eb86",
-                "reference": "38cc1ca7e0f563546a2178a9c615fc8fe291eb86",
+                "url": "https://api.github.com/repos/erusev/parsedown/zipball/495e7ac73bb5fde6b857b88ff2bb1b5e79a4263a",
+                "reference": "495e7ac73bb5fde6b857b88ff2bb1b5e79a4263a",
                 "shasum": ""
             },
             "type": "library",
@@ -222,7 +222,7 @@
                 "markdown",
                 "parser"
             ],
-            "time": "2014-12-16 11:58:33"
+            "time": "2014-11-29 02:29:14"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -381,26 +381,28 @@
         },
         {
             "name": "fzaninotto/faker",
-            "version": "v1.2.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "4ad4bc4b5c8d3c0f3cf55d2fedc2f65b313ec62f"
+                "reference": "010c7efedd88bf31141a02719f51fb44c732d5a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/4ad4bc4b5c8d3c0f3cf55d2fedc2f65b313ec62f",
-                "reference": "4ad4bc4b5c8d3c0f3cf55d2fedc2f65b313ec62f",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/010c7efedd88bf31141a02719f51fb44c732d5a0",
+                "reference": "010c7efedd88bf31141a02719f51fb44c732d5a0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.5"
+            },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "1.2.x-dev"
-                }
+                "branch-alias": []
             },
             "autoload": {
                 "psr-0": {
@@ -423,7 +425,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2013-06-09 18:05:57"
+            "time": "2014-06-04 14:43:02"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -737,16 +739,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "4.2.x-dev",
+            "version": "v4.2.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "f9dec6f7638990fe67ad7f875e16845c363a3c0d"
+                "reference": "e29253c7f29e3b1ca716de7fe309b272e3ddf47d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/f9dec6f7638990fe67ad7f875e16845c363a3c0d",
-                "reference": "f9dec6f7638990fe67ad7f875e16845c363a3c0d",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/e29253c7f29e3b1ca716de7fe309b272e3ddf47d",
+                "reference": "e29253c7f29e3b1ca716de7fe309b272e3ddf47d",
                 "shasum": ""
             },
             "require": {
@@ -848,7 +850,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2014-12-17 04:56:33"
+            "time": "2014-10-04 18:48:27"
         },
         {
             "name": "mailchimp/mailchimp",
@@ -1159,7 +1161,7 @@
         },
         {
             "name": "nickcernis/html-to-markdown",
-            "version": "dev-master",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nickcernis/html-to-markdown.git",
@@ -2472,16 +2474,16 @@
         },
         {
             "name": "thomaswelton/laravel-gravatar",
-            "version": "dev-master",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thomaswelton/laravel-gravatar.git",
-                "reference": "1a064aae72cca657c3c276d9169121855cee8a4d"
+                "reference": "24b080a95a57373a63f18144bc7fbd455d5b73f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thomaswelton/laravel-gravatar/zipball/1a064aae72cca657c3c276d9169121855cee8a4d",
-                "reference": "1a064aae72cca657c3c276d9169121855cee8a4d",
+                "url": "https://api.github.com/repos/thomaswelton/laravel-gravatar/zipball/24b080a95a57373a63f18144bc7fbd455d5b73f6",
+                "reference": "24b080a95a57373a63f18144bc7fbd455d5b73f6",
                 "shasum": ""
             },
             "require": {
@@ -2513,7 +2515,7 @@
                 "laravel",
                 "laravel4"
             ],
-            "time": "2014-08-22 15:27:02"
+            "time": "2014-07-21 16:35:56"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -2607,14 +2609,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "anahkiasen/former": 20,
-        "fzaninotto/faker": 20,
-        "thomaswelton/laravel-gravatar": 20,
         "mews/purifier": 20,
-        "nickcernis/html-to-markdown": 20,
-        "misd/linkify": 20,
-        "msurguy/honeypot": 20,
-        "erusev/parsedown": 20
+        "msurguy/honeypot": 20
     },
     "prefer-stable": false,
     "platform": [],
