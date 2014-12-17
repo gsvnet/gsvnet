@@ -8,7 +8,7 @@
     <meta name="description" content="{{{ $description or 'Gereformeerde Studenten Vereniging Groningen' }}}" >
     <meta property="og:site_name" content="Gereformeerde Studenten Vereniging Groningen">
     <meta property="og:title" content="{{{ $title or 'GSV' }}}">
-    <meta property="og:description" content="{{{ $description or 'Gereformeerde Studenten Vereniging Groningen' }}}">
+    <meta property="og:description" content="{{{ isset($description) ? $description : 'Gereformeerde Studenten Vereniging Groningen' }}}">
     <meta property="og:url" content="{{{Request::url()}}}">
     <meta property="og:type" content="{{ Request::is('/') ? 'website' : 'article' }}">
     <meta property="og:image" content="http://gsvnet.nl/images/facebook.jpg">
