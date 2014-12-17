@@ -33,7 +33,7 @@ class ThreadPresenter extends Presenter
         $body = $this->body;
         $body = $this->convertMarkdown($body);
         $body = $this->convertEmoticons($body);
-        //$body = $this->purify($body);
+        $body = $this->purify($body);
         return $body;
     }
 

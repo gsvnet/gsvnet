@@ -14,9 +14,9 @@ return array(
     'preload'  => false,
     'settings' => array(
         'default' => array(
-            'HTML.Doctype'             => 'XHTML 1.0 Strict',
-            'HTML.Allowed'             => 'h2,h3,h4,h5,h6,div,b,blockquote,cite,strong,i,em,a[href|title],ul,ol,li,p[style],br,span[style],img[width|height|alt|src|class]',
-            'AutoFormat.AutoParagraph' => true,
+            'HTML.Doctype'             => null,
+            'HTML.Allowed'             => 'h2,h3,h4,h5,h6,div,b,blockquote,cite,strong,i,em,a[href|title],ul,ol,li,p[style],br,span[style],img[width|height|alt|src|class],table,hr,tr,td,th',
+            'AutoFormat.AutoParagraph' => false,
             'AutoFormat.RemoveEmpty'   => true,
             'AutoFormat.Linkify'       => true,
             'HTML.Nofollow'            => true,

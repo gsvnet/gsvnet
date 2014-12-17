@@ -13,7 +13,8 @@ class HtmlMarkdownConvertor
         $this->htmlParser = new HTML_To_markdown;
         $this->htmlParser->set_option('header_style', 'atx');
 
-        $this->markdownParser = new \Michelf\MarkdownExtra;
+        $this->markdownParser = \Parsedown::instance()
+            ->setBreaksEnabled(true);
     }
 
     public function convertHtmlToMarkdown($html)
@@ -23,6 +24,6 @@ class HtmlMarkdownConvertor
 
     public function convertMarkdownToHtml($markdown)
     {
-        return $this->markdownParser->transform($markdown);
+        return $this->markdownParser->text($markdown);
     }
 }
