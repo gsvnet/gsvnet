@@ -1,7 +1,6 @@
 <?php namespace GSVnet\Markdown;
 
 use HTML_To_Markdown;
-use Purifier;
 
 class HtmlMarkdownConvertor
 {
