@@ -52,6 +52,7 @@ return array(
 	|
 	*/
 
-	'storage' => __DIR__.'/../app/storage',
+//	'storage' => __DIR__.'/../app/storage',
+	'storage' => $env == 'local' ? '/home/vagrant/storage' : __DIR__.'/../app/storage',
 
 );
