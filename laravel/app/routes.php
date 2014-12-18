@@ -93,6 +93,7 @@ Route::group([
     ], function() {
 
     Route::get('/', 'AdminController@index');
+
     // events, albums/{photo}, files
     Route::resource('events',       'EventController');
     Route::resource('albums',       'AlbumController',  ['except' => ['create']]);
