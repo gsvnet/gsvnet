@@ -5,7 +5,7 @@ use View, Input, Redirect, Request, Response;
 use GSVnet\Albums\Photos\PhotoManager;
 use GSVnet\Albums\Photos\PhotosRepository;
 
-class PhotoController extends BaseController {
+class PhotoController extends AdminBaseController {
 
     protected $photos;
     protected $manager;

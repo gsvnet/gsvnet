@@ -2,10 +2,11 @@
 
 use View;
 
-class AdminController extends BaseController {
+class AdminController extends AdminBaseController {
 
     public function index()
     {
-        $this->layout->content =  View::make('admin.index');
+        dd('test');
+        $this->layout->content = View::make('admin.index');
     }
 }
