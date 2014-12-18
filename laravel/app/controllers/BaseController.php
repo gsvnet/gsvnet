@@ -17,15 +17,12 @@ class BaseController extends Controller {
      */
     protected function setupLayout()
     {
-        if ( ! is_null($this->layout))
-        {
-            $this->layout = View::make($this->layout);
-            $this->layout->title = 'GSVnet';
-            $this->layout->description = '';
-            $this->layout->keywords = '';
-            $this->layout->bodyID = '';
-            $this->layout->activeMenuItem = '';
-        }
+        $this->layout = View::make($this->layout);
+        $this->layout->title = 'GSVnet';
+        $this->layout->description = '';
+        $this->layout->keywords = '';
+        $this->layout->bodyID = '';
+        $this->layout->activeMenuItem = '';
 
         $this->currentUser = \Auth::user();
         View::share('currentUser', $this->currentUser);

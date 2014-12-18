@@ -6,7 +6,6 @@ class AdminController extends AdminBaseController {
 
     public function index()
     {
-        
         $this->layout->content = View::make('admin.index');
     }
 }

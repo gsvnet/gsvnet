@@ -1,3 +1,5 @@
+@extends('layouts.admin')
+
 @section('content')
     <h1>Administratie</h1>
 
