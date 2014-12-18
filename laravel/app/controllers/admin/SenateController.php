@@ -6,7 +6,7 @@ use GSVnet\Senates\SenatesRepository;
 use GSVnet\Senates\SenateValidator;
 use GSVnet\Users\UsersRepository;
 
-class SenateController extends BaseController {
+class SenateController extends AdminBaseController {
 
     protected $senates;
     protected $users;

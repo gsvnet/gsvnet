@@ -14,7 +14,7 @@ use GSVnet\Users\Profiles\UserProfile;
 use GSVnet\Users\Profiles\AdminProfileCreatorValidator;
 use GSVnet\Users\Profiles\AdminProfileUpdaterValidator;
 
-class UsersController extends BaseController {
+class UsersController extends AdminBaseController {
 
     protected $users;
     protected $yearGroups;

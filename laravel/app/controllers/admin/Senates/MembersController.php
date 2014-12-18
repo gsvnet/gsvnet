@@ -3,10 +3,10 @@
 use GSVnet\Senates\SenatesRepository;
 use GSVnet\Users\UsersRepository;
 
-use Admin\BaseController;
+use Admin\AdminBaseController;
 use Redirect, Input, View;
 
-class MembersController extends BaseController {
+class MembersController extends AdminBaseController {
 
 
     protected $senates;

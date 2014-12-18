@@ -8,7 +8,7 @@ use GSVnet\Albums\AlbumValidator;
 use GSVnet\Core\ImageHandler;
 use GSVnet\Albums\Photos\PhotosRepository;
 
-class AlbumController extends BaseController {
+class AlbumController extends AdminBaseController {
 
     protected $albums;
     protected $photos;

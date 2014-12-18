@@ -41,7 +41,7 @@ class UserProfile extends \Eloquent {
 
     public function scopeSearchNameAndPhone($query, $search)
     {
-        return $query->whereRaw("MATCH(user_profiles.phone, users.firstname, users.middlename, users.lastname) AGAINST(? IN BOOLEAN MODE)", [$search]);
+        return $query->whereRaw("MATCH(users.firstname, users.middlename, users.lastname) AGAINST(? IN BOOLEAN MODE)", [$search]);
     }
 
     public function yearGroup()

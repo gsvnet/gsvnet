@@ -7,6 +7,7 @@ laravel/public/uploads/files/
 laravel/public/packages/
 laravel/app/storage/uploads/photos/
 laravel/app/storage/uploads/files/
+laravel/app/storage/uploads/events/
 layout/
 node_modules/
 .idea/

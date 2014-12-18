@@ -7,7 +7,7 @@ use GSVnet\Files\FilesRepository;
 
 use GSVnet\Files\Labels\LabelsRepository;
 
-class FilesController extends BaseController {
+class FilesController extends AdminBaseController {
 
     protected $files;
     protected $labels;

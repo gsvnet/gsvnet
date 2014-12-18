@@ -5,7 +5,7 @@ use View, Input, Redirect;
 use GSVnet\Events\EventsRepository;
 use GSVnet\Events\EventValidator;
 
-class EventController extends BaseController {
+class EventController extends AdminBaseController {
 
     protected $events;
     protected $validator;

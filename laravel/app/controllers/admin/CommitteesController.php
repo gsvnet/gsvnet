@@ -8,7 +8,7 @@ use GSVnet\Committees\CommitteeUpdaterValidator;
 
 use GSVnet\Users\UsersRepository;
 
-class CommitteeController extends BaseController {
+class CommitteeController extends AdminBaseController {
 
     protected $committees;
     protected $users;

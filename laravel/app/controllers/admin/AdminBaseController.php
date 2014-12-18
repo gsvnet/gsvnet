@@ -1,6 +1,6 @@
 <?php namespace Admin;
 
-class BaseController extends \BaseController {
+class AdminBaseController extends \BaseController {
 
     public function __construct()
     {
