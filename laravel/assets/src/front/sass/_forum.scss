@@ -65,3 +65,24 @@ img.emo {
 .forum .body a:link {
   text-decoration: underline;
 }
+
+#reply-form {
+  padding: 1em;
+  background: $lightGrey;
+  position: relative;
+
+  .tab-pane {
+	min-height: 300px;
+  }
+}
+.loading-indicator {
+  font-family: $font-family-sans;
+  transition: all .3s linear;
+  top: .2em;
+  right: 1em;
+  position: absolute;
+  opacity: 0;
+}
+.loading .loading-indicator {
+  opacity: 1;
+}

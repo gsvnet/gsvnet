@@ -117,18 +117,43 @@ var Forum = (function()
         });
     }
 
+    function initEditor() {
+        var writings = $('#body'),
+            previewArea = $('#markdown-preview'),
+            previewTab = $('#bekijken');
+
+        $('#bekijk-knop').on('shown.bs.tab', function (e) {
+            var data = {
+                text: writings.val()
+            };
+
+            previewArea.html('');
+            previewTab.addClass('loading');
+
+            $.ajax({
+                url: '/preview',
+                data: data,
+                success: function(result) {
+                    previewArea.html(result);
+                    previewTab.removeClass('loading')
+                }
+            });
+        })
+    }
+
     function initThreadPage() {
+        var replyForm = $('#reply-form');
+
         quoteLinks = $('._quote_forum_post');
-        replyField = $('#body');
         bindQuoteLinks();
-        
-        replyForm = $('#reply-form');
+
+        initEditor();
+
         submitReply = $('#submit-reply');
 
         replyForm.submit(function(){
             submitReply.addClass('disabled').val('Wordt verstuurd...');
         });
-
     }
 
     function initCreateOrUpdatePage() {

@@ -4,7 +4,6 @@
   "description": "Website http://gsvnet.nl",
   "main": "gulpfile.js",
   "dependencies": {
-    "gulp": "^3.8.10"
   },
   "devDependencies": {
     "gulp": "^3.8.10",

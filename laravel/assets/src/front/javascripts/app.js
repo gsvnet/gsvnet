@@ -184,7 +184,6 @@ app = (function() {
 	}
 
 	function thread() {
-
 		Forum.initThreadPage();
 		Forum.loadDeferredAvatars();
 	}
