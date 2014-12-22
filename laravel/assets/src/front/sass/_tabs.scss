@@ -42,3 +42,44 @@
 		padding-bottom: 2em;
 	}
 }
+
+/*
+ * Bootstrap-like tabs
+ */
+
+.tab-content > .tab-pane {
+  display: none;
+  visibility: hidden;
+}
+.tab-content > .active {
+  display: block;
+  visibility: visible;
+}
+
+.nav-tabs {
+  @include clearfix;
+  font-family: $font-family-sans;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  & > li {
+	float: left;
+	display: block;
+
+	& > a:link, & > a:visited, & > a:hover, & > a:active, & > a:focus {
+	  padding: .4em .8em;
+	  text-decoration: none;
+	  color: $body-copy-color;
+	  outline: 0;
+	  display: block;
+	}
+  }
+
+  & > .active {
+	a:link, a:hover, a:active, a:focus {
+	  background: $lightGrey;
+	  border-bottom: 0;
+	}
+  }
+}

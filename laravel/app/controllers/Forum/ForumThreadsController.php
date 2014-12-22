@@ -9,7 +9,6 @@ use GSVnet\Forum\Threads\ThreadRepository;
 use GSVnet\Forum\Threads\ThreadUpdaterListener;
 use GSVnet\Tags\TagRepository;
 use GSVnet\Users\UsersRepository;
-use GSVnet\Users\User;
 use \Permission;
 
 class ForumThreadsController extends BaseController implements

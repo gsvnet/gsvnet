@@ -165,6 +165,8 @@ Route::group(['prefix' => 'forum', 'before' => ['auth', 'approved']], function()
     Route::post('{slug}',          'ForumRepliesController@postCreateReply');
 });
 
+Route::get('preview', 'PreviewController@preview')->before('auth');
+
 
 // Forum index, search, show comment, show thread
 Route::get('forum',      'ForumThreadsController@getIndex');
