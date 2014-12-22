@@ -36,7 +36,7 @@
 
     @section('stylesheets')
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.4.2">
+        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.5">
     @show
 </head>
 <body id="{{{ $bodyID or '' }}}">
