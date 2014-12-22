@@ -24,7 +24,7 @@
                     </div>
                     <div class="info">
                         <strong class="author">
-                            {{{ $reply->author->username }}}
+                            {{{ $currentUser->username }}}
                         </strong>
                         <ul class="inline-list grey">
                             <li>Nu</li>
