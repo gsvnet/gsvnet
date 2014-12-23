@@ -101,6 +101,7 @@ var Forum = (function()
         // add markdown quote tags
         quote = quote.replace(/^/g, ">");
         quote = quote.replace(/\n/g, "\n>");
+        quote = quote + "\n\n";
 
         return quote;
     }
@@ -143,6 +144,7 @@ var Forum = (function()
 
     function initThreadPage() {
         var replyForm = $('#reply-form');
+        replyField = $('#body');
 
         quoteLinks = $('._quote_forum_post');
         bindQuoteLinks();

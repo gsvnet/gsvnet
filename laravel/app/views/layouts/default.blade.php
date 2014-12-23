@@ -36,7 +36,7 @@
 
     @section('stylesheets')
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.5.1">
+        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.5.2">
     @show
 </head>
 <body id="{{{ $bodyID or '' }}}">
@@ -79,7 +79,7 @@
     @endif
 
     @section('javascripts')
-        <script async src="/build-javascripts/app.js?v=1.3.1"></script>
+        <script async src="/build-javascripts/app.js?v=1.3.2"></script>
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
