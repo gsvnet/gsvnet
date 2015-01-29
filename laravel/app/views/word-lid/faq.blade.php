@@ -38,7 +38,7 @@
 
             <h2 id="novitiaat">Wat is het Novitiaat?</h2>
             <p>Het novitiaat is een intensieve kennismaking met de GSV, welke anderhalve week duurt. Hierbij ga je eerst een week op kamp waar je kennis kunt maken met de structuur en activiteiten van de GSV. Ook leer je je eigen jaarverband goed kennen. In de halve week daarna maak je kennis met de GSV-leden zelf door allerlei bruisende activiteiten in de stad. Het novitiaat van de GSV heeft een ontgroenend karakter.</p>
-            <p>Dit jaar is het novitiaat van maandag 18 tot woensdag 27 augustus.</p>
+            <p>Dit jaar is het novitiaat van maandag 17 tot woensdag 26 augustus.</p>
 
             <h2 id="vragen">Meer vragen?</h2>
             <p>Neemt contact op met de Prescie: {{HTML::mailto('prescie@gsvnet.nl')}}</p>
