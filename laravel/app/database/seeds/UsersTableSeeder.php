@@ -7,7 +7,7 @@ class UsersTableSeeder extends Seeder {
         DB::table('users')->truncate();
         DB::table('user_profiles')->truncate();
 
-        $count = 200;
+        $count = 50;
 
         $faker = Faker\Factory::create();
         $faker->addProvider(new Faker\Provider\en_US\Person($faker));
