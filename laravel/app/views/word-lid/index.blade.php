@@ -22,8 +22,9 @@
 
             <p>Kijk gauw in het jaarschema hieronder wat we dit jaar allemaal speciaal voor jou organiseren:</p>
             <ul>
-                <li>Open soos: 5 juni</li>
-                <li>Keiweek 11-15 augustus</li>
+                <li>Open soos: 12 maart</li>
+                <li>Introdusoos: 9 april</li>
+                <li>Keiweek 10-14 augustus</li>
             </ul>
         </div>
         <div class="secondary-column">
