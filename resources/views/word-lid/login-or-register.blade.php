@@ -1,7 +1,7 @@
 <div id="register-or-login" class="column-holder has-header">
     <div class="content-columns">
         <div id="register-form" class="content-column with-padding gsv-tab-content">
-            {{ Former::open()->action(URL::action('RegisterController@create')) }}
+            {!! Former::open()->action(URL::action('RegisterController@create')) !!}
                 <h2>Registreer</h2>
                 <p>Heb je nog geen account? Maak er een aan!</p>
         
@@ -11,11 +11,11 @@
                 <div class="form-group">
                     <button type="submit" class="button">Registreer</button>
                 </div>
-            {{Former::close()}}
+            {!!Former::close()!!}
         </div>
         
         <div id="login-form" class="content-column gsv-tab-content">
-            {{ Former::open()->action(action('SessionController@postLogin')) }}
+            {!! Former::open()->action(action('SessionController@postLogin')) !!}
                 <h2>Login</h2>
                 <p>Heb je al een bestaand account? Log dan in!</p>
         
@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <button type="submit" class="button">Log in</button>
                 </div>
-            {{ Former::close() }}
+            {!! Former::close() !!}
         </div>
     </div>
 </div>

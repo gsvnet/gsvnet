@@ -1,3 +1,8 @@
+@extends('layouts.default')
+
+@section('title', 'Fotoalbum')
+@section('description', 'Bekijk hier foto\'s van soosavonden, sing-ins, kampen, weekenden, wedstrijden, lezingen en al wat de GSV nog meer te bieden heeft.')
+
 <?php
 	// Dit moet even mooier gedaan worden hoor
     $repeatsAfter = 10;
@@ -15,6 +20,6 @@
 			@endfor
 		</div>
 
-		{{ $albums->links() }}
+		{!! $albums->render() !!}
 	</div>
 @stop

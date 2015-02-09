@@ -10,3 +10,4 @@ storage/uploads/events/
 node_modules/
 .idea/
 /vendor
+.env

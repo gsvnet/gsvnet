@@ -45,10 +45,7 @@ class UserController extends BaseController {
         $committees = $this->committees->byUserOrderByRecent($member);
         $senates = $member->senates;
 
-        $this->layout->bodyID = 'own-profile-page';
-        $this->layout->activeMenuItem = 'intern';
-        $this->layout->activeSubMenuItem = 'profiel';
-        $this->layout->content = View::make('users.profile')
+        return view('users.profile')
             ->with('member', $member)
             ->with('committees', $committees)
             ->with('senates', $senates);
@@ -86,10 +83,7 @@ class UserController extends BaseController {
         $yearGroups = $this->yearGroups->all();
 
         // Create the view
-        $this->layout->bodyID = 'user-list-page';
-        $this->layout->activeMenuItem = 'intern';
-        $this->layout->activeSubMenuItem = 'jaarbundel';
-        $this->layout->content = View::make('users.index')
+        return view('users.index')
             ->with('members', $members)
             ->with('regions', $regions)
             ->with('yearGroups', $yearGroups);
@@ -104,10 +98,7 @@ class UserController extends BaseController {
         $committees = $this->committees->byUserOrderByRecent($member);
         $senates = $member->senates;
 
-        $this->layout->bodyID = 'own-profile-page';
-        $this->layout->activeMenuItem = 'intern';
-        $this->layout->activeSubMenuItem = 'jaarbundel';
-        $this->layout->content = View::make('users.profile')
+        return view('users.profile')
             ->with('member', $member)
             ->with('committees', $committees)
             ->with('senates', $senates);
@@ -118,10 +109,7 @@ class UserController extends BaseController {
         $user = Auth::user();
         $profile = $user->profile;
 
-        $this->layout->bodyID = 'edit-profile-page';
-        $this->layout->activeMenuItem = 'intern';
-        $this->layout->activeSubMenuItem = 'jaarbundel';
-        $this->layout->content = View::make('users.edit-profile')->with([
+        return view('users.edit-profile')->with([
             'user' => $user,
             'profile' => $profile
         ]);
@@ -194,6 +182,6 @@ class UserController extends BaseController {
         Event::fire('profile.updatedByOwner', $eventData);
 
         // Redirct to the become-member page: it shows the 3rd step [done] as active page
-        return Redirect::action('UserController@showProfile');
+        return redirect()->action('UserController@showProfile');
     }
 }

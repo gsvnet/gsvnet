@@ -1,3 +1,8 @@
+@extends('layouts.default')
+
+@section('title', 'Jaarbundel GSV')
+@section('description', 'Alle informatie van GSV\'ers is hier te vinden')
+
 @section('content')
 	<div id="user-list" class="column-holder">
 		<h1>Jaarbundel</h1>

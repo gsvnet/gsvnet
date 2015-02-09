@@ -1,3 +1,8 @@
+@extends('layouts.default')
+
+@section('title', 'Veelgestelde vragen!')
+@section('description', 'Wat je moet weten over de studentenvereniging GSV')
+
 @section('content')
     <div class="column-holder" role="main">
         <h1>Veel gestelde vragen</h1>

@@ -16,7 +16,7 @@ class RemindersController extends BaseController {
 	 */
 	public function getRemind()
 	{
-		$this->layout->content = View::make('password.remind');
+		return view('password.remind');
 	}
 
 	/**

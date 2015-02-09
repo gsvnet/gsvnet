@@ -1,3 +1,8 @@
+@extends('layouts.default')
+
+@section('title', $album->name)
+@section('description', $album->description)
+
 <?php
     // Dit moet even mooier gedaan worden hoor
     $repeatsAfter = 10;
@@ -14,6 +19,6 @@
             @endfor
         </div>
 
-        {{ $photos->links() }}
+        {!! $photos->render() !!}
     </div>
 @stop

@@ -1,3 +1,8 @@
+@extends('layouts.default')
+
+@section('title', 'Verander je gegevens')
+@section('description', 'Verander je gegevens')
+
 @section('content')
 	<div class="column-holder">
 		<h1>Verander je profiel</h1>
