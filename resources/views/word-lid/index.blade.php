@@ -1,3 +1,8 @@
+@extends('layouts.default')
+
+@section('title', 'Word lid bij de GSV Groningen')
+@section('description', 'Wil jij een fantastische studententijd? Meld je dan aan bij de GSV Groningen')
+
 @section('content')
     <div class="column-holder" role="main">
         <p class="delta">
@@ -27,10 +32,10 @@
             </ul>
 
             <h2>Open kring</h2>
-            <p>Elke dinsdag wordt er bijbelkring gehouden binnen de GSV. Een groep van ongeveer 8 GSV’ers gaat eerst lekker eten, om vervolgens gezamenlijk met een geloofsonderwerp aan de slag te gaan. Na de bijbelkring wordt er vaak nog even gezellig wat gedronken. Wil je een keertje deze bijbelkring meemaken? Stuur een mail naar {{HTML::mailto('prescie@gsvnet.nl')}} en beleef de avond zelf!</p>
+            <p>Elke dinsdag wordt er bijbelkring gehouden binnen de GSV. Een groep van ongeveer 8 GSV’ers gaat eerst lekker eten, om vervolgens gezamenlijk met een geloofsonderwerp aan de slag te gaan. Na de bijbelkring wordt er vaak nog even gezellig wat gedronken. Wil je een keertje deze bijbelkring meemaken? Stuur een mail naar {!!HTML::mailto('prescie@gsvnet.nl')!!} en beleef de avond zelf!</p>
 
             <h2>Meeloopdag</h2>
-            <p>Weet je nog niet wat je gaat studeren? Binnen de GSV worden tal van studies gedaan. Stuur een mail naar {{HTML::mailto('prescie@gsvnet.nl')}} en wij koppelen je aan een GSV’er om hoor- of werkcolleges van een studie te volgen, zodat je je beter kunt oriënteren op je studiekeuze.</p>
+            <p>Weet je nog niet wat je gaat studeren? Binnen de GSV worden tal van studies gedaan. Stuur een mail naar {!!HTML::mailto('prescie@gsvnet.nl')!!} en wij koppelen je aan een GSV’er om hoor- of werkcolleges van een studie te volgen, zodat je je beter kunt oriënteren op je studiekeuze.</p>
         </div>
         <div class="secondary-column">
             <h2>Gelijk inschrijven</h2>

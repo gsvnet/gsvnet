@@ -1,5 +1,6 @@
 <?php
 
+use GSVnet\Permissions\Permission;
 use GSVnet\Users\UserManager;
 use GSVnet\Users\Profiles\ProfileManager;
 use GSVnet\Users\Profiles\ProfilesRepository;
@@ -8,38 +9,25 @@ use GSVnet\Core\ImageHandler;
 
 class MemberController extends BaseController {
 
-    protected $userManager;
-    protected $profileManager;
     protected $profiles;
     protected $imageHandler;
 
-    public function __construct(
-        UserManager $userManager,
-        ProfilesRepository $profiles,
-        ProfileManager $profileManager,
-        ImageHandler $imageHandler)
+    public function __construct(ProfilesRepository $profiles, ImageHandler $imageHandler)
     {
         parent::__construct();
-        $this->userManager = $userManager;
-        $this->profileManager = $profileManager;
-        $this->profiles = $profiles;
         $this->imageHandler = $imageHandler;
+        $this->profiles = $profiles;
     }
 
     public function index()
     {
-        $this->layout->bodyID = 'become-member-index-page';
-        $this->layout->activeMenuItem = 'lid-worden';
-        $this->layout->activeSubMenuItem = 'lid-worden';
-        $this->layout->content = View::make('word-lid.index');
+        return view('word-lid.index');
     }
 
     public function becomeMember()
     {
-        // if user allready is a member, show some message
-
+        // if user already is a member, show some message
         // if user isn't member but has registered, do stuff
-
         // else show registration / login form
 
         $activeStep = '';
@@ -70,54 +58,43 @@ class MemberController extends BaseController {
             }
         }
 
-        $this->layout->bodyID = 'become-member-page';
-        $this->layout->title = 'Lid worden!';
-        $this->layout->description = 'Wil jij een vereniging waar het geloof een centrale rol speelt, een vereniging met vele toffe, diverse activiteiten en weekenden en waar je vrienden voor het leven maakt? Meld je aan!';
-        $this->layout->activeMenuItem = 'lid-worden';
-        $this->layout->activeSubMenuItem = 'inschrijven';
-        $this->layout->content = View::make('word-lid.word-lid')
+        return view('word-lid.word-lid')
             ->with('steps', $steps)
             ->with('activeStep', $activeStep);
     }
 
-    public function store()
+    public function store(ProfileManager $profileManager)
     {
         $user = Auth::user();
         $input = Input::except(['photo_path']);
+        $input['photo_path'] = null;
 
         if (Input::hasFile('photo_path'))
         {
             $input['photo_path'] = Input::file('photo_path');
-        } else {
-            $input['photo_path'] = null;
         }
 
-        // Construct a date from seperate day, month and year fields.
+        // Construct a date from separate day, month and year fields.
         $input['potential-birthdate'] = $input['potential-birth-year'] . '-' . $input['potential-birth-month'] . '-' . $input['potential-birth-day'];
 
         // Check if parent address is the same as potential address
         if (Input::get('parents-same-address', '0') == '1')
         {
-            $input['parents-address']   = $input['potential-address'];
-            $input['parents-town']      = $input['potential-town'];
-            $input['parents-zip-code']  = $input['potential-zip-code'];
+            $input['parents-address'] = $input['potential-address'];
+            $input['parents-town'] = $input['potential-town'];
+            $input['parents-zip-code'] = $input['potential-zip-code'];
         }
 
         // Create the profile and attach it to the user
-        $profile = $this->profileManager->create($user, $input);
+        $profileManager->create($user, $input);
 
         // Redirect to the become-member page: it shows the 3rd step [done] as active page
-        return Redirect::action('MemberController@becomeMember');
+        return redirect()->action('MemberController@becomeMember');
     }
 
     public function faq()
     {
-        $this->layout->bodyID = 'faq-page';
-        $this->layout->title = 'Veelgestelde vragen!';
-        $this->layout->description = 'Wat je moet weten over de studentenvereniging GSV';
-        $this->layout->activeMenuItem = 'lid-worden';
-        $this->layout->activeSubMenuItem = 'faq';
-        $this->layout->content = View::make('word-lid.faq');
+        return view('word-lid.faq');
     }
 
     // Show original (resized) photo
@@ -131,6 +108,7 @@ class MemberController extends BaseController {
         }
         return $this->photoResponse($profile_id, $type);
     }
+
     /**
     *
     *   Returns an image response
@@ -144,6 +122,6 @@ class MemberController extends BaseController {
         $path = $this->imageHandler->getStoragePath($profile->photo_path, $type);
         $name = $profile->user->present()->fullName;
 
-        return Response::inlinePhoto($path, $name);
+        return response()->inlinePhoto($path, $name);
     }
 }

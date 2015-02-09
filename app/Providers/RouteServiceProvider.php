@@ -1,7 +1,9 @@
 <?php namespace App\Providers;
 
+use GSVnet\Core\Exceptions\MaxUploadSizeException;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Config;
 use GSVnet\Permissions\Permission;
@@ -90,7 +92,7 @@ class RouteServiceProvider extends ServiceProvider {
 			// If content exceeds max size, throw an exception
 			if ($contentSize > $maxUploadSize)
 			{
-				throw new GSVnet\Core\Exceptions\MaxUploadSizeException;
+				throw new MaxUploadSizeException;
 			}
 		});
 

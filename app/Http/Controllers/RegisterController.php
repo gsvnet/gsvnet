@@ -4,23 +4,12 @@ use GSVnet\Users\UserManager;
 
 class RegisterController extends BaseController {
 
-    protected $userManager;
-
-    public function __construct(UserManager $userManager)
-    {
-        parent::__construct();
-        $this->userManager = $userManager;
-    }
-
     public function create()
     {
-        $this->layout->bodyID = 'show-register';
-        $this->layout->layout = View::make('users.register');
-        $this->layout->activeMenuItem = 'inloggen';
-        $this->layout->activeSubMenuItem = 'registreren';
+        return view('users.register');
     }
 
-    public function store()
+    public function store(UserManager $userManager)
     {
         $input = Input::all();
 
@@ -28,17 +17,15 @@ class RegisterController extends BaseController {
         $input['type'] = 0;
 
         // Let the user manager handle validation, creation and emails
-        $user = $this->userManager->create($input);
+        $user = $userManager->create($input);
 
         // Log the user immediately in
         Auth::login($user);
 
         // Potentials should return to the become member form
         if (Input::has('become-member-register'))
-        {
-            return Redirect::action('MemberController@becomeMember');
-        }
+            return redirect()->action('MemberController@becomeMember');
 
-        return Redirect::to('/');
+        return redirect('/');
     }
 }

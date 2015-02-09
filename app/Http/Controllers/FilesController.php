@@ -46,8 +46,10 @@ class FilesController extends BaseController {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int $id
+	 * @param FileHandler $fileHandler
 	 * @return Response
+	 * @throws \GSVnet\Files\NoPermissionException
 	 */
 	public function show($id, FileHandler $fileHandler)
 	{
@@ -55,6 +57,6 @@ class FilesController extends BaseController {
 
 		$path = $fileHandler->getPath($file->file_path);
 
-		return Response::download($path, $file->name);
+		return response()->download($path, $file->name);
 	}
 }

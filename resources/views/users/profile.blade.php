@@ -1,3 +1,8 @@
+@extends('layouts.default')
+
+@section('title', 'Profiel van ' . $member->present()->fullName)
+@section('description', 'Informatie over deze persoon')
+
 @section('content')
 	<div class="column-holder">
 		<h1>{{{ $member->present()->fullName }}}</h1>
