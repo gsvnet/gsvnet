@@ -2,6 +2,7 @@
 
 @section('title', 'Veelgestelde vragen!')
 @section('description', 'Wat je moet weten over de studentenvereniging GSV')
+@section('body-id', 'faq-page')
 
 @section('content')
     <div class="column-holder" role="main">

@@ -2,6 +2,7 @@
 
 @section('title', 'Pijlers')
 @section('description', 'De GSV kent vier pijlers: christelijk, intellectueel, sociaal en studentikoos.')
+@section('body-id', 'pillars-page')
 
 @section('content')
 

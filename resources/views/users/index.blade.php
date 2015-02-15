@@ -2,6 +2,7 @@
 
 @section('title', 'Jaarbundel GSV')
 @section('description', 'Alle informatie van GSV\'ers is hier te vinden')
+@section('body-id', 'user-list-page')
 
 @section('content')
 	<div id="user-list" class="column-holder">

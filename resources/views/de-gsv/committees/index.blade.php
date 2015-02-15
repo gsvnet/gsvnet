@@ -2,6 +2,7 @@
 
 @section('title', 'Commissies van de GSV')
 @section('description', 'Binnen de GSV zijn er veel verschillende commissies die samen de vereniging tot een bruisend geheel maken door allerlei activiteiten te organiseren en belangrijke taken te vervullen.')
+@section('body-id', 'committees-page')
 
 @section('content')
 

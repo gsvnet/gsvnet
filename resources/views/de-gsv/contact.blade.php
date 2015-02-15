@@ -2,6 +2,7 @@
 
 @section('title', 'Contact')
 @section('description', 'Op deze pagina kunt u de contactgegevens van het abactiaat en het sociëteitspand van de GSV vinden')
+@section('body-id', 'contact-page')
 
 @section('content')
     <div class="column-holder" role="main">

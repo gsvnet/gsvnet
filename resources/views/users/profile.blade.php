@@ -2,6 +2,7 @@
 
 @section('title', 'Profiel van ' . $member->present()->fullName)
 @section('description', 'Informatie over deze persoon')
+@section('body-id', 'own-profile-page')
 
 @section('content')
 	<div class="column-holder">

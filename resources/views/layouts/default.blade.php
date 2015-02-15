@@ -39,7 +39,7 @@
         <link rel="stylesheet" href="/stylesheets/screen.css?v=1.5.2">
     @show
 </head>
-<body id="{{{ $bodyID or '' }}}">
+<body id="@yield('body-id', 'gsvnet')">
     <div class="overal-header">
         @include('layouts.header')
         @yield('top-slideshow')

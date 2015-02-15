@@ -2,6 +2,7 @@
 
 @section('title', 'Senaat ' . $currentSenate->name)
 @section('description', 'Senaat ' . $currentSenate->name)
+@section('body-id', 'senate-page')
 
 @section('content')
 

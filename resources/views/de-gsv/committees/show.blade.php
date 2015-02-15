@@ -2,6 +2,7 @@
 
 @section('title', $committee->name . ' - Commissies van de GSV')
 @section('description', $committee->description)
+@section('body-id', 'committee-page')
 
 @section('content')
 

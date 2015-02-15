@@ -2,6 +2,7 @@
 
 @section('title', 'Fotoalbum')
 @section('description', 'Bekijk hier foto\'s van soosavonden, sing-ins, kampen, weekenden, wedstrijden, lezingen en al wat de GSV nog meer te bieden heeft.')
+@section('body-id', 'albums-page')
 
 <?php
 	// Dit moet even mooier gedaan worden hoor

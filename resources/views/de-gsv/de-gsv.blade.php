@@ -2,8 +2,7 @@
 
 @section('title', 'Over de GSV')
 @section('description', 'De GSV is een christelijke studentenvereniging met een gereformeerde basis. Ze heeft zo\'n 200 leden die wekelijks bijeen komen voor bijbelstudie een biertje op soos.')
-@section('activeMenuItem', 'de-gsv')
-@section('activeSubMenuItem', 'over-de-gsv')
+@section('body-id', 'about-page')
 
 @section('content')
 

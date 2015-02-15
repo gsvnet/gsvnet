@@ -2,6 +2,7 @@
 
 @section('title', 'Senaten van de GSV')
 @section('description', 'De GSV wordt bestuurd door een senaat die bestaat uit een vijftal functies: praeses, abactis, fiscus, assessor primus en assessor secundus.')
+@section('body-id', 'senates-page')
 
 @section('content')
 

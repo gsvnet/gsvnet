@@ -9,6 +9,8 @@
 	@section('description', 'Hier is te vinden welke activiteiten de GSV allemaal op haar agenda heeft staan.')
 @endif
 
+@section('body-id', 'events-page')
+
 @section('content')
 	<div class="column-holder" role="main">
 		<h1>Activiteiten</h1>
