@@ -14,8 +14,6 @@ class FilesController extends BaseController {
     {
         $this->files = $files;
 
-        $this->beforeFilter('files.show', ['only' => ['index', 'show']]);
-
         parent::__construct();
     }
 

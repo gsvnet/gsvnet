@@ -134,7 +134,7 @@ Route::group([
 });
 
 // Forum
-Route::group(['prefix' => 'forum', 'middleware' => 'auth', 'before' => 'approved'], function() {
+Route::group(['prefix' => 'forum', 'middleware' => ['auth', 'approved']], function() {
 
     Route::get('stats', 'ForumThreadsController@statistics');
 
