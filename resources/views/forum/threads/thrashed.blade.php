@@ -1,5 +1,7 @@
 @extends('layouts.default')
 
+@section('body-id', 'thread-index-page')
+
 @section('content')
 <div class="column-holder">
     <h1>Forum: verwijderde topics</h1>

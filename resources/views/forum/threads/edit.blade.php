@@ -1,5 +1,7 @@
 @extends('layouts.default')
 
+@section('body-id', 'thread-update-page')
+
 @section('content')
 <div class="column-holder">
     <div class="header">

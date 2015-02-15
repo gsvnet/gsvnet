@@ -1,5 +1,7 @@
 @extends('layouts.default')
 
+@section('body-id', 'thread-page')
+
 @section('content')
     <div class="column-holder">
         <a href="/forum" title="Terug naar het forum" class="back-link i-back"></a>
