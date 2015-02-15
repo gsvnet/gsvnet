@@ -1,4 +1,4 @@
-<?php namespace GSVnet\ServiceProviders;
+<?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App, Auth, Event, Route;
