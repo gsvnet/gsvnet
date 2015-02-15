@@ -2,7 +2,7 @@
     <div class="dialog-main">
         <h2>Login</h2>
 
-        {{ Former::open()->action(action('SessionController@postLogin')) }}
+        {!! Former::open()->action(action('SessionController@postLogin')) !!}
 
             <p>Inloggen geeft je toegang tot het forum</p>
 
@@ -12,7 +12,7 @@
             <div class="form-group">
                 <button type="submit" class="button">Log in</button>
             </div>
-        {{ Former::close() }}
+        {!! Former::close() !!}
     </div>
     <div class="dialog-footer">
         <h3>Geen account?</h3>

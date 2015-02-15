@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Anahkiasen/former.git",
-                "reference": "af8495b948029790f2aed100445dbaa210b0a835"
+                "reference": "0f5841d1a1fe2a4e781cf72d2a633fb722a49a97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Anahkiasen/former/zipball/af8495b948029790f2aed100445dbaa210b0a835",
-                "reference": "af8495b948029790f2aed100445dbaa210b0a835",
+                "url": "https://api.github.com/repos/Anahkiasen/former/zipball/0f5841d1a1fe2a4e781cf72d2a633fb722a49a97",
+                "reference": "0f5841d1a1fe2a4e781cf72d2a633fb722a49a97",
                 "shasum": ""
             },
             "require": {
@@ -63,7 +63,7 @@
                 "foundation",
                 "laravel"
             ],
-            "time": "2015-02-05 17:09:20"
+            "time": "2015-02-12 22:33:10"
         },
         {
             "name": "anahkiasen/html-object",
@@ -220,16 +220,16 @@
         },
         {
             "name": "danielstjules/stringy",
-            "version": "1.8.1",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/danielstjules/Stringy.git",
-                "reference": "6a7b0391b2baf0bfdca3ec0c8d33ff379c2835ad"
+                "reference": "3cf18e9e424a6dedc38b7eb7ef580edb0929461b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/6a7b0391b2baf0bfdca3ec0c8d33ff379c2835ad",
-                "reference": "6a7b0391b2baf0bfdca3ec0c8d33ff379c2835ad",
+                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/3cf18e9e424a6dedc38b7eb7ef580edb0929461b",
+                "reference": "3cf18e9e424a6dedc38b7eb7ef580edb0929461b",
                 "shasum": ""
             },
             "require": {
@@ -272,7 +272,7 @@
                 "utility",
                 "utils"
             ],
-            "time": "2015-01-08 15:21:43"
+            "time": "2015-02-10 06:19:18"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1651,16 +1651,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.3.3",
+            "version": "v0.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "0355cecab0591c83fed019a9572c510b0da29174"
+                "reference": "2ce0e8f3020fd292c2ad2a496c5d83939823f642"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/0355cecab0591c83fed019a9572c510b0da29174",
-                "reference": "0355cecab0591c83fed019a9572c510b0da29174",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/2ce0e8f3020fd292c2ad2a496c5d83939823f642",
+                "reference": "2ce0e8f3020fd292c2ad2a496c5d83939823f642",
                 "shasum": ""
             },
             "require": {
@@ -1710,14 +1710,14 @@
                 }
             ],
             "description": "An interactive shell for modern PHP.",
-            "homepage": "https://github.com/bobthecow/psysh",
+            "homepage": "http://psysh.org",
             "keywords": [
                 "REPL",
                 "console",
                 "interactive",
                 "shell"
             ],
-            "time": "2015-01-20 21:18:03"
+            "time": "2015-02-12 19:35:52"
         },
         {
             "name": "swiftmailer/swiftmailer",

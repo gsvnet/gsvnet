@@ -3,8 +3,8 @@
 use Laracasts\Presenter\Presenter;
 use Carbon\Carbon; 
 use Config;
-use Gravatar;
 use URL;
+use HTML;
 
 class UserPresenter extends Presenter
 {
@@ -109,12 +109,13 @@ class UserPresenter extends Presenter
 
     public function avatar($size = 120)
     {
-        return Gravatar::image($this->email, 'Avatar', array('width' => $size, 'height' => $size));
+        $url = md5(strtolower(trim($this->email))) . '?s=' . $size;
+        return HTML::image($url, 'Avatar', ['width' => $size, 'height' => $size]);
     }
 
     public function avatarDeferred($size = 120)
     {
-        $url = Gravatar::src($this->email, $size);
+        $url = md5(strtolower(trim($this->email))) . '?s=' . $size;
         return '<span class="img-wrap" data-gravatar-url="' . $url . '" data-gravatar-size="' . $size . '"></span>';
     }
 
