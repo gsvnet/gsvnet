@@ -2,6 +2,7 @@
 
 @section('description', 'Op zoek naar een kamer in Groningen? Vind het op het forum van de GSV. Ook voor activiteiten en discussies.')
 @section('title', 'Forum')
+@section('body-id', 'thread-index-page')
 
 @section('content')
 <div class="column-holder">

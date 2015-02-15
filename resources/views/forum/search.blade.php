@@ -1,5 +1,7 @@
 @extends('layouts.default')
 
+@section('body-id', 'thread-search-page')
+
 @section('content')
     <div class="column-holder">
         @if($query)

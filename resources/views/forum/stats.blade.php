@@ -1,5 +1,7 @@
 @extends('layouts.default')
 
+@section('body-id', 'forum-statistics-page')
+
 @section('content')
     <div class="column-holder">
         <h1>Forumstatistieken</h1>
