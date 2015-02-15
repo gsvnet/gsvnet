@@ -1,4 +1,4 @@
-<?php namespace GSVnet\Newsletters;
+<?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
