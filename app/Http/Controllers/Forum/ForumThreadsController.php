@@ -57,12 +57,7 @@ class ForumThreadsController extends BaseController implements
         $threads->appends($tagAppends);
         $this->createSections(Input::get('tags'));
 
-        $this->title = "Forum";
-        $this->layout->bodyID = 'thread-index-page';
-
-        $this->layout->description = "Op zoek naar een kamer in Groningen? Vind het op het forum van de GSV. Ook voor activiteiten en discussies.";
-        $this->layout->activeMenuItem = 'forum';
-        $this->view('forum.threads.index', compact('threads', 'tags', 'queryString'));
+        return view('forum.threads.index', compact('threads', 'tags', 'queryString'));
     }
 
     // show a thread
@@ -88,10 +83,7 @@ class ForumThreadsController extends BaseController implements
             App::make('GSVnet\Forum\Threads\ThreadVisitationUpdater')->update($thread, Auth::user());
         }
 
-        $this->title = $thread->subject;
-        $this->layout->bodyID = 'thread-page';
-        $this->view('forum.threads.show', compact('thread', 'replies'));
-        $this->layout->activeMenuItem = 'forum';
+        return view('forum.threads.show', compact('thread', 'replies'));
     }
 
     // create a thread
@@ -100,11 +92,7 @@ class ForumThreadsController extends BaseController implements
         $tags = $this->tags->getAllForForum();
         $this->createSections(Input::get('tags'));
 
-        $this->title = "Nieuw topic";
-        $this->view('forum.threads.create', compact('tags'));
-        $this->layout->bodyID = 'thread-create-page';
-        $this->layout->activeMenuItem = 'forum';
-
+        return view('forum.threads.create', compact('tags'));
     }
 
     public function postCreateThread()
@@ -180,23 +168,20 @@ class ForumThreadsController extends BaseController implements
     {
         $thread = $this->threads->requireById($threadId);
 
-        if ( ! $thread->isManageableBy(Auth::user())) {
+        if ( ! $thread->isManageableBy(Auth::user()))
             return Redirect::to('/');
-        }
 
         $this->createSections(Input::get('tags'));
 
-        $this->title = "Delete Forum Thread";
-        $this->view('forum.threads.delete', compact('thread'));
+        return view('forum.threads.delete', compact('thread'));
     }
 
     public function postDelete($threadId)
     {
         $thread = $this->threads->requireById($threadId);
 
-        if ( ! $thread->isManageableBy(Auth::user())) {
+        if ( ! $thread->isManageableBy(Auth::user()))
             return Redirect::to('/');
-        }
 
         return App::make('GSVnet\Forum\Threads\ThreadDeleter')->delete($this, $thread);
     }
@@ -215,24 +200,17 @@ class ForumThreadsController extends BaseController implements
         $results->appends(array('query' => $query));
 
         $this->createSections(Input::get('tags'));
-        $this->title = "Forum doorzoeken";
-        $this->view('forum.search', compact('query', 'results'));
-        $this->layout->activeMenuItem = 'forum';
-        $this->layout->bodyID = 'thread-search-page';
+
+        return view('forum.search', compact('query', 'results'));
     }
 
     public function statistics()
     {
-
-        // MONTH
         $perMonthUsers = $this->users->mostPostsPreviousMonth();
         $perWeekUsers = $this->users->mostPostsPreviousWeek();
         $allTimeUsers = $this->users->mostPostsAllTime();
 
-        $this->title = "Statistieken!!1";
-        $this->layout->activeMenuItem = 'forum';
-        $this->layout->bodyID = 'forum-statistics-page';
-        $this->view('forum.stats', compact('perMonthUsers', 'perWeekUsers', 'allTimeUsers'));
+        return view('forum.stats', compact('perMonthUsers', 'perWeekUsers', 'allTimeUsers'));
     }
 
     public function getTrashed()
@@ -240,13 +218,9 @@ class ForumThreadsController extends BaseController implements
         $threads = $this->threads->getTrashedPaginated();
         $this->createSections();
 
-        $this->title = "Verwijderde topics";
-        $this->view('forum.threads.thrashed', compact('threads'));
-        $this->layout->activeMenuItem = 'forum';
-        $this->layout->bodyID = 'thread-index-page';
+        return view('forum.threads.thrashed', compact('threads'));
     }
 
-    // ------------------------- //
     private function createSections($currentSection = null)
     {
         $forumSections = App::make('GSVnet\Forum\SectionSidebarCreator')->createSidebar($currentSection);

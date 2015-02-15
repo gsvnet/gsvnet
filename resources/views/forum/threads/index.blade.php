@@ -1,5 +1,8 @@
 @extends('layouts.default')
 
+@section('description', 'Op zoek naar een kamer in Groningen? Vind het op het forum van de GSV. Ook voor activiteiten en discussies.')
+@section('title', 'Forum')
+
 @section('content')
 <div class="column-holder">
     <h1>Forum</h1>
@@ -32,7 +35,7 @@
             @endif
         </div>
 
-        {{ $threads->links() }}
+        {{ $threads->render() }}
     </section>
 
     <div class="secondary-column">
