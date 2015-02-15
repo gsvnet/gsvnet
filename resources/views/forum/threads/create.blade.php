@@ -8,10 +8,10 @@
 
         <div class="main-content">
 
-            {{ Former::open() }}
+            {!! Former::open() !!}
             <section class="padding">
-                {{ Former::text('subject')->placeholder('Onderwerp')->label('Onderwerp')->class('form-control wide') }}
-                {{ Former::textarea('body')->placeholder('Tekst')->label('Tekst')->rows(10) }}
+                {!! Former::text('subject')->placeholder('Onderwerp')->label('Onderwerp')->class('form-control wide') !!}
+                {!! Former::textarea('body')->placeholder('Tekst')->label('Tekst')->rows(10) !!}
 
                 <div class="control-group tags">
                     @include('forum._tag_chooser')
@@ -19,7 +19,7 @@
 
                 @if (Permission::has('threads.show-private'))
                 <div>
-                    {{ Former::checkbox('public')->text('Maak topic zichtbaar voor externen')->label('Publiek?') }}
+                    {!! Former::checkbox('public')->text('Maak topic zichtbaar voor externen')->label('Publiek?') !!}
                 </div>
                 @endif
 
@@ -28,7 +28,7 @@
                 </div>
 
             </section>
-            {{ Former::close() }}
+            {!! Former::close() !!}
         </div>
         <div class="secondary-column">
             <h2>ijoaegj ooeaijgro</h2>

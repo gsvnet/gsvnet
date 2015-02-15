@@ -7,9 +7,9 @@
 
         <div class="search">
             <h2>Het forum doorzoeken</h2>
-            {{ Former::open()->action(action('ForumThreadsController@getSearch'))->method('get') }}
-            {{ Former::text('query')->placeholder('Zoeken op het forum')->label(false) }}
-            {{ Former::close() }}
+            {!! Former::open()->action(action('ForumThreadsController@getSearch'))->method('get') !!}
+            {!! Former::text('query')->placeholder('Zoeken op het forum')->label(false) !!}
+            {!! Former::close() !!}
         </div>
     </div>
     <div class="content-column">
