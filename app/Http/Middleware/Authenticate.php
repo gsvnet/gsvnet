@@ -16,7 +16,6 @@ class Authenticate {
 	 * Create a new filter instance.
 	 *
 	 * @param  Guard  $auth
-	 * @return void
 	 */
 	public function __construct(Guard $auth)
 	{
@@ -35,13 +34,9 @@ class Authenticate {
 		if ($this->auth->guest())
 		{
 			if ($request->ajax())
-			{
 				return response('Unauthorized.', 401);
-			}
-			else
-			{
-				return redirect()->guest('auth/login');
-			}
+
+            return redirect()->guest(action('SessionController@getLogin'));
 		}
 
 		return $next($request);
