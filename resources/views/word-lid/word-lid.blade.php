@@ -2,6 +2,7 @@
 
 @section('title', 'Lid worden bij de GSV!')
 @section('description', 'Wil jij een vereniging waar het geloof een centrale rol speelt, een vereniging met vele toffe, diverse activiteiten en weekenden en waar je vrienden voor het leven maakt? Meld je aan!')
+@section('body-id', 'become-member-page')
 
 @section('content')
 

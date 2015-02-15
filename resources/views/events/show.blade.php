@@ -2,6 +2,7 @@
 
 @section('title', $event->title . ' - activiteiten')
 @section('title', $event->meta_description)
+@section('body-id', 'single-event-page')
 
 @section('content')
     <div class="column-holder" role="main" itemscope itemtype="http://data-vocabulary.org/Event">

@@ -2,6 +2,7 @@
 
 @section('title', 'Gereformeerde Studenten Vereniging te Groningen')
 @section('description', 'Denk je na over een actief studentenleven in Groningen? Dan ben je hier aan het juiste adres. De GSV is dé perfecte combinatie van christelijke waarden en het echte studentenleven.')
+@section('body-id', 'home-page')
 
 @section('top-slideshow')
     <section class="slideshow-wrap top-slideshow">

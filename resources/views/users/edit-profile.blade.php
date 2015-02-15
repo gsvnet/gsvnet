@@ -2,6 +2,7 @@
 
 @section('title', 'Verander je gegevens')
 @section('description', 'Verander je gegevens')
+@section('body-id', 'edit-profile-page')
 
 @section('content')
 	<div class="column-holder">

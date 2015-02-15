@@ -2,6 +2,7 @@
 
 @section('title', $album->name)
 @section('description', $album->description)
+@section('body-id', 'album-page')
 
 <?php
     // Dit moet even mooier gedaan worden hoor

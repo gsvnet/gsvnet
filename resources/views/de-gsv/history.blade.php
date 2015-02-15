@@ -2,6 +2,7 @@
 
 @section('title', 'Geschiedenis')
 @section('description', 'De Gereformeerde Studenten Vereniging werd opgericht op 23 juni 1966 en was verbonden aan de Gereformeerde Kerken (Vrijgemaakt). Sinds 2004 is de GSV een zelfstandige organisatie met een duidelijke gereformeerde identiteit.')
+@section('body-id', 'history-page')
 
 @section('content')
     <article class="artikel column-holder" role="main">

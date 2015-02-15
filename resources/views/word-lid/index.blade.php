@@ -2,6 +2,7 @@
 
 @section('title', 'Word lid bij de GSV Groningen')
 @section('description', 'Wil jij een fantastische studententijd? Meld je dan aan bij de GSV Groningen')
+@section('body-id', 'become-member-index-page')
 
 @section('content')
     <div class="column-holder" role="main">

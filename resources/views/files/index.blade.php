@@ -2,6 +2,7 @@
 
 @section('title', 'GSVdocs')
 @section('description', 'GSVdocs is de plaats waar alle documentjes van de GSV komen te staan')
+@section('body-id', 'files-page')
 
 @section('content')
     <div class="column-holder" role="main">

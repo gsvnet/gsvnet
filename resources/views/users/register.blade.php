@@ -2,6 +2,7 @@
 
 @section('title', 'Registreren op GSVnet')
 @section('description', 'Geregistreerde leden hebben toegang tot het forum van de GSV')
+@section('body-id', 'show-register')
 
 @section('content')
     <div class="column-holder">
