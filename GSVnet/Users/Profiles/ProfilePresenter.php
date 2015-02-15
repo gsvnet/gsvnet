@@ -1,6 +1,6 @@
 <?php namespace GSVnet\Users\Profiles;
 
-use Laracasts\Presenter\Presenter, Carbon\Carbon, Gravatar, URL, Config;
+use Laracasts\Presenter\Presenter, Carbon\Carbon, URL, Config;
 
 class ProfilePresenter extends Presenter
 {
