@@ -150,12 +150,13 @@ return [
 		'Intervention\Image\ImageServiceProvider',
 		'Chromabits\Purifier\PurifierServiceProvider',
 
-		'GSVnet\ServiceProviders\BackendServiceProvider',
-		'GSVnet\ServiceProviders\AlbumServiceProvider',
-		'GSVnet\ServiceProviders\FilesServiceProvider',
-		'GSVnet\ServiceProviders\CommitteesServiceProvider',
-		'GSVnet\ServiceProviders\EventsServiceProvider',
-		'GSVnet\Newsletters\NewsletterServiceProvider'
+		'App\Providers\BackendServiceProvider',
+		'App\Providers\AlbumServiceProvider',
+		'App\Providers\FilesServiceProvider',
+		'App\Providers\CommitteesServiceProvider',
+		'App\Providers\EventsServiceProvider',
+		'App\Providers\NewsletterServiceProvider',
+		'App\Providers\ComposerServiceProvider',
 	],
 
 	/*

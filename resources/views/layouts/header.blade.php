@@ -1,9 +1,7 @@
 <?php
 $activeMenuItem = isset($activeMenuItem) ? $activeMenuItem : '';
 $activeSubMenuItem = isset($activeSubMenuItem) ? $activeSubMenuItem : '';
-$menuitems = Config::get('gsvnet.menuItems', []);
 ?>
-
 
 <header class="top-header">
     <nav class="nav-bar">
@@ -20,7 +18,7 @@ $menuitems = Config::get('gsvnet.menuItems', []);
         </h1>
         <ul id="main-menu" class="nav-bar-links">
 <?php
-foreach($menuitems as $name => $item)
+foreach($menu as $name => $item)
 {
     $itemClassNames = ['top-level-menuitem'];
     $title = '';
@@ -101,24 +99,4 @@ foreach($menuitems as $name => $item)
 ?>
     </ul>
     </nav>
-    @if(array_key_exists($activeMenuItem, $menuitems) && array_key_exists('submenu', $menuitems[$activeMenuItem]))
-    <nav class="extra-submenu-nav">
-        <ul class="extra-submenu">
-<?php
-        foreach($menuitems[$activeMenuItem]['submenu'] as $name => $item)
-        {
-            // Check if item is not visible
-            if(array_key_exists('visible', $item) && is_callable($item['visible']) && !$item['visible']())
-            {
-                continue;
-            }
-
-            // Print item
-            echo '<li class="top-level-menuitem' . ($activeSubMenuItem == $name ? ' active' :  '') . '">';
-            echo '<a class="top-level-link" href="' . htmlentities($item['url']) . '">' . htmlentities($item['title']) . '</a></li>';
-        }
-?>
-        </ul>
-    </nav>
-    @endif
 </header>
