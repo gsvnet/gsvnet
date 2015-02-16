@@ -16,7 +16,7 @@
                 <time datetime="{{{$reply->created_at->toISO8601String()}}}" title="{{{$reply->created_at->formatLocalized('%A %e %B %Y %T')}}}">{{ $reply->present()->created_ago }}</time></a></li>
 
                 @if(Auth::check())
-                    @if($reply->isManageableBy($currentUser))
+                    @if($reply->isManageableBy(Auth::user()))
                         <li><a href="{{ action('ForumRepliesController@getEditReply', [$reply->id]) }}">bewerk</a></li>
                         <li><a href="{{ action('ForumRepliesController@getDelete', [$reply->id]) }}">verwijder</a></li>
                     @endif
