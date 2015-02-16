@@ -21,11 +21,6 @@ class SenateController extends AdminBaseController {
         $this->validator = $validator;
         $this->users = $users;
 
-        $this->beforeFilter('csrf', ['only' => ['store', 'update', 'delete']]);
-        $this->beforeFilter('senates.create', ['on' => 'store']);
-        $this->beforeFilter('senates.update', ['only' => ['update', 'edit']]);
-        $this->beforeFilter('senates.delete', ['on' => 'destroy']);
-
         parent::__construct();
     }
 
@@ -34,7 +29,7 @@ class SenateController extends AdminBaseController {
         $senates = $this->senates->paginate(20);
         $users = $this->users->all();
 
-        $this->layout->content = View::make('admin.senates.index')
+        return view('admin.senates.index')
             ->withSenates($senates)
             ->withUsers($users);
     }
@@ -47,7 +42,7 @@ class SenateController extends AdminBaseController {
         $senate = $this->senates->create($input);
 
         $message = '<strong>' . $senate->name . '</strong> is succesvol opgeslagen.';
-        return Redirect::action('Admin\SenateController@index')
+        return redirect()->action('Admin\SenateController@index')
             ->withMessage($message);
 
     }
@@ -55,7 +50,6 @@ class SenateController extends AdminBaseController {
     public function show($id)
     {
         $senate = $this->senates->byId($id);
-
         $members = $this->senates->members($id);
 
         $users = $this->users->all();
@@ -67,7 +61,7 @@ class SenateController extends AdminBaseController {
             ];
         });
 
-        $this->layout->content = View::make('admin.senates.show')
+        return view('admin.senates.show')
             ->withSenate($senate)
             ->withUsers($users)
             ->withMembers($members);
@@ -87,7 +81,7 @@ class SenateController extends AdminBaseController {
             ];
         });
 
-        $this->layout->content = View::make('admin.senates.edit')
+        return view('admin.senates.edit')
             ->withSenate($senate)
             ->withUsers($users)
             ->withMembers($members);
@@ -100,7 +94,7 @@ class SenateController extends AdminBaseController {
         $senate = $this->senates->update($id, $input);
 
         $message = '<strong>' . $senate->name . '</strong> is succesvol bewerkt.';
-        return Redirect::action('Admin\SenateController@show', $id)
+        return redirect()->action('Admin\SenateController@show', $id)
             ->withMessage($message);
     }
 
@@ -108,7 +102,7 @@ class SenateController extends AdminBaseController {
     {
         $senate = $this->senates->delete($id);
 
-        return Redirect::action('Admin\SenateController@index')
+        return redirect()->action('Admin\SenateController@index')
             ->with('message', '<strong>' . $senate->name . '</strong> is succesvol verwijderd.');
     }
 }

@@ -1,3 +1,5 @@
+@extends('layouts.admin')
+
 @section('content')
     <div class="page-header">
 		<h1>Commissies</h1>
@@ -18,22 +20,19 @@
 				<tbody>
 					@foreach($committees as $committee)
 					<tr>
-						<td><a href="{{ URL::action('Admin\CommitteeController@show', $committee->id) }}" alt="{{ $committee->name }}">
-							{{{ $committee->name }}}
-						</a></td>
 						<td>
-							{{{ $committee->users->count() }}}
-						</td>
-
-		                <td>
-		                    {{{ $committee->updated_at }}}
-		                </td>
+                            <a href="{{ URL::action('Admin\CommitteeController@show', $committee->id) }}" alt="{{ $committee->name }}">
+							    {{ $committee->name }}
+						    </a>
+                        </td>
+						<td>{{ $committee->users->count() }}</td>
+		                <td>{{ $committee->updated_at }}</td>
 					</tr>
 					@endforeach
 				</tbody>
 			</table>
 
-			{{ $committees->links() }}
+			{!! $committees->render() !!}
 		</div>
 
 		<div class="col-xs-12 col-md-6">

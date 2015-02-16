@@ -22,8 +22,6 @@ class FilesController extends AdminBaseController {
         $this->labels = $labels;
         $this->manager = $manager;
 
-        //$this->beforeFilter('maxUploadSize', ['only' => array('store', 'update')]);
-        $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
         $this->beforeFilter('has:docs.manage');
 
         parent::__construct();
@@ -31,7 +29,6 @@ class FilesController extends AdminBaseController {
 
     public function index()
     {
-        // Get all files which do not have to be published
         $files = $this->files->paginate(10, false);
         $labels = $this->labels->all();
 
@@ -41,7 +38,7 @@ class FilesController extends AdminBaseController {
             $checked[$label->id] = '';
         }
 
-        $this->layout->content = View::make('admin.files.index')
+        return view('admin.files.index')
             ->withFiles($files)
             ->withLabels($labels)
             ->withChecked($checked);
@@ -49,14 +46,14 @@ class FilesController extends AdminBaseController {
 
     public function store()
     {
-        $input              = Input::all();
-        $input['file']      = Input::file('file');
+        $input = Input::all();
+        $input['file'] = Input::file('file');
         $input['published'] = Input::get('published', false);
 
         $file = $this->manager->create($input);
 
         $message = '<strong>' . $file->name . '</strong> is succesvol opgeslagen.';
-        return Redirect::action('Admin\FilesController@index')
+        return redirect()->action('Admin\FilesController@index')
             ->withMessage($message);
 
     }
@@ -73,7 +70,7 @@ class FilesController extends AdminBaseController {
             $checked[$label->id] = in_array($label->id, $fileIdLabels) ? 'checked' : '';
         }
 
-        $this->layout->content = View::make('admin.files.edit')
+        return view('admin.files.edit')
             ->withFile($file)
             ->withLabels($labels)
             ->withChecked($checked);
@@ -88,7 +85,7 @@ class FilesController extends AdminBaseController {
         $file = $this->manager->update($id, $input);
 
         $message = '<strong>' . $file->name . '</strong> is succesvol opgeslagen.';
-        return Redirect::action('Admin\FilesController@index')
+        return redirect()->action('Admin\FilesController@index')
             ->withMessage($message);
     }
 
@@ -97,7 +94,7 @@ class FilesController extends AdminBaseController {
         $file = $this->manager->destroy($id);
 
         $message = '<strong>' . $file->name . '</strong> is succesvol verwijderd.';
-        return Redirect::action('Admin\FilesController@index')
+        return redirect()->action('Admin\FilesController@index')
             ->withMessage($message);
     }
 

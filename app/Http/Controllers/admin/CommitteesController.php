@@ -26,11 +26,6 @@ class CommitteeController extends AdminBaseController {
         $this->updaterValidator = $updaterValidator;
         $this->users = $users;
 
-        $this->beforeFilter('csrf', ['only' => ['store', 'update', 'delete']]);
-        $this->beforeFilter('committees.create', ['on' => 'store']);
-        $this->beforeFilter('committees.update', ['only' => ['update', 'edit']]);
-        $this->beforeFilter('committees.delete', ['on' => 'destroy']);
-
         parent::__construct();
     }
 
@@ -39,7 +34,7 @@ class CommitteeController extends AdminBaseController {
         $committees = $this->committees->paginate(20);
         $users = $this->users->byType(2);
 
-        $this->layout->content = View::make('admin.committees.index')
+        return view('admin.committees.index')
             ->withCommittees($committees)
             ->withUsers($users);
     }
@@ -53,7 +48,7 @@ class CommitteeController extends AdminBaseController {
         $committee = $this->committees->create($input);
 
         $message = '<strong>' . $committee->name . '</strong> is succesvol opgeslagen.';
-        return Redirect::action('Admin\CommitteeController@index')
+        return redirect()->action('Admin\CommitteeController@index')
             ->withMessage($message);
 
     }
@@ -61,20 +56,17 @@ class CommitteeController extends AdminBaseController {
     public function show($id)
     {
         $committee = $this->committees->byId($id);
-
         $members = $this->committees->members($id);
 
-        // TODO: filter current members
         $users = $this->users->all();
-        $users = $users->map(function($user)
-        {
+        $users = $users->map(function($user){
             return [
                 'id' => $user->id, 
                 'name' => $user->firstname . ' ' . $user->middlename . ' ' . $user->lastname
             ];
         });
 
-        $this->layout->content = View::make('admin.committees.show')
+        return view('admin.committees.show')
             ->withCommittee($committee)
             ->withUsers($users)
             ->withMembers($members);
@@ -83,11 +75,9 @@ class CommitteeController extends AdminBaseController {
     public function edit($id)
     {
         $committee = $this->committees->byId($id);
-
-        // Dit moet eigenlijk via een repository
         $members = $committee->users;
 
-        $this->layout->content = View::make('admin.committees.edit')
+        return view('admin.committees.edit')
             ->withCommittee($committee)
             ->withMembers($members);
     }
@@ -104,7 +94,7 @@ class CommitteeController extends AdminBaseController {
         $committee = $this->committees->update($id, $input);
 
         $message = '<strong>' . $committee->name . '</strong> is succesvol bewerkt.';
-        return Redirect::action('Admin\CommitteeController@show', $id)
+        redirect()->action('Admin\CommitteeController@show', $id)
             ->withMessage($message);
     }
 
@@ -112,7 +102,7 @@ class CommitteeController extends AdminBaseController {
     {
         $committee = $this->committees->delete($id);
 
-        return Redirect::action('Admin\CommitteeController@index')
+        return redirect()->action('Admin\CommitteeController@index')
             ->with('message', '<strong>' . $committee->name . '</strong> is succesvol verwijderd.');
     }
 }

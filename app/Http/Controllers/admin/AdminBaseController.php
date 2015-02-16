@@ -1,11 +1,12 @@
 <?php namespace Admin;
 
-class AdminBaseController extends \BaseController {
+use Controller;
+use Former;
+
+class AdminBaseController extends Controller {
 
     public function __construct()
     {
-        parent::__construct();
-        $this->layout = 'layouts.admin';
-        \Former::framework('TwitterBootstrap3');
+        Former::framework('TwitterBootstrap3');
     }
 }

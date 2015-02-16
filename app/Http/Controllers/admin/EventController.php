@@ -17,17 +17,15 @@ class EventController extends AdminBaseController {
         $this->events = $events;
         $this->validator = $validator;
 
-        $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
         $this->beforeFilter('has:events.manage');
         parent::__construct();
     }
 
     public function index()
     {
-        // Get all paginated events which are not necessarily published
         $events = $this->events->paginate(50, false);
 
-        $this->layout->content = View::make('admin.events.index')
+        return view('admin.events.index')
             ->withEvents($events);
     }
 
@@ -43,7 +41,7 @@ class EventController extends AdminBaseController {
         $event = $this->events->create($input);
 
         $message = '<strong>' . $event->title . '</strong> is succesvol opgeslagen.';
-        return Redirect::action('Admin\EventController@index')
+        return redirect()->action('Admin\EventController@index')
             ->withMessage($message);
     }
 
@@ -51,7 +49,7 @@ class EventController extends AdminBaseController {
     {
         $event = $this->events->byId($id);
 
-        $this->layout->content = View::make('admin.events.show')
+        return view('admin.events.show')
             ->withEvent($event);
     }
 
@@ -59,7 +57,7 @@ class EventController extends AdminBaseController {
     {
         $event = $this->events->byId($id);
 
-        $this->layout->content = View::make('admin.events.edit')
+        return view('admin.events.edit')
             ->withEvent($event);
     }
 
@@ -75,7 +73,7 @@ class EventController extends AdminBaseController {
         $event = $this->events->update($id, $input);
 
         $message = '<strong>' . $event->title . '</strong> is succesvol bewerkt.';
-        return Redirect::action('Admin\EventController@index')
+        return redirect()->action('Admin\EventController@index')
             ->withMessage($message);
 
     }
@@ -84,7 +82,7 @@ class EventController extends AdminBaseController {
     {
         $event = $this->events->delete($id);
 
-        return Redirect::action('Admin\EventController@index')
+        return redirect()->action('Admin\EventController@index')
             ->with('message', '<strong>' . $event->title . '</strong> is succesvol verwijderd.');
     }
 
