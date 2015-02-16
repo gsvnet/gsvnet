@@ -3,9 +3,9 @@
         @if($thread->mostRecentReply)
             <a href="{{$thread->present()->latestReplyUrl}}" title="Ga naar de laatste reactie van het onderwerp {{{$thread->subject}}}">{{ $thread->mostRecentReply->author->present()->avatarDeferred(45) }}</a>
         @else
-            {{ $thread->author->present()->avatarDeferred(45) }}
+            {!! $thread->author->present()->avatarDeferred(45) !!}
         @endif
-        {{ $thread->present()->replyCounter }}
+        {!! $thread->present()->replyCounter !!}
     </div>
     <div class="media-body">
         <h3><a href="{{ $thread->present()->lastPageUrl }}" title="Forum topic {{{ $thread->subject }}}">{{{ $thread->subject }}}</a></h3>

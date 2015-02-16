@@ -4,7 +4,7 @@ use GSVnet\Core\Entity;
 use GSVnet\Forum\Replies\Reply;
 use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use Illuminate\Support\Str;
 
 class Thread extends Entity
 {
@@ -86,7 +86,7 @@ class Thread extends Entity
             $date = date('d-m-Y');
         }
 
-        return \Str::slug("{$date} - {$this->subject}" . $i);
+        return Str::slug("{$date} - {$this->subject}" . $i);
     }
 
     public function isManageableBy($user)

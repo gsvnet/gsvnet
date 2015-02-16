@@ -14,7 +14,7 @@
             </strong>
             <ul class="inline-list grey">
                 <li><time datetime="{{{$thread->created_at->toISO8601String()}}}" title="{{{$thread->created_at->formatLocalized('%A %e %B %Y %T')}}}">{{ $thread->present()->created_ago }}</time></li>
-                @if($thread->isManageableBy($currentUser))
+                @if($thread->isManageableBy(Auth::user()))
                     <li><a href="{{ $thread->present()->editUrl }}">bewerk</a></li>
                     <li><a href="{{ $thread->present()->deleteUrl }}">verwijder</a></li>
                 @endif
