@@ -38,7 +38,6 @@ class UsersController extends AdminBaseController {
         $this->users = $users;
         $this->yearGroups = $yearGroups;
 
-        $this->beforeFilter('csrf', ['only' => ['store', 'update', 'delete']]);
         $this->beforeFilter('has:users.manage', ['except' => ['index', 'showGuests', 'showPotentials', 'showMembers', 'showFormerMembers']]);
 
         parent::__construct();
@@ -48,24 +47,21 @@ class UsersController extends AdminBaseController {
     {
         $users = $this->users->paginateLatelyRegistered(20);
 
-        $this->layout->content = View::make('admin.users.index')
-            ->withUsers($users);
+        return view('admin.users.index')->with('users', $users);
     }
 
     public function showGuests()
     {
         $users = $this->users->paginateWhereType(0, 300);
 
-        $this->layout->content = View::make('admin.users.index')
-            ->with(['users' => $users]);
+        return view('admin.users.index')->with('users', $users);
     }
 
     public function showPotentials()
     {
         $users = $this->users->paginateWhereType(1, 300);
 
-        $this->layout->content = View::make('admin.users.index')
-            ->with(['users' => $users]);
+        return view('admin.users.index')->with(['users' => $users]);
     }
 
     public function showMembers()
@@ -74,12 +70,12 @@ class UsersController extends AdminBaseController {
         {
             $users = $this->users->getAllByType(User::MEMBER);
             $transformer = new UserTransformer;
-            return \Response::csv($transformer->batchCsv($users), 'leden.csv');
+            return response()->csv($transformer->batchCsv($users), 'leden.csv');
         }
 
         $users = $this->users->paginateWhereType(User::MEMBER, 300);
 
-        $this->layout->content = View::make('admin.users.index')->with(['users' => $users]);
+        return view('admin.users.index')->with('users',$users);
     }
 
     public function showFormerMembers()
@@ -88,17 +84,17 @@ class UsersController extends AdminBaseController {
         {
             $users = $this->users->getAllByType(User::FORMERMEMBER);
             $transformer = new UserTransformer;
-            return \Response::csv($transformer->batchCsv($users), 'oud-leden.csv');
+            return response()->csv($transformer->batchCsv($users), 'oud-leden.csv');
         }
 
         $users = $this->users->paginateWhereType(3, 300);
 
-        $this->layout->content = View::make('admin.users.index')->with(['users' => $users]);
+        return view('admin.users.index')->with('users', $users);
     }
 
     public function create()
     {
-        $this->layout->content = View::make('admin.users.create');
+        return view('admin.users.create');
     }
 
     public function store()
@@ -110,7 +106,7 @@ class UsersController extends AdminBaseController {
         $user = $this->users->create($input);
 
         $message = '<strong>' . $user->name . '</strong> is succesvol opgeslagen.';
-        return Redirect::action('Admin\UsersController@index')
+        return redirect()->action('Admin\UsersController@index')
             ->withMessage($message);
     }
 
@@ -120,7 +116,7 @@ class UsersController extends AdminBaseController {
         $profile = $user->profile;
         $committees = $user->committees;
 
-        $this->layout->content = View::make('admin.users.show')
+        return view('admin.users.show')
             ->withUser($user)
             ->withProfile($profile)
             ->withCommittees($committees);
@@ -132,7 +128,7 @@ class UsersController extends AdminBaseController {
         $yearGroups = $this->yearGroups->all();
         $profile = $user->profile;
 
-        $this->layout->content = View::make('admin.users.edit')
+        return view('admin.users.edit')
             ->with([
                 'user' => $user,
                 'profile' => $profile,
@@ -171,14 +167,14 @@ class UsersController extends AdminBaseController {
         ]);
 
         $message = '<strong>' . $user->present()->fullName . '</strong> is succesvol bewerkt.';
-        return Redirect::action('Admin\UsersController@show', $id)->withMessage($message);
+        return redirect()->action('Admin\UsersController@show', $id)->withMessage($message);
     }
 
     public function destroy($id)
     {
         $user = $this->users->delete($id);
 
-        return Redirect::action('Admin\UsersController@index')
+        return redirect()->action('Admin\UsersController@index')
             ->with('message', '<strong>' . $user->name . '</strong> is succesvol verwijderd.');
     }
 
@@ -193,7 +189,7 @@ class UsersController extends AdminBaseController {
         $profile = UserProfile::create($input);
 
         $message = '<strong>' . $user->present()->fullName . '</strong> heeft een GSV-profiel.';
-        return Redirect::action('Admin\UsersController@edit', $user->id)->withMessage($message);
+        return redirect()->action('Admin\UsersController@edit', $user->id)->withMessage($message);
     }
 
     public function destroyProfile($id)
@@ -201,7 +197,7 @@ class UsersController extends AdminBaseController {
         $user = $this->users->byId($id);
         $user->profile()->delete();
 
-        return Redirect::action('Admin\UsersController@edit', $user->id)
+        return redirect()->action('Admin\UsersController@edit', $user->id)
             ->with('message', 'Profiel van <strong>' . $user->present()->fullName . '</strong> is succesvol verwijderd.');
     }
 
@@ -216,17 +212,15 @@ class UsersController extends AdminBaseController {
         $user->profile()->update($input);
 
         $message = 'Profiel van <strong>' . $user->present()->fullName . '</strong> is succesvol bijgewerkt.';
-        return Redirect::action('Admin\UsersController@show', $id)
+        return redirect()->action('Admin\UsersController@show', $id)
             ->withMessage($message);
-
-
     }
 
     public function activate($id)
     {
         $user = $this->userManager->activateUser($id);
 
-        return Redirect::action('Admin\UsersController@index')
+        return redirect()->action('Admin\UsersController@index')
             ->with('message', 'Account van <strong>' . $user->present()->fullName . '</strong> is succesvol geactiveerd.');
     }
 
@@ -234,7 +228,7 @@ class UsersController extends AdminBaseController {
     {
         $user = $this->userManager->acceptMembership($id);
 
-        return Redirect::action('Admin\UsersController@index')
+        return redirect()->action('Admin\UsersController@index')
             ->with('message', 'Noviet <strong>' . $user->present()->fullName . '</strong> is succesvol geïnstalleerd.');
     }
 

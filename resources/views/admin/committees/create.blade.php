@@ -1,12 +1,10 @@
 <section class="create-committee">
     <h2><i class="fa fa-plus"></i> Commissie toevoegen</h2>
 
-    {{
-        Former::vertical_open()
-            ->action(action('Admin\CommitteeController@store'))
-            ->method('POST')
-            ->class('add-form')
-    }}
+    {!! Former::vertical_open()
+        ->action(action('Admin\CommitteeController@store'))
+        ->method('POST')
+        ->class('add-form') !!}
 
         @include('admin.committees._form')
 
@@ -14,8 +12,6 @@
             <i class="fa fa-check"></i> Toevoegen
         </button>
 
-    {{
-        Former::close()
-    }}
+    {!! Former::close() !!}
 
 </section>

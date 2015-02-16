@@ -41,9 +41,7 @@ class MembersController extends AdminBaseController {
         $this->creatorValidator->validate($input);
 
         if( $input['currently_member'] != '0' )
-        {
             $input['end_date'] = null;
-        }
 
         $committee = $this->committees->byId($input['committee_id']);
         $member = $this->users->byId($input['member_id']);
@@ -51,7 +49,7 @@ class MembersController extends AdminBaseController {
         $this->committeeMembership->create($member, $committee, $input);
 
         $message = "{$member->present()->fullName} succesvol toegevoegd aan {$committee->name}";
-        return Redirect::action('Admin\CommitteeController@show', $committee->id)->withMessage($message);
+        return redirect()->action('Admin\CommitteeController@show', $committee->id)->withMessage($message);
     }
 
     public function destroy($id)
@@ -64,7 +62,7 @@ class MembersController extends AdminBaseController {
 
         $message = '<strong>' . $member->present()->fullName . '</strong> succesvol verwijderd uit <strong>' . $committee->name . '</strong>';
 
-        return Redirect::action('Admin\CommitteeController@show', $committee->id)->withMessage($message);
+        return redirect()->action('Admin\CommitteeController@show', $committee->id)->withMessage($message);
     }
 
     public function edit($id)
@@ -73,7 +71,7 @@ class MembersController extends AdminBaseController {
         $member = $membership->member;
         $committee = $membership->committee;
 
-        $this->layout->content = View::make('admin.committees.edit-membership')
+        return view('admin.committees.edit-membership')
             ->withMembership($membership)
             ->withCommittee($committee)
             ->withMember($member);
@@ -100,6 +98,6 @@ class MembersController extends AdminBaseController {
         
         $message = '<strong>' . $user->present()->fullName . '</strong> z\'n commissiewerk voor <strong>' . $committee->name . '</strong> is succesvol bijgewerkt.';
         
-        return Redirect::action('Admin\CommitteeController@show', $committee->id)->withMessage($message);
+        return redirect()->action('Admin\CommitteeController@show', $committee->id)->withMessage($message);
     }
 }

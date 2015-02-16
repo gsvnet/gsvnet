@@ -1,7 +1,7 @@
 @section('content')
     <div class="page-header">
-        <h1>{{{ $event->title }}}</h1>
-        <p>{{{ $event->description ? $event->description : 'Geen beschrijving...' }}}</p>
+        <h1>{{ $event->title }}</h1>
+        <p>{{ $event->description ? $event->description : 'Geen beschrijving...' }}</p>
     </div>
 
     <div class="panel panel-default">
@@ -9,7 +9,7 @@
             <h3 class="panel-title">Locatie</h3>
         </div>
         <div class="panel-body">
-            {{{ $event->location ? $event->location : 'Geen locatie opgegeven' }}}
+            {{ $event->location ? $event->location : 'Geen locatie opgegeven' }}
         </div>
     </div>
 

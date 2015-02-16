@@ -1,3 +1,5 @@
+@extends('layouts.admin')
+
 @section('content')
     <div class="page-header">
     	<h1>Senaten</h1>
@@ -20,22 +22,22 @@
 			@foreach($senates as $senate)
 			<tr>
 				<td><a href="{{ URL::action('Admin\SenateController@show', $senate->id) }}" alt="{{ $senate->name }}">
-					{{{ $senate->name }}}
+					{{ $senate->name }}
 				</a></td>
 
 				<td>
-					{{{ $senate->present()->year }}}
+					{{ $senate->present()->year }}
 				</td>
 				<td>
 					<ul>
 						@foreach($senate->members as $member)
-							<li>{{{ $member->present()->fullName }}}</li>
+							<li>{{ $member->present()->fullName }}</li>
 						@endforeach
 					</ul>
 				</td>
 
                 <td>
-                    {{{ $senate->updated_at }}}
+                    {{ $senate->updated_at }}
                 </td>
 
 			</tr>
@@ -43,6 +45,6 @@
 		</tbody>
 	</table>
 
-	{{ $senates->links() }}
+	{{ $senates->render() }}
 
 @stop

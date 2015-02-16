@@ -1,7 +1,8 @@
+@extends('layouts.admin')
+
 @section('content')
-    <!-- <a href="{{ URL::action('Admin\SenateController@index') }}">Terug naar albums</a> -->
     <div class="page-header">
-      <h1>{{{ $senate->name }}}</h1>
+        <h1>{{ $senate->name }}</h1>
     </div>
     <a href="{{ URL::action('Admin\SenateController@edit', $senate->id) }}" alt="Bewerk {{{ $senate->name }}}" class='btn btn-default'>
         <i class="fa fa-pencil"></i> Senaatsinformatie bewerken
@@ -13,20 +14,19 @@
     <div class="panel panel-primary">
         <div class="panel-heading">Lid toevoegen</div>
         <div class="panel-body">
-            {{
-                Former::vertical_open()
-                    ->action(action('Admin\Senates\MembersController@store', $senate->id))
-                    ->method('POST')
-            }}
-                {{ Former::text('member')->placeholder('Naam lid')->id('add-user')->label('Lid') }}
-                {{ Former::select('function')->options(Config::get('gsvnet.senateFunctions'))->label('Functie') }}
-                {{ Former::hidden('member_id')->id('add-user-id')}}
+            {!! Former::vertical_open()
+                ->action(action('Admin\Senates\MembersController@store', $senate->id))
+                ->method('POST') !!}
+
+                {!! Former::text('member')->placeholder('Naam lid')->id('add-user')->label('Lid') !!}
+                {!! Former::select('function')->options(Config::get('gsvnet.senateFunctions'))->label('Functie') !!}
+                {!! Former::hidden('member_id')->id('add-user-id')!!}
 
                 <button type='submit' class='btn btn-success btn-sm'>
                     <i class="glyphicon glyphicon-ok"></i> Opslaan
                 </button>
 
-            {{ Former::close() }}
+            {!! Former::close() !!}
         </div>
 
         @if ($members->count() > 0)
@@ -37,27 +37,22 @@
                     <li class="list-group-item clearfix">
                         {{ $member->present()->fullName }} <span class="text-muted">({{ $member->present()->senateFunction }})</span>
 
-                        {{
-                            Former::inline_open()
+                        {!! Former::inline_open()
                               ->action(action('Admin\Senates\MembersController@destroy', [$senate->id, $member->id]))
                               ->method('DELETE')
                               ->class('pull-right')
-                        }}
+                        !!}
                             <button type='submit' class='btn btn-danger btn-xs'>
                                 Verwijderen
                                 <i class="glyphicon glyphicon-remove"></i>
                             </button>
 
-                        {{
-                            Former::close();
-                        }}
+                        {!! Former::close() !!}
                     </li>
                 @endforeach
             </ul>
         @endif
     </div>
-
-    {{-- $users->links() --}}
 @stop
 
 @section('javascripts')
@@ -121,8 +116,6 @@ fieldset[disabled] .twitter-typeahead .tt-input {
 
     <script>
         var users = {{ $users->toJson() }};
-
-        console.log(users);
 
         // instantiate the bloodhound suggestion engine
         var users = new Bloodhound({

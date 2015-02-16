@@ -1,3 +1,5 @@
+@extends('layouts.admin')
+
 @section('content')
     <div class="page-header">
     	<h1>Activiteiten</h1>
@@ -34,19 +36,19 @@
 			@foreach($events as $event)
 			<tr>
 				<td><a href="{{ URL::action('Admin\EventController@show', $event->id) }}" alt="{{ $event->title }}">
-					{{{ $event->title }}}
+					{{ $event->title }}
 				</a></td>
 				<td>
-					{{{ $event->present()->from_to_long(true) }}}
+					{{ $event->present()->from_to_long(true) }}
 				</td>
                 <td>
-                    {{ $event->public ? '<span class="label label-danger">Ja</span>' : '<span class="label label-success">Nee</span>' }}
+                    {!! $event->public ? '<span class="label label-danger">Ja</span>' : '<span class="label label-success">Nee</span>' !!}
                 </td>
                 <td>
-                    {{ $event->published ? '<span class="label label-success">Ja</span>' : '<span class="label label-danger">Nee</span>' }}
+                    {!! $event->published ? '<span class="label label-success">Ja</span>' : '<span class="label label-danger">Nee</span>' !!}
                 </td>
                 <td>
-                    {{{ $event->updated_at }}}
+                    {{ $event->updated_at }}
                 </td>
                 <td>
                     <a href="{{ URL::action('Admin\EventController@edit', $event->id) }}" class="btn btn-primary btn-xs" role="button">Bewerk</a>
@@ -57,7 +59,7 @@
 		</tbody>
 	</table>
 
-	{{ $events->links() }}
+	{{ $events->render() }}
 
 @stop
 

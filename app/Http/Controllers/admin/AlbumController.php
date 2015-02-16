@@ -23,7 +23,6 @@ class AlbumController extends AdminBaseController {
         $this->photos = $photos;
         $this->validator = $validator;
 
-        $this->beforeFilter('csrf', ['only' => ['store', 'update', 'delete']]);
         $this->beforeFilter('albums.manage');
 
         parent::__construct();
@@ -33,7 +32,7 @@ class AlbumController extends AdminBaseController {
     {
         $albums = $this->albums->paginate(10);
 
-        $this->layout->content = View::make('admin.albums.index')->with('albums', $albums);
+        return view('admin.albums.index')->with('albums', $albums);
     }
 
     public function store()
@@ -45,7 +44,7 @@ class AlbumController extends AdminBaseController {
         $album = $this->albums->create($input);
 
         $message = '<strong>' . $album->name . '</strong> is succesvol opgeslagen.';
-        return Redirect::action('Admin\AlbumController@index')
+        return redirect()->action('Admin\AlbumController@index')
             ->withMessage($message);
     }
 
@@ -56,7 +55,7 @@ class AlbumController extends AdminBaseController {
         $photosPerPage = 10;
         $photos = $this->photos->byAlbumIdAndPaginate($id, $photosPerPage);
 
-        $this->layout->content = View::make('admin.albums.show')
+        return view('admin.albums.show')
             ->withAlbum($album)
             ->withPhotos($photos);
     }
@@ -65,7 +64,7 @@ class AlbumController extends AdminBaseController {
     {
         $album = $this->albums->byId($id);
 
-        $this->layout->content = View::make('admin.albums.edit')
+        return view('admin.albums.edit')
             ->withAlbum($album);
     }
 
@@ -78,7 +77,7 @@ class AlbumController extends AdminBaseController {
         $album = $this->albums->update($id, $input);
 
         $message = '<strong>' . $album->name . '</strong> is succesvol bewerkt.';
-        return Redirect::action('Admin\AlbumController@show', $id)
+        return redirect()->action('Admin\AlbumController@show', $id)
             ->withMessage($message);
     }
 
@@ -86,7 +85,7 @@ class AlbumController extends AdminBaseController {
     {
         $album = $this->albums->delete($id);
 
-        return Redirect::action('Admin\AlbumController@index')
+        return redirect()->action('Admin\AlbumController@index')
             ->with('message', '<strong>' . $album->name . '</strong> is succesvol verwijderd.');
     }
 }

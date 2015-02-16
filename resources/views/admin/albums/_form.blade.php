@@ -1,4 +1,4 @@
-<div>{{ Former::text('name')->label('Naam') }}</div>
-<div>{{ Former::textarea('description')->label('Korte beschrijving') }}</div>
+{!! Former::text('name')->label('Naam') !!}
+{!! Former::textarea('description')->label('Korte beschrijving') !!}
 
-<div>{{ Former::checkbox('public')->text('Maak album publiek')->label(null) }}</div>
+{!! Former::checkbox('public')->text('Maak album publiek')->label(null) !!}

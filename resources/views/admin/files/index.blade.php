@@ -1,3 +1,5 @@
+@extends('layouts.admin')
+
 @section('content')
     <div class="page-header">
     	<h1>GSVdocs</h1>
@@ -13,9 +15,7 @@
                 <td>Toegevoegd op</td>
                 <td>Laatst bewerkt</td>
 				<td>Download</td>
-                <td>
-                    Gepubliceerd
-                </td>
+                <td>Gepubliceerd</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -23,26 +23,28 @@
 			<tr>
 				<td>
                     <a href="{{ URL::action('Admin\FilesController@edit', $file->id) }}" alt="{{ $file->name }}">
-					   {{{ $file->name }}} <i class="fa fa-pencil"></i>
+					   {{ $file->name }} <i class="fa fa-pencil"></i>
                     </a>
                 </td>
                 <td>
-                    {{{ $file->created_at }}}
+                    {{ $file->created_at }}
                 </td>
                 <td>
-                    {{{ $file->updated_at }}}
+                    {{ $file->updated_at }}
                 </td>
                 <td>
-                    <a href="{{ URL::action('FilesController@show', $file->id) }}"><i class="glyphicon glyphicon-download-alt"></i>Download</a>
+                    <a href="{{ URL::action('FilesController@show', $file->id) }}">
+                        <i class="glyphicon glyphicon-download-alt"></i> Download
+                    </a>
                 </td>
                 <td>
-                    {{{ $file->published ? 'Ja' : 'Nee' }}}
+                    {{ $file->published ? 'Ja' : 'Nee' }}
                 </td>
 			</tr>
 			@endforeach
 		</tbody>
 	</table>
 
-	{{ $files->links() }}
+	{!! $files->render() !!}
 
 @stop

@@ -17,9 +17,6 @@ class PhotoController extends AdminBaseController {
         $this->photos = $photos;
         $this->manager = $manager;
 
-        //$this->beforeFilter('maxUploadSize', ['only' => array('store', 'update')]);
-        $this->beforeFilter('csrf', ['only' => array('store', 'update', 'delete')]);
-
         $this->beforeFilter('photos.manage');
         parent::__construct();
     }
@@ -33,13 +30,13 @@ class PhotoController extends AdminBaseController {
         $photo = $this->manager->create($input);
 
         // Check request type
-        if(Request::ajax())
+        if(request()->ajax())
         {
-            return Response::json('success', 200);   
+            return response()->json('success', 200);
         } else 
         {
             $message = '<strong>' . $photo->name . '</strong> is succesvol opgeslagen.';
-            return Redirect::action('Admin\AlbumController@show', $album_id)
+            return response()->action('Admin\AlbumController@show', $album_id)
                 ->withMessage($message);
         }
     }
@@ -48,7 +45,7 @@ class PhotoController extends AdminBaseController {
     {
         $photo = $this->photos->byId($id);
 
-        $this->layout->content = View::make('admin.photos.show')->withPhoto($photo);
+        return view('admin.photos.show')->withPhoto($photo);
     }
 
     public function update($album_id, $id)
@@ -60,7 +57,7 @@ class PhotoController extends AdminBaseController {
         $photo = $this->manager->update($id, $input);
 
         $message = '<strong>' . $photo->name . '</strong> is succesvol opgeslagen.';
-        return Redirect::action('Admin\AlbumController@show', $album_id)
+        return redirect()->action('Admin\AlbumController@show', $album_id)
             ->withMessage($message);
     }
 
@@ -69,7 +66,7 @@ class PhotoController extends AdminBaseController {
         $photo = $this->manager->destroy($id);
 
         $message = '<strong>' . $photo->name . '</strong> is succesvol verwijderd.';
-        return Redirect::action('Admin\AlbumController@show', $album_id)
+        return redirect()->action('Admin\AlbumController@show', $album_id)
             ->withMessage($message);
     }
 
