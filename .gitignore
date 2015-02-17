@@ -4,9 +4,7 @@
 public/uploads/photos/
 public/uploads/files/
 public/packages/
-storage/uploads/photos/
-storage/uploads/files/
-storage/uploads/events/
+storage/uploads/
 node_modules/
 .idea/
 /vendor

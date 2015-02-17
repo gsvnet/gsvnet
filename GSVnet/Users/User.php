@@ -160,6 +160,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->type == static::MEMBER || $this->type == static::FORMERMEMBER;
     }
 
+    public function isPotential()
+    {
+        return $this->type == static::POTENTIAL;
+    }
+
     public function activeCommittees()
     {
         return $this->belongsToMany('GSVnet\Committees\Committee', 'committee_user')

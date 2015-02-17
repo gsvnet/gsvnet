@@ -32,6 +32,7 @@ class UserManager
     public function create(array $input)
     {
         $this->createValidator->validate($input);
+
         // Save the user to the database
         $user = $this->users->create($input);
 

@@ -85,9 +85,9 @@ return array(
     ),
 
     'email' => array(
-        'admin'         => 'webcie@gsvnet.nl',
-        'senate'        => 'abactis@gsvnet.nl',
-        'membership'    => 'novcie2014@gmail.com',
-        'profile'       => 'abactis@gsvnet.nl'
+        'admin' => env('ADMIN_MAIL', 'webcie@gsvnet.nl'),
+        'senate' => env('SENATE_MAIL', 'abactis@gsvnet.nl'),
+        'membership' => env('NOVCIE_MAIL', 'novcie2014@gmail.com'),
+        'profile' => env('PROFILE_MAIL', 'abactis@gsvnet.nl')
     ),
 );
