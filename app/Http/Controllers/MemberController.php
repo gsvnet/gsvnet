@@ -44,7 +44,7 @@ class MemberController extends BaseController {
             ],
             'all-done' => [
                 'text' => '3. Klaar!',
-                'active' => Auth::check() && Auth::user()->type == 'potential'
+                'active' => Auth::check() && Auth::user()->isPotential()
             ]
         ];
 
@@ -70,9 +70,7 @@ class MemberController extends BaseController {
         $input['photo_path'] = null;
 
         if (Input::hasFile('photo_path'))
-        {
             $input['photo_path'] = Input::file('photo_path');
-        }
 
         // Construct a date from separate day, month and year fields.
         $input['potential-birthdate'] = $input['potential-birth-year'] . '-' . $input['potential-birth-month'] . '-' . $input['potential-birth-day'];

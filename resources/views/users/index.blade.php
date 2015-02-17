@@ -10,7 +10,7 @@
 		<p class="delta">Ben je stiekem vergeten hoe die sjaars heet? Vind het hier</p>
 		<div class="secondary-column">
 			<h2 id="user-search-form-toggler">Zoek een GSV'er <span></span></h2>
-			{{Form::open(array('method'=>'get', 'id' => 'user-search-form'))}}
+			{!! Form::open(array('method'=>'get', 'id' => 'user-search-form')) !!}
 			<div class="form-group">
 				<label class="control-label" for="naam">Zoekterm</label>
 				<input type="search" class="form-control search-user-input" id="naam" name="naam" placeholder="typ maar gewoon iets" value="{{{Input::get('name', '')}}}">
@@ -20,7 +20,7 @@
 				<select name="regio" id="regio">
 					<option value="0">Maakt niet uit</option>
 					@foreach ($regions as $key => $region)
-						<option value="{{{$key}}}" {{{Input::get('regio') == $key ? 'selected="selected"' : ''}}}>{{{$region}}}</option>
+						<option value="{{$key}}" {{Input::get('regio') == $key ? 'selected="selected"' : ''}}>{{$region}}</option>
 					@endforeach
 				</select>
 			</div>
@@ -29,18 +29,18 @@
 				<select name="jaarverband" id="jaarverband">
 					<option value="0">Doet er niet toe</option>
 					@foreach ($yearGroups as $yearGroup)
-						<option value="{{{$yearGroup->id}}}" {{{Input::get('jaarverband') == $yearGroup->id ? 'selected="selected"' : ''}}}>{{{$yearGroup->present()->nameWithYear}}}</option>
+						<option value="{{$yearGroup->id}}" {{Input::get('jaarverband') == $yearGroup->id ? 'selected="selected"' : ''}}>{{$yearGroup->present()->nameWithYear}}</option>
 					@endforeach
 				</select>
 			</div>
 			<div class="form-group">
-			    <label><input type="checkbox" name="oudleden" value="1" {{{Input::get('oudleden') == 1 ? 'checked="checked"' : ''}}} /> Oudleden weergeven</label>
+			    <label><input type="checkbox" name="oudleden" value="1" {{Input::get('oudleden') == 1 ? 'checked="checked"' : ''}} /> Oudleden weergeven</label>
 			</div>
 
 			<div class="form-group">
 				<button type="submit" class="button">Zoeken #yolo</button>
 			</div>
-			{{Form::close()}}
+			{!! Form::close() !!}
 		</div>
 		<div class="main-content">
 			@if(count($members) > 0)
@@ -56,6 +56,6 @@
 	</div>
 
 	<div class="column-holder">
-		{{ $members->appends(Input::except(array('page')))->links() }}
+		{!! $members->appends(Input::except(array('page')))->render() !!}
 	</div>
 @stop
