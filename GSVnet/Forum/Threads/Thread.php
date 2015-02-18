@@ -107,7 +107,7 @@ class Thread extends Entity
             $this->most_recent_reply_id = null;
         else
             $this->most_recent_reply_id = $reply->id;
-        
+
         $this->save();
     }
 
