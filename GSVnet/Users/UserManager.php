@@ -13,10 +13,7 @@ class UserManager
     protected $updateValidator;
     protected $users;
 
-    public function __construct(
-        UserCreatorValidator $createValidator,
-        UserUpdatorValidator $updateValidator,
-        UsersRepository $users)
+    public function __construct(UserCreatorValidator $createValidator, UserUpdatorValidator $updateValidator, UsersRepository $users)
     {
         $this->createValidator = $createValidator;
         $this->updateValidator = $updateValidator;
@@ -32,8 +29,6 @@ class UserManager
     public function create(array $input)
     {
         $this->createValidator->validate($input);
-
-        // Save the user to the database
         $user = $this->users->create($input);
 
         // Send email etc.
