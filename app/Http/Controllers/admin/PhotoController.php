@@ -1,18 +1,16 @@
 <?php namespace Admin;
 
-use View, Input, Redirect, Request, Response;
-
 use GSVnet\Albums\Photos\PhotoManager;
 use GSVnet\Albums\Photos\PhotosRepository;
+use Request;
+use Input;
 
 class PhotoController extends AdminBaseController {
 
     protected $photos;
     protected $manager;
 
-    public function __construct(
-        PhotosRepository $photos,
-        PhotoManager $manager)
+    public function __construct(PhotosRepository $photos, PhotoManager $manager)
     {
         $this->photos = $photos;
         $this->manager = $manager;
@@ -30,15 +28,12 @@ class PhotoController extends AdminBaseController {
         $photo = $this->manager->create($input);
 
         // Check request type
-        if(request()->ajax())
-        {
+        if(Request::ajax())
             return response()->json('success', 200);
-        } else 
-        {
-            $message = '<strong>' . $photo->name . '</strong> is succesvol opgeslagen.';
-            return response()->action('Admin\AlbumController@show', $album_id)
-                ->withMessage($message);
-        }
+
+        $message = '<strong>' . $photo->name . '</strong> is succesvol opgeslagen.';
+
+        return redirect()->action('Admin\AlbumController@show', $album_id)->withMessage($message);
     }
 
     public function show($album_id, $id)

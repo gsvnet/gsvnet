@@ -15,6 +15,6 @@
             <i class="fa fa-check"></i> Toevoegen
         </button>
 
-    {!! Former::close() }}
+    {!! Former::close() !!}
 
 </section>

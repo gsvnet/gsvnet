@@ -38,54 +38,47 @@
             </table>
             </div>
 
-            {{ $files->links() }}
+            {!! $files->render() !!}
 
         </div>
 
         <div class="secondary-column">
-            {{
-                Former::open()
+            {!! Former::open()
                 ->action(action('FilesController@index'))
-                ->method('GET')
-            }}
+                ->method('GET') !!}
 
-            <ul class='list secondary-menu'>
+                <ul class='list secondary-menu'>
 
-              <h2>Filter labels</h2>
-                @foreach ($labels as $label)
-                <li class="list-item">
-                  <label>
-                    <input type="checkbox" value="{{{ $label->id }}}" name="labels[{{{ $label->id }}}]"
-                        <?php
-                        // Lelijke code om irritate select boxen te laten checken
-                        if (Input::has('labels'))
-                        {
-                            $labels = Input::get('labels');
-                            if (isset($labels[$label->id]))
-                            {
-                                echo "checked";
-                            }
-                        }
-                        ?>
-                    >
-                    {{{ $label->name }}}
-                  </label>
-                </li>
-                @endforeach
+                    <h2>Filter labels</h2>
+                    @foreach ($labels as $label)
+                        <li class="list-item">
+                            <label>
+                                <input type="checkbox" value="{{{ $label->id }}}" name="labels[{{{ $label->id }}}]"
+                                <?php
+                                // Lelijke code om irritate select boxen te laten checken
+                                if (Input::has('labels'))
+                                {
+                                    $labels = Input::get('labels');
+                                    if (isset($labels[$label->id]))
+                                        echo "checked";
+                                }
+                                ?>
+                                >
+                                {{ $label->name }}
+                            </label>
+                        </li>
+                    @endforeach
 
-                <li class="list-item">
-                  {{ Former::text('search')->label('Zoeken op naam') }}
-                </li>
+                    <li class="list-item">
+                        {!! Former::text('search')->label('Zoeken op naam') !!}
+                    </li>
                 </ul>
 
-
                 <button type='submit' class='button'>
-                    <i class='fa fa-search'></i>
-                    Zoeken
+                    <i class='fa fa-search'></i> Zoeken
                 </button>
-            {{ Former::close() }}
+            {!! Former::close() !!}
         </div>
-
     </div>
 @stop
 

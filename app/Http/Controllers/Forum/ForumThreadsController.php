@@ -11,11 +11,7 @@ use GSVnet\Tags\TagRepository;
 use GSVnet\Users\UsersRepository;
 use \Permission;
 
-class ForumThreadsController extends BaseController implements
-    ThreadCreatorListener,
-    ThreadUpdaterListener,
-    ThreadDeleterListener
-{
+class ForumThreadsController extends BaseController implements ThreadCreatorListener, ThreadUpdaterListener, ThreadDeleterListener {
     protected $threads;
     protected $tags;
     protected $users;
@@ -26,13 +22,7 @@ class ForumThreadsController extends BaseController implements
     protected $threadsPerPage = 50;
     protected $repliesPerPage = 20;
 
-    public function __construct(
-        ThreadRepository $threads,
-        ReplyRepository $replies,
-        TagRepository $tags,
-        UsersRepository $users,
-        ThreadCreator $threadCreator
-    )
+    public function __construct(ThreadRepository $threads, ReplyRepository $replies, TagRepository $tags, UsersRepository $users, ThreadCreator $threadCreator)
     {
         parent::__construct();
 
@@ -65,23 +55,18 @@ class ForumThreadsController extends BaseController implements
     {
         $thread = $this->threads->getBySlug($threadSlug);
 
-        if ( ! $thread) {
-            return $this->redirectAction('ForumThreadsController@getIndex');
-        }
+        if ( ! $thread)
+            return redirect()->action('ForumThreadsController@getIndex');
 
         if ( ! $thread->public && ! Permission::has('threads.show-private'))
-        {
             throw new \GSVnet\Permissions\NoPermissionException;
-        }
 
         $replies = $this->threads->getThreadRepliesPaginated($thread, $this->repliesPerPage);
 
         $this->createSections($thread->getTags());
         // Visit the thread
         if( Auth::check() )
-        {
             App::make('GSVnet\Forum\Threads\ThreadVisitationUpdater')->update($thread, Auth::user());
-        }
 
         return view('forum.threads.show', compact('thread', 'replies'));
     }
@@ -108,41 +93,34 @@ class ForumThreadsController extends BaseController implements
 
     public function threadCreationError($errors)
     {
-        return $this->redirectBack(['errors' => $errors]);
+        return redirect()->back()->withErrors($errors);
     }
 
     public function threadCreated($thread)
     {
-        return $this->redirectAction('ForumThreadsController@getShowThread', [$thread->slug]);
+        return redirect()->action('ForumThreadsController@getShowThread', [$thread->slug]);
     }
 
-    // edit a thread
     public function getEditThread($threadId)
     {
         $thread = $this->threads->requireById($threadId);
 
-        if ( ! $thread->isManageableBy(Auth::user())) {
-            return Redirect::to('/');
-        }
+        if ( ! $thread->isManageableBy(Auth::user()))
+            return redirect('/');
 
         $tags = $this->tags->getAllForForum();
 
         $this->createSections(Input::get('tags'));
 
-        $this->title = "Bewerk topic";
-        $this->view('forum.threads.edit', compact('thread', 'tags'));
-        $this->layout->bodyID = 'thread-update-page';
-        $this->layout->activeMenuItem = 'forum';
-
+        return view('forum.threads.edit', compact('thread', 'tags'));
     }
 
     public function postEditThread($threadId)
     {
         $thread = $this->threads->requireById($threadId);
 
-        if ( ! $thread->isManageableBy(Auth::user())) {
-            return Redirect::to('/');
-        }
+        if ( ! $thread->isManageableBy(Auth::user()))
+            return redirect('/');
 
         return App::make('GSVnet\Forum\Threads\ThreadUpdater')->update($this, $thread, [
             'subject' => Input::get('subject'),
@@ -155,12 +133,12 @@ class ForumThreadsController extends BaseController implements
     // observer methods
     public function threadUpdateError($errors)
     {
-        return $this->redirectBack(['errors' => $errors]);
+        return redirect()->back()->withErrors($errors);
     }
 
     public function threadUpdated($thread)
     {
-        return $this->redirectAction('ForumThreadsController@getShowThread', [$thread->slug]);
+        return redirect()->action('ForumThreadsController@getShowThread', [$thread->slug]);
     }
 
     // thread deletion
@@ -169,7 +147,7 @@ class ForumThreadsController extends BaseController implements
         $thread = $this->threads->requireById($threadId);
 
         if ( ! $thread->isManageableBy(Auth::user()))
-            return Redirect::to('/');
+            return redirect('/');
 
         $this->createSections(Input::get('tags'));
 
@@ -181,7 +159,7 @@ class ForumThreadsController extends BaseController implements
         $thread = $this->threads->requireById($threadId);
 
         if ( ! $thread->isManageableBy(Auth::user()))
-            return Redirect::to('/');
+            return redirect('/');
 
         return App::make('GSVnet\Forum\Threads\ThreadDeleter')->delete($this, $thread);
     }
@@ -189,7 +167,7 @@ class ForumThreadsController extends BaseController implements
     // observer methods
     public function threadDeleted()
     {
-        return Redirect::action('ForumThreadsController@getIndex');
+        return redirect()->action('ForumThreadsController@getIndex');
     }
 
     // forum thread search

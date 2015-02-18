@@ -15,7 +15,7 @@
         </button>
 
         <a class='btn btn-default' href="{{ URL::previous() }}">Terug</a>
-    {!! Former::close() }}
+    {!! Former::close() !!}
 
     <hr>
 

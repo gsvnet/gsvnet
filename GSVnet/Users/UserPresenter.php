@@ -1,5 +1,6 @@
 <?php namespace GSVnet\Users;
 
+use forxer\Gravatar\Gravatar;
 use Laracasts\Presenter\Presenter;
 use Carbon\Carbon; 
 use Config;
@@ -13,23 +14,19 @@ class UserPresenter extends Presenter
     {
         $fullName = $this->firstname . ' ' . $this->middlename . ' ' . $this->lastname;
 
-        if($fullName == '  ') {
+        if($fullName == '  ')
             return 'onbekend';
-        } else {
+        else
             return $fullName;
-        }
     }
 
     public function fullLastname(){
         $middlename = $this->middlename;
+
         if(empty($middlename))
-        {
             return $this->lastname;
-        }
         else
-        {
             return $this->middlename . ' ' . $this->lastname;
-        }
     }
 
     public function senateFunction()
@@ -61,9 +58,7 @@ class UserPresenter extends Presenter
     		case User::FORMERMEMBER:
     			$string .= 'Oud-lid';
     			if($showReunist && isset($this->profile))
-    			{
     				$string .= $this->profile->reunist == 1 ? ' en reünist' : ', niet reünist';
-    			}
 			break;
 			default:
 				$string .= 'Onbekend';
@@ -75,7 +70,6 @@ class UserPresenter extends Presenter
 
     public function inCommiteeSince()
     {
-
         $since = Carbon::createFromFormat('Y-m-d H:i:s', $this->pivot->start_date);
 
         return $since->formatLocalized('%B %Y');
@@ -109,13 +103,13 @@ class UserPresenter extends Presenter
 
     public function avatar($size = 120)
     {
-        $url = md5(strtolower(trim($this->email))) . '?s=' . $size;
+        $url = Gravatar::image($this->email, $size, 'mm');
         return HTML::image($url, 'Avatar', ['width' => $size, 'height' => $size]);
     }
 
     public function avatarDeferred($size = 120)
     {
-        $url = md5(strtolower(trim($this->email))) . '?s=' . $size;
+        $url = Gravatar::image($this->email, $size, 'mm');
         return '<span class="img-wrap" data-gravatar-url="' . $url . '" data-gravatar-size="' . $size . '"></span>';
     }
 

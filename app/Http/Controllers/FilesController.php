@@ -55,6 +55,6 @@ class FilesController extends BaseController {
 
 		$path = $fileHandler->getPath($file->file_path);
 
-		return response()->download($path, $file->name);
+		return response()->download($path, $file->name . $file->type);
 	}
 }

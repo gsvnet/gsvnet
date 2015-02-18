@@ -18,7 +18,7 @@
 
     @if($profile)
         <div class="page-header">
-            <h2>{!! $profile->present()->xsmallProfileImage !!} GSV-profiel</h2>
+            <h2><img src="{!! $profile->present()->xsmallProfileImage !!}" width="102" height="102" alt="Profielfoto"/> GSV-profiel</h2>
         </div>
 
         <dl class="dl-horizontal">

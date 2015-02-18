@@ -1,7 +1,7 @@
 <div class="media-row img-45 {{ $thread->present()->visited }}">
     <div class="media-details">
         @if($thread->mostRecentReply)
-            <a href="{{$thread->present()->latestReplyUrl}}" title="Ga naar de laatste reactie van het onderwerp {{{$thread->subject}}}">{{ $thread->mostRecentReply->author->present()->avatarDeferred(45) }}</a>
+            <a href="{{$thread->present()->latestReplyUrl}}" title="Ga naar de laatste reactie van het onderwerp {{{$thread->subject}}}">{!! $thread->mostRecentReply->author->present()->avatarDeferred(45) !!}</a>
         @else
             {!! $thread->author->present()->avatarDeferred(45) !!}
         @endif
@@ -15,7 +15,7 @@
             @if(Permission::has('users.show'))
                 <a href="{{ $thread->author->present()->profileUrl }}">{{{ $thread->author->username }}}</a>
             @else
-                {{{ $thread->author->username }}}
+                {{ $thread->author->username }}
             @endif
             </li>
 

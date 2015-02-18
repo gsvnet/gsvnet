@@ -13,10 +13,7 @@ class FilesController extends AdminBaseController {
     protected $labels;
     protected $manager;
 
-    public function __construct(
-        FilesRepository $files,
-        LabelsRepository $labels,
-        FileManager $manager)
+    public function __construct(FilesRepository $files, LabelsRepository $labels, FileManager $manager)
     {
         $this->files = $files;
         $this->labels = $labels;
@@ -33,10 +30,9 @@ class FilesController extends AdminBaseController {
         $labels = $this->labels->all();
 
         $checked = array();
+
         foreach ($labels as $label)
-        {
             $checked[$label->id] = '';
-        }
 
         return view('admin.files.index')
             ->withFiles($files)

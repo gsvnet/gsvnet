@@ -1,7 +1,6 @@
-<?php namespace App\Console\Commands;
+<?php namespace GSV\Console\Commands;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use GSVnet\Users\User;
 use GSVnet\Users\UserTransformer;

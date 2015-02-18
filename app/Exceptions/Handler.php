@@ -1,4 +1,4 @@
-<?php namespace App\Exceptions;
+<?php namespace GSV\Exceptions;
 
 use Exception;
 use GSVnet\Core\Exceptions\ValidationException;
@@ -38,40 +38,35 @@ class Handler extends ExceptionHandler {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function render($request, Exception $e)
-	{
-		switch(get_class($e))
-		{
-			case NoPermissionException::class:
-				$data = [
-					'title' => 'Helaas, u heeft niet voldoende rechten om deze pagina te bekijken.',
-					'description' => '',
-					'keywords' => ''
-				];
+    {
+        switch (get_class($e))
+        {
+            case NoPermissionException::class:
+                $data = [
+                    'title' => 'Helaas, u heeft niet voldoende rechten om deze pagina te bekijken.',
+                    'description' => '',
+                    'keywords' => ''
+                ];
 
-				return response(view('errors.unauthorized')->with($data), 401);
-			break;
-			case UserAccountNotApprovedException::class:
-				$data = [
-					'title' => 'Helaas, u heeft niet voldoende rechten om deze pagina te bekijken.',
-					'description' => '',
-					'keywords' => ''
-				];
+                return response(view('errors.unauthorized')->with($data), 401);
+                break;
+            case UserAccountNotApprovedException::class:
+                $data = [
+                    'title' => 'Helaas, u heeft niet voldoende rechten om deze pagina te bekijken.',
+                    'description' => '',
+                    'keywords' => ''
+                ];
 
-				return response(view('errors.unauthorized')->with($data), 401);
-			break;
-			case ValidationException::class:
-				return redirect()->back()->withInput()->withErrors($e->getErrors());
-			break;
-		}
+                return response(view('errors.unauthorized')->with($data), 401);
+                break;
+            case ValidationException::class:
+                return redirect()->back()->withInput()->withErrors($e->getErrors());
+                break;
+        }
 
-		if ($this->isHttpException($e))
-		{
-			return $this->renderHttpException($e);
-		}
-		else
-		{
-			return parent::render($request, $e);
-		}
-	}
-
+        if ($this->isHttpException($e))
+            return $this->renderHttpException($e);
+        else
+            return parent::render($request, $e);
+    }
 }

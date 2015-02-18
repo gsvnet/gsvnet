@@ -1,4 +1,4 @@
-<?php namespace App\Providers;
+<?php namespace GSV\Providers;
 
 use View;
 use Illuminate\Support\ServiceProvider;

@@ -9,10 +9,8 @@
     <section class="main-content forum has-border-bottom">
 
         <div class="threads media-rows has-counters">
-            {{-- Loop over the threads and display the thread summary partial --}}
             @each('forum.threads._index_summary', $threads, 'thread')
 
-            {{-- If no comments are found display a message --}}
             @if( ! $threads->count())
                 <div class="empty-state">
                     <h3>Prullenbak is leeg.</h3>
@@ -20,7 +18,7 @@
             @endif
         </div>
 
-        {{ $threads->links() }}
+        {!! $threads->render() !!}
     </section>
 
     <div class="secondary-column">
