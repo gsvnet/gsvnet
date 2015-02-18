@@ -93,21 +93,16 @@ class ProfilesRepository {
 
         $birthday = "date_format(birthdate, \"{$year}-%m-%d\")";
 
-        if(Cache::has('birthdays'))
+        return Cache::remember('birthdays', 10, function() use ($birthday, $from, $to)
         {
-            return Cache::pull('birthdays');
-        } else {
-            return Cache::remember('birthdays', 10, function() use ($birthday, $from, $to)
-            {
-                return UserProfile::whereRaw("$birthday between \"{$from}\" and \"{$to}\"")
-                    ->whereHas('user', function($q) {
-                        $q->where('type', '=', '2');
-                    })
-                    ->orderBy(\DB::raw($birthday))
-                    ->orderBy('birthdate', 'ASC')
-                    ->get(array('*', \DB::raw("{$birthday} as birthday")));
-            });
-        }
+            return UserProfile::whereRaw("$birthday between \"{$from}\" and \"{$to}\"")
+                ->whereHas('user', function($q) {
+                    $q->where('type', '=', '2');
+                })
+                ->orderBy(\DB::raw($birthday))
+                ->orderBy('birthdate', 'ASC')
+                ->get(array('*', \DB::raw("{$birthday} as birthday")));
+        });
     }
 
 
