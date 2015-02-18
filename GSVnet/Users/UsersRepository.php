@@ -2,6 +2,7 @@
 
 use Config;
 use Carbon\Carbon;
+use Cache;
 
 class UsersRepository {
 
@@ -154,50 +155,61 @@ class UsersRepository {
 
     public function mostPostsPreviousMonth($num = 20)
     {
-        $now = (new Carbon)->subMonth(1);
-        $from = $now->format('Y-m-01 00:00:00');
-        $to = $now->format('Y-m-t 23:59:59');
-        $users = User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.username, users.firstname, users.middlename, users.lastname'))
-            ->join('forum_replies', 'users.id', '=', 'forum_replies.author_id')
-            ->groupBy('forum_replies.author_id')
-            ->whereBetween('forum_replies.created_at', [$from, $to])
-            ->orderBy('num', 'DESC')
-            ->take($num)->remember(24*60)->get();
+        return Cache::remember('most-posts-prev-month', 24*60, function() use ($num){
+            $now = (new Carbon)->subMonth(1);
+            $from = $now->format('Y-m-01 00:00:00');
+            $to = $now->format('Y-m-t 23:59:59');
+            $users = User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.username, users.firstname, users.middlename, users.lastname'))
+                ->join('forum_replies', 'users.id', '=', 'forum_replies.author_id')
+                ->groupBy('forum_replies.author_id')
+                ->whereBetween('forum_replies.created_at', [$from, $to])
+                ->orderBy('num', 'DESC')
+                ->take($num)
+                ->get();
 
-        return [
-            'from' => Carbon::parse($from),
-            'to' => Carbon::parse($to),
-            'users' => $users
-        ];
+            return [
+                'from' => Carbon::parse($from),
+                'to' => Carbon::parse($to),
+                'users' => $users
+            ];
+        });
     }
 
     public function mostPostsPreviousWeek($num = 20)
     {
-        $pastWeek = (new Carbon)->subWeek(1);
-        $dayOfWeek = $pastWeek->dayOfWeek;
+        return Cache::remember('most-posts-prev-week', 24*60, function() use ($num)
+        {
+            $pastWeek = (new Carbon)->subWeek(1);
+            $dayOfWeek = $pastWeek->dayOfWeek;
 
-        $from = $pastWeek->subDays($dayOfWeek)->format('Y-m-d 00:00:00');
-        $to = $pastWeek->addDays(6)->format('Y-m-d 23:59:59');
-        $users = User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.username, users.firstname, users.middlename, users.lastname'))
-            ->join('forum_replies', 'users.id', '=', 'forum_replies.author_id')
-            ->groupBy('forum_replies.author_id')
-            ->whereBetween('forum_replies.created_at', [$from, $to])
-            ->orderBy('num', 'DESC')
-            ->take($num)->remember(24*60)->get();
+            $from = $pastWeek->subDays($dayOfWeek)->format('Y-m-d 00:00:00');
+            $to = $pastWeek->addDays(6)->format('Y-m-d 23:59:59');
+            $users = User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.username, users.firstname, users.middlename, users.lastname'))
+                ->join('forum_replies', 'users.id', '=', 'forum_replies.author_id')
+                ->groupBy('forum_replies.author_id')
+                ->whereBetween('forum_replies.created_at', [$from, $to])
+                ->orderBy('num', 'DESC')
+                ->take($num)
+                ->get();
 
-        return [
-            'from' => Carbon::parse($from),
-            'to' => Carbon::parse($to),
-            'users' => $users
-        ];
+            return [
+                'from' => Carbon::parse($from),
+                'to' => Carbon::parse($to),
+                'users' => $users
+            ];
+        });
     }
 
     public function mostPostsAllTime($num = 250)
     {
-        return User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.username, users.firstname, users.middlename, users.lastname'))
-            ->join('forum_replies', 'users.id', '=', 'forum_replies.author_id')
-            ->groupBy('forum_replies.author_id')
-            ->orderBy('num', 'DESC')
-            ->take($num)->remember(24*60)->get();
+        return Cache::remember('most-posts-all-time', 24*60, function() use ($num)
+        {
+            return User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.username, users.firstname, users.middlename, users.lastname'))
+                ->join('forum_replies', 'users.id', '=', 'forum_replies.author_id')
+                ->groupBy('forum_replies.author_id')
+                ->orderBy('num', 'DESC')
+                ->take($num)
+                ->get();
+        });
     }
 }
