@@ -18,33 +18,6 @@
             <!-- Wrapper for slides -->
             <div class="carousel-make-height">
                 <div class="carousel-inner">
-{{--
-                     <div id="homepage-video-slide" class="item video-item">
-                        <div class="slider-video-wrap">
-                            <video id="home-video" class="slider-video" preload="metadata" width="100%" height="100%">
-                                <source src="/videos/big_buck_bunny.mp4" type="video/mp4">
-                                <source src="/videos/big_buck_bunny.webm" type="video/webm">
-                                <source src="/videos/big_buck_bunny.ogv" type="video/ogg">
-                            </video>
-                        </div>
-
-                        <a href="#" id="play-video-link" class="play-video" title="Speel de film">
-                            <span class="shadow"></span>
-                            <div class="video-button"></div>
-                        </a>
-
-                        
-                        <div class="slide-description-wrapper">
-                            <div class="slide-description">
-                                <div class="slide-description-box">
-                                    <p class="slide-title">Bekijk de film</p>
-                                    <p class="slide-description-text">En hier wat!</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
---}}
-
                     <div class="item active">
                         <span data-picture data-alt="Een geweldig plaatje">
                             <span data-src="/images/banner/sociaal480.jpg"></span>
