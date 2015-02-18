@@ -2,18 +2,23 @@
 
     <div class="forum-post-data">
         <div class="avatar">
-        	{{ $thread->author->present()->avatar(40) }}
+        	{!! $thread->author->present()->avatar(40) !!}
         </div>
         <div class="info">
             <strong class="author">
             @if(Permission::has('users.show'))
-                <a href="{{ $thread->author->present()->profileUrl }}">{{{ $thread->author->username }}}</a>
+                <a href="{{ $thread->author->present()->profileUrl }}">{{ $thread->author->username }}</a>
             @else
-                {{{ $thread->author->username }}}
+                {{ $thread->author->username }}
             @endif
             </strong>
             <ul class="inline-list grey">
-                <li><time datetime="{{{$thread->created_at->toISO8601String()}}}" title="{{{$thread->created_at->formatLocalized('%A %e %B %Y %T')}}}">{{ $thread->present()->created_ago }}</time></li>
+                <li>
+                    <time datetime="{{$thread->created_at->toISO8601String()}}" title="{{$thread->created_at->formatLocalized('%A %e %B %Y %T')}}">
+                        {{ $thread->present()->created_ago }}
+                    </time>
+                </li>
+
                 @if($thread->isManageableBy(Auth::user()))
                     <li><a href="{{ $thread->present()->editUrl }}">bewerk</a></li>
                     <li><a href="{{ $thread->present()->deleteUrl }}">verwijder</a></li>
@@ -27,6 +32,6 @@
     </div>
 
     <div class="body">
-        {{ $thread->present()->bodyFormatted }}
+        {!! $thread->present()->bodyFormatted !!}
     </div>
 </div>

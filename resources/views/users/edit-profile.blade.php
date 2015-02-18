@@ -69,7 +69,9 @@
 		<div class="secondary-column">
 			@if(Permission::has('users.edit-profile') && isset($profile))
 				<h2>Je profielfoto</h2>
-				<p>{{ Auth::user()->profile->present()->xsmallProfileImage }}</p>
+				<p>
+                    <img src="{!! Auth::user()->profile->present()->xsmallProfileImage !!}" width="102" height="102" alt="Profielfoto" />
+                </p>
 	            {!! Former::file('profile.photo_path')->label('Upload een foto van jezelf')->accept('image') !!}
 	        @endif
 

@@ -5,16 +5,11 @@
 @section('content')
     <div class="column-holder">
         <a href="/forum" title="Terug naar het forum" class="back-link i-back"></a>
-        <h1>{{{ $thread->subject }}}</h1>
+        <h1>{{ $thread->subject }}</h1>
         
         <p class="delta">Een onderwerp gestart door {{{ $thread->author->username }}} </p>
 
-        @include('partials.ads')
-
         <div class="main-content has-border-bottom">
-
-            {{-- $replies->links() --}}
-
             <div class="forum">
 
                 @if(Input::get('page') < 2)
@@ -28,12 +23,12 @@
                 </div>
             </div>
 
-            {{ $replies->links() }}
+            {!! $replies->render() !!}
 
             <div id="reageer">
                 @if(Auth::check())
                     @if(Auth::user()->approved)
-                        @if($replies->getCurrentPage() != $replies->getLastPage() && $replies->getLastPage() > 1)
+                        @if($replies->currentPage() != $replies->lastPage() && $replies->lastPage() > 1)
                             <p>Dit is niet de laatste pagina!</p>
                         @endif
                         @include('forum.replies._create')
@@ -57,7 +52,7 @@
                     
                     <h2>Tags</h2>
                     <div class="tags">
-                        {{ $thread->tags->getTagList() }}
+                        {!! $thread->tags->getTagList() !!}
                     </div>  
                 </div>
             </div>

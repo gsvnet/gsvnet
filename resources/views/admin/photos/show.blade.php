@@ -37,7 +37,7 @@
                 <i class="fa fa-check"></i> Opslaan
             </button>
 
-        {!! Former::close() }}
+        {!! Former::close() !!}
     </div>
 @stop
 

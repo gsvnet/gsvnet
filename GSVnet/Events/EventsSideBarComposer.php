@@ -26,10 +26,8 @@ class EventsSideBarComposer {
         $months = array('januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december');
         $visibleYears = $this->getVisibleYears($year);
 
-
         $view->withMonths($months);
         $view->with('visibleYears', $visibleYears);
-
     }
 
     private function getVisibleYears($year)
@@ -41,18 +39,14 @@ class EventsSideBarComposer {
         
         // Previous year
         if($options['minYear'] < $year)
-        {
             $yearsList[] = $year - 1;
-        }
 
         // Current year
         $yearsList[] = $year;
 
         // Next year
         if($options['maxYear'] > $year)
-        {
             $yearsList[] = $year + 1;
-        }
 
         return $yearsList;
     }

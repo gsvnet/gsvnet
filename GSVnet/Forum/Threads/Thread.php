@@ -101,9 +101,13 @@ class Thread extends Entity
         return $user->id == $this->author_id;
     }
 
-    public function setMostRecentReply(Reply $reply)
+    public function setMostRecentReply(Reply $reply = null)
     {
-        $this->most_recent_reply_id = $reply->id;
+        if(is_null($reply))
+            $this->most_recent_reply_id = null;
+        else
+            $this->most_recent_reply_id = $reply->id;
+        
         $this->save();
     }
 

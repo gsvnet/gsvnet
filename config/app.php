@@ -139,24 +139,22 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
-		'App\Providers\AppServiceProvider',
-		'App\Providers\BusServiceProvider',
-		'App\Providers\ConfigServiceProvider',
-		'App\Providers\EventServiceProvider',
-		'App\Providers\RouteServiceProvider',
+		'GSV\Providers\AppServiceProvider',
+		'GSV\Providers\BusServiceProvider',
+		'GSV\Providers\ConfigServiceProvider',
+		'GSV\Providers\EventServiceProvider',
+		'GSV\Providers\RouteServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
 
 		'Former\FormerServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
 		'Chromabits\Purifier\PurifierServiceProvider',
 
-		'App\Providers\BackendServiceProvider',
-		'App\Providers\AlbumServiceProvider',
-		'App\Providers\FilesServiceProvider',
-		'App\Providers\CommitteesServiceProvider',
-		'App\Providers\EventsServiceProvider',
-		'App\Providers\NewsletterServiceProvider',
-		'App\Providers\ComposerServiceProvider',
+		'GSV\Providers\BackendServiceProvider',
+		'GSV\Providers\NewsletterServiceProvider',
+		'GSV\Providers\ComposerServiceProvider',
+        'GSV\Providers\ResponsesServiceProvider',
+        'GSV\Providers\EventsServiceProvider',
 	],
 
 	/*

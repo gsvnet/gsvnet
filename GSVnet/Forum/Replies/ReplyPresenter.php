@@ -1,7 +1,7 @@
 <?php namespace GSVnet\Forum\Replies;
 
 use Laracasts\Presenter\Presenter;
-use App, Input, Str, Request, Purifier;
+use App, Str;
 use GSVnet\Carbon as GSVCarbon;
 
 class ReplyPresenter extends Presenter
@@ -37,8 +37,6 @@ class ReplyPresenter extends Presenter
         return $body;
     }
 
-    // ------------------- //
-
     private function convertMarkdown($content)
     {
         return App::make('GSVnet\Markdown\HtmlMarkdownConvertor')->convertMarkdownToHtml($content);
@@ -49,14 +47,8 @@ class ReplyPresenter extends Presenter
         return App::make('GSVnet\Emoticons\Emoticon')->toHTML($content);
     }
 
-    private function linkify($content)
-    {
-        $linkify = new \Misd\Linkify\Linkify();
-        return $linkify->process($content);
-    }
-
     private function purify($content)
     {
-        return Purifier::clean($content);
+        return App::make('Chromabits\Purifier\Contracts\Purifier')->clean($content);
     }
 }

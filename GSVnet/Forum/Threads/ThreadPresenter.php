@@ -1,9 +1,9 @@
 <?php namespace GSVnet\Forum\Threads;
 
 use Laracasts\Presenter\Presenter;
-use App, Input, Str, Request;
-use Misd\Linkify\Linkify;
-use Carbon\Carbon, Auth, Purifier;
+use App;
+use Str;
+use Carbon\Carbon, Auth;
 use GSVnet\Carbon as GSVCarbon;
 
 class ThreadPresenter extends Presenter
@@ -108,38 +108,27 @@ class ThreadPresenter extends Presenter
     public function visited()
     {
         if( !Auth::check() )
-        {
             return '';
-        }
 
         $visitations = $this->visitations;
         $mostRecentReply = $this->mostRecentReply;
 
         if( ! isset($visitations) || $visitations->count() == 0)
-        {
             return 'new';
-        }
-
 
         if( !isset($mostRecentReply) )
-        {
             $updated = $this->created_at;
-        } else {
+        else
             $updated = $this->mostRecentReply->created_at;
-        }
 
         $lastVisit = new Carbon($visitations[0]->visited_at);
 
         if( $updated->gt($lastVisit) )
-        {
             return 'new';
-        }
 
         return '';
 
     }
-
-    // ------------------- //
 
     private function convertMarkdown($content)
     {
@@ -151,14 +140,8 @@ class ThreadPresenter extends Presenter
         return App::make('GSVnet\Emoticons\Emoticon')->toHTML($content);
     }
 
-    private function linkify($content)
-    {
-        $linkify = new Linkify();
-        return $linkify->process($content);
-    }
-
     private function purify($content)
     {
-        return Purifier::clean($content);
+        return App::make('Chromabits\Purifier\Contracts\Purifier')->clean($content);
     }
 }

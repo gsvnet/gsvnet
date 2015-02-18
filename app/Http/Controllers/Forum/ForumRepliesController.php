@@ -1,27 +1,26 @@
 <?php
 
+use GSVnet\Forum\Replies\ReplyCreatorListener;
+use GSVnet\Forum\Replies\ReplyDeleterListener;
 use GSVnet\Forum\Replies\ReplyForm;
+use GSVnet\Forum\Replies\ReplyRepository;
+use GSVnet\Forum\Replies\ReplyUpdaterListener;
+use GSVnet\Forum\Threads\ThreadRepository;
+use GSVnet\Tags\TagRepository;
 
-class ForumRepliesController extends BaseController implements
-    \GSVnet\Forum\Replies\ReplyCreatorListener,
-    \GSVnet\Forum\Replies\ReplyUpdaterListener,
-    \GSVnet\Forum\Replies\ReplyDeleterListener
-{
+class ForumRepliesController extends BaseController implements ReplyCreatorListener, ReplyUpdaterListener, ReplyDeleterListener {
     protected $tags;
     protected $sections;
 
     protected $repliesPerPage = 20;
 
-    public function __construct(
-        \GSVnet\Forum\Threads\ThreadRepository $threads,
-        \GSVnet\Forum\Replies\ReplyRepository $replies,
-        \GSVnet\Tags\TagRepository $tags
-    ) {
+    public function __construct(ThreadRepository $threads, ReplyRepository $replies, TagRepository $tags)
+    {
         parent::__construct();
         
-        $this->threads  = $threads;
-        $this->replies  = $replies;
-        $this->tags     = $tags;
+        $this->threads = $threads;
+        $this->replies = $replies;
+        $this->tags = $tags;
 
         $this->prepareViewData();
     }
@@ -31,14 +30,13 @@ class ForumRepliesController extends BaseController implements
     {
         $reply = $this->replies->requireById($replyId);
 
-        if ( ! $reply->isManageableBy(Auth::user())) {
-            return Redirect::to('/');
-        }
+        if ( ! $reply->isManageableBy(Auth::user()))
+            return redirect('/');
 
         $generator = App::make('GSVnet\Forum\Replies\ReplyQueryStringGenerator');
         $queryString = $generator->generate($reply, $this->repliesPerPage);
 
-        return Redirect::to(action('ForumThreadsController@getShowThread', [$thread]) . $queryString);
+        return redirect(action('ForumThreadsController@getShowThread', [$thread]) . $queryString);
     }
 
     // reply to a thread
@@ -54,82 +52,71 @@ class ForumRepliesController extends BaseController implements
 
     public function replyCreationError($errors)
     {
-        return $this->redirectBack(['errors' => $errors]);
+        return redirect()->back()->withErrors($errors);
     }
 
     public function replyCreated($reply)
     {
-        return $this->redirectTo($reply->present()->url);
+        return redirect($reply->present()->url);
     }
 
-    // edit a reply
     public function getEditReply($replyId)
     {
         $reply = $this->replies->requireById($replyId);
 
-        if ( ! $reply->isManageableBy(Auth::user())) {
-            return Redirect::to('/');
-        }
+        if ( ! $reply->isManageableBy(Auth::user()))
+            return redirect('/');
 
-        $this->title = "Reactie bewerken";
-        $this->view('forum.replies.edit', compact('reply'));
+        return view('forum.replies.edit', compact('reply'));
     }
 
     public function postEditReply($replyId)
     {
         $reply = $this->replies->requireById($replyId);
 
-        if ( ! $reply->isManageableBy(Auth::user())) {
-            return Redirect::to('/');
-        }
+        if ( ! $reply->isManageableBy(Auth::user()))
+            return redirect('/');
 
         return App::make('GSVnet\Forum\Replies\ReplyUpdater')->update($reply, $this, [
             'body' => Input::get('body'),
         ], new ReplyForm);
     }
 
-    // observer methods
     public function replyUpdateError($errors)
     {
-        return $this->redirectBack(['errors' => $errors]);
+        return redirect()->back()->withErrors($errors);
     }
 
     public function replyUpdated($reply)
     {
-        return $this->redirectTo($reply->present()->url);
+        return redirect($reply->present()->url);
     }
 
-    // reply deletion
     public function getDelete($replyId)
     {
         $reply = $this->replies->requireById($replyId);
 
-        if ( ! $reply->isManageableBy(Auth::user())) {
+        if ( ! $reply->isManageableBy(Auth::user()))
             return Redirect::to('/');
-        }
 
-        $this->title = "Reactie verwijderen";
-        $this->view('forum.replies.delete', compact('reply'));
+        return view('forum.replies.delete', compact('reply'));
     }
 
     public function postDelete($replyId)
     {
         $reply = $this->replies->requireById($replyId);
 
-        if ( ! $reply->isManageableBy(Auth::user())) {
-            return Redirect::to('/');
-        }
+        if ( ! $reply->isManageableBy(Auth::user()))
+            return redirect('/');
 
         return App::make('GSVnet\Forum\Replies\ReplyDeleter')->delete($this, $reply);
     }
 
-    // observer methods
     public function replyDeleted($thread)
     {
-        return Redirect::action('ForumThreadsController@getShowThread', [$thread->slug]);
+        return redirect()->action('ForumThreadsController@getShowThread', [$thread->slug]);
     }
 
-    // ------------------------- //
     private function prepareViewData()
     {
         $forumSections = Config::get('forum.sections');

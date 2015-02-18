@@ -1,6 +1,5 @@
-<?php namespace App\Providers;
+<?php namespace GSV\Providers;
 
-use GSVnet\Core\Exceptions\MaxUploadSizeException;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Auth;
@@ -55,16 +54,10 @@ class RouteServiceProvider extends ServiceProvider {
 			$month = $route->getParameter('month', '');
 
 			if($year < $min or $year > $max)
-			{
 				App::abort('404');
-			}
-
 
 			if(!empty($month) && !array_key_exists($month, $months))
-			{
 				App::abort('404');
-			}
-
 		});
 
 		/**
@@ -73,19 +66,13 @@ class RouteServiceProvider extends ServiceProvider {
 		Route::filter('has', function($route, $request, $permission)
 		{
 			if(! Permission::has($permission))
-			{
-				//Session::flash('error', 'Niet genoeg rechten.');
 				throw new \GSVnet\Permissions\NoPermissionException;
-			}
 		});
 
 		Route::filter('canBecomeMember', function()
 		{
 			if(Auth::check() && Auth::user()->wasOrIsMember() )
-			{
-				// TODO: eigen exceptie?
-				throw new \GSVnet\Permissions\NoPermissionException;
-			}
+			    throw new \GSVnet\Permissions\NoPermissionException;
 		});
 	}
 

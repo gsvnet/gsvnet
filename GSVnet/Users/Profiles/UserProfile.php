@@ -1,7 +1,6 @@
 <?php namespace GSVnet\Users\Profiles;
 
 use Config;
-use Gravatar;
 use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Database\Eloquent\Model;
 

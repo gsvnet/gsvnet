@@ -17,7 +17,7 @@
 			</p>
 
 		<div class="secondary-column">
-			<p>{!! $member->profile->present()->xsmallProfileImage !!}</p>
+			<p><img src="{!! $member->profile->present()->xsmallProfileImage !!}" width="102" height="102" alt="Profielfoto" /></p>
 
 			<h2>Adresgegevens</h2>
 			<address>
