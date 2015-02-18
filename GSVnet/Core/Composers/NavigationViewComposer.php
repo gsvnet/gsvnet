@@ -1,5 +1,6 @@
 <?php namespace GSVnet\Core\Composers;
 
+use forxer\Gravatar\Gravatar;
 use GSVnet\Permissions\Permission;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
@@ -102,8 +103,7 @@ class NavigationViewComposer {
 
             'intern' => [
                 'title' => function(){
-                    return Auth::user()->firstname;
-//                    return Gravatar::image(Auth::user()->email, 'Profiel', array('class' => 'nav-profile-image', 'width' => 24, 'height' => 24)) . Auth::user()->firstname;
+                    return '<img src="' . Gravatar::image(Auth::user()->email, 24, 'mm') . '" width="24" height="24" class="nav-profile-image">' . Auth::user()->firstname;
                 },
                 'url' => action('UserController@showProfile'),
                 'visible' => function(){return Auth::check();},
