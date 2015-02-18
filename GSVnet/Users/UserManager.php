@@ -73,5 +73,7 @@ class UserManager
         $this->users->acceptMembership($id);
 
         Event::fire('potential.accepted', ['user' => $user]);
+
+        return $user;
     }
 }

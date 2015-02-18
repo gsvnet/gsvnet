@@ -83,13 +83,12 @@
                         !!}
                         @endif
 
-                        @if ($user->type == 'potential')
+                        @if ($user->isPotential())
                         {!!
                             Former::inline_open()
                               ->action(action('Admin\UsersController@accept', $user->id))
                               ->style('float: left; margin-right: 1em;')
                         !!}
-                        {{-- Die styling is wel heel erg lelijk, maar is nu eerst even puur om het te testen --}}
                             <button type='submit' class='btn btn-warning btn-xs'>
                                 <i class="glyphicon glyphicon-ok"></i> Lid installeren
                             </button>
