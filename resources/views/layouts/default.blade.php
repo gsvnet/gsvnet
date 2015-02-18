@@ -31,9 +31,6 @@
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700,400italic">
-
     @section('stylesheets')
         <!-- Stylesheets -->
         <link rel="stylesheet" href="/stylesheets/screen.css?v=1.5.2">
@@ -92,3 +89,5 @@
     @show
 </body>
 </html>
+
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700,400italic">
