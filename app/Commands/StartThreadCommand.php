@@ -9,14 +9,14 @@ class StartThreadCommand extends Command {
     public $public;
     public $slug;
 
-    public function __construct($authorId, $subject, $body, $tags, $public, $slug=null)
+    public function __construct($authorId, $subject, $body, $tags, $public, $slug)
 	{
         $this->subject = $subject;
         $this->body = $body;
         $this->public = $public;
         $this->tags = $tags;
         $this->authorId = $authorId;
-        $this->slug = str_random(14);
+        $this->slug = $slug;
     }
 
 }
