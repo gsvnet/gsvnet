@@ -41,9 +41,8 @@ abstract class EloquentRepository
     {
         $model = $this->getById($id);
 
-        if ( ! $model) {
+        if ( ! $model)
             throw new EntityNotFoundException;
-        }
 
         return $model;
     }
@@ -55,11 +54,11 @@ abstract class EloquentRepository
 
     public function save($data)
     {
-        if ($data instanceOf Model) {
+        if ($data instanceOf Model)
             return $this->storeEloquentModel($data);
-        } elseif (is_array($data)) {
+
+        elseif (is_array($data))
             return $this->storeArray($data);
-        }
     }
 
     public function delete($model)
@@ -74,11 +73,10 @@ abstract class EloquentRepository
 
     protected function storeEloquentModel($model)
     {
-        if ($model->getDirty()) {
+        if ($model->getDirty())
             return $model->save();
-        } else {
+        else
             return $model->touch();
-        }
     }
 
     protected function storeArray($data)
