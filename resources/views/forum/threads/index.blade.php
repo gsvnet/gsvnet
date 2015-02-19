@@ -36,7 +36,7 @@
             @endif
         </div>
 
-        {{ $threads->render() }}
+        {!! $threads->render() !!}
     </section>
 
     <div class="secondary-column">
