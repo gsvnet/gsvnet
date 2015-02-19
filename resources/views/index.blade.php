@@ -179,12 +179,12 @@
                                 <li>
                                     <span class="list-title">
                                         @if (Permission::has('users.show'))
-                                            {{ link_to_action('UserController@showUser', $profile->user->present()->fullName, $profile->user->id) }}
+                                            {!! link_to_action('UserController@showUser', $profile->user->present()->fullName, $profile->user->id) !!}
                                         @else
-                                            {{{ $profile->user->present()->fullName }}}
+                                            {{ $profile->user->present()->fullName }}
                                         @endif
                                     </span>
-                                    <time class="list-description grey">{{{ $profile->present()->birthday }}}</time>
+                                    <time class="list-description grey">{{ $profile->present()->birthday }}</time>
                                 </li>
                             @endforeach
                         @else
