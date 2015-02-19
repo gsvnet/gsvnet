@@ -1,14 +1,12 @@
 <?php namespace GSV\Commands;
 
-use GSV\Commands\Command;
-
 class EditThreadCommand extends Command {
 
-    private $threadId;
-    private $subject;
-    private $body;
-    private $public;
-    private $tags;
+    public $threadId;
+    public $subject;
+    public $body;
+    public $public;
+    public $tags;
 
     public function __construct($threadId, $subject, $body, $public, $tags)
 	{

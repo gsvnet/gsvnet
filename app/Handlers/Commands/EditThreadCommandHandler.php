@@ -1,14 +1,26 @@
 <?php namespace GSV\Handlers\Commands;
 
 use GSV\Commands\EditThreadCommand;
-
-use Illuminate\Queue\InteractsWithQueue;
+use GSVnet\Forum\Threads\ThreadRepository;
 
 class EditThreadCommandHandler {
 
-	public function handle(EditThreadCommand $command)
+    private $threads;
+
+    function __construct(ThreadRepository $threads)
     {
-        
+        $this->threads = $threads;
     }
 
+    public function handle(EditThreadCommand $command)
+    {
+        $thread = $this->threads->getById($command->threadId);
+
+        $thread->body = $command->body;
+        $thread->public = $command->public;
+        $thread->subject = $command->subject;
+
+        $this->threads->save($thread);
+        $this->threads->setTags($thread, $command->tags);
+    }
 }

@@ -1,37 +1,30 @@
 <?php
 
+use GSV\Commands\EditThreadCommand;
 use GSV\Commands\StartThreadCommand;
 use GSVnet\Forum\Replies\ReplyRepository;
-use GSVnet\Forum\Threads\ThreadCreator;
-use GSVnet\Forum\Threads\ThreadCreatorListener;
-use GSVnet\Forum\Threads\ThreadDeleterListener;
-use \GSVnet\Forum\Threads\ThreadForm;
 use GSVnet\Forum\Threads\ThreadRepository;
-use GSVnet\Forum\Threads\ThreadUpdaterListener;
 use GSVnet\Tags\TagRepository;
 use GSVnet\Users\UsersRepository;
 use Illuminate\Support\Collection;
-use \Permission;
+use Permission;
 
-class ForumThreadsController extends BaseController implements ThreadCreatorListener, ThreadUpdaterListener, ThreadDeleterListener {
+class ForumThreadsController extends BaseController {
     protected $threads;
     protected $tags;
     protected $users;
-    protected $currentSection;
-    protected $threadCreator;
     private $replies;
 
     protected $threadsPerPage = 50;
     protected $repliesPerPage = 20;
 
-    public function __construct(ThreadRepository $threads, ReplyRepository $replies, TagRepository $tags, UsersRepository $users, ThreadCreator $threadCreator)
+    public function __construct(ThreadRepository $threads, ReplyRepository $replies, TagRepository $tags, UsersRepository $users)
     {
         parent::__construct();
 
         $this->threads = $threads;
         $this->tags = $tags;
         $this->users = $users;
-        $this->threadCreator = $threadCreator;
         $this->replies = $replies;
     }
 
@@ -47,7 +40,6 @@ class ForumThreadsController extends BaseController implements ThreadCreatorList
         $tagAppends = ['tags' => Input::get('tags')];
         $queryString = !empty($tagAppends['tags']) ? '?tags=' . implode(',', (array)$tagAppends['tags']) : '';
         $threads->appends($tagAppends);
-        $this->createSections(Input::get('tags'));
 
         return view('forum.threads.index', compact('threads', 'tags', 'queryString'));
     }
@@ -65,8 +57,8 @@ class ForumThreadsController extends BaseController implements ThreadCreatorList
 
         $replies = $this->threads->getThreadRepliesPaginated($thread, $this->repliesPerPage);
 
-        $this->createSections($thread->getTags());
         // Visit the thread
+        // queue this!
         if( Auth::check() )
             App::make('GSVnet\Forum\Threads\ThreadVisitationUpdater')->update($thread, Auth::user());
 
@@ -77,7 +69,6 @@ class ForumThreadsController extends BaseController implements ThreadCreatorList
     public function getCreateThread()
     {
         $tags = $this->tags->getAllForForum();
-        $this->createSections(Input::get('tags'));
 
         return view('forum.threads.create', compact('tags'));
     }
@@ -95,65 +86,32 @@ class ForumThreadsController extends BaseController implements ThreadCreatorList
         $this->dispatchFrom(StartThreadCommand::class, $data);
     }
 
-    public function threadCreationError($errors)
-    {
-        return redirect()->back()->withErrors($errors);
-    }
-
-    public function threadCreated($thread)
-    {
-        return redirect()->action('ForumThreadsController@getShowThread', [$thread->slug]);
-    }
-
     public function getEditThread($threadId)
     {
         $thread = $this->threads->requireById($threadId);
 
-        if ( ! $thread->isManageableBy(Auth::user()))
-            return redirect('/');
-
         $tags = $this->tags->getAllForForum();
-
-        $this->createSections(Input::get('tags'));
 
         return view('forum.threads.edit', compact('thread', 'tags'));
     }
 
     public function postEditThread($threadId)
     {
-        $thread = $this->threads->requireById($threadId);
-
-        if ( ! $thread->isManageableBy(Auth::user()))
-            return redirect('/');
-
-        return App::make('GSVnet\Forum\Threads\ThreadUpdater')->update($this, $thread, [
+        $data = new Collection([
+            'threadId' => $threadId,
             'subject' => Input::get('subject'),
             'body' => Input::get('body'),
             'tags' => $this->tags->getTagsByIds(Input::get('tags')),
             'public' => Input::get('public', false)
-        ], new ThreadForm);
-    }
+        ]);
 
-    // observer methods
-    public function threadUpdateError($errors)
-    {
-        return redirect()->back()->withErrors($errors);
-    }
-
-    public function threadUpdated($thread)
-    {
-        return redirect()->action('ForumThreadsController@getShowThread', [$thread->slug]);
+        $this->dispatchFrom(EditThreadCommand::class, $data);
     }
 
     // thread deletion
     public function getDelete($threadId)
     {
         $thread = $this->threads->requireById($threadId);
-
-        if ( ! $thread->isManageableBy(Auth::user()))
-            return redirect('/');
-
-        $this->createSections(Input::get('tags'));
 
         return view('forum.threads.delete', compact('thread'));
     }
@@ -162,16 +120,7 @@ class ForumThreadsController extends BaseController implements ThreadCreatorList
     {
         $thread = $this->threads->requireById($threadId);
 
-        if ( ! $thread->isManageableBy(Auth::user()))
-            return redirect('/');
-
         return App::make('GSVnet\Forum\Threads\ThreadDeleter')->delete($this, $thread);
-    }
-
-    // observer methods
-    public function threadDeleted()
-    {
-        return redirect()->action('ForumThreadsController@getIndex');
     }
 
     // forum thread search
@@ -181,7 +130,6 @@ class ForumThreadsController extends BaseController implements ThreadCreatorList
         $results = App::make('GSVnet\Forum\Threads\ThreadSearch')->searchPaginated($query, $this->threadsPerPage);
         $results->appends(array('query' => $query));
 
-        $this->createSections(Input::get('tags'));
 
         return view('forum.search', compact('query', 'results'));
     }
@@ -198,14 +146,7 @@ class ForumThreadsController extends BaseController implements ThreadCreatorList
     public function getTrashed()
     {
         $threads = $this->threads->getTrashedPaginated();
-        $this->createSections();
 
         return view('forum.threads.thrashed', compact('threads'));
-    }
-
-    private function createSections($currentSection = null)
-    {
-        $forumSections = App::make('GSVnet\Forum\SectionSidebarCreator')->createSidebar($currentSection);
-        View::share(compact('forumSections'));
     }
 }

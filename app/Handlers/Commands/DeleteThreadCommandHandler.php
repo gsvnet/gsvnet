@@ -2,8 +2,6 @@
 
 use GSV\Commands\DeleteThreadCommand;
 
-use Illuminate\Queue\InteractsWithQueue;
-
 class DeleteThreadCommandHandler {
 
 	/**

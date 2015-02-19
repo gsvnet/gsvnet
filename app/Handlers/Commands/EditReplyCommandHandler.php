@@ -1,18 +1,22 @@
 <?php namespace GSV\Handlers\Commands;
 
 use GSV\Commands\EditReplyCommand;
-use Illuminate\Queue\InteractsWithQueue;
+use GSVnet\Forum\Replies\ReplyRepository;
 
 class EditReplyCommandHandler {
-	/**
-	 * Handle the command.
-	 *
-	 * @param  EditReplyCommand  $command
-	 * @return void
-	 */
-	public function handle(EditReplyCommand $command)
+
+    private $replies;
+
+    function __construct(ReplyRepository $replies)
+    {
+        $this->replies = $replies;
+    }
+
+    public function handle(EditReplyCommand $command)
 	{
+        $reply = $this->replies->getById($command->replyId);
+        $reply->body = $command->reply;
 
+        $this->replies->save($reply);
 	}
-
 }
