@@ -2,12 +2,14 @@
 
 use GSV\Commands\EditThreadCommand;
 use GSV\Commands\StartThreadCommand;
+use GSV\Commands\VisitThreadCommand;
 use GSVnet\Forum\Replies\ReplyRepository;
 use GSVnet\Forum\Threads\ThreadRepository;
+use GSVnet\Permissions\Permission;
 use GSVnet\Tags\TagRepository;
 use GSVnet\Users\UsersRepository;
+use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Support\Collection;
-use Permission;
 
 class ForumThreadsController extends BaseController {
     protected $threads;
@@ -57,10 +59,15 @@ class ForumThreadsController extends BaseController {
 
         $replies = $this->threads->getThreadRepliesPaginated($thread, $this->repliesPerPage);
 
-        // Visit the thread
-        // queue this!
+        // Thread visitation
         if( Auth::check() )
-            App::make('GSVnet\Forum\Threads\ThreadVisitationUpdater')->update($thread, Auth::user());
+        {
+            $data = new Collection([
+                'userId' => Auth::user()->id,
+                'threadId' => $thread->id
+            ]);
+            $this->dispatchFrom(VisitThreadCommand::class, $data);
+        }
 
         return view('forum.threads.show', compact('thread', 'replies'));
     }
@@ -82,6 +89,9 @@ class ForumThreadsController extends BaseController {
             'tags' => $this->tags->getTagsByIds(Input::get('tags')),
             'public' => Input::get('public', false)
         ]);
+
+        if(!Permission::has('threads.show-private'))
+            $data['public'] = true;
 
         $this->dispatchFrom(StartThreadCommand::class, $data);
     }
@@ -105,10 +115,12 @@ class ForumThreadsController extends BaseController {
             'public' => Input::get('public', false)
         ]);
 
+        if(!Permission::has('threads.show-private'))
+            $data['public'] = true;
+
         $this->dispatchFrom(EditThreadCommand::class, $data);
     }
 
-    // thread deletion
     public function getDelete($threadId)
     {
         $thread = $this->threads->requireById($threadId);
@@ -123,7 +135,6 @@ class ForumThreadsController extends BaseController {
         return App::make('GSVnet\Forum\Threads\ThreadDeleter')->delete($this, $thread);
     }
 
-    // forum thread search
     public function getSearch()
     {
         $query = Input::get('query');

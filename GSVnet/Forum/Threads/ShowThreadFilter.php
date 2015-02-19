@@ -14,13 +14,13 @@ Class ShowThreadFilter
 
     public function filter($route)
     {
-        $slug   = $route->getParameter('slug');
+        $slug = $route->getParameter('slug');
         $thread = $this->threads->getBySlug($slug);
 
-        if ($thread->public) return;
+        if ($thread->public)
+            return;
+
         if ( ! Permission::has('photos.show-private'))
-        {
             throw new \GSVnet\Permissions\NoPermissionException;
-        }
     }
 }

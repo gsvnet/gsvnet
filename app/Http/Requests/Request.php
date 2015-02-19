@@ -1,4 +1,4 @@
-<?php namespace GSVnet\Http\Requests;
+<?php namespace GSV\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

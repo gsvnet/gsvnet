@@ -3,36 +3,30 @@
 use GSV\Commands\DeleteReplyCommand;
 use GSV\Commands\EditReplyCommand;
 use GSV\Commands\ReplyToThreadCommand;
-use GSVnet\Forum\Replies\ReplyForm;
+use GSV\Http\Requests\ReplyToThreadRequest;
 use GSVnet\Forum\Replies\ReplyRepository;
-use GSVnet\Forum\Threads\ThreadRepository;
-use GSVnet\Tags\TagRepository;
 use Illuminate\Support\Collection;
 
 class ForumRepliesController extends BaseController {
-    protected $tags;
-    protected $sections;
 
     protected $repliesPerPage = 20;
 
-    public function __construct(ThreadRepository $threads, ReplyRepository $replies, TagRepository $tags)
+    public function __construct(ReplyRepository $replies)
     {
         parent::__construct();
         
-        $this->threads = $threads;
         $this->replies = $replies;
-        $this->tags = $tags;
     }
 
-    public function postCreateReply($threadSlug)
+    public function postCreateReply(ReplyToThreadRequest $request, $threadSlug)
     {
-        $data = new Collection([
+        $data = [
             'threadSlug' => $threadSlug,
             'authorId' => Auth::user()->id,
-            'reply' => Input::get('body')
-        ]);
+            'reply' => $request->get('body')
+        ];
 
-        $this->dispatchFrom(ReplyToThreadCommand::class, $data);
+        $this->dispatchFrom(ReplyToThreadCommand::class, new Collection($data));
 
         return redirect()->action('ForumThreadsController@getShowThread', [$threadSlug]);
     }
