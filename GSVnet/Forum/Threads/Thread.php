@@ -1,27 +1,20 @@
 <?php namespace GSVnet\Forum\Threads;
 
-use GSVnet\Core\Entity;
-use GSVnet\Forum\Replies\Reply;
+use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Str;
 
-class Thread extends Entity
+class Thread extends Model
 {
     use PresentableTrait;
     use SoftDeletes;
     
-    protected $table      = 'forum_threads';
-    protected $fillable   = ['subject', 'body', 'author_id', 'solution_reply_id', 'category_slug', 'public'];
-    protected $with       = ['author'];
-    protected $dates      = ['deleted_at'];    
+    protected $table = 'forum_threads';
+    protected $fillable = ['subject', 'body', 'author_id', 'solution_reply_id', 'category_slug', 'public'];
+    protected $with = ['author'];
+    protected $dates = ['deleted_at'];
 
     public $presenter = 'GSVnet\Forum\Threads\ThreadPresenter';
-
-    protected $validationRules = [
-        'body'      => 'required',
-        'author_id' => 'required|exists:users,id',
-    ];
 
     public function author()
     {
@@ -48,47 +41,6 @@ class Thread extends Entity
         return $this->belongsTo('GSVnet\Forum\Replies\Reply', 'most_recent_reply_id');
     }
 
-    public function setSubjectAttribute($subject)
-    {
-        $this->attributes['subject'] = $subject;
-        $this->attributes['slug'] = $this->generateNewSlug();
-    }
-
-    public function generateNewSlug()
-    {
-        $i = 0;
-
-        while ($this->getCountBySlug($this->generateSlugByIncrementer($i)) > 0) {
-            $i++;
-        }
-
-        return $this->generateSlugByIncrementer($i);
-    }
-
-    private function getCountBySlug($slug)
-    {
-        $query = static::where('slug', '=', $slug);
-
-        if ($this->exists) {
-            $query->where('id', '!=', $this->id);
-        }
-
-        return $query->count();
-    }
-
-    private function generateSlugByIncrementer($i)
-    {
-        if ($i == 0) $i = '';
-
-        if ($this->created_at) {
-            $date = date('d-m-Y', strtotime($this->created_at));
-        } else {
-            $date = date('d-m-Y');
-        }
-
-        return Str::slug("{$date} - {$this->subject}" . $i);
-    }
-
     public function isManageableBy($user)
     {
         if ( ! $user) return false;
@@ -99,24 +51,6 @@ class Thread extends Entity
     {
         if ( ! $user) return false;
         return $user->id == $this->author_id;
-    }
-
-    public function setMostRecentReply(Reply $reply = null)
-    {
-        if(is_null($reply))
-            $this->most_recent_reply_id = null;
-        else
-            $this->most_recent_reply_id = $reply->id;
-
-        $this->save();
-    }
-
-    public function updateReplyCount()
-    {
-        if ($this->exists) {
-            $this->reply_count = $this->replies()->count();
-            $this->save();
-        }
     }
 
     public function setTags(array $tagIds)
