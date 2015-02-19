@@ -8,6 +8,8 @@ use GSV\Http\Requests\EditReplyValidator;
 use GSV\Http\Requests\ReplyToThreadRequest;
 use GSV\Http\Requests\ReplyToThreadValidator;
 use GSVnet\Forum\Replies\ReplyRepository;
+use GSVnet\Permissions\NoPermissionException;
+use GSVnet\Permissions\Permission;
 use Illuminate\Support\Collection;
 
 class ForumRepliesController extends BaseController {
@@ -23,6 +25,7 @@ class ForumRepliesController extends BaseController {
 
     public function postCreateReply(ReplyToThreadValidator $validator, $threadSlug)
     {
+
         $data = [
             'threadSlug' => $threadSlug,
             'authorId' => Auth::user()->id,
@@ -40,15 +43,23 @@ class ForumRepliesController extends BaseController {
     {
         $reply = $this->replies->getById($replyId);
 
+        if(! Permission::has('threads.manage') || $reply->author_id != Auth::user()->id)
+            throw new NoPermissionException;
+
         return view('forum.replies.edit', compact('reply'));
     }
 
     public function postEditReply(EditReplyValidator $validator, $replyId)
     {
+        $reply = $this->replies->requireById($replyId);
+
         $data = [
             'replyId' => $replyId,
             'reply' => Input::get('body')
         ];
+
+        if(! Permission::has('threads.manage') || $reply->author_id != Auth::user()->id)
+            throw new NoPermissionException;
 
         $validator->validate($data);
 
@@ -61,12 +72,20 @@ class ForumRepliesController extends BaseController {
     {
         $reply = $this->replies->requireById($replyId);
 
+        if(! Permission::has('threads.manage') || $reply->author_id != Auth::user()->id)
+            throw new NoPermissionException;
+
         return view('forum.replies.delete', compact('reply'));
     }
 
     public function postDelete(DeleteReplyValidator $validator, $replyId)
     {
+        $reply = $this->replies->requireById($replyId);
+
         $data = compact('replyId');
+
+        if(! Permission::has('threads.manage') || $reply->author_id != Auth::user()->id)
+            throw new NoPermissionException;
 
         $validator->validate($data);
 
