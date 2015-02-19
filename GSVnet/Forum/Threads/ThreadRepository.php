@@ -3,6 +3,7 @@
 use Illuminate\Support\Collection;
 use GSVnet\Core\Exceptions\EntityNotFoundException;
 
+use Illuminate\Support\Str;
 use Permission;
 use Auth;
 use GSVnet\Permissions\NoPermissionException;
@@ -12,6 +13,11 @@ class ThreadRepository extends \GSVnet\Core\EloquentRepository
     public function __construct(Thread $model)
     {
         $this->model = $model;
+    }
+
+    public function getIdBySlug($slug)
+    {
+        return $this->model->where('slug', '=', $slug)->pluck('id');
     }
 
     public function getByTagsPaginated(Collection $tags, $perPage = 20)
@@ -92,5 +98,39 @@ class ThreadRepository extends \GSVnet\Core\EloquentRepository
         $query->orderBy('updated_at', 'desc');
 
         return $query->paginate($perPage, ['forum_threads.*']);
+    }
+
+    public function setTags(Thread $thread, $tags)
+    {
+        $thread->tags()->sync($tags);
+    }
+
+    public function generateUniqueSlugFrom($desired)
+    {
+        for($i=0; $i<100; ++$i)
+        {
+            $slug = $this->generateSlugWithIndex($i, $desired);
+            if(! $this->slugExists($slug))
+                return $slug;
+        }
+
+        return str_random(16);
+    }
+
+    private function slugExists($slug)
+    {
+        return $this->model->where('slug', '=', $slug)->exists();
+    }
+
+    private function generateSlugWithIndex($i, $desired)
+    {
+        $appendix = '-' . $i;
+
+        if ($i == 0)
+            $appendix = '';
+
+        $date = date('d-m-Y');
+
+        return Str::slug("{$date}-{$desired}"  . $appendix);
     }
 }

@@ -1,14 +1,13 @@
 <?php
 
-use GSVnet\Forum\Replies\ReplyCreatorListener;
-use GSVnet\Forum\Replies\ReplyDeleterListener;
+use GSV\Commands\ReplyToThreadCommand;
 use GSVnet\Forum\Replies\ReplyForm;
 use GSVnet\Forum\Replies\ReplyRepository;
-use GSVnet\Forum\Replies\ReplyUpdaterListener;
 use GSVnet\Forum\Threads\ThreadRepository;
 use GSVnet\Tags\TagRepository;
+use Illuminate\Support\Collection;
 
-class ForumRepliesController extends BaseController implements ReplyCreatorListener, ReplyUpdaterListener, ReplyDeleterListener {
+class ForumRepliesController extends BaseController {
     protected $tags;
     protected $sections;
 
@@ -25,29 +24,17 @@ class ForumRepliesController extends BaseController implements ReplyCreatorListe
         $this->prepareViewData();
     }
 
-    // bounces the user to the correct page of a thread for the indicated comment
-    public function getReplyRedirect($threadSlug, $replyId)
-    {
-        $reply = $this->replies->requireById($replyId);
-
-        if ( ! $reply->isManageableBy(Auth::user()))
-            return redirect('/');
-
-        $generator = App::make('GSVnet\Forum\Replies\ReplyQueryStringGenerator');
-        $queryString = $generator->generate($reply, $this->repliesPerPage);
-
-        return redirect(action('ForumThreadsController@getShowThread', [$thread]) . $queryString);
-    }
-
-    // reply to a thread
     public function postCreateReply($threadSlug)
     {
-        $thread = $this->threads->requireBySlug($threadSlug);
+        $data = new Collection([
+            'threadSlug' => $threadSlug,
+            'authorId' => Auth::user()->id,
+            'reply' => Input::get('body')
+        ]);
 
-        return App::make('GSVnet\Forum\Replies\ReplyCreator')->create($this, [
-            'body'   => Input::get('body'),
-            'author' => Auth::user(),
-        ], $thread->id, new ReplyForm);
+        $this->dispatchFrom(ReplyToThreadCommand::class, $data);
+
+        return redirect('/forum');
     }
 
     public function replyCreationError($errors)
