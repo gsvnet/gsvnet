@@ -15,7 +15,7 @@
 </div>
 
 <div class="form-group">
-    <a href="{{ URL::action('RemindersController@getRemind') }}">
+    <a href="{{ URL::action('RemindersController@getEmail') }}">
         Wachtwoord vergeten?
     </a>
 </div>

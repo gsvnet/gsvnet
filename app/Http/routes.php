@@ -37,43 +37,43 @@ Route::group(['prefix' => 'uploads'], function() {
 
 // De GSV
 Route::group(array('prefix' => 'de-gsv'), function() {
-    Route::get('/',                 'AboutController@showAbout');
+    Route::get('/', 'AboutController@showAbout');
 
-    Route::get('/pijlers',          'AboutController@showPillars');
-    Route::get('/geschiedenis',     'AboutController@showHistory');
+    Route::get('/pijlers', 'AboutController@showPillars');
+    Route::get('/geschiedenis', 'AboutController@showHistory');
 
-    Route::get('commissies',        'AboutController@showCommittees');
-    Route::get('commissies/{id}',   'AboutController@showCommittee');
+    Route::get('commissies', 'AboutController@showCommittees');
+    Route::get('commissies/{id}', 'AboutController@showCommittee');
 
-    Route::get('senaten',           'AboutController@showSenates');
-    Route::get('senaten/{senaat}',  'AboutController@showSenate');
+    Route::get('senaten', 'AboutController@showSenates');
+    Route::get('senaten/{senaat}', 'AboutController@showSenate');
 
-    Route::get('contact',           'AboutController@showContact');
+    Route::get('contact', 'AboutController@showContact');
 });
 
 // Register
-Route::get('registreer',            'RegisterController@create');
-Route::post('registreer',           'RegisterController@store');
+Route::get('registreer', 'RegisterController@create');
+Route::post('registreer', 'RegisterController@store');
 
 // Word lid
-Route::group(array('prefix' => 'word-lid'), function() {
-    Route::get('/',                     'MemberController@index');
+Route::group(['prefix' => 'word-lid'], function() {
+    Route::get('/', 'MemberController@index');
     Route::get('/veel-gestelde-vragen', 'MemberController@faq');
     Route::get('inschrijven',  'MemberController@becomeMember')->before('canBecomeMember');
     Route::post('inschrijven', 'MemberController@store');
 });
 
 // Albums
-Route::get('albums',         'PhotoController@showAlbums');
-Route::get('albums/{slug}',  'PhotoController@showPhotos');
+Route::get('albums', 'PhotoController@showAlbums');
+Route::get('albums/{slug}', 'PhotoController@showPhotos');
 // Events
 Route::get('activiteiten', 'EventController@showIndex');
 Route::get('activiteiten/{year}/{month?}', 'EventController@showMonth')->before('checkDate');
 Route::get('activiteiten/{year}/{month}/{slug}', 'EventController@showEvent')->before('checkDate');
 
 Route::group(['prefix' => 'wachtwoord-vergeten'], function() {
-    Route::get('herinner', 'RemindersController@getRemind');
-    Route::post('herinner', 'RemindersController@postRemind');
+    Route::get('herinner', 'RemindersController@getEmail');
+    Route::post('herinner', 'RemindersController@postEmail');
     Route::get('reset/{token}', 'RemindersController@getReset');
     Route::post('reset', 'RemindersController@postReset');
 });

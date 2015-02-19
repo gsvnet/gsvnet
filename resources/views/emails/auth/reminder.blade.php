@@ -6,6 +6,6 @@ Wachtwoord resetten
 
 @section('content')
 	<p>Klik hier om je wachtwoord te veranderen:</p> 
-	<p>{{ URL::action('RemindersController@getReset', array($token)) }}</p>
+	<p>{!! action('RemindersController@getReset', [$token]) !!}</p>
 	<p>Vriendelijke groetjes van de webcie.</p>
 @stop
