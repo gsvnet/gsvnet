@@ -1,3 +1,5 @@
+@extends('layouts.admin')
+
 @section('content')
     <h2>Activiteit bewerken</h2>
     <div class="col-xs-12 col-md-8">
