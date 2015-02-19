@@ -8,6 +8,7 @@ use GSV\Http\Requests\StartThreadValidator;
 use GSVnet\Forum\Replies\ReplyRepository;
 use GSVnet\Forum\Threads\ThreadRepository;
 use GSVnet\Forum\Threads\ThreadSlug;
+use GSVnet\Permissions\NoPermissionException;
 use GSVnet\Permissions\Permission;
 use GSVnet\Tags\TagRepository;
 use GSVnet\Users\UsersRepository;
@@ -57,7 +58,7 @@ class ForumThreadsController extends BaseController {
             return redirect()->action('ForumThreadsController@getIndex');
 
         if ( ! $thread->public && ! Permission::has('threads.show-private'))
-            throw new \GSVnet\Permissions\NoPermissionException;
+            throw new NoPermissionException;
 
         $replies = $this->threads->getThreadRepliesPaginated($thread, $this->repliesPerPage);
 
@@ -109,6 +110,9 @@ class ForumThreadsController extends BaseController {
     {
         $thread = $this->threads->requireById($threadId);
 
+        if(! Permission::has('threads.manage') || $thread->author_id != Auth::user()->id)
+            throw new NoPermissionException;
+
         $tags = $this->tags->getAllForForum();
 
         return view('forum.threads.edit', compact('thread', 'tags'));
@@ -116,6 +120,8 @@ class ForumThreadsController extends BaseController {
 
     public function postEditThread($threadId)
     {
+        $thread = $this->threads->requireById($threadId);
+
         $data = new Collection([
             'threadId' => $threadId,
             'subject' => Input::get('subject'),
@@ -123,6 +129,9 @@ class ForumThreadsController extends BaseController {
             'tags' => $this->tags->getTagsByIds(Input::get('tags')),
             'public' => Input::get('public', false)
         ]);
+
+        if(! Permission::has('threads.manage') || $thread->author_id != Auth::user()->id)
+            throw new NoPermissionException;
 
         if(!Permission::has('threads.show-private'))
             $data['public'] = true;
@@ -134,16 +143,26 @@ class ForumThreadsController extends BaseController {
     {
         $thread = $this->threads->requireById($threadId);
 
+        if(! Permission::has('threads.manage') || $thread->author_id != Auth::user()->id)
+            throw new NoPermissionException;
+
         return view('forum.threads.delete', compact('thread'));
     }
 
     public function postDelete($threadId)
     {
+        $thread = $this->threads->requireById($threadId);
+
         $data = [
             'threadId' => $threadId
         ];
 
+        if(! Permission::has('threads.manage') || $thread->author_id != Auth::user()->id)
+            throw new NoPermissionException;
+
         $this->dispatchFrom(DeleteThreadCommand::class, new Collection($data));
+
+        return redirect()->action('ForumThreadsController@getIndex');
     }
 
     public function getSearch()

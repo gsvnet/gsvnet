@@ -9,13 +9,13 @@
 
     <div class="main-content has-border-bottom">
         <div class="reply-form">
-            {{ Form::model($thread, ['method' => 'delete']) }}
+            {!! Form::model($thread, ['method' => 'delete']) !!}
                 <div class="form-row">
                     <label class="field-title">Weet je het heel zeker?</label>
                 </div>
 
                 <div class="form-row">
-                    {{ Form::button('Weg ermee!', ['type' => 'submit', 'class' => 'button']) }}
+                    {!! Form::button('Weg ermee!', ['type' => 'submit', 'class' => 'button']) !!}
                 </div>
         </div>
     </div>
