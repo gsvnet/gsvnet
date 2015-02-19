@@ -1,6 +1,7 @@
 <?php namespace GSV\Handlers\Commands;
 
 use GSV\Commands\ReplyToThreadCommand;
+use GSV\Events\ThreadWasRepliedTo;
 use GSVnet\Forum\Replies\ReplyRepository;
 use GSVnet\Forum\Threads\ThreadRepository;
 use Illuminate\Queue\InteractsWithQueue;
@@ -27,6 +28,8 @@ class ReplyToThreadCommandHandler {
         ]);
 
         $this->replies->save($reply);
+
+        event(new ThreadWasRepliedTo($threadId, $reply->id));
 	}
 
 }

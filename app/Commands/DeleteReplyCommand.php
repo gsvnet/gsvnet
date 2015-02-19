@@ -1,10 +1,8 @@
 <?php namespace GSV\Commands;
 
-use GSV\Commands\Command;
-
 class DeleteReplyCommand extends Command {
 
-    private $replyId;
+    public $replyId;
 
     public function __construct($replyId)
 	{

@@ -67,6 +67,11 @@ abstract class EloquentRepository
         return $model->delete();
     }
 
+    public function deleteFromId($id)
+    {
+        $this->model->destroy($id);
+    }
+
     protected function storeEloquentModel($model)
     {
         if ($model->getDirty()) {

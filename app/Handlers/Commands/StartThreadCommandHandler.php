@@ -2,7 +2,6 @@
 
 use GSV\Commands\StartThreadCommand;
 use GSVnet\Forum\Threads\ThreadRepository;
-use Illuminate\Queue\InteractsWithQueue;
 
 class StartThreadCommandHandler {
 
@@ -20,7 +19,7 @@ class StartThreadCommandHandler {
             'body' => $command->body,
             'author_id' => $command->authorId,
             'public' => $command->public,
-            'slug' => $this->threads->generateUniqueSlugFrom($command->subject),
+            'slug' => $command->slug,
             'reply_count' => 0,
             'most_recent_reply_id' => null
         ]);

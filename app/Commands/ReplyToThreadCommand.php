@@ -1,7 +1,5 @@
 <?php namespace GSV\Commands;
 
-use GSV\Commands\Command;
-
 class ReplyToThreadCommand extends Command {
 
     public $threadSlug;

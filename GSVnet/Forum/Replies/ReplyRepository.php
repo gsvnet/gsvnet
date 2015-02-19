@@ -1,8 +1,8 @@
 <?php namespace GSVnet\Forum\Replies;
 
-use Illuminate\Support\Collection;
+use GSVnet\Core\EloquentRepository;
 
-class ReplyRepository extends \GSVnet\Core\EloquentRepository
+class ReplyRepository extends EloquentRepository
 {
     public function __construct(Reply $model)
     {

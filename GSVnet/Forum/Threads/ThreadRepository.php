@@ -1,14 +1,12 @@
 <?php namespace GSVnet\Forum\Threads;
 
+use GSVnet\Core\EloquentRepository;
 use Illuminate\Support\Collection;
 use GSVnet\Core\Exceptions\EntityNotFoundException;
-
-use Illuminate\Support\Str;
 use Permission;
 use Auth;
-use GSVnet\Permissions\NoPermissionException;
 
-class ThreadRepository extends \GSVnet\Core\EloquentRepository
+class ThreadRepository extends EloquentRepository
 {
     public function __construct(Thread $model)
     {
@@ -105,32 +103,31 @@ class ThreadRepository extends \GSVnet\Core\EloquentRepository
         $thread->tags()->sync($tags);
     }
 
-    public function generateUniqueSlugFrom($desired)
+    public function incrementReplies($threadId)
     {
-        for($i=0; $i<100; ++$i)
-        {
-            $slug = $this->generateSlugWithIndex($i, $desired);
-            if(! $this->slugExists($slug))
-                return $slug;
-        }
-
-        return str_random(16);
+        $this->model->where('id', $threadId)->increment('reply_count');
+    }
+    public function decrementReplies($threadId)
+    {
+        $this->model->where('id', $threadId)->decrement('reply_count');
     }
 
-    private function slugExists($slug)
+    public function setLastReply($threadId, $replyId)
     {
-        return $this->model->where('slug', '=', $slug)->exists();
+        $this->model->where('id', $threadId)->update([
+            'most_recent_reply_id' => $replyId
+        ]);
     }
 
-    private function generateSlugWithIndex($i, $desired)
+    public function resetLatestReplyFor(Thread $thread)
     {
-        $appendix = '-' . $i;
+        $last = $thread->replies()->orderBy('created_at', 'DESC')->first();
 
-        if ($i == 0)
-            $appendix = '';
+        if(!$last)
+            $thread->most_recent_reply_id = null;
+        else
+            $thread->most_recent_reply_id = $last->id;
 
-        $date = date('d-m-Y');
-
-        return Str::slug("{$date}-{$desired}"  . $appendix);
+        $thread->save();
     }
 }

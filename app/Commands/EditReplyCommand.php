@@ -1,16 +1,14 @@
 <?php namespace GSV\Commands;
 
-use GSV\Commands\Command;
-
 class EditReplyCommand extends Command {
 
-    private $replyId;
-    private $body;
+    public $replyId;
+    public $reply;
 
-    public function __construct($replyId, $body)
+    public function __construct($replyId, $reply)
 	{
         $this->replyId = $replyId;
-        $this->body = $body;
+        $this->reply = $reply;
     }
 
 }
