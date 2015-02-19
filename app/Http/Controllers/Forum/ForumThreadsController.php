@@ -1,5 +1,6 @@
 <?php
 
+use GSV\Commands\StartThreadCommand;
 use GSVnet\Forum\Replies\ReplyRepository;
 use GSVnet\Forum\Threads\ThreadCreator;
 use GSVnet\Forum\Threads\ThreadCreatorListener;
@@ -9,6 +10,7 @@ use GSVnet\Forum\Threads\ThreadRepository;
 use GSVnet\Forum\Threads\ThreadUpdaterListener;
 use GSVnet\Tags\TagRepository;
 use GSVnet\Users\UsersRepository;
+use Illuminate\Support\Collection;
 use \Permission;
 
 class ForumThreadsController extends BaseController implements ThreadCreatorListener, ThreadUpdaterListener, ThreadDeleterListener {
@@ -82,13 +84,15 @@ class ForumThreadsController extends BaseController implements ThreadCreatorList
 
     public function postCreateThread()
     {
-        return $this->threadCreator->create($this, [
+        $data = new Collection([
+            'authorId' => Auth::user()->id,
             'subject' => Input::get('subject'),
             'body' => Input::get('body'),
-            'author' => Auth::user(),
             'tags' => $this->tags->getTagsByIds(Input::get('tags')),
             'public' => Input::get('public', false)
-        ], new ThreadForm);
+        ]);
+
+        $this->dispatchFrom(StartThreadCommand::class, $data);
     }
 
     public function threadCreationError($errors)
