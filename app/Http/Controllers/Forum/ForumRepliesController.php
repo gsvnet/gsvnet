@@ -3,7 +3,10 @@
 use GSV\Commands\DeleteReplyCommand;
 use GSV\Commands\EditReplyCommand;
 use GSV\Commands\ReplyToThreadCommand;
+use GSV\Http\Requests\DeleteReplyValidator;
+use GSV\Http\Requests\EditReplyValidator;
 use GSV\Http\Requests\ReplyToThreadRequest;
+use GSV\Http\Requests\ReplyToThreadValidator;
 use GSVnet\Forum\Replies\ReplyRepository;
 use Illuminate\Support\Collection;
 
@@ -18,13 +21,15 @@ class ForumRepliesController extends BaseController {
         $this->replies = $replies;
     }
 
-    public function postCreateReply(ReplyToThreadRequest $request, $threadSlug)
+    public function postCreateReply(ReplyToThreadValidator $validator, $threadSlug)
     {
         $data = [
             'threadSlug' => $threadSlug,
             'authorId' => Auth::user()->id,
-            'reply' => $request->get('body')
+            'reply' => Input::get('body')
         ];
+
+        $validator->validate($data);
 
         $this->dispatchFrom(ReplyToThreadCommand::class, new Collection($data));
 
@@ -38,12 +43,14 @@ class ForumRepliesController extends BaseController {
         return view('forum.replies.edit', compact('reply'));
     }
 
-    public function postEditReply($replyId)
+    public function postEditReply(EditReplyValidator $validator, $replyId)
     {
         $data = [
             'replyId' => $replyId,
             'reply' => Input::get('body')
         ];
+
+        $validator->validate($data);
 
         $this->dispatchFrom(EditReplyCommand::class, new Collection($data));
 
@@ -57,9 +64,13 @@ class ForumRepliesController extends BaseController {
         return view('forum.replies.delete', compact('reply'));
     }
 
-    public function postDelete($replyId)
+    public function postDelete(DeleteReplyValidator $validator, $replyId)
     {
-        $this->dispatchFrom(DeleteReplyCommand::class, new Collection(compact('replyId')));
+        $data = compact('replyId');
+
+        $validator->validate($data);
+
+        $this->dispatchFrom(DeleteReplyCommand::class, new Collection($data));
 
         return redirect('/forum');
     }

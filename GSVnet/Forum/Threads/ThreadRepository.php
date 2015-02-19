@@ -130,4 +130,9 @@ class ThreadRepository extends EloquentRepository
 
         $thread->save();
     }
+
+    public function slugExists($slug)
+    {
+        return $this->model->where('slug', $slug)->exists();
+    }
 }

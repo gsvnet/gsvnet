@@ -2,7 +2,7 @@
 
 class DeleteThreadCommand extends Command {
 
-    private $threadId;
+    public $threadId;
 
 	public function __construct($threadId)
 	{

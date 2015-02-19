@@ -10,7 +10,7 @@ class Thread extends Model
     use SoftDeletes;
     
     protected $table = 'forum_threads';
-    protected $fillable = ['subject', 'body', 'author_id', 'solution_reply_id', 'category_slug', 'public'];
+    protected $fillable = ['subject', 'body', 'author_id', 'solution_reply_id', 'slug', 'public'];
     protected $with = ['author'];
     protected $dates = ['deleted_at'];
 
