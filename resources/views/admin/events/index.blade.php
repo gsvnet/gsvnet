@@ -59,7 +59,7 @@
 		</tbody>
 	</table>
 
-	{{ $events->render() }}
+	{!! $events->render() !!}
 
 @stop
 

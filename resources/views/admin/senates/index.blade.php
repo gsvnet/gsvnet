@@ -45,6 +45,6 @@
 		</tbody>
 	</table>
 
-	{{ $senates->render() }}
+	{!! $senates->render() !!}
 
 @stop

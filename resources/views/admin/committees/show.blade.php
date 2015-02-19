@@ -71,7 +71,7 @@
             </tbody>
         </table>
 
-    {{ $members->render() }}
+    {!! $members->render() !!}
     </div>
     @endif
 @stop
