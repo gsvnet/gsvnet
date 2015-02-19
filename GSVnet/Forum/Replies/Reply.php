@@ -1,22 +1,18 @@
 <?php namespace GSVnet\Forum\Replies;
 
+use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 
-class Reply extends \GSVnet\Core\Entity
+class Reply extends Model
 {
     use PresentableTrait;
     
-    protected $table      = 'forum_replies';
-    protected $fillable   = ['body', 'author_id', 'thread_id'];
-    protected $with       = ['author'];
+    protected $table = 'forum_replies';
+    protected $fillable = ['body', 'author_id', 'thread_id'];
+    protected $with = ['author'];
     protected $softDelete = true;
 
     public $presenter = 'GSVnet\Forum\Replies\ReplyPresenter';
-
-    protected $validationRules = [
-        'body'      => 'required|min:2',
-        'author_id' => 'required|exists:users,id',
-    ];
 
     public function author()
     {
@@ -38,10 +34,5 @@ class Reply extends \GSVnet\Core\Entity
     {
         if ( ! $user) return false;
         return $user->id == $this->author_id;
-    }
-
-    public function getPrecedingReplyCount()
-    {
-        return $this->newQuery()->where('thread_id', '=', $this->thread_id)->where('created_at', '<', $this->created_at)->count();
     }
 }
