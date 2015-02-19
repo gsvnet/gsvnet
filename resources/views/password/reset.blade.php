@@ -1,3 +1,8 @@
+@extends('layouts.default')
+
+@section('title', 'Nieuw wachtwoord opgeven')
+@section('description', 'Nieuw wachtwoord opgeven')
+
 @section('content')
     <div class="column-holder">
         <h1>Wachtwoord resetten</h1>
@@ -6,15 +11,15 @@
             {{ Session::get('error') }}
         @endif
 
-        {{ Former::open()->action(action('RemindersController@postReset'))}}
-            {{ Former::hidden('token', $token)}}
-            {{ Former::email('email')->label('Je emailadres') }}
-            {{ Former::password('password')->label('Nieuw wachtwoord') }}
-            {{ Former::password('password_confirmation')->label('Nieuw wachtwoord herhalen') }}
+        {!! Former::open()->action(action('RemindersController@postReset'))!!}
+            {!! Former::hidden('token', $token)!!}
+            {!! Former::email('email')->label('Je emailadres') !!}
+            {!! Former::password('password')->label('Nieuw wachtwoord') !!}
+            {!! Former::password('password_confirmation')->label('Nieuw wachtwoord herhalen') !!}
 
             <div class="form-group">
                 <input type="submit" class="button" value="Resetten" />
             </div>
-        {{ Former::close() }}
+        {!! Former::close() !!}
     </div>
 @stop
