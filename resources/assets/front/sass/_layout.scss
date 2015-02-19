@@ -1,0 +1,274 @@
+/** UTILITIES **/
+.dot-after:after {
+	content:'\00B7';
+	padding-left:5px;
+}
+
+.hide {
+	display: none;
+}
+
+.float-right {
+	float: right;
+}
+
+/** PAGE BLOCKS **/
+
+.overal-header {
+	background: #EEE;
+	border-top: 2px solid $darkPurple;
+}
+
+.column-holder {
+	@include container;
+	@include clearfix;
+	margin-top: 2em;
+}
+
+/** Normal 2 column page **/
+.main-content {
+	float: left;
+	width: 631px;
+	padding-right: 18px;
+	border-right: 1px solid #EEE;
+}
+
+.secondary-column {
+	float: right;
+	width: 292px;
+	padding-left: 18px;
+
+	h2 {
+		@include typl8-typescale(18, $typl8-font-base, $typl8-typescale-unit);
+		text-transform: uppercase;
+	}
+}
+
+/** Article page **/
+.artikel {
+	> p, 
+	> h1, 
+	> h2, 
+	> h3,
+	> h4, 
+	> h5, 
+	> h6 {
+		margin-left: 135px;
+		margin-right: 135px;
+	}
+
+	p.lead {
+		margin-left: 0;
+		margin-right: 0;
+		@extend .delta;
+	}
+
+	.note {
+		float: right;
+		width: 180px;
+		margin: 18px 0 18px 18px;
+		font-size: 14px;
+		font-style: italic;
+		padding: 18px;
+		background: #EEE;
+	}
+
+	.secondary-menu {
+		float: right;
+		width: 292px;
+		padding-left: 18px;
+		border-left: 1px solid $lightGrey;
+		margin-left: 18px;
+	}
+
+	figure {
+		margin: 18px 0;
+		
+		img {
+			vertical-align: bottom;
+			max-width: 100%;
+		}
+		figcaption {
+			font-size: 14px;
+			font-style: italic;
+		}
+	}
+
+	.icon {
+		float: left;
+		height: 100px;
+		width: 100px;
+		margin: 18px 18px 18px 0;
+	}
+	
+}
+
+.half-column {
+	width: 462px;
+	float: left;
+}
+
+.with-border {
+	margin-left: 17px;
+	border-left: 1px solid $grey;
+	padding-left: 18px;
+}
+
+.content-columns {
+	@include clearfix;
+}
+
+.content-column {
+	box-sizing: border-box;
+	width: 50%;
+	float: left;
+	margin-bottom: 1em;
+
+	&.with-padding {
+		padding-right: 1em;
+	}
+}
+
+.secondary-column {
+	.content-column {
+		float: none;
+		width: 100%;
+	}
+}
+
+a.block-link {
+	transition: background .3s;
+	display: block;
+	padding: 1em;
+	@include clearfix;
+	color: $body-copy-color;
+
+	p {
+		margin-bottom: 0;
+	}
+
+	&:hover {
+		text-decoration: none;
+		background: #EFEFEF;
+		color: $body-copy-color;
+	}
+
+	.icon {
+		float: right;
+		width: 100px;
+		height: 100px;
+		margin: 0 0 .5em .5em;
+	}
+}
+
+hr {
+	border: 0;
+	height: 1px;
+	border-top: 1px solid $lightGrey;
+}
+
+
+/** Footer **/
+.site-footer {
+	@include container;
+}
+
+.address-info {
+	font-size: smaller;
+}
+
+
+/** Responsive **/
+@media only screen and (max-width: $firstbreakpoint){
+	.column-holder, .nav-bar {
+		width: auto;
+		padding-left: 36px;
+		padding-right: 36px;
+	}
+
+	.main-content, .secondary-column {
+		float: none;
+		border: 0;
+		padding: 0;
+		margin: 0;
+		width: auto;
+	}
+
+	.has-border-bottom {
+		margin-bottom: 2em;
+		padding-bottom: 1em;
+		border-bottom: 1px solid $lightGrey;
+	}
+
+	.secondary-column {
+		margin-bottom: 2em;
+
+		.content-column {
+			width: 50%;
+			float: left;
+		}
+	}
+
+	.half-column {
+		width: auto;
+		margin-bottom: 2em;
+	}
+
+	.artikel > p, 
+	.artikel > h1, 
+	.artikel > h2, 
+	.artikel > h3,
+	.artikel > h4, 
+	.artikel > h5, 
+	.artikel > h6 {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.with-border {
+		border-left: 0;
+		padding-left: 0;
+		margin-left: 0;
+	}
+
+	a.block-link {
+		.icon {
+			float: none;
+			margin: 0 auto;
+		}
+	}
+}
+
+@media only screen and (max-width: 480px){
+	html {
+		font-size: 1em;
+	}
+
+	.column-holder, .nav-bar {
+		width: auto;
+		padding-left: 18px;
+		padding-right: 18px;
+	}
+
+	.secondary-column .content-column, .content-column {
+		width: 100%;
+		float: none;
+	}
+
+	.artikel .note {
+		float: none;
+		width: auto;
+		margin: 18px 0;
+		font-size: 20px;
+		padding: 18px;
+		background: transparent;
+		border-top: 1px solid #EEE;
+		border-bottom: 1px solid #EEE;
+	}
+
+}
+
+::selection {
+	color: $white;
+	background: $darkPurple;
+}

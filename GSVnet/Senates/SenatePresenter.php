@@ -32,6 +32,6 @@ class SenatePresenter extends Presenter
 
     private function convertMarkdown($content)
     {
-        return \App::make('GSVnet\Markdown\HtmlMarkdownConvertor')->convertMarkdownToHtml($content);
+        return \App::make('GSVnet\Markdown\HtmlMarkdownConverter')->convertMarkdownToHtml($content);
     }
 }

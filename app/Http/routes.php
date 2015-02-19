@@ -156,9 +156,11 @@ Route::group(['prefix' => 'forum', 'middleware' => ['auth', 'approved']], functi
     Route::get('nieuw-onderwerp',  'ForumThreadsController@getCreateThread');
     Route::post('nieuw-onderwerp', 'ForumThreadsController@postCreateThread');
     Route::post('{slug}',          'ForumRepliesController@postCreateReply');
+
+    Route::get('quote/{replyId}', 'ForumApiController@quoteReply');
 });
 
-Route::get('preview', 'PreviewController@preview')->middleware('auth');
+Route::get('preview', 'ForumApiController@preview')->middleware('auth');
 
 
 // Forum index, search, show comment, show thread
