@@ -1,3 +1,5 @@
+@extends('layouts.admin')
+
 @section('content')
     <div class="page-header">
         <h1>{{ $event->title }}</h1>
