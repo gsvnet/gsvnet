@@ -1,16 +1,71 @@
-var elixir = require('laravel-elixir');
+var gulp = require('gulp');
+var minify = require('gulp-minify-css');
+var autoprefixer = require('gulp-autoprefixer');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var imagemin = require('gulp-imagemin');
+var sass = require('gulp-sass');
 
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Less
- | file for our application, as well as publishing vendor resources.
- |
- */
+gulp.task('css', function(){
+	gulp.src('resources/assets/front/sass/screen.scss')
+        .pipe(sass())
+ 		.pipe(minify())
+ 		.pipe(autoprefixer())
+		.pipe(gulp.dest('public/stylesheets/'));
+});
 
-elixir(function(mix) {
-    mix.less('app.less');
+gulp.task('images', function(){
+  return gulp.src([
+      'resources/assets/front/images/**/*.jpg',
+      'resources/assets/front/images/**/*.png',
+      'resources/assets/front/images/**/*.gif'
+    ])
+    .pipe(imagemin())
+    .pipe(gulp.dest('public/images/'));
+})
+
+gulp.task('scripts', function() {
+  return gulp.src([
+      'resources/assets/components/javascripts/modernizr.js',
+      'resources/assets/components/javascripts/jquery-1.10.1.min.js',
+      'resources/assets/components/javascripts/list-to-menu.js',
+      'resources/assets/components/javascripts/load-image.min.js',
+      'resources/assets/components/javascripts/matchmedia.js',
+      'resources/assets/components/javascripts/picturefill.js',
+      'resources/assets/components/javascripts/list.min.js',
+      'resources/assets/components/javascripts/list.fuzzysearch.min.js',
+      'resources/assets/components/javascripts/jquery.touchSwipe.min.js',
+      'resources/assets/components/javascripts/carousel.js',
+      'resources/assets/components/javascripts/magnific-popup-0.9.9.js',
+      'resources/assets/components/javascripts/magnific-popup-translation.js',
+      'resources/assets/front/javascripts/tabs.js',
+      'resources/assets/front/javascripts/forum.js',
+      'resources/assets/front/javascripts/menu.js',
+      'resources/assets/front/javascripts/touch-on-carousel.js',
+      'resources/assets/front/javascripts/word-lid.js',
+      'resources/assets/front/javascripts/app.js'
+    ])
+    .pipe(concat("app.js"))
+    .pipe(uglify())
+    .pipe(gulp.dest('public/build-javascripts/'))
+});
+
+gulp.task('backend-scripts', function() {
+  return gulp.src([
+      'resources/assets/components/javascripts/jquery-1.10.1.min.js',
+      'resources/assets/components/javascripts/bootstrap.js',
+      'resources/assets/components/javascripts/typeahead.js',
+      'resources/assets/components/javascripts/dropzone.js',
+      'resources/assets/components/javascripts/jquery.tablesorter.min.js',
+      'resources/assets/back/javascripts/multi-upload.js',
+      'resources/assets/back/javascripts/general.js'
+    ])
+    .pipe(concat("admin.js"))
+    .pipe(uglify())
+    .pipe(gulp.dest('public/build-javascripts/'))
+});
+
+gulp.task('default', ['scripts', 'css'], function(){
+  gulp.watch('resources/assets/front/javascripts/**/*.js', ['scripts']);
+  gulp.watch('resources/assets/front/sass/**/*.scss', ['css']);
 });

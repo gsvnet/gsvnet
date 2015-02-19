@@ -1,0 +1,60 @@
+.form-steps {
+	@include clearfix;
+
+	font-family: $font-family-sans;
+	line-height: 2em;
+
+	.form-helper-text {
+		float: left;
+		margin-right: 1em;
+	}
+
+	ol {
+		@include clearfix;
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		color: $grey;
+		float: left;
+	}
+
+
+	li {
+		float: left;
+		margin-right: 1em;
+	}
+
+	.step-item {
+		color: $grey;
+		display: block;
+		background: #FFF;
+		padding: 0 1em;
+
+		&.active, &.active:hover {
+			background: $darkPurple;
+			color: #FFF;
+		}
+	}
+
+	span.step-item {
+		cursor: default;
+	}
+}
+
+@media only screen and (max-width: $breakpoint){
+
+	.form-steps {
+		ol {
+			width: 100%;
+		}
+
+		li {
+			float: none;
+			margin: .5em 0 0 0;
+		}
+
+		.form-helper-text {
+			float: none;
+		}
+	}
+}

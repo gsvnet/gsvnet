@@ -5,7 +5,6 @@ use GSV\Commands\EditReplyCommand;
 use GSV\Commands\ReplyToThreadCommand;
 use GSV\Http\Requests\DeleteReplyValidator;
 use GSV\Http\Requests\EditReplyValidator;
-use GSV\Http\Requests\ReplyToThreadRequest;
 use GSV\Http\Requests\ReplyToThreadValidator;
 use GSVnet\Forum\Replies\ReplyRepository;
 use GSVnet\Permissions\NoPermissionException;

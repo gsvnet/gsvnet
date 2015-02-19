@@ -2,7 +2,7 @@
 
 use HTML_To_Markdown;
 
-class HtmlMarkdownConvertor
+class HtmlMarkdownConverter
 {
     protected $htmlParser;
     protected $markdownParser;

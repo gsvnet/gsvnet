@@ -177,6 +177,6 @@ class EventPresenter extends Presenter
 
     public function descriptionFormatted()
     {
-        return \App::make('GSVnet\Markdown\HtmlMarkdownConvertor')->convertMarkdownToHtml($this->description);
+        return \App::make('GSVnet\Markdown\HtmlMarkdownConverter')->convertMarkdownToHtml($this->description);
     }
 }
