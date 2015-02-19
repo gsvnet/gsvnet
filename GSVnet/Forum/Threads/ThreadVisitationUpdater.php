@@ -1,21 +1,19 @@
 <?php namespace GSVnet\Forum\Threads;
 
-use GSVnet\Users\User;
-
 class ThreadVisitationUpdater
 {
-    public function update(Thread $thread, User $user)
+    public function update($threadId, $userId)
     {
-        $visitation = $this->getVisitation($thread, $user);
+        $visitation = $this->getVisitation($threadId, $userId);
         $visitation->visited_at = date('Y-m-d H:i:s');
         $visitation->save();
     }
 
-    public function getVisitation(Thread $thread, User $user)
+    public function getVisitation($threadId, $userId)
     {
     	return ThreadVisitation::firstOrNew([
-    		'user_id' => $user->id,
-    		'thread_id' => $thread->id
+    		'user_id' => $userId,
+    		'thread_id' => $threadId
     	]);
     }
 }
