@@ -108,8 +108,18 @@ var Forum = (function()
 
     function bindQuoteLinks()
     {
-        quoteLinks.click(function(e) {
-            $.getJSON('/forum/quote/1', function(data){
+        quoteLinks.click(function() {
+            var $this = $(this),
+                type = $this.data('type'),
+                id = $this.data('id'),
+                url = '';
+
+            if(type == 'thread')
+                url = '/forum/threads/quote/' + id;
+            else
+                url = '/forum/quote/' + id;
+
+            $.getJSON(url, function(data){
                 var quoteText = formatForumQuote(data['author'], data['markdown']);
                 replyField.val(replyField.val() + quoteText).focus();
             });

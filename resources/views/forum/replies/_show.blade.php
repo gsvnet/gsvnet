@@ -1,4 +1,4 @@
-<div class="comment _post" id="reactie-{{ $reply->id }}" data-author-name='{{ json_encode($reply->author->username, JSON_HEX_QUOT|JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS) }}' data-quote-body='{{ json_encode($reply->body, JSON_HEX_QUOT|JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS) }}'>
+<div class="comment _post" id="reactie-{{ $reply->id }}">
     <div class="forum-post-data">
         <div class="avatar">
             {!! $reply->author->present()->avatarDeferred(40) !!}
@@ -20,7 +20,7 @@
                         <li><a href="{{ action('ForumRepliesController@getEditReply', [$reply->id]) }}">bewerk</a></li>
                         <li><a href="{{ action('ForumRepliesController@getDelete', [$reply->id]) }}">verwijder</a></li>
                     @endif
-                    <li><a href="#body" class="quote _quote_forum_post">quote</a></li>
+                    <li><a href="#body" class="quote _quote_forum_post" data-type="reply" data-id="{{$reply->id}}">quote</a></li>
                 @endif
             </ul>
         </div>

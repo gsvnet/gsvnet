@@ -157,6 +157,7 @@ Route::group(['prefix' => 'forum', 'middleware' => ['auth', 'approved']], functi
     Route::post('nieuw-onderwerp', 'ForumThreadsController@postCreateThread');
     Route::post('{slug}',          'ForumRepliesController@postCreateReply');
 
+    Route::get('threads/quote/{threadId}', 'ForumApiController@quoteThread');
     Route::get('quote/{replyId}', 'ForumApiController@quoteReply');
 });
 
