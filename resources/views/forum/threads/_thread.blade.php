@@ -1,5 +1,4 @@
-<div class="thread _post" data-author-name='{{ json_encode($thread->author->username, JSON_HEX_QUOT|JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS) }}' data-quote-body='{{ json_encode($thread->body, JSON_HEX_QUOT|JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS) }}'>
-
+<div class="thread _post">
     <div class="forum-post-data">
         <div class="avatar">
         	{!! $thread->author->present()->avatar(40) !!}
@@ -25,7 +24,7 @@
                 @endif
 
                 @if(Auth::user())
-                    <li><a href="#body" class="quote _quote_forum_post">quote</a></li>
+                    <li><a href="#body" class="quote _quote_forum_post" data-type="thread" data-id="{{$thread->id}}">quote</a></li>
                 @endif
             </ul>
         </div>
