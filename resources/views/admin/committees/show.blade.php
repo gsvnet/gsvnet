@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-
     <div class="page-header">
         <h1>{{{ $committee->name }}}</h1>
     </div>
@@ -44,6 +43,7 @@
         </div>
     </div>
 
+
     @if ($members->count() > 0)
     <div class="spacer">
         <table class="table table-striped table-bordered">
@@ -64,14 +64,12 @@
                             <button type='submit' class='btn btn-danger btn-xs'><i class="glyphicon glyphicon-remove"></i> Verwijderen </button>
                             {!! Former::close() !!}
 
-                            <a href="{{URL::action('Admin\Committees\MembersController@edit', $member->pivot->id)}}" class="btn btn-default btn-xs pull-right"><i class="fa fa-pencil"></i> Bewerk</button></a>
+                            <a href="{{action('Admin\Committees\MembersController@edit', $member->pivot->id)}}" class="btn btn-default btn-xs pull-right"><i class="fa fa-pencil"></i> Bewerk</button></a>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-
-    {!! $members->render() !!}
     </div>
     @endif
 @stop
@@ -136,7 +134,7 @@ fieldset[disabled] .twitter-typeahead .tt-input {
     </style>
 
     <script>
-        var list = {{ $users->toJSON() }};
+        var list = {!! $users->toJSON() !!};
         
         // instantiate the bloodhound suggestion engine
         var users = new Bloodhound({
