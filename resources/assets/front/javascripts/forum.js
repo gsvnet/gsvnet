@@ -212,16 +212,11 @@ var Forum = (function()
                 $this.addClass('liked');
             }
 
-            console.log(method, url);
-
             $.ajax({
                 url: url,
                 type: method,
-                success: function(message){
-                    //console.log('error', message);
-                },
                 error: function(message){
-                    //console.log('error', message);
+                    alert('Er ging iets fout met liken. Niet leuk :*(');
                 }
             });
 
