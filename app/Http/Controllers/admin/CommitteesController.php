@@ -56,7 +56,7 @@ class CommitteeController extends AdminBaseController {
     public function show($id)
     {
         $committee = $this->committees->byId($id);
-        $members = $this->committees->members($id);
+        $members = $committee->members;
 
         $users = $this->users->all();
         $users = $users->map(function($user){

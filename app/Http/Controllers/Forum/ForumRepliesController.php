@@ -35,7 +35,7 @@ class ForumRepliesController extends BaseController {
 
         $this->dispatchFrom(ReplyToThreadCommand::class, new Collection($data));
 
-        return redirect()->action('ForumThreadsController@getShowThread', [$threadSlug]);
+        return redirect()->back();
     }
 
     public function getEditReply($replyId)
