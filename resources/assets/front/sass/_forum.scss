@@ -22,9 +22,15 @@
 	border-top: 1px solid $lightGrey;
 }
 
-.avatar {
+.avatar, .like-box {
 	float: left;
 	margin-right: 1em;
+}
+
+.like-box {
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
 }
 
 .body {

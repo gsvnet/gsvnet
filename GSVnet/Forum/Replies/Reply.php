@@ -1,11 +1,13 @@
 <?php namespace GSVnet\Forum\Replies;
 
+use GSVnet\Forum\LikableTrait;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 
 class Reply extends Model
 {
     use PresentableTrait;
+    use LikableTrait;
     
     protected $table = 'forum_replies';
     protected $fillable = ['body', 'author_id', 'thread_id'];

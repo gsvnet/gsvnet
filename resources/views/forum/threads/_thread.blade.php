@@ -3,13 +3,22 @@
         <div class="avatar">
         	{!! $thread->author->present()->avatar(40) !!}
         </div>
+        <div class="like-box">
+            @if(Auth::check())
+                <button class="like-box--button {!! $thread->present()->likeClass !!}" data-type="thread" data-id="{!! $thread->id !!}">
+                    +<span class="like-box--count">{{ $thread->likes }}</span>
+                </button>
+            @else
+                {{ $reply->likes }}
+            @endif
+        </div>
         <div class="info">
             <strong class="author">
-            @if(Permission::has('users.show'))
-                <a href="{{ $thread->author->present()->profileUrl }}">{{ $thread->author->username }}</a>
-            @else
-                {{ $thread->author->username }}
-            @endif
+                @if(Permission::has('users.show'))
+                    <a href="{{ $thread->author->present()->profileUrl }}">{{ $thread->author->username }}</a>
+                @else
+                    {{ $thread->author->username }}
+                @endif
             </strong>
             <ul class="inline-list grey">
                 <li>

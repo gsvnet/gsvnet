@@ -1,6 +1,7 @@
 <?php namespace GSVnet\Forum\Threads;
 
 use GSVnet\Core\EloquentRepository;
+use GSVnet\Forum\Like;
 use Illuminate\Support\Collection;
 use GSVnet\Core\Exceptions\EntityNotFoundException;
 use Permission;
@@ -35,8 +36,7 @@ class ThreadRepository extends EloquentRepository
         if ( Auth::check() )
         {
             $id = Auth::user()->id;
-            $query->with(['visitations' => function($q) use ($id)
-            {
+            $query->with(['visitations' => function($q) use ($id){
                 $q->where('user_id', $id);
             }]);
         }
@@ -48,7 +48,18 @@ class ThreadRepository extends EloquentRepository
 
     public function getThreadRepliesPaginated(Thread $thread, $perPage = 20)
     {
-        return $thread->replies()->with('author')->paginate($perPage);
+        $query = $thread->replies()->with('author');
+
+        if( Auth::check() )
+        {
+            $id = Auth::user()->id;
+
+            $query->with(['likes' => function($q) use ($id){
+                $q->where('user_id', $id);
+            }]);
+        }
+
+        return $query->paginate($perPage);
     }
 
     public function requireBySlug($slug)
@@ -134,5 +145,20 @@ class ThreadRepository extends EloquentRepository
     public function slugExists($slug)
     {
         return $this->model->where('slug', $slug)->exists();
+    }
+
+    public function like(Thread $thread, Like $like)
+    {
+        $thread->likes()->save($like);
+    }
+
+    public function incrementLikeCount($threadId)
+    {
+        $this->model->where('id', $threadId)->increment('likes');
+    }
+
+    public function decrementLikeCount($threadId)
+    {
+        $this->model->where('id', $threadId)->decrement('likes');
     }
 }

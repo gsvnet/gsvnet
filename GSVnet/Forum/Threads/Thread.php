@@ -1,5 +1,6 @@
 <?php namespace GSVnet\Forum\Threads;
 
+use GSVnet\Forum\LikableTrait;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -8,6 +9,7 @@ class Thread extends Model
 {
     use PresentableTrait;
     use SoftDeletes;
+    use LikableTrait;
     
     protected $table = 'forum_threads';
     protected $fillable = ['subject', 'body', 'author_id', 'solution_reply_id', 'slug', 'public'];

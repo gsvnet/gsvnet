@@ -3,6 +3,15 @@
         <div class="avatar">
             {!! $reply->author->present()->avatarDeferred(40) !!}
         </div>
+        <div class="like-box">
+            @if(Auth::check())
+                <button class="like-box--button {!! $reply->present()->likeClass !!}" data-type="reply" data-id="{!! $reply->id !!}">
+                    +<span class="like-box--count">{{ $reply->likes }}</span>
+                </button>
+            @else
+                {{ $reply->likes }}
+            @endif
+        </div>
         <div class="info">
             <strong class="author">
                 @if(Permission::has('users.show'))
@@ -12,8 +21,11 @@
                 @endif
             </strong>
             <ul class="inline-list grey">
-                <li><a href="#reactie-{{ $reply->id }}">
-                <time datetime="{{{$reply->created_at->toISO8601String()}}}" title="{{{$reply->created_at->formatLocalized('%A %e %B %Y %T')}}}">{{ $reply->present()->created_ago }}</time></a></li>
+                <li>
+                    <a href="#reactie-{{ $reply->id }}">
+                       <time datetime="{{{$reply->created_at->toISO8601String()}}}" title="{{{$reply->created_at->formatLocalized('%A %e %B %Y %T')}}}">{{ $reply->present()->created_ago }}</time>
+                    </a>
+                </li>
 
                 @if(Auth::check())
                     @if($reply->isManageableBy(Auth::user()))

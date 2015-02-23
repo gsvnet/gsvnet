@@ -1,9 +1,19 @@
 <?php
+use GSV\Commands\DislikeReplyCommand;
+use GSV\Commands\DislikeThreadCommand;
+use GSV\Commands\LikeReplyCommand;
+use GSV\Commands\LikeThreadCommand;
+use GSVnet\Core\Exceptions\ValidationException;
+use GSVnet\Forum\Replies\DislikeReplyValidator;
+use GSVnet\Forum\Replies\LikeReplyValidator;
 use GSVnet\Forum\Replies\ReplyRepository;
+use GSVnet\Forum\Threads\DislikeThreadValidator;
+use GSVnet\Forum\Threads\LikeThreadValidator;
 use GSVnet\Forum\Threads\ThreadRepository;
 use GSVnet\Markdown\HtmlMarkdownConverter;
 use GSVnet\Permissions\NoPermissionException;
 use GSVnet\Permissions\Permission;
+use Illuminate\Support\Collection;
 
 class ForumApiController extends BaseController {
 
@@ -45,5 +55,77 @@ class ForumApiController extends BaseController {
             'author' => $thread->author->username,
             'markdown' => $thread->body
         ]);
+    }
+
+    public function likeReply(LikeReplyValidator $validator, $replyId)
+    {
+        $data = [
+            'userId' => Auth::user()->id,
+            'replyId' => $replyId
+        ];
+
+        try {
+            $validator->validate($data);
+        } catch(ValidationException $e) {
+            return response()->json($e->getErrors(), 400);
+        }
+
+        $this->dispatchFrom(LikeReplyCommand::class, new Collection($data));
+
+        return response()->json();
+    }
+
+    public function dislikeReply(DislikeReplyValidator $validator, $replyId)
+    {
+        $data = [
+            'userId' => Auth::user()->id,
+            'replyId' => $replyId
+        ];
+
+        try {
+            $validator->validate($data);
+        } catch(ValidationException $e) {
+            return response()->json($e->getErrors(), 400);
+        }
+
+        $this->dispatchFrom(DislikeReplyCommand::class, new Collection($data));
+
+        return response()->json();
+    }
+
+    public function likeThread(LikeThreadValidator $validator, $threadId)
+    {
+        $data = [
+            'userId' => Auth::user()->id,
+            'threadId' => $threadId
+        ];
+
+        try {
+            $validator->validate($data);
+        } catch(ValidationException $e) {
+            return response()->json($e->getErrors(), 400);
+        }
+
+        $this->dispatchFrom(LikeThreadCommand::class, new Collection($data));
+
+        return response()->json();
+    }
+
+    public function dislikeThread(DislikeThreadValidator $validator, $threadId)
+    {
+        $data = [
+            'userId' => Auth::user()->id,
+            'threadId' => $threadId
+        ];
+
+        try {
+            $validator->validate($data);
+        } catch(ValidationException $e) {
+            return response()->json($e->getErrors(), 400);
+        }
+
+        $this->dispatchFrom(DislikeThreadCommand::class, new Collection($data));
+
+        return response()->json();
     }
 }
