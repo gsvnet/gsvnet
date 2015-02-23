@@ -4,12 +4,12 @@
         	{!! $thread->author->present()->avatar(40) !!}
         </div>
         <div class="like-box">
-            @if(Auth::check())
+            @if(Auth::check() && $thread->author_id != Auth::user()->id)
                 <button class="like-box--button {!! $thread->present()->likeClass !!}" data-type="thread" data-id="{!! $thread->id !!}">
                     +<span class="like-box--count">{{ $thread->likes }}</span>
                 </button>
             @else
-                {{ $reply->likes }}
+                +{{ $reply->likes }}
             @endif
         </div>
         <div class="info">
