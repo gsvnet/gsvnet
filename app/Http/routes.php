@@ -157,8 +157,15 @@ Route::group(['prefix' => 'forum', 'middleware' => ['auth', 'approved']], functi
     Route::post('nieuw-onderwerp', 'ForumThreadsController@postCreateThread');
     Route::post('{slug}',          'ForumRepliesController@postCreateReply');
 
+    // Quotes
     Route::get('threads/quote/{threadId}', 'ForumApiController@quoteThread');
     Route::get('quote/{replyId}', 'ForumApiController@quoteReply');
+
+    // Likes
+    Route::post('replies/{id}/like', 'ForumApiController@likeReply');
+    Route::delete('replies/{id}/like', 'ForumApiController@dislikeReply');
+    Route::post('threads/{id}/like', 'ForumApiController@likeThread');
+    Route::delete('threads/{id}/like', 'ForumApiController@dislikeThread');
 });
 
 Route::get('preview', 'ForumApiController@preview')->middleware('auth');

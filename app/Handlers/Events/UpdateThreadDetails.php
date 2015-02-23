@@ -1,6 +1,8 @@
 <?php namespace GSV\Handlers\Events;
 
 use GSV\Events\ReplyWasDeleted;
+use GSV\Events\ThreadWasDisliked;
+use GSV\Events\ThreadWasLiked;
 use GSV\Events\ThreadWasRepliedTo;
 
 use GSVnet\Forum\Threads\ThreadRepository;
@@ -36,5 +38,15 @@ class UpdateThreadDetails implements ShouldBeQueued {
 
         if($thread->most_recent_reply_id == $event->replyId)
             $this->threads->resetLatestReplyFor($thread);
+    }
+
+    public function incrementLikes(ThreadWasLiked $event)
+    {
+        $this->threads->incrementLikeCount($event->threadId);
+    }
+
+    public function decrementLikes(ThreadWasDisliked $event)
+    {
+        $this->threads->decrementLikeCount($event->threadId);
     }
 }

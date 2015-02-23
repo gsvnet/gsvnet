@@ -3,6 +3,10 @@ var Forum = (function()
     var tagsDisabled = false;
     var maxTags = 3;
     var quoteLinks, replyField, submitReply;
+    var urlTypes = {
+        reply: '/forum/replies/%s/like',
+        thread: '/forum/threads/%s/like'
+    };
 
     function checkForMaximumTags() {
         if ($('._tag_list ._tag.active').length >= maxTags) {
@@ -17,7 +21,6 @@ var Forum = (function()
 
     function showTagDescriptions() {
         var checkedTags = $('._tag input:checked');
-        var descriptionArea = $('._tag_descriptions');
         var descriptions = [];
 
         checkedTags.each(function() {
@@ -184,9 +187,52 @@ var Forum = (function()
         });
     }
 
+    function initLikes() {
+        $('.like-box--button').click(function(){
+            var $this = $(this),
+                type = $this.data('type'),
+                id = $this.data('id'),
+                method, url,
+                counter = $this.find('.like-box--count'),
+                likes = parseInt(counter.html(), 10);
+
+            if(!urlTypes.hasOwnProperty(type))
+                return;
+
+            url = urlTypes[type].replace('%s', id);
+
+            if($this.hasClass('liked'))
+            {
+                method = 'DELETE';
+                counter.html(likes - 1);
+                $this.removeClass('liked');
+            } else {
+                method = 'POST';
+                counter.html(likes + 1);
+                $this.addClass('liked');
+            }
+
+            console.log(method, url);
+
+            $.ajax({
+                url: url,
+                type: method,
+                success: function(message){
+                    //console.log('error', message);
+                },
+                error: function(message){
+                    //console.log('error', message);
+                }
+            });
+
+            return false;
+        });
+    }
+
     return {
         initThreadPage: initThreadPage,
         initCreateOrUpdatePage: initCreateOrUpdatePage,
-        loadDeferredAvatars: loadDeferredAvatars
+        loadDeferredAvatars: loadDeferredAvatars,
+        initLikes: initLikes
     };
 })();

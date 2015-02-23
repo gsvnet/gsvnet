@@ -186,6 +186,7 @@ app = (function() {
 	function thread() {
 		Forum.initThreadPage();
 		Forum.loadDeferredAvatars();
+        Forum.initLikes();
 	}
 
 	function threadsIndex() {

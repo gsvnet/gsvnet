@@ -1,7 +1,8 @@
 <?php namespace GSVnet\Forum\Replies;
 
+use Illuminate\Support\Facades\Auth;
 use Laracasts\Presenter\Presenter;
-use App, Str;
+use App;
 use GSVnet\Carbon as GSVCarbon;
 
 class ReplyPresenter extends Presenter
@@ -14,6 +15,19 @@ class ReplyPresenter extends Presenter
         $threadUrl = action('ForumThreadsController@getShowThread', [$slug]);
 
         return $threadUrl . \App::make('GSVnet\Forum\Replies\ReplyQueryStringGenerator')->generate( $this->entity );
+    }
+
+    public function likeClass()
+    {
+        if(! Auth::check() )
+            return '';
+
+        $likes = $this->likes;
+
+        if(! $likes)
+            return '';
+
+        return 'liked';
     }
 
     public function created_ago()
