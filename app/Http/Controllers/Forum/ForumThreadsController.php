@@ -9,10 +9,11 @@ use GSVnet\Forum\Replies\ReplyRepository;
 use GSVnet\Forum\Threads\ThreadRepository;
 use GSVnet\Forum\Threads\ThreadSlug;
 use GSVnet\Permissions\NoPermissionException;
-use GSVnet\Permissions\Permission;
 use GSVnet\Tags\TagRepository;
 use GSVnet\Users\UsersRepository;
 use Illuminate\Support\Collection;
+use Permission;
+use DB;
 
 class ForumThreadsController extends BaseController {
     protected $threads;
@@ -72,6 +73,7 @@ class ForumThreadsController extends BaseController {
             $this->dispatchFrom(VisitThreadCommand::class, $data);
         }
 
+
         return view('forum.threads.show', compact('thread', 'replies'));
     }
 
@@ -110,7 +112,7 @@ class ForumThreadsController extends BaseController {
     {
         $thread = $this->threads->requireById($threadId);
 
-        if(! Permission::has('threads.manage') || $thread->author_id != Auth::user()->id)
+        if(! Permission::has('threads.manage') && $thread->author_id != Auth::user()->id)
             throw new NoPermissionException;
 
         $tags = $this->tags->getAllForForum();
@@ -130,7 +132,7 @@ class ForumThreadsController extends BaseController {
             'public' => Input::get('public', false)
         ]);
 
-        if(! Permission::has('threads.manage') || $thread->author_id != Auth::user()->id)
+        if(! Permission::has('threads.manage') && $thread->author_id != Auth::user()->id)
             throw new NoPermissionException;
 
         if(!Permission::has('threads.show-private'))
@@ -143,7 +145,7 @@ class ForumThreadsController extends BaseController {
     {
         $thread = $this->threads->requireById($threadId);
 
-        if(! Permission::has('threads.manage') || $thread->author_id != Auth::user()->id)
+        if(! Permission::has('threads.manage') && $thread->author_id != Auth::user()->id)
             throw new NoPermissionException;
 
         return view('forum.threads.delete', compact('thread'));
@@ -157,7 +159,7 @@ class ForumThreadsController extends BaseController {
             'threadId' => $threadId
         ];
 
-        if(! Permission::has('threads.manage') || $thread->author_id != Auth::user()->id)
+        if(! Permission::has('threads.manage') && $thread->author_id != Auth::user()->id)
             throw new NoPermissionException;
 
         $this->dispatchFrom(DeleteThreadCommand::class, new Collection($data));

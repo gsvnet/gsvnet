@@ -93,10 +93,6 @@ return [
         ]
     ],
 
-    'users.show' => [
-        'type' => [User::MEMBER, User::FORMERMEMBER]
-    ],
-
     'users.edit-profile' => [
         'type' => ['potential', User::MEMBER, User::FORMERMEMBER]
     ],
