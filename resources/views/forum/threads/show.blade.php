@@ -2,6 +2,14 @@
 
 @section('body-id', 'thread-page')
 
+@section('title')
+    {{ $thread->subject }} - pagina {{$replies->currentPage()}}
+@stop
+
+@section('description')
+    {{ $thread->subject }}
+@stop
+
 @section('content')
     <div class="column-holder">
         <a href="/forum" title="Terug naar het forum" class="back-link i-back"></a>

@@ -1,5 +1,8 @@
 @extends('layouts.default')
 
+@section('title', 'Reactie verwijderen?')
+@section('description', 'Reactie verwijderen?')
+
 @section('content')
 <div class="column-holder">
 

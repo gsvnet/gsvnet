@@ -1,6 +1,8 @@
 @extends('layouts.default')
 
 @section('body-id', 'thread-update-page')
+@section('title', 'Topic bewerken')
+@section('description', 'Topic bewerken.')
 
 @section('content')
 <div class="column-holder">
