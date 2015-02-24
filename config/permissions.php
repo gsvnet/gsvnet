@@ -21,6 +21,7 @@ return [
     ],
 
     'users.show' => [
+        'type' => [User::MEMBER, User::FORMERMEMBER],
         'committee' => ['webcie', 'novcie', 'reebocie', 'jaarbundelcommissie'],
         'senate' => true
     ],
