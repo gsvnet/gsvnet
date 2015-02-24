@@ -154,11 +154,11 @@ class ThreadRepository extends EloquentRepository
 
     public function incrementLikeCount($threadId)
     {
-        $this->model->where('id', $threadId)->increment('likes');
+        $this->model->where('id', $threadId)->increment('like_count');
     }
 
     public function decrementLikeCount($threadId)
     {
-        $this->model->where('id', $threadId)->decrement('likes');
+        $this->model->where('id', $threadId)->decrement('like_count');
     }
 }

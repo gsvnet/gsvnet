@@ -7,6 +7,7 @@
 	"require": {
 		"laravel/framework": "5.0.0",
 	    "illuminate/html": "~5.0",
+        "doctrine/dbal": "~2.3",
 		"anahkiasen/former": "~4.0@dev",
 		"fzaninotto/faker": "1.4.*",
 		"intervention/image": "2.*",

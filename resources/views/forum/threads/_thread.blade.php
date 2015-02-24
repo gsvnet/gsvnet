@@ -6,10 +6,10 @@
         <div class="like-box">
             @if(Auth::check() && $thread->author_id != Auth::user()->id)
                 <button class="like-box--button {!! $thread->present()->likeClass !!}" data-type="thread" data-id="{!! $thread->id !!}">
-                    +<span class="like-box--count">{{ $thread->likes }}</span>
+                    +<span class="like-box--count">{{ $thread->like_count }}</span>
                 </button>
             @else
-                +{{ $reply->likes }}
+                +{{ $thread->like_count }}
             @endif
         </div>
         <div class="info">
