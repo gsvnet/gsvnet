@@ -42,7 +42,7 @@ class ForumRepliesController extends BaseController {
     {
         $reply = $this->replies->getById($replyId);
 
-        if(! Permission::has('threads.manage') || $reply->author_id != Auth::user()->id)
+        if(! Permission::has('threads.manage') && $reply->author_id != Auth::user()->id)
             throw new NoPermissionException;
 
         return view('forum.replies.edit', compact('reply'));
@@ -57,7 +57,7 @@ class ForumRepliesController extends BaseController {
             'reply' => Input::get('body')
         ];
 
-        if(! Permission::has('threads.manage') || $reply->author_id != Auth::user()->id)
+        if(! Permission::has('threads.manage') && $reply->author_id != Auth::user()->id)
             throw new NoPermissionException;
 
         $validator->validate($data);
@@ -71,7 +71,7 @@ class ForumRepliesController extends BaseController {
     {
         $reply = $this->replies->requireById($replyId);
 
-        if(! Permission::has('threads.manage') || $reply->author_id != Auth::user()->id)
+        if(! Permission::has('threads.manage') && $reply->author_id != Auth::user()->id)
             throw new NoPermissionException;
 
         return view('forum.replies.delete', compact('reply'));
@@ -83,7 +83,7 @@ class ForumRepliesController extends BaseController {
 
         $data = compact('replyId');
 
-        if(! Permission::has('threads.manage') || $reply->author_id != Auth::user()->id)
+        if(! Permission::has('threads.manage') && $reply->author_id != Auth::user()->id)
             throw new NoPermissionException;
 
         $validator->validate($data);
