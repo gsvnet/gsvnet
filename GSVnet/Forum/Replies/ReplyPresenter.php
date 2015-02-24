@@ -22,9 +22,7 @@ class ReplyPresenter extends Presenter
         if(! Auth::check() )
             return '';
 
-        $likes = $this->likes;
-
-        if(! $likes)
+        if($this->likes->isEmpty())
             return '';
 
         return 'liked';

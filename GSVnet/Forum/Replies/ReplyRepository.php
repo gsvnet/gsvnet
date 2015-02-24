@@ -17,11 +17,11 @@ class ReplyRepository extends EloquentRepository
 
     public function incrementLikeCount($replyId)
     {
-        $this->model->where('id', $replyId)->increment('likes');
+        $this->model->where('id', $replyId)->increment('like_count');
     }
 
     public function decrementLikeCount($replyId)
     {
-        $this->model->where('id', $replyId)->decrement('likes');
+        $this->model->where('id', $replyId)->decrement('like_count');
     }
 }

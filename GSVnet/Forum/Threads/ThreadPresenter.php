@@ -16,6 +16,17 @@ class ThreadPresenter extends Presenter
         return action('ForumThreadsController@getShowThread', [$this->slug]);
     }
 
+    public function likeClass()
+    {
+        if(! Auth::check() )
+            return '';
+
+        if($this->likes->isEmpty())
+            return '';
+
+        return 'liked';
+    }
+
     public function created_ago()
     {
         $created = new GSVCarbon($this->created_at);
@@ -127,19 +138,6 @@ class ThreadPresenter extends Presenter
             return 'new';
 
         return '';
-    }
-
-    public function likeClass()
-    {
-        if(! Auth::check() )
-            return '';
-
-        $likes = $this->likes;
-
-        if(! $likes)
-            return '';
-
-        return 'liked';
     }
 
     private function convertMarkdown($content)
