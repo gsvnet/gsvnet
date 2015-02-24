@@ -1,6 +1,8 @@
 @extends('layouts.default')
 
 @section('body-id', 'thread-create-page')
+@section('title', 'Nieuw onderwerp')
+@section('description', 'Nieuw onderwerp')
 
 @section('content')
     <div class="column-holder">

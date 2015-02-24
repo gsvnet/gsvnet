@@ -1,5 +1,8 @@
 @extends('layouts.default')
 
+@section('title', 'Reactie bewerken')
+@section('description', 'Reactie bewerken')
+
 @section('content')
 <div class="column-holder">
     <div class="header">
