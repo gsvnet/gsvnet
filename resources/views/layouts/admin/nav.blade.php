@@ -1,3 +1,9 @@
+<div class="list-group">
+    <a href="/admin" class="list-group-item {{ Request::segment(2) == '' ? 'active' : '' }}">
+        <i class='glyphicon glyphicon-home'></i> Dashboard
+    </a>
+</div>
+
 <h4>Ledenadministratie</h4>
 <div class="list-group">
 
