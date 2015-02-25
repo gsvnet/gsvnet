@@ -66,7 +66,11 @@
                             <td>{{ $profile->user->middlename }}</td>
                             <td>{{ $profile->user->lastname }}</td>
                             <td>{{ $profile->user->email }}</td>
-                            <td>{{ $profile->yearGroup->present()->nameWithYear }}</td>
+                            @if($profile->yearGroup)
+                                <td>{{ $profile->yearGroup->present()->nameWithYear }}</td>
+                            @else
+                                <td class="text-muted">Onbekend</td>
+                            @endif
                             <td>{{ $profile->reunist == 0 ? 'Nee': 'Ja'}}</td>
                             <td class="text-muted">{{ $profile->updated_at }}</td>
                         </tr>
