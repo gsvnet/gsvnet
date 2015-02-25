@@ -29,16 +29,16 @@ class FamilyController extends AdminBaseController {
     {
         $parent = [Input::get('parentId')];
         $children = Input::get('childrenIds');
-
-        if(!is_array($children))
-            throw new ModelNotFoundException();
-
         $user = $this->users->byId($userId);
-        $parentId = $this->users->filterExistingIds($parent);
-        $childrenIds = $this->users->filterExistingIds($children);
 
+        if(is_array($children))
+        {
+            $childrenIds = $this->users->filterExistingIds($children);
+            $user->children()->sync($childrenIds);
+        }
+
+        $parentId = $this->users->filterExistingIds($parent);
         $user->parents()->sync($parentId);
-        $user->children()->sync($childrenIds);
 
         $message = '<strong>Geukt!</strong>';
         return redirect()->back()->withMessage($message);
