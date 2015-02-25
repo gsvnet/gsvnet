@@ -40,7 +40,7 @@ class FamilyController extends AdminBaseController {
         $parentId = $this->users->filterExistingIds($parent);
         $user->parents()->sync($parentId);
 
-        $message = '<strong>Geukt!</strong>';
+        $message = '<strong>Gelukt!</strong>';
         return redirect()->back()->withMessage($message);
     }
 }
