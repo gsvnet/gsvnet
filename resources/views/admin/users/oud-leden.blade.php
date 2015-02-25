@@ -50,6 +50,7 @@
                         <th>Email</th>
                         <th>Jaarverband</th>
                         <th>Reunist?</th>
+                        <th>Familie</th>
                         <th>Laatst bijgewerkt</th>
                     </tr>
                     </thead>
@@ -72,6 +73,7 @@
                                 <td class="text-muted">Onbekend</td>
                             @endif
                             <td>{{ $profile->reunist == 0 ? 'Nee': 'Ja'}}</td>
+                            <td><a href="{{ action('Admin\FamilyController@index', [$profile->user->id]) }}" class="btn-xs btn-primary"><i class="fa fa-child"></i></a></td>
                             <td class="text-muted">{{ $profile->updated_at }}</td>
                         </tr>
                     @endforeach

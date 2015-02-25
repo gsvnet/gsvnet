@@ -144,6 +144,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->hasMany('GSVnet\Forum\Threads\Thread');
     }
 
+    public function parents()
+    {
+        return $this->belongsToMany('GSVnet\Users\User', 'family_relations', 'child_id', 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->belongsToMany('GSVnet\Users\User', 'family_relations', 'parent_id', 'child_id');
+    }
+
     /**
      * Type 2 and 3 are members
      */

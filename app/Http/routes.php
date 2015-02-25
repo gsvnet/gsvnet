@@ -123,7 +123,8 @@ Route::group([
             Route::get('/oud-leden',  'UsersController@showFormerMembers');
         });
 
-        Route::resource('/gebruikers',      'UsersController');
+        Route::resource('gebruikers', 'UsersController');
+        Route::resource('gebruikers.family', 'FamilyController');
     });
 
     // Senates
@@ -173,6 +174,9 @@ Route::group(['prefix' => 'forum', 'middleware' => ['auth', 'approved']], functi
 
 Route::get('preview', 'ForumApiController@preview')->middleware('auth');
 
+Route::group(['prefix' => 'api', 'before' => 'has:member-or-former-member', 'middleware' => ['auth', 'approved']], function() {
+    Route::get('search/members', 'ApiController@members');
+});
 
 // Forum index, search, show comment, show thread
 Route::get('forum',      'ForumThreadsController@getIndex');

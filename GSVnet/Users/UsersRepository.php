@@ -92,6 +92,11 @@ class UsersRepository {
         return User::orderBy('created_at', 'DESC')->paginate($amount);
     }
 
+    public function filterExistingIds(array $ids)
+    {
+        return User::whereIn('id', $ids)->lists('id');
+    }
+
     /**
     * Create user
     *
