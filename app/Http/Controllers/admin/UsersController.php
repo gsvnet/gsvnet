@@ -1,9 +1,11 @@
 <?php namespace Admin;
 
 use GSVnet\Newsletters\NewsletterList;
+use GSVnet\Users\Profiles\ProfilesRepository;
 use GSVnet\Users\User;
 use GSVnet\Users\UserTransformer;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Config;
 use View, Input, Redirect, Event;
 
 use GSVnet\Users\UsersRepository;
@@ -22,6 +24,7 @@ class UsersController extends AdminBaseController {
     protected $profileCreatorValidator;
     protected $profileUpdaterValidator;
     protected $userManager;
+    private $profiles;
 
     public function __construct(
         UserManager $userManager,
@@ -29,6 +32,7 @@ class UsersController extends AdminBaseController {
         AdminProfileCreatorValidator $profileCreatorValidator,
         AdminProfileUpdaterValidator $profileUpdaterValidator,
         UsersRepository $users,
+        ProfilesRepository $profiles,
         YearGroupRepository $yearGroups)
     {
         $this->userManager = $userManager;
@@ -37,6 +41,7 @@ class UsersController extends AdminBaseController {
         $this->profileUpdaterValidator = $profileUpdaterValidator;
         $this->users = $users;
         $this->yearGroups = $yearGroups;
+        $this->profiles = $profiles;
 
         $this->beforeFilter('has:users.manage', ['except' => ['index', 'showGuests', 'showPotentials', 'showMembers', 'showFormerMembers']]);
 
@@ -52,44 +57,84 @@ class UsersController extends AdminBaseController {
 
     public function showGuests()
     {
-        $users = $this->users->paginateWhereType(0, 300);
+        $users = $this->users->paginateWhereType(User::VISITOR, 300);
 
         return view('admin.users.index')->with('users', $users);
     }
 
     public function showPotentials()
     {
-        $users = $this->users->paginateWhereType(1, 300);
+        $users = $this->users->paginateWhereType(User::POTENTIAL, 300);
 
         return view('admin.users.index')->with(['users' => $users]);
     }
 
     public function showMembers()
     {
-        if(Input::get('output') == 'csv')
-        {
-            $users = $this->users->getAllByType(User::MEMBER);
-            $transformer = new UserTransformer;
-            return response()->csv($transformer->batchCsv($users), 'leden.csv');
-        }
+        $search = Input::get('zoekwoord', '');
+        $type = User::MEMBER;
+        $regions = Config::get('gsvnet.regions');
+        $perPage = 300;
 
-        $users = $this->users->paginateWhereType(User::MEMBER, 300);
+        // Search on region
+        if (!($region = Input::get('regio') and array_key_exists($region, $regions)))
+            $region = null;
 
-        return view('admin.users.index')->with('users',$users);
+        // Enable search on yeargroup
+        if (!($yearGroup = Input::get('jaarverband') and $this->yearGroups->exists($yearGroup)))
+            $yearGroup = null;
+
+        $profiles = $this->profiles->searchAndPaginate($search, $region, $yearGroup, $type, $perPage);
+        $yearGroups = $this->yearGroups->all();
+
+        return view('admin.users.leden')->with('profiles', $profiles)
+            ->with('yearGroups', $yearGroups)
+            ->with('regions', $regions);
     }
 
     public function showFormerMembers()
     {
-        if(Input::get('output') == 'csv')
-        {
-            $users = $this->users->getAllByType(User::FORMERMEMBER);
-            $transformer = new UserTransformer;
-            return response()->csv($transformer->batchCsv($users), 'oud-leden.csv');
-        }
+        $search = Input::get('zoekwoord', '');
+        $regions = Config::get('gsvnet.regions');
+        $type = User::FORMERMEMBER;
+        $perPage = 300;
+        $reunistInput = Input::get('reunist');
+        $reunist = null;
 
-        $users = $this->users->paginateWhereType(3, 300);
+        // Search on region
+        if (!($region = Input::get('regio') and array_key_exists($region, $regions)))
+            $region = null;
 
-        return view('admin.users.index')->with('users', $users);
+        // Enable search on yeargroup
+        if (!($yearGroup = Input::get('jaarverband') and $this->yearGroups->exists($yearGroup)))
+            $yearGroup = null;
+
+        // Search for reunists?
+        if($reunistInput == 'ja')
+            $reunist = true;
+        if($reunistInput == 'nee')
+            $reunist = false;
+
+        $profiles = $this->profiles->searchAndPaginate($search, $region, $yearGroup, $type, $perPage, $reunist);
+        $yearGroups = $this->yearGroups->all();
+
+        return view('admin.users.oud-leden')->with('profiles', $profiles)
+            ->with('yearGroups', $yearGroups)
+            ->with('regions', $regions);
+    }
+
+    public function exportFormerMembers()
+    {
+        $users = $this->users->getAllByType(User::FORMERMEMBER);
+        $transformer = new UserTransformer;
+        return response()->csv($transformer->batchCsv($users), 'oud-leden.csv');
+    }
+
+    public function exportMembers()
+    {
+        $users = $this->users->getAllByType(User::MEMBER);
+        $transformer = new UserTransformer;
+        return response()->csv($transformer->batchCsv($users), 'leden.csv');
     }
 
     public function create()
