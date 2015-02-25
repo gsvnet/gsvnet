@@ -28,6 +28,11 @@ class ProfilesRepository {
         return $this->search($search, $region, $yearGroup, $type, $reunist)->paginate($amount);
     }
 
+    public function searchLimit($search, $region = null, $yearGroup = null, $type = 2, $amount = 20, $reunist = null)
+    {
+        return $this->search($search, $region, $yearGroup, $type, $reunist)->take($amount)->get();
+    }
+
     /**
      *   Search for users + profiles
      *
@@ -39,7 +44,7 @@ class ProfilesRepository {
      *
      * @return UserProfile[]
      */
-    private function search($keyword = '', $region = null, $yearGroup = null, $type = 2, $reunist = null)
+    public function search($keyword = '', $region = null, $yearGroup = null, $type = 2, $reunist = null)
     {
         // Initialize basic query
         $query = UserProfile::with('user', 'yearGroup')->join('users', function($join) use ($type) {

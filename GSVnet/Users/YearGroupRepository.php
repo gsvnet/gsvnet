@@ -1,5 +1,7 @@
 <?php namespace GSVnet\Users;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 class YearGroupRepository {
 
     /**
@@ -25,7 +27,7 @@ class YearGroupRepository {
         {
             $this->byId($id);
         }
-        catch (Illuminate\Database\Eloquent\ModelNotFoundException $e)
+        catch (ModelNotFoundException $e)
         {
             return false;
         }

@@ -16,16 +16,39 @@
 				{!! link_to_action('UserController@showUsers', $member->profile->present()->regionName, ['region' => $member->profile->region]) !!}
 			</p>
 
-		<div class="secondary-column">
-			<p><img src="{!! $member->profile->present()->xsmallProfileImage !!}" width="102" height="102" alt="Profielfoto" /></p>
+            <div class="secondary-column">
+                <div class="content-columns">
+                    <div class="content-column">
+                        <p><img src="{!! $member->profile->present()->xsmallProfileImage !!}" width="102" height="102" alt="Profielfoto" /></p>
 
-			<h2>Adresgegevens</h2>
-			<address>
-				{{ $member->present()->fullName }} <br>
-				{{ $member->profile->address }} <br>
-				{{ $member->profile->zip_code }} {{ $member->profile->town }}
-			</address>
-		</div>
+                        <h2>Adresgegevens</h2>
+                        <address>
+                            {{ $member->present()->fullName }} <br>
+                            {{ $member->profile->address }} <br>
+                            {{ $member->profile->zip_code }} {{ $member->profile->town }}
+                        </address>
+                    </div>
+                    <div class="content-column">
+                        <h2>Pa en ma</h2>
+                        <ul class="list secondary-menu">
+                            @forelse($member->parents as $parent)
+                                <li>{!! link_to_action('UserController@showUser', $parent->present()->fullName, [$parent->id]) !!}</li>
+                            @empty
+                                <li>Onbekend</li>
+                            @endforelse
+                        </ul>
+
+                        <h2>Kinderen</h2>
+                        <ul class="list secondary-menu">
+                            @forelse($member->children as $child)
+                                <li>{!! link_to_action('UserController@showUser', $child->present()->fullName, [$child->id]) !!}</li>
+                            @empty
+                                <li>Kinderloos</li>
+                            @endforelse
+                        </ul>
+                    </div>
+                </div>
+            </div>
 		@endif
 		<div class="main-content">
 			<div class="content-columns">
