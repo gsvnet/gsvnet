@@ -19,7 +19,7 @@
     <div class="control-group">
         <label for="childrenIds" class="control-label">Kinderen</label>
         <div class="controls">
-            <select id="childrenIds" name="childrenIds[]">
+            <select id="childrenIds" name="childrenIds[]" multiple="multiple">
                 @foreach($children as $child)
                     <option value="{{$child->id}}" selected="selected">{{$child->present()->fullName}}</option>
                 @endforeach
