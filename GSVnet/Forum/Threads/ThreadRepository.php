@@ -80,7 +80,16 @@ class ThreadRepository extends EloquentRepository
         // Include removed ones if permissions allow
         if ( Permission::has('threads.manage'))
         {
-            $query = $query->withTrashed();
+            $query->withTrashed();
+        }
+
+        if ( Auth::check() )
+        {
+            $id = Auth::user()->id;
+            $query->with(['likes' => function($q) use ($id)
+            {
+                $q->where('user_id', $id);
+            }]);
         }
 
         return $query->first();

@@ -60,6 +60,24 @@ class UsersRepository {
             ->paginate($amount);
     }
 
+    public function paginateFormerMembersWithProfile($amount)
+    {
+        return User::orderBy('lastname', 'ASC')
+            ->orderBy('firstname', 'ASC')
+            ->where('type', User::FORMERMEMBER)
+            ->with('profile')
+            ->paginate($amount);
+    }
+
+    public function paginateMembersWithProfile($amount)
+    {
+        return User::orderBy('lastname', 'ASC')
+            ->orderBy('firstname', 'ASC')
+            ->where('type', User::MEMBER)
+            ->with('profile')
+            ->paginate($amount);
+    }
+
     public function getAllByType($type)
     {
         return User::with('profile.yearGroup')

@@ -19,12 +19,13 @@ class ProfilesRepository {
      * @param int $yearGroup
      * @param int|array $type
      * @param int $amount
+     * @param null $reunist
      *
      * @return UserProfile[]
      */
-    public function searchAndPaginate($search, $region = null, $yearGroup = null, $type = 2, $amount = 20)
+    public function searchAndPaginate($search, $region = null, $yearGroup = null, $type = 2, $amount = 20, $reunist = null)
     {
-        return $this->search($search, $region, $yearGroup, $type)->paginate($amount);
+        return $this->search($search, $region, $yearGroup, $type, $reunist)->paginate($amount);
     }
 
     /**
@@ -34,10 +35,11 @@ class ProfilesRepository {
      * @param int $region
      * @param int $yearGroup
      * @param int $type
+     * @param null $reunist
      *
      * @return UserProfile[]
      */
-    private function search($keyword = '', $region = null, $yearGroup = null, $type = 2)
+    private function search($keyword = '', $region = null, $yearGroup = null, $type = 2, $reunist = null)
     {
         // Initialize basic query
         $query = UserProfile::with('user', 'yearGroup')->join('users', function($join) use ($type) {
@@ -59,19 +61,25 @@ class ProfilesRepository {
             $words = explode(' ', $keyword);
             $search = '*' . implode('* *', $words) . '*';
 
-            $query = $query->searchNameAndPhone($search);
+            $query->searchNameAndPhone($search);
         }
 
         // Search for members inside region if region is valid
         if (isset($region))
         {
-            $query = $query->where('region', '=', $region);
+            $query->where('region', '=', $region);
         }
 
         // Search for members inside region if region is valid
         if (isset($yearGroup))
         {
-            $query = $query->where('year_group_id', '=', $yearGroup);
+            $query->where('year_group_id', '=', $yearGroup);
+        }
+
+
+        if (isset($reunist))
+        {
+            $query->where('reunist', $reunist);
         }
 
         // Retrieve results
