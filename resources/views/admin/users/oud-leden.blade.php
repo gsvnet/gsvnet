@@ -4,7 +4,7 @@
     <h2>Oud-leden van de GSV</h2>
 
     <div class="row">
-        <div class="col-xs-12 col-md-4 col-md-push-8">
+        <div class="col-xs-12 col-md-3 col-md-push-9">
             <h3>Zoeken</h3>
             {!! Former::open_vertical()->method('GET') !!}
             {!! Former::text('zoekwoord')->placeholder('Henk') !!}
@@ -38,7 +38,7 @@
             {!! Former::close() !!}
         </div>
 
-        <div class="col-xs-12 col-md-8 col-md-pull-4">
+        <div class="col-xs-12 col-md-9 col-md-pull-3">
             <div class="table-responsive">
                 <table class="table table-striped table-hover sort-table">
                     <thead>
