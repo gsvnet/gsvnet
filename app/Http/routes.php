@@ -93,6 +93,9 @@ Route::group([
     Route::resource('albums.photo', 'PhotoController',  ['except' => ['index', 'create']]);
     Route::resource('files',        'FilesController');
 
+    Route::get('/users/oudleden.csv', 'UsersController@exportFormerMembers');
+    Route::get('/users/leden.csv', 'UsersController@exportMembers');
+
     // Committees
     Route::group(['before' => 'has:committees.manage'], function() {
 
