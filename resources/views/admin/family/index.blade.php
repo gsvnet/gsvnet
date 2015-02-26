@@ -32,7 +32,6 @@
 
 @section('javascripts')
     @parent
-    <script src="//cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.0/js/standalone/selectize.js"></script>
     <script>
         var selectionOptions = {
             valueField: 'id',
@@ -71,10 +70,4 @@
         $('#childrenIds').selectize(selectionOptions);
         $('#parentId').selectize(selectionOptions);
     </script>
-@stop
-
-@section('stylesheets')
-    @parent
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.0/css/selectize.min.css" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.0/css/selectize.bootstrap3.min.css" />
 @stop

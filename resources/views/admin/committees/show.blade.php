@@ -27,7 +27,7 @@
                     ->method('POST') !!}
 
                 {!! Former::hidden('committee_id')->value($committee->id) !!}
-                {!! Former::text('member')->placeholder('Naam lid')->id('add-user')->label('Lid')->required() !!}
+                {!! Former::select('member')->placeholder('Naam lid')->id('add-user')->label('Lid')->required() !!}
                 {!! Former::date('start_date')->label('Geïnstalleerd op')->help('jjjj-mm-dd')->required() !!}
                 {!! Former::checkbox('currently_member')->value('1')->text('Momenteel actief?')->label(null)->checked(); !!}
                 {!! Former::date('end_date')->label('Gedechargeerd op')->help('jjjj-mm-dd. Je mag dit veld leeg laten als degene nog niet gedechargeerd is') !!}
@@ -76,91 +76,41 @@
 
 @section('javascripts')
     @parent
-    <style>
-.twitter-typeahead .tt-hint {
-  color: #999999;
-}
-.twitter-typeahead .tt-input {
-  z-index: 2;
-}
-.twitter-typeahead .tt-input[disabled],
-.twitter-typeahead .tt-input[readonly],
-fieldset[disabled] .twitter-typeahead .tt-input {
-  cursor: not-allowed;
-  background-color: #eeeeee !important;
-}
-.tt-dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  min-width: 160px;
-  width: 100%;
-  padding: 5px 0;
-  margin: 2px 0 0;
-  list-style: none;
-  font-size: 14px;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  background-clip: padding-box;
-  *border-right-width: 2px;
-  *border-bottom-width: 2px;
-}
-.tt-dropdown-menu .tt-suggestion {
-  display: block;
-  padding: 3px 20px;
-  clear: both;
-  font-weight: normal;
-  line-height: 1.42857143;
-  color: #333333;
-  white-space: nowrap;
-}
-.tt-dropdown-menu .tt-suggestion.tt-cursor {
-  text-decoration: none;
-  outline: 0;
-  background-color: #f5f5f5;
-  color: #262626;
-}
-.tt-dropdown-menu .tt-suggestion.tt-cursor a {
-  color: #262626;
-}
-.tt-dropdown-menu .tt-suggestion p {
-  margin: 0;
-}
-    </style>
-
     <script>
-        var list = {!! $users->toJSON() !!};
-        
-        // instantiate the bloodhound suggestion engine
-        var users = new Bloodhound({
-          // De tokenizer bepaalt waarop gezocht word
-          datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.name) },
-          queryTokenizer: Bloodhound.tokenizers.whitespace,
-          local: list
-        });
+        var selectionOptions = {
+            valueField: 'id',
+            labelField: 'fullName',
+            searchField: 'fullName',
+            selectOnTab: true,
+            options: [],
+            create: false,
+            render: {
+                option: function(item, escape) {
+                    return '<div>' +
+                            '<strong class="name">' + escape(item.fullName) + '</strong> ' +
+                            '<span class="yearGroup">' + escape(item.yearGroup) + '</span>' +
+                            '</div>';
+                }
+            },
+            load: function(query, callback) {
+                if (!query.length) return callback();
+                $.ajax({
+                    url: '/api/search/members',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        zoekwoord: query
+                    },
+                    error: function() {
+                        callback();
+                    },
+                    success: function(res) {
+                        callback(res);
+                    }
+                });
+            }
+        };
 
-        // initialize the bloodhound suggestion engine
-        users.initialize();
-
-        $('#add-user').typeahead(null, {
-          name: 'twitter-oss',
-          // displayKey: 'firstname',
-          displayKey: function(d) { return d.name },
-          source: users.ttAdapter(),
-          templates: {
-            suggestion: Handlebars.compile([
-              '<p class="user-fullname">@{{name}}</p>',
-            ].join(''))
-          }
-        });
-
-        $('#add-user').on("typeahead:selected typeahead:autocompleted", function(e, d) {
-            $('#add-user-id').val(d.id);
-        });
+        $('#add-user').selectize(selectionOptions);
     </script>
 @stop
