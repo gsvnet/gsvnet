@@ -31,7 +31,8 @@ class RegisterUserCommandHandler {
 
         $this->users->save($user);
 
-        if($user->type == User::FORMERMEMBER || $user->type == User::MEMBER)
+        // Create a profile for potentials, members and former members
+        if($user->type != User::VISITOR)
             $this->profiles->createProfileFor($user);
 
         event(new UserWasRegistered($user));
