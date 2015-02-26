@@ -1,4 +1,12 @@
-{!! Former::select('region')->label('Gebruikerssoort')->options(Config::get('gsvnet.regions'))->placeholder('Geen') !!}
+<div class="form-group">
+    <label for="region" class="control-label">Regio</label>
+    <select class="form-control" id="region" name="region">
+        <option value="onbekend">Geen</option>
+        @foreach(Config::get('gsvnet.regions') as $id => $name)
+            <option value="{{$id}}" {!! $profile->region == $id ? 'selected="selected"' : '' !!}>{{$name}}</option>
+        @endforeach
+    </select>
+</div>
 {!! Former::select('year_group_id')->label('Jaarverband')->fromQuery($yearGroups, 'name', 'id') !!}
 {!! Former::select('reunist')->text('Reunist')->options(['0' => 'Nee', '1' => 'Ja']) !!}
 

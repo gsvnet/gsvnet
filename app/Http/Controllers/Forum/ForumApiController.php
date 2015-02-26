@@ -1,8 +1,8 @@
 <?php
-use GSV\Commands\DislikeReplyCommand;
-use GSV\Commands\DislikeThreadCommand;
-use GSV\Commands\LikeReplyCommand;
-use GSV\Commands\LikeThreadCommand;
+use GSV\Commands\Forum\DislikeReplyCommand;
+use GSV\Commands\Forum\DislikeThreadCommand;
+use GSV\Commands\Forum\LikeReplyCommand;
+use GSV\Commands\Forum\LikeThreadCommand;
 use GSVnet\Core\Exceptions\ValidationException;
 use GSVnet\Forum\Replies\DislikeReplyValidator;
 use GSVnet\Forum\Replies\LikeReplyValidator;

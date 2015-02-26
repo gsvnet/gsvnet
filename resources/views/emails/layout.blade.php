@@ -78,7 +78,7 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
 			color: purple !important; /* Preferably not the same color as the normal header link color. There is limited support for psuedo classes in email clients, this was added just for good measure. */
 		}
 
-		h1 {font-size:60px;font-family:'PT Sans', Corbel, 'Helvetica Neue', Arial, sans-serif;line-height:60px;}
+		h1 {font-size:54px;font-family:'PT Sans', Corbel, 'Helvetica Neue', Arial, sans-serif;line-height:60px;}
 		h2 {font-size:36px;font-family:'PT Sans', Corbel, 'Helvetica Neue', Arial, sans-serif;margin-bottom:15px;line-height:36px;}
 
 		/** Outlook 07, 10 Padding issue: These "newer" versions of Outlook add some padding around table cells potentially throwing off your perfectly pixeled table.  The issue can cause added space and also throw off borders completely.  Use this fix in your header or inline to safely fix your table woes.

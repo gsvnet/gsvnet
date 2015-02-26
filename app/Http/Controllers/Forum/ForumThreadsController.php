@@ -1,9 +1,9 @@
 <?php
 
-use GSV\Commands\DeleteThreadCommand;
-use GSV\Commands\EditThreadCommand;
-use GSV\Commands\StartThreadCommand;
-use GSV\Commands\VisitThreadCommand;
+use GSV\Commands\Forum\DeleteThreadCommand;
+use GSV\Commands\Forum\EditThreadCommand;
+use GSV\Commands\Forum\StartThreadCommand;
+use GSV\Commands\Forum\VisitThreadCommand;
 use GSV\Http\Requests\StartThreadValidator;
 use GSVnet\Forum\Replies\ReplyRepository;
 use GSVnet\Forum\Threads\ThreadRepository;

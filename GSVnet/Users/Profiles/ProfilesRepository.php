@@ -188,4 +188,9 @@ class ProfilesRepository {
 
         return $profile;
     }
+
+    public function createProfileFor(User $user)
+    {
+        $user->profile()->save(UserProfile::create([]));
+    }
 }

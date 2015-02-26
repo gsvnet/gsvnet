@@ -1,17 +1,16 @@
 <?php namespace GSVnet\Users;
 
-use Config;
 use Carbon\Carbon;
 use Cache;
+use GSVnet\Core\BaseRepository;
 
-class UsersRepository {
+class UsersRepository extends BaseRepository {
 
-    /**
-     * Get by id
-     *
-     * @param int $id
-     * @return Album
-     */
+    function __construct(User $model)
+    {
+        $this->model = $model;
+    }
+
     public function byId($id)
     {
         return User::findOrFail($id);

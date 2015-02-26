@@ -24,6 +24,7 @@ class EventServiceProvider extends ServiceProvider {
 		parent::boot($events);
 
         Event::subscribe('GSV\Handlers\Events\ThreadEventHandler');
+        Event::subscribe('GSV\Handlers\Events\UserEventHandler');
 	}
 
 }

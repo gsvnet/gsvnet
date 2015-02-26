@@ -12,7 +12,7 @@ class UserMailer extends Mailer {
     public function registered($user)
     {
         $data = [
-            'fullname' => $user->present()->fullName,
+            'fullName' => $user->present()->fullName,
             'user' => $user
         ];
         
