@@ -6,7 +6,6 @@
 
 <h4>Ledenadministratie</h4>
 <div class="list-group">
-
     @if (Permission::has('users.show'))
         <a href="{{ URL::action('Admin\UsersController@showMembers') }}" class="list-group-item {{ Request::segment(3) == 'leden' ? 'active' : '' }}">
             <i class='glyphicon glyphicon-user'></i> Leden
@@ -18,6 +17,10 @@
 
         <a href="{{ URL::action('Admin\UsersController@showPotentials') }}" class="list-group-item {{ Request::segment(3) == 'novieten' ? 'active' : '' }}">
             <i class='glyphicon glyphicon-user'></i> Novieten
+        </a>
+
+        <a href="{{ URL::action('Admin\UsersController@create') }}" class="list-group-item {{ Request::segment(3) == 'create' ? 'active' : '' }}">
+            <i class='glyphicon glyphicon-user'></i> Gebruiker registreren
         </a>
     @endif
 </div>

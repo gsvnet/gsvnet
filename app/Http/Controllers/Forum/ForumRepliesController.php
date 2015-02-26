@@ -1,8 +1,8 @@
 <?php
 
-use GSV\Commands\DeleteReplyCommand;
-use GSV\Commands\EditReplyCommand;
-use GSV\Commands\ReplyToThreadCommand;
+use GSV\Commands\Forum\DeleteReplyCommand;
+use GSV\Commands\Forum\EditReplyCommand;
+use GSV\Commands\Forum\ReplyToThreadCommand;
 use GSV\Http\Requests\DeleteReplyValidator;
 use GSV\Http\Requests\EditReplyValidator;
 use GSV\Http\Requests\ReplyToThreadValidator;

@@ -23,55 +23,60 @@
 
             {!! Former::close() !!}
         </div>
-        <div class="col-xs-12 col-md-6">
-            <h2>Profielgegevens bewerken</h2>
-            @if ($profile)
-                {!!
-                    Former::vertical_open()
-                        ->action(action('Admin\UsersController@updateProfile', $user->id))
-                        ->method('PUT')
-                !!}
-                {!! Former::populate( $profile ) !!}
-                    @include('admin.users._profile')
 
-                    <button type='submit' class='btn btn-success'>
-                        <i class="glyphicon glyphicon-ok"></i> Profiel bijwerken
-                    </button>
+        @if($user->wasOrIsMember())
+            <div class="col-xs-12 col-md-6">
+                <h2>Profielgegevens bewerken</h2>
+                @if ($profile)
+                    {!!
+                        Former::vertical_open()
+                            ->action(action('Admin\UsersController@updateProfile', $user->id))
+                            ->method('PUT')
+                    !!}
+                    {!! Former::populate( $profile ) !!}
+                        @include('admin.users._profile')
 
-                    <a class='btn btn-default' href="{{ URL::previous() }}">Terug</a>
+                        <button type='submit' class='btn btn-success'>
+                            <i class="glyphicon glyphicon-ok"></i> Profiel bijwerken
+                        </button>
 
-                {!! Former::close() !!}
-            @else
-                {!!
-                    Former::inline_open()
-                      ->action(action('Admin\UsersController@storeProfile', $user->id))
-                      ->method('POST')
-                !!}
-                    <button type='submit' class='btn btn-success'>
-                        <i class="glyphicon glyphicon-plus"></i> Maak GSV-profiel aan
-                    </button>
+                        <a class='btn btn-default' href="{{ URL::previous() }}">Terug</a>
 
-                {!! Former::close(); !!}
-            @endif
-        </div>
+                    {!! Former::close() !!}
+                @else
+                    {!!
+                        Former::inline_open()
+                          ->action(action('Admin\UsersController@storeProfile', $user->id))
+                          ->method('POST')
+                    !!}
+                        <button type='submit' class='btn btn-success'>
+                            <i class="glyphicon glyphicon-plus"></i> Maak GSV-profiel aan
+                        </button>
+
+                    {!! Former::close(); !!}
+                @endif
+            </div>
+        @endif
     </div>
 
     <hr>
 
-    <p>Profiel alleen</p>
+    @if($user->profile)
+        <p>Profiel alleen</p>
 
-    {!!
-        Former::open()
-          ->action(action('Admin\UsersController@destroyProfile', $user->id))
-          ->method('DELETE')
-    !!}
-        <button type='submit' class='btn btn-danger'>
-            <i class="glyphicon glyphicon-trash"></i> Verwijderen zijn profiel alleen
-        </button>
+        {!!
+            Former::open()
+              ->action(action('Admin\UsersController@destroyProfile', $user->id))
+              ->method('DELETE')
+        !!}
+            <button type='submit' class='btn btn-danger'>
+                <i class="glyphicon glyphicon-trash"></i> Verwijderen zijn profiel alleen
+            </button>
 
-    {!! Former::close(); !!}
+        {!! Former::close(); !!}
+    <hr>
+    @endif
 
-    <hr>       
 
     <p>Verwijder de gebruiker.</p>     
 

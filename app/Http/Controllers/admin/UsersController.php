@@ -1,10 +1,11 @@
 <?php namespace Admin;
 
-use GSVnet\Newsletters\NewsletterList;
+use GSV\Commands\Users\RegisterUserCommand;
 use GSVnet\Users\Profiles\ProfilesRepository;
+use GSVnet\Users\RegisterUserValidator;
 use GSVnet\Users\User;
 use GSVnet\Users\UserTransformer;
-use Illuminate\Http\Response;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use View, Input, Redirect, Event;
 
@@ -142,16 +143,33 @@ class UsersController extends AdminBaseController {
         return view('admin.users.create');
     }
 
-    public function store()
+    public function store(RegisterUserValidator $validator)
     {
-        $input = Input::all();
-        $input['public'] = Input::get('public', false);
+        $input = Input::only('type', 'username', 'firstname', 'middlename', 'lastname', 'email', 'password', 'password_confirmation');
+        $input['approved'] = true;
 
-        $this->validator->validate($input);
-        $user = $this->users->create($input);
+        $validator->validate($input);
 
-        $message = '<strong>' . $user->name . '</strong> is succesvol opgeslagen.';
-        return redirect()->action('Admin\UsersController@index')
+        // set random password if password is empty
+        if(empty($input['password']))
+            $input['password'] = str_random(16);
+
+        // Map to command input
+        $data = [
+            'firstName' => $input['firstname'],
+            'middleName' => $input['middlename'],
+            'lastName' => $input['lastname'],
+            'userName' => $input['username'],
+            'type' => $input['type'],
+            'email' => $input['email'],
+            'password' => $input['password'],
+            'approved' => true
+        ];
+
+        $this->dispatchFrom(RegisterUserCommand::class, new Collection($data));
+
+        $message = '<strong>Gebruiker</strong> is succesvol opgeslagen.';
+        return redirect()->action('Admin\UsersController@showGuests')
             ->withMessage($message);
     }
 
@@ -251,6 +269,10 @@ class UsersController extends AdminBaseController {
         $input = Input::only('region', 'year_group_id', 'initials', 'phone', 'address', 'zip_code', 'town', 'study', 'student_number', 'birthdate', 'church', 'gender', 'parent_phone', 'parent_address', 'parent_zip_code', 'parent_town');
         $input['user_id'] = $id;
         $input['reunist'] = Input::get('reunist', false) == '1';
+
+        if(! array_key_exists($input['region'], Config::get('gsvnet.regions')))
+            $input['region'] = null;
+
         $this->profileUpdaterValidator->validate($input);
 
         $user = $this->users->byId($id);
