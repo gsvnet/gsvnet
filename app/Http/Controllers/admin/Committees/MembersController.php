@@ -35,7 +35,7 @@ class MembersController extends AdminBaseController {
 
     public function store()
     {
-        $input = Input::only('member_id', 'committee_id', 'start_date', 'end_date');
+        $input = Input::only('member', 'committee_id', 'start_date', 'end_date');
         $input['currently_member'] = Input::get('currently_member', '0');
 
         $this->creatorValidator->validate($input);
@@ -44,7 +44,7 @@ class MembersController extends AdminBaseController {
             $input['end_date'] = null;
 
         $committee = $this->committees->byId($input['committee_id']);
-        $member = $this->users->byId($input['member_id']);
+        $member = $this->users->byId($input['member']);
 
         $this->committeeMembership->create($member, $committee, $input);
 

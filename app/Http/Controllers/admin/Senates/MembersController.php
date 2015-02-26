@@ -26,11 +26,11 @@ class MembersController extends AdminBaseController {
     {
         $input = Input::all();
 
-        $member_id = $input['member_id'];
+        $member_id = $input['member'];
         $senate = $this->senates->byId($senate);
         $member = $this->users->byId($member_id);
 
-        $senate->members()->attach($input['member_id'],  [
+        $senate->members()->attach($member_id,  [
             'function' => $input['function']
         ]);
 

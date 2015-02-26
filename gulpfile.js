@@ -54,7 +54,7 @@ gulp.task('backend-scripts', function() {
   return gulp.src([
       'resources/assets/components/javascripts/jquery-1.10.1.min.js',
       'resources/assets/components/javascripts/bootstrap.js',
-      'resources/assets/components/javascripts/typeahead.js',
+      'resources/assets/components/javascripts/selectize.0.12.0.js',
       'resources/assets/components/javascripts/dropzone.js',
       'resources/assets/components/javascripts/jquery.tablesorter.min.js',
       'resources/assets/back/javascripts/multi-upload.js',
@@ -63,6 +63,18 @@ gulp.task('backend-scripts', function() {
     .pipe(concat("admin.js"))
     .pipe(uglify())
     .pipe(gulp.dest('public/build-javascripts/'))
+});
+
+gulp.task('backend-css', function() {
+   return gulp.src([
+       'resources/assets/components/css/selectize.min.css',
+       'resources/assets/components/css/selectize.bootstrap3.min.css',
+       'resources/assets/back/css/admin.css'
+   ])
+   .pipe(concat("admin.css"))
+   .pipe(minify())
+   .pipe(autoprefixer())
+   .pipe(gulp.dest('public/stylesheets/'));
 });
 
 gulp.task('default', ['scripts', 'css'], function(){
