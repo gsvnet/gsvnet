@@ -20,7 +20,7 @@
         </a>
 
         <a href="{{ URL::action('Admin\UsersController@create') }}" class="list-group-item {{ Request::segment(3) == 'create' ? 'active' : '' }}">
-            <i class='glyphicon glyphicon-user'></i> Gebruiker registreren
+            <i class="fa fa-plus"></i> Gebruiker &amp; leden registreren
         </a>
     @endif
 </div>
@@ -34,21 +34,21 @@
     </a>
     @endif
 
-    @if (Permission::has('committees.manage'))
-    <a href="{{ URL::action('Admin\CommitteeController@index') }}" class="list-group-item {{ Request::segment(2) == 'commissies' ? 'active' : '' }}">
-        <i class='glyphicon glyphicon-list-alt'></i> Commissies
-    </a>
-    @endif
-
     @if (Permission::has('events.manage'))
-    <a href="{{ URL::action('Admin\EventController@index') }}" class="list-group-item {{ Request::segment(2) == 'events' ? 'active' : '' }}">
-        <i class='glyphicon glyphicon-calendar'></i> Activiteiten
-    </a>
+        <a href="{{ URL::action('Admin\EventController@index') }}" class="list-group-item {{ Request::segment(2) == 'events' ? 'active' : '' }}">
+            <i class='glyphicon glyphicon-calendar'></i> Activiteiten
+        </a>
     @endif
 
     @if (Permission::has('photos.manage'))
-    <a href="{{ URL::action('Admin\AlbumController@index') }}" class="list-group-item {{ Request::segment(2) == 'albums' ? 'active' : '' }}">
-        <i class='glyphicon glyphicon-picture'></i> Albums
+        <a href="{{ URL::action('Admin\AlbumController@index') }}" class="list-group-item {{ Request::segment(2) == 'albums' ? 'active' : '' }}">
+            <i class='glyphicon glyphicon-picture'></i> Albums
+        </a>
+    @endif
+
+    @if (Permission::has('committees.manage'))
+    <a href="{{ URL::action('Admin\CommitteeController@index') }}" class="list-group-item {{ Request::segment(2) == 'commissies' ? 'active' : '' }}">
+        <i class='glyphicon glyphicon-list-alt'></i> Commissies
     </a>
     @endif
 
