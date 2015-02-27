@@ -40,7 +40,6 @@
                             <th>Voornaam</th>
                             <th>tussenvoegsel</th>
                             <th>Achternaam</th>
-                            <th>Email</th>
                             <th>Jaarverband</th>
                             <th class="sorttable_nosort">Familie</th>
                             <th>Laatst bijgewerkt</th>
@@ -58,7 +57,6 @@
                             <td>{{ $profile->user->firstname }}</td>
                             <td>{{ $profile->user->middlename }}</td>
                             <td>{{ $profile->user->lastname }}</td>
-                            <td>{{ $profile->user->email }}</td>
                             <td>{{ $profile->yearGroup->present()->nameWithYear }}</td>
                             <td><a href="{{ action('Admin\FamilyController@index', [$profile->user->id]) }}" class="btn-xs btn-primary"><i class="fa fa-child"></i></a></td>
                             <td class="text-muted">{{ $profile->updated_at }}</td>

@@ -49,7 +49,6 @@
                         <th>Voornaam</th>
                         <th>tussenvoegsel</th>
                         <th>Achternaam</th>
-                        <th>Email</th>
                         <th>Jaarverband</th>
                         <th>Reunist?</th>
                         <th>Familie</th>
@@ -68,7 +67,6 @@
                             <td>{{ $profile->user->firstname }}</td>
                             <td>{{ $profile->user->middlename }}</td>
                             <td>{{ $profile->user->lastname }}</td>
-                            <td>{{ $profile->user->email }}</td>
                             @if($profile->yearGroup)
                                 <td>{{ $profile->yearGroup->present()->nameWithYear }}</td>
                             @else
