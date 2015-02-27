@@ -34,7 +34,9 @@
                     @endforeach
                 </select>
             </div>
-            {!! Former::submit('Zoeken') !!}
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-search"></i> Filteren
+            </button>
             {!! Former::close() !!}
         </div>
 
