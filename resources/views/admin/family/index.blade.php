@@ -26,7 +26,9 @@
             </select>
         </div>
     </div>
-    {!! Former::submit('Opslaan') !!}
+    <button type="submit" class="btn btn-success">
+        <i class="fa fa-check"></i> Opslaan
+    </button>
     {!! Former::close() !!}
 @stop
 
