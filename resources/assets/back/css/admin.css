@@ -201,3 +201,7 @@ thead .sorter-false {
 .tablesorter-header-inner {
     padding-right: 1em;
 }
+
+.table-responsive {
+    overflow-x: auto;
+}
