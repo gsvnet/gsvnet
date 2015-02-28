@@ -51,14 +51,14 @@ class UsersController extends AdminBaseController {
 
     public function index()
     {
-        $users = $this->users->paginateLatelyRegistered(20);
+        $users = $this->users->paginateLatelyRegistered(50);
 
         return view('admin.users.index')->with('users', $users);
     }
 
     public function showGuests()
     {
-        $users = $this->users->paginateLatestRegisteredGuests(300);
+        $users = $this->users->paginateLatestRegisteredGuests(50);
 
         return view('admin.users.visitors')->with('users', $users);
     }
