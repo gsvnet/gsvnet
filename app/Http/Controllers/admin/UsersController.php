@@ -58,16 +58,16 @@ class UsersController extends AdminBaseController {
 
     public function showGuests()
     {
-        $users = $this->users->paginateWhereType(User::VISITOR, 300);
+        $users = $this->users->paginateLatestRegisteredGuests(300);
 
-        return view('admin.users.index')->with('users', $users);
+        return view('admin.users.visitors')->with('users', $users);
     }
 
     public function showPotentials()
     {
         $users = $this->users->paginateWhereType(User::POTENTIAL, 300);
 
-        return view('admin.users.index')->with(['users' => $users]);
+        return view('admin.users.potentials')->with(['users' => $users]);
     }
 
     public function showMembers()

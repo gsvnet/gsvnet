@@ -91,6 +91,13 @@ class UsersRepository extends BaseRepository {
         return User::orderBy('created_at', 'DESC')->paginate($amount);
     }
 
+    public function paginateLatestRegisteredGuests($amount)
+    {
+        return User::orderBy('created_at', 'DESC')
+            ->where('type', User::VISITOR)
+            ->paginate($amount);
+    }
+
     public function filterExistingIds(array $ids)
     {
         return User::whereIn('id', $ids)->lists('id');

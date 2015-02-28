@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h2>Alle gebruikers</h2>
+    <h2>Laatst geregistreerde forumgebruikers</h2>
 
     <div class="table-responsive">
         <table class="table table-striped table-hover sort-table">
@@ -38,19 +38,6 @@
                                 !!}
                                 <button type='submit' class='btn btn-success btn-xs'>
                                     <i class="glyphicon glyphicon-ok"></i> Registratie goedkeuren
-                                </button>
-                                {!!
-                                Former::close()
-                                !!}
-                            @endif
-                            @if ($user->isPotential())
-                                {!!
-                                Former::inline_open()
-                                ->action(action('Admin\UsersController@accept', $user->id))
-                                ->style('float: left; margin-right: 1em;')
-                                !!}
-                                <button type='submit' class='btn btn-warning btn-xs'>
-                                    <i class="glyphicon glyphicon-ok"></i> Lid installeren
                                 </button>
                                 {!!
                                 Former::close()
