@@ -1,9 +1,11 @@
 <?php namespace GSVnet\Events;
 
+use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
-class Event extends \Eloquent {
+class Event extends Model {
 
     use PresentableTrait;
     
@@ -74,6 +76,6 @@ class Event extends \Eloquent {
             $append = '-' . $i;
         }
 
-        return \Str::slug($this->title . $append);
+        return Str::slug($this->title . $append);
     }
 }
