@@ -47,7 +47,7 @@
                     <tr>
                         <th>Gebruikersnaam</th>
                         <th>Voornaam</th>
-                        <th>tussenvoegsel</th>
+                        <th>t/v</th>
                         <th>Achternaam</th>
                         <th>Jaarverband</th>
                         <th>Reunist?</th>
