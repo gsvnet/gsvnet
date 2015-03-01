@@ -4,7 +4,7 @@
             {!! $reply->author->present()->avatarDeferred(40) !!}
         </div>
         <div class="like-box">
-            @if(Auth::check() && $reply->author_id != Auth::user()->id)
+            @if(Auth::check() && $reply->author && $reply->author_id != Auth::user()->id)
                 <button class="like-box--button {!! $reply->present()->likeClass !!}" data-type="reply" data-id="{!! $reply->id !!}">
                     +<span class="like-box--count">{{ $reply->like_count }}</span>
                 </button>
@@ -13,6 +13,7 @@
             @endif
         </div>
         <div class="info">
+            @if($reply->author)
             <strong class="author">
                 @if(Permission::has('users.show'))
                     <a href="{{ $reply->author->present()->profileUrl }}">{{{ $reply->author->username }}}</a>
@@ -20,6 +21,7 @@
                     {{ $reply->author->username }}
                 @endif
             </strong>
+            @endif
             <ul class="inline-list grey">
                 <li>
                     <a href="#reactie-{{ $reply->id }}">
