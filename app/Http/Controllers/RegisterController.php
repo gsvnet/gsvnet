@@ -13,6 +13,10 @@ class RegisterController extends BaseController {
     {
         $input = Input::all();
 
+        // Very specific spam protection...
+        if($input['register-firstname'] == $input['register-middlename'] && $input['register-middlename'] == $input['register-lastname'])
+            return redirect('/');
+
         // Let the user be a visitor
         $input['type'] = 0;
 
