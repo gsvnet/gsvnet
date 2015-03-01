@@ -60,6 +60,9 @@ class UserPresenter extends Presenter
     			if($showReunist && isset($this->profile))
     				$string .= $this->profile->reunist == 1 ? ' en reünist' : ', niet reünist';
 			break;
+            case User::INTERNAL_COMMITTEE:
+                $string .= 'Commissie';
+            break;
 			default:
 				$string .= 'Onbekend';
 			break;
