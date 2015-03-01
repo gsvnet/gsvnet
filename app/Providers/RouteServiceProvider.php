@@ -1,5 +1,6 @@
 <?php namespace GSV\Providers;
 
+use GSVnet\Permissions\NoPermissionException;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Auth;
@@ -66,13 +67,13 @@ class RouteServiceProvider extends ServiceProvider {
 		Route::filter('has', function($route, $request, $permission)
 		{
 			if(! Permission::has($permission))
-				throw new \GSVnet\Permissions\NoPermissionException;
+				throw new NoPermissionException;
 		});
 
 		Route::filter('canBecomeMember', function()
 		{
 			if(Auth::check() && Auth::user()->wasOrIsMember() )
-			    throw new \GSVnet\Permissions\NoPermissionException;
+			    throw new NoPermissionException;
 		});
 	}
 
