@@ -71,7 +71,7 @@
         </div>
 
         @section('javascripts')
-            <script src="/build-javascripts/admin.js?v=1.2"></script>
+            <script src="/build-javascripts/admin.js?v=1.2.1"></script>
         @show
     </body>
 </html>
