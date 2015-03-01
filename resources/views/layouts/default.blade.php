@@ -16,6 +16,8 @@
     <meta property="og:image:width" content="600">
     <meta property="og:image:height" content="400">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
     <link rel="shortcut icon" sizes="57x57" href="http://gsvnet.nl/images/app-icons/AppIcon57x57.png">
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://gsvnet.nl/images/app-icons/AppIcon57x57.png">
     <link rel="apple-touch-icon" href="http://gsvnet.nl/images/app-icons/AppIcon60x60.png">
