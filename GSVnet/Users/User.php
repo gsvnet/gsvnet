@@ -6,6 +6,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Config;
+use Illuminate\Support\Facades\Hash;
 use Laracasts\Presenter\PresentableTrait;
 use Permission;
 
@@ -41,6 +42,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     const POTENTIAL = 1;
     const MEMBER = 2;
     const FORMERMEMBER = 3;
+    const INTERNAL_COMMITTEE = 4;
 
     /**
      * Get the unique identifier for the user.
@@ -92,7 +94,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function setPasswordAttribute($password)
     {
-        $this->attributes['password'] = \Hash::make($password);
+        $this->attributes['password'] = Hash::make($password);
     }
 
     public function committees()

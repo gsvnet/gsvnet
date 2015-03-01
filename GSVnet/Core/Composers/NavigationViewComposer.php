@@ -148,7 +148,23 @@ class NavigationViewComposer {
         else
             return;
 
-        if(array_key_exists('submenu', $this->structure[$menu]) && array_key_exists($sub, $this->structure[$menu]['submenu']))
+        // Stop if there is no sub menu
+        if(! array_key_exists('submenu', $this->structure[$menu]))
+            return;
+
+        if(empty($sub))
+        {
+            $firstItem = reset($this->structure[$menu]['submenu']);
+
+            // Set active sub element to the first submenu item
+            if($firstItem['url'] == $this->structure[$menu]['url'])
+            {
+                $this->activeSubMenu = key($this->structure[$menu]['submenu']);
+                return;
+            }
+        }
+
+        if(array_key_exists($sub, $this->structure[$menu]['submenu']))
             $this->activeSubMenu = $sub;
     }
 
@@ -201,16 +217,18 @@ class NavigationViewComposer {
                 'url' => action('EventController@showIndex')
             ],
 
-            'lid-worden' => [
+            'word-lid' => [
                 'title' => 'Word lid!',
                 'url' => action('MemberController@index'),
-                'visible' => function(){return Auth::guest() || !Auth::user()->wasOrIsMember();},
+                'visible' => function(){
+                    return Auth::guest() || Permission::has('user.become-member');
+                },
                 'submenu' => [
                     'lid-worden' => [
                         'url' => action('MemberController@index'),
                         'title' => 'Lid worden?'
                     ],
-                    'faq' => [
+                    'veel-gestelde-vragen' => [
                         'url' => action('MemberController@faq'),
                         'title' => 'Veel gestelde vragen'
                     ],

@@ -47,7 +47,7 @@
             <p>Dit jaar is het novitiaat van maandag 17 tot woensdag 26 augustus.</p>
 
             <h2 id="vragen">Meer vragen?</h2>
-            <p>Neemt contact op met de Prescie: {{HTML::mailto('prescie@gsvnet.nl')}}</p>
+            <p>Neemt contact op met de Prescie: {!! HTML::mailto('prescie@gsvnet.nl') !!}</p>
         </div>
         <div class="secondary-column">
             <ul class="secondary-menu">

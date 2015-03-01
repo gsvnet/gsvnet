@@ -99,7 +99,7 @@ return [
     ],
 
     'threads.show-private' => [
-        'type' => [User::MEMBER, User::FORMERMEMBER]
+        'type' => [User::MEMBER, User::FORMERMEMBER, User::INTERNAL_COMMITTEE]
     ],
 
     'threads.manage' => [
