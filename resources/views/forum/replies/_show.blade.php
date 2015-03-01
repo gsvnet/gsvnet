@@ -1,8 +1,10 @@
 <div class="comment _post" id="reactie-{{ $reply->id }}">
     <div class="forum-post-data">
+        @if($reply->author)
         <div class="avatar">
             {!! $reply->author->present()->avatarDeferred(40) !!}
         </div>
+        @endif
         <div class="like-box">
             @if(Auth::check() && $reply->author && $reply->author_id != Auth::user()->id)
                 <button class="like-box--button {!! $reply->present()->likeClass !!}" data-type="reply" data-id="{!! $reply->id !!}">
