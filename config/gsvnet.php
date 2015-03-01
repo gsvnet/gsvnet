@@ -13,14 +13,16 @@ return array(
 		'visitor' => 0,
 		'potential' => 1,
 		'member' => 2,
-		'formerMember' => 3
+		'formerMember' => 3,
+        'internalCommittee' => 4
 	),
 
 	'userTypesFormatted' => array(
 		0 => 'Gast',
 		1 => 'Noviet',
 		2 => 'Lid',
-		3 => 'Oud-lid'
+		3 => 'Oud-lid',
+        4 => 'Interne commissie'
 	),
 
 	'eventTypes' => array(
@@ -58,7 +60,7 @@ return array(
 
 	'events' => array(
 		'maxYear' => date('Y') + 1,
-		'minYear' => date('Y') - 2
+		'minYear' => 2013
 	),
 
 	'senateFunctions' => array(
