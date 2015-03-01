@@ -6,9 +6,9 @@ Route::get('/', ['as' => 'home',
 ]);
 
 // Login and logout routes
-Route::get('inloggen', 'SessionController@getLogin')->middleware('guest');
-Route::post('inloggen', 'SessionController@postLogin');
-Route::get('uitloggen', 'SessionController@getLogout')->middleware('auth');
+Route::get('inloggen', ['middleware' => 'guest', 'uses' => 'SessionController@getLogin']);
+Route::post('inloggen', ['middleware' => 'guest', 'uses' => 'SessionController@postLogin']);
+Route::get('uitloggen', ['middleware' => 'auth', 'uses' => 'SessionController@getLogout']);
 
 // Intern
 Route::group(['prefix' => 'intern', 'middleware' => 'auth'], function() {
@@ -172,7 +172,7 @@ Route::group(['prefix' => 'forum', 'middleware' => ['auth', 'approved']], functi
     Route::delete('threads/{id}/like', 'ForumApiController@dislikeThread');
 });
 
-Route::get('preview', 'ForumApiController@preview')->middleware('auth');
+Route::get('preview', ['middleware' => 'auth', 'uses' => 'ForumApiController@preview']);
 
 Route::group(['prefix' => 'api', 'before' => 'has:member-or-former-member', 'middleware' => ['auth', 'approved']], function() {
     Route::get('search/members', 'ApiController@members');
