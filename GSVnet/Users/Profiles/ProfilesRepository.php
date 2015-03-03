@@ -52,12 +52,9 @@ class ProfilesRepository {
         });
 
         if(is_array($type))
-        {
             $query->whereIn('users.type', $type);
-        } else
-        {
+        else
             $query->where('users.type', '=', $type);
-        }
 
         $query->orderBy('users.lastname')->orderBy('users.firstname');
 
@@ -71,21 +68,14 @@ class ProfilesRepository {
 
         // Search for members inside region if region is valid
         if (isset($region))
-        {
             $query->where('region', '=', $region);
-        }
 
         // Search for members inside region if region is valid
         if (isset($yearGroup))
-        {
             $query->where('year_group_id', '=', $yearGroup);
-        }
-
-
+        
         if (isset($reunist))
-        {
             $query->where('reunist', $reunist);
-        }
 
         // Retrieve results
         return $query;
