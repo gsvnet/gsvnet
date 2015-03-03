@@ -4,8 +4,8 @@ use GSVnet\Core\EloquentRepository;
 use GSVnet\Forum\Like;
 use Illuminate\Support\Collection;
 use GSVnet\Core\Exceptions\EntityNotFoundException;
-use Permission;
-use Auth;
+use GSVnet\Permissions\Permission;
+use Illuminate\Support\Facades\Auth;
 
 class ThreadRepository extends EloquentRepository
 {

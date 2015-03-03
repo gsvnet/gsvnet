@@ -1,6 +1,7 @@
 <?php namespace GSVnet\Forum\Threads;
 
 use DB, Permission;
+use Illuminate\Support\Facades\Auth;
 
 class ThreadSearch
 {
@@ -15,12 +16,16 @@ class ThreadSearch
     // a real search system
     public function searchPaginated($query, $perPage)
     {
-        $query = $this->model->with(['mostRecentReply', 'tags'])
-            ->where(function($q) use ($query) {
-                $q->where('subject', 'like', '%' . $query . '%')
-                  ->orWhere('body', 'like', '%' . $query . '%');
+        $id = Auth::user()->id;
+        $query = $this->model->where(function($q) use ($query) {
+            $q->where('subject', 'like', '%' . $query . '%')
+                ->orWhere('body', 'like', '%' . $query . '%');
             })
-            ->orderBy('updated_at', 'desc');
+            ->orderBy('updated_at', 'desc')
+            ->with(['mostRecentReply'])
+            ->with(['visitations' => function($q) use ($id){
+                $q->where('user_id', $id);
+            }]);
 
         // Only show public threads when the user does not
         // have permission to see private threads
