@@ -15,7 +15,6 @@ class Kernel extends HttpKernel {
 		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
-		'GSV\Http\Middleware\VerifyCsrfToken',
         'GSV\Http\Middleware\SetLoggedInCookie'
 	];
 
@@ -25,10 +24,10 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $routeMiddleware = [
+		'csrf' => 'GSV\Http\Middleware\VerifyCsrfToken',
 		'auth' => 'GSV\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'GSV\Http\Middleware\RedirectIfAuthenticated',
         'approved' => 'GSV\Http\Middleware\AccountNotApproved',
 	];
-
 }
