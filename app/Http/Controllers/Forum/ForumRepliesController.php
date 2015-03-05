@@ -24,7 +24,6 @@ class ForumRepliesController extends BaseController {
 
     public function postCreateReply(ReplyToThreadValidator $validator, $threadSlug)
     {
-
         $data = [
             'threadSlug' => $threadSlug,
             'authorId' => Auth::user()->id,
@@ -64,7 +63,7 @@ class ForumRepliesController extends BaseController {
 
         $this->dispatchFrom(EditReplyCommand::class, new Collection($data));
 
-        return redirect('/forum');
+        return redirect()->back();
     }
 
     public function getDelete($replyId)
