@@ -140,6 +140,8 @@ class ForumThreadsController extends BaseController {
             $data['public'] = true;
 
         $this->dispatchFrom(EditThreadCommand::class, $data);
+
+        return redirect()->action('ForumThreadsController@getShowThread', [$thread->slug]);
     }
 
     public function getDelete($threadId)
