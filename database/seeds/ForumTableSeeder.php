@@ -1,73 +1,111 @@
 <?php
 
+use Carbon\Carbon;
+use Faker\Factory;
+use GSVnet\Forum\Threads\Thread;
+use GSVnet\Tags\Tag;
+use GSVnet\Users\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
-class ForumTableSeeder extends Seeder implements
-    GSVnet\Forum\Threads\ThreadCreatorListener,
-    GSVnet\Forum\Replies\ReplyCreatorListener {
+class ForumTableSeeder extends Seeder {
+
+    private $time;
+    private $faker;
+    private $userIds;
+    private $numThreads = 30;
+    private $maxReplies = 50;
+
+    function __construct()
+    {
+        $this->faker = Factory::create('nl_NL');
+        $this->time = Carbon::now();
+        $this->userIds = User::lists('id');
+        $this->tagIds = Tag::lists('id');
+    }
 
     public function run()
     {
-        DB::table('forum_threads')->truncate();
-        DB::table('forum_replies')->truncate();
-        DB::table('tagged_items')->truncate();
+        $this->command->info('Bezig ' . $this->numThreads . ' topics toe te voegen met maximaal ' . $this->maxReplies . ' reacties');
 
-        $faker = Faker\Factory::create();
-        $users = GSVnet\Users\User::all(); //orderBy(DB::raw('RAND()'))->get();
-        $numThreads = 30;
-        $maxReplies = 300;
+        $threads = $this->generateThreads();
 
-        $this->command->info('Bezig '.$numThreads.' topics toe te voegen met maximaal ' . $maxReplies . ' replies');
+        $replyId = 0;
+        $replies = [];
+        $tags = [];
 
-        for($j=0; $j<$numThreads; $j++)
+        foreach ($threads as $id => $thread)
         {
-        	$tags = GSVnet\Tags\Tag::orderBy(DB::raw('RAND()'))->take(rand(1,3))->get();
-	        $thread = App::make('GSVnet\Forum\Threads\ThreadCreator')->create($this, [
-	            'subject' => $faker->text(20),
-	            'body' => $this->randomBody($faker),
-	            'author' => $faker->randomElement($users),
-	            'tags' => $tags,
-                'public' => $faker->boolean(70)
-	        ]);
-
-            // Willekeurige users geven willekeurige reacties
-            for ($i=0; $i < rand(0, $maxReplies); $i++) {
-                App::make('GSVnet\Forum\Replies\ReplyCreator')->create($this, [
-                    'body' => $this->randomBody($faker),
-                    'author' => $faker->randomElement($users),
-                ], $thread->id);
+            for ($i = 0; $i < $thread['reply_count']; $i++)
+            {
+                $replyId++;
+                $replies[] = $this->generateReply($id+1, $thread);
             }
 
-            // Show progress message
-            if ($j % 10 == 0)
-                $this->command->info(($j + 1) . " / $numThreads  threads toegevoegd");
+            $tagIds = $this->faker->randomElements($this->tagIds, 2);
+            foreach ($tagIds as $tagId)
+            {
+                $tags[] = $this->generateTag($id+1, $tagId);
+            }
+
+            // Update thread details
+            $lastReply = end($replies);
+            $threads[$id]['most_recent_reply_id'] = $replyId;
+            $threads[$id]['updated_at'] = $lastReply['created_at'];
         }
+
+        DB::table('forum_threads')->insert($threads);
+        DB::table('forum_replies')->insert($replies);
+        DB::table('tagged_items')->insert($tags);
     }
 
-    // Gewoon even wat functies
-    public function threadCreationError($errors)
+    private function generateThreads()
     {
-    	dd($errors);
+        $threads = [];
+        $date = $this->faker->dateTimeThisYear();
+
+        for($j = 0; $j < $this->numThreads; $j++)
+        {
+            $subject = $this->faker->text(20);
+
+            $threads[] = [
+                'subject' => $this->faker->text(20),
+                'body' => $this->faker->paragraphs(rand(1, 5), true),
+                'slug' => Str::slug($subject . '-' . str_random(4)),
+                'public' => $this->faker->boolean(70),
+                'author_id' => $this->faker->randomElement($this->userIds),
+                'created_at' => $date,
+                'updated_at' => $date,
+                'like_count' => 0,
+                'reply_count' => rand(0, $this->maxReplies)
+            ];
+        }
+
+        return $threads;
     }
 
-    public function threadCreated($thread)
+    private function generateReply($id, $thread)
     {
-    	return $thread;
+        $replied_on = $this->faker->dateTimeBetween($thread['created_at'], 'now');
+
+        return [
+            'body' => $this->faker->paragraphs(rand(1, 5), true),
+            'thread_id' => $id,
+            'author_id' => $this->faker->randomElement($this->userIds),
+            'created_at' => $replied_on,
+            'updated_at' => $replied_on,
+            'like_count' => 0
+        ];
     }
 
-    // Gewoon even wat functies
-    public function replyCreationError($errors)
+    private function generateTag($threadId, $tagId)
     {
-        dd($errors);
-    }
-
-    public function replyCreated($reply)
-    {
-        return $reply;
-    }
-
-    private function randomBody($faker)
-    {
-        return $faker->paragraphs(rand(1, 5), true);
+        return [
+            'thread_id' => $threadId,
+            'tag_id' => $tagId,
+            'created_at' => $this->time,
+            'updated_at' => $this->time
+        ];
     }
 }
