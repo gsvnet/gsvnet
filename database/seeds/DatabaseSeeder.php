@@ -44,9 +44,9 @@ class DatabaseSeeder extends Seeder {
         'AlbumsTableSeeder',
         'PhotosTableSeeder',
         'SenatesTableSeeder',
-        'BetaTestersTableSeeder',
         'TagSeeder',
-        'ForumTableSeeder'
+        'ForumTableSeeder',
+        'AdminUserSeeder'
     ];
 
     /**
@@ -74,7 +74,13 @@ class DatabaseSeeder extends Seeder {
     {
         foreach ($this->seeders as $seeder)
         {
+            $timeStart = microtime(true);
             $this->call($seeder);
+            $timeEnd = microtime(true);
+
+            $duration = $timeEnd - $timeStart;
+
+            $this->command->info("Duration: {$duration}s");
         }
     }
 }

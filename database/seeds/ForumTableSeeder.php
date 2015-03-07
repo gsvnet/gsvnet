@@ -15,7 +15,7 @@ class ForumTableSeeder extends Seeder {
     private $faker;
     private $userIds;
     private $numThreads = 30;
-    private $maxReplies = 50;
+    private $maxReplies = 40;
 
     function __construct()
     {
@@ -27,8 +27,6 @@ class ForumTableSeeder extends Seeder {
 
     public function run()
     {
-        $this->command->info('Bezig ' . $this->numThreads . ' topics toe te voegen met maximaal ' . $this->maxReplies . ' reacties');
-
         $threads = $this->generateThreads();
 
         $replyId = 0;
@@ -90,7 +88,7 @@ class ForumTableSeeder extends Seeder {
     private function generateReply($id, $from, $to)
     {
         $replied_on = $this->faker->dateTimeBetween($from, $to);
-        
+
         return [
             'body' => $this->faker->paragraphs(rand(1, 5), true),
             'thread_id' => $id,

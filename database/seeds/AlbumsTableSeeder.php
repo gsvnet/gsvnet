@@ -7,9 +7,6 @@ class AlbumsTableSeeder extends Seeder {
 
 	public function run()
 	{
-    	// Uncomment the below to wipe the table clean before populating
-    	DB::table('albums')->truncate();
-
         Album::create([
             'name' => 'Honden',
             'description' => 'Foto\'s van honden.',

@@ -1,6 +1,10 @@
 <?php
 
+use GSVnet\Committees\Committee;
+use GSVnet\Users\Profiles\UserProfile;
+use GSVnet\Users\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class AdminUserSeeder extends Seeder {
 
@@ -10,21 +14,20 @@ class AdminUserSeeder extends Seeder {
         $faker = Faker\Factory::create('en_US');
         $yearGroupIds = DB::table('year_groups')->lists('id');
 
-
-        $mark = GSVnet\Users\User::create(array(
-            'email'         => 'markredeman@gmail.com',
+        $mark = User::create(array(
+            'email'         => 'harmenstoppels@gmail.com',
             'password'      => 'helloworld',
-            'firstname'     => 'Mark',
-            'lastname'      => 'Redeman',
-            'middlename'    => 'Sietse',
-            'username'      => 'mredeman',
+            'firstname'     => 'Harmen',
+            'lastname'      => 'Stoppels',
+            'middlename'    => '',
+            'username'      => 'stabbles',
             'type'          => 2,
             'approved'      => true
         ));
 
-        GSVnet\Users\Profiles\UserProfile::create(array(
+        UserProfile::create(array(
             'user_id' => $mark->id,
-            'year_group_id' => $yearGroupIds[array_rand($yearGroupIds)],
+            'year_group_id' => $faker->randomElement($yearGroupIds),
             'region' => rand(1,4),
             'phone' => '050-4040544',
             'address' => 'Mooistraat 2',
@@ -42,9 +45,9 @@ class AdminUserSeeder extends Seeder {
             'parent_phone' => '0800-223344'
         ));
 
-        $startdate = $faker->dateTimeBetween('-3 years', '-1 month');
+        $startDate = $faker->dateTimeBetween('-3 years', '-1 month');
 
-        $webcie = GSVnet\Committees\Committee::where('unique_name', '=', 'webcie')->first();
-        $mark->committees()->save($webcie, array('start_date' => $startdate));
+        $webcie = Committee::where('unique_name', '=', 'webcie')->first();
+        $mark->committees()->save($webcie, ['start_date' => $startDate]);
     }
 }
