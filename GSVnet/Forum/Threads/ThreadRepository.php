@@ -59,6 +59,8 @@ class ThreadRepository extends EloquentRepository
             }]);
         }
 
+        $query->orderBy('created_at', 'asc');
+
         return $query->paginate($perPage);
     }
 

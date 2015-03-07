@@ -37,22 +37,24 @@ class ForumTableSeeder extends Seeder {
 
         foreach ($threads as $id => $thread)
         {
-            for ($i = 0; $i < $thread['reply_count']; $i++)
+            $replyId++;
+            $tagIds = $this->faker->randomElements($this->tagIds, 2);
+
+            $lastReply = $this->generateReply($id+1, $thread['created_at'], 'now');
+            $replies[] = $lastReply;
+
+            $threads[$id]['most_recent_reply_id'] = $replyId;
+            $threads[$id]['updated_at'] = $lastReply['created_at'];
+
+            for ($i = 1; $i < $thread['reply_count']; $i++, $replyId++)
             {
-                $replyId++;
-                $replies[] = $this->generateReply($id+1, $thread);
+                $replies[] = $this->generateReply($id+1, $thread['created_at'], $lastReply['created_at']);
             }
 
-            $tagIds = $this->faker->randomElements($this->tagIds, 2);
             foreach ($tagIds as $tagId)
             {
                 $tags[] = $this->generateTag($id+1, $tagId);
             }
-
-            // Update thread details
-            $lastReply = end($replies);
-            $threads[$id]['most_recent_reply_id'] = $replyId;
-            $threads[$id]['updated_at'] = $lastReply['created_at'];
         }
 
         DB::table('forum_threads')->insert($threads);
@@ -85,10 +87,10 @@ class ForumTableSeeder extends Seeder {
         return $threads;
     }
 
-    private function generateReply($id, $thread)
+    private function generateReply($id, $from, $to)
     {
-        $replied_on = $this->faker->dateTimeBetween($thread['created_at'], 'now');
-
+        $replied_on = $this->faker->dateTimeBetween($from, $to);
+        
         return [
             'body' => $this->faker->paragraphs(rand(1, 5), true),
             'thread_id' => $id,
