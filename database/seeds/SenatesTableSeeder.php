@@ -1,11 +1,19 @@
 <?php
 
+use Carbon\Carbon;
 use GSVnet\Senates\Senate;
 use GSVnet\Users\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 class SenatesTableSeeder extends Seeder {
+
+    private $time;
+
+    public function __construct()
+    {
+        $this->time = Carbon::now();
+    }
 
 	public function run()
 	{
@@ -18,18 +26,28 @@ class SenatesTableSeeder extends Seeder {
 		DB::table('senates')->insert($senates);
 
 		// Add some users
-		$senates = Senate::all();
-		$number = count($senates);
-		$users = User::take($number*5)->get();
-
+		$senateIds = Senate::lists('id');
+		$number = count($senateIds);
+		$userIds = User::take($number*5)->lists('id');
+        $memberships = [];
 		$i=0;
-		foreach($users as $user)
+
+		foreach($userIds as $userId)
 		{
-			$user->senates()->attach(
-				$senates[floor($i/5)]->id, 
-				['function' => 1 + ($i % 5)]
-			);
+            $senateIndex = floor($i/5);
+            $function = 1 + ($i % 5);
+
+            $memberships[] = [
+                'user_id' => $userId,
+                'senate_id' => $senateIds[$senateIndex],
+				'function' => $function,
+                'created_at' => $this->time,
+                'updated_at' => $this->time
+            ];
+
 			$i++;
 		}
+
+        DB::table('user_senate')->insert($memberships);
 	}
 }
