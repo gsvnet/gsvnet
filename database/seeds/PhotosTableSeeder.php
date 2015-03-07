@@ -7,12 +7,6 @@ class PhotosTableSeeder extends Seeder {
 
 	public function run()
 	{
-		// Uncomment the below to wipe the table clean before populating
-		DB::table('photos')->truncate();
-
-        $privateAlbum = Album::whereSlug('1-feest')->first();
-        $publicAlbum = Album::whereSlug('2-publiek')->first();
-
         Photo::create([
             'name' => 'Kat',
             'album_id' => 2,

@@ -2,19 +2,22 @@
 
 use GSVnet\Files\Labels\Label;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class LabelsTableSeeder extends Seeder {
     public function run() {
-        DB::table('labels')->truncate();
+        $labels = [
+            [
+                'name' => 'Commissies'
+            ],
+            [
+                'name' => 'Notulen'
+            ],
+            [
+                'name' => 'Senaat'
+            ]
+        ];
 
-        Label::create([
-            'name' => 'Commissies'
-        ]);
-        Label::create([
-            'name' => 'Notulen'
-        ]);
-        Label::create([
-            'name' => 'Senaat'
-        ]);
+        DB::table('labels')->insert($labels);
     }
 }

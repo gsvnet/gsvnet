@@ -1,51 +1,53 @@
 <?php
 
+use Carbon\Carbon;
+use GSVnet\Committees\Committee;
+use GSVnet\Users\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UserCommitteeSeeder extends Seeder {
 
+    private $userIds;
+    private $committeeIds;
+    private $faker;
+
+    public function __construct()
+    {
+        $this->userIds = User::where('type', '=', 2)->lists('id');
+        $this->committeeIds = Committee::lists('id');
+        $this->time = Carbon::now();
+        $this->faker = Faker\Factory::create('nl_NL');
+    }
+
 	public function run()
 	{
-        DB::table('committee_user')->truncate();
+        $memberships = [];
 
-        $faker = Faker\Factory::create('en_US');
-
-        $users = GSVnet\Users\User::where('type', '=', 2)->get();
-        $committees = DB::table('committees')->lists('id');
-
-        foreach($users as $user)
+        foreach($this->userIds as $userId)
         {
-            // ~20% of the users are not in a committee
-            if((float)rand()/(float)getrandmax() < 0.2)
-            {
+            // 4 out of 10 are not in a committee
+            if($this->faker->numberBetween(1, 10) <= 4)
                 continue;
-            }
 
-            // Shuffle committees
-            shuffle($committees);
+            $total = $this->faker->numberBetween(1, 3);
+            $committeeIds = $this->faker->randomElements($this->committeeIds, $total);
 
-            // Take a sample of committees
-            $number = min(rand(2,10), count($committees));
-
-            for($i=1; $i<$number; $i++)
+            foreach($committeeIds as $committeeId)
             {
-                $startdate = $faker->dateTimeBetween('-3 years', '-1 month');
-                $user->committees()->attach($committees[$i], array(
-                    'start_date' => $startdate->format('Y-m-d'),
-                    'end_date' => $startdate->add(date_interval_create_from_date_string('1 year'))->format('Y-m-d')
-                ));
-            }
+                $startDate = $this->faker->dateTimeBetween('-3 years', '-1 month');
 
+                $memberships[] = [
+                    'committee_id' => $committeeId,
+                    'user_id' => $userId,
+                    'start_date' => $startDate->format('Y-m-d'),
+                    'end_date' => $startDate->add(date_interval_create_from_date_string('1 year'))->format('Y-m-d'),
+                    'created_at' => $this->time,
+                    'updated_at' => $this->time,
+                ];
+            }
         }
 
-        $startdate = $faker->dateTimeBetween('-3 years', '-1 month');
-
-        $mark = GSVnet\Users\User::where('firstname', '=', 'mark')->first();
-        $webcie = GSVnet\Committees\Committee::where('unique_name', '=', 'webcie')->first();
-        $mark->committees()->save($webcie, array('start_date' => $startdate));
-
-        $this->command->info('Added some people to committees ...');
-
+        DB::table('committee_user')->insert($memberships);
 	}
-
 }

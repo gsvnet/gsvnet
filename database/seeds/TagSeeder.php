@@ -8,12 +8,7 @@ class TagSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('tags')->truncate();
-        $this->createTags();
-    }
-
-    private function createTags()
-    {
+        $tags = [];
         $commonTags = [
             'GSV' => 'GSV-specifieke onderwerpen',
             'Nieuws' => 'alle typen nieuwsberichten',
@@ -37,13 +32,15 @@ class TagSeeder extends Seeder
         ];
 
         foreach ($commonTags as $name => $description) {
-            Tag::create([
+            $tags[] = [
                 'name' => $name,
                 'description' => $description,
                 'slug' => Str::slug($name),
                 'articles' => 1,
                 'forum' => 1,
-            ]);
+            ];
         }
+
+        DB::table('tags')->insert($tags);
     }
 }
