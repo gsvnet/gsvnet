@@ -205,3 +205,8 @@ thead .sorter-false {
 .table-responsive {
     overflow-x: auto;
 }
+
+.form-control[readonly] {
+    cursor: default;
+    background-color: #ffffff;
+}
