@@ -1,6 +1,5 @@
 <?php namespace GSVnet\Users\Profiles;
 
-use Config;
 use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,7 +14,7 @@ class UserProfile extends Model {
      */
     protected $table = 'user_profiles';
 
-    protected $fillable = array(
+    protected $fillable = [
         'user_id',
         'year_group_id',
         'region',
@@ -35,7 +34,11 @@ class UserProfile extends Model {
         'parent_town',
         'parent_phone',
         'photo_path',
-    );
+        'inauguration_date',
+        'resignation_date'
+    ];
+
+    protected $dates = ['resignation_date', 'inauguration_date'];
 
     public $presenter = 'GSVnet\Users\Profiles\ProfilePresenter';
 

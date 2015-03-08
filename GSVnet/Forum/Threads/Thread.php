@@ -12,7 +12,7 @@ class Thread extends Model
     use LikableTrait;
     
     protected $table = 'forum_threads';
-    protected $fillable = ['subject', 'body', 'author_id', 'solution_reply_id', 'slug', 'public'];
+    protected $fillable = ['subject', 'body', 'author_id', 'slug', 'public'];
     protected $with = ['author'];
     protected $dates = ['deleted_at'];
 
