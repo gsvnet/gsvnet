@@ -88,6 +88,7 @@
           })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
           ga('create', 'UA-48797155-1', 'gsvnet.nl');
+          ga('set', 'dimension1', {{Auth::check() ? Auth::user()->type : 0}});
           ga('send', 'pageview');
         </script>
         @endif
