@@ -75,7 +75,7 @@ class NavigationViewComposer {
 
     private function makeSubMenu($subMenu)
     {
-        $html = '<span class="top-caret"><i class="caret"></i></span>';
+        $html = '<span class="top-caret" role="button" aria-expanded="false"><i class="caret"></i></span>';
         $html .= '<ul class="sub-level-menu">';
 
         foreach($subMenu as $subItem)
@@ -198,6 +198,10 @@ class NavigationViewComposer {
                     'contact' => [
                         'title' => 'Contact',
                         'url' => action('AboutController@showContact')
+                    ],
+                    'oud-leden' => [
+                        'title' => 'Oud-leden',
+                        'url' => action('AboutController@showFormerMembers')
                     ]
                 ]
             ],

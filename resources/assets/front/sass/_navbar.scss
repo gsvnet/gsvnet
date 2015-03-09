@@ -141,6 +141,7 @@
 
 /** Top Sub menu **/
 .sub-level-menu {
+    display: none;
 	position: absolute;
 	top: 90px;
 	left: 0;
@@ -158,7 +159,7 @@
 }
 
 .active-sub-menu .sub-level-menu{
-	max-height: 360px;
+	max-height: 400px;
 	height: auto;
 	min-width: 200px;
 	width: auto;
