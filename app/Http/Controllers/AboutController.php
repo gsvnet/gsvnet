@@ -57,6 +57,11 @@ class AboutController extends BaseController {
             ->with('senates', $senates);
     }
 
+    public function showFormerMembers()
+    {
+        return view('de-gsv.former-members');
+    }
+
     public function showContact()
     {
         return view('de-gsv.contact');

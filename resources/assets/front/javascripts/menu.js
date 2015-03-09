@@ -15,16 +15,19 @@ Menu = (function(){
 		// Check if event is already handled
         if(e.handled !== true) {
 			// Save jQuery instance of element
-			$parent = $(this).parent();
+            $this = $(this);
+			$parent = $this.parent();
 
 			// Check if current menu is active
 			if($parent.hasClass(activeClass)){
+                $this.attr('aria-expanded', false);
 				$parent.removeClass(activeClass);
 			} else {
 				// Remove active class from other menu
 				collapse();
 
 				// Make menu active
+                $this.attr('aria-expanded', true);
 				$parent.addClass(activeClass);
 			}
 
