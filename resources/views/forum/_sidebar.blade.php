@@ -15,7 +15,21 @@
     <div class="content-column">
         @if( Permission::has('threads.show-private') )
             <h2>Forumstatistieken</h2>
-            <p><a href="{{ URL::action('ForumThreadsController@statistics') }}" title="Toplijsten forumposters" class="button">Toplijsten</a></p>
+            <p><a href="{{ URL::action('ForumThreadsController@statistics') }}" title="Toplijsten forumposters">Vind je hier</a></p>
+        @endif
+
+        @if( Permission::has('events.show-private') && count($events) > 0 )
+            <h2>Komende activiteiten</h2>
+            <ul class="unstyled-list title-description-list">
+                @foreach ($events as $event)
+                    <li>
+                        <span class="list-title">
+                        {!! HTML::link($event->present()->url, $event->title) !!}
+                        </span>
+                        <time class="list-description grey">{{ $event->present()->from_to_short }}</time>
+                    </li>
+                @endforeach
+            </ul>
         @endif
     </div>
 </div>

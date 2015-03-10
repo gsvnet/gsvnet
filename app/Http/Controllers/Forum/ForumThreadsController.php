@@ -5,6 +5,7 @@ use GSV\Commands\Forum\EditThreadCommand;
 use GSV\Commands\Forum\StartThreadCommand;
 use GSV\Commands\Forum\VisitThreadCommand;
 use GSV\Http\Requests\StartThreadValidator;
+use GSVnet\Events\EventsRepository;
 use GSVnet\Forum\Replies\ReplyRepository;
 use GSVnet\Forum\Threads\ThreadRepository;
 use GSVnet\Forum\Threads\ThreadSlug;
@@ -25,7 +26,7 @@ class ForumThreadsController extends BaseController {
     protected $threadsPerPage = 50;
     protected $repliesPerPage = 20;
 
-    public function __construct(ThreadRepository $threads, ReplyRepository $replies, TagRepository $tags, UsersRepository $users)
+    public function __construct(ThreadRepository $threads, ReplyRepository $replies, TagRepository $tags, UsersRepository $users, EventsRepository $events)
     {
         parent::__construct();
 
@@ -33,6 +34,10 @@ class ForumThreadsController extends BaseController {
         $this->tags = $tags;
         $this->users = $users;
         $this->replies = $replies;
+
+        $events = $events->upcoming(5);
+
+        View::share('events', $events);
     }
 
     // show thread list - clean this method
