@@ -67,7 +67,7 @@ class EventPresenter extends Presenter
         // Check if the end date is different
         if( $from->format('Y-m-d') != $to->format('Y-m-d') )
         {
-            $string .= ' tot ' . $to->formatLocalized('%e %b');
+            $string .= ' &mdash; ' . $to->formatLocalized('%e %b');
         } elseif($showMonth) {
             $string .= $from->formatLocalized(' %b');
         }
@@ -108,7 +108,7 @@ class EventPresenter extends Presenter
         // Check if the end date is different
         if($from->format('Y-m-d') != $to->format('Y-m-d'))
         {
-            $string .= ' tot ' . $to->formatLocalized('%e %B');
+            $string .= ' &mdash; ' . $to->formatLocalized('%e %B');
         } else {
             $string .= $to->formatLocalized(' %B');
         }
