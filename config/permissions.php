@@ -27,7 +27,7 @@ return [
     ],
 
     'users.manage' => [
-        'committee' => ['webcie', 'novcie'],
+        'committee' => ['webcie', 'novcie', 'malversacie'],
         'senate' => true
     ],
 
