@@ -39,9 +39,7 @@
     <script>
         $(document).ready(function() {
             var startTime = $('#start_time')[0];
-            var endTime = $('#end_time')[0];
             var $wholeDay = $('#whole_day');
-
 
             $('.btn-danger').click( function() {
                 return confirm('Zeker weten?');
@@ -49,7 +47,6 @@
 
             function toggleTimeBoxes() {
                 startTime.disabled = $wholeDay[0].checked;
-                endTime.disabled = $wholeDay[0].checked;
             }
 
             $wholeDay.change(toggleTimeBoxes);

@@ -8,8 +8,6 @@
         <i class="fa fa-pencil"></i> Senaatsinformatie bewerken
     </a>
 
-    <blockquote> {{ $senate->body }} </blockquote>
-
     <h2>Leden</h2>
     <div class="panel panel-primary">
         <div class="panel-heading">Lid toevoegen</div>

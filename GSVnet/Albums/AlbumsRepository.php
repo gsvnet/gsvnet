@@ -1,6 +1,5 @@
 <?php namespace GSVnet\Albums;
 
-use Str;
 use Permission;
 
 class AlbumsRepository {

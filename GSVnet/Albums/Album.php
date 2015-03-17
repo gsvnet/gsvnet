@@ -1,5 +1,6 @@
 <?php namespace GSVnet\Albums;
 
+use Illuminate\Support\Str;
 use URL;
 use Illuminate\Database\Eloquent\Model;
 
@@ -95,6 +96,6 @@ class Album extends Model {
             $append = '-' . $i;
         }
 
-        return \Str::slug("{$this->name}" . $append);
+        return Str::slug("{$this->name}" . $append);
     }
 }

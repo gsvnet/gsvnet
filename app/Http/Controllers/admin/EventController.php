@@ -29,6 +29,11 @@ class EventController extends AdminBaseController {
             ->withEvents($events);
     }
 
+    public function create()
+    {
+        return view('admin.events.create');
+    }
+
     public function store()
     {
         $input = Input::all();

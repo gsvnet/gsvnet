@@ -85,6 +85,6 @@ gulp.task('backend-css', function() {
 });
 
 gulp.task('default', ['scripts', 'css'], function(){
-  gulp.watch('resources/assets/front/javascripts/**/*.js', ['scripts']);
-  gulp.watch('resources/assets/front/sass/**/*.scss', ['css']);
+  gulp.watch('resources/assets/**/*.js', ['scripts', 'backend-scripts']);
+  gulp.watch('resources/assets/**/*', ['css', 'backend-css']);
 });
