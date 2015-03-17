@@ -7,25 +7,25 @@
 <h4>Ledenadministratie</h4>
 <div class="list-group">
     @if (Permission::has('users.show'))
-        <a href="{{ URL::action('Admin\UsersController@showMembers') }}" class="list-group-item {{ Request::segment(3) == 'leden' ? 'active' : '' }}">
+        <a href="{{ URL::action('Admin\UsersController@showMembers') }}" class="list-group-item {{ Request::segment(2) == 'gebruikers' && Request::segment(3) == 'leden' ? 'active' : '' }}">
             <i class='glyphicon glyphicon-user'></i> Leden
         </a>
 
-        <a href="{{ URL::action('Admin\UsersController@showFormerMembers') }}" class="list-group-item {{ Request::segment(3) == 'oud-leden' ? 'active' : '' }}">
+        <a href="{{ URL::action('Admin\UsersController@showFormerMembers') }}" class="list-group-item {{ Request::segment(2) == 'gebruikers' && Request::segment(3) == 'oud-leden' ? 'active' : '' }}">
             <i class='glyphicon glyphicon-user'></i> Oud-leden
         </a>
 
-        <a href="{{ URL::action('Admin\UsersController@showPotentials') }}" class="list-group-item {{ Request::segment(3) == 'novieten' ? 'active' : '' }}">
+        <a href="{{ URL::action('Admin\UsersController@showPotentials') }}" class="list-group-item {{ Request::segment(2) == 'gebruikers' && Request::segment(3) == 'novieten' ? 'active' : '' }}">
             <i class='glyphicon glyphicon-user'></i> Novieten
         </a>
 
-        <a href="{{ URL::action('Admin\UsersController@create') }}" class="list-group-item {{ Request::segment(3) == 'create' ? 'active' : '' }}">
+        <a href="{{ URL::action('Admin\UsersController@create') }}" class="list-group-item {{ Request::segment(2) == 'gebruikers' && Request::segment(3) == 'create' ? 'active' : '' }}">
             <i class="fa fa-plus"></i> Gebruiker &amp; leden registreren
         </a>
     @endif
 </div>
 
-<h4>Overige dingen</h4>
+<h4>Forum</h4>
 <div class="list-group">
 
     @if (Permission::has('users.show'))
@@ -33,12 +33,24 @@
         <i class='glyphicon glyphicon-user'></i> Forum-gebruikers
     </a>
     @endif
+</div>
 
+<h4>Activiteiten</h4>
+<div class="list-group">
     @if (Permission::has('events.manage'))
-        <a href="{{ URL::action('Admin\EventController@index') }}" class="list-group-item {{ Request::segment(2) == 'events' ? 'active' : '' }}">
+        <a href="{{ URL::action('Admin\EventController@index') }}" class="list-group-item {{ Request::segment(2) == 'events' && Request::segment(3) != 'create' ? 'active' : '' }}">
             <i class='glyphicon glyphicon-calendar'></i> Activiteiten
         </a>
+
+        <a href="{{ URL::action('Admin\EventController@create') }}" class="list-group-item {{ Request::segment(2) == 'events' && Request::segment(3) == 'create' ? 'active' : '' }}">
+            <i class='fa fa-plus'></i> Toevoegen
+        </a>
     @endif
+</div>
+
+
+<h4>Overig</h4>
+<div class="list-group">
 
     @if (Permission::has('photos.manage'))
         <a href="{{ URL::action('Admin\AlbumController@index') }}" class="list-group-item {{ Request::segment(2) == 'albums' ? 'active' : '' }}">

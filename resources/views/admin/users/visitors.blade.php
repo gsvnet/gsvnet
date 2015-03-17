@@ -1,7 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h2>Laatst geregistreerde forumgebruikers</h2>
+    <div class="page-header">
+        <h1>Laatst geregistreerde forumgebruikers</h1>
+    </div>
 
     <div class="table-responsive">
         <table class="table table-striped table-hover sort-table">

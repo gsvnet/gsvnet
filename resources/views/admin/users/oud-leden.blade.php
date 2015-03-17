@@ -1,7 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h2>Oud-leden van de GSV</h2>
+    <div class="page-header">
+        <h1>Oud-leden van de GSV</h1>
+    </div>
 
     <div class="row">
         <div class="col-xs-12 col-md-3 col-md-push-9">

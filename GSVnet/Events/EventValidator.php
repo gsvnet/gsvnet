@@ -26,7 +26,7 @@ class EventValidator extends Validator
     {
         $validation = $this->validator->make($data, static::$rules);
 
-        $validation->sometimes(array('start_time'), 'required|date_format:H:i', function($input){
+        $validation->sometimes(['start_time'], ['required', 'regex:/^([01]?[0-9]|2[0-3]):([0-5][0-9])$/'], function($input){
             return $input->get('whole_day', '0') == '0';
         });
 

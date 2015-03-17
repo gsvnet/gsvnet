@@ -1,6 +1,7 @@
 <?php namespace Admin;
 
-use View, Input, Redirect;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Str;
 
 use GSVnet\Committees\CommitteesRepository;
 use GSVnet\Committees\CommitteeCreatorValidator;
@@ -31,7 +32,7 @@ class CommitteeController extends AdminBaseController {
 
     public function index()
     {
-        $committees = $this->committees->paginate(20);
+        $committees = $this->committees->paginate(100);
         $users = $this->users->byType(2);
 
         return view('admin.committees.index')
@@ -42,7 +43,7 @@ class CommitteeController extends AdminBaseController {
     public function store()
     {
         $input = Input::only('name', 'description');
-        $input['unique_name'] = \Str::slug(Input::get('unique_name'));
+        $input['unique_name'] = Str::slug(Input::get('unique_name'));
 
         $this->creatorValidator->validate($input);
         $committee = $this->committees->create($input);
@@ -86,7 +87,7 @@ class CommitteeController extends AdminBaseController {
     {
         $input = Input::only('name', 'description');
         $input['id'] = $id;
-        $input['unique_name'] = \Str::slug(Input::get('unique_name'));
+        $input['unique_name'] = Str::slug(Input::get('unique_name'));
 
         $this->updaterValidator->forCommittee($id);
         $this->updaterValidator->validate($input);

@@ -24,13 +24,6 @@ class Event extends Model {
         return $query->wherePublished($published);
     }
 
-    public function getUpdatedAtAttribute($updatedAt)
-    {
-        $date = new \Carbon\Carbon($updatedAt);
-
-        return $date->diffForHumans();
-    }
-
     public function getPublicAttribute($value)
     {
         return $value == 1 ? true : null;

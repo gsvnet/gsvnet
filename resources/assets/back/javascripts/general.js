@@ -25,6 +25,18 @@ $(document).ready(function(){
         format: 'HH:i',
         formatSubmit: 'HH:i',
         hiddenName: true,
-        editable: true
+        interval: 15
+    });
+
+    $('.btn-danger').click( function() {
+        return confirm('Zeker weten?');
+    });
+
+    $('[data-toggle="offcanvas"]').click(function () {
+        $('.row-offcanvas').toggleClass('active')
+    });
+
+    $('#hamburger-icon').click(function(){
+        $(this).toggleClass('open');
     });
 });

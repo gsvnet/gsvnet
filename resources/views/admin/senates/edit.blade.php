@@ -9,7 +9,6 @@
     !!}
         {!! Former::populate( $senate ) !!}
 
-
         <button type='submit' class='btn btn-success btn-sm pull-right'>
             <i class="glyphicon glyphicon-ok"></i> Opslaan
         </button>
@@ -36,14 +35,4 @@
         </button>
 
     {!! Former::close() !!}
-@stop
-
-@section('javascripts')
-    @parent
-
-    <script>
-    $('.btn-danger').click( function() {
-        return confirm('Zeker weten?');
-    });
-    </script>
 @stop

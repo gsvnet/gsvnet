@@ -19,33 +19,14 @@
         <link rel="shortcut icon" href="/favicon.png" />
     </head>
     <body>
-        <div class="navbar navbar-inverse" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/admin">GSVnet backend</a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="/">Front end</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="{{ URL::action('SessionController@getLogout') }}">
-                                <i class="glyphicon glyphicon-log-out"></i> Uitloggen
-                            </a>
-                        </li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div>
+        <div id="hamburger-icon" class="visible-sm" data-toggle="offcanvas">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-
         <div class="container-fluid">
+
             @if ($errors->any())
                 <ul class='list-unstyled errors'>
                     {!! implode('', $errors->all('<li class="alert alert-danger">:message</li>')) !!}
@@ -58,8 +39,8 @@
                 </div>
             @endif
 
-            <div class="row">
-                <div class="col-lg-2 col-md-3">
+            <div class="row row-offcanvas row-offcanvas-left">
+                <div class="col-lg-2 col-md-3 sidebar-offcanvas">
                     <h3>Administratie</h3>
                     @include('layouts.admin.nav')
                 </div>
