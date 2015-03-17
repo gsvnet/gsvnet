@@ -35,7 +35,7 @@
 
     @section('stylesheets')
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.6.1">
+        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.6.2">
     @show
 </head>
 <body id="@yield('body-id', 'gsvnet')">
