@@ -70,8 +70,20 @@ img.emo {
 	vertical-align: baseline;
 }
 
-.forum .body a:link {
-  text-decoration: underline;
+.forum .body a {
+
+  &:link, &:visited {
+    color: #6B00E4;
+    border-bottom: 2px solid $lightGrey;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:active, &:focus {
+    background: $lightGrey;
+  }
 }
 
 #reply-form {
@@ -80,7 +92,7 @@ img.emo {
   position: relative;
 
   .tab-pane {
-	min-height: 300px;
+    min-height: 300px;
   }
 }
 .loading-indicator {
