@@ -20,7 +20,7 @@
         </a>
 
         <a href="{{ URL::action('Admin\UsersController@create') }}" class="list-group-item {{ Request::segment(2) == 'gebruikers' && Request::segment(3) == 'create' ? 'active' : '' }}">
-            <i class="fa fa-plus"></i> Gebruiker &amp; leden registreren
+            <i class="fa fa-plus"></i> Gebruikers &amp; leden registreren
         </a>
     @endif
 </div>
