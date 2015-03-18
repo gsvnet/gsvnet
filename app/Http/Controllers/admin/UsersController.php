@@ -65,7 +65,7 @@ class UsersController extends AdminBaseController {
 
     public function showPotentials()
     {
-        $users = $this->users->paginateWhereType(User::POTENTIAL, 300);
+        $users = $this->users->paginateWhereType(User::POTENTIAL, 50);
 
         return view('admin.users.potentials')->with(['users' => $users]);
     }
@@ -98,7 +98,7 @@ class UsersController extends AdminBaseController {
         $search = Input::get('zoekwoord', '');
         $regions = Config::get('gsvnet.regions');
         $type = User::FORMERMEMBER;
-        $perPage = 300;
+        $perPage = 50;
         $reunistInput = Input::get('reunist');
         $reunist = null;
 
