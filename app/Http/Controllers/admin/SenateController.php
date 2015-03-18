@@ -41,10 +41,9 @@ class SenateController extends AdminBaseController {
         $this->validator->validate($input);
         $senate = $this->senates->create($input);
 
-        $message = '<strong>' . $senate->name . '</strong> is succesvol opgeslagen.';
-        return redirect()->action('Admin\SenateController@index')
-            ->withMessage($message);
+        flash()->success("{$senate->name} is succesvol opgeslagen.");
 
+        return redirect()->action('Admin\SenateController@index');
     }
 
     public function show($id)
@@ -93,16 +92,17 @@ class SenateController extends AdminBaseController {
         $this->validator->validate($input);
         $senate = $this->senates->update($id, $input);
 
-        $message = '<strong>' . $senate->name . '</strong> is succesvol bewerkt.';
-        return redirect()->action('Admin\SenateController@show', $id)
-            ->withMessage($message);
+        flash()->success("{$senate->name} is succesvol bewerkt.");
+
+        return redirect()->action('Admin\SenateController@show', $id);
     }
 
     public function destroy($id)
     {
         $senate = $this->senates->delete($id);
 
-        return redirect()->action('Admin\SenateController@index')
-            ->with('message', '<strong>' . $senate->name . '</strong> is succesvol verwijderd.');
+        flash()->success("{$senate->name} is succesvol verwijderd.");
+
+        return redirect()->action('Admin\SenateController@index');
     }
 }

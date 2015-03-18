@@ -2,6 +2,7 @@
 
 use GSVnet\Users\User;
 use GSVnet\Users\UserTransformer;
+use Illuminate\Support\Facades\Config;
 use Queue, App, Log;
 
 class NewsletterManager {
@@ -17,6 +18,11 @@ class NewsletterManager {
     public function userUpdated(User $old, User $new)
     {
         if($old->type == $new->type && $old->email == $new->email)
+        {
+            return;
+        }
+
+        if(Config::get('app.debug'))
         {
             return;
         }

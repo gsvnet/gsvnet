@@ -1,7 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>Gegevens van {{ $user->present()->fullName }} bewerken</h1>
+    <div class="page-header">
+        <h1>Gegevens van <strong>{{ $user->present()->fullName }}</strong></h1>
+    </div>
     <div class="row">
         <div class="col-xs-12 col-md-6">
             <h2>Accountgegevens bewerken</h2>

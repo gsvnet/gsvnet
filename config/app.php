@@ -149,6 +149,7 @@ return [
 		'Former\FormerServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
 		'Chromabits\Purifier\PurifierServiceProvider',
+        'Laracasts\Flash\FlashServiceProvider',
 
 		'GSV\Providers\BackendServiceProvider',
 		'GSV\Providers\NewsletterServiceProvider',
@@ -211,6 +212,7 @@ return [
 		'Image'      => 'Intervention\Image\Facades\Image',
 
 		'Permission' => 'GSVnet\Permissions\Permission',
+        'Flash'      => 'Laracasts\Flash\Flash'
 
 	],
 

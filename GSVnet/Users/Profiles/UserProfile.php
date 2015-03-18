@@ -35,7 +35,9 @@ class UserProfile extends Model {
         'parent_phone',
         'photo_path',
         'inauguration_date',
-        'resignation_date'
+        'resignation_date',
+        'company',
+        'profession'
     ];
 
     protected $dates = ['resignation_date', 'inauguration_date'];

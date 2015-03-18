@@ -45,9 +45,9 @@ class EventController extends AdminBaseController {
         $this->validator->validate($input);
         $event = $this->events->create($input);
 
-        $message = '<strong>' . $event->title . '</strong> is succesvol opgeslagen.';
-        return redirect()->action('Admin\EventController@index')
-            ->withMessage($message);
+        flash()->success("{$event->title} is succesvol opgeslagen.");
+
+        return redirect()->action('Admin\EventController@index');
     }
 
     public function show($id)
@@ -77,18 +77,18 @@ class EventController extends AdminBaseController {
         $this->validator->validate($input);
         $event = $this->events->update($id, $input);
 
-        $message = '<strong>' . $event->title . '</strong> is succesvol bewerkt.';
-        return redirect()->action('Admin\EventController@index')
-            ->withMessage($message);
+        flash()->success("{$event->title} is succesvol bewerkt.");
 
+        return redirect()->action('Admin\EventController@index');
     }
 
     public function destroy($id)
     {
         $event = $this->events->delete($id);
 
-        return redirect()->action('Admin\EventController@index')
-            ->with('message', '<strong>' . $event->title . '</strong> is succesvol verwijderd.');
+        flash()->success("{$event->title} is succesvol verwijderd.");
+
+        return redirect()->action('Admin\EventController@index');
     }
 
 }

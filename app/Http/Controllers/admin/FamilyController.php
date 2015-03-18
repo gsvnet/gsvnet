@@ -40,7 +40,8 @@ class FamilyController extends AdminBaseController {
         $parentId = $this->users->filterExistingIds($parent);
         $user->parents()->sync($parentId);
 
-        $message = '<strong>Gelukt!</strong>';
-        return redirect()->back()->withMessage($message);
+        flash()->message("De familie van {$user->present()->fullName} is bijgewerkt");
+
+        return redirect()->back();
     }
 }

@@ -48,16 +48,16 @@ class FilesController extends AdminBaseController {
 
         $file = $this->manager->create($input);
 
-        $message = '<strong>' . $file->name . '</strong> is succesvol opgeslagen.';
-        return redirect()->action('Admin\FilesController@index')
-            ->withMessage($message);
+        flash()->success("{$file->name} is succesvol opgeslagen");
 
+        return redirect()->action('Admin\FilesController@index');
     }
 
     public function edit($id)
     {
         $file = $this->files->byId($id);
         $labels = $this->labels->all();
+
         // Get the file's labels
         $checked = array();
         $fileIdLabels = array_pluck($file->labels->toArray(), 'id');
@@ -80,18 +80,18 @@ class FilesController extends AdminBaseController {
 
         $file = $this->manager->update($id, $input);
 
-        $message = '<strong>' . $file->name . '</strong> is succesvol opgeslagen.';
-        return redirect()->action('Admin\FilesController@index')
-            ->withMessage($message);
+        flash()->success("{$file->name} is succesvol bijgewerkt.");
+
+        return redirect()->action('Admin\FilesController@index');
     }
 
     public function destroy($id)
     {
         $file = $this->manager->destroy($id);
 
-        $message = '<strong>' . $file->name . '</strong> is succesvol verwijderd.';
-        return redirect()->action('Admin\FilesController@index')
-            ->withMessage($message);
+        flash()->success("{$file->name} is succesvol verwijderd.");
+
+        return redirect()->action('Admin\FilesController@index');
     }
 
 }

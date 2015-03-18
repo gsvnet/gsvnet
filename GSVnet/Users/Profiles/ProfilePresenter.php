@@ -74,4 +74,20 @@ class ProfilePresenter extends Presenter
 
         return $nr;
     }
+
+    public function resignationDateSimple()
+    {
+        if($this->resignation_date)
+            return $this->resignation_date->format('d-m-Y');
+
+        return '';
+    }
+
+    public function inaugurationDateSimple()
+    {
+        if($this->inauguration_date)
+            return $this->inauguration_date->format('d-m-Y');
+
+        return '';
+    }
 }

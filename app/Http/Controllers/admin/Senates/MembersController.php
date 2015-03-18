@@ -34,8 +34,9 @@ class MembersController extends AdminBaseController {
             'function' => $input['function']
         ]);
 
-        $message = "{$member->present()->fullName} succesvol toegevoegd aan {$senate->name}";
-        return redirect()->action('Admin\SenateController@show', $senate->id)->withMessage($message);
+        flash()->success("{$member->present()->fullName} succesvol toegevoegd aan {$senate->name}");
+
+        return redirect()->action('Admin\SenateController@show', $senate->id);
     }
 
     public function destroy($senate, $member)
@@ -43,8 +44,8 @@ class MembersController extends AdminBaseController {
         $member = $this->users->byId($member);
         $member->senates()->detach($senate);
 
-        $message = '<strong>' . $member->present()->fullName . '</strong> is succesvol uit de senaat geknikkerd.';
-        
-        return redirect()->action('Admin\SenateController@show', $senate)->withMessage($message);
+        flash()->success("{$member->present()->fullName} succesvol uit de senaat geknikkerd");
+
+        return redirect()->action('Admin\SenateController@show', $senate);
     }
 }

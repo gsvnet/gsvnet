@@ -31,9 +31,9 @@ class PhotoController extends AdminBaseController {
         if(Request::ajax())
             return response()->json('success', 200);
 
-        $message = '<strong>' . $photo->name . '</strong> is succesvol opgeslagen.';
+        flash()->success("{$photo->name} is succesvol opgeslagen.");
 
-        return redirect()->action('Admin\AlbumController@show', $album_id)->withMessage($message);
+        return redirect()->action('Admin\AlbumController@show', $album_id);
     }
 
     public function show($album_id, $id)
@@ -51,18 +51,17 @@ class PhotoController extends AdminBaseController {
 
         $photo = $this->manager->update($id, $input);
 
-        $message = '<strong>' . $photo->name . '</strong> is succesvol opgeslagen.';
-        return redirect()->action('Admin\AlbumController@show', $album_id)
-            ->withMessage($message);
+        flash()->success("{$photo->name} is succesvol bijgewerkt.");
+
+        return redirect()->action('Admin\AlbumController@show', $album_id);
     }
 
     public function destroy($album_id, $id)
     {
         $photo = $this->manager->destroy($id);
 
-        $message = '<strong>' . $photo->name . '</strong> is succesvol verwijderd.';
-        return redirect()->action('Admin\AlbumController@show', $album_id)
-            ->withMessage($message);
-    }
+        flash()->success("{$photo->name} is succesvol verwijderd.");
 
+        return redirect()->action('Admin\AlbumController@show', $album_id);
+    }
 }
