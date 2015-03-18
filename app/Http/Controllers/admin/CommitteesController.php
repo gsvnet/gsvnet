@@ -48,10 +48,9 @@ class CommitteeController extends AdminBaseController {
         $this->creatorValidator->validate($input);
         $committee = $this->committees->create($input);
 
-        $message = '<strong>' . $committee->name . '</strong> is succesvol opgeslagen.';
-        return redirect()->action('Admin\CommitteeController@index')
-            ->withMessage($message);
+        flash()->success("Commissie {$committee->name} is succesvol opgeslagen");
 
+        return redirect()->action('Admin\CommitteeController@index');
     }
 
     public function show($id)
@@ -94,16 +93,17 @@ class CommitteeController extends AdminBaseController {
         
         $committee = $this->committees->update($id, $input);
 
-        $message = '<strong>' . $committee->name . '</strong> is succesvol bewerkt.';
-        redirect()->action('Admin\CommitteeController@show', $id)
-            ->withMessage($message);
+        flash()->success("{$committee->name} is succesvol bewerkt.");
+
+        redirect()->action('Admin\CommitteeController@show', $id);
     }
 
     public function destroy($id)
     {
         $committee = $this->committees->delete($id);
 
-        return redirect()->action('Admin\CommitteeController@index')
-            ->with('message', '<strong>' . $committee->name . '</strong> is succesvol verwijderd.');
+        flash()->success("{$committee->name} is succesvol verwijderd.");
+
+        return redirect()->action('Admin\CommitteeController@index');
     }
 }

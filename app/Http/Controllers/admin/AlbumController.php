@@ -43,9 +43,9 @@ class AlbumController extends AdminBaseController {
         $this->validator->validate($input);
         $album = $this->albums->create($input);
 
-        $message = '<strong>' . $album->name . '</strong> is succesvol opgeslagen.';
-        return redirect()->action('Admin\AlbumController@index')
-            ->withMessage($message);
+        flash()->success("Album {$album->name} is succesvol opgeslagen");
+
+        return redirect()->action('Admin\AlbumController@index');
     }
 
     public function show($id)
@@ -76,16 +76,17 @@ class AlbumController extends AdminBaseController {
         $this->validator->validate($input);
         $album = $this->albums->update($id, $input);
 
-        $message = '<strong>' . $album->name . '</strong> is succesvol bewerkt.';
-        return redirect()->action('Admin\AlbumController@show', $id)
-            ->withMessage($message);
+        flash()->success("Album {$album->name} is succesvol bewerkt");
+
+        return redirect()->action('Admin\AlbumController@show', $id);
     }
 
     public function destroy($id)
     {
         $album = $this->albums->delete($id);
 
-        return redirect()->action('Admin\AlbumController@index')
-            ->with('message', '<strong>' . $album->name . '</strong> is succesvol verwijderd.');
+        flash()->success("Album {$album->name} is succesvol verwijderd");
+
+        return redirect()->action('Admin\AlbumController@index');
     }
 }

@@ -168,9 +168,9 @@ class UsersController extends AdminBaseController {
 
         $this->dispatchFrom(RegisterUserCommand::class, new Collection($data));
 
-        $message = '<strong>Gebruiker</strong> is succesvol opgeslagen.';
-        return redirect()->action('Admin\UsersController@showGuests')
-            ->withMessage($message);
+        flash()->success('Gebruiker is succesvol opgeslagen.');
+
+        return redirect()->action('Admin\UsersController@showGuests');
     }
 
     public function show($id)
@@ -229,16 +229,18 @@ class UsersController extends AdminBaseController {
             'new' => $user
         ]);
 
-        $message = '<strong>' . $user->present()->fullName . '</strong> is succesvol bewerkt.';
-        return redirect()->action('Admin\UsersController@show', $id)->withMessage($message);
+        flash()->success("Account van {$user->present()->fullName} is succesvol bewerkt.");
+
+        return redirect()->action('Admin\UsersController@show', $id);
     }
 
     public function destroy($id)
     {
         $user = $this->users->delete($id);
 
-        return redirect()->action('Admin\UsersController@index')
-            ->with('message', '<strong>' . $user->name . '</strong> is succesvol verwijderd.');
+        flash()->success("Account van {$user->present()->fullName} is succesvol verwijderd.");
+
+        return redirect()->action('Admin\UsersController@index');
     }
 
     public function storeProfile($id)
@@ -249,10 +251,11 @@ class UsersController extends AdminBaseController {
         // volgende moet eigenlijk naar een repo
         $this->profileCreatorValidator->validate($input);
         $user = $this->users->byId($id);
-        $profile = UserProfile::create($input);
+        UserProfile::create($input);
 
-        $message = '<strong>' . $user->present()->fullName . '</strong> heeft een GSV-profiel.';
-        return redirect()->action('Admin\UsersController@edit', $user->id)->withMessage($message);
+        flash()->success("{$user->present()->fullName} heeft een GSV-profiel.");
+
+        return redirect()->action('Admin\UsersController@edit', $user->id);
     }
 
     public function destroyProfile($id)
@@ -260,44 +263,65 @@ class UsersController extends AdminBaseController {
         $user = $this->users->byId($id);
         $user->profile()->delete();
 
-        return redirect()->action('Admin\UsersController@edit', $user->id)
-            ->with('message', 'Profiel van <strong>' . $user->present()->fullName . '</strong> is succesvol verwijderd.');
+        flash()->success("Profiel van {$user->present()->fullName} is succesvol verwijderd.");
+
+        return redirect()->action('Admin\UsersController@edit', $user->id);
     }
 
     public function updateProfile($id)
     {
-        $input = Input::only('region', 'year_group_id', 'initials', 'phone', 'address', 'zip_code', 'town', 'study', 'student_number', 'birthdate', 'church', 'gender', 'parent_phone', 'parent_address', 'parent_zip_code', 'parent_town');
+        $user = $this->users->byId($id);
+
+        $input = Input::only('region', 'year_group_id', 'inauguration_date', 'initials', 'phone', 'address', 'zip_code', 'town', 'study', 'student_number', 'birthdate', 'church', 'gender');
         $input['user_id'] = $id;
-        $input['reunist'] = Input::get('reunist', false) == '1';
 
+        // Set some specific info for former members
+        if($user->isFormerMember())
+        {
+            $input['reunist'] = Input::get('reunist', '0') === '1';
+            $input['resignation_date'] = Input::get('resignation_date');
+            $input['company'] = Input::get('company');
+            $input['profession'] = Input::get('profession');
+        }
+
+        // Natural parents
+        if($user->isMember())
+        {
+            $input = array_merge($input, Input::only('parent_phone', 'parent_address', 'parent_zip_code', 'parent_town'));
+        }
+
+        // Check if the region is valid
         if(! array_key_exists($input['region'], Config::get('gsvnet.regions')))
+        {
             $input['region'] = null;
+        }
 
+        // Validate
         $this->profileUpdaterValidator->validate($input);
 
-        $user = $this->users->byId($id);
+        // Update
         $user->profile()->update($input);
 
-        $message = 'Profiel van <strong>' . $user->present()->fullName . '</strong> is succesvol bijgewerkt.';
-        return redirect()->action('Admin\UsersController@show', $id)
-            ->withMessage($message);
+        flash()->success("Profiel van {$user->present()->fullName} is succesvol bijgewerkt.");
+
+        return redirect()->action('Admin\UsersController@show', $id);
     }
 
     public function activate($id)
     {
         $user = $this->userManager->activateUser($id);
 
-        return redirect()->action('Admin\UsersController@index')
-            ->with('message', 'Account van <strong>' . $user->present()->fullName . '</strong> is succesvol geactiveerd.');
+        flash()->success("Account van {$user->present()->fullName} is succesvol geactiveerd.");
+
+        return redirect()->action('Admin\UsersController@index');
     }
 
     public function accept($id)
     {
         $user = $this->userManager->acceptMembership($id);
 
-        return redirect()->action('Admin\UsersController@index')
-            ->with('message', 'Noviet <strong>' . $user->present()->fullName . '</strong> is succesvol geïnstalleerd.');
+        flash()->success("Noviet {$user->present()->fullName} is succesvol geïnstalleerd.");
+
+        return redirect()->action('Admin\UsersController@index');
     }
-
-
 }

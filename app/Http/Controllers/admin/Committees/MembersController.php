@@ -48,8 +48,9 @@ class MembersController extends AdminBaseController {
 
         $this->committeeMembership->create($member, $committee, $input);
 
-        $message = "{$member->present()->fullName} succesvol toegevoegd aan {$committee->name}";
-        return redirect()->action('Admin\CommitteeController@show', $committee->id)->withMessage($message);
+        flash()->success("{$member->present()->fullName} succesvol toegevoegd aan {$committee->name}");
+
+        return redirect()->action('Admin\CommitteeController@show', $committee->id);
     }
 
     public function destroy($id)
@@ -60,9 +61,9 @@ class MembersController extends AdminBaseController {
 
         $this->committeeMembership->delete($id);
 
-        $message = '<strong>' . $member->present()->fullName . '</strong> succesvol verwijderd uit <strong>' . $committee->name . '</strong>';
+        flash()->success("{$member->present()->fullName} succesvol verwijderd uit {$committee->name}");
 
-        return redirect()->action('Admin\CommitteeController@show', $committee->id)->withMessage($message);
+        return redirect()->action('Admin\CommitteeController@show', $committee->id);
     }
 
     public function edit($id)
@@ -95,9 +96,9 @@ class MembersController extends AdminBaseController {
         $committee = $membership->committee;
 
         $this->committeeMembership->update($id, $input);
-        
-        $message = '<strong>' . $user->present()->fullName . '</strong> z\'n commissiewerk voor <strong>' . $committee->name . '</strong> is succesvol bijgewerkt.';
-        
-        return redirect()->action('Admin\CommitteeController@show', $committee->id)->withMessage($message);
+
+        flash()->success("{$user->present()->fullName} z'n commissiewerk voor {$committee->name} is succesvol bijgewerkt");
+
+        return redirect()->action('Admin\CommitteeController@show', $committee->id);
     }
 }

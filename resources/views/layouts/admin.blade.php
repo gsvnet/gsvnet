@@ -26,19 +26,6 @@
             <span></span>
         </div>
         <div class="container-fluid">
-
-            @if ($errors->any())
-                <ul class='list-unstyled errors'>
-                    {!! implode('', $errors->all('<li class="alert alert-danger">:message</li>')) !!}
-                </ul>
-            @endif
-
-            @if (Session::has('message'))
-                <div class="alert alert-success">
-                    {!! Session::get('message') !!}
-                </div>
-            @endif
-
             <div class="row row-offcanvas row-offcanvas-left">
                 <div class="col-lg-2 col-md-3 sidebar-offcanvas">
                     <div class="off-canvas-margin">
@@ -47,6 +34,14 @@
                     </div>
                 </div>
                 <div class="col-lg-10 col-md-9" role="main">
+                    @include('flash::message')
+
+                    @if ($errors->any())
+                        <ul class='list-unstyled errors'>
+                            {!! implode('', $errors->all('<li class="alert alert-danger">:message</li>')) !!}
+                        </ul>
+                    @endif
+
                     @yield('content')
                 </div>
             </div>
@@ -54,6 +49,7 @@
 
         @section('javascripts')
             <script src="/build-javascripts/admin.js?v=1.3"></script>
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         @show
     </body>
 </html>

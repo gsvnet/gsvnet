@@ -156,17 +156,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->belongsToMany('GSVnet\Users\User', 'family_relations', 'parent_id', 'child_id');
     }
 
-    /**
-     * Type 2 and 3 are members
-     */
     public function isMember()
     {
-        return $this->type == Config::get('gsvnet.userTypes.member') || $this->type ==  Config::get('gsvnet.userTypes.formerMember');
+        return $this->type == static::MEMBER;
     }
 
-    /**
-     * Type 2 and 3 are members
-     */
     public function wasOrIsMember()
     {
         return $this->type == static::MEMBER || $this->type == static::FORMERMEMBER;
@@ -175,6 +169,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function isPotential()
     {
         return $this->type == static::POTENTIAL;
+    }
+
+    public function isFormerMember()
+    {
+        return $this->type == static::FORMERMEMBER;
     }
 
     public function activeCommittees()
