@@ -246,37 +246,27 @@ thead .sorter-false {
         transition: all .25s ease-out;
     }
 
-    .row-offcanvas-right {
-        right: 0;
-    }
-
     .row-offcanvas-left {
         left: 0;
     }
 
-    .row-offcanvas-right
-    .sidebar-offcanvas {
-        right: -50%; /* 6 columns */
-    }
-
     .row-offcanvas-left
     .sidebar-offcanvas {
-        left: -50%; /* 6 columns */
-        margin-left: 15px;
-    }
-
-    .row-offcanvas-right.active {
-        right: 50%; /* 6 columns */
+        left: -50%;
     }
 
     .row-offcanvas-left.active {
-        left: 50%; /* 6 columns */
+        left: 50%;
+    }
+
+    .row-offcanvas-left.active .off-canvas-margin {
+        padding-left: 15px;
     }
 
     .sidebar-offcanvas {
         position: absolute;
         top: 0;
-        width: 50%; /* 6 columns */
+        width: 50%;
     }
 }
 
@@ -285,7 +275,7 @@ thead .sorter-false {
     top: 15px;
     left: 15px;
     width: 30px;
-    height: 22.5px;
+    height: 23px;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -o-transform: rotate(0deg);
@@ -318,7 +308,7 @@ thead .sorter-false {
 }
 
 #hamburger-icon span:nth-child(1) {
-    top: 0px;
+    top: 0;
 }
 
 #hamburger-icon span:nth-child(2),#hamburger-icon span:nth-child(3) {
@@ -331,7 +321,7 @@ thead .sorter-false {
 
 #hamburger-icon.open span:nth-child(1) {
     top: 9px;
-    width: 0%;
+    width: 0;
     left: 50%;
 }
 
@@ -351,6 +341,6 @@ thead .sorter-false {
 
 #hamburger-icon.open span:nth-child(4) {
     top: 9px;
-    width: 0%;
+    width: 0;
     left: 50%;
 }

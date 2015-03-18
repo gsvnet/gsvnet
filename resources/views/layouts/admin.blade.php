@@ -13,13 +13,13 @@
             <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
             <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.0/yeti/bootstrap.min.css">
-            <link rel="stylesheet" href="/stylesheets/admin.css?v=1.3">
+            <link rel="stylesheet" href="/stylesheets/admin.css?v=1.3.1">
         @show
 
         <link rel="shortcut icon" href="/favicon.png" />
     </head>
     <body>
-        <div id="hamburger-icon" class="visible-sm" data-toggle="offcanvas">
+        <div id="hamburger-icon" class="hidden-md hidden-lg" data-toggle="offcanvas">
             <span></span>
             <span></span>
             <span></span>
@@ -41,8 +41,10 @@
 
             <div class="row row-offcanvas row-offcanvas-left">
                 <div class="col-lg-2 col-md-3 sidebar-offcanvas">
-                    <h3>Administratie</h3>
-                    @include('layouts.admin.nav')
+                    <div class="off-canvas-margin">
+                        <h3>Administratie</h3>
+                        @include('layouts.admin.nav')
+                    </div>
                 </div>
                 <div class="col-lg-10 col-md-9" role="main">
                     @yield('content')
