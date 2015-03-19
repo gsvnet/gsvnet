@@ -1,0 +1,64 @@
+.button, a.button {
+	background: $lightPurple;
+	color: #FFF;
+	padding: 1em 2em;
+	text-decoration: none;
+	border: 0;
+	font-family: $font-family-sans;
+	display: inline-block;
+	line-height: normal;
+
+	&:link {
+		color: #FFF;
+	}
+
+	&:hover {
+		background: $lighterPurple;
+	}
+
+	&:active {
+		-moz-box-shadow: inset 0px 0px 3px rgba(0,0,0,0.5);
+		-webkit-box-shadow: inset 0px 0px 3px rgba(0,0,0,0.5);
+		box-shadow: inset 0px 0px 3px rgba(0,0,0,0.5);
+	}
+}
+
+.disabled, a.disabled {
+	background: $grey;
+
+	&:hover, &:active {
+		background: $grey;
+		-moz-box-shadow: none;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+}
+
+.pagination {
+	font-family: $font-family-sans;
+}
+
+.like-box--button {
+    padding: 0;
+    color: #FFF;
+    background: $darkGrey;
+    border: 0;
+    border-radius: 1px;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+
+    &:hover {
+      background: $grey;
+    }
+
+    &:active {
+      -moz-box-shadow: inset 0px 0px 3px rgba(0,0,0,0.5);
+      -webkit-box-shadow: inset 0px 0px 3px rgba(0,0,0,0.5);
+      box-shadow: inset 0px 0px 3px rgba(0,0,0,0.5);
+    }
+
+    &.liked, &.liked:hover, &.liked:active {
+        background: $lightPurple;
+    }
+}
