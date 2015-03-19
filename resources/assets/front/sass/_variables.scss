@@ -1,0 +1,17 @@
+//-- Colors
+$body-copy-color: #444;
+$darkPurple: #2A1443;
+$lightPurple: lighten($darkPurple, 15%);
+$lighterPurple: lighten($darkPurple, 20%);
+$white: #FFF;
+$darkGrey: #AAA;
+$grey: #CCC;
+$lightGrey: #EEE;
+
+$breakpoint: 960px;
+$firstbreakpoint: 1032px;
+
+$gsvnet-z-index-base: 200;
+
+$font-family-serif: 'PT Serif', serif;
+$font-family-sans: 'PT Sans', sans-serif;
