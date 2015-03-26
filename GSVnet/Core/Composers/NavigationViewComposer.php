@@ -298,6 +298,13 @@ class NavigationViewComposer {
                             return Permission::has('docs.show');
                         }
                     ],
+                    'sponsorprogramma' => [
+                        'title' => 'Sponsors',
+                        'url' => action('HomeController@sponsorProgram'),
+                        'visible' => function(){
+                            return Permission::has('sponsor-program.show');
+                        }
+                    ],
                     'uitloggen' => [
                         'title' => 'Uitloggen',
                         'url' => action('SessionController@getLogout')

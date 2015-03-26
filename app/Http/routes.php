@@ -20,6 +20,9 @@ Route::group(['prefix' => 'intern', 'middleware' => 'auth'], function() {
     // GSVdocs
     Route::get('bestanden', 'FilesController@index')->before('has:docs.show');
 
+    // Ads
+    Route::get('sponsorprogramma', 'HomeController@sponsorProgram')->before('has:sponsor-program.show');
+
     // Only logged in users can view the member list if they have permission
     Route::group(['before' => 'has:users.show'], function() {
         Route::get('jaarbundel',       'UserController@showUsers');

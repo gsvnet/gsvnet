@@ -26,4 +26,9 @@ class HomeController extends BaseController {
             'birthdays' => $birthdays
         ]);
 	}
+
+    public function sponsorProgram()
+    {
+        return view('ad-page');
+    }
 }

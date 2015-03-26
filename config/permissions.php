@@ -95,7 +95,7 @@ return [
     ],
 
     'users.edit-profile' => [
-        'type' => ['potential', User::MEMBER, User::FORMERMEMBER]
+        'type' => ['potential', User::MEMBER, User::FORMERMEMBER, User::INTERNAL_COMMITTEE]
     ],
 
     'threads.show-private' => [
@@ -106,5 +106,9 @@ return [
         'committee' => [
             'webcie'
         ]
+    ],
+
+    'sponsor-program.show' => [
+        'type' => [User::MEMBER, User::FORMERMEMBER, User::INTERNAL_COMMITTEE]
     ]
 ];
