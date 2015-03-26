@@ -19,7 +19,7 @@
             <a href="https://partnerprogramma.bol.com/click/click?p=1&t=url&s=33791&f=TXL&url=http%3A%2F%2Fwww.bol.com&name=GSV-tekstadvertentie" title="Bol.com" class="button">Bol.com</a>
         </p>
 
-        <p>U kunt de link ook doorsturen naar familie of bekenden <small>als zij toch al een aankoop gaan doen</small>!</p>
+        <p>U kunt de link ook doorsturen naar familie of bekenden <small>als zij toch al een aankoop gaan doen</small>! Kopieer hem dan hier: <input type="text" value="https://partnerprogramma.bol.com/click/click?p=1&t=url&s=33791&f=TXL&url=http%3A%2F%2Fwww.bol.com&name=GSV-tekstadvertentie" onclick="this.setSelectionRange(0, this.value.length);" /></p>
     </article>
 
 @stop
