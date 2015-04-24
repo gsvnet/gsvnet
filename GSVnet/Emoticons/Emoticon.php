@@ -8,7 +8,9 @@ class Emoticon
         ':buiging:' => 'buiging.gif',
         ':schaterlach:' => 'schaterlach.gif',
         ':awesome:' => 'welw.gif',
-        ':slijmbal:' => 'slijmbal.gif'
+        ':slijmbal:' => 'slijmbal.gif',
+        ':degrooteprimus:' => 'grooteprimus.gif',
+        ':degrootepenis:' => 'grooteprimus.gif'
     ];
 
     private $replacements = [];

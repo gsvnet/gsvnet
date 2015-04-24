@@ -29,7 +29,7 @@ class PhotoController extends BaseController {
     public function showPhotos($slug)
     {
         $album = $this->albums->bySlug($slug);
-        $photosPerPage = Config::get('photos.photos_per_page');
+        $photosPerPage = Config::get('photos.photos_per_page') - 1;
         $photos = $this->photos->byAlbumIdAndPaginate($album->id, $photosPerPage);
 
         return view('gallery.albums.show')
