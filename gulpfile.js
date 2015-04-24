@@ -27,7 +27,7 @@ gulp.task('images', function(){
 gulp.task('scripts', function() {
   return gulp.src([
       'resources/assets/components/javascripts/modernizr.js',
-      'resources/assets/components/javascripts/jquery-1.10.1.min.js',
+      './bower_components/jquery/dist/jquery.min.js',
       'resources/assets/components/javascripts/list-to-menu.js',
       'resources/assets/components/javascripts/load-image.min.js',
       'resources/assets/components/javascripts/matchmedia.js',
