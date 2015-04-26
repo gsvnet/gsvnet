@@ -30,10 +30,13 @@
 	}
 
     .full-tile-link {
-        margin: 0;
         text-align: center;
-        line-height: 308px;
         display: block;
+        color: #FFF;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        margin-top: -1em;
     }
 }
 
@@ -61,10 +64,12 @@
 }
 
 .word-lid-tile {
-    background: $darkPurple;
-    background: linear-gradient(to right bottom, darken($lightPurple, 2%), lighten($lighterPurple, 2%));
-    & > .full-tile-link {
-        color: #FFF;
+    & > .spacer {
+        background: $darkPurple;
+        background: linear-gradient(to right bottom, darken($lightPurple, 2%), lighten($lighterPurple, 2%));
+        width: 100%;
+        padding-bottom: 100%;
+        position: relative;
     }
 }
 
