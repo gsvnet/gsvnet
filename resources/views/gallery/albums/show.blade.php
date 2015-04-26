@@ -14,11 +14,13 @@
         <div class="photos">
             @for($i=0; $i<count($photos); $i++)
                 @if($i==2)
-                    <div class="photo-tile tile-number-2 word-lid-tile">
-                        <a href="{{ URL::action('MemberController@becomeMember')  }}" class="full-tile-link" title="Word lid van de GSV Groningen">
-                            Word lid en maak dit mee!
-                        </a>
-                    </div>
+                    <a href="{{ URL::action('MemberController@becomeMember')  }}" class="photo-tile tile-number-2 word-lid-tile">
+                        <div class="spacer">
+                            <span class="full-tile-link" title="Word lid van de GSV Groningen">
+                                Word lid en maak dit mee!
+                            </span>
+                        </div>
+                    </a>
                 @else
                     @include('gallery._album', ['album' => $photos[$i], 'description' => $photos[$i]->name, 'wide' => $i % $repeatsAfter == 4 || $i % $repeatsAfter == 8, 'class' => 'tile-number-' . ($i % $repeatsAfter)])
                 @endif
