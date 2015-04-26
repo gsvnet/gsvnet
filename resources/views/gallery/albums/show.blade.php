@@ -12,18 +12,19 @@
         <p class="delta">{{ $album->description }}</p>
 
         <div class="photos">
-            @for($i=0; $i<count($photos); $i++)
+            @for($i=0, $j=0; $i<count($photos); $i++, $j++)
                 @if($i==2)
-                    <a href="{{ URL::action('MemberController@becomeMember')  }}" class="photo-tile tile-number-2 word-lid-tile">
+                    <a href="{{ URL::action('MemberController@index')  }}" class="photo-tile tile-number-2 word-lid-tile">
                         <div class="spacer">
                             <span class="full-tile-link" title="Word lid van de GSV Groningen">
-                                Word lid!
+                                Ga <strong>21 mei</strong> naar open soos of meld je nu alvast aan!
                             </span>
                         </div>
                     </a>
-                @else
-                    @include('gallery._album', ['album' => $photos[$i], 'description' => $photos[$i]->name, 'wide' => $i % $repeatsAfter == 4 || $i % $repeatsAfter == 8, 'class' => 'tile-number-' . ($i % $repeatsAfter)])
+                    <?php $j++ ?>
                 @endif
+
+                @include('gallery._album', ['album' => $photos[$i], 'description' => $photos[$i]->name, 'wide' => $j % $repeatsAfter == 4 || $j % $repeatsAfter == 8, 'class' => 'tile-number-' . ($j % $repeatsAfter)])
             @endfor
         </div>
 
