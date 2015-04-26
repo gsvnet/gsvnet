@@ -29,7 +29,7 @@
                         </address>
                     </div>
                     <div class="content-column">
-                        <h2>Pa en ma</h2>
+                        <h2>Pa of ma</h2>
                         <ul class="list secondary-menu">
                             @forelse($member->parents as $parent)
                                 <li>{!! link_to_action('UserController@showUser', $parent->present()->fullName, [$parent->id]) !!}</li>
