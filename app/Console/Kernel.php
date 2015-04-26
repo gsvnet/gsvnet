@@ -12,6 +12,7 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected $commands = [
 		'GSV\Console\Commands\BulkNewsletterSubscriptions',
-		'GSV\Console\Commands\Forum'
+		'GSV\Console\Commands\Forum',
+        'GSV\Console\Commands\Exodus'
 	];
 }
