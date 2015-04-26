@@ -17,7 +17,7 @@
                     <a href="{{ URL::action('MemberController@index')  }}" class="photo-tile tile-number-2 word-lid-tile">
                         <div class="spacer">
                             <span class="full-tile-link" title="Word lid van de GSV Groningen">
-                                Ga <strong>21 mei</strong> naar open soos of meld je nu alvast aan!
+                                Ga <strong>28 mei</strong> naar open soos of meld je nu alvast aan!
                             </span>
                         </div>
                     </a>
