@@ -128,6 +128,15 @@ app = (function() {
 	}
 
 	function photos() {
+        var currentIndex;
+        var prev = $('[rel="prev"]');
+        var next = $('[rel="next"]');
+        var prevUrl = prev.attr('href');
+        var nextUrl = next.attr('href');
+
+        var hasNextUrl = nextUrl !== undefined;
+        var hasPrevUrl = prevUrl !== undefined;
+
 		$('.photos').magnificPopup({
 			delegate: '.photo-link',
 			type: 'image',
@@ -145,7 +154,24 @@ app = (function() {
 				titleSrc: function(item) {
 					return item.el.attr('title');
 				}
-			}
+			},
+            callbacks: {
+                open: function() {
+                    currentIndex = this.index;
+                },
+                change: function () {
+                    if(hasPrevUrl && this.currItem.index - currentIndex > 2)
+                    {
+                        location.href = prevUrl;
+                    }
+                    if(hasNextUrl && currentIndex - this.currItem.index > 2)
+                    {
+                        location.href = nextUrl;
+                    }
+
+                    currentIndex = this.currItem.index;
+                }
+            }
 		});
 	}
 

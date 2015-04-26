@@ -35,7 +35,7 @@
 
     @section('stylesheets')
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.6.6">
+        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.6.7">
     @show
 </head>
 <body id="@yield('body-id', 'gsvnet')">
@@ -78,7 +78,7 @@
     @endif
 
     @section('javascripts')
-        <script async src="/build-javascripts/app.js?v=1.4.3"></script>
+        <script async src="/build-javascripts/app.js?v=1.4.4"></script>
 
         @if(!Config::get('app.debug'))
         <script>
