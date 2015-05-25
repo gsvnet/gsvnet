@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700,400italic">
 
 		<style>
 			body {
@@ -8,10 +8,13 @@
 				padding: 0;
 				width: 100%;
 				height: 100%;
-				color: #B0BEC5;
+				color: #FFF;
 				display: table;
 				font-weight: 100;
-				font-family: 'Lato';
+				font-family: 'PT Serif', serif;
+                background: #2A1443;
+                background: -webkit-linear-gradient(left, #4a2376, #7437b9);
+                background: linear-gradient(to right,#4a2376,#7437b9);
 			}
 
 			.container {
@@ -34,7 +37,7 @@
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">Be right back.</div>
+				<div class="title">GSVnet is even offline</div>
 			</div>
 		</div>
 	</body>
