@@ -31,6 +31,13 @@
                 @endforeach
             </ul>
         @endif
+
+        <h2>Sponsors</h2>
+        <p>
+            <a href="http://www.glas.nl/groningen" rel="nofollow" title="Sponsor: Glaszetter Groningen">
+                <img src="/images/ads/glaspunt.png" alt="Glaszetter Groningen" width="292" height="219" class="ad-img" />
+            </a>
+        </p>
     </div>
 </div>
 
