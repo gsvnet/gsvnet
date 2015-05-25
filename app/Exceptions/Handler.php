@@ -4,6 +4,7 @@ use Exception;
 use GSVnet\Core\Exceptions\ValidationException;
 use GSVnet\Permissions\NoPermissionException;
 use GSVnet\Permissions\UserAccountNotApprovedException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler {
@@ -62,11 +63,11 @@ class Handler extends ExceptionHandler {
             case ValidationException::class:
                 return redirect()->back()->withInput()->withErrors($e->getErrors());
                 break;
+            case ModelNotFoundException::class:
+                abort(404);
+                break;
         }
 
-        if ($this->isHttpException($e))
-            return $this->renderHttpException($e);
-        else
-            return parent::render($request, $e);
+        return parent::render($request, $e);
     }
 }
