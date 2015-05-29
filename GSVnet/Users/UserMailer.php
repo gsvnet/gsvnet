@@ -48,7 +48,7 @@ class UserMailer extends Mailer {
             'input' => $input
         ];
 
-        $this->sendTo($user->email, 'Aanmelding word verwerkt', 'emails.users.join', $data);
+        $this->sendTo($user->email, 'Aanmelding wordt verwerkt', 'emails.users.join', $data);
 
         $this->sendTo(
             Config::get('gsvnet.email.membership'),
