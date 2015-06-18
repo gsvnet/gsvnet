@@ -211,6 +211,11 @@ class NavigationViewComposer {
                 'url' => action('ForumThreadsController@getIndex')
             ],
 
+            'op-kamers' => [
+                'title' => 'Op kamers',
+                'url' => 'http://www.gsvnet.nl/forum/18-06-2015-kamer-aanbodvraag-overzicht-2015'
+            ],
+
             'albums' => [
                 'title' => 'Fotoalbum',
                 'url' => action('PhotoController@showAlbums')

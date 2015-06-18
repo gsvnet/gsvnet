@@ -12,8 +12,6 @@
             <p class="lead">De Gereformeerde Studentenvereniging, de GSV, is een christelijke studentenvereniging met een gereformeerde basis. De vereniging bestaat uit een hechte groep van zo&rsquo;n 200 studenten die elke week bij elkaar komen in bijbelkringen voor Bijbelstudie, maar ook voor een biertje op soos. Binnen de vereniging worden veel activiteiten georganiseerd die passen bij een van de vier pijlers die de GSV karakteriseren: de christelijke, de intellectuele, de sociale en de studentikoze pijler.</p>
         </div>
 
-        <p>De Gereformeerde Studentenvereniging, de GSV, is een christelijke studentenvereniging met een gereformeerde basis. De vereniging bestaat uit een hechte groep van zo’n 200 studenten die elke week bij elkaar komen in bijbelkringen voor Bijbelstudie, maar ook voor een biertje op soos. Binnen de vereniging worden veel activiteiten georganiseerd die passen bij een van de vier pijlers die de GSV karakteriseren: de christelijke, de intellectuele, de sociale en de studentikoze pijler.</p>
-
         <p>De GSV is opgericht in 1966 en is al zo’n goed 50 jaar d&eacute; academische vereniging met gereformeerde grondslag in Groningen. Als doelstelling heeft de vereniging: &ldquo;elkaar steunen in het dienen van de Here, met name in de studie.&rdquo;</p>
         <aside class="note">
             <b>Elkaar steunen</b> in het dienen van de Here, met name in de studie.

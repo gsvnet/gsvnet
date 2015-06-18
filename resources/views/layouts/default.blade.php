@@ -55,7 +55,7 @@
     @show
 
     <footer class="site-footer column-holder">
-        <p>Caput sapientiae est reverentia domini</p>
+        <p>Caput sapientiae est reverentia Domini</p>
         <address class="address-info" itemscope itemtype="http://data-vocabulary.org/Organization">
             <p>
                 <span itemprop="name"><a href="http://www.gsvnet.nl/" itemprop="url">Gereformeerde Studenten Vereniging</a></span>. 
