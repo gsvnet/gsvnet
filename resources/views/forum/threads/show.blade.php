@@ -25,7 +25,6 @@
                 @endif
 
                 <div class="comments">
-                    @include('partials.ads')
                     @foreach($replies as $reply)
                         @include('forum.replies._show')
                     @endforeach
