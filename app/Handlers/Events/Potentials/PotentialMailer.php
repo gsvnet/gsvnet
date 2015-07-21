@@ -22,6 +22,8 @@ class PotentialMailer {
 
         $data = [
             'fullname' => $user->present()->fullName,
+            'gender' => $profile->present()->genderLocalized,
+            'birthdate' => $profile->present()->birthdayWithYear,
             'user' => $user,
             'profile' => $profile,
             'school' => $event->school,
@@ -32,13 +34,13 @@ class PotentialMailer {
         $novcie = $this->config->get('gsvnet.email.membership');
         $webcie = $this->config->get('gsvnet.email.admin');
 
-        $this->mailer->send('emails.users.join', $data, function(Message $message) use ($user)
+        $this->mailer->queue('emails.users.join', $data, function(Message $message) use ($user)
         {
             $message->subject('Aanmelding GSV');
             $message->to($user->email, $user->present()->fullName);
         });
 
-        $this->mailer->send('emails.membership.application', $data, function(Message $message) use ($novcie, $webcie)
+        $this->mailer->queue('emails.membership.application', $data, function(Message $message) use ($novcie, $webcie)
         {
             $message->to($novcie, 'Novcie');
             $message->cc($webcie, 'Webcie');
