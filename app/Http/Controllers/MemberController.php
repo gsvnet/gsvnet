@@ -4,11 +4,13 @@ use GSV\Commands\Potentials\PromoteGuestToPotential;
 use GSV\Commands\Potentials\PromoteGuestToPotentialCommand;
 use GSV\Commands\Potentials\SignUpAsPotential;
 use GSV\Commands\Potentials\SignUpAsPotentialCommand;
+use GSV\Commands\Users\SetProfilePictureCommand;
 use GSVnet\Core\Exceptions\ValidationException;
 use GSVnet\Permissions\Permission;
 use GSVnet\Users\Profiles\PotentialValidator;
 use GSVnet\Users\Profiles\ProfilesRepository;
 use GSVnet\Core\ImageHandler;
+use Illuminate\Cookie\CookieJar;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 
@@ -16,12 +18,14 @@ class MemberController extends BaseController {
 
     protected $profiles;
     protected $imageHandler;
+    protected $cookie;
 
-    public function __construct(ProfilesRepository $profiles, ImageHandler $imageHandler)
+    public function __construct(ProfilesRepository $profiles, ImageHandler $imageHandler, CookieJar $cookie)
     {
         parent::__construct();
         $this->imageHandler = $imageHandler;
         $this->profiles = $profiles;
+        $this->cookie = $cookie;
     }
 
     public function index()
@@ -103,6 +107,16 @@ class MemberController extends BaseController {
             $user = $this->dispatchFromArray(SignUpAsPotentialCommand::class, $data);
 
             Auth::loginUsingId($user->id);
+            $this->cookie->queue('logged-in', Auth::user()->id, 2628000);
+        }
+
+        // Set the uploaded image correctly
+        if($request->hasFile('photo_path'))
+        {
+            $this->dispatchFromArray(SetProfilePictureCommand::class, [
+                'user' => Auth::user(),
+                'file' => $request->file('photo_path')
+            ]);
         }
 
         // Redirect to the become-member page which shows some congrats page
@@ -119,7 +133,7 @@ class MemberController extends BaseController {
     {
         // Guests and Potentials are not allowed to see private photos
         // but a potential can see his / her own photo
-        if ( Auth::user()->profile->id !== $profile_id && ! Permission::has('users.show') )
+        if ( Auth::user()->profile->id != $profile_id && ! Permission::has('users.show') )
         {
             throw new \GSVnet\Permissions\NoPermissionException;
         }
