@@ -59,6 +59,13 @@ class UsersRepository extends BaseRepository {
             ->paginate($amount);
     }
 
+    public function paginateLatestPotentials($amount)
+    {
+        return User::orderBy('created_at', 'DESC')
+            ->where('type', User::POTENTIAL)
+            ->paginate($amount);
+    }
+
     public function paginateFormerMembersWithProfile($amount)
     {
         return User::orderBy('lastname', 'ASC')
