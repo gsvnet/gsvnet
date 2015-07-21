@@ -81,7 +81,6 @@
         {!! Former::text('parentsPhone')->label('Telefoon ouders')->required() !!}
 
         <h2>Opmerkingen</h2>
-        <p class="side-helper">Meld hier ook zus en zo...</p>
         {!! Former::textarea('message')->rows(4)->cols(50)->label('Vragen of opmerkingen?') !!}
 
     </div>
