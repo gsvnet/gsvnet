@@ -72,19 +72,6 @@ class UserMailer extends Mailer {
         $this->sendTo($user->email, 'Aanmelding geaccpeteerd', 'emails.users.accepted', $data);
     }
 
-    /**
-    *   Inform the user that it's his or her birthday
-    */
-    public function birthday($user)
-    {
-        $data = [
-            'fullname' => $user->present()->fullName,
-            'user' => $user
-        ];
-        
-        $this->sendTo($user->email, 'Gefeliciteerd met je verjaardag!', 'emails.users.birthday', $data);
-    }
-
     public function updatedByOwner(User $oldUser, User $newUser, UserProfile $oldProfile, UserProfile $newProfile)
     {
         $userFields = [

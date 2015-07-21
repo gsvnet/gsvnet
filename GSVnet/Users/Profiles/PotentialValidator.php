@@ -6,23 +6,21 @@ class PotentialValidator extends Validator
 {
     static $rules = [
         'firstname' => 'required',
-        'middlename' => 'required',
         'lastname' => 'required',
         'gender' => 'required|in:0,1',
         'birthdate' => 'required|date_format:Y-m-d',
         'address' => 'required',
-        'zip-code' => 'required',
+        'zipCode' => 'required',
         'town' => 'required',
         'email' => 'required|email',
         'phone' => 'required',
-        'student-number' => '',
+        'studentNumber' => '',
         'study' => 'required',
         'username' => 'required',
-        'password' => 'required',
-        'parents-address' => 'required_if:parents-same-address,0',
-        'parents-zip-code' => 'required_if:parents-same-address,0',
-        'parents-town' => 'required_if:parents-same-address,0',
-        'parents-email' => 'required|email',
-        'parents-phone' => 'required'
+        'password' => 'required|confirmed',
+        'parentsAddress' => 'required_if:parents-same-address,0',
+        'parentsZipCode' => 'required_if:parents-same-address,0',
+        'parentsTown' => 'required_if:parents-same-address,0',
+        'parentsPhone' => 'required'
     ];
 }
