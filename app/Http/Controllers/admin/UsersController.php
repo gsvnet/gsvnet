@@ -65,7 +65,7 @@ class UsersController extends AdminBaseController {
 
     public function showPotentials()
     {
-        $users = $this->users->paginateWhereType(User::POTENTIAL, 50);
+        $users = $this->users->paginateLatestPotentials(50);
 
         return view('admin.users.potentials')->with(['users' => $users]);
     }
