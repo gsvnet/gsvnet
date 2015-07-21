@@ -2,7 +2,7 @@
 
 use GSV\Commands\Command;
 
-class SignUpAsPotential extends Command {
+class SignUpAsPotentialCommand extends Command {
     public $firstname;
     public $middlename;
     public $lastname;
@@ -21,14 +21,14 @@ class SignUpAsPotential extends Command {
     public $parentsAddress;
     public $parentsZipCode;
     public $parentsTown;
-    public $parentsEmail;
     public $parentsPhone;
     public $message;
+    public $school;
 
     /**
      * SignUpAsPotential constructor.
      */
-    public function __construct($firstname, $middlename, $lastname, $gender, $birthdate, $address, $zipCode, $town, $email, $phone, $study, $studentNumber, $studyStartYear, $username, $password, $parentsAddress, $parentsZipCode, $parentsTown, $parentsEmail, $parentsPhone, $message)
+    public function __construct($firstname, $middlename, $lastname, $gender, $birthdate, $address, $zipCode, $town, $email, $phone, $study, $studentNumber, $studyStartYear, $username, $password, $parentsAddress, $parentsZipCode, $parentsTown, $parentsPhone, $message, $school)
     {
         $this->firstname = $firstname;
         $this->middlename = $middlename;
@@ -48,8 +48,8 @@ class SignUpAsPotential extends Command {
         $this->parentsAddress = $parentsAddress;
         $this->parentsZipCode = $parentsZipCode;
         $this->parentsTown = $parentsTown;
-        $this->parentsEmail = $parentsEmail;
         $this->parentsPhone = $parentsPhone;
         $this->message = $message;
+        $this->school = $school;
     }
 }

@@ -1,7 +1,6 @@
 <?php namespace GSV\Handlers\Commands\Forum;
 
 use GSV\Commands\Forum\DeleteReplyCommand;
-
 use GSV\Events\Forum\ReplyWasDeleted;
 use GSVnet\Forum\Replies\ReplyRepository;
 

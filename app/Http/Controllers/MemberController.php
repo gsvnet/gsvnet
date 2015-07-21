@@ -1,7 +1,9 @@
 <?php
 
 use GSV\Commands\Potentials\PromoteGuestToPotential;
+use GSV\Commands\Potentials\PromoteGuestToPotentialCommand;
 use GSV\Commands\Potentials\SignUpAsPotential;
+use GSV\Commands\Potentials\SignUpAsPotentialCommand;
 use GSVnet\Core\Exceptions\ValidationException;
 use GSVnet\Permissions\Permission;
 use GSVnet\Users\Profiles\PotentialValidator;
@@ -68,41 +70,43 @@ class MemberController extends BaseController {
 
     public function store(Request $request, PotentialValidator $validator)
     {
-        $data = $request->only(['firstname','middlename','lastname','gender','birth-day','birth-month','birth-year',
-            'address','zip-code','town','email','phone','study-start-year','study','student-number','username',
-            'password','password_confirmation','parents-same-address','parents-address','parents-email','parents-phone',
-            'additional-information']);
+        $data = $request->only(['firstname','middlename','lastname','gender','birthDay','birthMonth','birthYear',
+            'address','zipCode','town','email','phone','studyStartYear','study','studentNumber','username',
+            'password','password_confirmation','parents-same-address','parentsAddress','parentsZipCode',
+            'parentsTown','parentsEmail','parentsPhone','message', 'school']);
 
         // Construct a date from separate day, month and year fields.
-        $data['birthdate'] = $data['birth-year'] . '-' . $data['birth-month'] . '-' . $data['birth-day'];
+        $data['birthdate'] = $data['birthYear'] . '-' . $data['birthMonth'] . '-' . $data['birthDay'];
 
         // Check if parent address is the same as potential address
         if ($request->get('parents-same-address', '0') == '1')
         {
-            $data['parents-address'] = $data['address'];
-            $data['parents-town'] = $data['town'];
-            $data['parents-zip-code'] = $data['zip-code'];
+            $data['parentsAddress'] = $data['address'];
+            $data['parentsTown'] = $data['town'];
+            $data['parentsZipCode'] = $data['zipCode'];
         }
 
+        // Validate input
         $validator->validate($data);
 
+        // Try to log in with the provided data
         if(Auth::attempt($request->only('email', 'password')))
         {
             // Only allow visitors here.
-            if(! Auth::user()->isVisitor)
+            if(! Auth::user()->isVisitor())
                 throw new ValidationException(new MessageBag(['user' => 'Je hebt je al aangemeld']));
 
             // Promote this guest to potential
-            $this->dispatchFromArray(PromoteGuestToPotential::class, $data);
+            $this->dispatchFromArray(PromoteGuestToPotentialCommand::class, $data);
 
         } else {
-            $user = $this->dispatchFromArray(SignUpAsPotential::class, $data);
+            $user = $this->dispatchFromArray(SignUpAsPotentialCommand::class, $data);
 
             Auth::loginUsingId($user->id);
         }
 
         // Redirect to the become-member page which shows some congrats page
-//        return redirect()->action('MemberController@becomeMember');
+        return redirect()->action('MemberController@becomeMember');
     }
 
     public function faq()
