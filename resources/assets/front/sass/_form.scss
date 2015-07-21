@@ -22,10 +22,10 @@
 .form-control {
 	padding: .2em .5em;
 	border: 1px solid $grey;
+	box-sizing: border-box;
 
 	&.wide {
 		width: 100%;
-		box-sizing: border-box;
 	}
 }
 
@@ -95,6 +95,41 @@ textarea.form-control {
 		&.visible {
 			height: auto;
 			max-height: 400px;
+		}
+	}
+}
+
+#become-member-form {
+
+	@media only screen and (min-width: $firstbreakpoint) {
+		.side-helper {
+			float: right;
+			width: 30%;
+			font-style: italic;
+		}
+	}
+
+	textarea.form-control {
+		width: 50%;
+	}
+
+	h2 {
+		margin-top: 1em;
+		padding-top: 1em;
+		border-top: 1px solid $lightGrey;
+		
+		&:first-of-type {
+			margin-top: 0;
+			padding-top: 0;
+			border-top: 0;
+		}
+	}
+
+	@media only screen and (max-width: $firstbreakpoint) {
+		.form-control, textarea.form-control {
+			display: block;
+			width: 100%;
+			margin-bottom: 6px;
 		}
 	}
 }

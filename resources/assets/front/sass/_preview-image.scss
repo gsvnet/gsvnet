@@ -9,6 +9,8 @@
 #preview-image.has-image {
 	background: 0;
 	height: auto;
+    padding: 10px;
+    border: 1px solid $lightGrey;
 }
 
 #preview-image canvas {
@@ -20,5 +22,6 @@
 @media only screen and (max-width: $firstbreakpoint){
 	#preview-image.visible {
 		float: none;
+        margin: 0 auto;
 	}
 }

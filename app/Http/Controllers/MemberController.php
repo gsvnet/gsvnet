@@ -1,11 +1,14 @@
 <?php
 
+use GSV\Commands\Potentials\PromoteGuestToPotential;
+use GSV\Commands\Potentials\SignUpAsPotential;
+use GSVnet\Core\Exceptions\ValidationException;
 use GSVnet\Permissions\Permission;
-use GSVnet\Users\UserManager;
-use GSVnet\Users\Profiles\ProfileManager;
+use GSVnet\Users\Profiles\PotentialValidator;
 use GSVnet\Users\Profiles\ProfilesRepository;
-
 use GSVnet\Core\ImageHandler;
+use Illuminate\Http\Request;
+use Illuminate\Support\MessageBag;
 
 class MemberController extends BaseController {
 
@@ -63,31 +66,43 @@ class MemberController extends BaseController {
             ->with('activeStep', $activeStep);
     }
 
-    public function store(ProfileManager $profileManager)
+    public function store(Request $request, PotentialValidator $validator)
     {
-        $user = Auth::user();
-        $input = Input::except(['photo_path']);
-        $input['photo_path'] = null;
-
-        if (Input::hasFile('photo_path'))
-            $input['photo_path'] = Input::file('photo_path');
+        $data = $request->only(['firstname','middlename','lastname','gender','birth-day','birth-month','birth-year',
+            'address','zip-code','town','email','phone','study-start-year','study','student-number','username',
+            'password','password_confirmation','parents-same-address','parents-address','parents-email','parents-phone',
+            'additional-information']);
 
         // Construct a date from separate day, month and year fields.
-        $input['potential-birthdate'] = $input['potential-birth-year'] . '-' . $input['potential-birth-month'] . '-' . $input['potential-birth-day'];
+        $data['birthdate'] = $data['birth-year'] . '-' . $data['birth-month'] . '-' . $data['birth-day'];
 
         // Check if parent address is the same as potential address
-        if (Input::get('parents-same-address', '0') == '1')
+        if ($request->get('parents-same-address', '0') == '1')
         {
-            $input['parents-address'] = $input['potential-address'];
-            $input['parents-town'] = $input['potential-town'];
-            $input['parents-zip-code'] = $input['potential-zip-code'];
+            $data['parents-address'] = $data['address'];
+            $data['parents-town'] = $data['town'];
+            $data['parents-zip-code'] = $data['zip-code'];
         }
 
-        // Create the profile and attach it to the user
-        $profileManager->create($user, $input);
+        $validator->validate($data);
 
-        // Redirect to the become-member page: it shows the 3rd step [done] as active page
-        return redirect()->action('MemberController@becomeMember');
+        if(Auth::attempt($request->only('email', 'password')))
+        {
+            // Only allow visitors here.
+            if(! Auth::user()->isVisitor)
+                throw new ValidationException(new MessageBag(['user' => 'Je hebt je al aangemeld']));
+
+            // Promote this guest to potential
+            $this->dispatchFromArray(PromoteGuestToPotential::class, $data);
+
+        } else {
+            $user = $this->dispatchFromArray(SignUpAsPotential::class, $data);
+
+            Auth::loginUsingId($user->id);
+        }
+
+        // Redirect to the become-member page which shows some congrats page
+//        return redirect()->action('MemberController@becomeMember');
     }
 
     public function faq()
