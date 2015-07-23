@@ -15,7 +15,7 @@
             <div id="preview-image"></div>
         </div>
 
-        {!! Former::file('photo_path')->label('Upload een foto van jezelf')->accept('image') !!}
+        {!! Former::file('photo_path')->label('Upload een foto van jezelf')->accept('image')->required() !!}
 
         <div class="form-group {{$errors->has('firstname') || $errors->has('middlename') || $errors->has('lastname') ? ' has-error' : ''}}">
             <label for="firstname" class="control-label">Naam<sup>*</sup></label>
@@ -39,7 +39,7 @@
         {!! Former::text('address')->label('Adres en huisnummer')->required() !!}
 
         <div class="form-group {{$errors->has('zipCode') || $errors->has('town') ? ' has-error' : ''}}">
-            <label for="zipCode" class="control-label">Postcode en plaats</label>
+            <label for="zipCode" class="control-label">Postcode en plaats<sup>*</sup></label>
             <input type="text" class="form-control" value="{{old('zipCode')}}" placeholder="Postcode" id="zipCode" name="zipCode" size="6" required>
             <input type="text" class="form-control" value="{{old('town')}}" placeholder="Woonplaats" id="town" name="town" required>
         </div>
@@ -52,7 +52,7 @@
         {!! Former::text('school')->label('Middelbare school')->placeholder('Middelbare school') !!}
         {!! Former::select('studyStartYear')->label('Jaar van inschrijving bij de RuG')->range(date('Y')+1, date('Y')-5); !!}
         <div class="form-group">
-            <label for="study" class="control-label">Studie en studentnummer (alleen als je dat al hebt)</label>
+            <label for="study" class="control-label">Studie<sup>*</sup> en studentnummer (alleen als je dat al hebt)</label>
             <input type="text" class="form-control" value="{{old('study')}}" placeholder="Studie" id="study" name="study">
             <input type="text" class="form-control" value="{{old('studentNumber')}}" placeholder="s123456" id="studentNumber" name="studentNumber">
         </div>
