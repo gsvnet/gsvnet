@@ -7,7 +7,6 @@ use Illuminate\Validation\Factory;
 abstract class Validator {
 
     protected $validator;
-    protected $messages;
 
     public function __construct(Factory $validator)
     {
@@ -19,7 +18,13 @@ abstract class Validator {
     {
         $this->before($data);
 
-        $validation = $this->validator->make($data, static::$rules);
+        $messages = [];
+        if(isset(static::$messages))
+        {
+            $messages = static::$messages;
+        }
+
+        $validation = $this->validator->make($data, static::$rules, $messages);
 
         if ( $validation->fails())
         {
