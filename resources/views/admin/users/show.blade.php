@@ -3,7 +3,7 @@
 @section('content')
     <div class="page-header">
         @if($profile)
-            <h1><img src="{!! $profile->present()->xsmallProfileImage !!}" width="102" height="102" alt="Profielfoto"/> {{ $user->present()->fullName }}</h1>
+            <h1><a href="{{ URL::action('MemberController@showPhoto', $profile->id) }}" title="Grote foto"><img src="{!! $profile->present()->xsmallProfileImage !!}" width="102" height="102" alt="Profielfoto"/></a> {{ $user->present()->fullName }}</h1>
         @else
             <h1>{!! $user->present()->avatar(102) !!} {{ $user->present()->fullName }}</h1>
         @endif
