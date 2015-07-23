@@ -24,4 +24,28 @@ class PotentialValidator extends Validator
         'parentsTown' => 'required_if:parents-same-address,0',
         'parentsPhone' => 'required'
     ];
+
+    static $messages = [
+        'photo_path.required' => 'Selecteer een foto van jezelf',
+        'photo_path.image' => 'Selecteer een foto van jezelf',
+        'firstname.required' => 'Vul je voornaam in',
+        'lastname.required' => 'Vul je achternaam in',
+        'gender.required' => 'Selecteer je geslacht',
+        'gender.in' => 'Selecteer je geslacht',
+        'birthdate.required' => 'Vul een geboortedatum in',
+        'birthdate.date_format' => 'Vul een geldige geboortedatum in',
+        'address.required' => 'Vul een adres in',
+        'zipCode.required' => 'Vul een postcode in',
+        'town.required' => 'Vul een woonplaats in',
+        'email.required' => 'Vul een emailadres in',
+        'phone.required' => 'Vul een geldig emailadres in',
+        'study.required' => 'Vul een studie in',
+        'username.required' => 'Kies een gebruikersnaam',
+        'password.required' => 'Kies een wachtwoord',
+        'password.confirmed' => 'Kies een wachtwoord',
+        'parentsAddress.required_if' => 'Vul het adres van je ouders in',
+        'parentsZipCode.required_if' => 'Vul de postcode van je ouders in',
+        'parentsTown.required_if' => 'Vul de woonplaats van je ouders in',
+        'parentsPhone.required' => 'Vul het telefoonnummer van je ouders in'
+    ];
 }
