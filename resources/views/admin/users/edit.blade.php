@@ -26,7 +26,7 @@
             {!! Former::close() !!}
         </div>
 
-        @if($user->wasOrIsMember())
+        @if(! $user->isVisitor())
             <div class="col-xs-12 col-md-6">
                 <h2>Profielgegevens bewerken</h2>
                 @if ($profile)
