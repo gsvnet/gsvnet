@@ -117,9 +117,18 @@
     <div class="column-holder" role="main">
         <p class="delta">Denk je na over een actief studentenleven in Groningen? Dan ben je hier aan het juiste adres. De GSV is dé perfecte combinatie van christelijke waarden en het echte studentenleven.</p>
         <div class="main-content has-border-bottom">
-            <p>Op deze site kun je meer lezen over de GSV en wat er allemaal valt te beleven bij onze studentenverenging. Wil je lid worden, of ben je gewoon nieuwsgierig? <a href="/word-lid" class="more" title="Lid worden">Lees waarom</a></p>
+            <p>Op deze site kun je meer lezen over de GSV en wat er allemaal valt te beleven bij onze studentenverenging. Wil je lid worden, of ben je gewoon nieuwsgierig? <a href="/word-lid" class="more" title="Lid worden">Lees wat je moet weten</a></p>
+
+            <h2>KEI-week 2015</h2>
+            <p>Kom bij ons langs tijdens de KEI-week!</p>
+            <p>
+                <a href="/activiteiten" title="Bekijk alle activiteiten van tijdens de KEI-week">
+                    <img src="http://i.imgur.com/1WOJgkf.jpg" alt="Agenda KEI-week GSV" class="responsive-img" />
+                </a>
+            </p>
+
             <h2>Over de GSV</h2>
-            <p>De GSV, de Gereformeerde Studentenvereniging, is een christelijke studentenvereniging met een gereformeerde basis. De vereniging bestaat uit een hechte groep van zo’n 200 studenten die elke week bij elkaar komen op bijbelkring en tijdens soosavonden. </p>
+            <p>De GSV, de Gereformeerde Studenten Vereniging, is een christelijke studentenvereniging met een gereformeerde basis. De vereniging bestaat uit een hechte groep van zo’n 200 studenten die elke week bij elkaar komen op bijbelkring en tijdens soosavonden. </p>
 
             <div class="content-columns">
                 <div class="content-column">
@@ -157,6 +166,9 @@
         <div class="secondary-column">
             <div class="content-columns">
                 <div class="content-column">
+                    <h2>Word lid</h2>
+                    <p><a href="http://gsvnet.app:8000/word-lid/inschrijven" class="button" title="Meld je aan">Meld je aan!</a></p>
+
                     @if(count($events) > 0)
                         <h2>Komende activiteiten</h2>
                         <ul class="unstyled-list title-description-list">

@@ -7,21 +7,21 @@
 @section('content')
     <div class="column-holder" role="main">
         <p class="delta">
-            @if(Auth::check())
-                {{Auth::user()->firstname}}, 
-                @if(Auth::user()->type == 'potential')
-                    vanaf nu ga je een onvergetelijke studententijd tegemoet!
-                @else
-                    wil jij een onvergetelijke studententijd?</p>
-                @endif
-            @else
-                Wil jij een onvergetelijke studententijd?
-            @endif
+            Wil jij een onvergetelijke studententijd?
         </p>
         <div class="main-content">
             <p>De GSV is de meest hechte christelijke studentenvereniging van Groningen. Onze vereniging biedt de perfecte combinatie van christelijke waarden en het echte studentenleven.</p>
             <p>Door onze lange historie heen hebben wij keer op keer bewezen de beste match te zijn tussen het échte studentenleven en het christelijk geloof.</p>
 
+            <h2>KEI-week 2015</h2>
+            <p>Kom bij ons langs tijdens de KEI-week en ervaar hoe het is om als student lid te zijn van de Gereformeerde Studenten Vereniging.</p>
+            <p>
+                <a href="/activiteiten" title="Bekijk alle activiteiten van tijdens de KEI-week">
+                    <img src="http://i.imgur.com/1WOJgkf.jpg" alt="Agenda KEI-week GSV" class="responsive-img" />
+                </a>
+            </p>
+
+            {{--
             <h2>Open soos</h2>
             <p>Een aantal keer per jaar organiseert de GSV een open sociëteitsavond waar je op je gemak kunt kennismaken met de vereniging en het pand kunt bekijken. Vaak organiseren we voorafgaand aan een open soos een andere activiteit die een van de aspecten van onze vereniging belicht. Ook kun je op een normale donderdagavond mee als introducé van een van onze leden.</p>
 
@@ -37,6 +37,7 @@
 
             <h2>Meeloopdag</h2>
             <p>Weet je nog niet wat je gaat studeren? Binnen de GSV worden tal van studies gedaan. Stuur een mail naar {!!HTML::mailto('prescie@gsvnet.nl')!!} en wij koppelen je aan een GSV’er om hoor- of werkcolleges van een studie te volgen, zodat je je beter kunt oriënteren op je studiekeuze.</p>
+            --}}
         </div>
         <div class="secondary-column">
             <h2>Gelijk inschrijven</h2>
