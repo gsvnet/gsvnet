@@ -47,7 +47,7 @@ class SignUpAsPotentialCommandHandler {
 
         $user->profile()->save($profile);
 
-        event(new PotentialSignedUp($user, $command->message, $command->school, $command->studyStartYear));
+        event(new PotentialSignedUp($user, $command->message, $command->school, $command->studyStartYear, $command->parentsEmail));
 
         return $user;
     }

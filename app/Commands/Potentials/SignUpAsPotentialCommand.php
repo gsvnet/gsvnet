@@ -22,13 +22,14 @@ class SignUpAsPotentialCommand extends Command {
     public $parentsZipCode;
     public $parentsTown;
     public $parentsPhone;
+    public $parentsEmail;
     public $message;
     public $school;
 
     /**
      * SignUpAsPotential constructor.
      */
-    public function __construct($firstname, $middlename, $lastname, $gender, $birthdate, $address, $zipCode, $town, $email, $phone, $study, $studentNumber, $studyStartYear, $username, $password, $parentsAddress, $parentsZipCode, $parentsTown, $parentsPhone, $message, $school)
+    public function __construct($firstname, $middlename, $lastname, $gender, $birthdate, $address, $zipCode, $town, $email, $phone, $study, $studentNumber, $studyStartYear, $username, $password, $parentsAddress, $parentsZipCode, $parentsTown, $parentsPhone, $parentsEmail, $message, $school)
     {
         $this->firstname = $firstname;
         $this->middlename = $middlename;
@@ -49,6 +50,7 @@ class SignUpAsPotentialCommand extends Command {
         $this->parentsZipCode = $parentsZipCode;
         $this->parentsTown = $parentsTown;
         $this->parentsPhone = $parentsPhone;
+        $this->parentsEmail = $parentsEmail;
         $this->message = $message;
         $this->school = $school;
     }

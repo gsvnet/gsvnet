@@ -72,5 +72,9 @@
 			<td style="font-family:'PT Serif', Georgia, 'Times New Roman', Times, serif;font-size:18px;line-height:30px;padding:8px 16px;"><strong>Telefoon ouders</strong></td>
 			<td style="font-family:'PT Serif', Georgia, 'Times New Roman', Times, serif;font-size:18px;line-height:30px;padding:8px 16px;">{{ $profile['parent_phone'] }}</td>
 		</tr>
+		<tr>
+			<td style="font-family:'PT Serif', Georgia, 'Times New Roman', Times, serif;font-size:18px;line-height:30px;padding:8px 16px;"><strong>Email ouders</strong></td>
+			<td style="font-family:'PT Serif', Georgia, 'Times New Roman', Times, serif;font-size:18px;line-height:30px;padding:8px 16px;">{{ $parentsEmail }}</td>
+		</tr>
     </table>
 @stop
