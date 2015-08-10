@@ -12,12 +12,14 @@ class PotentialSignedUp extends Event {
     public $message;
     public $school;
     public $startYear;
+    public $parentsEmail;
 
-    public function __construct(User $user, $message, $school, $startYear)
+    public function __construct(User $user, $message, $school, $startYear, $parentsEmail)
     {
         $this->user = $user;
         $this->message = $message;
         $this->school = $school;
         $this->startYear = $startYear;
+        $this->parentsEmail = $parentsEmail;
     }
 }

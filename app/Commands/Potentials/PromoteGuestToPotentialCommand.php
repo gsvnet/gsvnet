@@ -23,13 +23,14 @@ class PromoteGuestToPotentialCommand extends Command {
     public $parentsZipCode;
     public $parentsTown;
     public $parentsPhone;
+    public $parentsEmail;
     public $message;
     public $school;
 
     /**
      * PromoteGuestToPotentialCommand constructor.
      */
-    public function __construct($userId, $firstname, $middlename, $lastname, $gender, $birthdate, $address, $zipCode, $town, $email, $phone, $study, $studentNumber, $studyStartYear, $username, $password, $parentsAddress, $parentsZipCode, $parentsTown, $parentsPhone, $message, $school)
+    public function __construct($userId, $firstname, $middlename, $lastname, $gender, $birthdate, $address, $zipCode, $town, $email, $phone, $study, $studentNumber, $studyStartYear, $username, $password, $parentsAddress, $parentsZipCode, $parentsTown, $parentsPhone, $parentsEmail, $message, $school)
     {
         $this->userId = $userId;
         $this->firstname = $firstname;
@@ -51,6 +52,7 @@ class PromoteGuestToPotentialCommand extends Command {
         $this->parentsZipCode = $parentsZipCode;
         $this->parentsTown = $parentsTown;
         $this->parentsPhone = $parentsPhone;
+        $this->parentsEmail = $parentsEmail;
         $this->message = $message;
         $this->school = $school;
     }

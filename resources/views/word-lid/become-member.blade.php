@@ -36,7 +36,7 @@
 
         </div>
 
-        {!! Former::text('address')->label('Adres en huisnummer')->required() !!}
+        {!! Former::text('address')->label('Adres en huisnummer')->placeholder('Straatnaam en nummer')->required() !!}
 
         <div class="form-group {{$errors->has('zipCode') || $errors->has('town') ? ' has-error' : ''}}">
             <label for="zipCode" class="control-label">Postcode en plaats<sup>*</sup></label>
@@ -59,9 +59,9 @@
 
         <h2>Account voor GSVnet</h2>
         <p class="side-helper">Met deze gegevens krijg je toegang tot het forum van de GSV. Als lid krijg je volledig toegang tot de website. Heb je al een account? Vul dan je oude wachtwoord in.</p>
-        {!! Former::text('username')->label('Gebruikersnaam')->placeholder('Gebruikersnaam')!!}
-        {!! Former::password('password')->label('Wachtwoord')->placeholder('Wachtwoord')!!}
-        {!! Former::password('password_confirmation')->label('Herhaal wachtwoord')->placeholder('Herhaal')!!}
+        {!! Former::text('username')->label('Gebruikersnaam')->placeholder('Gebruikersnaam')->required() !!}
+        {!! Former::password('password')->label('Wachtwoord')->placeholder('Wachtwoord')->required() !!}
+        {!! Former::password('password_confirmation')->label('Herhaal wachtwoord')->placeholder('Herhaal')->required() !!}
 
         <h2>Gegevens over je ouders</h2>
         <p class="side-helper">Wij zullen deze gegevens alleen gebruiken als het nodig is.</p>
@@ -71,14 +71,16 @@
         ])->label('Woon je bij je ouders/verzorgers?')->check('0') !!}
 
         <div id="parents-info">
-            {!! Former::text('parentsAddress')->label('Adres en huisnummer ouders') !!}
+            {!! Former::text('parentsAddress')->label('Adres en huisnummer ouders')->placeholder('Straatnaam en nummer') !!}
             <div class="form-group {{$errors->has('parentsZipCode') || $errors->has('parents-town') ? ' has-error' : ''}}">
                 <label for="parentsZipCode" class="control-label">Postcode en plaats ouders</label>
                 <input type="text" class="form-control" value="{{old('parentsZipCode')}}" placeholder="Postcode" id="parentsZipCode" name="parentsZipCode" size="6">
                 <input type="text" class="form-control" value="{{old('parentsTown')}}" placeholder="Woonplaats" id="parentsTown" name="parentsTown">
             </div>
         </div>
-        {!! Former::text('parentsPhone')->label('Telefoon ouders')->required() !!}
+
+        {!! Former::text('parentsPhone')->label('Telefoon ouders')->placeholder('Telefoon ouders')->required() !!}
+        {!! Former::text('parentsEmail')->label('Emailadres ouders')->placeholder('Email ouders')->required() !!}
 
         <h2>Opmerkingen</h2>
         {!! Former::textarea('message')->rows(4)->cols(50)->label('Vragen of opmerkingen?') !!}

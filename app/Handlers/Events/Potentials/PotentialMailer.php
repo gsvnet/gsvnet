@@ -28,7 +28,8 @@ class PotentialMailer {
             'profile' => $profile,
             'school' => $event->school,
             'personal_message' => $event->message,
-            'startYear' => $event->startYear
+            'startYear' => $event->startYear,
+            'parentsEmail' => $event->parentsEmail
         ];
 
         $novcie = $this->config->get('gsvnet.email.membership');
