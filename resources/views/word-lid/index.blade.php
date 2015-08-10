@@ -20,6 +20,10 @@
                     <img src="http://i.imgur.com/1WOJgkf.jpg" alt="Agenda KEI-week GSV" class="responsive-img" />
                 </a>
             </p>
+            <p>
+                <span  style="display: block; margin-bottom: .5em;">Zie de laatste updates op het Facebookevent:</span>
+                <a href="https://www.facebook.com/events/878049515619403/" class="button">KEI-week GSV op Facebook</a>
+            </p>
 
             {{--
             <h2>Open soos</h2>
