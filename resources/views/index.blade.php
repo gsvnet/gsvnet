@@ -171,7 +171,7 @@
             <div class="content-columns">
                 <div class="content-column">
                     <h2>Word lid</h2>
-                    <p><a href="http://gsvnet.app:8000/word-lid/inschrijven" class="button" title="Meld je aan">Meld je aan!</a></p>
+                    <p><a href="/word-lid/inschrijven" class="button" title="Meld je aan">Meld je aan!</a></p>
 
                     @if(count($events) > 0)
                         <h2>Komende activiteiten</h2>
