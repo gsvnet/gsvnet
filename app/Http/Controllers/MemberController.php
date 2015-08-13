@@ -74,6 +74,8 @@ class MemberController extends BaseController {
 
     public function store(Request $request, PotentialValidator $validator)
     {
+        \Log::info('Potential wil lid worden', $request->except('password', 'password_confirmation'));
+
         $data = $request->only(['firstname','middlename','lastname','gender','birthDay','birthMonth','birthYear',
             'address','zipCode','town','email','phone','studyStartYear','study','studentNumber','username',
             'password','password_confirmation','parents-same-address','parentsAddress','parentsZipCode',
