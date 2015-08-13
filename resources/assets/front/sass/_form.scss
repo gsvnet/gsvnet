@@ -64,6 +64,14 @@ textarea.form-control {
 	font-family: $font-family-sans;
 }
 
+// validation blocks
+.error-bar {
+	background: #d9534f;
+	color: #FFF;
+	padding: 1em;
+	margin-bottom: 2em;
+}
+
 // SPECIFIC FORMS
 
 #user-search-form-toggler span {

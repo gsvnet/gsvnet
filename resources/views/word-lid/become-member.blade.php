@@ -3,10 +3,12 @@
     <div class="column-holder" role="main">
 
         @if (count($errors) > 0)
-            <p><strong>Het formulier is niet helemaal goed ingevuld!</strong></p>
-            @foreach($errors->all('<li>:message</li>') as $error)
-                {!! $error !!}
-            @endforeach
+            <div class="error-bar">
+                <p><strong>Het formulier is niet helemaal goed ingevuld!</strong></p>
+                @foreach($errors->all('<li>:message</li>') as $error)
+                    {!! $error !!}
+                @endforeach
+            </div>
         @endif
 
         <h2>Jij</h2>
