@@ -33,9 +33,10 @@
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700,400italic">
     @section('stylesheets')
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.6.10">
+        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.6.11">
     @show
 </head>
 <body id="@yield('body-id', 'gsvnet')">
@@ -54,13 +55,17 @@
         @endif
     @show
 
+    @if( Auth::guest())
+    <a href="/word-lid/veel-gestelde-vragen#bevestiging" title="Vragen" class="snackbar">Aangemeld, maar geen bevestiging gekregen?</a>
+    @endif
+
     <footer class="site-footer column-holder">
         <p>Caput sapientiae est reverentia Domini</p>
         <address class="address-info" itemscope itemtype="http://data-vocabulary.org/Organization">
             <p>
-                <span itemprop="name"><a href="http://www.gsvnet.nl/" itemprop="url">Gereformeerde Studenten Vereniging</a></span>. 
+                <span itemprop="name"><a href="http://www.gsvnet.nl/" itemprop="url">Gereformeerde Studenten Vereniging</a></span>.
                 <span itemprop="address" itemscope itemtype="http://data-vocabulary.org/Address">
-                    <span itemprop="street-address">Hereweg 40</span>, 
+                    <span itemprop="street-address">Hereweg 40</span>,
                     <span itemprop="locality">Groningen</span>.
                     <meta itemprop="region" content="Groningen" />
                     <meta itemprop="country-name" content="Nederland" />
@@ -95,5 +100,3 @@
     @show
 </body>
 </html>
-
-<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700,400italic">
