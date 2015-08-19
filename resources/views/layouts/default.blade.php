@@ -55,10 +55,6 @@
         @endif
     @show
 
-    @if( Auth::guest())
-    <a href="/word-lid/veel-gestelde-vragen#bevestiging" title="Vragen" class="snackbar">Aangemeld, maar geen bevestiging gekregen?</a>
-    @endif
-
     <footer class="site-footer column-holder">
         <p>Caput sapientiae est reverentia Domini</p>
         <address class="address-info" itemscope itemtype="http://data-vocabulary.org/Organization">
