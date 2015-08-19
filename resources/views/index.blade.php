@@ -119,18 +119,6 @@
         <div class="main-content has-border-bottom">
             <p>Op deze site kun je meer lezen over de GSV en wat er allemaal valt te beleven bij onze studentenverenging. Wil je lid worden, of ben je gewoon nieuwsgierig? <a href="/word-lid" class="more" title="Lid worden">Lees wat je moet weten</a></p>
 
-            <h2>KEI-week 2015</h2>
-            <p>Kom bij ons langs tijdens de KEI-week!</p>
-            <p>
-                <a href="/activiteiten" title="Bekijk alle activiteiten van tijdens de KEI-week">
-                    <img src="http://i.imgur.com/1WOJgkf.jpg" alt="Agenda KEI-week GSV" class="responsive-img" />
-                </a>
-            </p>
-            <p>
-                <span  style="display: block; margin-bottom: .5em;">Zie de laatste updates op het Facebookevent:</span>
-                <a href="https://www.facebook.com/events/878049515619403/" class="button">KEI-week GSV op Facebook</a>
-            </p>
-
             <h2>Over de GSV</h2>
             <p>De GSV, de Gereformeerde Studenten Vereniging, is een christelijke studentenvereniging met een gereformeerde basis. De vereniging bestaat uit een hechte groep van zo’n 200 studenten die elke week bij elkaar komen op bijbelkring en tijdens soosavonden. </p>
 
