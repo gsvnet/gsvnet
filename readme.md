@@ -18,6 +18,15 @@ Pas vervolgens het `Homestead.yaml` file aan zoals beschreven staat in de docume
 5. `bower install` om de front-end dependencies te downloaden (zoals jQuery e.d.)
 5. `gulp` om het filesystem te watchen, zodat elke verandering van een SASS of JavaScript-bestand gelijk een nieuwe build van geminifiede CSS en JavaScript triggert (ook superhandig!).
 
+## Versiebeheer met Git
+Heel belangrijk voor het ontwikkelen is Git. Git is een heel uitgebreide versiebeheertool met een simpele interface, die de hele wereld gebruikt (en zou moeten gebruiken). Het idee erachter is om *veranderingen* in bestanden op te slaan, en niet (alleen) de huidige versie. Dus stel je verandert een bestand, dan weet Git waar de veranderingen hebben plaatsgevonden, en kun jij die veranderingen toelichten met een klein berichtje. Globaal kun je uit de voeten met deze commando's in Git:
+
+1. `git add [bestand]` om veranderde bestanden sinds de vorige commit in de lijst te zetten voor de volgende commit
+2. `git commit -m "[hier je toelichting]"` om die lijst bestanden van 1. daadwerkelijk te committen
+3. `git pull origin master` om veranderingen (=commits van anderen of je andere computer) te mergen met jouw lokale code
+4. `git push origin master` om commits van jouzelf naar de server te sturen, zodat anderen kunnen pullen.
+
+De server waar GSVnet op draait gebruikt zelf ook Git om nieuwe versies van GSVnet te online te zetten. Dit moet overigens wel handmatig.
 
 ## Het domeinmodel
 In dit stuk licht ik een paar domein-gerelateerde (gerelateerd aan de GSV) programmeerzaken toe. Hiermee bedoel ik de manier waarop geprobeerd is de GSV te modelleren via de code. Vrij centraal is het `User` model, dat te vinden is in `GSVnet\Users\User`. Een `User` model bevat minimale informatie, zoals een emailadres en wachtwoord om in te loggen en een volledige naam. Er is een aantal verschillende soorten `User`s voor GSVnet, namelijk:
