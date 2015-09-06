@@ -1,9 +1,10 @@
 <?php namespace GSV\Handlers\Commands\Potentials;
 
-use GSV\Commands\Potentials\PromoteGuestToPotentialCommand;
-use GSV\Events\Potentials\PotentialSignedUp;
-use GSVnet\Users\Profiles\UserProfile;
+use GSVnet\Users\User;
 use GSVnet\Users\UsersRepository;
+use GSVnet\Users\Profiles\UserProfile;
+use GSV\Events\Potentials\PotentialSignedUp;
+use GSV\Commands\Potentials\PromoteGuestToPotentialCommand;
 
 class PromoteGuestToPotentialCommandHandler {
 
