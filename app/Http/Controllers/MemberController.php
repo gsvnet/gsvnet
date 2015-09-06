@@ -102,6 +102,8 @@ class MemberController extends BaseController {
             if(! Auth::user()->isVisitor())
                 throw new ValidationException(new MessageBag(['user' => 'Je hebt je al aangemeld']));
 
+            $data['userId'] = Auth::user()->id;
+
             // Promote this guest to potential
             $this->dispatchFromArray(PromoteGuestToPotentialCommand::class, $data);
 
