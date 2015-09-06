@@ -46,7 +46,11 @@
             <input type="text" class="form-control" value="{{old('town')}}" placeholder="Woonplaats" id="town" name="town" required>
         </div>
 
-        {!! Former::email('email')->label('Email')->placeholder('Email')->required() !!}
+        @if(Auth::check())
+            {!! Former::email('email')->label('Email')->placeholder('Email')->required()->value(Auth::user()->email)->disabled() !!}
+        @else
+            {!! Former::email('email')->label('Email')->placeholder('Email')->required() !!}
+        @endif
         {!! Former::text('phone')->label('Telefoon')->placeholder('06-12345678')->required() !!}
 
         <h2>Studie</h2>
@@ -60,10 +64,16 @@
         </div>
 
         <h2>Account voor GSVnet</h2>
-        <p class="side-helper">Met deze gegevens krijg je toegang tot het forum van de GSV. Als lid krijg je volledig toegang tot de website. Heb je al een account? Vul dan je oude wachtwoord in.</p>
+        <p class="side-helper">Met deze gegevens krijg je toegang tot het forum van de GSV. Als lid krijg je volledig toegang tot de website. {{Auth::check() ? 'Omdat je ingelogd bent, kun je deze stap overslaan' : 'Heb je al een account? Vul dan je oude wachtwoord in.'}}</p>
+
+        @if(Auth::check())
+        {!! Former::text('username')->label('Gebruikersnaam')->placeholder('Gebruikersnaam')->value(Auth::user()->username)->disabled() !!}
+        {!! Former::password('password')->label('Wachtwoord')->placeholder('Wachtwoord')->disabled() !!}
+        @else
         {!! Former::text('username')->label('Gebruikersnaam')->placeholder('Gebruikersnaam')->required() !!}
         {!! Former::password('password')->label('Wachtwoord')->placeholder('Wachtwoord')->required() !!}
-        {!! Former::password('password_confirmation')->label('Herhaal wachtwoord')->placeholder('Herhaal')->required() !!}
+        {!! Former::password('password_confirmation')->label('Herhaal wachtwoord')->placeholder('Herhaal') !!}
+        @endif
 
         <h2>Gegevens over je ouders</h2>
         <p class="side-helper">Wij zullen deze gegevens alleen gebruiken als het nodig is.</p>
