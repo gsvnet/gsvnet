@@ -1,5 +1,4 @@
 # GSVnet 3.x how-to
-
 GSVnet is gemaakt met [Laravel 5](http://laravel.com/) als server-side framework. De front-end is vrij traditionele HTML5, CSS3 en JavaScript. De CSS wordt geschreven door middel van [SASS](http://sass-lang.com/) om het modulair te maken, en de JavaScript is min of meer opgesplitst per pagina. [Gulp](http://gulpjs.com/) zorgt ervoor dat SASS wordt omgezet in CSS, de JavaScriptbestanden worden samengevoegd, en dat alle CSS en JavaScript wordt geminified tot een klein bestand.
 
 ## Een lokale kopie draaien
