@@ -18,7 +18,6 @@ class PromoteGuestToPotentialCommand extends Command {
     public $studentNumber;
     public $studyStartYear;
     public $username;
-    public $password;
     public $parentsAddress;
     public $parentsZipCode;
     public $parentsTown;
@@ -30,7 +29,7 @@ class PromoteGuestToPotentialCommand extends Command {
     /**
      * PromoteGuestToPotentialCommand constructor.
      */
-    public function __construct($userId, $firstname, $middlename, $lastname, $gender, $birthdate, $address, $zipCode, $town, $email, $phone, $study, $studentNumber, $studyStartYear, $username, $password, $parentsAddress, $parentsZipCode, $parentsTown, $parentsPhone, $parentsEmail, $message, $school)
+    public function __construct($userId, $firstname, $middlename, $lastname, $gender, $birthdate, $address, $zipCode, $town, $email, $phone, $study, $studentNumber, $studyStartYear, $username, $parentsAddress, $parentsZipCode, $parentsTown, $parentsPhone, $parentsEmail, $message, $school)
     {
         $this->userId = $userId;
         $this->firstname = $firstname;
@@ -47,7 +46,6 @@ class PromoteGuestToPotentialCommand extends Command {
         $this->studentNumber = $studentNumber;
         $this->studyStartYear = $studyStartYear;
         $this->username = $username;
-        $this->password = $password;
         $this->parentsAddress = $parentsAddress;
         $this->parentsZipCode = $parentsZipCode;
         $this->parentsTown = $parentsTown;

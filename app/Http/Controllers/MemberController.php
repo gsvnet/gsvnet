@@ -35,43 +35,18 @@ class MemberController extends BaseController {
 
     public function becomeMember()
     {
-        // if user already is a member, show some message
-        // if user isn't member but has registered, do stuff
-        // else show registration / login form
-
-        $activeStep = '';
-
-        // Create steps of form
-        $steps = [
-            'login-or-register' => [
-                'text' => '1. Inloggen of registreren',
-                'active' => !Auth::check()
-            ],
-            'become-member' => [
-                'text' => '2. Gegevens invullen',
-                'active' => Permission::has('user.become-member')
-            ],
-            'all-done' => [
-                'text' => '3. Klaar!',
-                'active' => Auth::check() && Auth::user()->isPotential()
-            ]
-        ];
-
-        // Find the active step
-        foreach($steps as $key=>$value)
-        {
-            if($steps[$key]['active'])
-            {
-                $activeStep = $key;
-                break;
-            }
-        }
-
-        return view('word-lid.word-lid')
-            ->with('steps', $steps)
-            ->with('activeStep', $activeStep);
+        return view('word-lid.word-lid');
     }
 
+    /**
+     * This method is still a mess due to new requirements... It currently has too many
+     * responsibilities. Should be refactored.
+     *
+     * @param Request $request
+     * @param PotentialValidator $validator
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws ValidationException
+     */
     public function store(Request $request, PotentialValidator $validator)
     {
         \Log::info('Potential wil lid worden', $request->except('password', 'password_confirmation'));
@@ -92,17 +67,25 @@ class MemberController extends BaseController {
             $data['parentsZipCode'] = $data['zipCode'];
         }
 
+        // Set username and email if the user is logged in
+        $data['new_user'] = 1;
+        if(Auth::check() || Auth::attempt($request->only('email', 'password')))
+        {
+            $data['new_user'] = 0;
+            $data['userId'] = Auth::user()->id;
+            $data['email'] = Auth::user()->email;
+            $data['username'] = Auth::user()->username;
+        }
+
         // Validate input
         $validator->validate($data);
 
-        // Try to log in with the provided data
-        if(Auth::attempt($request->only('email', 'password')))
+        // Check if the user is logged in
+        if(Auth::check())
         {
             // Only allow visitors here.
             if(! Auth::user()->isVisitor())
                 throw new ValidationException(new MessageBag(['user' => 'Je hebt je al aangemeld']));
-
-            $data['userId'] = Auth::user()->id;
 
             // Promote this guest to potential
             $this->dispatchFromArray(PromoteGuestToPotentialCommand::class, $data);
@@ -111,7 +94,6 @@ class MemberController extends BaseController {
             $user = $this->dispatchFromArray(SignUpAsPotentialCommand::class, $data);
 
             Auth::loginUsingId($user->id);
-            $this->cookie->queue('logged-in', Auth::user()->id, 2628000);
         }
 
         // Set the uploaded image correctly
@@ -122,6 +104,9 @@ class MemberController extends BaseController {
                 'file' => $request->file('photo_path')
             ]);
         }
+
+        // Set cache cookie
+        $this->cookie->queue('logged-in', Auth::user()->id, 2628000);
 
         // Redirect to the become-member page which shows some congrats page
         return redirect()->action('MemberController@becomeMember');
