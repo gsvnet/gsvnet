@@ -14,7 +14,7 @@ class AdminUserSeeder extends Seeder {
         $faker = Faker\Factory::create('en_US');
         $yearGroupIds = DB::table('year_groups')->lists('id');
 
-        $mark = User::create(array(
+        $harmen = User::create(array(
             'email'         => 'harmenstoppels@gmail.com',
             'password'      => 'helloworld',
             'firstname'     => 'Harmen',
@@ -26,7 +26,7 @@ class AdminUserSeeder extends Seeder {
         ));
 
         UserProfile::create(array(
-            'user_id' => $mark->id,
+            'user_id' => $harmen->id,
             'year_group_id' => $faker->randomElement($yearGroupIds),
             'region' => rand(1,4),
             'phone' => '050-4040544',
@@ -48,6 +48,6 @@ class AdminUserSeeder extends Seeder {
         $startDate = $faker->dateTimeBetween('-3 years', '-1 month');
 
         $webcie = Committee::where('unique_name', '=', 'webcie')->first();
-        $mark->committees()->save($webcie, ['start_date' => $startDate]);
+        $harmen->committees()->save($webcie, ['start_date' => $startDate]);
     }
 }
