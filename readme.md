@@ -120,3 +120,80 @@ Je vraagt je natuurlijk af waarom bovenstaande op een andere plek wordt afgehand
 3. Het ophogen van `reply_count` is niet iets waar de GSV'er op hoeft te wachten. Dit kan asynchroon op de achtergrond worden uitgevoerd, terwijl alvast de nieuwe pagina met de reactie voor de GSV'er wordt gerenderd. Dit gebeurt dat ook echt op de site door middel van queueing van de event handler.
 
 De laatste truc wordt ook gebruikt bij het versturen van mailtjes. Dat is proces dat al gauw een seconde duurt en niet relevant is voor het renderen van de volgende pagina. Oftewel: de gebruiker hoeft er niet op te wachten en het kan dus net zo goed op de achtergrond worden uitgevoerd.
+
+## Statistiekjes die je eens moet proberen
+
+**Laatste forumbezoeken en aantal gelezen topics per persoon**
+
+```sql
+SELECT 
+    u.firstname AS voornaam, 
+    u.middlename AS tussenvoegsel, 
+    u.lastname AS achternaam,
+    yg.name AS jaarverband,
+    MAX(DATE(ftv.visited_at)) AS laatste_bezoek,
+    COUNT(ftv.user_id) AS totaal_aantal_topics_bekeken
+FROM forum_thread_visitations AS ftv
+INNER JOIN users AS u ON u.id = ftv.user_id
+INNER JOIN user_profiles AS up ON up.user_id = u.id
+INNER JOIN year_groups AS yg ON yg.id = up.year_group_id
+GROUP BY ftv.user_id
+ORDER BY laatste_bezoek DESC, yg.year DESC
+LIMIT 500
+```
+
+**Likes van een reactie**
+
+```sql
+SELECT u.username
+FROM likeable_likes AS ll
+LEFT JOIN users AS u ON u.id = ll.user_id
+WHERE ll.likable_id = 340884
+AND ll.likable_type = 'GSVnet\\Forum\\Replies\\Reply'
+```
+
+```sql
+-- Select number of likes received per year group
+SELECT count(1) AS likes_received, yg.name, yg.year
+FROM likeable_likes as ll
+INNER JOIN forum_replies as fr
+ON fr.id = ll.likable_id
+INNER JOIN user_profiles as up
+ON fr.author_id = up.user_id
+INNER JOIN year_groups as yg
+ON yg.id = up.year_group_id
+WHERE ll.likable_type = 'GSVnet\\Forum\\Replies\\Reply'
+GROUP BY yg.id
+ORDER BY likes_received DESC;
+
+-- Select number of likes given by year group
+SELECT count(1) AS likes_given, yg.name, yg.year
+FROM likeable_likes as ll
+INNER JOIN user_profiles as up
+ON ll.user_id = up.user_id
+INNER JOIN year_groups as yg
+ON yg.id = up.year_group_id
+WHERE ll.likable_type = 'GSVnet\\Forum\\Replies\\Reply'
+GROUP BY yg.id
+ORDER BY likes_given DESC;
+```
+
+```sql
+-- Select number of likes received per region
+SELECT up.region, count(1) AS likes_received
+FROM likeable_likes AS ll
+INNER JOIN forum_replies AS fr
+ON fr.id = ll.likable_id
+INNER JOIN user_profiles AS up
+ON fr.author_id = up.user_id
+WHERE ll.likable_type = 'GSVnet\\Forum\\Replies\\Reply'
+GROUP BY up.region;
+
+-- Select number of likes given per region
+SELECT up.region, count(1) AS likes_given
+FROM likeable_likes AS ll
+INNER JOIN user_profiles AS up
+ON ll.user_id = up.user_id
+WHERE ll.likable_type = 'GSVnet\\Forum\\Replies\\Reply'
+GROUP BY up.region;
+```
