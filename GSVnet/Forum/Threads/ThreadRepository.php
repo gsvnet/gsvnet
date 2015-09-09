@@ -195,7 +195,7 @@ class ThreadRepository extends EloquentRepository
     {
         return Cache::remember('total-likes-received-per-year-group', 24*60, function()
         {
-            return \DB::select("SELECT count(1) AS likes_received, yg.name, yg.year
+            return \DB::select("SELECT count(1) AS likes_received, yg.name
                 FROM likeable_likes as ll
                 INNER JOIN forum_replies as fr
                 ON fr.id = ll.likable_id
@@ -205,7 +205,7 @@ class ThreadRepository extends EloquentRepository
                 ON yg.id = up.year_group_id
                 WHERE ll.likable_type = ?
                 GROUP BY yg.id
-                ORDER BY likes_received DESC;", [Reply::class]);
+                ORDER BY yg.year DESC;", [Reply::class]);
         });
     }
 }
