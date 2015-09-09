@@ -15,6 +15,7 @@ use GSVnet\Tags\TagRepository;
 use GSVnet\Users\UsersRepository;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
 
@@ -191,8 +192,16 @@ class ForumThreadsController extends BaseController {
         $perMonthUsers = $this->users->mostPostsPreviousMonth();
         $perWeekUsers = $this->users->mostPostsPreviousWeek();
         $allTimeUsers = $this->users->mostPostsAllTime();
+        $likesGiven = $this->threads->totalLikesGivenPerYearGroup();
+        $likesReceived = $this->threads->totalLikesReceivedPerYearGroup();
 
-        return view('forum.stats', compact('perMonthUsers', 'perWeekUsers', 'allTimeUsers'));
+        return view('forum.stats', compact(
+            'perMonthUsers',
+            'perWeekUsers',
+            'allTimeUsers',
+            'likesGiven',
+            'likesReceived'
+        ));
     }
 
     public function getTrashed()
