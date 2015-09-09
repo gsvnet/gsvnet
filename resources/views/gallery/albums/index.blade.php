@@ -11,7 +11,7 @@
 
 @section('content')
 	<div class="column-holder" role="main">
-		<h1>Fotogallerij</h1>
+		<h1>Fotogalerij</h1>
 		<p class="delta">Krijg een impressie van de leukste studentenvereniging van Groningen</p>
 
 		<div class="gallery">
