@@ -59,13 +59,13 @@ class BulkNewsletterSubscriptions extends Command {
         $unsubscribeBatch = $this->userTransformer->batchMailchimpUnsubscribe($users);
         $subscribeBatch = $this->userTransformer->batchMailchimpSubscribe($users);
 
-        try {
-            $this->newsletterlist->batchUnsubscribeFrom($this->values['leden'], $unsubscribeBatch);
-        } catch(\Mailchimp_Error $e) {}
+        // try {
+        //     $this->newsletterlist->batchUnsubscribeFrom($this->values['leden'], $unsubscribeBatch);
+        // } catch(\Mailchimp_Error $e) {}
 
-        try {
-            $this->newsletterlist->batchUnsubscribeFrom($this->values['oud-leden'], $unsubscribeBatch);
-        } catch(\Mailchimp_Error $e) {}
+        // try {
+        //     $this->newsletterlist->batchUnsubscribeFrom($this->values['oud-leden'], $unsubscribeBatch);
+        // } catch(\Mailchimp_Error $e) {}
 
         try {
             $this->newsletterlist->batchSubscribeTo($type, $subscribeBatch);
@@ -81,7 +81,7 @@ class BulkNewsletterSubscriptions extends Command {
 	protected function getArguments()
 	{
 		return [
-			array('for', InputArgument::REQUIRED, 'Wie moeten er geupdate worden? leden|oud-leden '),
+			['for', InputArgument::REQUIRED, 'Wie moeten er geupdate worden? leden|oud-leden '],
         ];
 	}
 
