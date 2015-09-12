@@ -31,7 +31,14 @@
                         </ul>
                     </div>
                 </div>
-                <div id="markdown-preview"></div>
+                {{-- // TODO: move styling to SASS --}}
+                <div id="markdown-preview" style="min-height: 13em;
+                        background-color: #FFF;
+                        overflow: auto;
+                        padding: 0 1.2em;
+                        margin: 0 -1em 1em;
+                        border: 1px solid #EEE;">
+                </div>
             </div>
         </div>
     </div>
