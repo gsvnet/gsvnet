@@ -195,7 +195,7 @@ class UsersRepository extends BaseRepository {
             $now = (new Carbon)->subMonth(1);
             $from = $now->format('Y-m-01 00:00:00');
             $to = $now->format('Y-m-t 23:59:59');
-            $users = User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.username, users.firstname, users.middlename, users.lastname'))
+            $users = User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.username, users.type, users.firstname, users.middlename, users.lastname'))
                 ->join('forum_replies', 'users.id', '=', 'forum_replies.author_id')
                 ->groupBy('forum_replies.author_id')
                 ->whereBetween('forum_replies.created_at', [$from, $to])
@@ -220,7 +220,7 @@ class UsersRepository extends BaseRepository {
 
             $from = $pastWeek->subDays($dayOfWeek)->format('Y-m-d 00:00:00');
             $to = $pastWeek->addDays(6)->format('Y-m-d 23:59:59');
-            $users = User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.username, users.firstname, users.middlename, users.lastname'))
+            $users = User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.type, users.username, users.firstname, users.middlename, users.lastname'))
                 ->join('forum_replies', 'users.id', '=', 'forum_replies.author_id')
                 ->groupBy('forum_replies.author_id')
                 ->whereBetween('forum_replies.created_at', [$from, $to])
@@ -240,7 +240,7 @@ class UsersRepository extends BaseRepository {
     {
         return Cache::remember('most-posts-all-time', 24*60, function() use ($num)
         {
-            return User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.username, users.firstname, users.middlename, users.lastname'))
+            return User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.type, users.username, users.firstname, users.middlename, users.lastname'))
                 ->join('forum_replies', 'users.id', '=', 'forum_replies.author_id')
                 ->groupBy('forum_replies.author_id')
                 ->orderBy('num', 'DESC')
