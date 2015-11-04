@@ -7,9 +7,9 @@
 
     <meta name="description" content="@yield('description')" >
     <meta property="og:site_name" content="Gereformeerde Studenten Vereniging Groningen">
-    <meta property="og:title" content="{{{ $title or 'GSV' }}}">
-    <meta property="og:description" content="{{{ !empty($description) ? $description : 'Gereformeerde Studenten Vereniging Groningen' }}}">
-    <meta property="og:url" content="{{{Request::url()}}}">
+    <meta property="og:title" content="{{ $title or 'GSV' }}">
+    <meta property="og:description" content="{{ !empty($description) ? $description : 'Gereformeerde Studenten Vereniging Groningen' }}">
+    <meta property="og:url" content="{{Request::url()}}">
     <meta property="og:type" content="{{ Request::is('/') ? 'website' : 'article' }}">
     <meta property="og:image" content="http://gsvnet.nl/images/facebook.jpg">
     <meta property="og:image:type" content="image/jpg">
@@ -18,22 +18,22 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <link rel="shortcut icon" sizes="57x57" href="http://gsvnet.nl/images/app-icons/AppIcon57x57.png">
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://gsvnet.nl/images/app-icons/AppIcon57x57.png">
-    <link rel="apple-touch-icon" href="http://gsvnet.nl/images/app-icons/AppIcon60x60.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="http://gsvnet.nl/images/app-icons/AppIcon60x60-2x.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="http://gsvnet.nl/images/app-icons/AppIcon76x76.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="http://gsvnet.nl/images/app-icons/AppIcon72x72-2x.png">
-    <link rel="apple-touch-icon" sizes="29x29" href="http://gsvnet.nl/images/app-icons/AppIcon29x29.png">
-    <link rel="apple-touch-icon" sizes="58x58" href="http://gsvnet.nl/images/app-icons/AppIcon29x29-2x.png">
-    <link rel="apple-touch-icon" sizes="40x40" href="http://gsvnet.nl/images/app-icons/AppIcon40x40.png">
+    <link rel="shortcut icon" sizes="57x57" href="//gsvnet.nl/images/app-icons/AppIcon57x57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="//gsvnet.nl/images/app-icons/AppIcon57x57.png">
+    <link rel="apple-touch-icon" href="//gsvnet.nl/images/app-icons/AppIcon60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="//gsvnet.nl/images/app-icons/AppIcon60x60-2x.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="//gsvnet.nl/images/app-icons/AppIcon76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="//gsvnet.nl/images/app-icons/AppIcon72x72-2x.png">
+    <link rel="apple-touch-icon" sizes="29x29" href="//gsvnet.nl/images/app-icons/AppIcon29x29.png">
+    <link rel="apple-touch-icon" sizes="58x58" href="//gsvnet.nl/images/app-icons/AppIcon29x29-2x.png">
+    <link rel="apple-touch-icon" sizes="40x40" href="//gsvnet.nl/images/app-icons/AppIcon40x40.png">
     <link rel="icon" href="/favicon.png">
 
     <!--[if lt IE 9]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700,400italic">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700,400italic">
     @section('stylesheets')
         <!-- Stylesheets -->
         <link rel="stylesheet" href="/stylesheets/screen.css?v=1.6.12">
@@ -59,7 +59,7 @@
         <p>Caput sapientiae est reverentia Domini</p>
         <address class="address-info" itemscope itemtype="http://data-vocabulary.org/Organization">
             <p>
-                <span itemprop="name"><a href="http://www.gsvnet.nl/" itemprop="url">Gereformeerde Studenten Vereniging</a></span>.
+                <span itemprop="name"><a href="//www.gsvnet.nl/" itemprop="url">Gereformeerde Studenten Vereniging</a></span>.
                 <span itemprop="address" itemscope itemtype="http://data-vocabulary.org/Address">
                     <span itemprop="street-address">Hereweg 40</span>,
                     <span itemprop="locality">Groningen</span>.
