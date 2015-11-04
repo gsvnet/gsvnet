@@ -106,13 +106,13 @@ class UserPresenter extends Presenter
 
     public function avatar($size = 120)
     {
-        $url = Gravatar::image($this->email, $size, 'mm');
+        $url = Gravatar::image($this->email, $size, 'mm', null, null, true);
         return HTML::image($url, 'Avatar', ['width' => $size, 'height' => $size]);
     }
 
     public function avatarDeferred($size = 120)
     {
-        $url = Gravatar::image($this->email, $size, 'mm');
+        $url = Gravatar::image($this->email, $size, 'mm', null, null, true);
         return '<span class="img-wrap" data-gravatar-url="' . $url . '" data-gravatar-size="' . $size . '"></span>';
     }
 

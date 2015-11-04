@@ -43,7 +43,7 @@ class ProfilePresenter extends Presenter
         if ($this->photo_path != '')
             return action('MemberController@showPhoto', [$this->user->profile->id, 'x-small']);
 
-        return Gravatar::image($this->user->email, 102, 'mm');
+        return Gravatar::image($this->user->email, 102, 'mm', null, null, true);
     }
 
     public function photo()
@@ -51,7 +51,7 @@ class ProfilePresenter extends Presenter
         if ($this->photo_path != '')
             action('MemberController@showPhoto',   $this->user->profile->id);
 
-        return Gravatar::image($this->user->email, 120, 'mm');
+        return Gravatar::image($this->user->email, 120, 'mm', null, null, true);
     }
 
     public function regionName()

@@ -265,7 +265,7 @@ class NavigationViewComposer {
 
             'intern' => [
                 'title' => function(){
-                    return '<img src="' . Gravatar::image(Auth::user()->email, 24, 'mm') . '" width="24" height="24" class="nav-profile-image">' . Auth::user()->firstname;
+                    return '<img src="' . Gravatar::image(Auth::user()->email, 24, 'mm', null, null, true) . '" width="24" height="24" class="nav-profile-image">' . Auth::user()->firstname;
                 },
                 'url' => action('UserController@showProfile'),
                 'visible' => function(){return Auth::check();},
