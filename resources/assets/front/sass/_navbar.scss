@@ -242,11 +242,11 @@
 		left: 0;
 		width: 100%;
 		background: $darkPurple;
+		padding-top: 76px;
 	}
 
 	.main-menu-active {
 		transform: translateY(100%);
-		padding-top: 92px;
 		-webkit-box-shadow: 0 0 50px rgba(0,0,0,0.5);
 		-moz-box-shadow: 0 0 50px rgba(0,0,0,0.5);
 		box-shadow: 0 0 50px rgba(0,0,0,0.5);
