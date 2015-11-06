@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class ForumThreadsCreateTable extends Migration {
 
@@ -11,13 +12,13 @@ class ForumThreadsCreateTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('forum_threads', function($t) {
+		Schema::table('forum_threads', function(Blueprint $t) {
 			$t->create();
 			$t->increments('id');
 			$t->integer('author_id');
 			$t->string('subject');
 			$t->text('body');
-			$t->string('slug')->unique();
+			$t->string('slug', 150)->unique();
 			$t->integer('most_recent_reply_id');
 			$t->integer('reply_count');
 			$t->timestamps();
