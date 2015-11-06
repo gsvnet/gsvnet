@@ -42,7 +42,7 @@
 	padding: 0;
 	list-style-type: none;
 	z-index: $gsvnet-z-index-base;
-	-webkit-transition: transform 0.26s ease;
+	transition: transform 0.3s cubic-bezier(.62,.28,.23,.99);
 }
 
 .top-level-link {
