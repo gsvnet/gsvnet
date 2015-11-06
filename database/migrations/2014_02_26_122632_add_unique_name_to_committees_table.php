@@ -13,7 +13,7 @@ class AddUniqueNameToCommitteesTable extends Migration {
 	public function up()
 	{
 		Schema::table('committees', function(Blueprint $table) {
-			$table->string('unique_name')->unique();
+			$table->string('unique_name', 100)->unique();
 		});
 	}
 
