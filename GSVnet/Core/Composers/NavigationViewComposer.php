@@ -284,8 +284,8 @@ class NavigationViewComposer {
                             return Permission::has('users.show');
                         }
                     ],
-                    'boek-reviews' => [
-                        'title' => 'BK-boek-reviews',
+                    'bk-materiaal' => [
+                        'title' => 'BK-materiaal',
                         'url' => 'https://www.dropbox.com/sh/o06lxxza7u6a5ka/AACsPUF-MisVV3DSvrpb2B32a?dl=0',
                         'visible' => function(){
                             return Permission::has('docs.show');
