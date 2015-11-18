@@ -13,35 +13,33 @@
             <p>De GSV is de meest hechte christelijke studentenvereniging van Groningen. Onze vereniging biedt de perfecte combinatie van christelijke waarden en het echte studentenleven.</p>
             <p>Door onze lange historie heen hebben wij keer op keer bewezen de beste match te zijn tussen het échte studentenleven en het christelijk geloof.</p>
 
-            <h2>KEI-week 2015</h2>
-            <p>Kom bij ons langs tijdens de KEI-week en ervaar hoe het is om als student lid te zijn van de Gereformeerde Studenten Vereniging.</p>
+            <h2>KEI-week 2015 aftermovie</h2>
+            <p>Bekijk hieronder de aftermovie van de afgelopen keiweeek.</p>
             <p>
-                <a href="/activiteiten" title="Bekijk alle activiteiten van tijdens de KEI-week">
-                    <img src="http://i.imgur.com/1WOJgkf.jpg" alt="Agenda KEI-week GSV" class="responsive-img" />
-                </a>
+                <iframe frameborder="0" width="560" height="315" src="//www.dailymotion.com/embed/video/x3egf0x" allowfullscreen></iframe><br /><a href="http://www.dailymotion.com/video/x3egf0x_kei-week-gsv-atv-aftermovie_webcam" target="_blank">KEI-week GSV/ATV Aftermovie</a> <i>door  <a href="http://www.dailymotion.com/degsv" target="_blank">degsv</a></i>
             </p>
-            <p>
-                <span  style="display: block; margin-bottom: .5em;">Zie de laatste updates op het Facebookevent:</span>
-                <a href="https://www.facebook.com/events/878049515619403/" class="button">KEI-week GSV op Facebook</a>
-            </p>
+            {{--<p>
+                 <span  style="display: block; margin-bottom: .5em;">Zie de laatste updates op het Facebookevent:</span>
+                 <a href="https://www.facebook.com/events/878049515619403/" class="button">KEI-week GSV op Facebook</a>
+             </p>
 
-            {{--
-            <h2>Open soos</h2>
-            <p>Een aantal keer per jaar organiseert de GSV een open sociëteitsavond waar je op je gemak kunt kennismaken met de vereniging en het pand kunt bekijken. Vaak organiseren we voorafgaand aan een open soos een andere activiteit die een van de aspecten van onze vereniging belicht. Ook kun je op een normale donderdagavond mee als introducé van een van onze leden.</p>
 
-            <p>Kijk gauw in het jaarschema hieronder wat we dit jaar allemaal speciaal voor jou organiseren:</p>
-            <ul>
-                <li>Open soos: 12 april 2015</li>
-                <li>Open soos: 28 mei 2015</li>
-                <li>Keiweek 10-14 augustus 2015</li>
-            </ul>
+             <h2>Open soos</h2>
+             <p>Een aantal keer per jaar organiseert de GSV een open sociëteitsavond waar je op je gemak kunt kennismaken met de vereniging en het pand kunt bekijken. Vaak organiseren we voorafgaand aan een open soos een andere activiteit die een van de aspecten van onze vereniging belicht. Ook kun je op een normale donderdagavond mee als introducé van een van onze leden.</p>
 
-            <h2>Open kring</h2>
-            <p>Elke dinsdag wordt er bijbelkring gehouden binnen de GSV. Een groep van ongeveer 8 GSV’ers gaat eerst lekker eten, om vervolgens gezamenlijk met een geloofsonderwerp aan de slag te gaan. Na de bijbelkring wordt er vaak nog even gezellig wat gedronken. Wil je een keertje deze bijbelkring meemaken? Stuur een mail naar {!!HTML::mailto('prescie@gsvnet.nl')!!} en beleef de avond zelf!</p>
+             <p>Kijk gauw in het jaarschema hieronder wat we dit jaar allemaal speciaal voor jou organiseren:</p>
+             <ul>
+                 <li>Open soos: 12 april 2015</li>
+                 <li>Open soos: 28 mei 2015</li>
+                 <li>Keiweek 10-14 augustus 2015</li>
+             </ul>
 
-            <h2>Meeloopdag</h2>
-            <p>Weet je nog niet wat je gaat studeren? Binnen de GSV worden tal van studies gedaan. Stuur een mail naar {!!HTML::mailto('prescie@gsvnet.nl')!!} en wij koppelen je aan een GSV’er om hoor- of werkcolleges van een studie te volgen, zodat je je beter kunt oriënteren op je studiekeuze.</p>
-            --}}
+             <h2>Open kring</h2>
+             <p>Elke dinsdag wordt er bijbelkring gehouden binnen de GSV. Een groep van ongeveer 8 GSV’ers gaat eerst lekker eten, om vervolgens gezamenlijk met een geloofsonderwerp aan de slag te gaan. Na de bijbelkring wordt er vaak nog even gezellig wat gedronken. Wil je een keertje deze bijbelkring meemaken? Stuur een mail naar {!!HTML::mailto('prescie@gsvnet.nl')!!} en beleef de avond zelf!</p>
+
+             <h2>Meeloopdag</h2>
+             <p>Weet je nog niet wat je gaat studeren? Binnen de GSV worden tal van studies gedaan. Stuur een mail naar {!!HTML::mailto('prescie@gsvnet.nl')!!} en wij koppelen je aan een GSV’er om hoor- of werkcolleges van een studie te volgen, zodat je je beter kunt oriënteren op je studiekeuze.</p>
+             --}}
         </div>
         <div class="secondary-column">
             <h2>Gelijk inschrijven</h2>
