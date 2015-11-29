@@ -195,17 +195,39 @@ class ThreadRepository extends EloquentRepository
     {
         return Cache::remember('total-likes-received-per-year-group', 24*60, function()
         {
-            return \DB::select("SELECT count(1) AS likes_received, yg.name
-                FROM likeable_likes as ll
-                INNER JOIN forum_replies as fr
-                ON fr.id = ll.likable_id
-                INNER JOIN user_profiles as up
-                ON fr.author_id = up.user_id
-                INNER JOIN year_groups as yg
-                ON yg.id = up.year_group_id
-                WHERE ll.likable_type = ?
-                GROUP BY yg.id
-                ORDER BY yg.year DESC;", [Reply::class]);
+            // This is getting quite a large query... LOL
+            return \DB::select("SELECT count(t.year) AS likes_received, t.name
+                FROM
+                (
+                    SELECT yg.name, yg.year
+                    FROM likeable_likes as ll
+                    INNER JOIN forum_replies as fr
+                    ON fr.id = ll.likable_id
+                    INNER JOIN user_profiles as up
+                    ON fr.author_id = up.user_id
+                    INNER JOIN year_groups as yg
+                    ON yg.id = up.year_group_id
+                    WHERE ll.likable_type = ?
+
+                    UNION ALL
+
+                    SELECT yg.name, yg.year
+                    FROM likeable_likes as ll
+                    INNER JOIN forum_threads as ft
+                    ON ft.id = ll.likable_id
+                    INNER JOIN user_profiles as up
+                    ON ft.author_id = up.user_id
+                    INNER JOIN year_groups as yg
+                    ON yg.id = up.year_group_id
+                    WHERE ll.likable_type = ?
+                ) t
+                GROUP BY t.year
+                ORDER BY likes_received DESC;",
+                [
+                    Reply::class,
+                    Thread::class
+                ]
+            );
         });
     }
 }
