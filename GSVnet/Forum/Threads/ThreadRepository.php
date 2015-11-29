@@ -199,7 +199,7 @@ class ThreadRepository extends EloquentRepository
             return \DB::select("SELECT t.name, count(t.id) AS likes_received
                 FROM
                 (
-                    SELECT yg.id, yg.name
+                    SELECT yg.id, yg.year, yg.name
                     FROM likeable_likes as ll
                     INNER JOIN forum_replies as fr
                     ON fr.id = ll.likable_id
@@ -211,7 +211,7 @@ class ThreadRepository extends EloquentRepository
 
                     UNION ALL
 
-                    SELECT yg.id, yg.name
+                    SELECT yg.id, yg.year, yg.name
                     FROM likeable_likes as ll
                     INNER JOIN forum_threads as ft
                     ON ft.id = ll.likable_id
@@ -222,7 +222,7 @@ class ThreadRepository extends EloquentRepository
                     WHERE ll.likable_type = ?
                 ) t
                 GROUP BY t.id
-                ORDER BY likes_received DESC",
+                ORDER BY t.year DESC",
                 [
                     Reply::class,
                     Thread::class
