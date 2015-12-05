@@ -42,7 +42,7 @@
 	padding: 0;
 	list-style-type: none;
 	z-index: $gsvnet-z-index-base;
-	-webkit-transition: max-height 0.26s ease;
+	transition: transform 0.3s cubic-bezier(.62,.28,.23,.99);
 }
 
 .top-level-link {
@@ -150,16 +150,12 @@
 	background: #FFF;
 	z-index: $gsvnet-z-index-base + 1;
 	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.1);
-	max-height: 0;
 	height: 0;
 	width: 0;
 	overflow: hidden;
-	transition: max-height 0.26s ease;
-	-webkit-transition: max-height 0.26s ease;
 }
 
 .active-sub-menu .sub-level-menu{
-	max-height: 400px;
 	height: auto;
 	min-width: 200px;
 	width: auto;
@@ -241,20 +237,16 @@
 	}
 
 	.nav-bar-links {
-		max-height: 0;
-		height: 0;
-		overflow: hidden;
 		position: absolute;
-		top: 0;
+		bottom: 100%;
 		left: 0;
 		width: 100%;
 		background: $darkPurple;
+		padding-top: 76px;
 	}
 
 	.main-menu-active {
-		max-height: 1000px;
-		height: auto;
-		padding-top: 92px;
+		transform: translateY(100%);
 		-webkit-box-shadow: 0 0 50px rgba(0,0,0,0.5);
 		-moz-box-shadow: 0 0 50px rgba(0,0,0,0.5);
 		box-shadow: 0 0 50px rgba(0,0,0,0.5);

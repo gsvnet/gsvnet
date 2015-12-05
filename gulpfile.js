@@ -8,9 +8,11 @@ var sass = require('gulp-sass');
 
 gulp.task('css', function(){
 	gulp.src('resources/assets/front/sass/screen.scss')
-        .pipe(sass())
+    .pipe(sass())
  		.pipe(minify())
- 		.pipe(autoprefixer())
+ 		.pipe(autoprefixer({
+      browsers: '> 5%'
+    }))
 		.pipe(gulp.dest('public/stylesheets/'));
 });
 

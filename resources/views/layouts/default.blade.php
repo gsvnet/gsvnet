@@ -29,6 +29,8 @@
     <link rel="apple-touch-icon" sizes="40x40" href="//gsvnet.nl/images/app-icons/AppIcon40x40.png">
     <link rel="icon" href="/favicon.png">
 
+    <meta name="theme-color" content="#5b2b92">
+
     <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -36,7 +38,7 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700,400italic">
     @section('stylesheets')
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.6.12">
+        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.7.3">
     @show
 </head>
 <body id="@yield('body-id', 'gsvnet')">
