@@ -18,22 +18,22 @@ Route::group(['prefix' => 'intern', 'middleware' => 'auth'], function() {
     Route::post('profiel/bewerken',   'UserController@updateProfile');
 
     // GSVdocs
-    Route::get('bestanden', 'FilesController@index')->before('has:docs.show');
+    Route::get('bestanden', 'FilesController@index')->middleware('has:docs.show');
 
     // Ads
-    Route::get('sponsorprogramma', 'HomeController@sponsorProgram')->before('has:sponsor-program.show');
+    Route::get('sponsorprogramma', 'HomeController@sponsorProgram')->middleware('has:sponsor-program.show');
 
     // Only logged in users can view the member list if they have permission
-    Route::group(['before' => 'has:users.show'], function() {
+    Route::group(['middleware' => 'has:users.show'], function() {
         Route::get('jaarbundel',       'UserController@showUsers');
         Route::get('jaarbundel/{id}',  'UserController@showUser')->where('id', '[0-9]+');
     });
 });
 
 Route::group(['prefix' => 'uploads'], function() {
-    Route::get('bestanden/{id}', 'FilesController@show')->before('has:docs.show');
+    Route::get('bestanden/{id}', 'FilesController@show')->middleware('has:docs.show');
     // Shows photo corresponding to photo id
-    Route::get('fotos/{id}/{type?}', 'PhotoController@showPhoto')->before('photos.show');
+    Route::get('fotos/{id}/{type?}', 'PhotoController@showPhoto')->middleware('has:photos.show-private');
     // Shows photo corresponding to profile with id
     Route::get('gebruikers/{id}/{type?}', 'MemberController@showPhoto');
 });
@@ -63,7 +63,7 @@ Route::post('registreer', 'RegisterController@store');
 Route::group(['prefix' => 'word-lid'], function() {
     Route::get('/', 'MemberController@index');
     Route::get('/veel-gestelde-vragen', 'MemberController@faq');
-    Route::get('inschrijven',  'MemberController@becomeMember')->before('canBecomeMember');
+    Route::get('inschrijven',  'MemberController@becomeMember')->middleware('can:user.become-member');
     Route::post('inschrijven', 'MemberController@store');
 });
 
@@ -72,8 +72,8 @@ Route::get('albums', 'PhotoController@showAlbums');
 Route::get('albums/{slug}', 'PhotoController@showPhotos');
 // Events
 Route::get('activiteiten', 'EventController@showIndex');
-Route::get('activiteiten/{year}/{month?}', 'EventController@showMonth')->before('checkDate');
-Route::get('activiteiten/{year}/{month}/{slug}', 'EventController@showEvent')->before('checkDate');
+Route::get('activiteiten/{year}/{month?}', 'EventController@showMonth')->middleware('checkDate');
+Route::get('activiteiten/{year}/{month}/{slug}', 'EventController@showEvent')->middleware('checkDate');
 
 Route::group(['prefix' => 'wachtwoord-vergeten'], function() {
     Route::get('herinner', 'RemindersController@getEmail');
@@ -85,8 +85,7 @@ Route::group(['prefix' => 'wachtwoord-vergeten'], function() {
 Route::group([
         'prefix' => 'admin',
         'namespace' => 'Admin',
-        'middleware' => 'auth',
-        'before' => 'has:member-or-former-member'
+        'middleware' => ['auth', 'has:member-or-former-member']
     ], function() {
 
     Route::get('/', 'AdminController@index');
@@ -101,7 +100,7 @@ Route::group([
     Route::get('/users/leden.csv', 'UsersController@exportMembers');
 
     // Committees
-    Route::group(['before' => 'has:committees.manage'], function() {
+    Route::group(['middleware' => 'has:committees.manage'], function() {
 
         // Commissies
         Route::resource('commissies',   'CommitteeController', ['except' => ['create']]);
@@ -113,7 +112,7 @@ Route::group([
     });
 
     // Users
-    Route::group(['before' => 'has:users.show'], function() {
+    Route::group(['middleware' => 'has:users.show'], function() {
         Route::group(['prefix' => 'gebruikers'], function() {
             Route::post('/{user}/activeren', 'UsersController@activate');
             Route::post('/{user}/accepteer-lid', 'UsersController@accept');
@@ -132,7 +131,7 @@ Route::group([
     });
 
     // Senates
-    Route::group(['before' => 'has:senates.manage'], function() {
+    Route::group(['middleware' => 'has:senates.manage'], function() {
         // Senaten
         Route::resource('senaten',   'SenateController');
         // Hier nog een route voor ajax calls naar users db
@@ -178,7 +177,7 @@ Route::group(['prefix' => 'forum', 'middleware' => ['auth', 'approved']], functi
 
 Route::get('preview', ['middleware' => 'auth', 'uses' => 'ForumApiController@preview']);
 
-Route::group(['prefix' => 'api', 'before' => 'has:member-or-former-member', 'middleware' => ['auth', 'approved']], function() {
+Route::group(['prefix' => 'api', 'middleware' => ['auth', 'approved', 'has:member-or-former-member']], function() {
     Route::get('search/members', 'ApiController@members');
 });
 

@@ -1,26 +1,9 @@
 <?php namespace GSV\Http\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Support\Facades\Auth;
 
 class Authenticate {
-
-	/**
-	 * The Guard implementation.
-	 *
-	 * @var Guard
-	 */
-	protected $auth;
-
-	/**
-	 * Create a new filter instance.
-	 *
-	 * @param  Guard  $auth
-	 */
-	public function __construct(Guard $auth)
-	{
-		$this->auth = $auth;
-	}
 
 	/**
 	 * Handle an incoming request.
@@ -31,14 +14,13 @@ class Authenticate {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if ($this->auth->guest())
-		{
-			if ($request->ajax())
+		if (Auth::guest()) {
+			if ($request->ajax()) {
 				return response('Unauthorized.', 401);
-
-            return redirect()->guest(action('SessionController@getLogin'));
+			} else {
+				return redirect()->guest(action('SessionController@getLogin'));
+			}
 		}
-
 		return $next($request);
 	}
 

@@ -14,8 +14,8 @@ class UserCommitteeSeeder extends Seeder {
 
     public function __construct()
     {
-        $this->userIds = User::where('type', '=', 2)->lists('id');
-        $this->committeeIds = Committee::lists('id');
+        $this->userIds = User::where('type', '=', 2)->lists('id')->all();
+        $this->committeeIds = Committee::lists('id')->all();
         $this->time = Carbon::now();
         $this->faker = Faker\Factory::create('nl_NL');
     }

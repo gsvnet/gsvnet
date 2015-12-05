@@ -1,6 +1,20 @@
 <?php namespace GSV\Http;
 
+use GSV\Http\Middleware\AccountNotApproved;
+use GSV\Http\Middleware\Authenticate;
+use GSV\Http\Middleware\CanBecomeMember;
+use GSV\Http\Middleware\MustHavePermission;
+use GSV\Http\Middleware\RedirectIfAuthenticated;
+use GSV\Http\Middleware\SetLoggedInCookie;
+use GSV\Http\Middleware\ValidEventDate;
+use GSV\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
+use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode;
+use Illuminate\Session\Middleware\StartSession;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class Kernel extends HttpKernel {
 
@@ -10,12 +24,12 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $middleware = [
-		'Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode',
-		'Illuminate\Cookie\Middleware\EncryptCookies',
-		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
-		'Illuminate\Session\Middleware\StartSession',
-		'Illuminate\View\Middleware\ShareErrorsFromSession',
-        'GSV\Http\Middleware\SetLoggedInCookie'
+		CheckForMaintenanceMode::class,
+		EncryptCookies::class,
+		AddQueuedCookiesToResponse::class,
+		StartSession::class,
+		ShareErrorsFromSession::class,
+        SetLoggedInCookie::class,
 	];
 
 	/**
@@ -24,10 +38,13 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $routeMiddleware = [
-		'csrf' => 'GSV\Http\Middleware\VerifyCsrfToken',
-		'auth' => 'GSV\Http\Middleware\Authenticate',
-		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		'guest' => 'GSV\Http\Middleware\RedirectIfAuthenticated',
-        'approved' => 'GSV\Http\Middleware\AccountNotApproved',
+		'csrf' => VerifyCsrfToken::class,
+		'auth' => Authenticate::class,
+		'auth.basic' => AuthenticateWithBasicAuth::class,
+		'guest' => RedirectIfAuthenticated::class,
+        'approved' => AccountNotApproved::class,
+		'can' => MustHavePermission::class,
+		'has' => MustHavePermission::class,
+		'checkDate' => ValidEventDate::class
 	];
 }

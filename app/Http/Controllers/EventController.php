@@ -11,6 +11,7 @@ class EventController extends BaseController {
     public function __construct(EventsRepository $events)
     {
         $this->events = $events;
+        parent::__construct();
     }
 
 	public function showIndex()
