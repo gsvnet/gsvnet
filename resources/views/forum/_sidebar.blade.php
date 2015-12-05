@@ -34,9 +34,10 @@
 
         <h2>Sponsors</h2>
         <p>
-            <a href="http://www.glas.nl/groningen" rel="nofollow" title="Sponsor: Glaszetter Groningen">
-                <img src="/images/ads/glaspunt.png" alt="Glaszetter Groningen" width="292" height="219" class="ad-img" />
-            </a>
+            <a href="https://partnerprogramma.bol.com/click/click?p=1&amp;t=url&amp;s=33791&amp;f=TXL&amp;url=http%3A%2F%2Fwww.bol.com&amp;name=GSV-tekstadvertentie" title="Bol.com" class="button">Bol.com</a>
+        </p>
+        <p>
+            <a href="http://www.sponsorkliks.com/winkels.php?club=5241" title="Sponsorkliks" class="button">Sponsorkliks</a>
         </p>
     </div>
 </div>
