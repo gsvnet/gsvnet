@@ -34,11 +34,11 @@ class FamilyController extends AdminBaseController {
         if(is_array($children))
         {
             $childrenIds = $this->users->filterExistingIds($children);
-            $user->children()->sync($childrenIds);
+            $user->children()->sync($childrenIds->all());
         }
 
         $parentId = $this->users->filterExistingIds($parent);
-        $user->parents()->sync($parentId);
+        $user->parents()->sync($parentId->all());
 
         flash()->message("De familie van {$user->present()->fullName} is bijgewerkt");
 

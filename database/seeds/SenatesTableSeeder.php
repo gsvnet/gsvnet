@@ -26,9 +26,9 @@ class SenatesTableSeeder extends Seeder {
 		DB::table('senates')->insert($senates);
 
 		// Add some users
-		$senateIds = Senate::lists('id');
+		$senateIds = Senate::lists('id')->all();
 		$number = count($senateIds);
-		$userIds = User::take($number*5)->lists('id');
+		$userIds = User::take($number*5)->lists('id')->all();
         $memberships = [];
 		$i=0;
 
