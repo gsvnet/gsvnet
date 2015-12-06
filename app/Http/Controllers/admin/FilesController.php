@@ -19,7 +19,7 @@ class FilesController extends AdminBaseController {
         $this->labels = $labels;
         $this->manager = $manager;
 
-        $this->beforeFilter('has:docs.manage');
+        $this->middleware('has:docs.manage');
 
         parent::__construct();
     }

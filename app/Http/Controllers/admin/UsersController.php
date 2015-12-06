@@ -44,7 +44,7 @@ class UsersController extends AdminBaseController {
         $this->yearGroups = $yearGroups;
         $this->profiles = $profiles;
 
-        $this->beforeFilter('has:users.manage', ['except' => ['index', 'showGuests', 'showPotentials', 'showMembers', 'showFormerMembers']]);
+        $this->middleware('has:users.manage', ['except' => ['index', 'showGuests', 'showPotentials', 'showMembers', 'showFormerMembers']]);
 
         parent::__construct();
     }
