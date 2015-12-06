@@ -15,7 +15,7 @@ class PhotoController extends AdminBaseController {
         $this->photos = $photos;
         $this->manager = $manager;
 
-        $this->beforeFilter('photos.manage');
+        $this->middleware('photos.manage');
         parent::__construct();
     }
 
