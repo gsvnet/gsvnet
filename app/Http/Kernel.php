@@ -45,6 +45,7 @@ class Kernel extends HttpKernel {
         'approved' => AccountNotApproved::class,
 		'can' => MustHavePermission::class,
 		'has' => MustHavePermission::class,
-		'checkDate' => ValidEventDate::class
+		'checkDate' => ValidEventDate::class,
+		'notYetMember' => CanBecomeMember::class
 	];
 }
