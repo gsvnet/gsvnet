@@ -6,7 +6,7 @@ function message(messageText) {
 }
 
 if(typeof USER_ID !== 'undefined') {
-    var updates = io.connect('https://broadcast.gsvnet.nl');
+    var updates = io.connect('https://notifications.gsvnet.nl/');
 
     updates.on('activity:app.reply', function (data) {
         if(data.user_id != USER_ID) {
