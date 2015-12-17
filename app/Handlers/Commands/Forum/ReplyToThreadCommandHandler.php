@@ -19,17 +19,17 @@ class ReplyToThreadCommandHandler {
 
 	public function handle(ReplyToThreadCommand $command)
 	{
-        $threadId = $this->threads->getIdBySlug($command->threadSlug);
+        $thread = $this->threads->requireBySlug($command->threadSlug);
 
         $reply = $this->replies->getNew([
-            'thread_id' => $threadId,
+            'thread_id' => $thread->id,
             'author_id' => $command->authorId,
             'body' => $command->reply
         ]);
 
         $this->replies->save($reply);
 
-        event(new ThreadWasRepliedTo($threadId, $reply->id));
+        event(new ThreadWasRepliedTo($thread, $reply));
 	}
 
 }
