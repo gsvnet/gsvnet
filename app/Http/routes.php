@@ -33,9 +33,9 @@ Route::group(['prefix' => 'intern', 'middleware' => 'auth'], function() {
 Route::group(['prefix' => 'uploads'], function() {
     Route::get('bestanden/{id}', 'FilesController@show')->middleware('has:docs.show');
     // Shows photo corresponding to photo id
-    Route::get('fotos/{id}/{type?}', 'PhotoController@showPhoto')->middleware('has:photos.show-private');
+    Route::get('fotos/{id}/{type?}', 'PhotoController@showPhoto');
     // Shows photo corresponding to profile with id
-    Route::get('gebruikers/{id}/{type?}', 'MemberController@showPhoto');
+    Route::get('gebruikers/{id}/{type?}', 'MemberController@showPhoto')->middleware('has:photos.show-private');
 });
 
 // De GSV
