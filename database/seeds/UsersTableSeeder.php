@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder {
                 'middlename' => '',
                 'lastname' => $this->faker->lastName,
                 'username' => $this->faker->userName,
-                'password' => 'testen',
+                'password' => bcrypt('testen'),
                 'email' => $this->faker->companyEmail,
                 'type' => rand(0,3),
                 'approved' => true,

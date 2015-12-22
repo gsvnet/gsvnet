@@ -1,21 +1,18 @@
 <?php namespace GSV\Events\Forum;
 
-use GSVnet\Forum\Replies\Reply;
 use GSVnet\Forum\Threads\Thread;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Queue\SerializesModels;
 
-class ThreadWasRepliedTo extends Event implements ShouldBroadcast {
+class ThreadWasStarted extends Event implements ShouldBroadcast {
 
     use SerializesModels;
 
     public $thread;
-    public $reply;
 
-    public function __construct(Thread $thread, Reply $reply)
+    public function __construct(Thread $thread)
     {
         $this->thread = $thread;
-        $this->reply = $reply;
     }
 
     /**
@@ -30,7 +27,7 @@ class ThreadWasRepliedTo extends Event implements ShouldBroadcast {
 
     public function broadcastAs()
     {
-        return 'app.reply';
+        return 'app.thread';
     }
 
     /**
@@ -41,8 +38,8 @@ class ThreadWasRepliedTo extends Event implements ShouldBroadcast {
     public function broadcastWith()
     {
         return [
-	        'user_id' => $this->reply->author_id,
-            'username' => $this->reply->author->username,
+            'user_id' => $this->thread->author_id,
+            'username' => $this->thread->author->username,
             'subject' => $this->thread->subject
         ];
     }
