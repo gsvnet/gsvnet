@@ -1,7 +1,7 @@
 <?php namespace GSVnet\Core\Composers;
 
-use forxer\Gravatar\Gravatar;
 use GSVnet\Permissions\Permission;
+use haampie\Gravatar\Gravatar;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 
