@@ -1,6 +1,6 @@
 <?php namespace GSVnet\Users;
 
-use forxer\Gravatar\Gravatar;
+use haampie\Gravatar\Gravatar;
 use Laracasts\Presenter\Presenter;
 use Carbon\Carbon; 
 use Config;
