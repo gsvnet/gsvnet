@@ -81,7 +81,13 @@
     @endif
 
     @section('javascripts')
-        <script async src="/build-javascripts/app.js?v=1.4.6"></script>
+        @if (Auth::check())
+        <script>
+            var USER_ID = {{Auth::user()->id}};
+        </script>
+        @endif
+
+        <script async src="/build-javascripts/app.js?v=1.4.10"></script>
 
         @if(!Config::get('app.debug'))
         <script>

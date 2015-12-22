@@ -19,12 +19,12 @@ class UpdateThreadDetails implements ShouldBeQueued {
 
 	public function incrementReplies(ThreadWasRepliedTo $event)
     {
-        $this->threads->incrementReplies($event->threadId);
+        $this->threads->incrementReplies($event->thread->id);
     }
 
     public function setNewLastReply(ThreadWasRepliedTo $event)
     {
-        $this->threads->setLastReply($event->threadId, $event->replyId);
+        $this->threads->setLastReply($event->thread->id, $event->reply->id);
 	}
 
     public function decrementReplies(ReplyWasDeleted $event)
