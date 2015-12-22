@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img src="http://maps.googleapis.com/maps/api/staticmap?center=Hereweg%2040,Groningen,Nederland&amp;size=480x320&amp;zoom=14&amp;sensor=false&amp;markers=color:purple%7Clabel:S%7CHereweg%2040,Groningen,Nederland&amp;key=AIzaSyC7OBIlZm97iBfHUYCR8Ie4llHLTlkHNMk&amp;scale=2" alt="Adres sociëteit" width="960" height="640">
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=Hereweg%2040,Groningen,Nederland&amp;size=480x320&amp;zoom=14&amp;sensor=false&amp;markers=color:purple%7Clabel:S%7CHereweg%2040,Groningen,Nederland&amp;key=AIzaSyC7OBIlZm97iBfHUYCR8Ie4llHLTlkHNMk&amp;scale=2" alt="Adres sociëteit" width="960" height="640">
                     <div class="carousel-caption">
                     Sociëteit bij Hereweg 40 in Groningen
                     </div>
