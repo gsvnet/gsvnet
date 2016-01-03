@@ -16,45 +16,11 @@ app = (function() {
 		'thread-index-page': threadsIndex,
 		'thread-search-page': threadsIndex,
 		'thread-create-page': createAndUpdateThread,
-		'thread-update-page': createAndUpdateThread,
-	}
+		'thread-update-page': createAndUpdateThread
+	};
 
 	function home() {
-		var videoSlide = $('#homepage-video-slide'),
-		    videoPlayingClass = 'video-playing',
-		    video = document.getElementById('home-video'),
-		    homeCarousel = $('#homepage-carousel'),
-		    play = function() {
-				homeCarousel.carousel('pause');
-				videoSlide.addClass(videoPlayingClass);
-				video.play();
-		    },
-		    pause = function() {
-				homeCarousel.carousel('cycle');
-				videoSlide.removeClass(videoPlayingClass);
-				video.pause();
-		    };
 
-		if( video ) {
-			// Play/pause video on click.
-			$('#play-video-link').click(function(){
-				if (video.paused) {
-					play();
-				} else {
-					pause();
-				}
-			});
-
-			// Pause video if it is playing
-			homeCarousel.on('slide.bs.carousel', function () {
-				if(!video.paused)
-				{
-					pause();
-				}
-			});
-		}
-
-		TouchOnCarousel.enableOn(homeCarousel.first('.carousel-inner'), homeCarousel);
 	}
 
 	function editProfile() {

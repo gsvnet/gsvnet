@@ -19,15 +19,7 @@
             <div class="carousel-make-height">
                 <div class="carousel-inner">
                     <div class="item active">
-                        <span data-picture data-alt="Een geweldig plaatje">
-                            <span data-src="/images/banner/sociaal480.jpg"></span>
-                            <span data-src="/images/banner/sociaal600.jpg" data-media="(min-width: 480px)"></span>
-                            <span data-src="/images/banner/sociaal1024.jpg" data-media="(min-width: 600px)"></span>
-                            <span data-src="/images/banner/sociaal1600.jpg" data-media="(min-width: 1024px)"></span>
-                            <noscript>
-                                <img src="/images/banner/sociaal480.jpg" alt="Geweldig plaatje" width="480" height="360">
-                            </noscript>
-                        </span>
+                        <img src="/images/banner/sociaal1600.jpg" srcset="/images/banner/sociaal480.jpg 480w, /images/banner/sociaal600.jpg 600w, /images/banner/sociaal1024.jpg 1024w, /images/banner/sociaal1600.jpg 1600w" alt="Sociaal"/>
                         <div class="slide-description-wrapper">
                             <div class="slide-description">
                                 <div class="slide-description-box">
@@ -39,15 +31,7 @@
                     </div>
 
                     <div class="item">
-                        <span data-picture data-alt="Christelijke studentenvereniging Groningen">
-                            <span data-src="/images/banner/christelijk-480.jpg"></span>
-                            <span data-src="/images/banner/christelijk-600.jpg" data-media="(min-width: 480px)"></span>
-                            <span data-src="/images/banner/christelijk-1024.jpg" data-media="(min-width: 600px)"></span>
-                            <span data-src="/images/banner/christelijk-1600.jpg" data-media="(min-width: 1024px)"></span>
-                            <noscript>
-                                <img src="/images/banner/christelijk-480.jpg" alt="Christelijke studentenvereniging Groningen" width="480" height="360">
-                            </noscript>
-                        </span>
+                        <img src="/images/banner/christelijk-1600.jpg" srcset="/images/banner/christelijk-480.jpg 480w, /images/banner/christelijk-600.jpg 600w, /images/banner/christelijk-1024.jpg 1024w, /images/banner/christelijk-1600.jpg 1600w" alt="Christelijke Studentenvereniging Groningen"/>
                         <div class="slide-description-wrapper">
                             <div class="slide-description">
                                 <div class="slide-description-box">
@@ -59,15 +43,7 @@
                     </div>
 
                     <div class="item">
-                        <span data-picture data-alt="Studentikoze vereniging">
-                            <span data-src="/images/banner/gala-2013-480.jpg"></span>
-                            <span data-src="/images/banner/gala-2013-600.jpg" data-media="(min-width: 480px)"></span>
-                            <span data-src="/images/banner/gala-2013-1024.jpg" data-media="(min-width: 600px)"></span>
-                            <span data-src="/images/banner/gala-2013-1600.jpg" data-media="(min-width: 1024px)"></span>
-                            <noscript>
-                                <img src="/images/banner/gala-2013-480.jpg" alt="Studentikoze vereniging" width="480" height="360">
-                            </noscript>
-                        </span>
+                        <img src="/images/banner/gala-2013-1600.jpg" srcset="/images/banner/gala-2013-480.jpg 480w, /images/banner/gala-2013-600.jpg 600w, /images/banner/gala-2013-1024.jpg 1024w, /images/banner/gala-2013-1600.jpg 1600w" alt="Studentikoze Studentenvereniging"/>
                         <div class="slide-description-wrapper">
                             <div class="slide-description">
                                 <div class="slide-description-box">
@@ -79,15 +55,7 @@
                     </div>
 
                     <div class="item">
-                        <span data-picture data-alt="Een geweldig plaatje">
-                            <span data-src="/images/banner/intellectueel480.jpg"></span>
-                            <span data-src="/images/banner/intellectueel600.jpg" data-media="(min-width: 480px)"></span>
-                            <span data-src="/images/banner/intellectueel1024.jpg" data-media="(min-width: 600px)"></span>
-                            <span data-src="/images/banner/intellectueel1600.jpg" data-media="(min-width: 1024px)"></span>
-                            <noscript>
-                                <img src="/images/intellectueel480.jpg" alt="Geweldig plaatje" width="480" height="360">
-                            </noscript>
-                        </span>
+                        <img src="/images/banner/intellectueel1600.jpg" srcset="/images/banner/intellectueel480.jpg 480w, /images/banner/intellectueel600.jpg 600w, /images/banner/intellectueel1024.jpg 1024w, /images/banner/intellectueel1600.jpg 1600w" alt="Intellectuele Studentenvereniging"/>
                         <div class="slide-description-wrapper">
                             <div class="slide-description">
                                 <div class="slide-description-box">

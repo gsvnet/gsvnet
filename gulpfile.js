@@ -13,7 +13,7 @@ gulp.task('css', function(){
  		.pipe(autoprefixer({
       browsers: '> 5%'
     }))
-		.pipe(gulp.dest('public/stylesheets/'));
+	.pipe(gulp.dest('public/stylesheets/'));
 });
 
 gulp.task('images', function(){
@@ -24,27 +24,22 @@ gulp.task('images', function(){
     ])
     .pipe(imagemin())
     .pipe(gulp.dest('public/images/'));
-})
+});
 
 gulp.task('scripts', function() {
   return gulp.src([
-      'resources/assets/components/javascripts/modernizr.js',
       './bower_components/jquery/dist/jquery.min.js',
       './bower_components/socket.io-client/socket.io.js',
       'resources/assets/components/javascripts/list-to-menu.js',
       'resources/assets/components/javascripts/load-image.min.js',
-      'resources/assets/components/javascripts/matchmedia.js',
-      'resources/assets/components/javascripts/picturefill.js',
       'resources/assets/components/javascripts/list.min.js',
       'resources/assets/components/javascripts/list.fuzzysearch.min.js',
-      'resources/assets/components/javascripts/jquery.touchSwipe.min.js',
       'resources/assets/components/javascripts/carousel.js',
       'resources/assets/components/javascripts/magnific-popup-0.9.9.js',
       'resources/assets/components/javascripts/magnific-popup-translation.js',
       'resources/assets/front/javascripts/tabs.js',
       'resources/assets/front/javascripts/forum.js',
       'resources/assets/front/javascripts/menu.js',
-      'resources/assets/front/javascripts/touch-on-carousel.js',
       'resources/assets/front/javascripts/word-lid.js',
       'resources/assets/front/javascripts/receive-updates.js',
       'resources/assets/front/javascripts/app.js'
