@@ -28,6 +28,7 @@ gulp.task('images', function(){
 
 gulp.task('scripts', function() {
   return gulp.src([
+      'resources/assets/components/javascripts/modernizr.js',
       './bower_components/jquery/dist/jquery.min.js',
       './bower_components/socket.io-client/socket.io.js',
       'resources/assets/components/javascripts/list-to-menu.js',
