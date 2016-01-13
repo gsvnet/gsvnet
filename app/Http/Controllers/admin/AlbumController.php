@@ -30,7 +30,7 @@ class AlbumController extends AdminBaseController {
 
     public function index()
     {
-        $albums = $this->albums->paginate(10);
+        $albums = $this->albums->paginate(25);
 
         return view('admin.albums.index')->with('albums', $albums);
     }
@@ -52,7 +52,7 @@ class AlbumController extends AdminBaseController {
     {
         $album = $this->albums->byId($id);
 
-        $photosPerPage = 10;
+        $photosPerPage = 12;
         $photos = $this->photos->byAlbumIdAndPaginate($id, $photosPerPage);
 
         return view('admin.albums.show')
