@@ -186,6 +186,7 @@ class ThreadRepository extends EloquentRepository
                 INNER JOIN year_groups as yg
                 ON yg.id = up.year_group_id
                 GROUP BY yg.id
+                HAVING likes_given > 30
                 ORDER BY yg.year DESC"
             );
         });
@@ -222,6 +223,7 @@ class ThreadRepository extends EloquentRepository
                     WHERE ll.likable_type = ?
                 ) t
                 GROUP BY t.id
+                HAVING likes_received > 30
                 ORDER BY t.year DESC",
                 [
                     Reply::class,
