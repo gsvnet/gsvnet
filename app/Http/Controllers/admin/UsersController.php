@@ -44,7 +44,17 @@ class UsersController extends AdminBaseController {
         $this->yearGroups = $yearGroups;
         $this->profiles = $profiles;
 
-        $this->middleware('has:users.manage', ['except' => ['index', 'showGuests', 'showPotentials', 'showMembers', 'showFormerMembers']]);
+        $this->middleware('has:users.manage', [
+            'except' => [
+                'index',
+                'showGuests',
+                'showPotentials',
+                'showMembers',
+                'showFormerMembers',
+                'exportMembers',
+                'exportFormerMembers'
+            ]
+        ]);
 
         parent::__construct();
     }
