@@ -22,12 +22,10 @@ return [
 
     'users.show' => [
         'type' => [User::MEMBER, User::FORMERMEMBER],
-        'committee' => ['webcie', 'novcie', 'reebocie', 'jaarbundelcommissie'],
-        'senate' => true
     ],
 
     'users.manage' => [
-        'committee' => ['webcie', 'novcie', 'malversacie'],
+        'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
         'senate' => true
     ],
 

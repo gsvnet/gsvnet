@@ -12,6 +12,7 @@ class FamilyController extends AdminBaseController {
     public function __construct(UsersRepository $users)
     {
         $this->users = $users;
+        $this->middleware('has:users.manage');
     }
 
     public function index($userId)
