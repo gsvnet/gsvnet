@@ -27,6 +27,7 @@ Route::group(['prefix' => 'intern', 'middleware' => 'auth'], function() {
     Route::group(['middleware' => 'has:users.show'], function() {
         Route::get('jaarbundel',       'UserController@showUsers');
         Route::get('jaarbundel/{id}',  'UserController@showUser')->where('id', '[0-9]+');
+        Route::get('jaarbundel/adressen', 'UserController@showAddresses');
     });
 });
 

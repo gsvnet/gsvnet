@@ -184,4 +184,9 @@ class UserController extends BaseController {
         // Redirct to the become-member page: it shows the 3rd step [done] as active page
         return redirect()->action('UserController@showProfile');
     }
+
+    public function showAddresses()
+    {
+        return view('trivia/locations');
+    }
 }
