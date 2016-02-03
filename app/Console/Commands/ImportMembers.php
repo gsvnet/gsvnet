@@ -155,8 +155,14 @@ class ImportMembers extends Command
             $this->outputFromJSON($user);
 
             $storedUsers = User::where('lastname', $user->lastname)
-                ->whereHas('profile.yearGroup', function ($query) use ($user) {
-                    $query->whereRaw('ABS(year - ?) < 5', [$user->year]);
+                ->where(function($query) use ($user) {
+                    $query->whereHas('profile.yearGroup', function ($query) use ($user) {
+                        $query->whereRaw('ABS(year - ?) < 5', [$user->year]);
+                    });
+
+                    $query->orWhereHas('profile', function ($query) {
+                        $query->whereNull('year_group_id');
+                    });
                 })
                 ->with('profile.yearGroup')
                 ->get();
