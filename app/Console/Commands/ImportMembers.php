@@ -103,6 +103,7 @@ class ImportMembers extends Command
             }
 
             $oldUser->profile->yearGroup()->associate($this->yearToId[$newUser->year]);
+            $oldUser->profile->save();
         }
 
         return $oldUser;
@@ -154,6 +155,9 @@ class ImportMembers extends Command
             $this->outputFromJSON($user);
 
             $storedUsers = User::where('lastname', $user->lastname)
+                ->whereHas('profile.yearGroup', function ($query) use ($user) {
+                    $query->whereRaw('ABS(year - ?) < 5', [$user->year]);
+                })
                 ->with('profile.yearGroup')
                 ->get();
 
