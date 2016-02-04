@@ -12,12 +12,12 @@
                 <h1>Gefeliciteerd!</h1>
                 <p class="delta">Je hebt je officieel aangemeld bij de GSV</p>
 
-                <p>Alvast bedankt voor je opgave! Wij nemen zo spoedig mogelijk per mail contact met je op voor specifieke informatie.</p>
+                <p>Alvast bedankt voor je opgave! Je ontvangt zo spoedig mogelijk een mail met specifieke informatie. Neem contact op met de Novcie (novcie@gsvnet.nl) indien je binnen een uur geen bevestiginsmail ontvangen hebt.</p>
             </div>
         @else
             <div class="column-holder" role="main">
                 <h1>Word lid!</h1>
-                <p class="delta">Supermooi dat je interesse hebt in de GSV! Volg de stappen om je aan te melden voor ons novitiaat. Dat duurt dit jaar van <strong>17 tot 26 augustus</strong>, houd deze dagen dus vrij!</p>
+                <p class="delta">Supermooi dat je interesse hebt in de GSV! Volg de stappen om je aan te melden voor ons novitiaat. Dat duurt dit jaar van <strong>22 tot 31 augustus</strong>, houd deze dagen dus vrij!</p>
                 <p>Voel je vooral vrij om voorafgaand aan het novitiaat mee te genieten van alle activiteiten die wij organiseren tijdens de KEIweek.</p>
             </div>
             @include('word-lid.become-member')
