@@ -80,4 +80,13 @@ class Thread extends Model
         return $value == 1 ? true : null;
     }
 
+    public function getReplyIndex($replyId)
+    {
+        return $this->replies()->where('id', '<', $replyId)->count();
+    }
+
+    public function getReplyPageNumber($replyId, $repliesPerPage)
+    {
+        return (int)($this->getReplyIndex($replyId) / $repliesPerPage + 1);
+    }
 }
