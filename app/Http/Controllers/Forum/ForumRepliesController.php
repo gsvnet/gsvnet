@@ -69,7 +69,7 @@ class ForumRepliesController extends BaseController {
 
         $this->dispatchFrom(EditReplyCommand::class, new Collection($data));
 
-        return $this->showReply($replyId);
+        return $this->redirectToReply($replyId);
     }
 
     public function getDelete($replyId)
@@ -98,7 +98,7 @@ class ForumRepliesController extends BaseController {
         return redirect('/forum');
     }
 
-    public function showReply($replyId)
+    public function redirectToReply($replyId)
     {
         $reply = $this->replies->requireById($replyId);
         return redirect()->action('ForumThreadsController@getShowThread', [$reply->thread->slug,
