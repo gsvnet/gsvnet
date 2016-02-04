@@ -55,9 +55,19 @@
                     @if($thread->trashed())
                         <h2>VERWIJDERD!</h2>
                         <p>DIT TOPIC IS VERWIJDERD!</p>
-                        <p>Een volgende webcie kan dit misschien duidelijker aangeven met mooie rode letters, maar dit topic is dus verwijderd en alleen zichtbaar voor mensen met speciale rechten</p>
+                        <p>Een volgende webcie kan dit misschien duidelijker aangeven met mooie rode letters, maar dit topic is dus verwijderd en alleen zichtbaar voor mensen met speciale rechten.</p>
                     @endif
-                    
+
+                    @if(Permission::has('threads.show-private'))
+                        @if($thread->public)
+                            <h2>Extern</h2>
+                            <p>Dit topic staat extern en is dus door iedereen te bekijken.</p>
+                        @else
+                            <h2>Intern</h2>
+                            <p>Dit topic staat intern en is dus alleen te bekijken door leden.</p>
+                        @endif
+                    @endif
+
                     <h2>Tags</h2>
                     <div class="tags">
                         {!! $thread->tags->getTagList() !!}
