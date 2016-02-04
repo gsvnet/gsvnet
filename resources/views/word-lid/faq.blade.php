@@ -14,7 +14,7 @@
             <p><a href="{{URL::action('MemberController@becomeMember')}}" title="Word lid!" class="button">Word lid!</a></p>
 
             <h2 id="voor-wie">Kan iedereen lid worden?</h2>
-            <p>Alleen mensen die aan de RuG, of aan een gelijkwaardige opleiding (dus universiteit), staan ingeschreven, kunnen lid worden. Hiermee is de GSV uniek; wij zijn de laatste universitaire studentenvereniging van Groningen. Daarnaast kun je slechts lid worden na het doorlopen van het Novitiaat, waarover hieronder meer.</p>
+            <p>Alleen mensen die aan de RuG, of aan een gelijkwaardige opleiding (dus universiteit), staan ingeschreven, kunnen lid worden. Hiermee is de GSV uniek; wij zijn de laatste universitaire studentenvereniging van Groningen. Mocht je aan de Hanzehogeschool gaan studeren, dan verwijzen we je graag door naar onze broedervereniging Ad Tempus Vitae. Kijk eens op hun website: <a href="http://www.adtempusvitae.nl">www.adtempusvitae.nl</a>. Tenslotte kun je slechts lid worden na het doorlopen van het Novitiaat, waarover hieronder meer.</p>
 
             <h2 id="18-jaar">Ik ben onder de 18, maakt dat uit?</h2>
             <p>Iedereen die ingeschreven staat bij de RuG of gelijkwaardige instantie kan lid worden, dus ook als je onder de 18 bent. Wel is sinds januari 2014 de alcoholgrens opgeschoven naar 18 jaar. Dit wordt bij de GSV dan ook gewoon gehandhaafd.</p>
