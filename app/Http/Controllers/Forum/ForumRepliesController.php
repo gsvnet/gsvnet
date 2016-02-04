@@ -69,7 +69,7 @@ class ForumRepliesController extends BaseController {
 
         $this->dispatchFrom(EditReplyCommand::class, new Collection($data));
 
-        return redirect()->action('ForumThreadsController@getShowThread', [$reply->thread->slug, "#reactie-" . $reply->id]);
+        return $this->showReply($replyId);
     }
 
     public function getDelete($replyId)
@@ -96,5 +96,14 @@ class ForumRepliesController extends BaseController {
         $this->dispatchFrom(DeleteReplyCommand::class, new Collection($data));
 
         return redirect('/forum');
+    }
+
+    public function showReply($replyId)
+    {
+        $reply = $this->replies->requireById($replyId);
+        return redirect()->action('ForumThreadsController@getShowThread', [$reply->thread->slug,
+            "page=" . $reply->thread->getReplyPageNumber($replyId, $this->repliesPerPage) .
+            "#reactie-" . $reply->id]
+        );
     }
 }
