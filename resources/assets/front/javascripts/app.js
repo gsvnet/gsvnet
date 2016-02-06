@@ -183,6 +183,8 @@ app = (function() {
 
 	function threadsIndex() {
 		Forum.loadDeferredAvatars();
+		Forum.initLustrumCountdown();
+
 	}
 
 	function createAndUpdateThread()
