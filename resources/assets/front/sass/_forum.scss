@@ -114,3 +114,113 @@ img.emo {
   color: #CCC;
   background: #FAFAFA;
 }
+
+/* LUSTRUM COUNTDOWN TIMER[ */
+
+.lustrum-countdown {
+	margin: 0;
+	width: 275px;
+	height: 110px;
+}
+.lustrum-countdown .countdown-container {
+	height: 130px;
+}
+.lustrum-countdown .time {
+	border-radius: 5px;
+	box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+	display: inline-block;
+	text-align: center;
+	position: relative;
+	height: 80px;
+	width: 65px;
+
+	perspective: 479px;
+	backface-visibility: hidden;
+	transform: translateZ(0);
+	transform: translate3d(0,0,0);
+}
+.lustrum-countdown .count {
+	background: #202020;
+	color: #f8f8f8;
+	display: block;
+	font-size: 1.8em;
+	line-height: 2.4em;
+	overflow: hidden;
+	position: absolute;
+	text-align: center;
+	text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+	top: 0;
+	width: 100%;
+
+	transform: translateZ(0);
+	transform-style: flat;
+}
+.lustrum-countdown .count.top {
+	border-top: 1px solid rgba(255,255,255,0.2);
+	border-bottom: 1px solid rgba(255,255,255,0.1);
+	border-radius: 5px 5px 0 0;
+	height: 50%;
+
+	transform-origin: 50% 100%;
+}
+.lustrum-countdown .count.bottom {
+	background-image: linear-gradient(rgba(255,255,255,0.1), transparent);
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	border-radius: 0 0 5px 5px;
+	line-height: 0;
+	height: 50%;
+	top: 50%;
+
+	transform-origin: 50% 0;
+}
+.lustrum-countdown .count.next {
+}
+.lustrum-countdown .label {
+	font-size: normal;
+	margin-top: 5px;
+	display: block;
+	position: absolute;
+	top: 75px;
+	width: 100%;
+}
+/* Animation start */
+.lustrum-countdown .count.curr.top {
+	transform: rotateX(0deg);
+	z-index: 3;
+}
+.lustrum-countdown .count.next.bottom {
+	transform: rotateX(90deg);
+	z-index: 2;
+}
+/* Animation end */
+.lustrum-countdown .flip .count.curr.top {
+	transition: all 250ms ease-in-out;
+	transform: rotateX(-90deg);
+}
+.lustrum-countdown .flip .count.next.bottom {
+	transition: all 250ms ease-in-out 250ms;
+	transform: rotateX(0deg);
+}
+@media screen and (max-width: 48em) {
+	.lustrum-countdown {
+		width: 100%;
+	}
+	.lustrum-countdown .countdown-container {
+		height: 100px;
+	}
+	.lustrum-countdown .time {
+		height: 70px;
+		width: 48px;
+	}
+	.lustrum-countdown .count {
+		font-size: 1.5em;
+		line-height: 70px;
+	}
+	.lustrum-countdown .label {
+		font-size: 0.8em;
+		top: 72px;
+	}
+}
+
+/* ]EINDE LUSTRUM COUNTDOWN TIMER */
