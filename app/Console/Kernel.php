@@ -18,6 +18,6 @@ class Kernel extends ConsoleKernel {
 		BulkNewsletterSubscriptions::class,
 		Forum::class,
 		Exodus::class,
-		ImportMembers::class
+//		ImportMembers::class
 	];
 }

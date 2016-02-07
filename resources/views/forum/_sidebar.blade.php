@@ -1,18 +1,5 @@
 <div class="content-columns">
     <div class="content-column">
-        <h2>Tiende Lustrum der GSV</h2>
-        <div id="lustrum-countdown" class="lustrum-countdown"></div>
-        <script type="text/template" id="lustrum-countdown-template">
-            <div class="time %label%">
-                <span class="count curr top">%curr%</span>
-                <span class="count next top">%next%</span>
-                <span class="count next bottom">%next%</span>
-                <span class="count curr bottom">%curr%</span>
-                <span class="label">%label%</span>
-            </div>
-        </script>
-    </div>
-    <div class="content-column">
         <h2>Maak een nieuw topic</h2>
         <p>
             <a class="button" href="{{ action('ForumThreadsController@getCreateThread') }}" rel="nofollow">Nieuw topic</a>
@@ -30,6 +17,18 @@
             <h2>Forumstatistieken</h2>
             <p><a href="{{ URL::action('ForumThreadsController@statistics') }}" title="Toplijsten forumposters">Vind je hier</a></p>
         @endif
+
+        <h2>Tiende Lustrum der GSV</h2>
+        <div id="lustrum-countdown" class="lustrum-countdown"></div>
+        <script type="text/template" id="lustrum-countdown-template">
+            <div class="time %label%">
+                <span class="count curr top">%curr%</span>
+                <span class="count next top">%next%</span>
+                <span class="count next bottom">%next%</span>
+                <span class="count curr bottom">%curr%</span>
+                <span class="label">%label%</span>
+            </div>
+        </script>
 
         @if( Permission::has('events.show-private') && count($events) > 0 )
             <h2>Komende activiteiten</h2>
