@@ -15,6 +15,11 @@
                     </a>
                 </li>
                 <li role="presentation">
+                    <a href="{{ URL::action('Admin\MemberController@editPhoto', $user->id) }}">
+                        <i class="fa fa-camera"></i> Foto
+                    </a>
+                </li>
+                <li role="presentation">
                     <a href="{{ URL::action('Admin\MemberController@editGender', $user->id) }}">
                         <i class="fa fa-transgender"></i> Geslacht
                     </a>
@@ -64,6 +69,11 @@
                 <li role="presentation">
                     <a href="{{ URL::action('Admin\MemberController@editYearGroup', $user->id) }}">
                         <i class="fa fa-flag"></i> Jaarverband
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#">
+                        <i class="fa fa-sitemap"></i> Regio
                     </a>
                 </li>
             </ul>

@@ -7,6 +7,7 @@ use GSV\Commands\Members\ChangeEmail;
 use GSV\Commands\Members\ChangeGender;
 use GSV\Commands\Members\ChangeName;
 use GSV\Commands\Members\ChangeYearGroup;
+use GSV\Commands\Users\SetProfilePictureCommand;
 use GSVnet\Users\UsersRepository;
 use GSVnet\Users\ValueObjects\Gender;
 use GSVnet\Users\YearGroupRepository;
@@ -130,6 +131,23 @@ class MemberController extends AdminBaseController
         $member = $this->users->memberOrFormerByIdWithProfile($id);
         $this->dispatch(ChangeBusiness::fromForm($request, $member));
         flash()->success("Werk {$member->present()->fullName()} succesvol aangepast");
+        return redirect()->action('Admin\UsersController@show', $id);
+    }
+
+    public function editPhoto($id)
+    {
+        $user = $this->users->memberOrFormerByIdWithProfile($id);
+        return view('admin.users.update.photo')->with(compact('user'));
+    }
+
+    public function updatePhoto(Request $request, $id)
+    {
+        $member = $this->users->memberOrFormerByIdWithProfile($id);
+        if($request->hasFile('photo_path'))
+        {
+            $this->dispatch(new SetProfilePictureCommand($member, $request->file('photo_path')));
+        }
+        flash()->success("Foto van {$member->present()->fullName()} succesvol opgeslagen");
         return redirect()->action('Admin\UsersController@show', $id);
     }
 }

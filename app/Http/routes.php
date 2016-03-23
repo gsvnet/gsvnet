@@ -122,6 +122,27 @@ Route::group([
     Route::resource('gebruikers.family', 'FamilyController');
 
     // Each part of the profile
+    Route::get('leden/{user}/adres',         'MemberController@editAddress');
+    Route::put('leden/{user}/adres',         'MemberController@updateAddress');
+    Route::get('leden/{user}/email',         'MemberController@editEmail');
+    Route::put('leden/{user}/email',         'MemberController@updateEmail');
+    Route::get('leden/{user}/geboortedatum', 'MemberController@editBirthDay');
+    Route::put('leden/{user}/geboortedatum', 'MemberController@updateBirthDay');
+    Route::get('leden/{user}/geslacht',      'MemberController@editGender');
+    Route::put('leden/{user}/geslacht',      'MemberController@updateGender');
+    Route::get('leden/{user}/jaarverband',   'MemberController@editYearGroup');
+    Route::put('leden/{user}/jaarverband',   'MemberController@updateYearGroup');
+    Route::get('leden/{user}/naam',          'MemberController@editName');
+    Route::put('leden/{user}/naam',          'MemberController@updateName');
+    Route::get('leden/{user}/werk',          'MemberController@editBusiness');
+    Route::put('leden/{user}/werk',          'MemberController@updateBusiness');
+    Route::get('leden/{user}/foto',          'MemberController@editPhoto');
+    Route::put('leden/{user}/foto',          'MemberController@updatePhoto');
+
+    Route::resource('gebruikers', 'UsersController');
+    Route::resource('gebruikers.family', 'FamilyController');
+
+    // Each part of the profile
     Route::get('gebruikers/{user}/adres',         'MemberController@editAddress');
     Route::put('gebruikers/{user}/adres',         'MemberController@updateAddress');
     Route::get('gebruikers/{user}/email',         'MemberController@editEmail');
