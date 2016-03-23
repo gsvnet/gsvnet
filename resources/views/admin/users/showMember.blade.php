@@ -76,6 +76,11 @@
                         <i class="fa fa-sitemap"></i> Regio
                     </a>
                 </li>
+                <li role="presentation">
+                    <a href="#">
+                        <i class="fa fa-eur"></i> Reüniststatus
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
