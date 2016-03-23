@@ -1,7 +1,7 @@
 <?php namespace GSV\Commands\Members;
 
 use GSV\Commands\Command;
-use GSVnet\Core\ValueObjects\Business;
+use GSVnet\Users\ValueObjects\Business;
 use GSVnet\Users\User;
 use Illuminate\Http\Request;
 
@@ -23,7 +23,8 @@ class ChangeBusiness extends Command {
     {
         $business = new Business(
             $request->get('company'),
-            $request->get('profession')
+            $request->get('profession'),
+            $request->get('business_url')
         );
 
         return new static($user, $business);

@@ -19,6 +19,7 @@ class ChangeBusinessHandler {
 
         $profile->company = $command->business->getCompany();
         $profile->profession = $command->business->getFunction();
+        $profile->business_url = $command->business->getUrl();
 
         $this->profiles->save($profile);
 
