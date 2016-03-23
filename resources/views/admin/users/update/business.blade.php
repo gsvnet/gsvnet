@@ -14,7 +14,7 @@
 
             {!! Former::text('company')->label('Bedrijf') !!}
             {!! Former::text('profession')->label('Functie') !!}
-            {!! Former::text('linked_in')->label('Linked in-url') !!}
+            {!! Former::text('business_url')->label('Linked in-url') !!}
 
             <button type='submit' class='btn btn-success'>
                 <i class="glyphicon glyphicon-ok"></i> Opslaan
