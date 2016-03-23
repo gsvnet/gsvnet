@@ -15,6 +15,11 @@
                     </a>
                 </li>
                 <li role="presentation">
+                    <a href="{{ URL::action('Admin\MemberController@editContactDetails', $user->id) }}">
+                        <i class="glyphicon glyphicon-home"></i> Contactgegevens
+                    </a>
+                </li>
+                <li role="presentation">
                     <a href="{{ URL::action('Admin\MemberController@editPhoto', $user->id) }}">
                         <i class="fa fa-camera"></i> Foto
                     </a>
@@ -32,11 +37,6 @@
                 <li role="presentation">
                     <a href="{{ URL::action('Admin\MemberController@editEmail', $user->id) }}">
                         <i class="glyphicon glyphicon-envelope"></i> Emailadres
-                    </a>
-                </li>
-                <li role="presentation">
-                    <a href="{{ URL::action('Admin\MemberController@editAddress', $user->id) }}">
-                        <i class="glyphicon glyphicon-home"></i> Woonadres
                     </a>
                 </li>
                 <li role="presentation">

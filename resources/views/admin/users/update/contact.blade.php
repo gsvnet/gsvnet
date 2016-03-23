@@ -9,13 +9,17 @@
         <div class="col-xs-12 col-md-6">
             <h2>Adres aanpassen</h2>
 
-            {!! Former::vertical_open()->action(action('Admin\MemberController@updateAddress', $user->id))->method('PUT') !!}
+            {!! Former::vertical_open()->action(action('Admin\MemberController@updateContactDetails', $user->id))->method('PUT') !!}
             {!! Former::populate( $user->profile ) !!}
 
             {!! Former::text('address')->label('Adres') !!}
             {!! Former::text('zip_code')->label('Postcode') !!}
             {!! Former::text('town')->label('Woonplaats') !!}
             {!! Former::text('country')->label('Land') !!}
+
+            <hr>
+
+            {!! Former::text('phone')->label('Telefoon') !!}
 
             <button type='submit' class='btn btn-success'>
                 <i class="glyphicon glyphicon-ok"></i> Opslaan
