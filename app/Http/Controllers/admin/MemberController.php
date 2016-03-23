@@ -6,6 +6,8 @@ use GSV\Commands\Members\ChangeBusiness;
 use GSV\Commands\Members\ChangeEmail;
 use GSV\Commands\Members\ChangeGender;
 use GSV\Commands\Members\ChangeName;
+use GSV\Commands\Members\ChangeParentsDetails;
+use GSV\Commands\Members\ChangePhone;
 use GSV\Commands\Members\ChangeYearGroup;
 use GSV\Commands\Users\SetProfilePictureCommand;
 use GSVnet\Users\UsersRepository;
@@ -46,17 +48,32 @@ class MemberController extends AdminBaseController
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
-    public function editAddress($id)
+    public function editContactDetails($id)
     {
         $user = $this->users->memberOrFormerByIdWithProfile($id);
-        return view('admin.users.update.address')->with(compact('user'));
+        return view('admin.users.update.contact')->with(compact('user'));
     }
 
-    public function updateAddress(Request $request, $id)
+    public function updateContactDetails(Request $request, $id)
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
         $this->dispatch(ChangeAddress::fromForm($request, $member));
-        flash()->success("Adres {$member->present()->fullName()} succesvol aangepast");
+        $this->dispatch(ChangePhone::fromForm($request, $member));
+        flash()->success("Contactgegevens {$member->present()->fullName()} succesvol aangepast");
+        return redirect()->action('Admin\UsersController@show', $id);
+    }
+
+    public function editParentContactDetails($id)
+    {
+        $user = $this->users->memberOrFormerByIdWithProfile($id);
+        return view('admin.users.update.parents')->with(compact('user'));
+    }
+
+    public function updateParentContactDetails(Request $request, $id)
+    {
+        $member = $this->users->memberOrFormerByIdWithProfile($id);
+        $this->dispatch(ChangeParentsDetails::fromForm($request, $member));
+        flash()->success("Gegevens van {$member->present()->fullName()}s ouders succesvol aangepast");
         return redirect()->action('Admin\UsersController@show', $id);
     }
 

@@ -50,7 +50,7 @@
                     </a>
                 </li>
                 <li role="presentation">
-                    <a href="#">
+                    <a href="{{ URL::action('Admin\MemberController@editParentContactDetails', $user->id) }}">
                         <i class="fa fa-users"></i> Ouders
                     </a>
                 </li>
