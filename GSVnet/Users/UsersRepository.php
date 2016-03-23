@@ -6,7 +6,9 @@ use GSVnet\Core\BaseRepository;
 
 class UsersRepository extends BaseRepository {
 
-    function __construct(User $model)
+    protected $model;
+
+    public function __construct(User $model)
     {
         $this->model = $model;
     }
@@ -27,6 +29,11 @@ class UsersRepository extends BaseRepository {
     public function byIdWithProfileAndYearGroup($id)
     {
         return User::with('profile.yearGroup')->findOrFail($id);
+    }
+
+    public function memberOrFormerByIdWithProfile($id)
+    {
+        return User::whereIn('type', [User::FORMERMEMBER, User::MEMBER])->with('profile.yearGroup')->findOrFail($id);
     }
 
     /**
@@ -116,6 +123,13 @@ class UsersRepository extends BaseRepository {
     public function filterExistingIds(array $ids)
     {
         return User::whereIn('id', $ids)->lists('id');
+    }
+
+    public function isEmailAddressTaken($email, $excludeId)
+    {
+        return $this->model->where('email', $email)
+            ->where('id', '<>', $excludeId)
+            ->count() > 0;
     }
 
     /**

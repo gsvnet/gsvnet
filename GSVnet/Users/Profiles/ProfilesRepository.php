@@ -1,10 +1,16 @@
 <?php namespace GSVnet\Users\Profiles;
 
+use GSVnet\Core\BaseRepository;
 use GSVnet\Users\User;
 use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
 
-class ProfilesRepository {
+class ProfilesRepository extends BaseRepository {
+
+    public function __construct(UserProfile $model)
+    {
+        $this->model = $model;
+    }
 
     public function byId($id)
     {
