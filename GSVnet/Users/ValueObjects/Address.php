@@ -4,10 +4,10 @@ use GSVnet\Core\ValueObject;
 
 class Address extends ValueObject {
 
-    private $street;
-    private $zipCode;
-    private $town;
-    private $country;
+    protected $street;
+    protected $zipCode;
+    protected $town;
+    protected $country;
 
     static $rules = [
         'address' => 'required',
