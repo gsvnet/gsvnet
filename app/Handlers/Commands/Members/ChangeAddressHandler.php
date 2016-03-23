@@ -20,6 +20,7 @@ class ChangeAddressHandler {
         $profile->address = $command->address->getStreet();
         $profile->zip_code = $command->address->getZipCode();
         $profile->town = $command->address->getTown();
+        $profile->country = $command->address->getCountry();
 
         $this->profiles->save($profile);
 

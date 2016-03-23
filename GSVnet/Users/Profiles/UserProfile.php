@@ -24,6 +24,7 @@ class UserProfile extends Model {
         'zip_code',
         'town',
         'study',
+        'country',
         'birthdate',
         'church',
         'gender',
