@@ -65,49 +65,51 @@ Elk recht heeft een unieke naam (zoals `users.manage`) die te vinden is in `conf
 Als je aan de slag wil gaan met GSVnet is het handig om een paar dingetjes van het backend-ontwerp te weten. De mooist geschreven code is die van het forum, vooral omdat die code het concept van de Command Bus gebruikt. Dat is dus de code die je het beste kunt bestuderen nadat je wat tutorials over Laravel hebt gezien.
 
 Heel in het kort komt dat hier op neer: er wordt een commando (Command) gemaakt in de vorm van een klasse, waarvan de naam duidelijk de intentie aangeeft (bijvoorbeeld `ReplyToThreadCommand`). Dit Command zou vanuit elke plek in het project kunnen worden gedispatched, zoals dat heet. In ons geval wordt dit alleen gedaan vanuit de `ForumRepliesController` als iemand een formulier verstuurd heeft. Het ReplyToThreadCommand is een heel kleine klasse die alleen de relevante informatie bevat:
+```php
+class ReplyToThreadCommand extends Command {
 
-    class ReplyToThreadCommand extends Command {
-    
-        public $threadSlug;
-        public $authorId;
-        public $reply;
-    
-        public function __construct($threadSlug, $authorId, $reply)
-    	{
-            $this->threadSlug = $threadSlug;
-            $this->authorId = $authorId;
-            $this->reply = $reply;
-        }
+    public $threadSlug;
+    public $authorId;
+    public $reply;
+
+    public function __construct($threadSlug, $authorId, $reply)
+	{
+        $this->threadSlug = $threadSlug;
+        $this->authorId = $authorId;
+        $this->reply = $reply;
     }
+}
+```
     
 Vervolgens is er een Command Handler die het Command daadwerkelijk afhandelt en alle logica doet:
+```php
+class ReplyToThreadCommandHandler {
 
-    class ReplyToThreadCommandHandler {
-    
-        private $replies;
-        private $threads;
-    
-        function __construct(ThreadRepository $threads, ReplyRepository $replies)
-        {
-            $this->replies = $replies;
-            $this->threads = $threads;
-        }
-    
-    	public function handle(ReplyToThreadCommand $command)
-    	{
-            $threadId = $this->threads->getIdBySlug($command->threadSlug);
-    
-            $reply = $this->replies->getNew([
-                'thread_id' => $threadId,
-                'author_id' => $command->authorId,
-                'body' => $command->reply
-            ]);
-    
-            $this->replies->save($reply);
-    
-            event(new ThreadWasRepliedTo($threadId, $reply->id));
-    	}
+    private $replies;
+    private $threads;
+
+    function __construct(ThreadRepository $threads, ReplyRepository $replies)
+    {
+        $this->replies = $replies;
+        $this->threads = $threads;
     }
+
+	public function handle(ReplyToThreadCommand $command)
+	{
+        $threadId = $this->threads->getIdBySlug($command->threadSlug);
+
+        $reply = $this->replies->getNew([
+            'thread_id' => $threadId,
+            'author_id' => $command->authorId,
+            'body' => $command->reply
+        ]);
+
+        $this->replies->save($reply);
+
+        event(new ThreadWasRepliedTo($threadId, $reply->id));
+	}
+}
+```
     
 In de functie `handle` wordt het Command-object doorgestuurd, en wordt allereerst het `id` van het topic erbij gezocht. Vervolgens wordt een nieuwe `Reply` aangemaakt. Deze wordt opgeslagen via een Repository; een repository is een klasse die zorgt dat queries aan en persistence naar de database wordt gedaan (en maakt de code een stukje mooier). Tenslotte wordt er een nieuwe Event aangemaakt, met een naam in de verleden tijd omdat het refereert naar een feit dat al heeft plaatsgevonden, namelijk `ThreadWasRepliedTo` met relevante informatie.
 
