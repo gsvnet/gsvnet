@@ -103,7 +103,8 @@ return [
     'threads.manage' => [
         'committee' => [
             'webcie'
-        ]
+        ],
+        'senate' => true
     ],
 
     'sponsor-program.show' => [
