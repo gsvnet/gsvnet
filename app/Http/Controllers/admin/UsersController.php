@@ -181,7 +181,7 @@ class UsersController extends AdminBaseController {
 
         // Members, former members and potentials need some more details
         $profile = $user->profile;
-        $committees = $user->committees;
+        $committees = $user->committeesSorted;
         return view('admin.users.showMember')->with(compact('user', 'profile', 'committees'));
     }
 

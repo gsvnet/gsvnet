@@ -2,6 +2,11 @@
     <a href="/admin" class="list-group-item {{ Request::segment(2) == '' ? 'active' : '' }}">
         <i class='glyphicon glyphicon-home'></i> Dashboard
     </a>
+    @if (Permission::has('users.show'))
+        <a href="{{ URL::action('Admin\UsersController@show', [Auth::user()->id]) }}" class="list-group-item">
+            <i class='glyphicon glyphicon-user'></i> Uw profiel
+        </a>
+    @endif
 </div>
 
 <h4>Ledenadministratie</h4>

@@ -189,7 +189,7 @@
             <h2>Commissies</h2>
             <ul>
                 @foreach ($committees as $committee)
-                    <li>{{ $committee->name }}</li>
+                    <li><a href="{{action('Admin\CommitteeController@show', ['id' => $committee->id])}}">{{ $committee->name }}</a></li>
                 @endforeach
             </ul>
         </div>
