@@ -2,12 +2,15 @@
 
 @section('content')
     <div class="page-header">
-        <h1>Pas adres van <strong>{{ $user->present()->fullName }}</strong> aan</h1>
+        <h1>Pas foto van <strong>{{ $user->present()->fullName }}</strong> aan</h1>
     </div>
 
     <div class="row">
         <div class="col-xs-12 col-md-6">
-            <h2>Adres aanpassen</h2>
+            <h2>Foto aanpassen</h2>
+            @if(!empty($user->profile->photo_path))
+                <p><img src="{{ $user->profile->present()->xsmallProfileImage() }}" /></p>
+            @endif
 
             {!! Former::open_vertical_for_files()->action(action('Admin\MemberController@updatePhoto', $user->id))->method('PUT') !!}
 
