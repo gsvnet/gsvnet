@@ -21,7 +21,8 @@ class ChangeName extends Command {
         $name = new Name(
             $request->get('firstname'),
             $request->get('middlename'),
-            $request->get('lastname')
+            $request->get('lastname'),
+            $request->get('initials')
         );
         return new self($user, $name);
     }

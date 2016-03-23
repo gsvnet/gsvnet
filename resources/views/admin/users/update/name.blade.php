@@ -11,7 +11,9 @@
 
             {!! Former::vertical_open()->action(action('Admin\MemberController@updateName', $user->id))->method('PUT') !!}
             {!! Former::populate( $user ) !!}
+            {!! Former::populateField('initials', $user->profile->initials) !!}
 
+            {!! Former::text('initials')->label('Initialen') !!}
             {!! Former::text('firstname')->label('Voornaam') !!}
             {!! Former::text('middlename')->label('Tussenvoegsel') !!}
             {!! Former::text('lastname')->label('Achternaam') !!}

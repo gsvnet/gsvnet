@@ -12,9 +12,11 @@ class Name extends ValueObject {
     private $firstName;
     private $middleName;
     private $lastName;
+    private $initials;
 
-    public function __construct($firstName, $middleName, $lastName)
+    public function __construct($firstName, $middleName, $lastName, $initials)
     {
+        $this->initials = trim($initials);
         $this->firstName = $this->sanitizeFirstName($firstName);
         $this->middleName = $this->sanitizeMiddleName($middleName);
         $this->lastName = $this->sanitizeLastName($lastName);
@@ -38,6 +40,11 @@ class Name extends ValueObject {
     public function getLastName()
     {
         return $this->lastName;
+    }
+
+    public function getInitials()
+    {
+        return $this->initials;
     }
 
     private function sanitizeFirstName($string)
