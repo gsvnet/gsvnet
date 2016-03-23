@@ -3,75 +3,169 @@
 @section('content')
     <div class="page-header">
         <h1><a href="{{ URL::action('MemberController@showPhoto', $profile->id) }}" title="Grote foto"><img src="{!! $profile->present()->xsmallProfileImage !!}" width="102" height="102" alt="Profielfoto"/></a> {{ $user->present()->fullName }}</h1>
-        <a href="{{ URL::action('Admin\UsersController@edit', $user->id) }}" alt="Bewerk {{ $user->fullName }}" class='btn btn-default'><i class="fa fa-pencil"></i> Account bewerken</a>
     </div>
 
     <div class="row">
-        <div class="col-xs-12 col-md-6">
-            <h2>Algemene gegevens</h2>
-            <dl>
-                <dt>Naam</dt>
-                <dd>{{ $user->present()->fullName }}</dd>
-
-                <dt>Email</dt>
-                <dd>{{ $user->email }}</dd>
-
-                <dt>Type</dt>
-                <dd>{{ $user->present()->membershipType }}</dd>
-            </dl>
+        <div class="col-xs-12">
+            <h2>Profiel</h2>
+            <ul class="nav nav-pills">
+                <li role="presentation">
+                    <a href="{{ URL::action('Admin\MemberController@editName', $user->id) }}">
+                        <i class="glyphicon glyphicon-user"></i> Naam
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="{{ URL::action('Admin\MemberController@editGender', $user->id) }}">
+                        <i class="fa fa-transgender"></i> Geslacht
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="{{ URL::action('Admin\MemberController@editBirthDay', $user->id) }}">
+                        <i class="glyphicon glyphicon-calendar"></i> Geboortedatum
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="{{ URL::action('Admin\MemberController@editEmail', $user->id) }}">
+                        <i class="glyphicon glyphicon-envelope"></i> Emailadres
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="{{ URL::action('Admin\MemberController@editAddress', $user->id) }}">
+                        <i class="glyphicon glyphicon-home"></i> Woonadres
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="{{ URL::action('Admin\MemberController@editBusiness', $user->id) }}">
+                        <i class="glyphicon glyphicon-briefcase"></i> Werkgegevens
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#">
+                        <i class="fa fa-university"></i> Studie
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#">
+                        <i class="fa fa-users"></i> Ouders
+                    </a>
+                </li>
+            </ul>
         </div>
-        <div class="col-xs-12 col-md-6">
-            <h2>GSV-profiel</h2>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>GSV</h2>
+            <ul class="nav nav-pills">
+                <li role="presentation">
+                    <a href="{{ URL::action('Admin\FamilyController@index', $user->id) }}">
+                        <i class="fa fa-tree"></i> GSV-stamboom
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="{{ URL::action('Admin\MemberController@editYearGroup', $user->id) }}">
+                        <i class="fa fa-flag"></i> Jaarverband
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-            <dl>
-                @if($user->type == GSVnet\Users\User::FORMERMEMBER)
-                    <dt>Reunist?</dt>
-                    <dd>{{$profile->reunist == 0 ? 'Nee' : 'Ja'}}</dd>
-                @endif
+    <hr>
 
-                <dt>Initialen</dt>
-                <dd>{{$profile->initials}}</dd>
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+            <h2>Overzicht</h2>
+            <table class='table table-striped table-hover sort-table'>
+                <tbody>
 
-                <dt>Geslacht</dt>
-                <dd>{{$profile->present()->genderLocalized}}</dd>
+                    <tr>
+                        <th>Initialen</th>
+                        <td>{{$profile->initials}}</td>
+                    </tr>
 
-                <dt>Geboortedatum</dt>
-                <dd>{{Carbon\Carbon::parse($profile->birthdate)->formatLocalized('%e %B %Y')}}</dd>
+                    <tr>
+                        <th>Naam</th>
+                        <td>{{ $user->present()->fullName }}</td>
+                    </tr>
 
-                <dt>Jaarverband</dt>
-                <dd>{{ $profile->yearGroup->present()->nameWithYear }}</dd>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ $user->email }}</td>
+                    </tr>
 
-                <dt>Regio</dt>
-                <dd>{{$profile->present()->regionName}}</dd>
+                    <tr>
+                        <th>Type</th>
+                        <td>{{ $user->present()->membershipType }}</td>
+                    </tr>
 
-                <dt>Adres</dt>
-                <dd>
-                    <address>
-                        {{$profile->address}}<br/>
-                        {{$profile->zip_code}} {{$profile->town}}
-                    </address>
-                </dd>
+                    @if($user->type == GSVnet\Users\User::FORMERMEMBER)
+                    <tr>
+                        <th>Reunist?</th>
+                        <td>{{$profile->reunist == 0 ? 'Nee' : 'Ja'}}</td>
+                    </tr>
+                    @endif
 
-                <dt>Kerk</dt>
-                <dd>{{$profile->church}}</dd>
+                    <tr>
+                        <th>Geslacht</th>
+                        <td>{{$profile->present()->genderLocalized}}</td>
+                    </tr>
 
-                <dt>Studie</dt>
-                <dd>{{$profile->study}}</dd>
+                    <tr>
+                        <th>Geboortedatum</th>
+                        <td>{{Carbon\Carbon::parse($profile->birthdate)->formatLocalized('%e %B %Y')}}</td>
+                    </tr>
 
-                <dt>Studentnummer</dt>
-                <dd>{{$profile->student_number}}</dd>
+                    <tr>
+                        <th>Jaarverband</th>
+                        <td>{{ $profile->yearGroup->present()->nameWithYear }}</td>
+                    </tr>
 
-                <dt>Adres ouders</dt>
-                <dd>
-                    <address>
-                        {{$profile->parent_address}}<br/>
-                        {{$profile->parent_zip_code}} {{$profile->parent_town}}
-                    </address>
-                </dd>
+                    <tr>
+                        <th>Regio</th>
+                        <td>{{$profile->present()->regionName}}</td>
+                    </tr>
 
-                <dt>Telefoon ouders</dt>
-                <dd>{{$profile->parent_phone}}</dd>
-            </dl>
+                    <tr>
+                        <th>Adres</th>
+                        <td>
+                            <address>
+                                {{$profile->address}}<br/>
+                                {{$profile->zip_code}} {{$profile->town}}
+                            </address>
+                        </td> 
+                    </tr>
+
+                    <tr>
+                        <th>Kerk</th>
+                        <td>{{$profile->church}}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Studie</th>
+                        <td>{{$profile->study}}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Studentnummer</th>
+                        <td>{{$profile->student_number}}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Adres ouders</th>
+                        <td><address>
+                            {{$profile->parent_address}}<br/>
+                            {{$profile->parent_zip_code}} {{$profile->parent_town}}
+                        </address>
+                           
+                        </td> 
+                    </tr>
+
+                    <tr>
+                        <th>Telefoon ouders</th>
+                        <td>{{$profile->parent_phone}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
