@@ -174,13 +174,15 @@ class UsersController extends AdminBaseController {
     {
         $this->authorize('users.manage');
         $user = $this->users->byId($id);
+
+        // Committees or ordinary forum users do not need a fancy profile page
+        if (!$user->wasOrIsMember() && !$user->isPotential())
+            return view('admin.users.show')->with(compact('user'));
+
+        // Members, former members and potentials need some more details
         $profile = $user->profile;
         $committees = $user->committees;
-
-        return view('admin.users.show')
-            ->withUser($user)
-            ->withProfile($profile)
-            ->withCommittees($committees);
+        return view('admin.users.showMember')->with(compact('user', 'profile', 'committees'));
     }
 
     public function edit($id)
