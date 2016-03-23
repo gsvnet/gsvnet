@@ -1,7 +1,7 @@
-<?php namespace App\Commands\User;
+<?php namespace GSV\Commands\Members;
 
-use App\Commands\Command;
-use GSVnet\Core\ValueObjects\Name;
+use GSV\Commands\Command;
+use GSVnet\Users\ValueObjects\Name;
 use GSVnet\Users\User;
 use Illuminate\Http\Request;
 
@@ -19,9 +19,9 @@ class ChangeName extends Command {
     static function fromForm(Request $request, User $user)
     {
         $name = new Name(
-            $request->get('firstName'),
-            $request->get('middleName'),
-            $request->get('lastName')
+            $request->get('firstname'),
+            $request->get('middlename'),
+            $request->get('lastname')
         );
         return new self($user, $name);
     }

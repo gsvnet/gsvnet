@@ -113,10 +113,29 @@ Route::group([
         Route::delete('/{user}/profiel', 'UsersController@destroyProfile');
 
         Route::get('/gasten',     'UsersController@showGuests');
-        Route::get('/novieten', 'UsersController@showPotentials');
+        Route::get('/novieten',   'UsersController@showPotentials');
         Route::get('/leden',      'UsersController@showMembers');
         Route::get('/oud-leden',  'UsersController@showFormerMembers');
     });
+
+    Route::resource('gebruikers', 'UsersController');
+    Route::resource('gebruikers.family', 'FamilyController');
+
+    // Each part of the profile
+    Route::get('gebruikers/{user}/adres',         'MemberController@editAddress');
+    Route::put('gebruikers/{user}/adres',         'MemberController@updateAddress');
+    Route::get('gebruikers/{user}/email',         'MemberController@editEmail');
+    Route::put('gebruikers/{user}/email',         'MemberController@updateEmail');
+    Route::get('gebruikers/{user}/geboortedatum', 'MemberController@editBirthDay');
+    Route::put('gebruikers/{user}/geboortedatum', 'MemberController@updateBirthDay');
+    Route::get('gebruikers/{user}/geslacht',      'MemberController@editGender');
+    Route::put('gebruikers/{user}/geslacht',      'MemberController@updateGender');
+    Route::get('gebruikers/{user}/jaarverband',   'MemberController@editYearGroup');
+    Route::put('gebruikers/{user}/jaarverband',   'MemberController@updateYearGroup');
+    Route::get('gebruikers/{user}/naam',          'MemberController@editName');
+    Route::put('gebruikers/{user}/naam',          'MemberController@updateName');
+    Route::get('gebruikers/{user}/werk',          'MemberController@editBusiness');
+    Route::put('gebruikers/{user}/werk',          'MemberController@updateBusiness');
 
     Route::resource('gebruikers', 'UsersController');
     Route::resource('gebruikers.family', 'FamilyController');
