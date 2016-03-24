@@ -13,7 +13,7 @@
         {!! Former::hidden('committee_id')->value($committee->id) !!}
         {!! Former::hidden('member')->value($member->id) !!}
         {!! Former::text('start_date')->class('form-control datepicker')->label('Geïnstalleerd op')->required() !!}
-        {!! Former::checkbox('currently_member')->value('1')->text('Momenteel actief?')->label(null)->checked(false); !!}
+        {!! Former::checkbox('currently_member')->value('1')->text('Momenteel actief?')->label(null)->check(false); !!}
         {!! Former::text('end_date')->class('form-control datepicker')->label('Gedechargeerd op')->help('Je mag dit veld leeg laten als degene nog niet gedechargeerd is') !!}
         {!! Former::hidden('member_id')->id('add-user-id')!!}
         <button type='submit' class='btn btn-success'>
