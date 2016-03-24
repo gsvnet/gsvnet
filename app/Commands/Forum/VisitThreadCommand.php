@@ -3,9 +3,9 @@
 use GSV\Commands\Command;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldBeQueued;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class VisitThreadCommand extends Command implements ShouldBeQueued {
+class VisitThreadCommand extends Command implements ShouldQueue {
 
 	use InteractsWithQueue, SerializesModels;
 
