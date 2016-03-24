@@ -15,7 +15,6 @@ use GSVnet\Tags\TagRepository;
 use GSVnet\Users\UsersRepository;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
 
