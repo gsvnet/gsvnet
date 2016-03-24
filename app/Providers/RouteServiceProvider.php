@@ -35,11 +35,11 @@ class RouteServiceProvider extends ServiceProvider {
 		/**
 		 * Check if a user has certain abilities specified in de User model
 		 */
-		Route::filter('can', function($route, $request, $action)
-		{
-			if(!Auth::user()->can($action))
-				return redirect('/', 403);
-		});
+//		Route::filter('can', function($route, $request, $action)
+//		{
+//			if(!Auth::user()->can($action))
+//				return redirect('/', 403);
+//		});
 	}
 
 	/**
