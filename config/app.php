@@ -2,6 +2,8 @@
 
 return [
 
+	'env' => env('APP_ENV', 'production'),
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Debug Mode
@@ -26,7 +28,7 @@ return [
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'https://www.gsvnet.nl',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -113,13 +115,11 @@ return [
 		/*
 		 * Laravel Framework Service Providers...
 		 */
-		'Illuminate\Foundation\Providers\ArtisanServiceProvider',
 		'Illuminate\Auth\AuthServiceProvider',
-		'Illuminate\Bus\BusServiceProvider',
+//		'Illuminate\Bus\BusServiceProvider',
 		'Illuminate\Broadcasting\BroadcastServiceProvider',
 		'Illuminate\Cache\CacheServiceProvider',
 		'Illuminate\Foundation\Providers\ConsoleSupportServiceProvider',
-		'Illuminate\Routing\ControllerServiceProvider',
 		'Illuminate\Cookie\CookieServiceProvider',
 		'Illuminate\Database\DatabaseServiceProvider',
 		'Illuminate\Encryption\EncryptionServiceProvider',
@@ -145,12 +145,13 @@ return [
 		'GSV\Providers\ConfigServiceProvider',
 		'GSV\Providers\EventServiceProvider',
 		'GSV\Providers\RouteServiceProvider',
-		'Illuminate\Html\HtmlServiceProvider',
 
 		'Former\FormerServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
 		'Chromabits\Purifier\PurifierServiceProvider',
         'Laracasts\Flash\FlashServiceProvider',
+		Collective\Bus\BusServiceProvider::class,
+		Collective\Html\HtmlServiceProvider::class,
 
 		'GSV\Providers\BackendServiceProvider',
 		'GSV\Providers\NewsletterServiceProvider',
@@ -205,8 +206,8 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
-		'HTML'       => 'Illuminate\Html\HtmlFacade',
-		'Form'       => 'Illuminate\Html\FormFacade',
+		'Form'       => Collective\Html\FormFacade::class,
+		'HTML'       => Collective\Html\HtmlFacade::class,
 
 		'Former'     => 'Former\Facades\Former',
 		'Purifier'   => 'Chromabits\Purifier\Purifier',
