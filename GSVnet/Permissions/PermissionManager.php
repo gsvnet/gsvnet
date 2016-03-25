@@ -16,7 +16,7 @@ class PermissionManager implements PermissionManagerInterface
 
     public function __construct(CommitteesRepository $committee)
     {
-        $this->committee   = $committee;
+        $this->committee = $committee;
         $this->permissions = Config::get('permissions');
     }
 
@@ -29,19 +29,14 @@ class PermissionManager implements PermissionManagerInterface
     {
         // Check if permission exists
         if (! array_key_exists($permission, $this->permissions))
-        {
             throw new PermissionNotFoundException;
-        }
 
         // Return result away if the permission has already been looked up
         if( $this->inCache($permission) )
-        {
             return $this->getCachedResult($permission);
-        }
 
         // If the result was not cached: look it up
         $has = $this->hasPermission($permission);
-
 
         // Cache the result for further use
         $this->permissionCache[$permission] = $has;
@@ -51,36 +46,24 @@ class PermissionManager implements PermissionManagerInterface
 
     private function hasPermission($permission)
     {
-
         // Get the permission's criteria
         $criteria = $this->permissions[$permission];
 
         // A guest can't have any permissions
         if (! empty($criteria) and is_null($this->user))
-        {
             return false;
-        }
 
         // Check if type criteria is matched
-        if (array_key_exists('type', $criteria) and
-            $this->checkTypeCriteria($criteria['type']))
-        {
+        if (array_key_exists('type', $criteria) and $this->checkTypeCriteria($criteria['type']))
             return true;
-        }
 
         // Check if committee criteria is matched
-        if (array_key_exists('committee', $criteria) and
-            $this->checkCommitteeCriteria($criteria['committee']))
-        {
+        if (array_key_exists('committee', $criteria) and $this->checkCommitteeCriteria($criteria['committee']))
             return true;
-        }
 
         // Check senate criteria
-        if (array_key_exists('senate', $criteria) and
-            $this->checkSenateCriteria())
-        {
+        if (array_key_exists('senate', $criteria) and $this->checkSenateCriteria())
             return true;
-        }
 
         return false;
     }
@@ -104,15 +87,12 @@ class PermissionManager implements PermissionManagerInterface
     private function checkTypeCriteria(array $criteria)
     {
         // Return true if user has one of the criteria
-        if (in_array($this->user->type, $criteria)) { return true; }
-
-        return false;
+        return in_array($this->user->type, $criteria);
     }
 
     private function checkCommitteeCriteria(array $committees)
     {
         // Find in how many of the given committees the user is in
-        // Post::find(1)->comments()->where('title', '=', 'foo')->first();
         $total = $this->user->activeCommittees()->whereIn('unique_name', $committees)->count();
         return  $total > 0;
     }
@@ -122,6 +102,5 @@ class PermissionManager implements PermissionManagerInterface
         $total = $this->user->activeSenate->count();
 
         return $total > 0;
-
     }
 }
