@@ -31,4 +31,9 @@ trait DispatchesJobs
     {
         return app(Dispatcher::class)->dispatchFrom($job, $source, $extras);
     }
+
+    public function dispatchFromArray($job, array $array)
+    {
+        return app(Dispatcher::class)->dispatchFromArray($job, $array);
+    }
 }
