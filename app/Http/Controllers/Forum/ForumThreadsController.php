@@ -48,7 +48,6 @@ class ForumThreadsController extends BaseController {
         $tags = $this->tags->getAllTagsBySlug(Input::get('tags'));
         $threads = $this->threads->getByTagsPaginated($tags, '', $this->threadsPerPage);
 
-
         // add the tag string to each pagination link
         $tagAppends = ['tags' => Input::get('tags')];
         $queryString = !empty($tagAppends['tags']) ? '?tags=' . implode(',', (array)$tagAppends['tags']) : '';
@@ -119,8 +118,7 @@ class ForumThreadsController extends BaseController {
     {
         $thread = $this->threads->requireById($threadId);
 
-        if(! Permission::has('threads.manage') && $thread->author_id != Auth::user()->id)
-            throw new NoPermissionException;
+        $this->authorize('threads.manage', $thread);
 
         $tags = $this->tags->getAllForForum();
 
@@ -139,8 +137,7 @@ class ForumThreadsController extends BaseController {
             'public' => Input::get('public', false)
         ]);
 
-        if(! Permission::has('threads.manage') && $thread->author_id != Auth::user()->id)
-            throw new NoPermissionException;
+        $this->authorize('threads.manage', $thread);
 
         if(!Permission::has('threads.show-private'))
             $data['public'] = true;
@@ -154,8 +151,7 @@ class ForumThreadsController extends BaseController {
     {
         $thread = $this->threads->requireById($threadId);
 
-        if(! Permission::has('threads.manage') && $thread->author_id != Auth::user()->id)
-            throw new NoPermissionException;
+        $this->authorize('threads.manage', $thread);
 
         return view('forum.threads.delete', compact('thread'));
     }
@@ -164,12 +160,11 @@ class ForumThreadsController extends BaseController {
     {
         $thread = $this->threads->requireById($threadId);
 
+        $this->authorize('threads.manage', $thread);
+
         $data = [
             'threadId' => $threadId
         ];
-
-        if(! Permission::has('threads.manage') && $thread->author_id != Auth::user()->id)
-            throw new NoPermissionException;
 
         $this->dispatchFrom(DeleteThreadCommand::class, new Collection($data));
 
@@ -181,7 +176,6 @@ class ForumThreadsController extends BaseController {
         $query = Input::get('query');
         $results = App::make('GSVnet\Forum\Threads\ThreadSearch')->searchPaginated($query, $this->threadsPerPage);
         $results->appends(array('query' => $query));
-
 
         return view('forum.search', compact('query', 'results'));
     }
