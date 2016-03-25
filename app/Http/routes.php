@@ -64,7 +64,7 @@ Route::post('registreer', 'RegisterController@store');
 Route::group(['prefix' => 'word-lid'], function() {
     Route::get('/', 'MemberController@index');
     Route::get('/veel-gestelde-vragen', 'MemberController@faq');
-    Route::get('inschrijven',  'MemberController@becomeMember')->middleware('notYetMember');
+    Route::get('inschrijven',  'MemberController@becomeMember');
     Route::post('inschrijven', 'MemberController@store');
 });
 
