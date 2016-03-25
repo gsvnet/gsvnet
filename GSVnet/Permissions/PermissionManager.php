@@ -1,8 +1,5 @@
 <?php namespace GSVnet\Permissions;
 
-use GSVnet\Users\User;
-use GSVnet\Committees\CommitteeUser;
-use GSVnet\Committees\Committee;
 use GSVnet\Committees\CommitteesRepository;
 use Config;
 

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\View;
 class ForumRepliesController extends BaseController {
 
     protected $repliesPerPage = 20;
+    protected $replies;
 
     public function __construct(ReplyRepository $replies, EventsRepository $events)
     {
@@ -23,9 +24,7 @@ class ForumRepliesController extends BaseController {
         
         $this->replies = $replies;
 
-        $events = $events->upcoming(5);
-
-        View::share('events', $events);
+        View::share('events', $events->upcoming(5));
     }
 
     public function postCreateReply(ReplyToThreadValidator $validator, $threadSlug)
@@ -46,9 +45,7 @@ class ForumRepliesController extends BaseController {
     public function getEditReply($replyId)
     {
         $reply = $this->replies->getById($replyId);
-
-        if(! Permission::has('threads.manage') && $reply->author_id != Auth::user()->id)
-            throw new NoPermissionException;
+        $this->authorize('replies.manage', $reply);
 
         return view('forum.replies.edit', compact('reply'));
     }
@@ -57,13 +54,12 @@ class ForumRepliesController extends BaseController {
     {
         $reply = $this->replies->requireById($replyId);
 
+        $this->authorize('replies.manage', $reply);
+
         $data = [
             'replyId' => $replyId,
             'reply' => Input::get('body')
         ];
-
-        if(! Permission::has('threads.manage') && $reply->author_id != Auth::user()->id)
-            throw new NoPermissionException;
 
         $validator->validate($data);
 
@@ -76,8 +72,7 @@ class ForumRepliesController extends BaseController {
     {
         $reply = $this->replies->requireById($replyId);
 
-        if(! Permission::has('threads.manage') && $reply->author_id != Auth::user()->id)
-            throw new NoPermissionException;
+        $this->authorize('replies.manage', $reply);
 
         return view('forum.replies.delete', compact('reply'));
     }
@@ -86,10 +81,9 @@ class ForumRepliesController extends BaseController {
     {
         $reply = $this->replies->requireById($replyId);
 
-        $data = compact('replyId');
+        $this->authorize('replies.manage', $reply);
 
-        if(! Permission::has('threads.manage') && $reply->author_id != Auth::user()->id)
-            throw new NoPermissionException;
+        $data = compact('replyId');
 
         $validator->validate($data);
 
