@@ -17,7 +17,7 @@ return [
     ],
 
     'user.become-member' => [
-        'type' => [User::VISITOR]
+        'type' => [User::VISITOR, User::POTENTIAL]
     ],
 
     'users.show' => [
