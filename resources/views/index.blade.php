@@ -150,11 +150,11 @@
                             @foreach ($birthdays as $profile)
                                 <li>
                                     <span class="list-title">
-                                        @if (Permission::has('users.show'))
+                                        @can('users.show')
                                             {!! link_to_action('UserController@showUser', $profile->user->present()->fullName, $profile->user->id) !!}
                                         @else
                                             {{ $profile->user->present()->fullName }}
-                                        @endif
+                                        @endcan
                                     </span>
                                     <time class="list-description grey">{{ $profile->present()->birthday }}</time>
                                 </li>

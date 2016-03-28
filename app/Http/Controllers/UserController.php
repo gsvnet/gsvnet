@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Gate;
 use GSVnet\Committees\CommitteesRepository;
 use GSVnet\Users\Profiles\ProfilesRepository;
 use GSVnet\Users\User;
@@ -166,7 +167,7 @@ class UserController extends BaseController {
             'newProfile' => false
         ];
 
-        if(isset($profile) && Permission::has('users.edit-profile'))
+        if(isset($profile) && Gate::allows('users.edit-profile'))
         {
             $newProfile = $this->profileManager->update($profile->id, $profileInput);
             $eventData['oldProfile'] = $profile;

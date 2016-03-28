@@ -1,14 +1,14 @@
 <?php namespace GSV\Http\Middleware;
 
+use Illuminate\Support\Facades\Gate;
 use Closure;
 use GSVnet\Permissions\NoPermissionException;
-use GSVnet\Permissions\Permission;
 
 class MustHavePermission {
 
 	public function handle($request, Closure $next, $permission = 'test')
 	{
-		if(! Permission::has($permission))
+		if(Gate::denies($permission))
 			throw new NoPermissionException;
 
 		return $next($request);

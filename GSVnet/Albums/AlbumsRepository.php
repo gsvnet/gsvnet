@@ -1,17 +1,16 @@
 <?php namespace GSVnet\Albums;
 
-use Permission;
+use Illuminate\Support\Facades\Gate;
 
 class AlbumsRepository {
     /**
      * Get all albums
-     *
-     * @return Collection
      */
     public function all()
     {
-        if (Permission::has('photos.show-private'))
+        if (Gate::allows('photos.show-private'))
             return Album::latest()->get();
+        
         return Album::latest()->public()->get();
     }
 
@@ -22,8 +21,9 @@ class AlbumsRepository {
      */
     public function paginate($amount)
     {
-        if (Permission::has('photos.show-private'))
+        if (Gate::allows('photos.show-private'))
             return Album::latest()->paginate($amount);
+        
         return Album::latest()->public()->paginate($amount);
     }
 
@@ -34,8 +34,9 @@ class AlbumsRepository {
      */
     public function paginateWithFirstPhoto($amount)
     {
-        if (Permission::has('photos.show-private'))
+        if (Gate::allows('photos.show-private'))
             return Album::with('photos')->has('photos')->latest()->paginate($amount);
+        
         return Album::with('photos')->has('photos')->latest()->public()->paginate($amount);
     }
 

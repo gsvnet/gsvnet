@@ -20,7 +20,7 @@ class ShowThreadFilter
         if ($thread->public)
             return;
 
-        if ( ! Permission::has('photos.show-private'))
-            throw new \GSVnet\Permissions\NoPermissionException;
+        if ( ! Gate::allows('photos.show-private'))
+            throw new NoPermissionException;
     }
 }

@@ -43,7 +43,7 @@ class ForumRepliesController extends BaseController {
     public function getEditReply($replyId)
     {
         $reply = $this->replies->getById($replyId);
-        $this->authorize('replies.manage', $reply);
+        $this->authorize('reply.manage', $reply);
 
         return view('forum.replies.edit', compact('reply'));
     }
@@ -52,7 +52,7 @@ class ForumRepliesController extends BaseController {
     {
         $reply = $this->replies->requireById($replyId);
 
-        $this->authorize('replies.manage', $reply);
+        $this->authorize('reply.manage', $reply);
 
         $data = [
             'replyId' => $replyId,
@@ -70,7 +70,7 @@ class ForumRepliesController extends BaseController {
     {
         $reply = $this->replies->requireById($replyId);
 
-        $this->authorize('replies.manage', $reply);
+        $this->authorize('reply.manage', $reply);
 
         return view('forum.replies.delete', compact('reply'));
     }
@@ -79,7 +79,7 @@ class ForumRepliesController extends BaseController {
     {
         $reply = $this->replies->requireById($replyId);
 
-        $this->authorize('replies.manage', $reply);
+        $this->authorize('reply.manage', $reply);
 
         $data = compact('replyId');
 

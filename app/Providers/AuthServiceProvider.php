@@ -16,35 +16,103 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [];
-    
+
+    protected $permissions;
+
+    /**
+     * @var PermissionCache $cache
+     */
+    protected $cache;
+
     /**
      * Register any application authentication / authorization services.
      *
-     * @param  \Illuminate\Contracts\Auth\Access\Gate  $gate
-     * @return void
+     * @param \Illuminate\Contracts\Auth\Access\Gate $gate
+     * @param Config $config
+     * @param PermissionCache $cache
+     * @internal param PermissionManager $manager
      */
-    public function boot(GateContract $gate)
+    public function boot(GateContract $gate, Config $config, PermissionCache $cache)
     {
-        $gate->define('threads.manage', function(User $user, Thread $thread) {
-            return $user->id == $thread->author_id || Permission::has('threads.manage');
+        $this->cache = $cache;
+        $this->permissions = $config->get('permissions.general') + $config->get('permissions.entity-specific');
+
+        foreach($config->get('permissions.general') as $permission => $criteria) {
+            $gate->define($permission, function(User $user) use ($permission) {
+                return $this->has($user, $permission);
+            });
+        }
+
+        // Register entity-specific permissions here
+
+        $gate->define('thread.manage', function(User $user, Thread $thread) {
+            return $user->id == $thread->author_id || $this->has($user, 'thread.manage');
         });
 
-        $gate->define('threads.like', function(User $user, Thread $thread) {
-            return $user->id != $thread->author_id;
+        $gate->define('thread.like', function(User $user, Thread $thread) {
+            return $user->id != $thread->author_id || $this->has($user, 'thread.like');
         });
 
-        $gate->define('replies.manage', function(User $user, Reply $reply) {
-            return $user->id == $reply->author_id || Permission::has('threads.manage');
+        $gate->define('reply.manage', function(User $user, Reply $reply) {
+            return $user->id == $reply->author_id || $this->has($user, 'reply.manage');
         });
 
-        $gate->define('replies.like', function(User $user, Reply $reply) {
-            return $user->id != $reply->author_id;
+        $gate->define('reply.like', function(User $user, Reply $reply) {
+            return $user->id != $reply->author_id || $this->has($user, 'reply.like');
         });
-
-        $gate->define('user.show', function(User $user) {
-            return Permission::has('users.show');
-        });
-
-        $this->registerPolicies($gate);
     }
+
+    public function has(User $user, $permission)
+    {
+        // Return result away if the permission has already been looked up
+        if ($this->cache->has($user, $permission))
+            return $this->cache->get($user, $permission);
+
+        // Cache the result for further use
+        return $this->cache->set($user, $permission, $this->hasPermission($user, $permission));
+    }
+
+    private function hasPermission(User $user, $permission)
+    {
+        // Get the permission's criteria
+        $criteria = $this->permissions[$permission];
+
+        // If no criteria are given, grant access right away
+        if (count($criteria) == 0)
+            return true;
+
+        // Check if type criteria is matched
+        if (array_key_exists('type', $criteria) and $this->checkTypeCriteria($user, $criteria['type']))
+            return true;
+
+        // Check if committee criteria is matched
+        if (array_key_exists('committee', $criteria) and $this->checkCommitteeCriteria($user, $criteria['committee']))
+            return true;
+
+        // Check senate criteria
+        if (array_key_exists('senate', $criteria) and $this->checkSenateCriteria($user))
+            return true;
+
+        // If none of the criteria is matched, return false
+        return false;
+    }
+
+    private function checkTypeCriteria(User $user, array $criteria)
+    {
+        // Return true if user has one of the criteria
+        return in_array($user->type, $criteria);
+    }
+
+    private function checkCommitteeCriteria(User $user, array $committees)
+    {
+        // Find in how many of the given committees the user is in
+        return $user->activeCommittees()->whereIn('unique_name', $committees)->count() > 0;
+    }
+
+    public function checkSenateCriteria(User $user)
+    {
+        // Check if the user is active in a senate
+        return $user->activeSenate->count() > 0;
+    }
+
 }

@@ -72,15 +72,14 @@ class FilesRepository
 
     /**
      * Get by slug
-     *
      * @param int $id
-     * @return Album
+     * @throws NoPermissionException
      */
     public function byId($id)
     {
         $file = File::findOrFail($id);
 
-        if (! $file->published and ! Permission::has('docs.publish'))
+        if (! $file->published and Gate::denies('docs.publish'))
         {
             throw new NoPermissionException;
         }
@@ -100,7 +99,7 @@ class FilesRepository
         $file->name = $input['name'];
         $file->file_path = $input['file_path'];
 
-        if (Permission::has('docs.publish'))
+        if (Gate::allows('docs.publish'))
         {
             $file->published = $input['published'];
         }
@@ -127,7 +126,7 @@ class FilesRepository
         $file = $this->byId($id);
         $file->fill($input);
 
-        if (Permission::has('docs.publish'))
+        if (Gate::allows('docs.publish'))
         {
             $file->published = $input['published'];
         }

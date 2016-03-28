@@ -1,4 +1,4 @@
-@if(! Permission::has('ads.hide'))
+@can('ads.hide')
 
     <div style="height:10em;">
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -12,4 +12,4 @@
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
     </div>
-@endif
+@endcan

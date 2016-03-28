@@ -31,7 +31,7 @@ class ThreadRepository extends EloquentRepository
                 ->whereIn('tagged_items.tag_id', $tags->pluck('id'));
         }
 
-        if ( ! Permission::has('threads.show-private'))
+        if ( Gate::denies('threads.show-private'))
         {
             $query = $query->public();
         }
@@ -83,7 +83,7 @@ class ThreadRepository extends EloquentRepository
         $query = $this->model->where('slug', '=', $slug);
         
         // Include removed ones if permissions allow
-        if ( Permission::has('threads.manage'))
+        if ( Gate::allows('threads.manage'))
         {
             $query->withTrashed();
         }
@@ -104,7 +104,7 @@ class ThreadRepository extends EloquentRepository
     {
         $query = $this->model->onlyTrashed()->with(['mostRecentReply', 'mostRecentReply.author', 'tags']);
 
-        if ( ! Permission::has('threads.show-private'))
+        if ( Gate::denies('threads.show-private'))
         {
             $query = $query->public();
         }

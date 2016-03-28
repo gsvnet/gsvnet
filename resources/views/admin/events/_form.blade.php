@@ -10,6 +10,6 @@
 
 {!! Former::checkbox('public')->text('Maak activiteit openbaar (voor externen)')->label(null) !!}
 
-@if (Permission::has('events.publish'))
+@can('events.publish')
     {!! Former::checkbox('published')->text('Publiceer activiteit (laat hem uberhaupt zien)')->label(null) !!}
-@endif
+@endcan

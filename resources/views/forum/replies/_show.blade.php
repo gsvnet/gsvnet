@@ -6,7 +6,7 @@
         </div>
         @endif
         <div class="like-box">
-            @can('replies.like', $reply)
+            @can('reply.like', $reply)
                 <button class="like-box--button {!! $reply->present()->likeClass !!}" data-type="reply" data-id="{!! $reply->id !!}">
                     +<span class="like-box--count">{{ $reply->like_count }}</span>
                 </button>
@@ -17,11 +17,11 @@
         <div class="info">
             @if($reply->author)
             <strong class="author">
-                @if(Permission::has('users.show'))
+                @can('users.show')
                     <a href="{{ $reply->author->present()->profileUrl }}">{{{ $reply->author->username }}}</a>
                 @else
                     {{ $reply->author->username }}
-                @endif
+                @endcan
             </strong>
             @endif
             <ul class="inline-list grey">
@@ -31,7 +31,7 @@
                     </a>
                 </li>
 
-                @can('replies.manage', $reply)
+                @can('reply.manage', $reply)
                     <li><a href="{{ action('ForumRepliesController@getEditReply', [$reply->id]) }}">bewerk</a></li>
                     <li><a href="{{ action('ForumRepliesController@getDelete', [$reply->id]) }}">verwijder</a></li>
                 @endcan
