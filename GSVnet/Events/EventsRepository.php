@@ -1,6 +1,6 @@
 <?php namespace GSVnet\Events;
 
-use Permission;
+use Illuminate\Support\Facades\Gate;
 use GSVnet\Permissions\NoPermissionException;
 use Carbon\Carbon;
 
@@ -9,12 +9,12 @@ class EventsRepository {
     {
         $event = Event::findOrFail($id);
 
-        if (! $event->public and ! Permission::has('events.show-private'))
+        if (! $event->public and Gate::denies('events.show-private'))
         {
             throw new NoPermissionException;
         }
 
-        if (! $event->published and ! Permission::has('events.publish'))
+        if (! $event->published and Gate::denies('events.publish'))
         {
             throw new NoPermissionException;
         }
@@ -31,12 +31,12 @@ class EventsRepository {
             \App::abort(404);
         }
 
-        if (! $event->public and ! Permission::has('events.show-private'))
+        if (! $event->public and Gate::denies('events.show-private'))
         {
             throw new NoPermissionException;
         }
 
-        if (! $event->published and ! Permission::has('events.publish'))
+        if (! $event->published and Gate::denies('events.publish'))
         {
             throw new NoPermissionException;
         }
@@ -59,12 +59,12 @@ class EventsRepository {
             \App::abort(404);
         }
 
-        if (! $event->public and ! Permission::has('events.show-private'))
+        if (! $event->public and Gate::denies('events.show-private'))
         {
             throw new NoPermissionException;
         }
 
-        if (! $event->published and ! Permission::has('events.publish'))
+        if (! $event->published and Gate::denies('events.publish'))
         {
             throw new NoPermissionException;
         }
@@ -74,7 +74,7 @@ class EventsRepository {
 
     public function paginate($amount = 10, $published = true)
     {
-        if (Permission::has('events.show-private'))
+        if (Gate::allows('events.show-private'))
         {
             return Event::published($published)->orderBy('start_date', 'desc')->orderBy('start_time', 'desc')->paginate($amount);
         }
@@ -88,7 +88,7 @@ class EventsRepository {
             ->orderBy('start_time', 'asc')
             ->published($published);
 
-        if (! Permission::has('events.show-private'))
+        if (Gate::denies('events.show-private'))
         {
             $events = $events->public();
         }
@@ -104,7 +104,7 @@ class EventsRepository {
             ->orderBy('start_time', 'asc')
             ->published($published);
 
-        if (! Permission::has('events.show-private'))
+        if (Gate::denies('events.show-private'))
         {
             $events = $events->public();
         }
@@ -171,7 +171,7 @@ class EventsRepository {
         $event->whole_day        = $properties['whole_day'];
         $event->public           = $properties['public'];
 
-        if (Permission::has('events.publish'))
+        if (Gate::allows('events.publish'))
         {
             $event->published = $properties['published'];
         }

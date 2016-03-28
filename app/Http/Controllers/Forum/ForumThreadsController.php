@@ -64,7 +64,7 @@ class ForumThreadsController extends BaseController {
         if ( ! $thread)
             return redirect()->action('ForumThreadsController@getIndex');
 
-        if ( ! $thread->public && ! Permission::has('threads.show-private'))
+        if ( ! $thread->public && Gate::denies('threads.show-private'))
             throw new NoPermissionException;
 
         $replies = $this->threads->getThreadRepliesPaginated($thread, $this->repliesPerPage);
@@ -104,7 +104,7 @@ class ForumThreadsController extends BaseController {
             'slug' => $slug
         ];
 
-        if(!Permission::has('threads.show-private'))
+        if(Gate::denies('threads.show-private'))
             $data['public'] = true;
 
         $validator->beforeValidation()->validate($data);
@@ -118,7 +118,7 @@ class ForumThreadsController extends BaseController {
     {
         $thread = $this->threads->requireById($threadId);
 
-        $this->authorize('threads.manage', $thread);
+        $this->authorize('thread.manage', $thread);
 
         $tags = $this->tags->getAllForForum();
 
@@ -137,9 +137,9 @@ class ForumThreadsController extends BaseController {
             'public' => Input::get('public', false)
         ]);
 
-        $this->authorize('threads.manage', $thread);
+        $this->authorize('thread.manage', $thread);
 
-        if(!Permission::has('threads.show-private'))
+        if(Gate::denies('threads.show-private'))
             $data['public'] = true;
 
         $this->dispatchFrom(EditThreadCommand::class, $data);
@@ -151,7 +151,7 @@ class ForumThreadsController extends BaseController {
     {
         $thread = $this->threads->requireById($threadId);
 
-        $this->authorize('threads.manage', $thread);
+        $this->authorize('thread.manage', $thread);
 
         return view('forum.threads.delete', compact('thread'));
     }
@@ -160,7 +160,7 @@ class ForumThreadsController extends BaseController {
     {
         $thread = $this->threads->requireById($threadId);
 
-        $this->authorize('threads.manage', $thread);
+        $this->authorize('thread.manage', $thread);
 
         $data = [
             'threadId' => $threadId

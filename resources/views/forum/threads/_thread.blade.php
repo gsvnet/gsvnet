@@ -27,7 +27,7 @@
                     </time>
                 </li>
 
-                @can('threads.manage', $thread)
+                @can('thread.manage', $thread)
                     <li><a href="{{ $thread->present()->editUrl }}">bewerk</a></li>
                     <li><a href="{{ $thread->present()->deleteUrl }}">verwijder</a></li>
                 @endcan

@@ -120,7 +120,7 @@ class MemberController extends BaseController {
     {
         // Guests and Potentials are not allowed to see private photos
         // but a potential can see his / her own photo
-        if ( Auth::user()->profile->id != $profile_id && ! Permission::has('users.show') )
+        if ( Auth::user()->profile->id != $profile_id && Gate::denies('users.show') )
         {
             throw new \GSVnet\Permissions\NoPermissionException;
         }

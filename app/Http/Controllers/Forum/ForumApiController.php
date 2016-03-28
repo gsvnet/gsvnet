@@ -12,7 +12,6 @@ use GSVnet\Forum\Threads\LikeThreadValidator;
 use GSVnet\Forum\Threads\ThreadRepository;
 use GSVnet\Markdown\HtmlMarkdownConverter;
 use GSVnet\Permissions\NoPermissionException;
-use GSVnet\Permissions\Permission;
 use Illuminate\Support\Collection;
 
 class ForumApiController extends BaseController {
@@ -36,7 +35,7 @@ class ForumApiController extends BaseController {
         $reply = $replies->requireById($replyId);
         $thread = $reply->thread;
 
-        if ( ! $thread->public && ! Permission::has('threads.show-private'))
+        if ( ! $thread->public && Gate::denies('threads.show-private'))
             throw new NoPermissionException;
 
         return response()->json([
@@ -49,7 +48,7 @@ class ForumApiController extends BaseController {
     {
         $thread = $threads->requireById($threadId);
 
-        if ( ! $thread->public && ! Permission::has('threads.show-private'))
+        if ( ! $thread->public && Gate::denies('threads.show-private'))
             throw new NoPermissionException;
 
         return response()->json([

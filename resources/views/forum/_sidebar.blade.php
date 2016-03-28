@@ -13,10 +13,10 @@
         </div>
     </div>
     <div class="content-column">
-        @if( Permission::has('threads.show-private') )
+        @can('threads.show-private')
             <h2>Forumstatistieken</h2>
             <p><a href="{{ URL::action('ForumThreadsController@statistics') }}" title="Toplijsten forumposters">Vind je hier</a></p>
-        @endif
+        @endcan
 
         <h2>Tiende Lustrum der GSV</h2>
         <div id="lustrum-countdown" class="lustrum-countdown"></div>
@@ -30,18 +30,20 @@
             </div>
         </script>
 
-        @if( Permission::has('events.show-private') && count($events) > 0 )
-            <h2>Komende activiteiten</h2>
-            <ul class="unstyled-list title-description-list">
-                @foreach ($events as $event)
-                    <li>
-                        <span class="list-title">
-                        {!! HTML::link($event->present()->url, $event->title) !!}
-                        </span>
-                        <time class="list-description grey">{{ $event->present()->from_to_short }}</time>
-                    </li>
-                @endforeach
-            </ul>
+        @if(count($events) > 0)
+            @can('events.show-private')
+                <h2>Komende activiteiten</h2>
+                <ul class="unstyled-list title-description-list">
+                    @foreach ($events as $event)
+                        <li>
+                            <span class="list-title">
+                            {!! HTML::link($event->present()->url, $event->title) !!}
+                            </span>
+                            <time class="list-description grey">{{ $event->present()->from_to_short }}</time>
+                        </li>
+                    @endforeach
+                </ul>
+            @endcan
         @endif
 
         <h2>Sponsors</h2>
