@@ -1,5 +1,6 @@
 <?php namespace GSV\Events\Forum;
 
+use GSV\Events\Event;
 use GSVnet\Forum\Threads\Thread;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Queue\SerializesModels;

@@ -2,7 +2,6 @@
 
 use Closure;
 use GSVnet\Permissions\UserAccountNotApprovedException;
-use Illuminate\Contracts\Auth\Guard;
 
 class AccountNotApproved {
     protected $auth;

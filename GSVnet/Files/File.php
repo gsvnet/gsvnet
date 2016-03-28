@@ -1,8 +1,6 @@
 <?php namespace GSVnet\Files;
 
-use GSVnet\Files\FileHandler;
 use Laracasts\Presenter\PresentableTrait;
-
 use Illuminate\Database\Eloquent\Model;
 
 class File extends Model {
@@ -21,6 +19,7 @@ class File extends Model {
     public function __construct()
     {
         $this->fileHandler = new FileHandler;
+        
     }
 
     public function scopePublished($query, $published = true)
@@ -96,7 +95,6 @@ class File extends Model {
     */
     private function readable_size($size) {
         $tmp = $size;
-        $file = 0;
         if ($tmp >= 0 && $tmp < 1024) {
             $file = $tmp . " bytes";
         } elseif ($tmp >=1024 && $tmp < 1048576) { // less than 1 MB

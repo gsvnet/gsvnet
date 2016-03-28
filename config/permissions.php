@@ -1,5 +1,4 @@
-<?php
-use GSVnet\Users\User as User;
+<?php use GSVnet\Users\User as User;
 
 /**
 *

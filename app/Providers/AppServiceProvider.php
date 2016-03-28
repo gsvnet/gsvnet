@@ -1,5 +1,6 @@
 <?php namespace GSV\Providers;
 
+use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider {
@@ -11,7 +12,9 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		//
+		// Set locale to Dutch
+		setlocale(LC_ALL, 'nl_NL.UTF-8');
+		Carbon::setLocale(config('app.locale'));
 	}
 
 	/**

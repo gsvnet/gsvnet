@@ -1,5 +1,6 @@
 <?php namespace GSV\Events\Forum;
 
+use GSV\Events\Event;
 use Illuminate\Queue\SerializesModels;
 
 class ReplyWasLiked extends Event {

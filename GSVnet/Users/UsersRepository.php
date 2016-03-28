@@ -16,6 +16,10 @@ class UsersRepository extends BaseRepository {
         return User::findOrFail($id);
     }
 
+    /**
+     * @param $id
+     * @return User
+     */
     public function byIdWithProfileAndYearGroup($id)
     {
         return User::with('profile.yearGroup')->findOrFail($id);

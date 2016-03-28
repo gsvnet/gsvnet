@@ -1,12 +1,10 @@
 <?php
 
-use GSV\Commands\Potentials\PromoteGuestToPotential;
+use Illuminate\Support\Facades\Gate;
 use GSV\Commands\Potentials\PromoteGuestToPotentialCommand;
-use GSV\Commands\Potentials\SignUpAsPotential;
 use GSV\Commands\Potentials\SignUpAsPotentialCommand;
 use GSV\Commands\Users\SetProfilePictureCommand;
 use GSVnet\Core\Exceptions\ValidationException;
-use GSVnet\Permissions\Permission;
 use GSVnet\Users\Profiles\PotentialValidator;
 use GSVnet\Users\Profiles\ProfilesRepository;
 use GSVnet\Core\ImageHandler;

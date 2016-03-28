@@ -48,7 +48,6 @@ class Album extends Model {
     // Return the path to the original image
     public function getImageURLAttribute()
     {
-        $photo = $this->photos->first();
         return URL::action('PhotoController@showPhotos', $this->slug);
     }
 

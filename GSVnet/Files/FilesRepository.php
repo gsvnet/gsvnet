@@ -1,7 +1,12 @@
 <?php namespace GSVnet\Files;
 
+use GSVnet\Permissions\NoPermissionException;
 use Permission;
 
+/**
+ * Class FilesRepository
+ * @package GSVnet\Files
+ */
 class FilesRepository
 {
     /**

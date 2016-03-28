@@ -46,8 +46,7 @@ class FilesController extends BaseController {
 	 *
 	 * @param  int $id
 	 * @param FileHandler $fileHandler
-	 * @return Response
-	 * @throws \GSVnet\Files\NoPermissionException
+	 * @return \Illuminate\Http\Response
 	 */
 	public function show($id, FileHandler $fileHandler)
 	{
