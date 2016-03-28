@@ -1,9 +1,7 @@
-<?php namespace GSV\Http\Requests;
+<?php namespace GSV\Http\Validators;
 
 use GSVnet\Core\Validator;
-use GSVnet\Tags\TagRepository;
 use Illuminate\Support\Facades\Validator as LaravelValidator;
-use Illuminate\Validation\Factory;
 
 class StartThreadValidator extends Validator {
 

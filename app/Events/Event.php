@@ -1,4 +1,4 @@
-<?php namespace GSV\Events\Forum;
+<?php namespace GSV\Events;
 
 abstract class Event {
 

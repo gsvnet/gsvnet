@@ -191,10 +191,4 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             })
             ->withPivot('start_date', 'end_date');
     }
-
-    // Tijdelijk
-    public function isForumAdmin()
-    {
-        return Permission::has('threads.manage');
-    }
 }

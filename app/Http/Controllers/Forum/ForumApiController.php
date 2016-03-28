@@ -22,6 +22,7 @@ class ForumApiController extends BaseController {
     function __construct(HtmlMarkdownConverter $markdown)
     {
         $this->markdown = $markdown;
+        parent::__construct();
     }
 
     public function preview()

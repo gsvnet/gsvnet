@@ -7,7 +7,6 @@ use GSVnet\Users\UsersRepository;
 use GSVnet\Users\UserManager;
 use GSVnet\Users\Profiles\ProfileManager;
 use GSVnet\Users\YearGroupRepository;
-use GSVnet\Permissions\Permission;
 
 class UserController extends BaseController {
 

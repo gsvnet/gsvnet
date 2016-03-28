@@ -1,8 +1,8 @@
 <?php namespace GSV\Http\Middleware;
 
+use Illuminate\Support\Facades\Gate;
 use Closure;
 use GSVnet\Permissions\NoPermissionException;
-use GSVnet\Permissions\Permission;
 use Illuminate\Contracts\Auth\Guard;
 
 class CanBecomeMember {

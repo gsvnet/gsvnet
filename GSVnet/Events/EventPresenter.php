@@ -149,7 +149,7 @@ class EventPresenter extends Presenter
             $startTime = Carbon::createFromFormat('H:i:s', $this->start_time);
             $startDate->setTime($startTime->hour, $startTime->minute, $startTime->second);
 
-            return $startDate->toISO8601String();
+            return $startDate->toIso8601String();
         }
 
         return $this->start_date;

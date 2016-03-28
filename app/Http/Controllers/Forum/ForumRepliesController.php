@@ -3,13 +3,11 @@
 use GSV\Commands\Forum\DeleteReplyCommand;
 use GSV\Commands\Forum\EditReplyCommand;
 use GSV\Commands\Forum\ReplyToThreadCommand;
-use GSV\Http\Requests\DeleteReplyValidator;
-use GSV\Http\Requests\EditReplyValidator;
-use GSV\Http\Requests\ReplyToThreadValidator;
+use GSV\Http\Validators\DeleteReplyValidator;
+use GSV\Http\Validators\EditReplyValidator;
+use GSV\Http\Validators\ReplyToThreadValidator;
 use GSVnet\Events\EventsRepository;
 use GSVnet\Forum\Replies\ReplyRepository;
-use GSVnet\Permissions\NoPermissionException;
-use GSVnet\Permissions\Permission;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View;
 

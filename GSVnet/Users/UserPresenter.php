@@ -37,8 +37,7 @@ class UserPresenter extends Presenter
 
     public function registeredSince()
     {
-        $from = \GSVnet\Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at);
-    	return $from->diffForHumans();
+    	return $this->created_at->diffForHumans();
     }
 
     public function membershipType($showReunist = true)

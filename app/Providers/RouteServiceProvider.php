@@ -1,12 +1,7 @@
 <?php namespace GSV\Providers;
 
-use GSVnet\Permissions\NoPermissionException;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Config;
-use GSVnet\Permissions\Permission;
 
 class RouteServiceProvider extends ServiceProvider {
 
@@ -28,18 +23,6 @@ class RouteServiceProvider extends ServiceProvider {
 	public function boot(Router $router)
 	{
 		parent::boot($router);
-
-		// Set locale to Dutch
-		setlocale(LC_ALL, 'nl_NL.UTF-8');
-
-		/**
-		 * Check if a user has certain abilities specified in de User model
-		 */
-//		Route::filter('can', function($route, $request, $action)
-//		{
-//			if(!Auth::user()->can($action))
-//				return redirect('/', 403);
-//		});
 	}
 
 	/**

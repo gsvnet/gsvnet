@@ -3,8 +3,6 @@
 use GSV\Commands\Users\SetProfilePictureCommand;
 use GSVnet\Albums\Photos\PhotoStorageException;
 use GSVnet\Core\ImageHandler;
-use GSVnet\Users\Profiles\ProfilesRepository;
-use GSVnet\Users\UsersRepository;
 
 class SetProfilePictureCommandHandler {
 

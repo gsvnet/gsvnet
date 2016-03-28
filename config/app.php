@@ -153,7 +153,6 @@ return [
     Collective\Bus\BusServiceProvider::class,
     Collective\Html\HtmlServiceProvider::class,
 
-    GSV\Providers\BackendServiceProvider::class,
     GSV\Providers\NewsletterServiceProvider::class,
     GSV\Providers\ComposerServiceProvider::class,
     GSV\Providers\ResponsesServiceProvider::class,

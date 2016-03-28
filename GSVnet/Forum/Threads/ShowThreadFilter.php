@@ -1,9 +1,9 @@
 <?php namespace GSVnet\Forum\Threads;
 
-use GSVnet\Forum\Threads\ThreadRepository;
-use Permission;
+use GSVnet\Permissions\NoPermissionException;
+use Illuminate\Support\Facades\Gate;
 
-Class ShowThreadFilter
+class ShowThreadFilter
 {
     protected $threads;
 

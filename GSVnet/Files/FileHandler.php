@@ -24,7 +24,7 @@ class FileHandler
         $filename = time() . '-' . $file->getClientOriginalName();
         $relativePath = $path . $filename;
         // Move the file and restrict it's size
-        $file = $file->move($this->basePath . $path, $filename);
+        $file->move($this->basePath . $path, $filename);
         // Finaly return the new relativePath of the file
         return $relativePath;
     }

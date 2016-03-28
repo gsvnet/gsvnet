@@ -4,19 +4,19 @@ use GSV\Commands\Forum\DeleteThreadCommand;
 use GSV\Commands\Forum\EditThreadCommand;
 use GSV\Commands\Forum\StartThreadCommand;
 use GSV\Commands\Forum\VisitThreadCommand;
-use GSV\Http\Requests\StartThreadValidator;
+use GSV\Http\Validators\StartThreadValidator;
 use GSVnet\Events\EventsRepository;
 use GSVnet\Forum\Replies\ReplyRepository;
 use GSVnet\Forum\Threads\ThreadRepository;
 use GSVnet\Forum\Threads\ThreadSlug;
 use GSVnet\Permissions\NoPermissionException;
-use GSVnet\Permissions\Permission;
 use GSVnet\Tags\TagRepository;
 use GSVnet\Users\UsersRepository;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Gate;
 
 class ForumThreadsController extends BaseController {
     protected $threads;
@@ -46,7 +46,7 @@ class ForumThreadsController extends BaseController {
     {
         // query tags and retrieve the appropriate threads
         $tags = $this->tags->getAllTagsBySlug(Input::get('tags'));
-        $threads = $this->threads->getByTagsPaginated($tags, '', $this->threadsPerPage);
+        $threads = $this->threads->getByTagsPaginated($tags, $this->threadsPerPage);
 
         // add the tag string to each pagination link
         $tagAppends = ['tags' => Input::get('tags')];

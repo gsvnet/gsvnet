@@ -79,7 +79,7 @@ class AlbumsRepository {
      * @param string $slug
      * @return Album
      */
-    public function bySLug($slug)
+    public function bySlug($slug)
     {
         return Album::where('slug', '=', $slug)->first();
     }
@@ -129,7 +129,6 @@ class AlbumsRepository {
      * Delete album
      *
      * @param int $id
-     * @param array $input
      * @return Album
      * @TODO: delete all photos
      */
@@ -137,8 +136,6 @@ class AlbumsRepository {
     {
         $album = $this->byId($id);
         $album->delete();
-
-        // App::make('PhotoManager')->deleteAlbumPhotos($id)
 
         return $album;
     }

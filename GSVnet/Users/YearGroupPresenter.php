@@ -1,6 +1,6 @@
 <?php namespace GSVnet\Users;
 
-use Laracasts\Presenter\Presenter, Carbon\Carbon;
+use Laracasts\Presenter\Presenter;
 
 class YearGroupPresenter extends Presenter
 {
