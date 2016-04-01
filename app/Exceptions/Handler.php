@@ -2,6 +2,7 @@
 
 use Exception;
 use GSVnet\Core\Exceptions\ValidationException;
+use GSVnet\Core\Exceptions\ValueObjectValidationException;
 use GSVnet\Permissions\NoPermissionException;
 use GSVnet\Permissions\UserAccountNotApprovedException;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -61,6 +62,7 @@ class Handler extends ExceptionHandler
                 return response(view('errors.unauthorized')->with($data), 401);
                 break;
             case ValidationException::class:
+            case ValueObjectValidationException::class:
                 return redirect()->back()->withInput()->withErrors($e->getErrors());
                 break;
             case ModelNotFoundException::class:

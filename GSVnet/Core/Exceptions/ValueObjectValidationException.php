@@ -1,7 +1,7 @@
 <?php namespace GSVnet\Core\Exceptions;
 
-use Illuminate\Contracts\Validation\ValidationException;
+use GSVnet\Core\Exceptions\ValidationException as GSVValidationException;
 
-class ValueObjectValidationException extends ValidationException {
+class ValueObjectValidationException extends GSVValidationException {
     
 }
