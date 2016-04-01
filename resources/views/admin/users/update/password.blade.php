@@ -13,7 +13,6 @@
             {!! Former::populate( $user ) !!}
 
             {!! Former::password('password')->label('Nieuw wachtwoord') !!}
-            {!! Former::password('password_confirmation')->label('Nieuw wachtwoord herhalen') !!}
 
             <button type='submit' class='btn btn-success'>
                 <i class="glyphicon glyphicon-ok"></i> Opslaan
