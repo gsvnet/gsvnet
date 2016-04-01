@@ -57,7 +57,7 @@
 <h4>Overig</h4>
 <div class="list-group">
 
-    @can('photos.manage'))
+    @can('photos.manage')
         <a href="{{ URL::action('Admin\AlbumController@index') }}" class="list-group-item {{ Request::segment(2) == 'albums' ? 'active' : '' }}">
             <i class='glyphicon glyphicon-picture'></i> Albums
         </a>
