@@ -46,7 +46,7 @@ return [
         ],
 
         'photos.manage' => [
-            'committee' => ['webcie', 'reebocie','prescie']
+            'committee' => ['webcie', 'reebocie', 'prescie']
         ],
 
         'docs.show' => [

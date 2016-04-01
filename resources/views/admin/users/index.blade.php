@@ -22,7 +22,7 @@
                 @foreach($users as $user)
                     <tr>
                         <td>
-                            <a href="{{ URL::action('Admin\UsersController@show', $user->id) }}" alt="{{ $user->present()->fullName }}">
+                            <a href="{{ action('Admin\UsersController@show', $user->id) }}" title="{{ $user->present()->fullName }}">
                                 {{ $user->username }}
                             </a>
                         </td>
