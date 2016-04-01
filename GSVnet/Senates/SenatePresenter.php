@@ -1,5 +1,6 @@
 <?php namespace GSVnet\Senates;
 
+use GSVnet\Markdown\HtmlMarkdownConverter;
 use Laracasts\Presenter\Presenter, Carbon\Carbon, Config;
 
 class SenatePresenter extends Presenter
@@ -32,6 +33,6 @@ class SenatePresenter extends Presenter
 
     private function convertMarkdown($content)
     {
-        return \App::make('GSVnet\Markdown\HtmlMarkdownConverter')->convertMarkdownToHtml($content);
+        return app(HtmlMarkdownConverter::class)->convertMarkdownToHtml($content);
     }
 }

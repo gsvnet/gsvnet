@@ -1,7 +1,5 @@
 <?php namespace GSVnet\Albums\Photos;
 
-use GSVnet\Core\ImageHandler;
-
 class PhotosRepository
 {
     public function getInstance()

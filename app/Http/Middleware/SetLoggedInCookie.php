@@ -4,7 +4,6 @@ use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Cookie\CookieJar;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cookie;
 
 class SetLoggedInCookie {
 

@@ -4,8 +4,6 @@ use View, Input, Redirect;
 
 use GSVnet\Albums\AlbumsRepository;
 use GSVnet\Albums\AlbumValidator;
-
-use GSVnet\Core\ImageHandler;
 use GSVnet\Albums\Photos\PhotosRepository;
 
 class AlbumController extends AdminBaseController {
@@ -23,7 +21,7 @@ class AlbumController extends AdminBaseController {
         $this->photos = $photos;
         $this->validator = $validator;
 
-        $this->middleware('can:photos.manage');
+        $this->authorize('photos.manage');
 
         parent::__construct();
     }

@@ -1,13 +1,14 @@
 <?php namespace GSVnet\Forum\Threads;
 
-use GSVnet\Core\EloquentRepository;
 use GSVnet\Forum\Like;
 use GSVnet\Forum\Replies\Reply;
-use Illuminate\Support\Collection;
-use GSVnet\Core\Exceptions\EntityNotFoundException;
 use GSVnet\Permissions\Permission;
+use Illuminate\Support\Collection;
+use GSVnet\Core\EloquentRepository;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use GSVnet\Core\Exceptions\EntityNotFoundException;
 
 class ThreadRepository extends EloquentRepository
 {
@@ -27,10 +28,10 @@ class ThreadRepository extends EloquentRepository
 
         if ($tags->count() > 0) {
             $query->join('tagged_items', 'forum_threads.id', '=', 'tagged_items.thread_id')
-                ->whereIn('tagged_items.tag_id', $tags->lists('id'));
+                ->whereIn('tagged_items.tag_id', $tags->pluck('id'));
         }
 
-        if ( ! Permission::has('threads.show-private'))
+        if ( Gate::denies('threads.show-private'))
         {
             $query = $query->public();
         }
@@ -82,7 +83,7 @@ class ThreadRepository extends EloquentRepository
         $query = $this->model->where('slug', '=', $slug);
         
         // Include removed ones if permissions allow
-        if ( Permission::has('threads.manage'))
+        if ( Gate::allows('threads.manage'))
         {
             $query->withTrashed();
         }
@@ -103,7 +104,7 @@ class ThreadRepository extends EloquentRepository
     {
         $query = $this->model->onlyTrashed()->with(['mostRecentReply', 'mostRecentReply.author', 'tags']);
 
-        if ( ! Permission::has('threads.show-private'))
+        if ( Gate::denies('threads.show-private'))
         {
             $query = $query->public();
         }

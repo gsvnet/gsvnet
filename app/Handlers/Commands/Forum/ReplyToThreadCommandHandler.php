@@ -4,7 +4,6 @@ use GSV\Commands\Forum\ReplyToThreadCommand;
 use GSV\Events\Forum\ThreadWasRepliedTo;
 use GSVnet\Forum\Replies\ReplyRepository;
 use GSVnet\Forum\Threads\ThreadRepository;
-use Illuminate\Queue\InteractsWithQueue;
 
 class ReplyToThreadCommandHandler {
 

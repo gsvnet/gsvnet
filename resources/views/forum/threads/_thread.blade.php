@@ -4,21 +4,21 @@
         	{!! $thread->author->present()->avatar(40) !!}
         </div>
         <div class="like-box">
-            @if(Auth::check() && $thread->author_id != Auth::user()->id)
+            @can('threads.like', $thread)
                 <button class="like-box--button {!! $thread->present()->likeClass !!}" data-type="thread" data-id="{!! $thread->id !!}">
                     +<span class="like-box--count">{{ $thread->like_count }}</span>
                 </button>
             @else
                 +{{ $thread->like_count }}
-            @endif
+            @endcan
         </div>
         <div class="info">
             <strong class="author">
-                @if(Permission::has('users.show'))
+                @can('users.show')
                     <a href="{{ $thread->author->present()->profileUrl }}">{{ $thread->author->username }}</a>
                 @else
                     {{ $thread->author->username }}
-                @endif
+                @endcan
             </strong>
             <ul class="inline-list grey">
                 <li>
@@ -27,12 +27,12 @@
                     </time>
                 </li>
 
-                @if($thread->isManageableBy(Auth::user()))
+                @can('thread.manage', $thread)
                     <li><a href="{{ $thread->present()->editUrl }}">bewerk</a></li>
                     <li><a href="{{ $thread->present()->deleteUrl }}">verwijder</a></li>
-                @endif
+                @endcan
 
-                @if(Auth::user())
+                @if(Auth::check())
                     <li><a href="#body" class="quote _quote_forum_post" data-type="thread" data-id="{{$thread->id}}">quote</a></li>
                 @endif
             </ul>

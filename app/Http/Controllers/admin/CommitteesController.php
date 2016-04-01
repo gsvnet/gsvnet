@@ -26,6 +26,7 @@ class CommitteeController extends AdminBaseController {
         $this->creatorValidator = $creatorValidator;
         $this->updaterValidator = $updaterValidator;
         $this->users = $users;
+        $this->authorize('committees.manage');
 
         parent::__construct();
     }

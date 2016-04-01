@@ -3,10 +3,6 @@
 use Event;
 use Config;
 
-use GSVnet\Users\UserCreatorValidator;
-
-use GSVnet\Users\UsersRepository;
-
 class UserManager
 {
     protected $createValidator;

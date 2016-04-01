@@ -13,7 +13,6 @@
 		"fzaninotto/faker": "~1.5.0",
 		"intervention/image": "~2.3.0",
 	    "chromabits/purifier": "~2.1",
-		"nickcernis/html-to-markdown": "~2.1.0",
 		"misd/linkify": "~1.1.2",
 		"guzzlehttp/guzzle": "~4.0",
 		"laracasts/presenter": "~0.2.1",

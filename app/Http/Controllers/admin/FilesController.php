@@ -7,7 +7,8 @@ use GSVnet\Files\FilesRepository;
 
 use GSVnet\Files\Labels\LabelsRepository;
 
-class FilesController extends AdminBaseController {
+class FilesController extends AdminBaseController
+{
 
     protected $files;
     protected $labels;
@@ -19,7 +20,7 @@ class FilesController extends AdminBaseController {
         $this->labels = $labels;
         $this->manager = $manager;
 
-        $this->middleware('has:docs.manage');
+        $this->authorize('docs.manage');
 
         parent::__construct();
     }
@@ -61,8 +62,7 @@ class FilesController extends AdminBaseController {
         // Get the file's labels
         $checked = array();
         $fileIdLabels = array_pluck($file->labels->toArray(), 'id');
-        foreach ($labels as $label)
-        {
+        foreach ($labels as $label) {
             $checked[$label->id] = in_array($label->id, $fileIdLabels) ? 'checked' : '';
         }
 

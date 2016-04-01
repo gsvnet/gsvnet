@@ -1,9 +1,9 @@
 <?php namespace GSVnet\Forum\Threads;
 
-use GSVnet\Forum\Threads\ThreadRepository;
-use Permission;
+use GSVnet\Permissions\NoPermissionException;
+use Illuminate\Support\Facades\Gate;
 
-Class ShowThreadFilter
+class ShowThreadFilter
 {
     protected $threads;
 
@@ -20,7 +20,7 @@ Class ShowThreadFilter
         if ($thread->public)
             return;
 
-        if ( ! Permission::has('photos.show-private'))
-            throw new \GSVnet\Permissions\NoPermissionException;
+        if ( ! Gate::allows('photos.show-private'))
+            throw new NoPermissionException;
     }
 }

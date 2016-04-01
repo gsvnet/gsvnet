@@ -5,9 +5,9 @@ use GSVnet\Users\Profiles\ProfilesRepository;
 use GSVnet\Users\RegisterUserValidator;
 use GSVnet\Users\User;
 use GSVnet\Users\UserTransformer;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
-use View, Input, Redirect, Event;
 
 use GSVnet\Users\UsersRepository;
 use GSVnet\Users\UserValidator;
@@ -44,18 +44,6 @@ class UsersController extends AdminBaseController {
         $this->yearGroups = $yearGroups;
         $this->profiles = $profiles;
 
-        $this->middleware('has:users.manage', [
-            'except' => [
-                'index',
-                'showGuests',
-                'showPotentials',
-                'showMembers',
-                'showFormerMembers',
-                'exportMembers',
-                'exportFormerMembers'
-            ]
-        ]);
-
         parent::__construct();
     }
 
@@ -80,19 +68,19 @@ class UsersController extends AdminBaseController {
         return view('admin.users.potentials')->with(['users' => $users]);
     }
 
-    public function showMembers()
+    public function showMembers(Request $request)
     {
-        $search = Input::get('zoekwoord', '');
+        $search = $request->get('zoekwoord', '');
         $type = User::MEMBER;
         $regions = Config::get('gsvnet.regions');
         $perPage = 300;
 
         // Search on region
-        if (!($region = Input::get('regio') and array_key_exists($region, $regions)))
+        if (!($region = $request->get('regio') and array_key_exists($region, $regions)))
             $region = null;
 
         // Enable search on yeargroup
-        if (!($yearGroup = Input::get('jaarverband') and $this->yearGroups->exists($yearGroup)))
+        if (!($yearGroup = $request->get('jaarverband') and $this->yearGroups->exists($yearGroup)))
             $yearGroup = null;
 
         $profiles = $this->profiles->searchAndPaginate($search, $region, $yearGroup, $type, $perPage);
@@ -103,28 +91,24 @@ class UsersController extends AdminBaseController {
             ->with('regions', $regions);
     }
 
-    public function showFormerMembers()
+    public function showFormerMembers(Request $request)
     {
-        $search = Input::get('zoekwoord', '');
+        $search = $request->get('zoekwoord', '');
         $regions = Config::get('gsvnet.regions');
         $type = User::FORMERMEMBER;
         $perPage = 50;
-        $reunistInput = Input::get('reunist');
-        $reunist = null;
+        $reunistInput = $request->get('reunist');
 
         // Search on region
-        if (!($region = Input::get('regio') and array_key_exists($region, $regions)))
+        if (!($region = $request->get('regio') and array_key_exists($region, $regions)))
             $region = null;
 
         // Enable search on yeargroup
-        if (!($yearGroup = Input::get('jaarverband') and $this->yearGroups->exists($yearGroup)))
+        if (!($yearGroup = $request->get('jaarverband') and $this->yearGroups->exists($yearGroup)))
             $yearGroup = null;
 
         // Search for reunists?
-        if($reunistInput == 'ja')
-            $reunist = true;
-        if($reunistInput == 'nee')
-            $reunist = false;
+        $reunist = $reunistInput == 'ja' ? true : ($reunistInput == 'nee' ? false : null);
 
         $profiles = $this->profiles->searchAndPaginate($search, $region, $yearGroup, $type, $perPage, $reunist);
         $yearGroups = $this->yearGroups->all();
@@ -150,12 +134,15 @@ class UsersController extends AdminBaseController {
 
     public function create()
     {
+        $this->authorize('users.manage');
         return view('admin.users.create');
     }
 
-    public function store(RegisterUserValidator $validator)
+    public function store(Request $request, RegisterUserValidator $validator)
     {
-        $input = Input::only('type', 'username', 'firstname', 'middlename', 'lastname', 'email', 'password', 'password_confirmation');
+        $this->authorize('users.manage');
+
+        $input = $request->only('type', 'username', 'firstname', 'middlename', 'lastname', 'email', 'password', 'password_confirmation');
         $input['approved'] = true;
 
         $validator->validate($input);
@@ -176,7 +163,7 @@ class UsersController extends AdminBaseController {
             'approved' => true
         ];
 
-        $this->dispatchFrom(RegisterUserCommand::class, new Collection($data));
+        $this->dispatchFromArray(RegisterUserCommand::class, $data);
 
         flash()->success('Gebruiker is succesvol opgeslagen.');
 
@@ -185,6 +172,7 @@ class UsersController extends AdminBaseController {
 
     public function show($id)
     {
+        $this->authorize('users.manage');
         $user = $this->users->byId($id);
         $profile = $user->profile;
         $committees = $user->committees;
@@ -197,16 +185,16 @@ class UsersController extends AdminBaseController {
 
     public function edit($id)
     {
+        $this->authorize('users.manage');
         $user = $this->users->byId($id);
         $yearGroups = $this->yearGroups->all();
         $profile = $user->profile;
 
-        return view('admin.users.edit')
-            ->with([
-                'user' => $user,
-                'profile' => $profile,
-                'yearGroups' => $yearGroups
-            ]);
+        return view('admin.users.edit')->with([
+            'user' => $user,
+            'profile' => $profile,
+            'yearGroups' => $yearGroups
+        ]);
     }
 
     /**
@@ -215,14 +203,15 @@ class UsersController extends AdminBaseController {
      * @throws \GSVnet\Core\Exceptions\ValidationException
      * @throws \Laracasts\Presenter\Exceptions\PresenterException
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
+        $this->authorize('users.manage');
         $oldUser = $this->users->byId($id);
 
-        $userData = Input::only('type', 'username', 'firstname', 'middlename', 'lastname', 'email');
+        $userData = $request->only('type', 'username', 'firstname', 'middlename', 'lastname', 'email');
         
         // Check if password is to be set
-        $password = Input::get('password', '');
+        $password = $request->get('password', '');
 
         if(!empty($password))
         {
@@ -234,7 +223,7 @@ class UsersController extends AdminBaseController {
 
         $user = $this->users->update($id, $userData);
 
-        Event::fire('user.updated', [
+        event('user.updated', [
             'old' => $oldUser,
             'new' => $user
         ]);
@@ -246,6 +235,7 @@ class UsersController extends AdminBaseController {
 
     public function destroy($id)
     {
+        $this->authorize('users.manage');
         $user = $this->users->delete($id);
 
         flash()->success("Account van {$user->present()->fullName} is succesvol verwijderd.");
@@ -255,6 +245,7 @@ class UsersController extends AdminBaseController {
 
     public function storeProfile($id)
     {
+        $this->authorize('users.manage');
         $input = [];
         $input['user_id'] = $id;
 
@@ -270,6 +261,7 @@ class UsersController extends AdminBaseController {
 
     public function destroyProfile($id)
     {
+        $this->authorize('users.manage');
         $user = $this->users->byId($id);
         $user->profile()->delete();
 
@@ -278,11 +270,13 @@ class UsersController extends AdminBaseController {
         return redirect()->action('Admin\UsersController@edit', $user->id);
     }
 
-    public function updateProfile($id)
+    public function updateProfile(Request $request, $id)
     {
+        $this->authorize('users.manage');
         $user = $this->users->byId($id);
 
-        $input = Input::only('region', 'year_group_id', 'inauguration_date', 'initials', 'phone', 'address', 'zip_code', 'town', 'study', 'student_number', 'birthdate', 'church', 'gender');
+        $input = $request->only('region', 'year_group_id', 'inauguration_date', 'initials', 'phone', 'address',
+            'zip_code', 'town', 'study', 'student_number', 'birthdate', 'church', 'gender');
         $input['user_id'] = $id;
 
         // Set some specific info for former members
@@ -297,7 +291,7 @@ class UsersController extends AdminBaseController {
         // Natural parents
         if($user->isMember())
         {
-            $input = array_merge($input, Input::only('parent_phone', 'parent_address', 'parent_zip_code', 'parent_town'));
+            $input = array_merge($input, $request->only('parent_phone', 'parent_address', 'parent_zip_code', 'parent_town'));
         }
 
         // Check if the region is valid
@@ -319,6 +313,7 @@ class UsersController extends AdminBaseController {
 
     public function activate($id)
     {
+        $this->authorize('users.manage');
         $user = $this->userManager->activateUser($id);
 
         flash()->success("Account van {$user->present()->fullName} is succesvol geactiveerd.");
@@ -328,6 +323,7 @@ class UsersController extends AdminBaseController {
 
     public function accept($id)
     {
+        $this->authorize('users.manage');
         $user = $this->userManager->acceptMembership($id);
 
         flash()->success("Noviet {$user->present()->fullName} is succesvol geïnstalleerd.");

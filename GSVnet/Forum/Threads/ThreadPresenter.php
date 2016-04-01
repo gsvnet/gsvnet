@@ -4,7 +4,6 @@ use Laracasts\Presenter\Presenter;
 use App;
 use Str;
 use Carbon\Carbon, Auth;
-use GSVnet\Carbon as GSVCarbon;
 
 class ThreadPresenter extends Presenter
 {
@@ -29,14 +28,12 @@ class ThreadPresenter extends Presenter
 
     public function created_ago()
     {
-        $created = new GSVCarbon($this->created_at);
-        return $created->diffForHumans();
+        return $this->created_at->diffForHumans();
     }
 
     public function updated_ago()
     {
-        $updated = new GSVCarbon($this->updated_at);
-        return $updated->diffForHumans();
+        return $this->updated_at->diffForHumans();
     }
 
     public function bodyFormatted()

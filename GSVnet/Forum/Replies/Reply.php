@@ -1,6 +1,8 @@
 <?php namespace GSVnet\Forum\Replies;
 
+use GSVnet\Users\User;
 use GSVnet\Forum\LikableTrait;
+use GSVnet\Forum\Threads\Thread;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 
@@ -14,27 +16,15 @@ class Reply extends Model
     protected $with = ['author'];
     protected $softDelete = true;
 
-    public $presenter = 'GSVnet\Forum\Replies\ReplyPresenter';
+    public $presenter = ReplyPresenter::class;
 
     public function author()
     {
-        return $this->belongsTo('GSVnet\Users\User', 'author_id');
+        return $this->belongsTo(User::class, 'author_id');
     }
 
     public function thread()
     {
-        return $this->belongsTo('GSVnet\Forum\Threads\Thread', 'thread_id');
-    }
-
-    public function isManageableBy($user)
-    {
-        if ( ! $user) return false;
-        return $this->isOwnedBy($user) || $user->isForumAdmin();
-    }
-
-    public function isOwnedBy($user)
-    {
-        if ( ! $user) return false;
-        return $user->id == $this->author_id;
+        return $this->belongsTo(Thread::class, 'thread_id');
     }
 }

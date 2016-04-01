@@ -18,6 +18,7 @@ class MembersController extends AdminBaseController {
     {
         $this->senates = $senates;
         $this->users = $users;
+        $this->authorize('senates.manage');
 
         parent::__construct();
     }

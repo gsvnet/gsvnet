@@ -1,12 +1,11 @@
 <?php
 
-use GSV\Commands\Potentials\PromoteGuestToPotential;
+use GSVnet\Permissions\NoPermissionException;
+use Illuminate\Support\Facades\Gate;
 use GSV\Commands\Potentials\PromoteGuestToPotentialCommand;
-use GSV\Commands\Potentials\SignUpAsPotential;
 use GSV\Commands\Potentials\SignUpAsPotentialCommand;
 use GSV\Commands\Users\SetProfilePictureCommand;
 use GSVnet\Core\Exceptions\ValidationException;
-use GSVnet\Permissions\Permission;
 use GSVnet\Users\Profiles\PotentialValidator;
 use GSVnet\Users\Profiles\ProfilesRepository;
 use GSVnet\Core\ImageHandler;
@@ -118,13 +117,15 @@ class MemberController extends BaseController {
     }
 
     // Show original (resized) photo
-    public function showPhoto($profile_id, $type = '')
+    public function showPhoto(Request $request, $profile_id, $type = '')
     {
+        $this->authorize('photos.show-private');
+        
         // Guests and Potentials are not allowed to see private photos
         // but a potential can see his / her own photo
-        if ( Auth::user()->profile->id != $profile_id && ! Permission::has('users.show') )
+        if ( $request->user()->profile->id != $profile_id && Gate::denies('users.show') )
         {
-            throw new \GSVnet\Permissions\NoPermissionException;
+            throw new NoPermissionException;
         }
         return $this->photoResponse($profile_id, $type);
     }

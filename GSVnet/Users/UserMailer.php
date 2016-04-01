@@ -60,7 +60,6 @@ class UserMailer extends Mailer {
 
     /**
     *   Informs the user that he has been accepted to the GSV
-    *
     */
     public function membershipAccepted($user)
     {
@@ -69,7 +68,7 @@ class UserMailer extends Mailer {
             'user' => $user
         ];
 
-        $this->sendTo($user->email, 'Aanmelding geaccpeteerd', 'emails.users.accepted', $data);
+        $this->sendTo($user->email, 'Aanmelding geaccepteerd', 'emails.users.accepted', $data);
     }
 
     public function updatedByOwner(User $oldUser, User $newUser, UserProfile $oldProfile, UserProfile $newProfile)

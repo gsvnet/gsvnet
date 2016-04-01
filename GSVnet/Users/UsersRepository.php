@@ -11,11 +11,19 @@ class UsersRepository extends BaseRepository {
         $this->model = $model;
     }
 
+    /**
+     * @param $id
+     * @return User
+     */
     public function byId($id)
     {
         return User::findOrFail($id);
     }
 
+    /**
+     * @param $id
+     * @return User
+     */
     public function byIdWithProfileAndYearGroup($id)
     {
         return User::with('profile.yearGroup')->findOrFail($id);

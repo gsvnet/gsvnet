@@ -12,11 +12,11 @@
 
         <ul class="inline-list grey">
             <li>door 
-            @if(Permission::has('users.show'))
+            @can('users.show')
                 <a href="{{ $thread->author->present()->profileUrl }}">{{{ $thread->author->username }}}</a>
             @else
                 {{ $thread->author->username }}
-            @endif
+            @endcan
             </li>
 
             @if($thread->mostRecentReply)
