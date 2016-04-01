@@ -7,6 +7,7 @@ use GSV\Commands\Members\ChangeEmail;
 use GSV\Commands\Members\ChangeGender;
 use GSV\Commands\Members\ChangeName;
 use GSV\Commands\Members\ChangeParentsDetails;
+use GSV\Commands\Members\ChangePassword;
 use GSV\Commands\Members\ChangePhone;
 use GSV\Commands\Members\ChangeYearGroup;
 use GSV\Commands\Users\SetProfilePictureCommand;
@@ -45,7 +46,9 @@ class MemberController extends AdminBaseController
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.name', $member);
+
         $this->dispatch(ChangeName::fromForm($request, $member));
+
         flash()->success("Naam {$member->present()->fullName()} succesvol aangepast");
         return redirect()->action('Admin\UsersController@show', $id);
     }
@@ -66,6 +69,7 @@ class MemberController extends AdminBaseController
 
         $this->dispatch(ChangeAddress::fromForm($request, $member));
         $this->dispatch(ChangePhone::fromForm($request, $member));
+
         flash()->success("Contactgegevens {$member->present()->fullName()} succesvol aangepast");
         return redirect()->action('Admin\UsersController@show', $id);
     }
@@ -84,6 +88,7 @@ class MemberController extends AdminBaseController
         $this->authorize('user.manage.parents', $member);
 
         $this->dispatch(ChangeParentsDetails::fromForm($request, $member));
+
         flash()->success("Gegevens van {$member->present()->fullName()}s ouders succesvol aangepast");
         return redirect()->action('Admin\UsersController@show', $id);
     }
@@ -121,7 +126,27 @@ class MemberController extends AdminBaseController
         $this->authorize('user.manage.email', $member);
 
         $this->dispatch(ChangeEmail::fromForm($request, $member));
+
         flash()->success("Email {$member->present()->fullName()} succesvol aangepast");
+        return redirect()->action('Admin\UsersController@show', $id);
+    }
+
+    public function editPassword($id)
+    {
+        $user = $this->users->byId($id);
+        $this->authorize('user.manage.password', $user);
+
+        return view('admin.users.update.password')->with(compact('user'));
+    }
+
+    public function updatePassword(Request $request, $id)
+    {
+        $member = $this->users->byId($id);
+        $this->authorize('user.manage.password', $member);
+
+        $this->dispatch(ChangePassword::fromForm($request, $member));
+
+        flash()->success("Wachtwoord {$member->present()->fullName()} succesvol aangepast");
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -140,6 +165,7 @@ class MemberController extends AdminBaseController
 
         $gender = new Gender($request->has('gender') ? $request->get('gender') : null);
         $this->dispatch(new ChangeGender($member, $gender));
+
         flash()->success("Geslacht {$member->present()->fullName()} succesvol aangepast");
         return redirect()->action('Admin\UsersController@show', $id);
     }
@@ -179,6 +205,7 @@ class MemberController extends AdminBaseController
         $this->authorize('user.manage.business', $member);
 
         $this->dispatch(ChangeBusiness::fromForm($request, $member));
+
         flash()->success("Werk {$member->present()->fullName()} succesvol aangepast");
         return redirect()->action('Admin\UsersController@show', $id);
     }
@@ -199,6 +226,7 @@ class MemberController extends AdminBaseController
         if ($request->hasFile('photo_path')) {
             $this->dispatch(new SetProfilePictureCommand($member, $request->file('photo_path')));
         }
+
         flash()->success("Foto van {$member->present()->fullName()} succesvol opgeslagen");
         return redirect()->action('Admin\UsersController@show', $id);
     }

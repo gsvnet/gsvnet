@@ -123,6 +123,8 @@ Route::group([
     Route::put('leden/{user}/contact',       'MemberController@updateContactDetails');
     Route::get('leden/{user}/email',         'MemberController@editEmail');
     Route::put('leden/{user}/email',         'MemberController@updateEmail');
+    Route::get('leden/{user}/wachtwoord',    'MemberController@editPassword');
+    Route::put('leden/{user}/wachtwoord',    'MemberController@updatePassword');
     Route::get('leden/{user}/geboortedatum', 'MemberController@editBirthDay');
     Route::put('leden/{user}/geboortedatum', 'MemberController@updateBirthDay');
     Route::get('leden/{user}/geslacht',      'MemberController@editGender');

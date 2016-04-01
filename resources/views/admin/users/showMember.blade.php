@@ -7,7 +7,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <h2>Profiel</h2>
+            <h2>Persoonlijke gegevens</h2>
             <ul class="nav nav-pills">
                 @can('user.manage.name', $user)
                 <li role="presentation">
@@ -48,6 +48,13 @@
                 <li role="presentation">
                     <a href="{{ action('Admin\MemberController@editEmail', $user->id) }}">
                         <i class="glyphicon glyphicon-envelope"></i> Emailadres
+                    </a>
+                </li>
+                @endcan
+                @can('user.manage.password', $user)
+                <li role="presentation">
+                    <a href="{{ action('Admin\MemberController@editPassword', $user->id) }}">
+                        <i class="fa fa-unlock-alt"></i> Wachtwoord
                     </a>
                 </li>
                 @endcan
