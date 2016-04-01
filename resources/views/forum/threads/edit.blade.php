@@ -22,11 +22,11 @@
                 @include('forum._tag_chooser', ['comment' => $thread])
             </div>
 
-            @if (Permission::has('threads.show-private'))
+            @can('threads.show-private')
             <div>
                 {!! Former::checkbox('public')->text('Maak topic publiek voor niet-GSV leden')->label('Publiek') !!}
             </div>
-            @endif
+            @endcan
 
             <div class="control-group">
                 <input type="submit" value="Bewerk" class="button">

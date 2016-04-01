@@ -4,12 +4,9 @@ namespace GSV\Console\Commands;
 
 use GSVnet\Users\Profiles\UserProfile;
 use GSVnet\Users\User;
-use GSVnet\Users\UserPresenter;
 use GSVnet\Users\YearGroup;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Filesystem\Filesystem;
-use Symfony\Component\Console\Helper\ProgressBar;
-use Symfony\Component\HttpKernel\Profiler\Profile;
 
 class ImportMembers extends Command
 {
@@ -37,7 +34,7 @@ class ImportMembers extends Command
     /**
      * Create a new command instance.
      *
-     * @return void
+     * @param Filesystem $files
      */
     public function __construct(Filesystem $files)
     {

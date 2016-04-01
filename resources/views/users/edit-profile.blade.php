@@ -34,7 +34,7 @@
 
 			{!! Former::text('email')->label('Email') !!}
 
-			@if( Permission::has('users.edit-profile') && isset($profile) )
+			@if( Gate::allows('users.edit-profile') && isset($profile) )
 
 				<h2>Vul vooral meer in</h2>
 			    {!! Former::text('profile.initials')->label('Initialen')->size(5) !!}
@@ -67,7 +67,7 @@
 	        @endif
 		</div>
 		<div class="secondary-column">
-			@if(Permission::has('users.edit-profile') && isset($profile))
+			@if(Gate::allows('users.edit-profile') && isset($profile))
 				<h2>Je profielfoto</h2>
 				<p>
                     <img src="{!! Auth::user()->profile->present()->xsmallProfileImage !!}" width="102" height="102" alt="Profielfoto" />

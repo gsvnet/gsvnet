@@ -21,11 +21,11 @@
                     @include('forum._tag_chooser')
                 </div>
 
-                @if (Permission::has('threads.show-private'))
+                @can('threads.show-private')
                 <div>
                     {!! Former::checkbox('public')->text('Maak topic zichtbaar voor externen')->label('Publiek?') !!}
                 </div>
-                @endif
+                @endcan
 
                 <div class="control-group">
                     <input type="submit" value="Opslaan" class="button">

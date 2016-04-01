@@ -2,7 +2,6 @@
 
 use GSVnet\Core\Validator;
 use GSVnet\Forum\LikeRepository;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Factory;
 
 class LikeReplyValidator extends Validator {

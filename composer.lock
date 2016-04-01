@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0b33432e51d47137d5cdca999253014b",
-    "content-hash": "7c0844c05ca5a2431b0f8a2987a59417",
+    "hash": "93e5fa419f8033110fa23d2a23741657",
+    "content-hash": "08ae3bd27039f506661ab3efc22f4a35",
     "packages": [
         {
             "name": "anahkiasen/former",
@@ -1067,7 +1067,7 @@
             "support": {
                 "issues": "https://github.com/haampie/gravatar/issues",
                 "email": "harmenstoppels@gmail.com",
-                "source": "https://github.com/haampie/gravatar/tree/master"
+                "source": "https://github.com/haampie/gravatar/tree/1.4.1"
             },
             "time": "2015-12-22 16:15:37"
         },
@@ -1369,16 +1369,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.2.25",
+            "version": "v5.2.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d2817d2773dc3f405b561762489a76bbe66bd673"
+                "reference": "b73ac62506c5c2bd49d87fcb1089f7759431e173"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d2817d2773dc3f405b561762489a76bbe66bd673",
-                "reference": "d2817d2773dc3f405b561762489a76bbe66bd673",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/b73ac62506c5c2bd49d87fcb1089f7759431e173",
+                "reference": "b73ac62506c5c2bd49d87fcb1089f7759431e173",
                 "shasum": ""
             },
             "require": {
@@ -1493,7 +1493,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-03-24 15:06:38"
+            "time": "2016-03-25 17:12:52"
         },
         {
             "name": "laravelcollective/bus",
@@ -1991,52 +1991,6 @@
                 "time"
             ],
             "time": "2015-11-04 20:07:17"
-        },
-        {
-            "name": "nickcernis/html-to-markdown",
-            "version": "2.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nickcernis/html-to-markdown.git",
-                "reference": "c27833198b2777da43455829439cb24287597218"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nickcernis/html-to-markdown/zipball/c27833198b2777da43455829439cb24287597218",
-                "reference": "c27833198b2777da43455829439cb24287597218",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2"
-            },
-            "require-dev": {
-                "php": ">=5.3.3",
-                "phpunit/phpunit": "4.*"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "HTML_To_Markdown.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nick Cernis",
-                    "email": "nick@cern.is",
-                    "homepage": "http://modernnerd.net"
-                }
-            ],
-            "description": "An HTML-to-markdown conversion helper for PHP",
-            "homepage": "https://github.com/nickcernis/html-to-markdown",
-            "keywords": [
-                "html",
-                "markdown"
-            ],
-            "time": "2015-01-04 20:10:30"
         },
         {
             "name": "nikic/php-parser",

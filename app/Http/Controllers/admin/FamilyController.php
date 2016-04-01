@@ -1,8 +1,6 @@
 <?php namespace Admin;
 
 use GSVnet\Users\UsersRepository;
-use Illuminate\Contracts\Queue\EntityNotFoundException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Input;
 
 class FamilyController extends AdminBaseController {
@@ -12,7 +10,8 @@ class FamilyController extends AdminBaseController {
     public function __construct(UsersRepository $users)
     {
         $this->users = $users;
-        $this->middleware('has:users.manage');
+        $this->authorize('users.manage');
+        parent::__construct();
     }
 
     public function index($userId)

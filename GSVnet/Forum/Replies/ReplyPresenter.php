@@ -1,9 +1,10 @@
 <?php namespace GSVnet\Forum\Replies;
 
+use Chromabits\Purifier\Purifier;
+use GSVnet\Emoticons\Emoticon;
+use GSVnet\Markdown\HtmlMarkdownConverter;
 use Illuminate\Support\Facades\Auth;
 use Laracasts\Presenter\Presenter;
-use App;
-use GSVnet\Carbon as GSVCarbon;
 
 class ReplyPresenter extends Presenter
 {
@@ -14,7 +15,7 @@ class ReplyPresenter extends Presenter
         $slug = $this->thread->slug;
         $threadUrl = action('ForumThreadsController@getShowThread', [$slug]);
 
-        return $threadUrl . \App::make('GSVnet\Forum\Replies\ReplyQueryStringGenerator')->generate( $this->entity );
+        return $threadUrl . app(ReplyQueryStringGenerator::class)->generate($this->entity);
     }
 
     public function likeClass()
@@ -30,14 +31,12 @@ class ReplyPresenter extends Presenter
 
     public function created_ago()
     {
-        $created = new GSVCarbon($this->created_at);
-        return $created->diffForHumans();
+        return $this->created_at->diffForHumans();
     }
 
     public function updated_ago()
     {
-        $updated = new GSVCarbon($this->updated_at);
-        return $updated->diffForHumans();
+        return $this->updated_at->diffForHumans();
     }
 
     public function bodyFormatted()
@@ -51,16 +50,16 @@ class ReplyPresenter extends Presenter
 
     private function convertMarkdown($content)
     {
-        return App::make('GSVnet\Markdown\HtmlMarkdownConverter')->convertMarkdownToHtml($content);
+        return app(HtmlMarkdownConverter::class)->convertMarkdownToHtml($content);
     }
 
     private function convertEmoticons($content)
     {
-        return App::make('GSVnet\Emoticons\Emoticon')->toHTML($content);
+        return app(Emoticon::class)->toHTML($content);
     }
 
     private function purify($content)
     {
-        return App::make('Chromabits\Purifier\Contracts\Purifier')->clean($content);
+        return app(Purifier::class)->clean($content);
     }
 }

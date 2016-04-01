@@ -18,29 +18,27 @@ Route::group(['prefix' => 'intern', 'middleware' => 'auth'], function() {
     Route::post('profiel/bewerken',   'UserController@updateProfile');
 
     // GSVdocs
-    Route::get('bestanden', 'FilesController@index')->middleware('has:docs.show');
+    Route::get('bestanden', 'FilesController@index');
 
     // Ads
-    Route::get('sponsorprogramma', 'HomeController@sponsorProgram')->middleware('has:sponsor-program.show');
+    Route::get('sponsorprogramma', 'HomeController@sponsorProgram');
 
     // Only logged in users can view the member list if they have permission
-    Route::group(['middleware' => 'has:users.show'], function() {
-        Route::get('jaarbundel',       'UserController@showUsers');
-        Route::get('jaarbundel/{id}',  'UserController@showUser')->where('id', '[0-9]+');
-        Route::get('jaarbundel/adressen', 'UserController@showAddresses');
-    });
+    Route::get('jaarbundel',       'UserController@showUsers');
+    Route::get('jaarbundel/{id}',  'UserController@showUser')->where('id', '[0-9]+');
+    Route::get('jaarbundel/adressen', 'UserController@showAddresses');
 });
 
 Route::group(['prefix' => 'uploads'], function() {
-    Route::get('bestanden/{id}', 'FilesController@show')->middleware('has:docs.show');
+    Route::get('bestanden/{id}', 'FilesController@show');
     // Shows photo corresponding to photo id
     Route::get('fotos/{id}/{type?}', 'PhotoController@showPhoto');
     // Shows photo corresponding to profile with id
-    Route::get('gebruikers/{id}/{type?}', 'MemberController@showPhoto')->middleware('has:photos.show-private');
+    Route::get('gebruikers/{id}/{type?}', 'MemberController@showPhoto');
 });
 
 // De GSV
-Route::group(array('prefix' => 'de-gsv'), function() {
+Route::group(['prefix' => 'de-gsv'], function() {
     Route::get('/', 'AboutController@showAbout');
 
     Route::get('/pijlers', 'AboutController@showPillars');
@@ -100,45 +98,34 @@ Route::group([
     Route::get('/users/oudleden.csv', 'UsersController@exportFormerMembers');
     Route::get('/users/leden.csv', 'UsersController@exportMembers');
 
-    // Committees
-    Route::group(['middleware' => 'has:committees.manage'], function() {
+    // Commissies
+    Route::resource('commissies',   'CommitteeController', ['except' => ['create']]);
 
-        // Commissies
-        Route::resource('commissies',   'CommitteeController', ['except' => ['create']]);
-
-        // Hier nog een route voor ajax calls naar users db
-        Route::resource('commissies/lidmaatschap', 'Committees\MembersController');
-        // Route::post('commissies/{committee}/members',            'Committees\MembersController@store');
-        // Route::delete('commissies/{committee}/members/{member}', 'Committees\MembersController@destroy');
-    });
+    // Hier nog een route voor ajax calls naar users db
+    Route::resource('commissies/lidmaatschap', 'Committees\MembersController');
 
     // Users
-    Route::group(['middleware' => 'has:users.show'], function() {
-        Route::group(['prefix' => 'gebruikers'], function() {
-            Route::post('/{user}/activeren', 'UsersController@activate');
-            Route::post('/{user}/accepteer-lid', 'UsersController@accept');
-            Route::post('/{user}/profiel/create', 'UsersController@storeProfile');
-            Route::put('/{user}/profiel', 'UsersController@updateProfile');
-            Route::delete('/{user}/profiel', 'UsersController@destroyProfile');
+    Route::group(['prefix' => 'gebruikers'], function() {
+        Route::post('/{user}/activeren', 'UsersController@activate');
+        Route::post('/{user}/accepteer-lid', 'UsersController@accept');
+        Route::post('/{user}/profiel/create', 'UsersController@storeProfile');
+        Route::put('/{user}/profiel', 'UsersController@updateProfile');
+        Route::delete('/{user}/profiel', 'UsersController@destroyProfile');
 
-            Route::get('/gasten',     'UsersController@showGuests');
-            Route::get('/novieten', 'UsersController@showPotentials');
-            Route::get('/leden',      'UsersController@showMembers');
-            Route::get('/oud-leden',  'UsersController@showFormerMembers');
-        });
-
-        Route::resource('gebruikers', 'UsersController');
-        Route::resource('gebruikers.family', 'FamilyController');
+        Route::get('/gasten',     'UsersController@showGuests');
+        Route::get('/novieten', 'UsersController@showPotentials');
+        Route::get('/leden',      'UsersController@showMembers');
+        Route::get('/oud-leden',  'UsersController@showFormerMembers');
     });
 
-    // Senates
-    Route::group(['middleware' => 'has:senates.manage'], function() {
-        // Senaten
-        Route::resource('senaten',   'SenateController');
-        // Hier nog een route voor ajax calls naar users db
-        Route::post('senaten/{senate}/members',            'Senates\MembersController@store');
-        Route::delete('senaten/{senate}/members/{member}', 'Senates\MembersController@destroy');
-    });
+    Route::resource('gebruikers', 'UsersController');
+    Route::resource('gebruikers.family', 'FamilyController');
+
+    // Senaten
+    Route::resource('senaten',   'SenateController');
+    // Hier nog een route voor ajax calls naar users db
+    Route::post('senaten/{senate}/members',            'Senates\MembersController@store');
+    Route::delete('senaten/{senate}/members/{member}', 'Senates\MembersController@destroy');
 });
 
 // Forum

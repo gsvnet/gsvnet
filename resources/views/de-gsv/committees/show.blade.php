@@ -14,17 +14,17 @@
                 {{{ $committee->description }}}
             </p>
 
-            @if( $activeMembers->count() > 0 && ($committee->unique_name != 'novcie' || Permission::has('committees.show-novcie')) )
+            @if( $activeMembers->count() > 0 && ($committee->unique_name != 'novcie' || Gate::allows('committees.show-novcie')) )
                 <h2>Leden</h2>
 
                 <ul class="unstyled-list title-description-list">
                     @foreach ($activeMembers as $member)
                         <li>
-                            @if( Permission::has('users.show') )
+                            @can('users.show')
                                 <a href="{{ URL::action('UserController@showUser', [$member->id]) }}" title="Bekijk het profiel van {{{ $member->fullName }}}" class="list-title">{{{ $member->present()->fullName }}}</a>
                             @else
                                 <span class="list-title">{{{ $member->present()->fullName }}}</span>
-                            @endif
+                            @endcan
 
                             <span class="list-description grey">Sinds {{ $member->present()->inCommiteeSince }}</span>
                         </li>

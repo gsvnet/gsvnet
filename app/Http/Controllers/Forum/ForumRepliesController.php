@@ -3,19 +3,18 @@
 use GSV\Commands\Forum\DeleteReplyCommand;
 use GSV\Commands\Forum\EditReplyCommand;
 use GSV\Commands\Forum\ReplyToThreadCommand;
-use GSV\Http\Requests\DeleteReplyValidator;
-use GSV\Http\Requests\EditReplyValidator;
-use GSV\Http\Requests\ReplyToThreadValidator;
+use GSV\Http\Validators\DeleteReplyValidator;
+use GSV\Http\Validators\EditReplyValidator;
+use GSV\Http\Validators\ReplyToThreadValidator;
 use GSVnet\Events\EventsRepository;
 use GSVnet\Forum\Replies\ReplyRepository;
-use GSVnet\Permissions\NoPermissionException;
-use GSVnet\Permissions\Permission;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View;
 
 class ForumRepliesController extends BaseController {
 
     protected $repliesPerPage = 20;
+    protected $replies;
 
     public function __construct(ReplyRepository $replies, EventsRepository $events)
     {
@@ -23,9 +22,7 @@ class ForumRepliesController extends BaseController {
         
         $this->replies = $replies;
 
-        $events = $events->upcoming(5);
-
-        View::share('events', $events);
+        View::share('events', $events->upcoming(5));
     }
 
     public function postCreateReply(ReplyToThreadValidator $validator, $threadSlug)
@@ -38,7 +35,7 @@ class ForumRepliesController extends BaseController {
 
         $validator->validate($data);
 
-        $this->dispatchFrom(ReplyToThreadCommand::class, new Collection($data));
+        $this->dispatchFromArray(ReplyToThreadCommand::class, $data);
 
         return redirect()->back();
     }
@@ -46,9 +43,7 @@ class ForumRepliesController extends BaseController {
     public function getEditReply($replyId)
     {
         $reply = $this->replies->getById($replyId);
-
-        if(! Permission::has('threads.manage') && $reply->author_id != Auth::user()->id)
-            throw new NoPermissionException;
+        $this->authorize('reply.manage', $reply);
 
         return view('forum.replies.edit', compact('reply'));
     }
@@ -57,17 +52,16 @@ class ForumRepliesController extends BaseController {
     {
         $reply = $this->replies->requireById($replyId);
 
+        $this->authorize('reply.manage', $reply);
+
         $data = [
             'replyId' => $replyId,
             'reply' => Input::get('body')
         ];
 
-        if(! Permission::has('threads.manage') && $reply->author_id != Auth::user()->id)
-            throw new NoPermissionException;
-
         $validator->validate($data);
 
-        $this->dispatchFrom(EditReplyCommand::class, new Collection($data));
+        $this->dispatchFromArray(EditReplyCommand::class, $data);
 
         return $this->redirectToReply($replyId);
     }
@@ -76,8 +70,7 @@ class ForumRepliesController extends BaseController {
     {
         $reply = $this->replies->requireById($replyId);
 
-        if(! Permission::has('threads.manage') && $reply->author_id != Auth::user()->id)
-            throw new NoPermissionException;
+        $this->authorize('reply.manage', $reply);
 
         return view('forum.replies.delete', compact('reply'));
     }
@@ -86,14 +79,13 @@ class ForumRepliesController extends BaseController {
     {
         $reply = $this->replies->requireById($replyId);
 
-        $data = compact('replyId');
+        $this->authorize('reply.manage', $reply);
 
-        if(! Permission::has('threads.manage') && $reply->author_id != Auth::user()->id)
-            throw new NoPermissionException;
+        $data = compact('replyId');
 
         $validator->validate($data);
 
-        $this->dispatchFrom(DeleteReplyCommand::class, new Collection($data));
+        $this->dispatchFromArray(DeleteReplyCommand::class, $data);
 
         return redirect('/forum');
     }

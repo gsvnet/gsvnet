@@ -12,7 +12,6 @@ use GSVnet\Forum\Threads\LikeThreadValidator;
 use GSVnet\Forum\Threads\ThreadRepository;
 use GSVnet\Markdown\HtmlMarkdownConverter;
 use GSVnet\Permissions\NoPermissionException;
-use GSVnet\Permissions\Permission;
 use Illuminate\Support\Collection;
 
 class ForumApiController extends BaseController {
@@ -22,6 +21,7 @@ class ForumApiController extends BaseController {
     function __construct(HtmlMarkdownConverter $markdown)
     {
         $this->markdown = $markdown;
+        parent::__construct();
     }
 
     public function preview()
@@ -35,7 +35,7 @@ class ForumApiController extends BaseController {
         $reply = $replies->requireById($replyId);
         $thread = $reply->thread;
 
-        if ( ! $thread->public && ! Permission::has('threads.show-private'))
+        if ( ! $thread->public && Gate::denies('threads.show-private'))
             throw new NoPermissionException;
 
         return response()->json([
@@ -48,7 +48,7 @@ class ForumApiController extends BaseController {
     {
         $thread = $threads->requireById($threadId);
 
-        if ( ! $thread->public && ! Permission::has('threads.show-private'))
+        if ( ! $thread->public && Gate::denies('threads.show-private'))
             throw new NoPermissionException;
 
         return response()->json([
@@ -70,7 +70,7 @@ class ForumApiController extends BaseController {
             return response()->json($e->getErrors(), 400);
         }
 
-        $this->dispatchFrom(LikeReplyCommand::class, new Collection($data));
+        $this->dispatchFromArray(LikeReplyCommand::class, $data);
 
         return response()->json();
     }
@@ -88,7 +88,7 @@ class ForumApiController extends BaseController {
             return response()->json($e->getErrors(), 400);
         }
 
-        $this->dispatchFrom(DislikeReplyCommand::class, new Collection($data));
+        $this->dispatchFromArray(DislikeReplyCommand::class, $data);
 
         return response()->json();
     }
@@ -106,7 +106,7 @@ class ForumApiController extends BaseController {
             return response()->json($e->getErrors(), 400);
         }
 
-        $this->dispatchFrom(LikeThreadCommand::class, new Collection($data));
+        $this->dispatchFromArray(LikeThreadCommand::class, $data);
 
         return response()->json();
     }
@@ -124,7 +124,7 @@ class ForumApiController extends BaseController {
             return response()->json($e->getErrors(), 400);
         }
 
-        $this->dispatchFrom(DislikeThreadCommand::class, new Collection($data));
+        $this->dispatchFromArray(DislikeThreadCommand::class, $data);
 
         return response()->json();
     }

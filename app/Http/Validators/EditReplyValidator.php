@@ -1,4 +1,4 @@
-<?php namespace GSV\Http\Requests;
+<?php namespace GSV\Http\Validators;
 
 use GSVnet\Core\Validator;
 

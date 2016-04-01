@@ -20,6 +20,7 @@ class SenateController extends AdminBaseController {
         $this->senates = $senates;
         $this->validator = $validator;
         $this->users = $users;
+        $this->authorize('senates.manage');
 
         parent::__construct();
     }

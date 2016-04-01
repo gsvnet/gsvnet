@@ -1,9 +1,9 @@
 <?php namespace GSVnet\Core\Composers;
 
-use GSVnet\Permissions\Permission;
 use haampie\Gravatar\Gravatar;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class NavigationViewComposer {
 
@@ -225,7 +225,7 @@ class NavigationViewComposer {
                 'title' => 'Word lid!',
                 'url' => action('MemberController@index'),
                 'visible' => function(){
-                    return Auth::guest() || Permission::has('user.become-member');
+                    return Auth::guest() || Gate::allows('user.become-member');
                 },
                 'submenu' => [
                     'lid-worden' => [
@@ -274,35 +274,35 @@ class NavigationViewComposer {
                         'title' => 'Profiel',
                         'url' => action('UserController@showProfile'),
                         'visible' => function(){
-                            return Permission::has('users.edit-profile');
+                            return Gate::allows('users.edit-profile');
                         }
                     ],
                     'jaarbundel' => [
                         'title' => 'Jaarbundel',
                         'url' => action('UserController@showUsers'),
                         'visible' => function(){
-                            return Permission::has('users.show');
+                            return Gate::allows('users.show');
                         }
                     ],
                     'bk-materiaal' => [
                         'title' => 'BK-materiaal',
                         'url' => 'https://www.dropbox.com/sh/o06lxxza7u6a5ka/AACsPUF-MisVV3DSvrpb2B32a?dl=0',
                         'visible' => function(){
-                            return Permission::has('docs.show');
+                            return Gate::allows('docs.show');
                         }
                     ],
                     'bestanden' => [
                         'title' => 'GSVdocs',
                         'url' => action('FilesController@index'),
                         'visible' => function(){
-                            return Permission::has('docs.show');
+                            return Gate::allows('docs.show');
                         }
                     ],
                     'sponsorprogramma' => [
                         'title' => 'Sponsors',
                         'url' => action('HomeController@sponsorProgram'),
                         'visible' => function(){
-                            return Permission::has('sponsor-program.show');
+                            return Gate::allows('sponsor-program.show');
                         }
                     ],
                     'uitloggen' => [

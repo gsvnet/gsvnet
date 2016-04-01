@@ -4,19 +4,19 @@ use GSV\Commands\Forum\DeleteThreadCommand;
 use GSV\Commands\Forum\EditThreadCommand;
 use GSV\Commands\Forum\StartThreadCommand;
 use GSV\Commands\Forum\VisitThreadCommand;
-use GSV\Http\Requests\StartThreadValidator;
+use GSV\Http\Validators\StartThreadValidator;
 use GSVnet\Events\EventsRepository;
 use GSVnet\Forum\Replies\ReplyRepository;
 use GSVnet\Forum\Threads\ThreadRepository;
+use GSVnet\Forum\Threads\ThreadSearch;
 use GSVnet\Forum\Threads\ThreadSlug;
 use GSVnet\Permissions\NoPermissionException;
-use GSVnet\Permissions\Permission;
 use GSVnet\Tags\TagRepository;
 use GSVnet\Users\UsersRepository;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Gate;
 
 class ForumThreadsController extends BaseController {
     protected $threads;
@@ -46,8 +46,7 @@ class ForumThreadsController extends BaseController {
     {
         // query tags and retrieve the appropriate threads
         $tags = $this->tags->getAllTagsBySlug(Input::get('tags'));
-        $threads = $this->threads->getByTagsPaginated($tags, '', $this->threadsPerPage);
-
+        $threads = $this->threads->getByTagsPaginated($tags, $this->threadsPerPage);
 
         // add the tag string to each pagination link
         $tagAppends = ['tags' => Input::get('tags')];
@@ -65,7 +64,7 @@ class ForumThreadsController extends BaseController {
         if ( ! $thread)
             return redirect()->action('ForumThreadsController@getIndex');
 
-        if ( ! $thread->public && ! Permission::has('threads.show-private'))
+        if ( ! $thread->public && Gate::denies('threads.show-private'))
             throw new NoPermissionException;
 
         $replies = $this->threads->getThreadRepliesPaginated($thread, $this->repliesPerPage);
@@ -73,11 +72,10 @@ class ForumThreadsController extends BaseController {
         // Thread visitation
         if( Auth::check() )
         {
-            $data = new Collection([
+            $this->dispatchFromArray(VisitThreadCommand::class, [
                 'userId' => Auth::user()->id,
                 'threadId' => $thread->id
             ]);
-            $this->dispatchFrom(VisitThreadCommand::class, $data);
         }
 
 
@@ -105,12 +103,12 @@ class ForumThreadsController extends BaseController {
             'slug' => $slug
         ];
 
-        if(!Permission::has('threads.show-private'))
+        if(Gate::denies('threads.show-private'))
             $data['public'] = true;
 
         $validator->beforeValidation()->validate($data);
 
-        $this->dispatchFrom(StartThreadCommand::class, new Collection($data));
+        $this->dispatchFromArray(StartThreadCommand::class, $data);
 
         return redirect()->action('ForumThreadsController@getShowThread', [$slug]);
     }
@@ -119,8 +117,7 @@ class ForumThreadsController extends BaseController {
     {
         $thread = $this->threads->requireById($threadId);
 
-        if(! Permission::has('threads.manage') && $thread->author_id != Auth::user()->id)
-            throw new NoPermissionException;
+        $this->authorize('thread.manage', $thread);
 
         $tags = $this->tags->getAllForForum();
 
@@ -131,21 +128,20 @@ class ForumThreadsController extends BaseController {
     {
         $thread = $this->threads->requireById($threadId);
 
-        $data = new Collection([
+        $this->authorize('thread.manage', $thread);
+
+        $data = [
             'threadId' => $threadId,
             'subject' => Input::get('subject'),
             'body' => Input::get('body'),
             'tags' => $this->tags->getTagsByIds(Input::get('tags')),
             'public' => Input::get('public', false)
-        ]);
+        ];
 
-        if(! Permission::has('threads.manage') && $thread->author_id != Auth::user()->id)
-            throw new NoPermissionException;
-
-        if(!Permission::has('threads.show-private'))
+        if(Gate::denies('threads.show-private'))
             $data['public'] = true;
 
-        $this->dispatchFrom(EditThreadCommand::class, $data);
+        $this->dispatchFromArray(EditThreadCommand::class, $data);
 
         return redirect()->action('ForumThreadsController@getShowThread', [$thread->slug]);
     }
@@ -154,8 +150,7 @@ class ForumThreadsController extends BaseController {
     {
         $thread = $this->threads->requireById($threadId);
 
-        if(! Permission::has('threads.manage') && $thread->author_id != Auth::user()->id)
-            throw new NoPermissionException;
+        $this->authorize('thread.manage', $thread);
 
         return view('forum.threads.delete', compact('thread'));
     }
@@ -164,14 +159,11 @@ class ForumThreadsController extends BaseController {
     {
         $thread = $this->threads->requireById($threadId);
 
-        $data = [
+        $this->authorize('thread.manage', $thread);
+
+        $this->dispatchFromArray(DeleteThreadCommand::class, [
             'threadId' => $threadId
-        ];
-
-        if(! Permission::has('threads.manage') && $thread->author_id != Auth::user()->id)
-            throw new NoPermissionException;
-
-        $this->dispatchFrom(DeleteThreadCommand::class, new Collection($data));
+        ]);
 
         return redirect()->action('ForumThreadsController@getIndex');
     }
@@ -179,9 +171,8 @@ class ForumThreadsController extends BaseController {
     public function getSearch()
     {
         $query = Input::get('query');
-        $results = App::make('GSVnet\Forum\Threads\ThreadSearch')->searchPaginated($query, $this->threadsPerPage);
-        $results->appends(array('query' => $query));
-
+        $results = app(ThreadSearch::class)->searchPaginated($query, $this->threadsPerPage);
+        $results->appends(['query' => $query]);
 
         return view('forum.search', compact('query', 'results'));
     }

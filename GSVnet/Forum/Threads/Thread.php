@@ -16,43 +16,31 @@ class Thread extends Model
     protected $with = ['author'];
     protected $dates = ['deleted_at'];
 
-    public $presenter = 'GSVnet\Forum\Threads\ThreadPresenter';
+    public $presenter = \GSVnet\Forum\Threads\ThreadPresenter::class;
 
     public function author()
     {
-        return $this->belongsTo('GSVnet\Users\User', 'author_id');
+        return $this->belongsTo(\GSVnet\Users\User::class, 'author_id');
     }
 
     public function replies()
     {
-        return $this->hasMany('GSVnet\Forum\Replies\Reply', 'thread_id');
+        return $this->hasMany(\GSVnet\Forum\Replies\Reply::class, 'thread_id');
     }
 
     public function tags()
     {
-        return $this->belongsToMany('GSVnet\Tags\Tag', 'tagged_items', 'thread_id', 'tag_id');
+        return $this->belongsToMany(\GSVnet\Tags\Tag::class, 'tagged_items', 'thread_id', 'tag_id');
     }
 
     public function visitations()
     {
-        return $this->hasMany('GSVnet\Forum\Threads\ThreadVisitation', 'thread_id');
+        return $this->hasMany(\GSVnet\Forum\Threads\ThreadVisitation::class, 'thread_id');
     }
 
     public function mostRecentReply()
     {
-        return $this->belongsTo('GSVnet\Forum\Replies\Reply', 'most_recent_reply_id');
-    }
-
-    public function isManageableBy($user)
-    {
-        if ( ! $user) return false;
-        return $this->isOwnedBy($user) || $user->isForumAdmin();
-    }
-
-    public function isOwnedBy($user)
-    {
-        if ( ! $user) return false;
-        return $user->id == $this->author_id;
+        return $this->belongsTo(\GSVnet\Forum\Replies\Reply::class, 'most_recent_reply_id');
     }
 
     public function setTags(array $tagIds)

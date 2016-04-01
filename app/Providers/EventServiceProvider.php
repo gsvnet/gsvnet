@@ -1,8 +1,9 @@
 <?php namespace GSV\Providers;
 
+use GSV\Handlers\Events\ThreadEventHandler;
+use GSV\Handlers\Events\UserEventHandler;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider {
 
@@ -23,8 +24,7 @@ class EventServiceProvider extends ServiceProvider {
 	{
 		parent::boot($events);
 
-        Event::subscribe('GSV\Handlers\Events\ThreadEventHandler');
-        Event::subscribe('GSV\Handlers\Events\UserEventHandler');
+		$events->subscribe(ThreadEventHandler::class);
+		$events->subscribe(UserEventHandler::class);
 	}
-
 }

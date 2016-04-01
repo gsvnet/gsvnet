@@ -1,12 +1,6 @@
 <?php namespace GSVnet\Albums\Photos;
 
-use GSVnet\Albums\Photos\PhotoCreatorValidator;
-use GSVnet\Albums\Photos\PhotoUpdatorValidator;
-
 use GSVnet\Core\ImageHandler;
-use GSVnet\Albums\Photos\PhotosRepository;
-
-use GSVnet\Albums\Photos\PhotoStorageException;
 
 class PhotoManager
 {

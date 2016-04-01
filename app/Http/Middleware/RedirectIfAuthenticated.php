@@ -8,13 +8,14 @@ class RedirectIfAuthenticated
 	/**
 	 * Handle an incoming request.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \Closure  $next
+	 * @param \Illuminate\Http\Request $request
+	 * @param \Closure $next
+	 * @param string|null $guard
 	 * @return mixed
 	 */
-	public function handle($request, Closure $next)
+	public function handle($request, Closure $next, $guard = null)
 	{
-		if (Auth::check()) {
+		if (Auth::guard($guard)->check()) {
 			return redirect('/');
 		}
 		return $next($request);

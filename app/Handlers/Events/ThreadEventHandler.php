@@ -1,18 +1,26 @@
 <?php namespace GSV\Handlers\Events;
 
+use GSV\Events\Forum\ReplyWasDeleted;
+use GSV\Events\Forum\ReplyWasDisliked;
+use GSV\Events\Forum\ReplyWasLiked;
+use GSV\Events\Forum\ThreadWasDisliked;
+use GSV\Events\Forum\ThreadWasLiked;
+use GSV\Events\Forum\ThreadWasRepliedTo;
+use Illuminate\Contracts\Events\Dispatcher;
+
 class ThreadEventHandler {
-    public function subscribe($events)
+    public function subscribe(Dispatcher $events)
     {
-        $events->listen('GSV\Events\Forum\ThreadWasRepliedTo', 'GSV\Handlers\Events\Forum\UpdateThreadDetails@incrementReplies');
-        $events->listen('GSV\Events\Forum\ThreadWasRepliedTo', 'GSV\Handlers\Events\Forum\UpdateThreadDetails@setNewLastReply');
+        $events->listen(ThreadWasRepliedTo::class, 'GSV\Handlers\Events\Forum\UpdateThreadDetails@incrementReplies');
+        $events->listen(ThreadWasRepliedTo::class, 'GSV\Handlers\Events\Forum\UpdateThreadDetails@setNewLastReply');
 
-        $events->listen('GSV\Events\Forum\ReplyWasDeleted', 'GSV\Handlers\Events\Forum\UpdateThreadDetails@decrementReplies');
-        $events->listen('GSV\Events\Forum\ReplyWasDeleted', 'GSV\Handlers\Events\Forum\UpdateThreadDetails@resetLastReply');
+        $events->listen(ReplyWasDeleted::class, 'GSV\Handlers\Events\Forum\UpdateThreadDetails@decrementReplies');
+        $events->listen(ReplyWasDeleted::class, 'GSV\Handlers\Events\Forum\UpdateThreadDetails@resetLastReply');
 
-        $events->listen('GSV\Events\Forum\ReplyWasLiked', 'GSV\Handlers\Events\Forum\UpdateReplyDetails@incrementLikes');
-        $events->listen('GSV\Events\Forum\ReplyWasDisliked', 'GSV\Handlers\Events\Forum\UpdateReplyDetails@decrementLikes');
+        $events->listen(ReplyWasLiked::class, 'GSV\Handlers\Events\Forum\UpdateReplyDetails@incrementLikes');
+        $events->listen(ReplyWasDisliked::class, 'GSV\Handlers\Events\Forum\UpdateReplyDetails@decrementLikes');
 
-        $events->listen('GSV\Events\Forum\ThreadWasLiked', 'GSV\Handlers\Events\Forum\UpdateThreadDetails@incrementLikes');
-        $events->listen('GSV\Events\Forum\ThreadWasDisliked', 'GSV\Handlers\Events\Forum\UpdateThreadDetails@decrementLikes');
+        $events->listen(ThreadWasLiked::class, 'GSV\Handlers\Events\Forum\UpdateThreadDetails@incrementLikes');
+        $events->listen(ThreadWasDisliked::class, 'GSV\Handlers\Events\Forum\UpdateThreadDetails@decrementLikes');
     }
 }

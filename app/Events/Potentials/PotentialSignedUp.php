@@ -1,6 +1,6 @@
 <?php namespace GSV\Events\Potentials;
 
-use GSVnet\Events\Event;
+use GSV\Events\Event;
 use GSVnet\Users\User;
 use Illuminate\Queue\SerializesModels;
 
