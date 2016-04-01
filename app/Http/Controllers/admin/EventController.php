@@ -17,7 +17,7 @@ class EventController extends AdminBaseController {
         $this->events = $events;
         $this->validator = $validator;
 
-        $this->middleware('has:events.manage');
+        $this->authorize('events.manage');
         parent::__construct();
     }
 

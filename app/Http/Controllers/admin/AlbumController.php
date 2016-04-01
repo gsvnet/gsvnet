@@ -21,7 +21,7 @@ class AlbumController extends AdminBaseController {
         $this->photos = $photos;
         $this->validator = $validator;
 
-        $this->middleware('can:photos.manage');
+        $this->authorize('photos.manage');
 
         parent::__construct();
     }

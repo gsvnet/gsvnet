@@ -213,7 +213,6 @@ return [
     'Purifier'   => Chromabits\Purifier\Purifier::class,
     'Image'      => Intervention\Image\Facades\Image::class,
 
-    'Permission' => GSVnet\Permissions\Permission::class,
     'Flash'      => Laracasts\Flash\Flash::class
   ],
 ];
