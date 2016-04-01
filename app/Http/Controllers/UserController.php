@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use GSVnet\Committees\CommitteesRepository;
 use GSVnet\Users\Profiles\ProfilesRepository;
@@ -9,7 +10,8 @@ use GSVnet\Users\UserManager;
 use GSVnet\Users\Profiles\ProfileManager;
 use GSVnet\Users\YearGroupRepository;
 
-class UserController extends BaseController {
+class UserController extends BaseController
+{
 
     protected $users;
     protected $profiles;
@@ -38,10 +40,12 @@ class UserController extends BaseController {
 
     /**
      * Show the current user's profile
+     * @param Request $request
+     * @return
      */
-    public function showProfile()
+    public function showProfile(Request $request)
     {
-        $member = $this->users->byIdWithProfileAndYearGroup(Auth::user()->id);
+        $member = $this->users->byIdWithProfileAndYearGroup($request->user()->id);
         $committees = $this->committees->byUserOrderByRecent($member);
         $senates = $member->senates;
 
@@ -51,32 +55,29 @@ class UserController extends BaseController {
             ->with('senates', $senates);
     }
 
-
     /**
      * Show current members
+     * @param Request $request
+     * @return
      */
-    public function showUsers()
+    public function showUsers(Request $request)
     {
-        $search = Input::get('naam', '');
-        $type = User::MEMBER;
+        $this->authorize('users.show');
+        $search = $request->get('naam', '');
         $regions = Config::get('gsvnet.regions');
-        $oudLeden = Input::get('oudleden');
+        $oudLeden = $request->get('oudleden');
 
-        if (!($region = Input::get('regio') and array_key_exists($region, $regions))) {
+        if (!($region = $request->get('regio') and array_key_exists($region, $regions))) {
             $region = null;
         }
 
         // Enable search on yeargroup
-        if (!($yeargroup = Input::get('jaarverband') and $this->yearGroups->exists($yeargroup))) {
+        if (!($yeargroup = $request->get('jaarverband') and $this->yearGroups->exists($yeargroup))) {
             $yeargroup = null;
         }
 
-        if ($oudLeden == '1')
-        {
-            $type = [User::MEMBER, User::FORMERMEMBER];
-        }
-
         $perPage = 50;
+        $type = $oudLeden == '1' ? [User::MEMBER, User::FORMERMEMBER] : User::MEMBER;
         $members = $this->profiles->searchAndPaginate($search, $region, $yeargroup, $type, $perPage);
 
         // Select year groups
@@ -94,6 +95,7 @@ class UserController extends BaseController {
      */
     public function showUser($id)
     {
+        $this->authorize('users.show');
         $member = $this->users->byIdWithProfileAndYearGroup($id);
         $committees = $this->committees->byUserOrderByRecent($member);
         $senates = $member->senates;
@@ -104,9 +106,9 @@ class UserController extends BaseController {
             ->with('senates', $senates);
     }
 
-    public function editProfile()
+    public function editProfile(Request $request)
     {
-        $user = Auth::user();
+        $user = $request->user();
         $profile = $user->profile;
 
         return view('users.edit-profile')->with([
@@ -115,11 +117,11 @@ class UserController extends BaseController {
         ]);
     }
 
-    public function updateProfile()
+    public function updateProfile(Request $request)
     {
-        $user = Auth::user();
+        $user = $request->user();
         $profile = $user->profile;
-        $input = Input::except(['profile_photo_path']);
+        $input = $request->except('profile_photo_path');
 
         // Profile specific input
         $profileInput = [
@@ -139,14 +141,12 @@ class UserController extends BaseController {
             'parent_phone' => $input['profile_parent_phone']
         ];
 
-        if (Input::hasFile('profile_photo_path'))
-        {
-            $profileInput['photo_path'] = Input::file('profile_photo_path');
+        if ($request->hasFile('profile_photo_path')) {
+            $profileInput['photo_path'] = $request->file('profile_photo_path');
         }
 
         // Check if parent address is the same as potential address
-        if (Input::get('parent_same_address', '0') == '1')
-        {
+        if ($request->get('parent_same_address', '0') == '1') {
             $profileInput['parent_address'] = $input['profile_address'];
             $profileInput['parent_town'] = $input['profile_town'];
             $profileInput['parent_zip_code'] = $input['profile_zip_code'];
@@ -167,26 +167,26 @@ class UserController extends BaseController {
             'newProfile' => false
         ];
 
-        if(isset($profile) && Gate::allows('users.edit-profile'))
-        {
+        if (isset($profile) && Gate::allows('users.edit-profile')) {
             $newProfile = $this->profileManager->update($profile->id, $profileInput);
             $eventData['oldProfile'] = $profile;
             $eventData['newProfile'] = $newProfile;
         }
 
-        Event::fire('user.updated', [
+        event('user.updated', [
             'old' => $user,
             'new' => $newUser
         ]);
 
-        Event::fire('profile.updatedByOwner', $eventData);
+        event('profile.updatedByOwner', $eventData);
 
-        // Redirct to the become-member page: it shows the 3rd step [done] as active page
+        // Redirect to the become-member page: it shows the 3rd step [done] as active page
         return redirect()->action('UserController@showProfile');
     }
 
     public function showAddresses()
     {
+        $this->authorize('users.show');
         return view('trivia/locations');
     }
 }
