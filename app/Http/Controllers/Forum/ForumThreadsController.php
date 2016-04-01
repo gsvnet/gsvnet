@@ -13,7 +13,6 @@ use GSVnet\Forum\Threads\ThreadSlug;
 use GSVnet\Permissions\NoPermissionException;
 use GSVnet\Tags\TagRepository;
 use GSVnet\Users\UsersRepository;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
