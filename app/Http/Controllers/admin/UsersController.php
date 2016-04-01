@@ -163,7 +163,7 @@ class UsersController extends AdminBaseController {
             'approved' => true
         ];
 
-        $this->dispatchFrom(RegisterUserCommand::class, new Collection($data));
+        $this->dispatchFromArray(RegisterUserCommand::class, $data);
 
         flash()->success('Gebruiker is succesvol opgeslagen.');
 

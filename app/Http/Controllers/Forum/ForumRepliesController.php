@@ -35,7 +35,7 @@ class ForumRepliesController extends BaseController {
 
         $validator->validate($data);
 
-        $this->dispatchFrom(ReplyToThreadCommand::class, new Collection($data));
+        $this->dispatchFromArray(ReplyToThreadCommand::class, $data);
 
         return redirect()->back();
     }
@@ -61,7 +61,7 @@ class ForumRepliesController extends BaseController {
 
         $validator->validate($data);
 
-        $this->dispatchFrom(EditReplyCommand::class, new Collection($data));
+        $this->dispatchFromArray(EditReplyCommand::class, $data);
 
         return $this->redirectToReply($replyId);
     }
@@ -85,7 +85,7 @@ class ForumRepliesController extends BaseController {
 
         $validator->validate($data);
 
-        $this->dispatchFrom(DeleteReplyCommand::class, new Collection($data));
+        $this->dispatchFromArray(DeleteReplyCommand::class, $data);
 
         return redirect('/forum');
     }

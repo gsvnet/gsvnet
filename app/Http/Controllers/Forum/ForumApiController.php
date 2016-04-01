@@ -70,7 +70,7 @@ class ForumApiController extends BaseController {
             return response()->json($e->getErrors(), 400);
         }
 
-        $this->dispatchFrom(LikeReplyCommand::class, new Collection($data));
+        $this->dispatchFromArray(LikeReplyCommand::class, $data);
 
         return response()->json();
     }
@@ -88,7 +88,7 @@ class ForumApiController extends BaseController {
             return response()->json($e->getErrors(), 400);
         }
 
-        $this->dispatchFrom(DislikeReplyCommand::class, new Collection($data));
+        $this->dispatchFromArray(DislikeReplyCommand::class, $data);
 
         return response()->json();
     }
@@ -106,7 +106,7 @@ class ForumApiController extends BaseController {
             return response()->json($e->getErrors(), 400);
         }
 
-        $this->dispatchFrom(LikeThreadCommand::class, new Collection($data));
+        $this->dispatchFromArray(LikeThreadCommand::class, $data);
 
         return response()->json();
     }
@@ -124,7 +124,7 @@ class ForumApiController extends BaseController {
             return response()->json($e->getErrors(), 400);
         }
 
-        $this->dispatchFrom(DislikeThreadCommand::class, new Collection($data));
+        $this->dispatchFromArray(DislikeThreadCommand::class, $data);
 
         return response()->json();
     }
