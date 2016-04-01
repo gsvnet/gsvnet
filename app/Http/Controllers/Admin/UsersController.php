@@ -172,7 +172,6 @@ class UsersController extends AdminBaseController {
 
     public function show($id)
     {
-        $this->authorize('users.manage');
         $user = $this->users->byId($id);
 
         // Committees or ordinary forum users do not need a fancy profile page

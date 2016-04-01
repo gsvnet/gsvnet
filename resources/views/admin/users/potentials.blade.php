@@ -34,7 +34,7 @@
                     <td class="text-muted">{{ $user->created_at }}</td>
                     <td>
 
-                        @if (! $user->approved)
+                        @if (! $user->approved && Gate::allows('users.manage'))
                         {!!
                             Former::inline_open()
                               ->action(action('Admin\UsersController@activate', $user->id))
@@ -47,7 +47,7 @@
                         !!}
                         @endif
 
-                        @if ($user->isPotential())
+                        @if ($user->isPotential() && Gate::allows('users.manage'))
                         {!!
                             Former::inline_open()
                               ->action(action('Admin\UsersController@accept', $user->id))

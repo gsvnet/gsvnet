@@ -2,58 +2,76 @@
 
 @section('content')
     <div class="page-header">
-        <h1><a href="{{ URL::action('MemberController@showPhoto', $profile->id) }}" title="Grote foto"><img src="{!! $profile->present()->xsmallProfileImage !!}" width="102" height="102" alt="Profielfoto"/></a> {{ $user->present()->fullName }}</h1>
+        <h1><a href="{{ action('MemberController@showPhoto', $profile->id) }}" title="Grote foto"><img src="{!! $profile->present()->xsmallProfileImage !!}" width="102" height="102" alt="Profielfoto"/></a> {{ $user->present()->fullName }}</h1>
     </div>
 
     <div class="row">
         <div class="col-xs-12">
             <h2>Profiel</h2>
             <ul class="nav nav-pills">
+                @can('user.manage.name', $user)
                 <li role="presentation">
-                    <a href="{{ URL::action('Admin\MemberController@editName', $user->id) }}">
+                    <a href="{{ action('Admin\MemberController@editName', $user->id) }}">
                         <i class="glyphicon glyphicon-user"></i> Naam
                     </a>
                 </li>
+                @endcan
+                @can('user.manage.address', $user)
                 <li role="presentation">
-                    <a href="{{ URL::action('Admin\MemberController@editContactDetails', $user->id) }}">
+                    <a href="{{ action('Admin\MemberController@editContactDetails', $user->id) }}">
                         <i class="glyphicon glyphicon-home"></i> Contactgegevens
                     </a>
                 </li>
+                @endcan
+                @can('user.manage.photo', $user)
                 <li role="presentation">
-                    <a href="{{ URL::action('Admin\MemberController@editPhoto', $user->id) }}">
+                    <a href="{{ action('Admin\MemberController@editPhoto', $user->id) }}">
                         <i class="fa fa-camera"></i> Foto
                     </a>
                 </li>
+                @endcan
+                @can('user.manage.gender', $user)
                 <li role="presentation">
-                    <a href="{{ URL::action('Admin\MemberController@editGender', $user->id) }}">
+                    <a href="{{ action('Admin\MemberController@editGender', $user->id) }}">
                         <i class="fa fa-transgender"></i> Geslacht
                     </a>
                 </li>
+                @endcan
+                @can('user.manage.birthday', $user)
                 <li role="presentation">
-                    <a href="{{ URL::action('Admin\MemberController@editBirthDay', $user->id) }}">
+                    <a href="{{ action('Admin\MemberController@editBirthDay', $user->id) }}">
                         <i class="glyphicon glyphicon-calendar"></i> Geboortedatum
                     </a>
                 </li>
+                @endcan
+                @can('user.manage.email', $user)
                 <li role="presentation">
-                    <a href="{{ URL::action('Admin\MemberController@editEmail', $user->id) }}">
+                    <a href="{{ action('Admin\MemberController@editEmail', $user->id) }}">
                         <i class="glyphicon glyphicon-envelope"></i> Emailadres
                     </a>
                 </li>
+                @endcan
+                @can('user.manage.business', $user)
                 <li role="presentation">
-                    <a href="{{ URL::action('Admin\MemberController@editBusiness', $user->id) }}">
+                    <a href="{{ action('Admin\MemberController@editBusiness', $user->id) }}">
                         <i class="glyphicon glyphicon-briefcase"></i> Werkgegevens
                     </a>
                 </li>
+                @endcan
+                @can('user.manage.study', $user)
                 <li role="presentation">
                     <a href="#">
                         <i class="fa fa-university"></i> Studie
                     </a>
                 </li>
+                @endcan
+                @can('user.manage.parents', $user)
                 <li role="presentation">
-                    <a href="{{ URL::action('Admin\MemberController@editParentContactDetails', $user->id) }}">
+                    <a href="{{ action('Admin\MemberController@editParentContactDetails', $user->id) }}">
                         <i class="fa fa-users"></i> Ouders
                     </a>
                 </li>
+                @endcan
             </ul>
         </div>
     </div>
@@ -61,26 +79,34 @@
         <div class="col-xs-12">
             <h2>GSV</h2>
             <ul class="nav nav-pills">
+                @can('users.manage')
                 <li role="presentation">
-                    <a href="{{ URL::action('Admin\FamilyController@index', $user->id) }}">
+                    <a href="{{ action('Admin\FamilyController@index', $user->id) }}">
                         <i class="fa fa-tree"></i> GSV-stamboom
                     </a>
                 </li>
+                @endcan
+                @can('user.manage.year', $user)
                 <li role="presentation">
-                    <a href="{{ URL::action('Admin\MemberController@editYearGroup', $user->id) }}">
+                    <a href="{{ action('Admin\MemberController@editYearGroup', $user->id) }}">
                         <i class="fa fa-flag"></i> Jaarverband
                     </a>
                 </li>
+                @endcan
+                @can('users.manage')
                 <li role="presentation">
                     <a href="#">
                         <i class="fa fa-sitemap"></i> Regio
                     </a>
                 </li>
+                @endcan
+                @can('users.manage', $user)
                 <li role="presentation">
                     <a href="#">
                         <i class="fa fa-eur"></i> Reüniststatus
                     </a>
                 </li>
+                @endcan
             </ul>
         </div>
     </div>

@@ -37,28 +37,68 @@ class AuthServiceProvider extends ServiceProvider
         $this->cache = $cache;
         $this->permissions = $config->get('permissions.general') + $config->get('permissions.entity-specific');
 
-        foreach($config->get('permissions.general') as $permission => $criteria) {
-            $gate->define($permission, function(User $user) use ($permission) {
+        foreach ($config->get('permissions.general') as $permission => $criteria) {
+            $gate->define($permission, function (User $user) use ($permission) {
                 return $this->has($user, $permission);
             });
         }
 
         // Register entity-specific permissions here
-
-        $gate->define('thread.manage', function(User $user, Thread $thread) {
+        $gate->define('thread.manage', function (User $user, Thread $thread) {
             return $user->id == $thread->author_id || $this->has($user, 'thread.manage');
         });
 
-        $gate->define('thread.like', function(User $user, Thread $thread) {
+        $gate->define('thread.like', function (User $user, Thread $thread) {
             return $user->id != $thread->author_id || $this->has($user, 'thread.like');
         });
 
-        $gate->define('reply.manage', function(User $user, Reply $reply) {
+        $gate->define('reply.manage', function (User $user, Reply $reply) {
             return $user->id == $reply->author_id || $this->has($user, 'reply.manage');
         });
 
-        $gate->define('reply.like', function(User $user, Reply $reply) {
+        $gate->define('reply.like', function (User $user, Reply $reply) {
             return $user->id != $reply->author_id || $this->has($user, 'reply.like');
+        });
+
+        // User details
+        $gate->define('user.manage.address', function (User $user, User $member) {
+            return $user->id == $member->id || $this->has($user, 'user.manage.address');
+        });
+
+        $gate->define('user.manage.birthday', function (User $user, User $member) {
+            return $user->id == $member->id || $this->has($user, 'user.manage.birthday');
+        });
+
+        $gate->define('user.manage.business', function (User $user, User $member) {
+            return $user->id == $member->id || $this->has($user, 'user.manage.business');
+        });
+
+        $gate->define('user.manage.email', function (User $user, User $member) {
+            return $user->id == $member->id || $this->has($user, 'user.manage.email');
+        });
+
+        $gate->define('user.manage.gender', function (User $user, User $member) {
+            return $user->id == $member->id || $this->has($user, 'user.manage.gender');
+        });
+        
+        $gate->define('user.manage.name', function (User $user, User $member) {
+            return $user->id == $member->id || $this->has($user, 'user.manage.name');
+        });
+
+        $gate->define('user.manage.parents', function (User $user, User $member) {
+            return $user->id == $member->id || $this->has($user, 'user.manage.parents');
+        });
+
+        $gate->define('user.manage.password', function (User $user, User $member) {
+            return $user->id == $member->id || $this->has($user, 'user.manage.password');
+        });
+
+        $gate->define('user.manage.phone', function (User $user, User $member) {
+            return $user->id == $member->id || $this->has($user, 'user.manage.phone');
+        });
+
+        $gate->define('user.manage.photo', function (User $user, User $member) {
+            return $user->id == $member->id || $this->has($user, 'user.manage.photo');
         });
     }
 

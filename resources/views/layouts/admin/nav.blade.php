@@ -12,19 +12,21 @@
 <h4>Ledenadministratie</h4>
 <div class="list-group">
     @can('users.show')
-        <a href="{{ URL::action('Admin\UsersController@showMembers') }}" class="list-group-item {{ Request::segment(2) == 'gebruikers' && Request::segment(3) == 'leden' ? 'active' : '' }}">
+        <a href="{{ action('Admin\UsersController@showMembers') }}" class="list-group-item {{ Request::segment(2) == 'gebruikers' && Request::segment(3) == 'leden' ? 'active' : '' }}">
             <i class='glyphicon glyphicon-user'></i> Leden
         </a>
 
-        <a href="{{ URL::action('Admin\UsersController@showFormerMembers') }}" class="list-group-item {{ Request::segment(2) == 'gebruikers' && Request::segment(3) == 'oud-leden' ? 'active' : '' }}">
+        <a href="{{ action('Admin\UsersController@showFormerMembers') }}" class="list-group-item {{ Request::segment(2) == 'gebruikers' && Request::segment(3) == 'oud-leden' ? 'active' : '' }}">
             <i class='glyphicon glyphicon-user'></i> Oud-leden
         </a>
 
-        <a href="{{ URL::action('Admin\UsersController@showPotentials') }}" class="list-group-item {{ Request::segment(2) == 'gebruikers' && Request::segment(3) == 'novieten' ? 'active' : '' }}">
+        <a href="{{ action('Admin\UsersController@showPotentials') }}" class="list-group-item {{ Request::segment(2) == 'gebruikers' && Request::segment(3) == 'novieten' ? 'active' : '' }}">
             <i class='glyphicon glyphicon-user'></i> Novieten
         </a>
+    @endcan
 
-        <a href="{{ URL::action('Admin\UsersController@create') }}" class="list-group-item {{ Request::segment(2) == 'gebruikers' && Request::segment(3) == 'create' ? 'active' : '' }}">
+    @can('users.manage')
+        <a href="{{ action('Admin\UsersController@create') }}" class="list-group-item {{ Request::segment(2) == 'gebruikers' && Request::segment(3) == 'create' ? 'active' : '' }}">
             <i class="fa fa-plus"></i> Gebruikers &amp; leden registreren
         </a>
     @endcan
@@ -34,7 +36,7 @@
 <div class="list-group">
 
     @can('users.show')
-    <a href="{{ URL::action('Admin\UsersController@showGuests') }}" class="list-group-item {{ Request::segment(3) == 'gasten' ? 'active' : '' }}">
+    <a href="{{ action('Admin\UsersController@showGuests') }}" class="list-group-item {{ Request::segment(3) == 'gasten' ? 'active' : '' }}">
         <i class='glyphicon glyphicon-user'></i> Forum-gebruikers
     </a>
     @endcan
