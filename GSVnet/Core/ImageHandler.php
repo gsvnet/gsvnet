@@ -95,7 +95,6 @@ class ImageHandler
         if (! File::isFile($fullPath))
         {
             throw new ImageFileNotFoundException;
-            return 'error... hier moet nog iets goeds komen';
         }
 
         // Return the full path if we don't need a certain dimension
