@@ -9,52 +9,47 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
-class Handler extends ExceptionHandler {
+class Handler extends ExceptionHandler
+{
 
-	/**
-	 * A list of the exception types that should not be reported.
-	 *
-	 * @var array
-	 */
-	protected $dontReport = [
-		AuthorizationException::class,
-		HttpException::class,
-		ModelNotFoundException::class,
-		ValidationException::class,
-	];
+    /**
+     * A list of the exception types that should not be reported.
+     *
+     * @var array
+     */
+    protected $dontReport = [
+        AuthorizationException::class,
+        HttpException::class,
+        ModelNotFoundException::class,
+        ValidationException::class,
+    ];
 
-	/**
-	 * Report or log an exception.
-	 *
-	 * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
-	 *
-	 * @param  \Exception  $e
-	 * @return void
-	 */
-	public function report(Exception $e)
-	{
-		parent::report($e);
-	}
-
-	/**
-	 * Render an exception into an HTTP response.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \Exception  $e
-	 * @return \Illuminate\Http\Response
-	 */
-	public function render($request, Exception $e)
+    /**
+     * Report or log an exception.
+     *
+     * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
+     *
+     * @param  \Exception $e
+     * @return void
+     */
+    public function report(Exception $e)
     {
-        switch (get_class($e))
-        {
-            case NoPermissionException::class:
-                $data = [
-                    'title' => 'Helaas, u heeft niet voldoende rechten om deze pagina te bekijken.',
-                    'description' => '',
-                    'keywords' => ''
-                ];
+        parent::report($e);
+    }
 
-                return response(view('errors.unauthorized')->with($data), 401);
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception $e
+     * @return \Illuminate\Http\Response
+     */
+    public function render($request, Exception $e)
+    {
+        switch (get_class($e)) {
+            case AuthorizationException::class:
+            case NoPermissionException::class:
+                abort(404);
                 break;
             case UserAccountNotApprovedException::class:
                 $data = [
