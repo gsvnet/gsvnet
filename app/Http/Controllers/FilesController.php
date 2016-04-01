@@ -3,6 +3,7 @@
 use GSVnet\Files\FilesRepository;
 use GSVnet\Files\Labels\LabelsRepository;
 use GSVnet\Files\FileHandler;
+use Illuminate\Http\Request;
 
 class FilesController extends BaseController {
 

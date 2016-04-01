@@ -15,6 +15,7 @@ class ApiController extends BaseController {
     {
         $this->profiles = $profiles;
         $this->yearGroups = $yearGroups;
+        parent::__construct();
     }
 
     public function members()

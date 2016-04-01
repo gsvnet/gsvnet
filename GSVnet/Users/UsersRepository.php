@@ -11,6 +11,10 @@ class UsersRepository extends BaseRepository {
         $this->model = $model;
     }
 
+    /**
+     * @param $id
+     * @return User
+     */
     public function byId($id)
     {
         return User::findOrFail($id);
