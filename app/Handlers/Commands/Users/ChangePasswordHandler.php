@@ -1,7 +1,7 @@
-<?php namespace GSV\Handlers\Commands\Members;
+<?php namespace GSV\Handlers\Commands\Users;
 
-use GSV\Commands\Members\ChangePassword;
-use GSV\Events\Members\PasswordWasSet;
+use GSV\Commands\Users\ChangePassword;
+use GSV\Events\Users\PasswordWasSet;
 use GSVnet\Users\UsersRepository;
 
 class ChangePasswordHandler {
@@ -12,7 +12,7 @@ class ChangePasswordHandler {
 
     public function handle(ChangePassword $command)
     {
-        $command->user->password = $command->password->getPassword();
+        $command->user->password = $command->password->getEncryptedPassword();
         $this->users->save($command->user);
 
         event(new PasswordWasSet($command->user));

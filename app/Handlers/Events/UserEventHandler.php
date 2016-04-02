@@ -3,13 +3,15 @@
 use GSV\Events\Members\AddressWasChanged;
 use GSV\Events\Members\BirthDayWasChanged;
 use GSV\Events\Members\BusinessWasChanged;
-use GSV\Events\Members\EmailWasChanged;
+use GSV\Events\Members\MemberEmailWasChanged;
 use GSV\Events\Members\GenderWasChanged;
 use GSV\Events\Members\NameWasChanged;
 use GSV\Events\Members\ParentDetailsWereChanged;
 use GSV\Events\Members\PeriodOfMembershipWasChanged;
 use GSV\Events\Members\PhoneNumberWasChanged;
 use GSV\Events\Members\ProfilePictureWasChanged;
+use GSV\Events\Members\RegionWasChanged;
+use GSV\Events\Members\StudyWasChanged;
 use GSV\Events\Members\YearGroupWasChanged;
 use GSV\Events\Potentials\PotentialSignedUp;
 use GSV\Events\Users\UserWasRegistered;
@@ -23,7 +25,7 @@ class UserEventHandler {
         $events->listen(PotentialSignedUp::class, 'GSV\Handlers\Events\Potentials\PotentialMailer@sendWelcomeMail');
 
         $events->listen([
-            EmailWasChanged::class,
+            MemberEmailWasChanged::class,
             NameWasChanged::class,
             YearGroupWasChanged::class,
             GenderWasChanged::class,
@@ -33,7 +35,9 @@ class UserEventHandler {
             ParentDetailsWereChanged::class,
             PhoneNumberWasChanged::class,
             ProfilePictureWasChanged::class,
-            PeriodOfMembershipWasChanged::class
+            PeriodOfMembershipWasChanged::class,
+            StudyWasChanged::class,
+            RegionWasChanged::class
         ], 'GSV\Handlers\Events\Members\ProfileUpdates@changedProfile');
 
         $events->listen('user.registered', 'GSVnet\Users\UserMailer@registered');

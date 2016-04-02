@@ -35,6 +35,10 @@
                         </tbody>
                     </table>
                 </div>
+
+                <div>
+                    {!! $changes->render() !!}
+                </div>
             @endif
         </div>
     </div>

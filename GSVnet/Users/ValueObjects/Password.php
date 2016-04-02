@@ -12,13 +12,13 @@ class Password extends ValueObject {
 
     public function __construct($password)
     {
-        $this->password = bcrypt($password);
+        $this->password = $password;
 
         $this->validate(['password' => $password]);
     }
 
-    public function getPassword()
+    public function getEncryptedPassword()
     {
-        return $this->password;
+        return bcrypt($this->password);
     }
 }

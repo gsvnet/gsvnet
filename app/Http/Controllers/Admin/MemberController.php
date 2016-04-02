@@ -1,22 +1,26 @@
 <?php namespace Admin;
 
+use GSV\Commands\Members\ChangeAlumniStatus;
 use GSV\Commands\Members\ChangePeriodOfMembership;
 use GSV\Commands\Members\ChangeAddress;
 use GSV\Commands\Members\ChangeBirthDay;
 use GSV\Commands\Members\ChangeBusiness;
-use GSV\Commands\Members\ChangeEmail;
 use GSV\Commands\Members\ChangeGender;
 use GSV\Commands\Members\ChangeName;
 use GSV\Commands\Members\ChangeParentsDetails;
-use GSV\Commands\Members\ChangePassword;
 use GSV\Commands\Members\ChangePhone;
+use GSV\Commands\Members\ChangeRegion;
+use GSV\Commands\Members\ChangeStudy;
 use GSV\Commands\Members\ChangeYearGroup;
+use GSV\Commands\Users\ChangeEmail;
+use GSV\Commands\Users\ChangePassword;
 use GSV\Commands\Users\SetProfilePictureCommand;
 use GSVnet\Users\ProfileActions\ProfileActionsRepository;
 use GSVnet\Users\UsersRepository;
 use GSVnet\Users\ValueObjects\Gender;
 use GSVnet\Users\YearGroupRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 class MemberController extends AdminBaseController
 {
@@ -224,6 +228,25 @@ class MemberController extends AdminBaseController
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
+    public function editStudy($id)
+    {
+        $user = $this->users->memberOrFormerByIdWithProfile($id);
+        $this->authorize('user.manage.study', $user);
+
+        return view('admin.users.update.study')->with(compact('user'));
+    }
+
+    public function updateStudy(Request $request, $id)
+    {
+        $member = $this->users->memberOrFormerByIdWithProfile($id);
+        $this->authorize('user.manage.study', $member);
+
+        $this->dispatch(ChangeStudy::fromForm($request, $member));
+
+        flash()->success("Studie van {$member->present()->fullName()} succesvol aangepast");
+        return redirect()->action('Admin\UsersController@show', $id);
+    }
+
     public function editMembershipPeriod($id)
     {
         $this->authorize('users.manage');
@@ -240,6 +263,45 @@ class MemberController extends AdminBaseController
         $this->dispatch(ChangePeriodOfMembership::fromForm($request, $member));
 
         flash()->success("Periode van lidmaatschap {$member->present()->fullName()} succesvol aangepast");
+        return redirect()->action('Admin\UsersController@show', $id);
+    }
+
+    public function editRegion($id)
+    {
+        $this->authorize('users.manage');
+
+        $user = $this->users->memberOrFormerByIdWithProfile($id);
+        $regions = Config::get('gsvnet.regions');
+        return view('admin.users.update.region')->with(compact('user', 'regions'));
+    }
+
+    public function updateRegion(Request $request, $id)
+    {
+        $this->authorize('users.manage');
+
+        $member = $this->users->memberOrFormerByIdWithProfile($id);
+        $this->dispatch(ChangeRegion::fromForm($request, $member));
+
+        flash()->success("Regio van {$member->present()->fullName()} succesvol aangepast");
+        return redirect()->action('Admin\UsersController@show', $id);
+    }
+
+    public function editAlumniStatus($id)
+    {
+        $this->authorize('users.manage');
+
+        $user = $this->users->memberOrFormerByIdWithProfile($id);
+        return view('admin.users.update.alumni')->with(compact('user'));
+    }
+
+    public function updateAlumniStatus(Request $request, $id)
+    {
+        $this->authorize('users.manage');
+
+        $member = $this->users->memberOrFormerByIdWithProfile($id);
+        $this->dispatch(ChangeAlumniStatus::fromForm($request, $member));
+
+        flash()->success("Reüniststatus van {$member->present()->fullName()} succesvol gewijzigd");
         return redirect()->action('Admin\UsersController@show', $id);
     }
 

@@ -14,7 +14,6 @@ class NewsletterManager {
         $this->userTransformer = $userTransformer;
     }
 
-
     public function userUpdated(User $old, User $new)
     {
         if($old->type == $new->type && $old->email == $new->email)

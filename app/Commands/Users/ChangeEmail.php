@@ -1,4 +1,4 @@
-<?php namespace GSV\Commands\Members;
+<?php namespace GSV\Commands\Users;
 
 use GSV\Commands\Command;
 use GSVnet\Users\User;

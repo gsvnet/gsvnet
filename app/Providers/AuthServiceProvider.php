@@ -80,7 +80,7 @@ class AuthServiceProvider extends ServiceProvider
         $gate->define('user.manage.gender', function (User $user, User $member) {
             return $user->id == $member->id || $this->has($user, 'user.manage.gender');
         });
-        
+
         $gate->define('user.manage.name', function (User $user, User $member) {
             return $user->id == $member->id || $this->has($user, 'user.manage.name');
         });
@@ -99,6 +99,10 @@ class AuthServiceProvider extends ServiceProvider
 
         $gate->define('user.manage.photo', function (User $user, User $member) {
             return $user->id == $member->id || $this->has($user, 'user.manage.photo');
+        });
+
+        $gate->define('user.manage.study', function (User $user, User $member) {
+            return $user->id == $member->id || $this->has($user, 'user.manage.study');
         });
     }
 

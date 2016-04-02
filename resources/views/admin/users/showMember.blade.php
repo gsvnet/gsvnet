@@ -44,6 +44,27 @@
                     </a>
                 </li>
                 @endcan
+                @can('user.manage.business', $user)
+                <li role="presentation">
+                    <a href="{{ action('Admin\MemberController@editBusiness', $user->id) }}">
+                        <i class="glyphicon glyphicon-briefcase"></i> Werkgegevens
+                    </a>
+                </li>
+                @endcan
+                @can('user.manage.study', $user)
+                <li role="presentation">
+                    <a href="{{ action('Admin\MemberController@editStudy', $user->id) }}">
+                        <i class="fa fa-university"></i> Studie
+                    </a>
+                </li>
+                @endcan
+                @can('user.manage.parents', $user)
+                <li role="presentation">
+                    <a href="{{ action('Admin\MemberController@editParentContactDetails', $user->id) }}">
+                        <i class="fa fa-users"></i> Ouders
+                    </a>
+                </li>
+                @endcan
                 @can('user.manage.email', $user)
                 <li role="presentation">
                     <a href="{{ action('Admin\MemberController@editEmail', $user->id) }}">
@@ -55,27 +76,6 @@
                 <li role="presentation">
                     <a href="{{ action('Admin\MemberController@editPassword', $user->id) }}">
                         <i class="fa fa-unlock-alt"></i> Wachtwoord
-                    </a>
-                </li>
-                @endcan
-                @can('user.manage.business', $user)
-                <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editBusiness', $user->id) }}">
-                        <i class="glyphicon glyphicon-briefcase"></i> Werkgegevens
-                    </a>
-                </li>
-                @endcan
-                @can('user.manage.study', $user)
-                <li role="presentation">
-                    <a href="#">
-                        <i class="fa fa-university"></i> Studie
-                    </a>
-                </li>
-                @endcan
-                @can('user.manage.parents', $user)
-                <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editParentContactDetails', $user->id) }}">
-                        <i class="fa fa-users"></i> Ouders
                     </a>
                 </li>
                 @endcan
@@ -109,14 +109,14 @@
                 @endcan
                 @can('users.manage')
                 <li role="presentation">
-                    <a href="#">
+                    <a href="{{ action('Admin\MemberController@editRegion', $user->id) }}">
                         <i class="fa fa-sitemap"></i> Regio
                     </a>
                 </li>
                 @endcan
                 @can('users.manage', $user)
                 <li role="presentation">
-                    <a href="#">
+                    <a href="{{ action('Admin\MemberController@editAlumniStatus', $user->id) }}">
                         <i class="fa fa-eur"></i> Reüniststatus
                     </a>
                 </li>

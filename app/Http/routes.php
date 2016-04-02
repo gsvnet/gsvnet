@@ -137,6 +137,12 @@ Route::group([
     Route::put('leden/{user}/foto',          'MemberController@updatePhoto');
     Route::get('leden/{user}/ouders',        'MemberController@editParentContactDetails');
     Route::put('leden/{user}/ouders',        'MemberController@updateParentContactDetails');
+    Route::get('leden/{user}/studie',        'MemberController@editStudy');
+    Route::put('leden/{user}/studie',        'MemberController@updateStudy');
+    Route::get('leden/{user}/regio',         'MemberController@editRegion');
+    Route::put('leden/{user}/regio',         'MemberController@updateRegion');
+    Route::get('leden/{user}/reunistschap',  'MemberController@editAlumniStatus');
+    Route::put('leden/{user}/reunistschap',  'MemberController@updateAlumniStatus');
     Route::get('leden/{user}/tijd-van-lidmaatschap', 'MemberController@editMembershipPeriod');
     Route::put('leden/{user}/tijd-van-lidmaatschap', 'MemberController@updateMembershipPeriod');
     

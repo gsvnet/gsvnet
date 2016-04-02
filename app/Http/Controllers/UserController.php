@@ -1,7 +1,9 @@
 <?php
 
+use GSV\Commands\Users\ChangeEmail;
+use GSV\Commands\Users\ChangePassword;
+use GSVnet\Users\EmailAndPasswordValidator ;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use GSVnet\Committees\CommitteesRepository;
 use GSVnet\Users\Profiles\ProfilesRepository;
 use GSVnet\Users\User;
