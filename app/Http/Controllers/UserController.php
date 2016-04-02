@@ -1,7 +1,9 @@
 <?php
 
+use GSV\Commands\Users\ChangeEmail;
+use GSV\Commands\Users\ChangePassword;
+use GSVnet\Users\EmailAndPasswordValidator ;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use GSVnet\Committees\CommitteesRepository;
 use GSVnet\Users\Profiles\ProfilesRepository;
 use GSVnet\Users\User;
@@ -108,79 +110,25 @@ class UserController extends BaseController
 
     public function editProfile(Request $request)
     {
-        $user = $request->user();
-        $profile = $user->profile;
-
         return view('users.edit-profile')->with([
-            'user' => $user,
-            'profile' => $profile
+            'user' => $request->user()
         ]);
     }
 
-    public function updateProfile(Request $request)
+    public function updateProfile(Request $request, EmailAndPasswordValidator $validator)
     {
+        $data = $request->only('email', 'password', 'password_confirmation');
         $user = $request->user();
-        $profile = $user->profile;
-        $input = $request->except('profile_photo_path');
+        $validator->forUser($user)->validate($data);
 
-        // Profile specific input
-        $profileInput = [
-            'church' => $input['profile_church'],
-            'study' => $input['profile_study'],
-            'initials' => $input['profile_initials'],
-            'student_number' => $input['profile_student_number'],
-            'address' => $input['profile_address'],
-            'zip_code' => $input['profile_zip_code'],
-            'town' => $input['profile_town'],
-            'phone' => $input['profile_phone'],
-            'gender' => $input['profile_gender'],
-            'birthdate' => $input['profile_birthdate'],
-            'parent_address' => $input['profile_parent_address'],
-            'parent_zip_code' => $input['profile_parent_zip_code'],
-            'parent_town' => $input['profile_parent_town'],
-            'parent_phone' => $input['profile_parent_phone']
-        ];
-
-        if ($request->hasFile('profile_photo_path')) {
-            $profileInput['photo_path'] = $request->file('profile_photo_path');
+        if ($user->email != $data['email']) {
+            $this->dispatch(ChangeEmail::fromForm($request, $user));
+        }
+        
+        if (! empty($data['password'])) {
+            $this->dispatch(ChangePassword::fromForm($request, $user));
         }
 
-        // Check if parent address is the same as potential address
-        if ($request->get('parent_same_address', '0') == '1') {
-            $profileInput['parent_address'] = $input['profile_address'];
-            $profileInput['parent_town'] = $input['profile_town'];
-            $profileInput['parent_zip_code'] = $input['profile_zip_code'];
-        }
-
-        // User specific input
-        $userInput = [
-            'email' => $input['email']
-        ];
-
-        // Create the profile and attach it to the user
-        $newUser = $this->userManager->update($user->id, $userInput);
-
-        $eventData = [
-            'oldUser' => $user,
-            'newUser' => $newUser,
-            'oldProfile' => false,
-            'newProfile' => false
-        ];
-
-        if (isset($profile) && Gate::allows('users.edit-profile')) {
-            $newProfile = $this->profileManager->update($profile->id, $profileInput);
-            $eventData['oldProfile'] = $profile;
-            $eventData['newProfile'] = $newProfile;
-        }
-
-        event('user.updated', [
-            'old' => $user,
-            'new' => $newUser
-        ]);
-
-        event('profile.updatedByOwner', $eventData);
-
-        // Redirect to the become-member page: it shows the 3rd step [done] as active page
         return redirect()->action('UserController@showProfile');
     }
 

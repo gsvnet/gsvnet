@@ -23,7 +23,7 @@ class SignUpAsPotentialCommandHandler {
             'middlename' => $command->middlename,
             'lastname' => $command->lastname,
             'email' => $command->email,
-            'password' => $command->password,
+            'password' => bcrypt($command->password),
             'type' => User::POTENTIAL
         ]);
 

@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder {
         'forum_threads',
         'labels',
         'likeable_likes',
-        'migrations',
         'password_reminders',
         'photos',
+        'profile_actions',
         'senates',
         'tagged_items',
         'tags',
@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder {
         'SenatesTableSeeder',
         'TagSeeder',
         'ForumTableSeeder',
-        'AdminUserSeeder'
+        'AdminUserSeeder',
     ];
 
     /**
