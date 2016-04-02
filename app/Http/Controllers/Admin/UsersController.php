@@ -233,10 +233,10 @@ class UsersController extends AdminBaseController {
         // Set some specific info for former members
         if($user->isFormerMember())
         {
-            $input['reunist'] = Input::get('reunist', '0') === '1';
-            $input['resignation_date'] = Input::get('resignation_date');
-            $input['company'] = Input::get('company');
-            $input['profession'] = Input::get('profession');
+            $input['reunist'] = $request->get('reunist', '0') === '1';
+            $input['resignation_date'] = $request->get('resignation_date');
+            $input['company'] = $request->get('company');
+            $input['profession'] = $request->get('profession');
         }
 
         // Natural parents
