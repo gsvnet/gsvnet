@@ -33,15 +33,6 @@ class UserManager
         return $user;
     }
 
-    public function update($id, array $input)
-    {
-        $this->updateValidator->forUser($id);
-        $this->updateValidator->validate($input);
-        // Save new properties
-        $user = $this->users->update($id, $input);
-        return $user;
-    }
-
     /**
     *
     */

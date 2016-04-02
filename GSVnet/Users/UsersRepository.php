@@ -146,32 +146,16 @@ class UsersRepository extends BaseRepository {
             'lastname'     => $input['register-lastname'],
             'email'        => $input['register-email'],
             'username'     => $input['register-username'],
-            'password'     => $input['register-password'],
+            'password'     => bcrypt($input['register-password']),
             'type'         => $input['type'],
         ));
-    }
-
-    /**
-    * Update user
-    *
-    * @param int $id
-    * @param array $input
-    * @return User
-    */
-    public function update($id, array $input)
-    {
-        $user = $this->byId($id);
-        $user->update($input);
-        $user->save();
-
-        return $user;
     }
 
     /**
     * Delete User
     *
     * @param int $id
-    * @return Committe
+    * @return User
     * @TODO: delete all user members references
     */
     public function delete($id)

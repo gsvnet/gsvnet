@@ -184,56 +184,6 @@ class UsersController extends AdminBaseController {
         return view('admin.users.showMember')->with(compact('user', 'profile', 'committees'));
     }
 
-    public function edit($id)
-    {
-        $this->authorize('users.manage');
-        $user = $this->users->byId($id);
-        $yearGroups = $this->yearGroups->all();
-        $profile = $user->profile;
-
-        return view('admin.users.edit')->with([
-            'user' => $user,
-            'profile' => $profile,
-            'yearGroups' => $yearGroups
-        ]);
-    }
-
-    /**
-     * @param $id
-     * @return mixed
-     * @throws \GSVnet\Core\Exceptions\ValidationException
-     * @throws \Laracasts\Presenter\Exceptions\PresenterException
-     */
-    public function update(Request $request, $id)
-    {
-        $this->authorize('users.manage');
-        $oldUser = $this->users->byId($id);
-
-        $userData = $request->only('type', 'username', 'firstname', 'middlename', 'lastname', 'email');
-        
-        // Check if password is to be set
-        $password = $request->get('password', '');
-
-        if(!empty($password))
-        {
-            $userData['password'] = $password;
-            $userData['password_confirmation'] = Input::get('password_confirmation', '');
-        }
-
-        $this->validator->validate($userData);
-
-        $user = $this->users->update($id, $userData);
-
-        event('user.updated', [
-            'old' => $oldUser,
-            'new' => $user
-        ]);
-
-        flash()->success("Account van {$user->present()->fullName} is succesvol bewerkt.");
-
-        return redirect()->action('Admin\UsersController@show', $id);
-    }
-
     public function destroy($id)
     {
         $this->authorize('users.manage');
