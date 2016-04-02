@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder {
         'SenatesTableSeeder',
         'TagSeeder',
         'ForumTableSeeder',
-        'AdminUserSeeder'
+        'AdminUserSeeder',
     ];
 
     /**

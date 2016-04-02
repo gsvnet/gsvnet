@@ -12,6 +12,9 @@
 <h4>Ledenadministratie</h4>
 <div class="list-group">
     @can('users.show')
+        <a href="{{ action('Admin\MemberController@latestUpdates') }}" class="list-group-item {{ Request::segment(2) == 'leden' && Request::segment(3) == 'updates' ? 'active' : '' }}">
+            <i class="fa fa-rss"></i> Laatste updates
+        </a>
         <a href="{{ action('Admin\UsersController@showMembers') }}" class="list-group-item {{ Request::segment(2) == 'gebruikers' && Request::segment(3) == 'leden' ? 'active' : '' }}">
             <i class='glyphicon glyphicon-user'></i> Leden
         </a>
