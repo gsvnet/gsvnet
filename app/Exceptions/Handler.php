@@ -23,6 +23,9 @@ class Handler extends ExceptionHandler
         HttpException::class,
         ModelNotFoundException::class,
         ValidationException::class,
+        UserAccountNotApprovedException::class,
+        NoPermissionException::class,
+        ValueObjectValidationException::class,
     ];
 
     /**
@@ -53,13 +56,7 @@ class Handler extends ExceptionHandler
                 abort(404);
                 break;
             case UserAccountNotApprovedException::class:
-                $data = [
-                    'title' => 'Helaas, u heeft niet voldoende rechten om deze pagina te bekijken.',
-                    'description' => '',
-                    'keywords' => ''
-                ];
-
-                return response(view('errors.unauthorized')->with($data), 401);
+                return response(view('errors.unauthorized'), 401);
                 break;
             case ValidationException::class:
             case ValueObjectValidationException::class:
