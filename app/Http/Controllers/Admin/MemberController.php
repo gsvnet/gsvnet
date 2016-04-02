@@ -11,6 +11,7 @@ use GSV\Commands\Members\ChangePassword;
 use GSV\Commands\Members\ChangePhone;
 use GSV\Commands\Members\ChangeYearGroup;
 use GSV\Commands\Users\SetProfilePictureCommand;
+use GSVnet\Users\ProfileActions\ProfileActionsRepository;
 use GSVnet\Users\UsersRepository;
 use GSVnet\Users\ValueObjects\Gender;
 use GSVnet\Users\YearGroupRepository;
@@ -23,16 +24,28 @@ class MemberController extends AdminBaseController
      * @var YearGroupRepository
      */
     private $yearGroups;
+    /**
+     * @var ProfileActionsRepository
+     */
+    private $actions;
 
     /**
+     * @param ProfileActionsRepository $actions
      * @param UsersRepository $users
      * @param YearGroupRepository $yearGroups
      */
-    public function __construct(UsersRepository $users, YearGroupRepository $yearGroups)
+    public function __construct(ProfileActionsRepository $actions, UsersRepository $users, YearGroupRepository $yearGroups)
     {
+        parent::__construct();
         $this->users = $users;
         $this->yearGroups = $yearGroups;
-        parent::__construct();
+        $this->actions = $actions;
+    }
+
+    public function latestUpdates()
+    {
+        $changes = $this->actions->latestUpdatesWithMembers();
+        return view('admin.users.latestUpdates')->with(compact('changes'));
     }
 
     public function editName($id)
