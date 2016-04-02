@@ -1,10 +1,12 @@
 <?php namespace GSV\Handlers\Commands\Users;
 
 use GSV\Commands\Users\SetProfilePictureCommand;
+use GSV\Events\Members\ProfilePictureWasChanged;
 use GSVnet\Albums\Photos\PhotoStorageException;
 use GSVnet\Core\ImageHandler;
 
-class SetProfilePictureCommandHandler {
+class SetProfilePictureCommandHandler
+{
 
     private $imageHandler;
 
@@ -20,12 +22,15 @@ class SetProfilePictureCommandHandler {
         // If uploading new photo, destroy old one and upload new photo
         $this->imageHandler->destroy($profile->photo_path);
 
-        if (! $path = $this->imageHandler->make($command->file,"/uploads/images/users/"))
-        {
+        if (!$path = $this->imageHandler->make($command->file, "/uploads/images/users/")) {
             throw new PhotoStorageException;
         }
 
         $profile->photo_path = $path;
         $profile->save();
+
+        if ($command->user->wasOrIsMember()) {
+            event(new ProfilePictureWasChanged($command->user));
+        }
     }
 }
