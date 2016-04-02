@@ -11,12 +11,28 @@ class ChangeBusiness extends Command {
      * @var User
      */
     public $user;
+
+    /**
+     * @var Business
+     */
     public $business;
 
-    function __construct(User $user, Business $business)
+    /**
+     * @var User
+     */
+    public $manager;
+
+    /**
+     * ChangeBusiness constructor.
+     * @param User $user
+     * @param User $manager
+     * @param Business $business
+     */
+    function __construct(User $user, User $manager, Business $business)
     {
         $this->user = $user;
         $this->business = $business;
+        $this->manager = $manager;
     }
 
     static function fromForm(Request $request, User $user)
@@ -27,6 +43,6 @@ class ChangeBusiness extends Command {
             $request->get('business_url')
         );
 
-        return new static($user, $business);
+        return new static($user, $request->user(), $business);
     }
 }

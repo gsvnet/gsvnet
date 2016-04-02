@@ -11,12 +11,28 @@ class ChangeStudy extends Command {
      * @var User
      */
     public $user;
+
+    /**
+     * @var Study
+     */
     public $study;
 
-    function __construct(User $user, Study $study)
+    /**
+     * @var user
+     */
+    public $manager;
+
+    /**
+     * ChangeStudy constructor.
+     * @param User $user
+     * @param User $manager
+     * @param Study $study
+     */
+    function __construct(User $user, User $manager, Study $study)
     {
         $this->user = $user;
         $this->study = $study;
+        $this->manager = $manager;
     }
 
     static function fromForm(Request $request, User $user)
@@ -26,6 +42,6 @@ class ChangeStudy extends Command {
             $request->get('student_number')
         );
 
-        return new self($user, $address);
+        return new self($user, $request->user(), $address);
     }
 }

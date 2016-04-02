@@ -25,7 +25,7 @@ class ChangeEmailHandler
         $this->users->save($command->user);
 
         if ($command->user->wasOrIsMember()) {
-            event(new MemberEmailWasChanged($command->user, $oldEmail));
+            event(new MemberEmailWasChanged($command->user, $command->manager, $oldEmail));
         }
     }
 

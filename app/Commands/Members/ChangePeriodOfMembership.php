@@ -23,16 +23,23 @@ class ChangePeriodOfMembership
     private $user;
 
     /**
+     * @var User
+     */
+    private $manager;
+
+    /**
      * ChangePeriodOfMembership constructor.
      * @param User $user
+     * @param User $manager
      * @param NullableDate $inauguration
      * @param NullableDate $resignation
      */
-    public function __construct(User $user, NullableDate $inauguration, NullableDate $resignation)
+    public function __construct(User $user, User $manager, NullableDate $inauguration, NullableDate $resignation)
     {
         $this->inauguration = $inauguration;
         $this->resignation = $resignation;
         $this->user = $user;
+        $this->manager = $manager;
     }
 
     public static function fromForm(Request $request, User $user)
@@ -40,7 +47,7 @@ class ChangePeriodOfMembership
         $inauguration = new NullableDate($request->get('inauguration_date') ?: null);
         $resignation = new NullableDate($request->get('resignation_date') ?: null);
 
-        return new static($user, $inauguration, $resignation);
+        return new static($user, $request->user(), $inauguration, $resignation);
     }
 
     /**
@@ -65,5 +72,13 @@ class ChangePeriodOfMembership
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * @return User
+     */
+    public function getManager()
+    {
+        return $this->manager;
     }
 }

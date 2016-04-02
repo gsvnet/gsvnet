@@ -18,16 +18,22 @@ class ChangeRegion extends Command
      */
     public $region;
 
-    function __construct(User $user, Region $region)
+    /**
+     * @var user
+     */
+    public $manager;
+
+    function __construct(User $user, User $manager, Region $region)
     {
         $this->user = $user;
         $this->region = $region;
+        $this->manager = $manager;
     }
 
     static function fromForm(Request $request, User $user)
     {
         $region = new Region($request->get('region'));
 
-        return new self($user, $region);
+        return new self($user, $request->user(), $region);
     }
 }

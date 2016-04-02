@@ -24,6 +24,6 @@ class ChangeAddressHandler {
 
         $this->profiles->save($profile);
 
-        event(new AddressWasChanged($command->user));
+        event(new AddressWasChanged($command->user, $command->manager));
     }
 }

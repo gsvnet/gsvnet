@@ -27,6 +27,6 @@ class ChangeParentsDetailsHandler {
 
         $this->profiles->save($profile);
 
-        event(new ParentDetailsWereChanged($command->user));
+        event(new ParentDetailsWereChanged($command->user, $command->manager));
     }
 }

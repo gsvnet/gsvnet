@@ -19,6 +19,6 @@ class ChangeBirthDayHandler {
         $profile->birthdate = $command->birthday->asCarbonObject();
         $this->profiles->save($profile);
 
-        event(new BirthDayWasChanged($command->user));
+        event(new BirthDayWasChanged($command->user, $command->manager));
     }
 }

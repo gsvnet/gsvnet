@@ -11,10 +11,20 @@ class ChangeAddress extends Command {
      * @var User
      */
     public $user;
+
+    /**
+     * @var User
+     */
+    public $manager;
+
+    /**
+     * @var Address
+     */
     public $address;
 
-    function __construct(User $user, Address $address)
+    function __construct(User $user, User $manager, Address $address)
     {
+        $this->manager = $user;
         $this->user = $user;
         $this->address = $address;
     }
@@ -28,6 +38,6 @@ class ChangeAddress extends Command {
             $request->get('country')
         );
 
-        return new self($user, $address);
+        return new self($user, $request->user(), $address);
     }
 }

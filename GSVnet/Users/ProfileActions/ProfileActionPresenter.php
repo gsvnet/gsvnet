@@ -22,13 +22,13 @@ class ProfileActionPresenter extends Presenter
      */
     protected $entity;
 
-    private static $map = [
-        AddressWasChanged::class => 'Adreswijziging',
+    public static $map = [
+        AddressWasChanged::class => 'Adres',
         BirthDayWasChanged::class => 'Geboortedatum',
         BusinessWasChanged::class => 'Werk',
         MemberEmailWasChanged::class => 'Email',
         GenderWasChanged::class => 'Geslacht',
-        NameWasChanged::class => 'Naamsverandering',
+        NameWasChanged::class => 'Naam',
         ParentDetailsWereChanged::class => 'Gegevens ouders',
         PhoneNumberWasChanged::class => 'Telefoonnummer',
         YearGroupWasChanged::class => 'Jaarverband',

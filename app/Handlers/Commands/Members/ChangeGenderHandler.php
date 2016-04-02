@@ -20,6 +20,6 @@ class ChangeGenderHandler {
 
         $this->profiles->save($profile);
 
-        event(new GenderWasChanged($command->user));
+        event(new GenderWasChanged($command->user, $command->manager));
     }
 }

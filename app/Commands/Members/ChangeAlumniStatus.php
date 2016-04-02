@@ -13,6 +13,11 @@ class ChangeAlumniStatus extends Command
     public $user;
 
     /**
+     * @var User
+     */
+    public $manager;
+
+    /**
      * @var AlumniStatus
      */
     public $status;
@@ -20,17 +25,19 @@ class ChangeAlumniStatus extends Command
     /**
      * ChangeAlumniStatus constructor.
      * @param User $user
+     * @param User $manager
      * @param AlumniStatus $status
      */
-    public function __construct(User $user, AlumniStatus $status)
+    public function __construct(User $user, User $manager, AlumniStatus $status)
     {
         $this->user = $user;
         $this->status = $status;
+        $this->manager = $manager;
     }
 
     public static function fromForm(Request $request, User $user)
     {
         $status = new AlumniStatus($request->get('reunist') === '1');
-        return new static($user, $status);
+        return new static($user, $request->user(), $status);
     }
 }

@@ -23,6 +23,6 @@ class ChangePhoneHandler {
 
         $this->profiles->save($profile);
 
-        event(new PhoneNumberWasChanged($command->user));
+        event(new PhoneNumberWasChanged($command->user, $command->manager));
     }
 }

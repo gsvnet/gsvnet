@@ -18,10 +18,21 @@ abstract class ProfileEvent
      */
     protected $at;
 
-    public function __construct(User $user)
+    /**
+     * @var User
+     */
+    protected $manager;
+
+    /**
+     * ProfileEvent constructor.
+     * @param User $user
+     * @param User $manager
+     */
+    public function __construct(User $user, User $manager)
     {
-        $this->user = $user;
         $this->at = Carbon::now();
+        $this->user = $user;
+        $this->manager = $manager;
     }
 
     /**
@@ -38,5 +49,13 @@ abstract class ProfileEvent
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * @return User
+     */
+    public function getManager()
+    {
+        return $this->manager;
     }
 }

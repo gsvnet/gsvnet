@@ -12,14 +12,28 @@ class ChangeParentsDetails extends Command {
      * @var User
      */
     public $user;
+
+    /**
+     * @var OptionalAddress
+     */
     public $address;
+
+    /**
+     * @var OptionalPhoneNumber
+     */
     public $phone;
 
-    function __construct(User $user, OptionalAddress $address, OptionalPhoneNumber $phone)
+    /**
+     * @var User
+     */
+    public $manager;
+
+    function __construct(User $user, User $manager, OptionalAddress $address, OptionalPhoneNumber $phone)
     {
         $this->user = $user;
         $this->address = $address;
         $this->phone = $phone;
+        $this->manager = $manager;
     }
 
     static function fromForm(Request $request, User $user)
@@ -35,6 +49,6 @@ class ChangeParentsDetails extends Command {
             $request->get('parent_phone')
         );
 
-        return new self($user, $address, $phone);
+        return new self($user, $request->user(), $address, $phone);
     }
 }

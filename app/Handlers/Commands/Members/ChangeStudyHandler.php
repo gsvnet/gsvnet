@@ -22,6 +22,6 @@ class ChangeStudyHandler
             
         $this->profiles->save($profile);
 
-        event(new StudyWasChanged($command->user));
+        event(new StudyWasChanged($command->user, $command->manager));
     }
 }

@@ -21,7 +21,7 @@ class ChangeAlumniStatusHandler
 
         $this->profiles->save($profile);
 
-        event(new AlumniStatusWasChanged($command->user));
+        event(new AlumniStatusWasChanged($command->user, $command->manager));
     }
 
 }

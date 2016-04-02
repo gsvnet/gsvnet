@@ -182,7 +182,7 @@ class MemberController extends AdminBaseController
         $this->authorize('user.manage.gender', $member);
 
         $gender = new Gender($request->has('gender') ? $request->get('gender') : null);
-        $this->dispatch(new ChangeGender($member, $gender));
+        $this->dispatch(new ChangeGender($member, $request->user(), $gender));
 
         flash()->success("Geslacht {$member->present()->fullName()} succesvol aangepast");
         return redirect()->action('Admin\UsersController@show', $id);
@@ -203,7 +203,7 @@ class MemberController extends AdminBaseController
         $this->authorize('users.manage', $member);
 
         $group = $this->yearGroups->byId($request->get('year_group_id'));
-        $this->dispatch(new ChangeYearGroup($member, $group));
+        $this->dispatch(new ChangeYearGroup($member, $request->user(), $group));
 
         flash()->success("Jaarverband {$member->present()->fullName()} succesvol aangepast");
         return redirect()->action('Admin\UsersController@show', $id);

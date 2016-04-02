@@ -28,6 +28,6 @@ class ChangeNameHandler {
         $this->users->save($command->user);
         $this->profiles->save($profile);
 
-        event(new NameWasChanged($command->user));
+        event(new NameWasChanged($command->user, $command->manager));
     }
 }

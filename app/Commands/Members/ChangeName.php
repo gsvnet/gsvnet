@@ -7,13 +7,26 @@ use Illuminate\Http\Request;
 
 class ChangeName extends Command {
 
+    /**
+     * @var User
+     */
     public $user;
+
+    /**
+     * @var user
+     */
+    public $manager;
+
+    /**
+     * @var Name
+     */
     public $name;
 
-    function __construct(User $user, Name $name)
+    function __construct(User $user, User $manager, Name $name)
     {
         $this->user = $user;
         $this->name = $name;
+        $this->manager = $manager;
     }
 
     static function fromForm(Request $request, User $user)
@@ -24,6 +37,6 @@ class ChangeName extends Command {
             $request->get('lastname'),
             $request->get('initials')
         );
-        return new self($user, $name);
+        return new self($user, $request->user(), $name);
     }
 }

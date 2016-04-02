@@ -7,6 +7,9 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 
 class EventServiceProvider extends ServiceProvider
 {
+    protected $listen = [
+        'GSV\Events\AlumniStatusWasChanged' => ['GSV\Handlers\Events\Members\InformAbactis']
+    ];
 
     protected $subscribe = [
         ThreadEventHandler::class,

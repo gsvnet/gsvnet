@@ -13,6 +13,6 @@ class ChangeYearGroupHandler {
 
         $profile->save();
 
-        event(new YearGroupWasChanged($command->user));
+        event(new YearGroupWasChanged($command->user, $command->manager));
     }
 }

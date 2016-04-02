@@ -21,6 +21,6 @@ class ChangeRegionHandler
 
         $this->profiles->save($profile);
 
-        event(new RegionWasChanged($command->user));
+        event(new RegionWasChanged($command->user, $command->manager));
     }
 }

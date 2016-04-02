@@ -1,35 +1,38 @@
 <?php namespace GSVnet\Newsletters\Mailchimp;
 
 use GSVnet\Newsletters\NewsletterList as NewsletterListInterface;
-use GSVnet\Users\User;
+use Illuminate\Contracts\Config\Repository;
 use Mailchimp;
 
-class NewsletterList implements NewsletterListInterface {
+class NewsletterList implements NewsletterListInterface
+{
 
     protected $mailchimp;
 
-    protected $lists = [
-        User::MEMBER => 'c5f9a07ee4',
-        User::FORMERMEMBER => 'f844adabde'
-    ];
+    protected $lists = [];
 
     /**
      * @param Mailchimp $mailchimp
+     * @param Repository $config
      */
-    function __construct(Mailchimp $mailchimp)
+    function __construct(Mailchimp $mailchimp, Repository $config)
     {
         $this->mailchimp = $mailchimp;
+        $this->lists = $config->get('mailchimp.lists');
     }
 
     /**
      * @param $listName
      * @param $email
      * @param $vars
-     * @return mixed
+     * @return void
      */
     public function subscribeTo($listName, $email, $vars = [])
     {
-        return $this->mailchimp->lists->subscribe(
+        if (!array_key_exists($listName, $this->lists))
+            return;
+
+        $this->mailchimp->lists->subscribe(
             $this->lists[$listName],
             ['email' => $email],
             $vars, // merge vars,
@@ -42,11 +45,14 @@ class NewsletterList implements NewsletterListInterface {
     /**
      * @param $listName
      * @param $email
-     * @return mixed
+     * @return void
      */
     public function unsubscribeFrom($listName, $email)
     {
-        return $this->mailchimp->lists->unsubscribe(
+        if (!array_key_exists($listName, $this->lists))
+            return;
+        
+        $this->mailchimp->lists->unsubscribe(
             $this->lists[$listName],
             ['email' => $email],
             false, // delete
@@ -58,11 +64,14 @@ class NewsletterList implements NewsletterListInterface {
     /**
      * @param $listname
      * @param $batch
-     * @return mixed
+     * @return void
      */
     public function batchSubscribeTo($listname, $batch)
     {
-        return $this->mailchimp->lists->batchSubscribe(
+        if (!array_key_exists($listname, $this->lists))
+            return;
+        
+        $this->mailchimp->lists->batchSubscribe(
             $this->lists[$listname],
             $batch,
             false,// double opt in
@@ -73,11 +82,14 @@ class NewsletterList implements NewsletterListInterface {
     /**
      * @param $listname
      * @param $batch
-     * @return mixed
+     * @return void
      */
     public function batchUnsubscribeFrom($listname, $batch)
     {
-        return $this->mailchimp->lists->batchUnsubscribe(
+        if (!array_key_exists($listname, $this->lists))
+            return;
+        
+        $this->mailchimp->lists->batchUnsubscribe(
             $this->lists[$listname],
             $batch,
             false, // delete

@@ -2,7 +2,7 @@
 
 use haampie\Gravatar\Gravatar;
 use Laracasts\Presenter\Presenter;
-use Carbon\Carbon; 
+use Carbon\Carbon;
 use Config;
 use URL;
 use HTML;
@@ -12,18 +12,22 @@ class UserPresenter extends Presenter
 
     public function fullName()
     {
-        $fullName = $this->firstname . ' ' . $this->middlename . ' ' . $this->lastname;
-
-        if($fullName == '  ')
+        if (empty($this->entity->firstname) && empty($this->entity->middlename) && empty($this->entity->lastname))
             return 'onbekend';
-        else
-            return $fullName;
+
+
+        if (empty($this->entity->middlename)) {
+            return $this->firstname . ' ' . $this->lastname;
+        }
+
+        return $this->firstname . ' ' . $this->middlename . ' ' . $this->lastname;
     }
 
-    public function fullLastname(){
+    public function fullLastname()
+    {
         $middlename = $this->middlename;
 
-        if(empty($middlename))
+        if (empty($middlename))
             return $this->lastname;
         else
             return $this->middlename . ' ' . $this->lastname;
@@ -37,37 +41,36 @@ class UserPresenter extends Presenter
 
     public function registeredSince()
     {
-    	return $this->created_at->diffForHumans();
+        return $this->created_at->diffForHumans();
     }
 
     public function membershipType($showReunist = true)
     {
-    	$string = '';
-    	switch($this->type)
-    	{
-    		case User::VISITOR :
-    			$string .= 'Gast';
-			break;
-    		case User::POTENTIAL :
-    			$string .= 'Noviet';
-			break;
-    		case User::MEMBER:
-    			$string .= 'Lid';
-			break;
-    		case User::FORMERMEMBER:
-    			$string .= 'Oud-lid';
-    			if($showReunist && isset($this->profile))
-    				$string .= $this->profile->reunist == 1 ? ' en reünist' : ', niet reünist';
-			break;
+        $string = '';
+        switch ($this->type) {
+            case User::VISITOR :
+                $string .= 'Gast';
+                break;
+            case User::POTENTIAL :
+                $string .= 'Noviet';
+                break;
+            case User::MEMBER:
+                $string .= 'Lid';
+                break;
+            case User::FORMERMEMBER:
+                $string .= 'Oud-lid';
+                if ($showReunist && isset($this->profile))
+                    $string .= $this->profile->reunist == 1 ? ' en reünist' : ', niet reünist';
+                break;
             case User::INTERNAL_COMMITTEE:
                 $string .= 'Commissie';
-            break;
-			default:
-				$string .= 'Onbekend';
-			break;
-    	}
+                break;
+            default:
+                $string .= 'Onbekend';
+                break;
+        }
 
-    	return $string;
+        return $string;
     }
 
     public function inCommiteeSince()
@@ -83,19 +86,14 @@ class UserPresenter extends Presenter
 
         $string = $from->formatLocalized("%Y");
 
-        if( is_null($this->pivot->end_date) )
-        {
+        if (is_null($this->pivot->end_date)) {
             $string .= ' tot heden';
-        } else
-        {
+        } else {
 
             $to = Carbon::createFromFormat('Y-m-d H:i:s', $this->pivot->end_date);
-            if($to->isFuture())
-            {
+            if ($to->isFuture()) {
                 $string .= ' tot heden';
-            }
-            else 
-            {
+            } else {
                 $string .= ' tot ';
                 $string .= $to->formatLocalized("%Y");
             }

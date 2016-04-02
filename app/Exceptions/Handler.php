@@ -65,6 +65,7 @@ class Handler extends ExceptionHandler
             case ModelNotFoundException::class:
                 abort(404);
                 break;
+                
         }
 
         return parent::render($request, $e);

@@ -23,6 +23,6 @@ class ChangeBusinessHandler {
 
         $this->profiles->save($profile);
 
-        event(new BusinessWasChanged($command->user));
+        event(new BusinessWasChanged($command->user, $command->manager));
     }
 }

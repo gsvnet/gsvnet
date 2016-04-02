@@ -29,6 +29,6 @@ class ChangePeriodOfMembershipHandler
 
         $this->profiles->save($profile);
 
-        event(new PeriodOfMembershipWasChanged($command->getUser()));
+        event(new PeriodOfMembershipWasChanged($command->getUser(), $command->getManager()));
     }
 }
