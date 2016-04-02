@@ -172,65 +172,16 @@ class UsersController extends AdminBaseController {
 
     public function show($id)
     {
-        $this->authorize('users.manage');
         $user = $this->users->byId($id);
+
+        // Committees or ordinary forum users do not need a fancy profile page
+        if (!$user->wasOrIsMember() && !$user->isPotential())
+            return view('admin.users.show')->with(compact('user'));
+
+        // Members, former members and potentials need some more details
         $profile = $user->profile;
-        $committees = $user->committees;
-
-        return view('admin.users.show')
-            ->withUser($user)
-            ->withProfile($profile)
-            ->withCommittees($committees);
-    }
-
-    public function edit($id)
-    {
-        $this->authorize('users.manage');
-        $user = $this->users->byId($id);
-        $yearGroups = $this->yearGroups->all();
-        $profile = $user->profile;
-
-        return view('admin.users.edit')->with([
-            'user' => $user,
-            'profile' => $profile,
-            'yearGroups' => $yearGroups
-        ]);
-    }
-
-    /**
-     * @param $id
-     * @return mixed
-     * @throws \GSVnet\Core\Exceptions\ValidationException
-     * @throws \Laracasts\Presenter\Exceptions\PresenterException
-     */
-    public function update(Request $request, $id)
-    {
-        $this->authorize('users.manage');
-        $oldUser = $this->users->byId($id);
-
-        $userData = $request->only('type', 'username', 'firstname', 'middlename', 'lastname', 'email');
-        
-        // Check if password is to be set
-        $password = $request->get('password', '');
-
-        if(!empty($password))
-        {
-            $userData['password'] = $password;
-            $userData['password_confirmation'] = Input::get('password_confirmation', '');
-        }
-
-        $this->validator->validate($userData);
-
-        $user = $this->users->update($id, $userData);
-
-        event('user.updated', [
-            'old' => $oldUser,
-            'new' => $user
-        ]);
-
-        flash()->success("Account van {$user->present()->fullName} is succesvol bewerkt.");
-
-        return redirect()->action('Admin\UsersController@show', $id);
+        $committees = $user->committeesSorted;
+        return view('admin.users.showMember')->with(compact('user', 'profile', 'committees'));
     }
 
     public function destroy($id)
@@ -282,10 +233,10 @@ class UsersController extends AdminBaseController {
         // Set some specific info for former members
         if($user->isFormerMember())
         {
-            $input['reunist'] = Input::get('reunist', '0') === '1';
-            $input['resignation_date'] = Input::get('resignation_date');
-            $input['company'] = Input::get('company');
-            $input['profession'] = Input::get('profession');
+            $input['reunist'] = $request->get('reunist', '0') === '1';
+            $input['resignation_date'] = $request->get('resignation_date');
+            $input['company'] = $request->get('company');
+            $input['profession'] = $request->get('profession');
         }
 
         // Natural parents

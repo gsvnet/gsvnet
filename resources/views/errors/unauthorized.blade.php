@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="column-holder" role="main">
-        <h1>Niet voldoende rechten</h1>
+        <h1>Helaas.</h1>
         <p class="delta">
-            Helaas, u heeft niet voldoende rechten om deze pagina te bekijken.
+            Uw account is nog niet geactiveerd. Even geduld.
         </p>
     </div>
 @stop

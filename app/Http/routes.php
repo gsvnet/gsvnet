@@ -95,8 +95,6 @@ Route::group([
     Route::resource('albums.photo', 'PhotoController',  ['except' => ['index', 'create']]);
     Route::resource('files',        'FilesController');
 
-    Route::get('/users/oudleden.csv', 'UsersController@exportFormerMembers');
-    Route::get('/users/leden.csv', 'UsersController@exportMembers');
 
     // Commissies
     Route::resource('commissies',   'CommitteeController', ['except' => ['create']]);
@@ -113,10 +111,45 @@ Route::group([
         Route::delete('/{user}/profiel', 'UsersController@destroyProfile');
 
         Route::get('/gasten',     'UsersController@showGuests');
-        Route::get('/novieten', 'UsersController@showPotentials');
+        Route::get('/novieten',   'UsersController@showPotentials');
         Route::get('/leden',      'UsersController@showMembers');
         Route::get('/oud-leden',  'UsersController@showFormerMembers');
     });
+
+    // Each part of the profile
+    Route::get('leden/{user}/contact',       'MemberController@editContactDetails');
+    Route::put('leden/{user}/contact',       'MemberController@updateContactDetails');
+    Route::get('leden/{user}/email',         'MemberController@editEmail');
+    Route::put('leden/{user}/email',         'MemberController@updateEmail');
+    Route::get('leden/{user}/wachtwoord',    'MemberController@editPassword');
+    Route::put('leden/{user}/wachtwoord',    'MemberController@updatePassword');
+    Route::get('leden/{user}/geboortedatum', 'MemberController@editBirthDay');
+    Route::put('leden/{user}/geboortedatum', 'MemberController@updateBirthDay');
+    Route::get('leden/{user}/geslacht',      'MemberController@editGender');
+    Route::put('leden/{user}/geslacht',      'MemberController@updateGender');
+    Route::get('leden/{user}/jaarverband',   'MemberController@editYearGroup');
+    Route::put('leden/{user}/jaarverband',   'MemberController@updateYearGroup');
+    Route::get('leden/{user}/naam',          'MemberController@editName');
+    Route::put('leden/{user}/naam',          'MemberController@updateName');
+    Route::get('leden/{user}/werk',          'MemberController@editBusiness');
+    Route::put('leden/{user}/werk',          'MemberController@updateBusiness');
+    Route::get('leden/{user}/foto',          'MemberController@editPhoto');
+    Route::put('leden/{user}/foto',          'MemberController@updatePhoto');
+    Route::get('leden/{user}/ouders',        'MemberController@editParentContactDetails');
+    Route::put('leden/{user}/ouders',        'MemberController@updateParentContactDetails');
+    Route::get('leden/{user}/studie',        'MemberController@editStudy');
+    Route::put('leden/{user}/studie',        'MemberController@updateStudy');
+    Route::get('leden/{user}/regio',         'MemberController@editRegion');
+    Route::put('leden/{user}/regio',         'MemberController@updateRegion');
+    Route::get('leden/{user}/reunistschap',  'MemberController@editAlumniStatus');
+    Route::put('leden/{user}/reunistschap',  'MemberController@updateAlumniStatus');
+    Route::get('leden/{user}/tijd-van-lidmaatschap', 'MemberController@editMembershipPeriod');
+    Route::put('leden/{user}/tijd-van-lidmaatschap', 'MemberController@updateMembershipPeriod');
+    
+
+    Route::get('leden/oudleden.csv', 'UsersController@exportFormerMembers');
+    Route::get('leden/leden.csv', 'UsersController@exportMembers');
+    Route::get('leden/updates', 'MemberController@latestUpdates');
 
     Route::resource('gebruikers', 'UsersController');
     Route::resource('gebruikers.family', 'FamilyController');

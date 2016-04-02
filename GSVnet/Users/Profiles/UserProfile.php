@@ -24,6 +24,7 @@ class UserProfile extends Model {
         'zip_code',
         'town',
         'study',
+        'country',
         'birthdate',
         'church',
         'gender',
@@ -37,11 +38,10 @@ class UserProfile extends Model {
         'inauguration_date',
         'resignation_date',
         'company',
-        'profession'
+        'profession',
+        'business_url'
     ];
-
-    protected $dates = ['resignation_date', 'inauguration_date'];
-
+    
     public $presenter = 'GSVnet\Users\Profiles\ProfilePresenter';
 
     public function scopeSearchNameAndPhone($query, $search)

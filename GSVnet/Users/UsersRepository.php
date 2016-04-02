@@ -6,7 +6,9 @@ use GSVnet\Core\BaseRepository;
 
 class UsersRepository extends BaseRepository {
 
-    function __construct(User $model)
+    protected $model;
+
+    public function __construct(User $model)
     {
         $this->model = $model;
     }
@@ -27,6 +29,11 @@ class UsersRepository extends BaseRepository {
     public function byIdWithProfileAndYearGroup($id)
     {
         return User::with('profile.yearGroup')->findOrFail($id);
+    }
+
+    public function memberOrFormerByIdWithProfile($id)
+    {
+        return User::whereIn('type', [User::FORMERMEMBER, User::MEMBER, User::POTENTIAL])->with('profile.yearGroup')->findOrFail($id);
     }
 
     /**
@@ -118,6 +125,13 @@ class UsersRepository extends BaseRepository {
         return User::whereIn('id', $ids)->lists('id');
     }
 
+    public function isEmailAddressTaken($email, $excludeId)
+    {
+        return $this->model->where('email', $email)
+            ->where('id', '<>', $excludeId)
+            ->count() > 0;
+    }
+
     /**
     * Create user
     *
@@ -132,32 +146,16 @@ class UsersRepository extends BaseRepository {
             'lastname'     => $input['register-lastname'],
             'email'        => $input['register-email'],
             'username'     => $input['register-username'],
-            'password'     => $input['register-password'],
+            'password'     => bcrypt($input['register-password']),
             'type'         => $input['type'],
         ));
-    }
-
-    /**
-    * Update user
-    *
-    * @param int $id
-    * @param array $input
-    * @return User
-    */
-    public function update($id, array $input)
-    {
-        $user = $this->byId($id);
-        $user->update($input);
-        $user->save();
-
-        return $user;
     }
 
     /**
     * Delete User
     *
     * @param int $id
-    * @return Committe
+    * @return User
     * @TODO: delete all user members references
     */
     public function delete($id)

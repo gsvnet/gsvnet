@@ -5,87 +5,43 @@
 @section('body-id', 'edit-profile-page')
 
 @section('content')
-	<div class="column-holder">
-		<h1>Verander je profiel</h1>
+    <div class="column-holder">
+        <h1>Verander je forumaccount</h1>
+        <p class="delta">Op het actieve forum van de GSV staat informatie over activiteiten en aanbod van kamers in Groningen. Je kunt er praktisch alles kwijt.</p>
 
-		@if($errors->count() > 0)
-		    <div style="padding:1em;background:#FF5F5F">
+        @if($errors->count() > 0)
+            <div style="padding:1em;background:#FF5F5F">
                 <strong>Je hebt iets verkeerd ingevuld!</strong>
                 @foreach($errors->all() as $error)
                     <p>{{$error}}</p>
                 @endforeach
-		    </div>
+            </div>
         @endif
-		
-		{!! Former::open_vertical_for_files()
-            ->action(action('UserController@updateProfile'))
-            ->id('edit-profile-form') !!}
-		<div class="main-content">
-			<h2>Persoonlijke gegevens</h2>
-			{!! Former::populate(Auth::user()) !!}
 
-			{!! Former::text('username')->label('Gebruikersnaam')->disabled() !!}
-			<label for="firstname" class="control-label">Voornaam, tussenvoegsel, achternaam</label>
-			<div class="inline-form-row">
-				{!! Former::text('firstname')->label('')->disabled() !!}
-				{!! Former::text('middlename')->label('')->size(5)->disabled() !!}
-				{!! Former::text('lastname')->label('')->disabled() !!}
-			</div>
+        {!! Former::open_vertical()->action(action('UserController@updateProfile'))->id('edit-profile-form') !!}
+        <div class="main-content">
+            {!! Former::populateField('email', Auth::user()->email) !!}
 
-			{!! Former::text('email')->label('Email') !!}
+            {!! Former::text('email')->label('Email') !!}
 
-			@if( Gate::allows('users.edit-profile') && isset($profile) )
+            <p>Laat het wachtwoord leeg om het te laten als het is.</p>
+            {!! Former::password('password')->forceValue('')->label('Nieuw wachtwoord') !!}
+            {!! Former::password('password_confirmation')->forceValue('')->label('Wachtwoord herhalen') !!}
 
-				<h2>Vul vooral meer in</h2>
-			    {!! Former::text('profile.initials')->label('Initialen')->size(5) !!}
-	            {!! Former::text('profile.birthdate')->label('Geboortedatum')->help('jjjj-mm-dd') !!}
-				{!! Former::text('profile.church')->label('Kerkgezindte') !!}
-	            {!! Former::text('profile.study')->label('Naam van studie') !!}
-	            {!! Former::text('profile.student_number')->label('Studentnummer') !!}
-
-	            {!! Former::text('profile.address')->label('Adres') !!}
-	            {!! Former::text('profile.zip_code')->label('Postcode')->size(6) !!}
-	            {!! Former::text('profile.town')->label('Woonplaats') !!}
-	            {!! Former::text('profile.phone')->label('Telefoon') !!}
-	            {!! Former::select('profile.gender')->label('Geslacht')->options(['1' => 'Man', '0' => 'Vrouw']) !!}
-
-	            <h2>Adres van je ouders</h2>
-	            {!! Former::stacked_radios('parent_same_address')->radios([
-                    'Ja' => array('name' => 'parent_same_address', 'value' => '1'),
-                    'Nee' => array('name' => 'parent_same_address', 'value' => '0')
-                ])->label('Woon je bij je ouders/verzorgers?')->check('0') !!}
-
-	            <div id="parents-info">
-	    			{!! Former::text('profile.parent_address')->label('Adres ouders') !!}
-	                {!! Former::text('profile.parent_zip_code')->label('Postcode ouders')->size(6) !!}
-	                {!! Former::text('profile.parent_town')->label('Woonplaats ouders') !!}
-	            </div>
-
-                {!! Former::text('profile.parent_phone')->label('Telefoon ouders') !!}
-	        @else
-	        	<p>De rest van je GSV-profielgegevens worden binnenkort toegevoegd!</p>
-	        @endif
-		</div>
-		<div class="secondary-column">
-			@if(Gate::allows('users.edit-profile') && isset($profile))
-				<h2>Je profielfoto</h2>
-				<p>
-                    <img src="{!! Auth::user()->profile->present()->xsmallProfileImage !!}" width="102" height="102" alt="Profielfoto" />
-                </p>
-	            {!! Former::file('profile.photo_path')->label('Upload een foto van jezelf')->accept('image') !!}
-	        @endif
-
-			<h2>Je avatar</h2>
-			<p>Je avatar kun je aanpassen op <a href="http://nl.gravatar.com/" title="Je avatar aanpassen">Gravatar</a>.</p>
-
-			<h2>Dingen die je niet kunt veranderen</h2>
-			<p>Als je regio/lidmaatschap niet klopt of je je gebruikersnaam wilt veranderen, dan moet je even contact op nemen met de webcie of de abactis.</p>
-		</div>
-	</div>
+        </div>
+        <div class="secondary-column">
+            @if($user->wasOrIsMember())
+                <h2>Wil je je GSV-profiel wijzigen?</h2>
+                <p><a href="{{action('Admin\UsersController@show', $user->id)}}" class="button">GSV-profiel wijzigen</a></p>
+            @endif
+            <h2>Je avatar</h2>
+            <p>Je avatar kun je aanpassen op <a href="http://nl.gravatar.com/" title="Je avatar aanpassen">Gravatar</a>.</p>
+        </div>
+    </div>
     <div class="column-holder">
         <div class="control-group">
             <input type="submit" id="edit-profile-submit" value="Veranderen die hap" class="button">
         </div>
     </div>
-	{!! Former::close() !!}
+    {!! Former::close() !!}
 @stop

@@ -8,7 +8,7 @@ class YearGroupRepository {
      * Get by id
      *
      * @param int $id
-     * @return Album
+     * @return YearGroup
      */
     public function byId($id)
     {
@@ -19,7 +19,7 @@ class YearGroupRepository {
      * Check if year group exists
      *
      * @param int $id
-     * @return Album
+     * @return YearGroup
      */
     public function exists($id)
     {

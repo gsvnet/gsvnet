@@ -21,6 +21,10 @@
                     <div class="content-column">
                         <p><img src="{!! $member->profile->present()->xsmallProfileImage !!}" width="102" height="102" alt="Profielfoto" /></p>
 
+						@if(Auth::check() && Auth::user()->id == $member->id)
+							<p>{!! link_to_action('UserController@editProfile', 'Bewerk je profiel', [], ['class'=>'button']) !!}</p>
+						@endif
+
                         <h2>Adresgegevens</h2>
                         <address>
                             {{ $member->present()->fullName }} <br>
@@ -144,10 +148,6 @@
 					@endif
 				</div>
 			</div>
-
-			@if(Auth::check() && Auth::user()->id == $member->id)
-				<p>{!! link_to_action('UserController@editProfile', 'Bewerk je profiel', [], ['class'=>'button']) !!}</p>
-			@endif
 		</div>
 	</div>
 

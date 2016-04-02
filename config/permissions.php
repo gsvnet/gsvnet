@@ -1,11 +1,10 @@
 <?php use GSVnet\Users\User as User;
 
 /**
-*
-*   Permission configuration
-*   Permissions are configured such that if a user has one of the
-*    then the user has the permission
-*/
+ * Permission configuration
+ * Permissions are configured such that if a user has one of the
+ * then the user has the permission
+ */
 return [
     /**
      * General permissions don't require checks with respect to the specific entity
@@ -47,7 +46,7 @@ return [
         ],
 
         'photos.manage' => [
-            'committee' => ['webcie', 'reebocie','prescie']
+            'committee' => ['webcie', 'reebocie', 'prescie']
         ],
 
         'docs.show' => [
@@ -117,6 +116,54 @@ return [
         ],
 
         'reply.like' => [],
-    ],
 
+        'user.manage.address' => [
+            'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
+            'senate' => true
+        ],
+        'user.manage.birthday' => [
+            'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
+            'senate' => true
+        ],
+        'user.manage.business' => [
+            'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
+            'senate' => true
+        ],
+        'user.manage.email' => [
+            'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
+            'senate' => true
+        ],
+        'user.manage.gender' => [
+            'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
+            'senate' => true
+        ],
+        'user.manage.name' => [
+            'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
+            'senate' => true
+        ],
+        'user.manage.parents' => [
+            'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
+            'senate' => true
+        ],
+        'user.manage.password' => [
+            'committee' => ['webcie', 'novcie', 'malversacie'],
+            'senate' => true
+        ],
+        'user.manage.phone' => [
+            'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
+            'senate' => true
+        ],
+        'user.manage.photo' => [
+            'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
+            'senate' => true
+        ],
+        'user.manage.year' => [
+            'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
+            'senate' => true
+        ],
+        'user.manage.study' => [
+            'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
+            'senate' => true
+        ]
+    ],
 ];

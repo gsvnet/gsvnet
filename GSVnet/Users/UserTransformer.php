@@ -1,20 +1,32 @@
 <?php namespace GSVnet\Users;
 
+use GSVnet\Users\ValueObjects\Gender;
 use Illuminate\Support\Collection;
 
 class UserTransformer {
 
+    static $genderMap = [
+        Gender::MALE => 'Amice',
+        Gender::FEMALE => 'Amica'
+    ];
+
     /**
      * @param User $user
      * @return array
-     * @throws \Laracasts\Presenter\Exceptions\PresenterException
      */
     public function mailchimpSubscribe(User $user)
     {
+        if ($user->profile && ! is_null($user->profile->gender)) {
+            $titel = self::$genderMap[$user->profile->gender];
+        } else {
+            $titel = 'Amice of amica';
+        }
+
         return [
             'FNAME' => $user->firstname,
             'LNAME' => $user->present()->fullLastname,
-            'TITEL' => $user->profile ? ($user->profile->gender == 1 ? 'Amice' : 'Amica') : ''
+            'TITEL' => $titel,
+            'TITEL_LOW' => strtolower($titel)
         ];
     }
 
