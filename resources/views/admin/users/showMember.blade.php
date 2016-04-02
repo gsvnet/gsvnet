@@ -93,10 +93,17 @@
                     </a>
                 </li>
                 @endcan
-                @can('user.manage.year', $user)
+                @can('users.manage')
                 <li role="presentation">
                     <a href="{{ action('Admin\MemberController@editYearGroup', $user->id) }}">
                         <i class="fa fa-flag"></i> Jaarverband
+                    </a>
+                </li>
+                @endcan
+                @can('users.manage')
+                <li role="presentation">
+                    <a href="{{ action('Admin\MemberController@editMembershipPeriod', $user->id) }}">
+                        <i class="fa fa-hourglass-end"></i> Periode van lidmaatschap
                     </a>
                 </li>
                 @endcan

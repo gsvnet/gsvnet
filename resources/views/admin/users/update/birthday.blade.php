@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-header">
-        <h1>Pas gebootedatum aan van <strong>{{ $user->present()->fullName }}</strong></h1>
+        <h1>Pas geboortedatum aan van <strong>{{ $user->present()->fullName }}</strong></h1>
     </div>
 
     <div class="row">

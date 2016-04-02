@@ -7,6 +7,7 @@ use GSV\Events\Members\EmailWasChanged;
 use GSV\Events\Members\GenderWasChanged;
 use GSV\Events\Members\NameWasChanged;
 use GSV\Events\Members\ParentDetailsWereChanged;
+use GSV\Events\Members\PeriodOfMembershipWasChanged;
 use GSV\Events\Members\PhoneNumberWasChanged;
 use GSV\Events\Members\ProfilePictureWasChanged;
 use GSV\Events\Members\YearGroupWasChanged;
@@ -29,7 +30,8 @@ class ProfileActionPresenter extends Presenter
         ParentDetailsWereChanged::class => 'Gegevens ouders',
         PhoneNumberWasChanged::class => 'Telefoonnummer',
         YearGroupWasChanged::class => 'Jaarverband',
-        ProfilePictureWasChanged::class => 'Profielfoto'
+        ProfilePictureWasChanged::class => 'Profielfoto',
+        PeriodOfMembershipWasChanged::class => 'Periode van lidmaatschap'
     ];
 
     public function actionName()

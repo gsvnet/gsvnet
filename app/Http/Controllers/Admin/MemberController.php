@@ -1,5 +1,6 @@
 <?php namespace Admin;
 
+use GSV\Commands\Members\ChangePeriodOfMembership;
 use GSV\Commands\Members\ChangeAddress;
 use GSV\Commands\Members\ChangeBirthDay;
 use GSV\Commands\Members\ChangeBusiness;
@@ -186,7 +187,7 @@ class MemberController extends AdminBaseController
     public function editYearGroup($id)
     {
         $user = $this->users->memberOrFormerByIdWithProfile($id);
-        $this->authorize('user.manage.year', $user);
+        $this->authorize('users.manage');
 
         $yearGroups = $this->yearGroups->all();
         return view('admin.users.update.yeargroup')->with(compact('user', 'yearGroups'));
@@ -195,7 +196,7 @@ class MemberController extends AdminBaseController
     public function updateYearGroup(Request $request, $id)
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
-        $this->authorize('user.manage.year', $member);
+        $this->authorize('users.manage', $member);
 
         $group = $this->yearGroups->byId($request->get('year_group_id'));
         $this->dispatch(new ChangeYearGroup($member, $group));
@@ -220,6 +221,25 @@ class MemberController extends AdminBaseController
         $this->dispatch(ChangeBusiness::fromForm($request, $member));
 
         flash()->success("Werk {$member->present()->fullName()} succesvol aangepast");
+        return redirect()->action('Admin\UsersController@show', $id);
+    }
+
+    public function editMembershipPeriod($id)
+    {
+        $this->authorize('users.manage');
+
+        $user = $this->users->memberOrFormerByIdWithProfile($id);
+        return view('admin.users.update.membershipPeriod')->with(compact('user'));
+    }
+
+    public function updateMembershipPeriod(Request $request, $id)
+    {
+        $this->authorize('users.manage');
+
+        $member = $this->users->memberOrFormerByIdWithProfile($id);
+        $this->dispatch(ChangePeriodOfMembership::fromForm($request, $member));
+
+        flash()->success("Periode van lidmaatschap {$member->present()->fullName()} succesvol aangepast");
         return redirect()->action('Admin\UsersController@show', $id);
     }
 

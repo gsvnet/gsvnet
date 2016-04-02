@@ -7,6 +7,7 @@ use GSV\Events\Members\EmailWasChanged;
 use GSV\Events\Members\GenderWasChanged;
 use GSV\Events\Members\NameWasChanged;
 use GSV\Events\Members\ParentDetailsWereChanged;
+use GSV\Events\Members\PeriodOfMembershipWasChanged;
 use GSV\Events\Members\PhoneNumberWasChanged;
 use GSV\Events\Members\ProfilePictureWasChanged;
 use GSV\Events\Members\YearGroupWasChanged;
@@ -31,7 +32,8 @@ class UserEventHandler {
             BusinessWasChanged::class,
             ParentDetailsWereChanged::class,
             PhoneNumberWasChanged::class,
-            ProfilePictureWasChanged::class
+            ProfilePictureWasChanged::class,
+            PeriodOfMembershipWasChanged::class
         ], 'GSV\Handlers\Events\Members\ProfileUpdates@changedProfile');
 
         $events->listen('user.registered', 'GSVnet\Users\UserMailer@registered');

@@ -137,6 +137,9 @@ Route::group([
     Route::put('leden/{user}/foto',          'MemberController@updatePhoto');
     Route::get('leden/{user}/ouders',        'MemberController@editParentContactDetails');
     Route::put('leden/{user}/ouders',        'MemberController@updateParentContactDetails');
+    Route::get('leden/{user}/tijd-van-lidmaatschap', 'MemberController@editMembershipPeriod');
+    Route::put('leden/{user}/tijd-van-lidmaatschap', 'MemberController@updateMembershipPeriod');
+    
 
     Route::get('leden/oudleden.csv', 'UsersController@exportFormerMembers');
     Route::get('leden/leden.csv', 'UsersController@exportMembers');
