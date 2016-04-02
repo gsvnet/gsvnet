@@ -89,14 +89,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return 'remember_token';
     }
 
-    /**
-     * Set the password to be hashed when saved
-     */
-    public function setPasswordAttribute($password)
-    {
-        $this->attributes['password'] = Hash::make($password);
-    }
-
     public function committees()
     {
         return $this->belongsToMany('GSVnet\Committees\Committee', 'committee_user')
