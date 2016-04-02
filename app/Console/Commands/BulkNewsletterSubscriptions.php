@@ -60,7 +60,7 @@ class BulkNewsletterSubscriptions extends Command
         $subscribeBatch = $this->userTransformer->batchMailchimpSubscribe($users);
 
         try {
-            $this->newsletterlist->batchSubscribeTo($type, $subscribeBatch);
+            $this->info(json_encode($this->newsletterlist->batchSubscribeTo($type, $subscribeBatch)));
         } catch (\Mailchimp_Error $e) {
 			$this->info($e->getMessage());
         }

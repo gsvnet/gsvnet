@@ -25,14 +25,14 @@ class NewsletterList implements NewsletterListInterface
      * @param $listName
      * @param $email
      * @param $vars
-     * @return void
+     * @return mixed
      */
     public function subscribeTo($listName, $email, $vars = [])
     {
         if (!array_key_exists($listName, $this->lists))
-            return;
+            return null;
 
-        $this->mailchimp->lists->subscribe(
+        return $this->mailchimp->lists->subscribe(
             $this->lists[$listName],
             ['email' => $email],
             $vars, // merge vars,
@@ -45,14 +45,14 @@ class NewsletterList implements NewsletterListInterface
     /**
      * @param $listName
      * @param $email
-     * @return void
+     * @return mixed
      */
     public function unsubscribeFrom($listName, $email)
     {
         if (!array_key_exists($listName, $this->lists))
-            return;
+            return null;
         
-        $this->mailchimp->lists->unsubscribe(
+        return $this->mailchimp->lists->unsubscribe(
             $this->lists[$listName],
             ['email' => $email],
             false, // delete
@@ -64,14 +64,14 @@ class NewsletterList implements NewsletterListInterface
     /**
      * @param $listname
      * @param $batch
-     * @return void
+     * @return mixed
      */
     public function batchSubscribeTo($listname, $batch)
     {
         if (!array_key_exists($listname, $this->lists))
-            return;
+            return null;
         
-        $this->mailchimp->lists->batchSubscribe(
+        return $this->mailchimp->lists->batchSubscribe(
             $this->lists[$listname],
             $batch,
             false,// double opt in
@@ -82,14 +82,14 @@ class NewsletterList implements NewsletterListInterface
     /**
      * @param $listname
      * @param $batch
-     * @return void
+     * @return mixed
      */
     public function batchUnsubscribeFrom($listname, $batch)
     {
         if (!array_key_exists($listname, $this->lists))
-            return;
-        
-        $this->mailchimp->lists->batchUnsubscribe(
+            return null;
+
+        return $this->mailchimp->lists->batchUnsubscribe(
             $this->lists[$listname],
             $batch,
             false, // delete
