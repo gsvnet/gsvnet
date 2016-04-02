@@ -46,6 +46,7 @@ class NewsletterInformer implements ShouldQueue
                 $this->list->subscribeTo($user->type, $user->email, $data);
             } catch (\Mailchimp_Error $e) {
                 $this->log->error('Something has gone wrong when accessing MailChimp: ' . $e->getMessage());
+                // simply ignore MailChimp errors for now.
             }
         }
     }
