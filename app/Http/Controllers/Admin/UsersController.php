@@ -6,7 +6,6 @@ use GSVnet\Users\RegisterUserValidator;
 use GSVnet\Users\User;
 use GSVnet\Users\UserTransformer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 
 use GSVnet\Users\UsersRepository;
@@ -16,6 +15,9 @@ use GSVnet\Users\YearGroupRepository;
 use GSVnet\Users\Profiles\UserProfile;
 use GSVnet\Users\Profiles\AdminProfileCreatorValidator;
 use GSVnet\Users\Profiles\AdminProfileUpdaterValidator;
+use League\Csv\Reader;
+use League\Csv\Writer;
+use SplTempFileObject;
 
 class UsersController extends AdminBaseController {
 
@@ -49,6 +51,7 @@ class UsersController extends AdminBaseController {
 
     public function index()
     {
+        $this->authorize('users.show');
         $users = $this->users->paginateLatelyRegistered(50);
 
         return view('admin.users.index')->with('users', $users);
@@ -56,6 +59,7 @@ class UsersController extends AdminBaseController {
 
     public function showGuests()
     {
+        $this->authorize('users.show');
         $users = $this->users->paginateLatestRegisteredGuests(50);
 
         return view('admin.users.visitors')->with('users', $users);
@@ -63,6 +67,7 @@ class UsersController extends AdminBaseController {
 
     public function showPotentials()
     {
+        $this->authorize('users.show');
         $users = $this->users->paginateLatestPotentials(50);
 
         return view('admin.users.potentials')->with(['users' => $users]);
@@ -70,6 +75,7 @@ class UsersController extends AdminBaseController {
 
     public function showMembers(Request $request)
     {
+        $this->authorize('users.show');
         $search = $request->get('zoekwoord', '');
         $type = User::MEMBER;
         $regions = Config::get('gsvnet.regions');
@@ -93,6 +99,7 @@ class UsersController extends AdminBaseController {
 
     public function showFormerMembers(Request $request)
     {
+        $this->authorize('users.show');
         $search = $request->get('zoekwoord', '');
         $regions = Config::get('gsvnet.regions');
         $type = User::FORMERMEMBER;
@@ -120,16 +127,28 @@ class UsersController extends AdminBaseController {
 
     public function exportFormerMembers()
     {
+        $this->authorize('users.show');
         $users = $this->users->getAllByType(User::FORMERMEMBER);
         $transformer = new UserTransformer;
-        return response()->csv($transformer->batchCsv($users), 'oud-leden.csv');
+        $csv = Writer::createFromFileObject(new SplTempFileObject());
+        $data = $transformer->batchCsv($users);
+        $csv->insertOne(array_keys($data[0]));
+        $csv->insertAll($data);
+        $csv->setOutputBOM(Reader::BOM_UTF8);
+        $csv->output('oud-leden.csv');
     }
 
     public function exportMembers()
     {
+        $this->authorize('users.show');
         $users = $this->users->getAllByType(User::MEMBER);
         $transformer = new UserTransformer;
-        return response()->csv($transformer->batchCsv($users), 'leden.csv');
+        $csv = Writer::createFromFileObject(new SplTempFileObject());
+        $data = $transformer->batchCsv($users);
+        $csv->insertOne(array_keys($data[0]));
+        $csv->insertAll($data);
+        $csv->setOutputBOM(Reader::BOM_UTF8);
+        $csv->output('leden.csv');
     }
 
     public function create()
@@ -172,6 +191,7 @@ class UsersController extends AdminBaseController {
 
     public function show($id)
     {
+        $this->authorize('users.show');
         $user = $this->users->byId($id);
 
         // Committees or ordinary forum users do not need a fancy profile page
