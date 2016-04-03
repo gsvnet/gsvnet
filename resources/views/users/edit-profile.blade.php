@@ -7,6 +7,7 @@
 @section('content')
     <div class="column-holder">
         <h1>Verander je forumaccount</h1>
+        <p class="delta">Wijzig hier je email of wachtwoord.</p>
 
         @if($errors->count() > 0)
             <div style="padding:1em;background:#FF5F5F">
