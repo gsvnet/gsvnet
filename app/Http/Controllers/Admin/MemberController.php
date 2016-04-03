@@ -319,7 +319,7 @@ class MemberController extends AdminBaseController
         $this->authorize('user.manage.photo', $member);
 
         if ($request->hasFile('photo_path')) {
-            $this->dispatch(new SetProfilePictureCommand($member, $request->file('photo_path')));
+            $this->dispatch(SetProfilePictureCommand::fromRequest($request, $member));
         }
 
         flash()->success("Foto van {$member->present()->fullName()} succesvol opgeslagen");

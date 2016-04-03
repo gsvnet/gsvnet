@@ -1,14 +1,15 @@
 <?php namespace GSVnet\Users;
 
+use GSVnet\Forum\Replies\Reply;
+use GSVnet\Forum\Threads\Thread;
+use GSVnet\Users\ProfileActions\ProfileAction;
+use GSVnet\Users\Profiles\UserProfile;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Config;
-use Illuminate\Support\Facades\Hash;
 use Laracasts\Presenter\PresentableTrait;
-use Permission;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
@@ -25,17 +26,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * Fillable fields
      * @var array
      */
-    protected $fillable = array('username', 'firstname', 'middlename', 'lastname', 'email', 'password', 'type');
+    protected $fillable = ['username', 'firstname', 'middlename', 'lastname', 'email', 'password', 'type'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = array('password');
+    protected $hidden = ['password'];
 
-
-    protected $presenter = 'GSVnet\Users\UserPresenter';
+    protected $presenter = UserPresenter::class;
 
     // User types
     const VISITOR = 0;
@@ -125,27 +125,32 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function profile()
     {
-        return $this->hasOne('GSVnet\Users\Profiles\UserProfile');
+        return $this->hasOne(UserProfile::class);
+    }
+
+    public function profileChanges()
+    {
+        return $this->hasMany(ProfileAction::class, 'user_id', 'id');
     }
 
     public function replies()
     {
-        return $this->hasMany('GSVnet\Forum\Replies\Reply');
+        return $this->hasMany(Reply::class);
     }
 
     public function threads()
     {
-        return $this->hasMany('GSVnet\Forum\Threads\Thread');
+        return $this->hasMany(Thread::class);
     }
 
     public function parents()
     {
-        return $this->belongsToMany('GSVnet\Users\User', 'family_relations', 'child_id', 'parent_id');
+        return $this->belongsToMany(self::class, 'family_relations', 'child_id', 'parent_id');
     }
 
     public function children()
     {
-        return $this->belongsToMany('GSVnet\Users\User', 'family_relations', 'parent_id', 'child_id');
+        return $this->belongsToMany(self::class, 'family_relations', 'parent_id', 'child_id');
     }
 
     public function isMember()

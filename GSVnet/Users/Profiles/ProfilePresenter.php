@@ -38,6 +38,11 @@ class ProfilePresenter extends Presenter
         return $this->gender === null ? 'Nee' : ($this->gender == 1 ? 'Man' : 'Vrouw');
     }
 
+    public function alumniStatus()
+    {
+        return $this->reunist ? 'Ja' : 'Nee';
+    }
+
     public function xsmallProfileImage()
     {
         if ($this->photo_path != '')
@@ -80,7 +85,7 @@ class ProfilePresenter extends Presenter
         if (is_null($this->resignation_date))
             return '';
 
-        return $this->resignation_date->format('d-m-Y');
+        return Carbon::createFromFormat('Y-m-d', $this->entity->resignation_date)->format('d-m-Y');
     }
 
     public function inaugurationDateSimple()
@@ -88,6 +93,22 @@ class ProfilePresenter extends Presenter
         if (is_null($this->inauguration_date))
             return '';
 
-        return $this->inauguration_date->format('d-m-Y');
+        return Carbon::createFromFormat('Y-m-d', $this->entity->inauguration_date)->format('d-m-Y');
+    }
+
+    public function resignationDateExpressive()
+    {
+        if (is_null($this->resignation_date))
+            return '';
+
+        return Carbon::createFromFormat('Y-m-d', $this->entity->resignation_date)->formatLocalized('%e %B %Y');
+    }
+
+    public function inaugurationDateExpressive()
+    {
+        if (is_null($this->inauguration_date))
+            return '';
+
+        return Carbon::createFromFormat('Y-m-d', $this->entity->inauguration_date)->formatLocalized('%e %B %Y');
     }
 }
