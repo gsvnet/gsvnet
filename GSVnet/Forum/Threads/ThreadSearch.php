@@ -2,6 +2,7 @@
 
 use DB, Permission;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ThreadSearch
 {
