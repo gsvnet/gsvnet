@@ -178,10 +178,16 @@ class UsersController extends AdminBaseController {
         if (!$user->wasOrIsMember() && !$user->isPotential())
             return view('admin.users.show')->with(compact('user'));
 
-        // Members, former members and potentials need some more details
         $profile = $user->profile;
-        $committees = $user->committeesSorted;
-        return view('admin.users.showMember')->with(compact('user', 'profile', 'committees'));
+
+        if ($user->wasOrIsMember()) {
+            // Members, former members
+            $committees = $user->committeesSorted;
+            return view('admin.users.showMember')->with(compact('user', 'profile', 'committees'));
+        }
+
+        // Potentials
+        return view('admin.users.showPotential')->with(compact('user', 'profile'));
     }
 
     public function destroy($id)
