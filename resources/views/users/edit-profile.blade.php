@@ -7,7 +7,6 @@
 @section('content')
     <div class="column-holder">
         <h1>Verander je forumaccount</h1>
-        <p class="delta">Op het actieve forum van de GSV staat informatie over activiteiten en aanbod van kamers in Groningen. Je kunt er praktisch alles kwijt.</p>
 
         @if($errors->count() > 0)
             <div style="padding:1em;background:#FF5F5F">
