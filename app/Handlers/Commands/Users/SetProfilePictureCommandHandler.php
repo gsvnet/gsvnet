@@ -30,7 +30,7 @@ class SetProfilePictureCommandHandler
         $profile->save();
 
         if ($command->user->wasOrIsMember()) {
-            event(new ProfilePictureWasChanged($command->user));
+            event(new ProfilePictureWasChanged($command->user, $command->manager));
         }
     }
 }

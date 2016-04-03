@@ -5,134 +5,40 @@
         <h1><a href="{{ action('MemberController@showPhoto', $profile->id) }}" title="Grote foto"><img src="{!! $profile->present()->xsmallProfileImage !!}" width="102" height="102" alt="Profielfoto"/></a> {{ $user->present()->fullName }}</h1>
     </div>
 
+    @can('user.manage.password', $user)
     <div class="row">
         <div class="col-xs-12">
-            <h2>Persoonlijke gegevens</h2>
             <ul class="nav nav-pills">
-                @can('user.manage.name', $user)
-                <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editName', $user->id) }}">
-                        <i class="glyphicon glyphicon-user"></i> Naam
-                    </a>
-                </li>
-                @endcan
-                @can('user.manage.address', $user)
-                <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editContactDetails', $user->id) }}">
-                        <i class="glyphicon glyphicon-home"></i> Contactgegevens
-                    </a>
-                </li>
-                @endcan
-                @can('user.manage.photo', $user)
-                <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editPhoto', $user->id) }}">
-                        <i class="fa fa-camera"></i> Foto
-                    </a>
-                </li>
-                @endcan
-                @can('user.manage.gender', $user)
-                <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editGender', $user->id) }}">
-                        <i class="fa fa-transgender"></i> Geslacht
-                    </a>
-                </li>
-                @endcan
-                @can('user.manage.birthday', $user)
-                <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editBirthDay', $user->id) }}">
-                        <i class="glyphicon glyphicon-calendar"></i> Geboortedatum
-                    </a>
-                </li>
-                @endcan
-                @can('user.manage.business', $user)
-                <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editBusiness', $user->id) }}">
-                        <i class="glyphicon glyphicon-briefcase"></i> Werkgegevens
-                    </a>
-                </li>
-                @endcan
-                @can('user.manage.study', $user)
-                <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editStudy', $user->id) }}">
-                        <i class="fa fa-university"></i> Studie
-                    </a>
-                </li>
-                @endcan
-                @can('user.manage.parents', $user)
-                <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editParentContactDetails', $user->id) }}">
-                        <i class="fa fa-users"></i> Ouders
-                    </a>
-                </li>
-                @endcan
-                @can('user.manage.email', $user)
-                <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editEmail', $user->id) }}">
-                        <i class="glyphicon glyphicon-envelope"></i> Emailadres
-                    </a>
-                </li>
-                @endcan
-                @can('user.manage.password', $user)
                 <li role="presentation">
                     <a href="{{ action('Admin\MemberController@editPassword', $user->id) }}">
-                        <i class="fa fa-unlock-alt"></i> Wachtwoord
+                        <i class="fa fa-unlock-alt"></i> Wachtwoord wijzigen
                     </a>
                 </li>
-                @endcan
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <h2>GSV</h2>
-            <ul class="nav nav-pills">
-                @can('users.manage')
-                <li role="presentation">
-                    <a href="{{ action('Admin\FamilyController@index', $user->id) }}">
-                        <i class="fa fa-tree"></i> GSV-stamboom
-                    </a>
-                </li>
-                @endcan
-                @can('users.manage')
-                <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editYearGroup', $user->id) }}">
-                        <i class="fa fa-flag"></i> Jaarverband
-                    </a>
-                </li>
-                @endcan
-                @can('users.manage')
-                <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editMembershipPeriod', $user->id) }}">
-                        <i class="fa fa-hourglass-end"></i> Periode van lidmaatschap
-                    </a>
-                </li>
-                @endcan
-                @can('users.manage')
-                <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editRegion', $user->id) }}">
-                        <i class="fa fa-sitemap"></i> Regio
-                    </a>
-                </li>
-                @endcan
-                @can('users.manage', $user)
-                <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editAlumniStatus', $user->id) }}">
-                        <i class="fa fa-eur"></i> Reüniststatus
-                    </a>
-                </li>
-                @endcan
             </ul>
         </div>
     </div>
 
     <hr>
+    @endcan
 
     <div class="row">
         <div class="col-xs-12 col-md-8">
-            <h2>Overzicht</h2>
-            <table class='table table-striped table-hover sort-table'>
-                <tbody>
 
+            @cannot('users.manage')
+                <div class="alert alert-info" role="alert"><strong>Tip: Klopt er iets niet wat u zelf niet kunt wijzigen? Mail de abactis!</strong></div>
+            @endcan
+
+            {{-- Name --}}
+
+            <h3>
+                <i class="glyphicon glyphicon-user"></i>
+                Naam
+                @can('user.manage.name', $user)
+                    <a href="{{ action('Admin\MemberController@editName', $user->id) }}">(wijzig)</a>
+                @endcan
+            </h3>
+            <table class='table table-striped table-hover' style="table-layout: fixed;">
+                <tbody>
                     <tr>
                         <th>Initialen</th>
                         <td>{{$profile->initials}}</td>
@@ -142,96 +48,328 @@
                         <th>Naam</th>
                         <td>{{ $user->present()->fullName }}</td>
                     </tr>
-
-                    <tr>
-                        <th>Email</th>
-                        <td>{{ $user->email }}</td>
-                    </tr>
-
-                    <tr>
-                        <th>Type</th>
-                        <td>{{ $user->present()->membershipType }}</td>
-                    </tr>
-
-                    @if($user->type == GSVnet\Users\User::FORMERMEMBER)
-                    <tr>
-                        <th>Reunist?</th>
-                        <td>{{$profile->reunist == 0 ? 'Nee' : 'Ja'}}</td>
-                    </tr>
-                    @endif
-
-                    <tr>
-                        <th>Geslacht</th>
-                        <td>{{$profile->present()->genderLocalized}}</td>
-                    </tr>
-
-                    <tr>
-                        <th>Geboortedatum</th>
-                        <td>{{Carbon\Carbon::parse($profile->birthdate)->formatLocalized('%e %B %Y')}}</td>
-                    </tr>
-
-                    <tr>
-                        <th>Jaarverband</th>
-                        <td>{{ $profile->yearGroup->present()->nameWithYear }}</td>
-                    </tr>
-
-                    <tr>
-                        <th>Regio</th>
-                        <td>{{$profile->present()->regionName}}</td>
-                    </tr>
-
-                    <tr>
-                        <th>Adres</th>
-                        <td>
-                            <address>
-                                {{$profile->address}}<br/>
-                                {{$profile->zip_code}} {{$profile->town}}
-                            </address>
-                        </td> 
-                    </tr>
-
-                    <tr>
-                        <th>Kerk</th>
-                        <td>{{$profile->church}}</td>
-                    </tr>
-
-                    <tr>
-                        <th>Studie</th>
-                        <td>{{$profile->study}}</td>
-                    </tr>
-
-                    <tr>
-                        <th>Studentnummer</th>
-                        <td>{{$profile->student_number}}</td>
-                    </tr>
-
-                    <tr>
-                        <th>Adres ouders</th>
-                        <td><address>
-                            {{$profile->parent_address}}<br/>
-                            {{$profile->parent_zip_code}} {{$profile->parent_town}}
-                        </address>
-                           
-                        </td> 
-                    </tr>
-
-                    <tr>
-                        <th>Telefoon ouders</th>
-                        <td>{{$profile->parent_phone}}</td>
-                    </tr>
                 </tbody>
             </table>
-        </div>
-    </div>
 
-    @if ($committees->count() > 0)
-        <div class="page-header">
-            <h2>Commissies</h2>
-            <ul>
-                @foreach ($committees as $committee)
-                    <li><a href="{{action('Admin\CommitteeController@show', ['id' => $committee->id])}}">{{ $committee->name }}</a></li>
-                @endforeach
+            {{-- Lid status --}}
+
+            <h3>
+                <i class="fa fa-flag"></i> Jaarverband &amp; Regio
+            </h3>
+            <table class='table table-striped table-hover' style="table-layout: fixed;">
+                <tbody>
+                    <tr>
+                        <th>Jaarverband</th>
+                        <td>
+                            {{ $profile->yearGroup->present()->nameWithYear() }}
+                            @can('users.manage', $user)
+                                <a href="{{ action('Admin\MemberController@editYearGroup', $user->id) }}">(wijzig)</a>
+                            @endcan
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Regio</th>
+                        <td>
+                            {{ $profile->present()->regionName() }} 
+                            @can('users.manage', $user)
+                                <a href="{{ action('Admin\MemberController@editRegion', $user->id) }}">(wijzig)</a>
+                            @endcan
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Lid-status</th>
+                        <td>
+                            {{ $user->present()->membershipType }} 
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Geïnaugureerd op</th>
+                        <td>
+                            @if(is_null($profile->inauguration_date))
+                                <span class="text-muted">Niet ingesteld</span>
+                            @else
+                                {{ $profile->present()->inaugurationDateExpressive() }}
+                            @endif
+
+                            @can('users.manage', $user)
+                                <a href="{{ action('Admin\MemberController@editMembershipPeriod', $user->id) }}">(wijzig)</a>
+                            @endcan
+                        </td>
+                    </tr>
+                    @if ($user->isFormerMember())
+                    <tr>
+                        <th>Bedankt op</th>
+                        <td>
+                            @if($profile->resignation_date instanceof Carbon\Carbon)
+                                {{ $profile->resignation_date->resignationDateExpressive() }}
+                            @else
+                                <span class="text-muted">Niet ingesteld</span>
+                            @endif
+
+                            @can('users.manage', $user)
+                                <a href="{{ action('Admin\MemberController@editMembershipPeriod', $user->id) }}">(wijzig)</a>
+                            @endcan
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Reunist?</th>
+                        <td>
+                            {{ $profile->present()->alumniStatus() }}
+
+                            @can('users.manage', $user)
+                                <a href="{{ action('Admin\MemberController@editAlumniStatus', $user->id) }}">(wijzig)</a>
+                            @endcan
+                        </td>
+                    </tr>
+                    @endif
+                </tbody>
+            </table>
+
+            {{-- Email --}}
+
+            <h3>
+                <i class="glyphicon glyphicon-envelope"></i>
+                Email
+
+                @can('user.manage.email', $user)
+                    <a href="{{ action('Admin\MemberController@editEmail', $user->id) }}">(wijzig)</a>
+                @endcan
+            </h3>
+            <table class='table table-striped table-hover' style="table-layout: fixed;">
+                <tbody>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ $user->email }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            {{-- Contactgegevens --}}
+
+            <h3>
+                <i class="glyphicon glyphicon-home"></i>
+                Contactgegevens
+
+                @can('user.manage.address', $user)
+                    <a href="{{ action('Admin\MemberController@editContactDetails', $user->id) }}">(wijzig)</a>
+                @endcan
+            </h3>
+            <table class='table table-striped table-hover' style="table-layout: fixed;">
+                <tbody>
+                <tr>
+                    <th>Telefoon</th>
+                    <td>{{ $profile->phone }}</td>
+                </tr>
+                <tr>
+                    <th>Adres</th>
+                    <td>{{ $profile->address }}</td>
+                </tr>
+                <tr>
+                    <th>Postcode</th>
+                    <td>{{ $profile->zip_code }}</td>
+                </tr>
+                <tr>
+                    <th>Plaats</th>
+                    <td>{{ $profile->town }}</td>
+                </tr>
+                <tr>
+                    <th>Land</th>
+                    <td>{{ $profile->country }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            {{-- Profile picture --}}
+
+            <h3>
+                <i class="fa fa-camera"></i>
+                Profielfoto
+
+                @can('user.manage.photo', $user)
+                    <a href="{{ action('Admin\MemberController@editPhoto', $user->id) }}">(wijzig)</a>
+                @endcan
+            </h3>
+            <table class='table table-striped table-hover' style="table-layout: fixed;">
+                <tbody>
+                <tr>
+                    <th>Profielfoto</th>
+                    <td>
+                        @if (empty($profile->photo_path))
+                            <span class="text-danger">Geen ingesteld</span>
+                        @else
+                            <img src="{{$profile->present()->xsmallProfileImage}}" width="102" height="102" alt="Profielfoto" />
+                        @endif
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            {{-- Gender --}}
+
+            <h3>
+                <i class="fa fa-transgender"></i>
+                Geslacht
+
+                @can('user.manage.gender', $user)
+                    <a href="{{ action('Admin\MemberController@editGender', $user->id) }}">(wijzig)</a>
+                @endcan
+            </h3>
+            <table class='table table-striped table-hover' style="table-layout: fixed;">
+                <tbody>
+                <tr>
+                    <th>Geslacht</th>
+                    <td>{{ $profile->present()->genderLocalized() }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            {{-- Birth date --}}
+
+            <h3>
+                <i class="glyphicon glyphicon-calendar"></i> 
+                Geboortedatum
+
+                @can('user.manage.birthday', $user)
+                    <a href="{{ action('Admin\MemberController@editBirthDay', $user->id) }}">(wijzig)</a>
+                @endcan
+            </h3>
+            <table class='table table-striped table-hover' style="table-layout: fixed;">
+                <tbody>
+                <tr>
+                    <th>Geboortedatum</th>
+                    <td>{{ Carbon\Carbon::parse($profile->birthdate)->formatLocalized('%e %B %Y') }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            {{-- Study --}}
+
+            <h3>
+               <i class="fa fa-university"></i> Studie
+
+                @can('user.manage.study', $user)
+                    <a href="{{ action('Admin\MemberController@editStudy', $user->id) }}">(wijzig)</a>
+                @endcan
+            </h3>
+            <table class='table table-striped table-hover' style="table-layout: fixed;">
+                <tbody>
+                <tr>
+                    <th>Studie</th>
+                    <td>{{ $profile->study }}</td>
+                </tr>
+                <tr>
+                    <th>Studentennummer</th>
+                    <td>{{ $profile->student_number }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <hr>
+
+            {{-- Business --}}
+
+            <h3>
+                <i class="glyphicon glyphicon-briefcase"></i> 
+                Werkgegevens
+
+                @can('user.manage.business', $user)
+                    <a href="{{ action('Admin\MemberController@editBusiness', $user->id) }}">(wijzig)</a>
+                @endcan
+            </h3>
+            <table class='table table-striped table-hover' style="table-layout: fixed;">
+                <tbody>
+                <tr>
+                    <th>Bedrijf</th>
+                    <td>{{ $profile->company }}</td>
+                </tr>
+                <tr>
+                    <th>Functie</th>
+                    <td>{{ $profile->profession }}</td>
+                </tr>
+                <tr>
+                    <th>LinkedIn</th>
+                    <td>{{ $profile->business_url }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            {{-- Parents --}}
+
+            <h3>
+               <i class="fa fa-users"></i> Gegevens ouders
+
+                @can('user.manage.parents', $user)
+                    <a href="{{ action('Admin\MemberController@editParentContactDetails', $user->id) }}">(wijzig)</a>
+                @endcan
+            </h3>
+            <table class='table table-striped table-hover' style="table-layout: fixed;">
+                <tbody>
+                <tr>
+                    <th>Telefoon</th>
+                    <td>{{ $profile->parent_phone }}</td>
+                </tr>
+                <tr>
+                    <th>Adres</th>
+                    <td>{{ $profile->parent_address }}</td>
+                </tr>
+                <tr>
+                    <th>Postcode</th>
+                    <td>{{ $profile->parent_zip_code }}</td>
+                </tr>
+                <tr>
+                    <th>Plaats</th>
+                    <td>{{ $profile->parent_town }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <hr>
+
+            @if ($committees->count() > 0)
+                <h3>Commissiewerk</h3>
+                <ul>
+                    @foreach ($committees as $committee)
+                        <li>
+                            <a href="{{action('Admin\CommitteeController@show', ['id' => $committee->id])}}">{{ $committee->name }}: {{$committee->present()->from_to }}</a>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+        </div>
+        <div class="col-xs-12 col-md-4">
+
+            <h2>
+                <i class="fa fa-tree"></i> GSV-familie
+
+                @can('users.manage')
+                    <a href="{{ action('Admin\FamilyController@index', $user->id) }}">(wijzig)</a>
+                @endcan
+            </h2>
+            <h3>Papa of mama</h3>
+            @forelse($user->parents as $parent)
+                {{$parent->present()->fullName() }}
+            @empty
+                <span class="text-danger">Geen vader of moeder</span>
+            @endforelse
+
+            <h3>Kinderen</h3>
+            @forelse($user->children as $child)
+                {{$child->present()->fullName() }}
+            @empty
+                <span class="text-muted">Geen kinderen</span>
+            @endforelse
+
+            <h2>Laatste veranderingen</h2>
+            <ul class="list-group">
+                @forelse($user->profileChanges()->take(10)->orderBy('at', 'DESC')->get() as $change)
+                    <li class="list-group-item">
+                        <h4 class="list-group-item-heading">{{ $change->present()->actionName() }}</h4>
+                        <p class="list-group-item-text">{{ $change->at->diffForHumans() }}</p>
+                    </li>
+                @empty
+                    <li class="list-group-item">Niks recent veranderd</li>
+                @endforelse
             </ul>
         </div>
-    @endif
+    </div>
 @stop
