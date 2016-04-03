@@ -6,6 +6,6 @@ class FilePresenter extends Presenter
 {
     public function updated_ago()
     {
-        return $this->updated_at->diffForHumans();
+        return $this->entity->updated_at->diffForHumans();
     }
 }

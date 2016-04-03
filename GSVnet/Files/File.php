@@ -6,21 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 class File extends Model {
     use PresentableTrait;
 
-    protected $fillable = array('name', 'file_path', 'published');
+    protected $fillable = ['name', 'file_path', 'published'];
 
-    protected $presenter = 'GSVnet\Files\FilePresenter';
+    protected $presenter = FilePresenter::class;
 
-    public static $rules = array(
+    protected $dates = ['updated_at', 'created_at'];
+
+    public static $rules = [
         'name' => 'required'
-    );
-
-    protected $fileHandler;
-
-    public function __construct()
-    {
-        $this->fileHandler = new FileHandler;
-        
-    }
+    ];
 
     public function scopePublished($query, $published = true)
     {
@@ -63,24 +57,21 @@ class File extends Model {
 
     public function getSizeAttribute()
     {
-        return $this->readable_size($this->fileHandler->fileSize($this->file_path));
+        /** @var $fileHandler FileHandler */
+        $fileHandler = app(FileHandler::class);
+        return $this->readable_size($fileHandler->fileSize($this->file_path));
     }
 
     public function getTypeAttribute()
     {
-        return '.' . $this->fileHandler->extension($this->file_path);
+        /** @var $fileHandler FileHandler */
+        $fileHandler = app(FileHandler::class);
+        return '.' . $fileHandler->extension($this->file_path);
     }
 
     public function fileLocation()
     {
         return storage_path() . $this->file_path;
-    }
-
-    public function getUpdatedAtAttribute($updatedAt)
-    {
-        $date = new \Carbon\Carbon($updatedAt);
-
-        return $date->diffForHumans();
     }
 
     /**
