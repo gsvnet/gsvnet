@@ -1,6 +1,7 @@
 <?php namespace GSVnet\Files;
 
 use GSVnet\Permissions\NoPermissionException;
+use Illuminate\Support\Facades\Gate;
 use Permission;
 
 /**

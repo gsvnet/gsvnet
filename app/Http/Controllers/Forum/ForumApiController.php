@@ -13,6 +13,7 @@ use GSVnet\Forum\Threads\ThreadRepository;
 use GSVnet\Markdown\HtmlMarkdownConverter;
 use GSVnet\Permissions\NoPermissionException;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Gate;
 
 class ForumApiController extends BaseController {
 
