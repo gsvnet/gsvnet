@@ -88,7 +88,7 @@
         </script>
         @endif
 
-        <script async src="/build-javascripts/app.js?v=1.4.13"></script>
+        <script async src="/build-javascripts/app.js?v=1.5.1"></script>
 
         @if(!Config::get('app.debug'))
             @include('partials/_analytics')
