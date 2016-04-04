@@ -44,7 +44,7 @@ Messages = (function(){
             $counter = $('.online-number').first();
             $term = $('.online-number-term').first();
 
-            updates.on('test', function(data) {
+            updates.on('online', function(data) {
                 $counter.text(data);
                 $term.text(data == 1 ? "GSV'er" : "GSV'ers");
             });
