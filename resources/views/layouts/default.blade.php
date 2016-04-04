@@ -84,6 +84,7 @@
         @if (Auth::check())
         <script>
             var USER_ID = {{Auth::user()->id}};
+            var notificationsUrl = '{{Config::get('gsvnet.notificationsUrl')}}';
         </script>
         @endif
 
