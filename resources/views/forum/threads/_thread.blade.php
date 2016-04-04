@@ -4,7 +4,7 @@
         	{!! $thread->author->present()->avatar(40) !!}
         </div>
         <div class="like-box">
-            @can('threads.like', $thread)
+            @can('thread.like', $thread)
                 <button class="like-box--button {!! $thread->present()->likeClass !!}" data-type="thread" data-id="{!! $thread->id !!}">
                     +<span class="like-box--count">{{ $thread->like_count }}</span>
                 </button>
