@@ -173,6 +173,8 @@ app = (function() {
 		});
 
 		Menu.init($mainMenu, $('.top-caret'), $('#navbar-toggler'));
+
+		Messages.init();
 	}
 
 	function thread() {
