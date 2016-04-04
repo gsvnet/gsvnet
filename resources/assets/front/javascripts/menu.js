@@ -65,8 +65,6 @@ Menu = (function(){
 				toggler.on('click', showMenu);				
 			}
 
-
-
 			menu.click(function(e){
 				e.stopPropagation();
 			});
