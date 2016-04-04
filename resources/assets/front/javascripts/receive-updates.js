@@ -1,4 +1,4 @@
-(function(){
+Messages = (function(){
 
     var counter = 0,
         oldTitle = document.title;
@@ -14,8 +14,12 @@
         document.title = "(" + counter + ") " + oldTitle;
     }
 
-    if(typeof USER_ID !== 'undefined') {
-        var updates = io.connect('https://notifications.gsvnet.nl/');
+    function init() {
+        if(typeof USER_ID === 'undefined' || typeof notificationsUrl === 'undefined') {
+            return;
+        }
+
+        var updates = io.connect(notificationsUrl);
 
         updates.on('activity:app.reply', function (data) {
             if(data.user_id != USER_ID) {
@@ -31,6 +35,23 @@
                 message('Nieuw topic van ' + data.username);
                 setTitle();
             }
-        })
+        });
+
+        $indicator = $('.online-indicator').first();
+
+        if ($indicator) {
+            $indicator.addClass('online-indicator--online');
+            $counter = $('.online-number').first();
+            $term = $('.online-number-term').first();
+
+            updates.on('online', function(data) {
+                $counter.text(data);
+                $term.text(data == 1 ? "GSV'er" : "GSV'ers");
+            });
+        }
     }
+
+    return {
+        init: init
+    };
 })();
