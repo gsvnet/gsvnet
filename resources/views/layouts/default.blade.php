@@ -84,10 +84,11 @@
         @if (Auth::check())
         <script>
             var USER_ID = {{Auth::user()->id}};
+            var notificationsUrl = '{{Config::get('gsvnet.notificationsUrl')}}';
         </script>
         @endif
 
-        <script async src="/build-javascripts/app.js?v=1.4.13"></script>
+        <script async src="/build-javascripts/app.js?v=1.5.1"></script>
 
         @if(!Config::get('app.debug'))
             @include('partials/_analytics')

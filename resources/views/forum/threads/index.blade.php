@@ -19,6 +19,12 @@
     @endif
 
     <section class="main-content forum has-border-bottom">
+        @can('users.show')
+        <p class="online-users-row">
+            <span class="online-indicator"></span>
+            <strong class="online-number">?</strong> <span class="online-number-term">GSV'ers</span> online
+        </p>
+        @endcan
 
         <div class="threads media-rows has-counters">
             {{-- Loop over the threads and display the thread summary partial --}}
