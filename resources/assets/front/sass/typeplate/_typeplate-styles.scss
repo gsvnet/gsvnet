@@ -79,6 +79,8 @@ var {
 pre {
   @include typl8-white-space(pre);
 
+  overflow-x: auto;
+
   code {
     @extend %typl8-normal-wrap;
     @include typl8-white-space(pre-wrap);
