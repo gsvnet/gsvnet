@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700,400italic">
     @section('stylesheets')
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.7.6">
+        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.7.7">
     @show
 </head>
 <body id="@yield('body-id', 'gsvnet')">
@@ -88,7 +88,7 @@
         </script>
         @endif
 
-        <script async src="/build-javascripts/app.js?v=1.5.1"></script>
+        <script async src="/build-javascripts/app.js?v=1.5.2"></script>
 
         @if(!Config::get('app.debug'))
             @include('partials/_analytics')
