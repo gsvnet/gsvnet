@@ -6,7 +6,6 @@ use GSV\Http\Middleware\CanBecomeMember;
 use GSV\Http\Middleware\MustHavePermission;
 use GSV\Http\Middleware\OnlineUserCounter;
 use GSV\Http\Middleware\RedirectIfAuthenticated;
-use GSV\Http\Middleware\SetLoggedInCookie;
 use GSV\Http\Middleware\ValidEventDate;
 use GSV\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
@@ -31,7 +30,6 @@ class Kernel extends HttpKernel
         AddQueuedCookiesToResponse::class,
         StartSession::class,
         ShareErrorsFromSession::class,
-        SetLoggedInCookie::class,
         OnlineUserCounter::class
     ];
 
