@@ -20,7 +20,7 @@
         </div>
         <div class="secondary-column">
             <h2>Wat kun je hierna doen</h2>
-            <p>Als je je registeert krijg je toegang tot het forum.</p>
+            <p>Als je je registeert krijg je toegang tot het forum. Dit is niet hetzelfde als je aanmelden voor de GSV.</p>
         </div>
     </div>
 @stop
