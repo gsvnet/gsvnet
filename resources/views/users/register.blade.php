@@ -19,11 +19,8 @@
             {!!Former::close()!!}
         </div>
         <div class="secondary-column">
-            <h2>Wat kun je nu</h2>
-            <p>Als je je registeert kun je dit en dat</p>
-
-            <h2>Voor zus en zo</h2>
-            <p>Je kunt dat en dit</p>
+            <h2>Wat kun je hierna doen</h2>
+            <p>Als je je registeert krijg je toegang tot het forum.</p>
         </div>
     </div>
 @stop

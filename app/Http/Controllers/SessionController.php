@@ -26,9 +26,6 @@ class SessionController extends BaseController {
         // Attempt to login user else redirect as intended
         if (Auth::attempt($userdata, Input::get('remember', false)))
         {
-            // Set cookie for logged in users. See CheckForCookie middleware
-            $this->cookie->queue('logged-in', Auth::user()->id, 2628000);
-
             //For redirect
             $intended = URL::previous();
 
@@ -49,7 +46,6 @@ class SessionController extends BaseController {
     public function getLogout()
     {
         Auth::logout();
-        $this->cookie->forget('logged-in');
         return redirect('/');
     }
 
