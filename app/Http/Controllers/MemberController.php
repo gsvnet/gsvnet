@@ -98,9 +98,6 @@ class MemberController extends BaseController
             $this->dispatch(SetProfilePictureCommand::fromRequest($request, Auth::user()));
         }
 
-        // Set cache cookie
-        $this->cookie->queue('logged-in', Auth::user()->id, 2628000);
-
         // Redirect to the become-member page which shows some congrats page
         return redirect()->action('MemberController@becomeMember');
     }
