@@ -3,6 +3,7 @@
 use GSV\Http\Middleware\AccountNotApproved;
 use GSV\Http\Middleware\Authenticate;
 use GSV\Http\Middleware\CanBecomeMember;
+use GSV\Http\Middleware\LoginViaToken;
 use GSV\Http\Middleware\MustHavePermission;
 use GSV\Http\Middleware\OnlineUserCounter;
 use GSV\Http\Middleware\RedirectIfAuthenticated;
@@ -47,6 +48,7 @@ class Kernel extends HttpKernel
         'can' => MustHavePermission::class,
         'has' => MustHavePermission::class,
         'checkDate' => ValidEventDate::class,
-        'notYetMember' => CanBecomeMember::class
+        'notYetMember' => CanBecomeMember::class,
+        'loginViaToken' => LoginViaToken::class,
     ];
 }

@@ -4,5 +4,5 @@ use Controller;
 
 class MalfondsController extends Controller
 {
-
+    
 }

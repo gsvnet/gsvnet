@@ -3,16 +3,21 @@
 use Carbon\Carbon;
 use GSVnet\Users\User;
 use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
 
-class Token extends Model {
+class Token extends Model
+{
+    use PresentableTrait;
+
     public $table = 'invitation_tokens';
     public $incrementing = false;
     public $timestamps = false;
     protected $primaryKey = 'token';
     protected $dates = ['expires_on'];
     protected $fillable = ['user_id', 'expires_on', 'token'];
+    protected $presenter = TokenPresenter::class;
 
-    static $expire = 60*24*30; // minutes
+    static $expire = 60 * 24 * 30; // minutes
 
     public function scopeActive($query)
     {
