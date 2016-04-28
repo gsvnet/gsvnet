@@ -4,7 +4,9 @@ use GSV\Commands\Members\ChangeGender;
 use GSV\Commands\Members\ChangeName;
 use GSV\Commands\Members\ChangeYearGroup;
 use GSV\Commands\Users\ChangeEmail;
+use GSV\Commands\Users\ChangePassword;
 use GSV\Events\Members\Verifications\EmailWasVerified;
+use GSV\Events\Members\Verifications\FamilyWasVerified;
 use GSV\Events\Members\Verifications\GenderWasVerified;
 use GSV\Events\Members\Verifications\NameWasVerified;
 use GSV\Events\Members\Verifications\YearGroupWasVerified;
@@ -59,6 +61,15 @@ class MemberController extends CoreApiController
         return $this->itemWasUpdated()->withItem($member, new MemberTransformer);
     }
 
+    public function updatePassword(Request $request, $id)
+    {
+        $member = $this->users->memberOrFormerByIdWithProfile($id);
+        $this->authorize('user.manage.password', $member);
+        $this->dispatch(ChangePassword::fromForm($request, $member));
+
+        return $this->itemWasUpdated()->withItem($member, new MemberTransformer);
+    }
+
     public function updateGender(Request $request, $id)
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
@@ -85,37 +96,42 @@ class MemberController extends CoreApiController
         event(new NameWasVerified($member, $member));
         
         return $this->itemWasUpdated()->withItem($member, new MemberTransformer());
-
     }
 
     public function verifyEmail($id)
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
-        $this->authorize('user.manage.name', $member);
+        $this->authorize('user.manage.email', $member);
         event(new EmailWasVerified($member, $member));
 
         return $this->itemWasUpdated()->withItem($member, new MemberTransformer());
-
     }
 
     public function verifyYearGroup($id)
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
-        $this->authorize('user.manage.name', $member);
+        $this->authorize('formerMember.manage.year', $member);
         event(new YearGroupWasVerified($member, $member));
 
         return $this->itemWasUpdated()->withItem($member, new MemberTransformer());
-
     }
 
     public function verifyGender($id)
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
-        $this->authorize('user.manage.name', $member);
+        $this->authorize('user.manage.gender', $member);
         event(new GenderWasVerified($member, $member));
 
         return $this->itemWasUpdated()->withItem($member, new MemberTransformer());
+    }
 
+    public function verifyFamily($id)
+    {
+        $member = $this->users->memberOrFormerByIdWithProfile($id);
+        $this->authorize('user.manage.name', $member);
+        event(new FamilyWasVerified($member, $member));
+
+        return $this->itemWasUpdated()->withItem($member, new MemberTransformer());
     }
 
     public function family($id)

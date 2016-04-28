@@ -13,6 +13,7 @@ use GSV\Events\Members\ProfilePictureWasChanged;
 use GSV\Events\Members\RegionWasChanged;
 use GSV\Events\Members\StudyWasChanged;
 use GSV\Events\Members\Verifications\EmailWasVerified;
+use GSV\Events\Members\Verifications\FamilyWasVerified;
 use GSV\Events\Members\Verifications\GenderWasVerified;
 use GSV\Events\Members\Verifications\NameWasVerified;
 use GSV\Events\Members\Verifications\YearGroupWasVerified;
@@ -42,6 +43,7 @@ class UserEventHandler
         GenderWasVerified::class,
         NameWasVerified::class,
         YearGroupWasVerified::class,
+        FamilyWasVerified::class,
     ];
 
     static $informAbactisFor = [
@@ -60,6 +62,11 @@ class UserEventHandler
         GenderWasChanged::class,
     ];
 
+    static $verifyAccountWhen = [
+        MemberEmailWasChanged::class,
+        EmailWasVerified::class
+    ];
+
     public function subscribe(Dispatcher $events)
     {
         $events->listen(UserWasRegistered::class, 'GSV\Handlers\Events\Users\UserMailer@sendWelcomeEmail');
@@ -67,6 +74,7 @@ class UserEventHandler
         $events->listen(PotentialSignedUp::class, 'GSV\Handlers\Events\Potentials\PotentialMailer@sendWelcomeMail');
 
         $events->listen(self::$profileChanges, 'GSV\Handlers\Events\Members\ProfileUpdates@changedProfile');
+        $events->listen(self::$verifyAccountWhen, 'GSV\Handlers\Events\Members\ProfileUpdates@tookAccountInUse');
         $events->listen(self::$informAbactisFor, AbactisInformer::class);
         $events->listen(self::$informNewsletterFor, NewsletterInformer::class);
 

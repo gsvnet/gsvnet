@@ -34,7 +34,7 @@ class LoginViaToken
     public function maybeLoginViaToken($tokenString)
     {
         $token = $this->tokens->getActiveToken($tokenString);
-
+        
         if ($token) {
             Auth::loginUsingId($token->user_id);
         }

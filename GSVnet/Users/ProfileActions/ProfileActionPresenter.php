@@ -13,6 +13,7 @@ use GSV\Events\Members\ProfilePictureWasChanged;
 use GSV\Events\Members\RegionWasChanged;
 use GSV\Events\Members\StudyWasChanged;
 use GSV\Events\Members\Verifications\EmailWasVerified;
+use GSV\Events\Members\Verifications\FamilyWasVerified;
 use GSV\Events\Members\Verifications\GenderWasVerified;
 use GSV\Events\Members\Verifications\NameWasVerified;
 use GSV\Events\Members\Verifications\YearGroupWasVerified;
@@ -47,6 +48,7 @@ class ProfileActionPresenter extends Presenter
         GenderWasVerified::class => 'Geslacht',
         NameWasVerified::class => 'Naam',
         YearGroupWasVerified::class => 'Jaarverband',
+        FamilyWasVerified::class => 'GSV-familie',
     ];
 
     public function actionName()

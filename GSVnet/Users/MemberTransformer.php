@@ -15,6 +15,7 @@ class MemberTransformer extends BaseTransformer
             'middlename' => $member->middlename,
             'lastname' => $member->lastname,
             'email' => $member->email,
+            'verified' => $member->isVerified(),
             'region' => $member->profile->region,
             'initials' => $member->profile->initials,
             'phone' => $member->profile->phone,
