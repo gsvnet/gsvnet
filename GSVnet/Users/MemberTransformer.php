@@ -4,7 +4,7 @@ use GSVnet\BaseTransformer;
 
 class MemberTransformer extends BaseTransformer
 {
-    protected $availableIncludes = ['yeargroup'];
+    protected $defaultIncludes = ['yeargroup'];
 
     public function transform(User $member)
     {
