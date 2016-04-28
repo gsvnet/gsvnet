@@ -1,8 +1,8 @@
 <?php namespace GSV\Handlers\Commands\Users;
 
-use DomainException;
 use GSV\Commands\Users\ChangeEmail;
 use GSV\Events\Members\MemberEmailWasChanged;
+use GSVnet\Core\Exceptions\ValidationException;
 use GSVnet\Users\UsersRepository;
 use Illuminate\Support\MessageBag;
 
@@ -32,7 +32,7 @@ class ChangeEmailHandler
     private function validateUniqueness(ChangeEmail $command)
     {
         if ($this->users->isEmailAddressTaken($command->email->getEmail(), $command->user->id)) {
-            throw new DomainException(new MessageBag([
+            throw new ValidationException(new MessageBag([
                 'email' => 'Emailadres al bezet'
             ]));
         }
