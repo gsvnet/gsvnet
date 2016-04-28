@@ -213,4 +213,15 @@ Route::group(['prefix' => 'api', 'middleware' => ['loginViaToken']], function() 
     Route::resource('members', 'Malfonds\MemberController');
     Route::resource('yeargroups', 'Malfonds\YearGroupController');
     Route::get('members/{id}/family', 'Malfonds\MemberController@family');
+
+    Route::put('members/{id}/naam', 'Malfonds\MemberController@updateName');
+    Route::put('members/{id}/email', 'Malfonds\MemberController@updateEmail');
+    Route::put('members/{id}/jaarverband', 'Malfonds\MemberController@updateYearGroup');
+    Route::put('members/{id}/geslacht', 'Malfonds\MemberController@updateGender');
+
+    // Verifications
+    Route::post('members/{id}/naam/verifieer', 'Malfonds\MemberController@verifyName');
+    Route::post('members/{id}/email/verifieer', 'Malfonds\MemberController@verifyEmail');
+    Route::post('members/{id}/jaarverband/verifieer', 'Malfonds\MemberController@verifyYearGroup');
+    Route::post('members/{id}/geslacht/verifieer', 'Malfonds\MemberController@verifyGender');
 });
