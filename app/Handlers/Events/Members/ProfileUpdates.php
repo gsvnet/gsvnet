@@ -23,4 +23,11 @@ class ProfileUpdates
         );
         $this->actions->save($action);
     }
+
+    public function tookAccountInUse(ProfileEvent $event)
+    {
+        $member = $event->getUser();
+        $member->verified = true;
+        $this->users->save($member);
+    }
 }

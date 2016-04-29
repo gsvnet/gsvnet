@@ -3,8 +3,8 @@
 use GSV\Events\Members\AddressWasChanged;
 use GSV\Events\Members\BirthDayWasChanged;
 use GSV\Events\Members\BusinessWasChanged;
-use GSV\Events\Members\MemberEmailWasChanged;
 use GSV\Events\Members\GenderWasChanged;
+use GSV\Events\Members\MemberEmailWasChanged;
 use GSV\Events\Members\NameWasChanged;
 use GSV\Events\Members\ParentDetailsWereChanged;
 use GSV\Events\Members\PeriodOfMembershipWasChanged;
@@ -12,13 +12,18 @@ use GSV\Events\Members\PhoneNumberWasChanged;
 use GSV\Events\Members\ProfilePictureWasChanged;
 use GSV\Events\Members\RegionWasChanged;
 use GSV\Events\Members\StudyWasChanged;
+use GSV\Events\Members\Verifications\EmailWasVerified;
+use GSV\Events\Members\Verifications\FamilyWasVerified;
+use GSV\Events\Members\Verifications\GenderWasVerified;
+use GSV\Events\Members\Verifications\NameWasVerified;
+use GSV\Events\Members\Verifications\YearGroupWasVerified;
 use GSV\Events\Members\YearGroupWasChanged;
 use GSV\Events\Potentials\PotentialSignedUp;
 use GSV\Events\Users\UserWasRegistered;
-use GSVnet\Newsletters\NewsletterManager;
 use Illuminate\Contracts\Events\Dispatcher;
 
-class UserEventHandler {
+class UserEventHandler
+{
     static $profileChanges = [
         AddressWasChanged::class,
         BirthDayWasChanged::class,
@@ -33,6 +38,12 @@ class UserEventHandler {
         RegionWasChanged::class,
         StudyWasChanged::class,
         YearGroupWasChanged::class,
+
+        EmailWasVerified::class,
+        GenderWasVerified::class,
+        NameWasVerified::class,
+        YearGroupWasVerified::class,
+        FamilyWasVerified::class,
     ];
 
     static $informAbactisFor = [
@@ -51,6 +62,11 @@ class UserEventHandler {
         GenderWasChanged::class,
     ];
 
+    static $verifyAccountWhen = [
+        MemberEmailWasChanged::class,
+        EmailWasVerified::class
+    ];
+
     public function subscribe(Dispatcher $events)
     {
         $events->listen(UserWasRegistered::class, 'GSV\Handlers\Events\Users\UserMailer@sendWelcomeEmail');
@@ -58,7 +74,8 @@ class UserEventHandler {
         $events->listen(PotentialSignedUp::class, 'GSV\Handlers\Events\Potentials\PotentialMailer@sendWelcomeMail');
 
         $events->listen(self::$profileChanges, 'GSV\Handlers\Events\Members\ProfileUpdates@changedProfile');
-        $events->listen(self::$informAbactisFor,  AbactisInformer::class);
+        $events->listen(self::$verifyAccountWhen, 'GSV\Handlers\Events\Members\ProfileUpdates@tookAccountInUse');
+        $events->listen(self::$informAbactisFor, AbactisInformer::class);
         $events->listen(self::$informNewsletterFor, NewsletterInformer::class);
 
         $events->listen('user.registered', 'GSVnet\Users\UserMailer@registered');

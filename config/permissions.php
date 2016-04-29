@@ -161,6 +161,10 @@ return [
             'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
             'senate' => true
         ],
+        'formerMember.manage.year' => [
+            'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
+            'senate' => true
+        ],
         'user.manage.study' => [
             'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
             'senate' => true

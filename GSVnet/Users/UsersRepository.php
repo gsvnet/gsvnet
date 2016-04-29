@@ -31,6 +31,16 @@ class UsersRepository extends BaseRepository {
         return User::with('profile.yearGroup')->findOrFail($id);
     }
 
+    public function parentsWithProfileAndYearGroup(User $user)
+    {
+        return $user->parents()->with('profile.yearGroup')->get();
+    }
+
+    public function childrenWithProfileAndYearGroup(User $user)
+    {
+        return $user->children()->with('profile.yearGroup')->get();
+    }
+
     public function memberOrFormerByIdWithProfile($id)
     {
         return User::whereIn('type', [User::FORMERMEMBER, User::MEMBER, User::POTENTIAL])->with('profile.yearGroup')->findOrFail($id);

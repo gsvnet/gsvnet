@@ -8,6 +8,7 @@ use GSVnet\Permissions\UserAccountNotApprovedException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Handler extends ExceptionHandler
@@ -53,19 +54,31 @@ class Handler extends ExceptionHandler
         switch (get_class($e)) {
             case AuthorizationException::class:
             case NoPermissionException::class:
-                abort(404);
+                if ($request->ajax() || $request->wantsJson()) {
+                    return response()->json(null, Response::HTTP_UNAUTHORIZED);
+                } else {
+                    abort(404);
+                }
                 break;
             case UserAccountNotApprovedException::class:
                 return response(view('errors.unauthorized'), 401);
                 break;
             case ValidationException::class:
             case ValueObjectValidationException::class:
-                return redirect()->back()->withInput()->withErrors($e->getErrors());
+                if ($request->ajax() || $request->wantsJson()) {
+                    return response()->json($e->getErrors(), Response::HTTP_BAD_REQUEST);
+                } else {
+                    return redirect()->back()->withInput()->withErrors($e->getErrors());
+                }
                 break;
             case ModelNotFoundException::class:
-                abort(404);
+                if ($request->ajax() || $request->wantsJson()) {
+                    return response()->json(null, Response::HTTP_NOT_FOUND);
+                } else {
+                    abort(404);
+                }
                 break;
-                
+
         }
 
         return parent::render($request, $e);

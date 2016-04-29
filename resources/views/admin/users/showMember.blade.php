@@ -337,7 +337,6 @@
             @endif
         </div>
         <div class="col-xs-12 col-md-4">
-
             <h2>
                 <i class="fa fa-tree"></i> GSV-familie
 
