@@ -23,7 +23,7 @@ class LoginViaToken
     public function handle(Request $request, \Closure $next)
     {
         $token = $request->header('X-Auth-Token');
-
+        
         if ($token) {
             $this->maybeLoginViaToken($token);
         }

@@ -1,6 +1,7 @@
 <?php namespace GSVnet\Users;
 
 use GSVnet\BaseTransformer;
+use GSVnet\Users\ValueObjects\Gender;
 
 class MemberTransformer extends BaseTransformer
 {
@@ -26,7 +27,7 @@ class MemberTransformer extends BaseTransformer
             'country' => $member->profile->country,
             'birthdate' => $member->profile->birthdate,
             'church' => $member->profile->church,
-            'gender' => $member->profile->gender,
+            'gender' => $member->profile->gender === Gender::UNKOWN ? null : ($member->profile->gender == Gender::MALE ? 'male' : 'female'),
             'student_number' => $member->profile->student_number,
             'reunist' => $member->profile->reunist,
             'parent_address' => $member->profile->parent_address,

@@ -3,6 +3,7 @@
 use GSV\Http\Middleware\AccountNotApproved;
 use GSV\Http\Middleware\Authenticate;
 use GSV\Http\Middleware\CanBecomeMember;
+use GSV\Http\Middleware\CorsApi;
 use GSV\Http\Middleware\LoginViaToken;
 use GSV\Http\Middleware\MustHavePermission;
 use GSV\Http\Middleware\OnlineUserCounter;
@@ -50,5 +51,6 @@ class Kernel extends HttpKernel
         'checkDate' => ValidEventDate::class,
         'notYetMember' => CanBecomeMember::class,
         'loginViaToken' => LoginViaToken::class,
+        'cors' => CorsApi::class
     ];
 }

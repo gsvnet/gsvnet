@@ -209,7 +209,9 @@ Route::get('forum/{slug}', 'ForumThreadsController@getShowThread');
 Route::get('admin/leden/{id}/invite', 'Malfonds\InvitationController@create');
 Route::post('admin/leden/{id}/invite', 'Malfonds\InvitationController@store');
 
-Route::group(['prefix' => 'api', 'middleware' => ['loginViaToken', 'auth']], function() {
+Route::group(['prefix' => 'api', 'middleware' => ['cors', 'loginViaToken', 'auth']], function() {
+    Route::get('me', 'Malfonds\MemberController@me');
+
     Route::resource('members', 'Malfonds\MemberController');
     Route::resource('yeargroups', 'Malfonds\YearGroupController');
     Route::get('members/{id}/familie', 'Malfonds\MemberController@family');

@@ -43,6 +43,12 @@ class MemberController extends CoreApiController
         return $this->withItem($member, new MemberTransformer);
     }
 
+    public function me(Request $request)
+    {
+        $member = $this->users->memberOrFormerByIdWithProfile($request->user()->id);
+        return $this->withItem($member, new MemberTransformer);
+    }
+
     public function updateName(Request $request, $id)
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
