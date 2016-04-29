@@ -27,4 +27,17 @@ class TokenRepository extends BaseRepository
     {
         return $this->model->active()->where('user_id', $userId)->first();
     }
+
+    public function getOrCreateFor($userId)
+    {
+        $token = $this->getActiveByUserId($userId);
+        
+        if ($token) {
+            return $token;
+        }
+        
+        $token = Token::initiateFor($userId);
+        $this->save($token);
+        return $token;
+    }
 }

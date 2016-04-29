@@ -1,6 +1,7 @@
 <?php namespace GSV\Http;
 
 use GSV\Http\Middleware\AccountNotApproved;
+use GSV\Http\Middleware\ApiAuthenticated;
 use GSV\Http\Middleware\Authenticate;
 use GSV\Http\Middleware\CanBecomeMember;
 use GSV\Http\Middleware\CorsApi;
@@ -44,6 +45,7 @@ class Kernel extends HttpKernel
         'csrf' => VerifyCsrfToken::class,
         'auth' => Authenticate::class,
         'auth.basic' => AuthenticateWithBasicAuth::class,
+        'tokenAuth' => ApiAuthenticated::class,
         'guest' => RedirectIfAuthenticated::class,
         'approved' => AccountNotApproved::class,
         'can' => MustHavePermission::class,
@@ -51,6 +53,5 @@ class Kernel extends HttpKernel
         'checkDate' => ValidEventDate::class,
         'notYetMember' => CanBecomeMember::class,
         'loginViaToken' => LoginViaToken::class,
-        'cors' => CorsApi::class
     ];
 }
