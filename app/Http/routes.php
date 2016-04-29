@@ -1,9 +1,7 @@
 <?php
 
 // We keep the home route name as some build in functions use the 'home' name
-Route::get('/', ['as' => 'home',
-    'uses' => 'HomeController@showIndex'
-]);
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@showIndex']);
 
 // Login and logout routes
 Route::get('inloggen', ['middleware' => 'guest', 'uses' => 'SessionController@getLogin']);
@@ -145,7 +143,7 @@ Route::group([
     Route::put('leden/{user}/reunistschap',  'MemberController@updateAlumniStatus');
     Route::get('leden/{user}/tijd-van-lidmaatschap', 'MemberController@editMembershipPeriod');
     Route::put('leden/{user}/tijd-van-lidmaatschap', 'MemberController@updateMembershipPeriod');
-    
+
 
     Route::get('leden/oudleden.csv', 'UsersController@exportFormerMembers');
     Route::get('leden/leden.csv', 'UsersController@exportMembers');
@@ -206,3 +204,34 @@ Route::group(['prefix' => 'api', 'middleware' => ['auth', 'approved', 'has:membe
 Route::get('forum',      'ForumThreadsController@getIndex');
 Route::get('forum/zoek', 'ForumThreadsController@getSearch');
 Route::get('forum/{slug}', 'ForumThreadsController@getShowThread');
+
+// Malfonds
+Route::get('admin/leden/{id}/invite', 'Malfonds\InvitationController@create');
+Route::post('admin/leden/{id}/invite', 'Malfonds\InvitationController@store');
+
+Route::group(['prefix' => 'api', 'middleware' => ['cors']], function() {
+    Route::group(['middleware' => ['loginViaToken', 'tokenAuth']], function() {
+        Route::get('me', 'Malfonds\MemberController@me');
+    
+        Route::resource('members', 'Malfonds\MemberController');
+        Route::resource('yeargroups', 'Malfonds\YearGroupController');
+        Route::get('members/{id}/familie', 'Malfonds\MemberController@family');
+    
+        Route::get('members/{id}/history', 'Malfonds\MemberHistoryController@show');
+    
+        Route::put('members/{id}/naam', 'Malfonds\MemberController@updateName');
+        Route::put('members/{id}/email', 'Malfonds\MemberController@updateEmail');
+        Route::put('members/{id}/jaarverband', 'Malfonds\MemberController@updateYearGroup');
+        Route::put('members/{id}/geslacht', 'Malfonds\MemberController@updateGender');
+        Route::put('members/{id}/wachtwoord', 'Malfonds\MemberController@updatePassword');
+    
+        // Verifications
+        Route::post('members/{id}/naam/verifieer', 'Malfonds\MemberController@verifyName');
+        Route::post('members/{id}/email/verifieer', 'Malfonds\MemberController@verifyEmail');
+        Route::post('members/{id}/jaarverband/verifieer', 'Malfonds\MemberController@verifyYearGroup');
+        Route::post('members/{id}/geslacht/verifieer', 'Malfonds\MemberController@verifyGender');
+        Route::post('members/{id}/familie/verifieer', 'Malfonds\MemberController@verifyFamily');
+    });
+    
+    Route::post('login', 'Malfonds\SessionController@login');
+});

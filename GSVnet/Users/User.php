@@ -26,7 +26,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * Fillable fields
      * @var array
      */
-    protected $fillable = ['username', 'firstname', 'middlename', 'lastname', 'email', 'password', 'type'];
+    protected $fillable = ['username', 'firstname', 'middlename', 'lastname', 'email', 'password', 'type', 'verified'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -176,6 +176,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function isVisitor()
     {
         return $this->type == static::VISITOR;
+    }
+
+    public function isVerified()
+    {
+        return (bool) $this->verified;
     }
 
     public function activeCommittees()

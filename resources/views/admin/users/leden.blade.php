@@ -43,9 +43,7 @@
                             <th>tussenvoegsel</th>
                             <th>Achternaam</th>
                             <th>Jaarverband</th>
-                            @can('users.manage')
-                            <th class="sorttable_nosort">Familie</th>
-                            @endcan
+                            <th>Geverifieerd</th>
                             <th>Laatst bijgewerkt</th>
                         </tr>
                     </thead>
@@ -62,9 +60,13 @@
                             <td>{{ $profile->user->middlename }}</td>
                             <td>{{ $profile->user->lastname }}</td>
                             <td>{{ $profile->yearGroup->present()->nameWithYear }}</td>
-                            @can('users.manage')
-                                <td><a href="{{ action('Admin\FamilyController@index', [$profile->user->id]) }}" class="btn-xs btn-primary"><i class="fa fa-child"></i></a></td>
-                            @endcan
+                            <td>
+                                @if($profile->user->isVerified())
+                                    Ja
+                                @else
+                                    <a href="{{action('Malfonds\InvitationController@create', $profile->user->id)}}">Uitnodigen</a>
+                                @endif
+                            </td>
                             <td class="text-muted">{{ $profile->updated_at }}</td>
                         </tr>
                     @endforeach

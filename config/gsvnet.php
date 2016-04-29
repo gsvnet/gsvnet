@@ -93,5 +93,7 @@ return [
         'profile' => env('PROFILE_MAIL', 'abactis@gsvnet.nl')
     ],
 
-    'notificationsUrl' => env('NOTIFICATIONS', 'https://notifications.gsvnet.nl/')
+    'notificationsUrl' => env('NOTIFICATIONS', 'https://notifications.gsvnet.nl/'),
+
+    'malfondsUrl' => env('MALFONDS_URL', 'https://www.malfonds.nl'),
 ];
