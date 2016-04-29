@@ -36,7 +36,7 @@ class SessionController extends CoreApiController
             $fractal = $this->getFractalService();
             $member = $this->users->memberOrFormerByIdWithProfile(Auth::user()->id);
             return $this->withArray([
-                'token' => $this->tokens->getOrCreateFor(Auth::user()->id),
+                'token' => $this->tokens->getOrCreateFor(Auth::user()),
                 'member' => $fractal->item($member, new MemberTransformer)
             ]);
         }
