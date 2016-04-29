@@ -16,6 +16,6 @@ class TokenPresenter extends Presenter
 
     public function url()
     {
-        return Config::get('gsvnet.malfondsUrl') . '/?token=' . $this->entity->token;
+        return Config::get('gsvnet.malfondsUrl') . '/login?token=' . $this->entity->token;
     }
 }
