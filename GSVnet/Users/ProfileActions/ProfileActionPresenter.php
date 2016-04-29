@@ -12,6 +12,11 @@ use GSV\Events\Members\PhoneNumberWasChanged;
 use GSV\Events\Members\ProfilePictureWasChanged;
 use GSV\Events\Members\RegionWasChanged;
 use GSV\Events\Members\StudyWasChanged;
+use GSV\Events\Members\Verifications\EmailWasVerified;
+use GSV\Events\Members\Verifications\FamilyWasVerified;
+use GSV\Events\Members\Verifications\GenderWasVerified;
+use GSV\Events\Members\Verifications\NameWasVerified;
+use GSV\Events\Members\Verifications\YearGroupWasVerified;
 use GSV\Events\Members\YearGroupWasChanged;
 use Laracasts\Presenter\Presenter;
 
@@ -35,13 +40,25 @@ class ProfileActionPresenter extends Presenter
         ProfilePictureWasChanged::class => 'Profielfoto',
         PeriodOfMembershipWasChanged::class => 'Periode van lidmaatschap',
         StudyWasChanged::class => 'Studie',
-        RegionWasChanged::class => 'Regio'
+        RegionWasChanged::class => 'Regio',
+    ];
+
+    public static $verifications = [
+        EmailWasVerified::class => 'Email',
+        GenderWasVerified::class => 'Geslacht',
+        NameWasVerified::class => 'Naam',
+        YearGroupWasVerified::class => 'Jaarverband',
+        FamilyWasVerified::class => 'GSV-familie',
     ];
 
     public function actionName()
     {
         if (array_key_exists($this->entity->action, self::$map)) {
-            return self::$map[$this->entity->action];
+            return self::$map[$this->entity->action] . ' gewijzigd';
+        }
+
+        if (array_key_exists($this->entity->action, self::$verifications)) {
+            return self::$verifications[$this->entity->action] . ' geverifieerd';
         }
 
         return 'Onbekend';

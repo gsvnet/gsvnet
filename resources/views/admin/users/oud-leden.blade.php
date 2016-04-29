@@ -53,9 +53,7 @@
                         <th>Achternaam</th>
                         <th>Jaarverband</th>
                         <th>Reunist?</th>
-                        @can('users.manage')
-                        <th>Familie</th>
-                        @endcan
+                        <th>Geverifieerd</th>
                         <th>Laatst bijgewerkt</th>
                     </tr>
                     </thead>
@@ -77,9 +75,13 @@
                                 <td class="text-muted">Onbekend</td>
                             @endif
                             <td>{{ $profile->reunist == 0 ? 'Nee': 'Ja'}}</td>
-                            @can('users.manage')
-                                <td><a href="{{ action('Admin\FamilyController@index', [$profile->user->id]) }}" class="btn-xs btn-primary"><i class="fa fa-child"></i></a></td>
-                            @endcan
+                            <td>
+                                @if($profile->user->isVerified())
+                                    Ja
+                                @else
+                                    <a href="{{action('Malfonds\InvitationController@create', $profile->user->id)}}">Uitnodigen</a>
+                                @endif
+                            </td>
                             <td class="text-muted">{{ $profile->updated_at }}</td>
                         </tr>
                     @endforeach

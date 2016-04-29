@@ -152,6 +152,7 @@ return [
     Laracasts\Flash\FlashServiceProvider::class,
     Collective\Bus\BusServiceProvider::class,
     Collective\Html\HtmlServiceProvider::class,
+    Barryvdh\Cors\ServiceProvider::class,
 
     GSV\Providers\NewsletterServiceProvider::class,
     GSV\Providers\ComposerServiceProvider::class,

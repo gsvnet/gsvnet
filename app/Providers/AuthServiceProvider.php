@@ -104,6 +104,10 @@ class AuthServiceProvider extends ServiceProvider
         $gate->define('user.manage.study', function (User $user, User $member) {
             return $user->id == $member->id || $this->has($user, 'user.manage.study');
         });
+
+        $gate->define('formerMember.manage.year', function (User $user, User $member) {
+            return $user->id == $member->id || $this->has($user, 'formerMember.manage.year');
+        });
     }
 
     public function has(User $user, $permission)
