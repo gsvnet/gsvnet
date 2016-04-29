@@ -1,6 +1,7 @@
 <?php namespace GSVnet\Auth;
 
 use GSVnet\Core\BaseRepository;
+use GSVnet\Users\User;
 
 class TokenRepository extends BaseRepository
 {
@@ -28,15 +29,15 @@ class TokenRepository extends BaseRepository
         return $this->model->active()->where('user_id', $userId)->first();
     }
 
-    public function getOrCreateFor($userId)
+    public function getOrCreateFor(User $user)
     {
-        $token = $this->getActiveByUserId($userId);
+        $token = $this->getActiveByUserId($user->id);
         
         if ($token) {
             return $token;
         }
         
-        $token = Token::initiateFor($userId);
+        $token = Token::initiateFor($user);
         $this->save($token);
         return $token;
     }
