@@ -9,7 +9,7 @@
             <h2>Optie 1: Link opvragen</h2>
             @if ($token)
                 <p><input type="text" class="form-control" value="{{$token->present()->url()}}" onclick="this.select()" readonly='readonly'></p>
-                <p>Verloopt <strong>{{$token->expires_on->diffForHumans()}}</strong></p>
+                <p>Verloopt <strong>{{$token->expires_on->diffForHumans()}}</strong>. <a href="{{$token->present()->url()}}">Klikbare link</a></p>
             @endif
 
             {!! Former::vertical_open()->action(action('Malfonds\InvitationController@store', $member->id))->method('POST') !!}
