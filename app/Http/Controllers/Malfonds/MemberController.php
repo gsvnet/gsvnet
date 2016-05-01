@@ -151,6 +151,8 @@ class MemberController extends CoreApiController
 
     public function family($id)
     {
+        $this->authorize('users.show');
+        
         $you = $this->users->memberOrFormerByIdWithProfile($id);
         $children = $this->users->childrenWithProfileAndYearGroup($you);
         $parents = $this->users->parentsWithProfileAndYearGroup($you);
@@ -165,9 +167,9 @@ class MemberController extends CoreApiController
 
     public function invite(Request $request, InviteValidator $validator, $userId)
     {
+        $this->authorize('users.show');
+
         $member = $this->users->memberOrFormerByIdWithProfile($userId);
-
-
         $validator->validate($request->all());
 
         // Don't invite invited people or yourself for now...
