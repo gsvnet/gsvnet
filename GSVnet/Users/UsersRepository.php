@@ -1,10 +1,11 @@
 <?php namespace GSVnet\Users;
 
-use Carbon\Carbon;
 use Cache;
+use Carbon\Carbon;
 use GSVnet\Core\BaseRepository;
 
-class UsersRepository extends BaseRepository {
+class UsersRepository extends BaseRepository
+{
 
     protected $model;
 
@@ -41,16 +42,20 @@ class UsersRepository extends BaseRepository {
         return $user->children()->with('profile.yearGroup')->get();
     }
 
+    /**
+     * @param $id
+     * @return User
+     */
     public function memberOrFormerByIdWithProfile($id)
     {
         return User::whereIn('type', [User::FORMERMEMBER, User::MEMBER, User::POTENTIAL])->with('profile.yearGroup')->findOrFail($id);
     }
 
     /**
-    * Get all users
-    *
-    * @return Collection
-    */
+     * Get all users
+     *
+     * @return Collection
+     */
     public function all()
     {
         return User::orderBy('lastname', 'ASC')
@@ -130,6 +135,15 @@ class UsersRepository extends BaseRepository {
             ->paginate($amount);
     }
 
+    public function allOfYearGroup($yearGroupId)
+    {
+        return User::with('profile')
+            ->whereIn('type', [User::FORMERMEMBER, User::MEMBER])
+            ->whereHas('profile', function ($query) use ($yearGroupId) {
+                $query->where('year_group_id', $yearGroupId);
+            })->orderBy('lastname')->orderBy('firstname')->get();
+    }
+
     public function filterExistingIds(array $ids)
     {
         return User::whereIn('id', $ids)->lists('id');
@@ -143,31 +157,31 @@ class UsersRepository extends BaseRepository {
     }
 
     /**
-    * Create user
-    *
-    * @param array $input
-    * @return User
-    */
+     * Create user
+     *
+     * @param array $input
+     * @return User
+     */
     public function create(array $input)
     {
         return $user = User::create(array(
-            'firstname'    => $input['register-firstname'],
-            'middlename'   => $input['register-middlename'],
-            'lastname'     => $input['register-lastname'],
-            'email'        => $input['register-email'],
-            'username'     => $input['register-username'],
-            'password'     => bcrypt($input['register-password']),
-            'type'         => $input['type'],
+            'firstname' => $input['register-firstname'],
+            'middlename' => $input['register-middlename'],
+            'lastname' => $input['register-lastname'],
+            'email' => $input['register-email'],
+            'username' => $input['register-username'],
+            'password' => bcrypt($input['register-password']),
+            'type' => $input['type'],
         ));
     }
 
     /**
-    * Delete User
-    *
-    * @param int $id
-    * @return User
-    * @TODO: delete all user members references
-    */
+     * Delete User
+     *
+     * @param int $id
+     * @return User
+     * @TODO: delete all user members references
+     */
     public function delete($id)
     {
         $user = $this->byId($id);
@@ -177,8 +191,8 @@ class UsersRepository extends BaseRepository {
     }
 
     /**
-    *   Activate user's account
-    */
+     *   Activate user's account
+     */
     public function activateUser($id)
     {
         $user = $this->byId($id);
@@ -189,14 +203,14 @@ class UsersRepository extends BaseRepository {
     }
 
     /**
-    *   Accept user's membership
-    *   This method sets the user's type to member
-    */
+     *   Accept user's membership
+     *   This method sets the user's type to member
+     */
     public function acceptMembership($id)
     {
         $user = $this->byId($id);
 
-        if (! $user->isPotential())
+        if (!$user->isPotential())
             throw new \Exception;
 
         $user->type = User::MEMBER;
@@ -207,7 +221,7 @@ class UsersRepository extends BaseRepository {
 
     public function mostPostsPreviousMonth($num = 20)
     {
-        return Cache::remember('most-posts-prev-month', 24*60, function() use ($num){
+        return Cache::remember('most-posts-prev-month', 24 * 60, function () use ($num) {
             $now = (new Carbon)->subMonth(1);
             $from = $now->format('Y-m-01 00:00:00');
             $to = $now->format('Y-m-t 23:59:59');
@@ -229,8 +243,7 @@ class UsersRepository extends BaseRepository {
 
     public function mostPostsPreviousWeek($num = 20)
     {
-        return Cache::remember('most-posts-prev-week', 24*60, function() use ($num)
-        {
+        return Cache::remember('most-posts-prev-week', 24 * 60, function () use ($num) {
             $pastWeek = (new Carbon)->subWeek(1);
             $dayOfWeek = $pastWeek->dayOfWeek;
 
@@ -254,8 +267,7 @@ class UsersRepository extends BaseRepository {
 
     public function mostPostsAllTime($num = 250)
     {
-        return Cache::remember('most-posts-all-time', 24*60, function() use ($num)
-        {
+        return Cache::remember('most-posts-all-time', 24 * 60, function () use ($num) {
             return User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.type, users.username, users.firstname, users.middlename, users.lastname'))
                 ->join('forum_replies', 'users.id', '=', 'forum_replies.author_id')
                 ->groupBy('forum_replies.author_id')
