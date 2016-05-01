@@ -20,6 +20,7 @@ class YearGroupController extends CoreApiController
 
     public function index()
     {
+        $this->authorize('users.show');
         $groups = $this->groups->all();
         
         return $this->withCollection($groups, new YearGroupTransformer);
