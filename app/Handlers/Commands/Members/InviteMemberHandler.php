@@ -49,6 +49,7 @@ class InviteMemberHandler
             'name' => $command->getName(),
             'email' => $command->getEmail()->getEmail(),
             'message' => $command->getMessage(),
+            'title' => $command->getTitle(),
             'invited_at' => Carbon::now(),
         ]);
 
