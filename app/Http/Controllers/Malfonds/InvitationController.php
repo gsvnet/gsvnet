@@ -31,6 +31,7 @@ class InvitationController extends MalfondsController
 
     public function create($userId)
     {
+        $this->authorize('users.show');
         $member = $this->users->memberOrFormerByIdWithProfile($userId);
         $token = $this->tokens->getActiveByUserId($userId);
         $this->authorize('member-or-former-member');
@@ -39,6 +40,7 @@ class InvitationController extends MalfondsController
     
     public function store($userId)
     {
+        $this->authorize('users.show');
         $member = $this->users->memberOrFormerByIdWithProfile($userId);
         $token = $this->tokens->getActiveByUserId($member);
 

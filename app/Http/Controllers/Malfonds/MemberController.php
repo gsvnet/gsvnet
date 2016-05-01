@@ -3,6 +3,7 @@
 use GSV\Commands\Members\ChangeGender;
 use GSV\Commands\Members\ChangeName;
 use GSV\Commands\Members\ChangeYearGroup;
+use GSV\Commands\Members\InviteMember;
 use GSV\Commands\Users\ChangeEmail;
 use GSV\Commands\Users\ChangePassword;
 use GSV\Events\Members\Verifications\EmailWasVerified;
@@ -10,7 +11,9 @@ use GSV\Events\Members\Verifications\FamilyWasVerified;
 use GSV\Events\Members\Verifications\GenderWasVerified;
 use GSV\Events\Members\Verifications\NameWasVerified;
 use GSV\Events\Members\Verifications\YearGroupWasVerified;
+use GSVnet\Auth\InviteValidator;
 use GSVnet\Users\MemberTransformer;
+use GSVnet\Users\MemberTransformerWithoutYeargroup;
 use GSVnet\Users\UsersRepository;
 use GSVnet\Users\YearGroupRepository;
 use Illuminate\Http\Request;
@@ -31,9 +34,15 @@ class MemberController extends CoreApiController
         $this->users = $users;
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        if (! $request->has('yearGroup')) {
+            $this->errorBadRequest();
+        }
 
+        $members = $this->users->allOfYearGroup($request->get('yearGroup'));
+
+        return $this->withCollection($members, new MemberTransformerWithoutYeargroup);
     }
 
     public function show($id)
@@ -142,6 +151,8 @@ class MemberController extends CoreApiController
 
     public function family($id)
     {
+        $this->authorize('users.show');
+        
         $you = $this->users->memberOrFormerByIdWithProfile($id);
         $children = $this->users->childrenWithProfileAndYearGroup($you);
         $parents = $this->users->parentsWithProfileAndYearGroup($you);
@@ -152,5 +163,22 @@ class MemberController extends CoreApiController
             'children' => $transform->collection($children, new MemberTransformer),
             'parents' => $transform->collection($parents, new MemberTransformer),
         ]);
+    }
+
+    public function invite(Request $request, InviteValidator $validator, $userId)
+    {
+        $this->authorize('users.show');
+
+        $member = $this->users->memberOrFormerByIdWithProfile($userId);
+        $validator->validate($request->all());
+
+        // Don't invite invited people or yourself for now...
+        if ($member->isVerified() or $member->getKey() === $request->user()->getKey()) {
+            return $this->errorBadRequest();
+        }
+
+        $this->dispatch(InviteMember::fromRequest($request, $request->user(), $member));
+
+        return $this->itemWasCreated()->withArray();
     }
 }
