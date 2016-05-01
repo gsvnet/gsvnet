@@ -231,6 +231,9 @@ Route::group(['prefix' => 'api', 'middleware' => ['cors']], function() {
         Route::post('members/{id}/jaarverband/verifieer', 'Malfonds\MemberController@verifyYearGroup');
         Route::post('members/{id}/geslacht/verifieer', 'Malfonds\MemberController@verifyGender');
         Route::post('members/{id}/familie/verifieer', 'Malfonds\MemberController@verifyFamily');
+        
+        // Invites
+        Route::post('members/{id}/invite', 'Malfonds\MemberController@invite');
     });
     
     Route::post('login', 'Malfonds\SessionController@login');

@@ -29,6 +29,7 @@ class MemberHistoryController extends CoreApiController
 
     public function show($id)
     {
+        $this->authorize('users.show');
         $member = $this->users->memberOrFormerByIdWithProfile($id);
         $changes = $this->actions->latestUpdatesOfMember($member);
         

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 class UsersTableSeeder extends Seeder {
 
     private $groupIds;
-    private $totalUsers = 50;
+    private $totalUsers = 2000;
     private $faker;
     private $studies = ['Wiskunde', 'Geschiedenis', 'Tandheelkunde', 'IB/IO', 'Bedrijfskunde'];
     private $time;
@@ -35,6 +35,7 @@ class UsersTableSeeder extends Seeder {
                 'username' => $this->faker->userName,
                 'password' => 'testen',
                 'email' => $this->faker->companyEmail,
+                'verified' => $this->faker->boolean(30),
                 'type' => rand(0,3),
                 'approved' => true,
                 'created_at' => $this->time,
