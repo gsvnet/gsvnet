@@ -213,9 +213,14 @@ class UsersController extends AdminBaseController {
     public function destroy($id)
     {
         $this->authorize('users.manage');
-        $user = $this->users->delete($id);
+        $user = $this->users->byId($id);
 
-        flash()->success("Account van {$user->present()->fullName} is succesvol verwijderd.");
+        if($profile = $user->profile) {
+            $profile->delete();
+        }
+        $user->delete();
+
+        flash()->success("Account is succesvol verwijderd.");
 
         return redirect()->action('Admin\UsersController@index');
     }

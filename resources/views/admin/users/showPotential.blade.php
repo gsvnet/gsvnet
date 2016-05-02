@@ -155,6 +155,18 @@
                     </tr>
                 </tbody>
             </table>
+
+            <h2>Danger zone!</h2>
+            @can('users.manage')
+            {!! Former::inline_open()
+                ->action(action('Admin\UsersController@destroy', $user->id))
+                ->method('DELETE') !!}
+            <button type='submit' class='btn btn-danger'>
+                <i class="glyphicon glyphicon-trash"></i> Aanmelding verwijderen
+            </button>
+
+            {!! Former::close() !!}
+            @endcan
         </div>
     </div>
 @stop

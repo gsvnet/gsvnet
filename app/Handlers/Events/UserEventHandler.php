@@ -5,6 +5,7 @@ use GSV\Events\Members\BirthDayWasChanged;
 use GSV\Events\Members\BusinessWasChanged;
 use GSV\Events\Members\GenderWasChanged;
 use GSV\Events\Members\MemberEmailWasChanged;
+use GSV\Events\Members\MembershipStatusWasChanged;
 use GSV\Events\Members\NameWasChanged;
 use GSV\Events\Members\ParentDetailsWereChanged;
 use GSV\Events\Members\PeriodOfMembershipWasChanged;
@@ -38,6 +39,7 @@ class UserEventHandler
         RegionWasChanged::class,
         StudyWasChanged::class,
         YearGroupWasChanged::class,
+        MembershipStatusWasChanged::class,
 
         EmailWasVerified::class,
         GenderWasVerified::class,
@@ -60,6 +62,7 @@ class UserEventHandler
         NameWasChanged::class,
         MemberEmailWasChanged::class,
         GenderWasChanged::class,
+        MembershipStatusWasChanged::class,
     ];
 
     static $verifyAccountWhen = [
