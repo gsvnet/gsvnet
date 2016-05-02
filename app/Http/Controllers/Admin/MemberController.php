@@ -1,6 +1,7 @@
 <?php namespace Admin;
 
 use GSV\Commands\Members\ChangeAlumniStatus;
+use GSV\Commands\Members\ChangeMembershipStatus;
 use GSV\Commands\Members\ChangePeriodOfMembership;
 use GSV\Commands\Members\ChangeAddress;
 use GSV\Commands\Members\ChangeBirthDay;
@@ -16,6 +17,7 @@ use GSV\Commands\Users\ChangeEmail;
 use GSV\Commands\Users\ChangePassword;
 use GSV\Commands\Users\SetProfilePictureCommand;
 use GSVnet\Users\ProfileActions\ProfileActionsRepository;
+use GSVnet\Users\User;
 use GSVnet\Users\UsersRepository;
 use GSVnet\Users\ValueObjects\Gender;
 use GSVnet\Users\YearGroupRepository;
@@ -302,6 +304,38 @@ class MemberController extends AdminBaseController
         $this->dispatch(ChangeAlumniStatus::fromForm($request, $member));
 
         flash()->success("Reüniststatus van {$member->present()->fullName()} succesvol gewijzigd");
+        return redirect()->action('Admin\UsersController@show', $id);
+    }
+
+    public function editMembershipStatus($id)
+    {
+        $this->authorize('users.manage');
+
+        $user = $this->users->memberOrFormerByIdWithProfile($id);
+        return view('admin.users.update.membership')->with(compact('user'));
+    }
+
+    public function makeFormerMember(Request $request, $id)
+    {
+        $this->authorize('users.manage');
+
+        $member = $this->users->memberOrFormerByIdWithProfile($id);
+
+        $this->dispatch(new ChangeMembershipStatus(User::FORMERMEMBER, $member, $request->user()));
+
+        flash()->success("{$member->present()->fullName()} is nu oud-lid");
+        return redirect()->action('Admin\UsersController@show', $id);
+    }
+
+    public function makeMember(Request $request, $id)
+    {
+        $this->authorize('users.manage');
+
+        $member = $this->users->memberOrFormerByIdWithProfile($id);
+
+        $this->dispatch(new ChangeMembershipStatus(User::MEMBER, $member, $request->user()));
+
+        flash()->success("{$member->present()->fullName()} is nu lid");
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
