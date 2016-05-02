@@ -1,25 +1,30 @@
 <?php namespace Admin;
 
+use Carbon\Carbon;
 use GSV\Commands\Users\RegisterUserCommand;
-use GSVnet\Users\Profiles\ProfilesRepository;
-use GSVnet\Users\RegisterUserValidator;
-use GSVnet\Users\User;
-use GSVnet\Users\UserTransformer;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
-
-use GSVnet\Users\UsersRepository;
-use GSVnet\Users\UserValidator;
-use GSVnet\Users\UserManager;
-use GSVnet\Users\YearGroupRepository;
-use GSVnet\Users\Profiles\UserProfile;
 use GSVnet\Users\Profiles\AdminProfileCreatorValidator;
 use GSVnet\Users\Profiles\AdminProfileUpdaterValidator;
+use GSVnet\Users\Profiles\ProfilesRepository;
+use GSVnet\Users\Profiles\UserProfile;
+use GSVnet\Users\RegisterUserValidator;
+use GSVnet\Users\User;
+use GSVnet\Users\UserManager;
+use GSVnet\Users\UsersRepository;
+use GSVnet\Users\UserTransformer;
+use GSVnet\Users\UserValidator;
+use GSVnet\Users\YearGroupRepository;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use League\Csv\Reader;
 use League\Csv\Writer;
+use Maatwebsite\Excel\Classes\LaravelExcelWorksheet;
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Writers\CellWriter;
+use Maatwebsite\Excel\Writers\LaravelExcelWriter;
 use SplTempFileObject;
 
-class UsersController extends AdminBaseController {
+class UsersController extends AdminBaseController
+{
 
     protected $users;
     protected $yearGroups;
@@ -125,30 +130,44 @@ class UsersController extends AdminBaseController {
             ->with('regions', $regions);
     }
 
-    public function exportFormerMembers()
-    {
-        $this->authorize('users.show');
-        $users = $this->users->getAllByType(User::FORMERMEMBER);
-        $transformer = new UserTransformer;
-        $csv = Writer::createFromFileObject(new SplTempFileObject());
-        $data = $transformer->batchCsv($users);
-        $csv->insertOne(array_keys($data[0]));
-        $csv->insertAll($data);
-        $csv->setOutputBOM(Reader::BOM_UTF8);
-        $csv->output('oud-leden.csv');
-    }
-
     public function exportMembers()
     {
         $this->authorize('users.show');
-        $users = $this->users->getAllByType(User::MEMBER);
         $transformer = new UserTransformer;
-        $csv = Writer::createFromFileObject(new SplTempFileObject());
-        $data = $transformer->batchCsv($users);
-        $csv->insertOne(array_keys($data[0]));
-        $csv->insertAll($data);
-        $csv->setOutputBOM(Reader::BOM_UTF8);
-        $csv->output('leden.csv');
+        $date = Carbon::now()->format('d-m-Y');
+
+        $formerMembers = $this->users->getAllByType(User::FORMERMEMBER);
+        $members = $this->users->getAllByType(User::MEMBER);
+
+        $former = $transformer->batchCsv($formerMembers);
+        $current = $transformer->batchCsv($members);
+
+
+        Excel::create("ledenbestand-{$date}", function (LaravelExcelWriter $excel) use ($date, $former, $current) {
+            $excel->setTitle("ledenbestand-{$date}");
+            $excel->sheet('Leden', function (LaravelExcelWorksheet $sheet) use ($current) {
+                $sheet->fromArray($current);
+                $sheet->setAutoFilter();
+                $sheet->setAutoSize(true);
+                $sheet->setColumnFormat([
+                    'N' => 'General'
+                ]);
+                $sheet->cells('A1:Z1', function(CellWriter $cells) {
+                    $cells->setFontWeight(true);
+                });
+            });
+            $excel->sheet('Oud-leden', function (LaravelExcelWorksheet $sheet) use ($former) {
+                $sheet->fromArray($former);
+                $sheet->setAutoFilter();
+                $sheet->setAutoSize(true);
+                $sheet->setColumnFormat([
+                    'N' => 'General'
+                ]);
+                $sheet->cells('A1:Z1', function(CellWriter $cells) {
+                    $cells->setFontWeight(true);
+                });
+            });
+        })->export('xls');
     }
 
     public function create()
@@ -167,7 +186,7 @@ class UsersController extends AdminBaseController {
         $validator->validate($input);
 
         // set random password if password is empty
-        if(empty($input['password']))
+        if (empty($input['password']))
             $input['password'] = str_random(16);
 
         // Map to command input
@@ -262,8 +281,7 @@ class UsersController extends AdminBaseController {
         $input['user_id'] = $id;
 
         // Set some specific info for former members
-        if($user->isFormerMember())
-        {
+        if ($user->isFormerMember()) {
             $input['reunist'] = $request->get('reunist', '0') === '1';
             $input['resignation_date'] = $request->get('resignation_date');
             $input['company'] = $request->get('company');
@@ -271,14 +289,12 @@ class UsersController extends AdminBaseController {
         }
 
         // Natural parents
-        if($user->isMember())
-        {
+        if ($user->isMember()) {
             $input = array_merge($input, $request->only('parent_phone', 'parent_address', 'parent_zip_code', 'parent_town'));
         }
 
         // Check if the region is valid
-        if(! array_key_exists($input['region'], Config::get('gsvnet.regions')))
-        {
+        if (!array_key_exists($input['region'], Config::get('gsvnet.regions'))) {
             $input['region'] = null;
         }
 
