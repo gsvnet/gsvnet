@@ -144,6 +144,11 @@ Route::group([
     Route::get('leden/{user}/tijd-van-lidmaatschap', 'MemberController@editMembershipPeriod');
     Route::put('leden/{user}/tijd-van-lidmaatschap', 'MemberController@updateMembershipPeriod');
 
+    // Some actions (post requests therefore)
+    Route::get('leden/{user}/lidmaatschap', 'MemberController@editMembershipStatus');
+    Route::post('leden/{user}/lidmaatschap/maak-oud-lid', 'MemberController@makeFormerMember');
+    Route::post('leden/{user}/lidmaatschap/maak-lid', 'MemberController@makeMember');
+
 
     Route::get('leden/oudleden.csv', 'UsersController@exportFormerMembers');
     Route::get('leden/leden.csv', 'UsersController@exportMembers');

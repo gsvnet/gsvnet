@@ -5,6 +5,7 @@ use GSV\Events\Members\BirthDayWasChanged;
 use GSV\Events\Members\BusinessWasChanged;
 use GSV\Events\Members\MemberEmailWasChanged;
 use GSV\Events\Members\GenderWasChanged;
+use GSV\Events\Members\MembershipStatusWasChanged;
 use GSV\Events\Members\NameWasChanged;
 use GSV\Events\Members\ParentDetailsWereChanged;
 use GSV\Events\Members\PeriodOfMembershipWasChanged;
@@ -41,6 +42,7 @@ class ProfileActionPresenter extends Presenter
         PeriodOfMembershipWasChanged::class => 'Periode van lidmaatschap',
         StudyWasChanged::class => 'Studie',
         RegionWasChanged::class => 'Regio',
+        MembershipStatusWasChanged::class => 'Lidmaatschapsstatus',
     ];
 
     public static $verifications = [

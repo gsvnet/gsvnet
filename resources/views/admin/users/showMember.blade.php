@@ -79,7 +79,10 @@
                     <tr>
                         <th>Lid-status</th>
                         <td>
-                            {{ $user->present()->membershipType }} 
+                            {{ $user->present()->membershipType }}
+                            @can('users.manage')
+                                <a href="{{ action('Admin\MemberController@editMembershipStatus', $user->id) }}">(wijzig)</a>
+                            @endcan
                         </td>
                     </tr>
                     <tr>
