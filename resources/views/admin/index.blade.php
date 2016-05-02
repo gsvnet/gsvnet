@@ -11,6 +11,5 @@
     <p>Voor excelexperts</p>
     <p>
         <a href="{!! URL::action('Admin\UsersController@exportMembers') !!}" class="btn btn-sm btn-primary"><i class="fa fa-download"></i> Ledenbestand (csv)</a>
-        <a href="{!! URL::action('Admin\UsersController@exportFormerMembers') !!}" class="btn btn-sm btn-default"><i class="fa fa-download"></i> Oud-ledenbestand (csv)</a>
     </p>
 @stop
