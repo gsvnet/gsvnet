@@ -1,5 +1,6 @@
 <?php namespace Malfonds;
 
+use GSV\Commands\Members\ChangeAddress;
 use GSV\Commands\Members\ChangeGender;
 use GSV\Commands\Members\ChangeName;
 use GSV\Commands\Members\ChangeYearGroup;
@@ -81,6 +82,15 @@ class MemberController extends CoreApiController
         $member = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.password', $member);
         $this->dispatch(ChangePassword::fromForm($request, $member));
+
+        return $this->itemWasUpdated()->withItem($member, new MemberTransformer);
+    }
+
+    public function updateAddress(Request $request, $id)
+    {
+        $member = $this->users->memberOrFormerByIdWithProfile($id);
+        $this->authorize('user.manage.address', $member);
+        $this->dispatch(ChangeAddress::fromForm($request, $member));
 
         return $this->itemWasUpdated()->withItem($member, new MemberTransformer);
     }
