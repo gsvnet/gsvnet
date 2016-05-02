@@ -226,6 +226,7 @@ Route::group(['prefix' => 'api', 'middleware' => ['cors']], function() {
     
         Route::put('members/{id}/naam', 'Malfonds\MemberController@updateName');
         Route::put('members/{id}/email', 'Malfonds\MemberController@updateEmail');
+        Route::put('members/{id}/adres', 'Malfonds\MemberController@updateAddress');
         Route::put('members/{id}/jaarverband', 'Malfonds\MemberController@updateYearGroup');
         Route::put('members/{id}/geslacht', 'Malfonds\MemberController@updateGender');
         Route::put('members/{id}/wachtwoord', 'Malfonds\MemberController@updatePassword');
