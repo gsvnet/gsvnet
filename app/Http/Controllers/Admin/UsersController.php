@@ -139,29 +139,28 @@ class UsersController extends AdminBaseController
         $formerMembers = $this->users->getAllByType(User::FORMERMEMBER);
         $members = $this->users->getAllByType(User::MEMBER);
 
-        $former = $transformer->batchCsv($formerMembers);
-        $current = $transformer->batchCsv($members);
-
+        $former = $transformer->collectionOfFormerMembers($formerMembers);
+        $current = $transformer->collectionOfMembers($members);
 
         Excel::create("ledenbestand-{$date}", function (LaravelExcelWriter $excel) use ($date, $former, $current) {
             $excel->setTitle("ledenbestand-{$date}");
-            $excel->sheet('Leden', function (LaravelExcelWorksheet $sheet) use ($current) {
-                $sheet->fromArray($current);
-                $sheet->setAutoFilter();
-                $sheet->setAutoSize(true);
-                $sheet->setColumnFormat([
-                    'N' => 'General'
-                ]);
-                $sheet->cells('A1:Z1', function(CellWriter $cells) {
-                    $cells->setFontWeight(true);
-                });
-            });
             $excel->sheet('Oud-leden', function (LaravelExcelWorksheet $sheet) use ($former) {
                 $sheet->fromArray($former);
                 $sheet->setAutoFilter();
                 $sheet->setAutoSize(true);
                 $sheet->setColumnFormat([
-                    'N' => 'General'
+                    'N' => 'General' // The phone column :)
+                ]);
+                $sheet->cells('A1:Z1', function(CellWriter $cells) {
+                    $cells->setFontWeight(true);
+                });
+            });
+            $excel->sheet('Leden', function (LaravelExcelWorksheet $sheet) use ($current) {
+                $sheet->fromArray($current);
+                $sheet->setAutoFilter();
+                $sheet->setAutoSize(true);
+                $sheet->setColumnFormat([
+                    'L' => 'General' // Phone column
                 ]);
                 $sheet->cells('A1:Z1', function(CellWriter $cells) {
                     $cells->setFontWeight(true);
