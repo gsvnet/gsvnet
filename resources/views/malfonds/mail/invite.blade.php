@@ -287,7 +287,7 @@
                 </table>
                 <div class="header float-center" align="center"><h3 class="text-center"
                                                                     style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:28px;font-weight:400;line-height:1.5;margin:0;margin-bottom:10px;padding:0;text-align:center;word-wrap:normal">
-                        MALfonds</h3></div>
+                        MAL-fonds</h3></div>
                 <table class="spacer float-center"
                        style="Margin:0 auto;border-collapse:collapse;border-spacing:0;float:none;margin:0 auto;padding:0;text-align:center;vertical-align:top">
                     <tbody>
@@ -326,26 +326,10 @@
                                                         <h2 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:30px;font-weight:400;line-height:1.5;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
                                                             Beste {{ $guestTitle }} {{ $guestName }},</h2>
                                                         <p style="Margin:0;Margin-bottom:10px;color:#212121;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0;margin-bottom:10px;padding:0;text-align:left">
-                                                            Nu de GSV bijna <em>50 jaar</em> bestaat, proberen we de
-                                                            gegevens van oud-leden te verzamelen. Hierdoor kunnen we u
-                                                            uitnodigen voor allerlei ...</p>
-                                                        <p style="Margin:0;Margin-bottom:10px;color:#212121;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0;margin-bottom:10px;padding:0;text-align:left">
-                                                            {{ $hostName }} heeft u een uitnodiging gestuurd om uw
-                                                            gegevens bij te werken.</p>
+                                                            Eind november dit jaar viert de GSV haar <strong>tiende lustrum</strong>. Om u hierover te informeren, is het van belang dat de GSV contactgegevens van u heeft. De malversacie werkt deze gegevens bij via de website van het MAL-fonds.</p>
 
-                                                        @if ($personalMessage)
-                                                            <table class="callout"
-                                                                   style="Margin-bottom:16px;border-collapse:collapse;border-spacing:0;margin-bottom:16px;padding:0;text-align:left;vertical-align:top;width:100%">
-                                                                <tr style="padding:0;text-align:left;vertical-align:top">
-                                                                    <th class="callout-inner"
-                                                                        style="Margin:0;background:#fefefe;border:1px solid #E8E8E8;color:#212121;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0;padding:10px;text-align:left;width:100%">
-                                                                        {!!  nl2br(e($personalMessage)) !!}
-                                                                    </th>
-                                                                    <th class="expander"
-                                                                        style="Margin:0;color:#212121;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0"></th>
-                                                                </tr>
-                                                            </table>
-                                                        @endif
+                                                        <p style="Margin:0;Margin-bottom:10px;color:#212121;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0;margin-bottom:10px;padding:0;text-align:left">
+                                                            U bent uitgenodigd door <strong>{{ $hostName }}</strong> om uw gegevens te verifiëren en bij te werken. Dit kost enkele minuten. Daarna kunt u ons verder helpen door leden van uw jaarverband of GSV-familie uit te nodigen!</p>
                                                     </th>
                                                     <th class="expander"
                                                         style="Margin:0;color:#212121;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0"></th>
@@ -399,11 +383,58 @@
                                             <table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
                                                 <tr style="padding:0;text-align:left;vertical-align:top">
                                                     <th style="Margin:0;color:#212121;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0;padding:0;text-align:left">
+
+                                                        @if ($personalMessage)
+                                                            <p style="Margin:0;Margin-bottom:10px;color:#212121;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0;margin-bottom:10px;padding:0;text-align:left">
+                                                                {{ $hostName }} heeft u als uitnodiging het volgende persoonlijke bericht gestuurd:</p>
+
+                                                            <table class="callout"
+                                                                   style="Margin-bottom:16px;border-collapse:collapse;border-spacing:0;margin-bottom:16px;padding:0;text-align:left;vertical-align:top;width:100%">
+                                                                <tr style="padding:0;text-align:left;vertical-align:top">
+                                                                    <th class="callout-inner"
+                                                                        style="Margin:0;background:#fefefe;border:1px solid #E8E8E8;color:#212121;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0;padding:10px;text-align:left;width:100%">
+                                                                        {!!  nl2br(e($personalMessage)) !!}
+                                                                    </th>
+                                                                    <th class="expander"
+                                                                        style="Margin:0;color:#212121;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0"></th>
+                                                                </tr>
+                                                            </table>
+                                                        @endif
+                                                        
+                                                        <p style="Margin:0;Margin-bottom:10px;color:#212121;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0;margin-bottom:10px;padding:0;text-align:left">
+                                                            Hartelijk bedankt alvast,</p>
+
+                                                        <p style="Margin:0;Margin-bottom:10px;color:#212121;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0;margin-bottom:10px;padding:0;text-align:left">
+                                                            De malversacie van de GSV</p>
+                                                    </th>
+                                                    <th class="expander"
+                                                        style="Margin:0;color:#212121;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0"></th>
+                                                </tr>
+                                            </table>
+                                        </th>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="row"
+                                       style="border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%">
+                                    <tbody>
+                                    <tr style="padding:0;text-align:left;vertical-align:top">
+                                        <th class="small-12 large-12 columns first last"
+                                            style="Margin:0 auto;color:#212121;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0 auto;padding:0;padding-bottom:16px;padding-left:16px;padding-right:16px;text-align:left;width:564px">
+                                            <table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
+                                                <tr style="padding:0;text-align:left;vertical-align:top">
+                                                    <th style="Margin:0;color:#212121;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0;padding:0;text-align:left">
                                                         <hr style="Margin:20px auto;border-bottom:1px solid #E8E8E8;border-left:0;border-right:0;border-top:0;clear:both;height:0;margin:20px auto;max-width:580px">
                                                         <p style="Margin:0;Margin-bottom:10px;color:#212121;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0;margin-bottom:10px;padding:0;text-align:left">
                                                             <small style="color:#8a8a8a;font-size:80%">U ontvangt deze
                                                                 mail vanwege uw lidmaatschap bij de Gereformeerde
-                                                                Studenten Vereniging te Groningen.
+                                                                Studenten Vereniging te Groningen. <br/>
+                                                                <br/>
+                                                                Contactgegevens:<br/>
+                                                                malversacie@gsvnet.nl<br/>
+                                                                Gereformeerde Studentenvereniging<br/>
+                                                                Postbus 1030<br/>
+                                                                9701 BA Groningen
                                                             </small>
                                                         </p>
                                                     </th>
