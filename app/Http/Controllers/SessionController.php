@@ -1,18 +1,10 @@
 <?php
 
-use Illuminate\Cookie\CookieJar;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
 class SessionController extends BaseController {
-
-    private $cookie;
-
-    function __construct(CookieJar $cookie)
-    {
-        $this->cookie = $cookie;
-    }
-
+    
     public function postLogin()
     {
         $becomingMember = Input::has('become-member-login');

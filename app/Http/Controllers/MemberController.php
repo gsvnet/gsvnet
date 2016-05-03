@@ -9,7 +9,6 @@ use GSVnet\Core\Exceptions\ValidationException;
 use GSVnet\Users\Profiles\PotentialValidator;
 use GSVnet\Users\Profiles\ProfilesRepository;
 use GSVnet\Core\ImageHandler;
-use Illuminate\Cookie\CookieJar;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 
@@ -18,14 +17,12 @@ class MemberController extends BaseController
 
     protected $profiles;
     protected $imageHandler;
-    protected $cookie;
 
-    public function __construct(ProfilesRepository $profiles, ImageHandler $imageHandler, CookieJar $cookie)
+    public function __construct(ProfilesRepository $profiles, ImageHandler $imageHandler)
     {
         parent::__construct();
         $this->imageHandler = $imageHandler;
         $this->profiles = $profiles;
-        $this->cookie = $cookie;
     }
 
     public function index()
