@@ -12,6 +12,8 @@ class RemindersController extends BaseController {
 
     protected $subject = 'Verander je wachtwoord op GSVnet';
     protected $redirectTo = '/';
+    protected $auth;
+    protected $passwords;
 
     public function __construct(Guard $auth, PasswordBroker $passwords)
     {
@@ -48,7 +50,7 @@ class RemindersController extends BaseController {
 
         $response = $this->passwords->reset($credentials, function($user, $password)
         {
-            $user->password = $password;
+            $user->password = bcrypt($password);
 
             $user->save();
 
