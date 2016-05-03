@@ -75,12 +75,13 @@ class UserTransformer {
         return $batch;
     }
 
-    public function csv(User $user)
+    public function memberToCsv(User $user)
     {
         $hasProfile = ! empty($user->profile);
         $hasYearGroup = $hasProfile && ! empty($user->profile->yearGroup);
 
         return [
+            'Initialen' => $hasProfile ? $user->profile->initials : '',
             'Voornaam' => $user->firstname,
             'Tussenvoegsel' => $user->middlename,
             'Achternaam' => $user->lastname,
@@ -88,7 +89,38 @@ class UserTransformer {
             'Jaarverband' => $hasYearGroup ? $user->profile->yearGroup->name : '',
             'Jaar van lidmaatschap' => $hasYearGroup ? (int) $user->profile->yearGroup->year : '',
             'Inauguratiedatum' => $hasProfile ? $user->profile->present()->inaugurationDateSimple : '',
-            'Status' => $user->present()->membershipType(false),
+            'Email' => $user->email,
+            'Geslacht' => $hasProfile ? $user->profile->present()->genderLocalized : '',
+            'Geboortedatum' => $hasProfile ? $user->profile->birthdate : '',
+            'Telefoon' => $hasProfile ? $user->profile->phone : '',
+            'Adres' => $hasProfile ? $user->profile->address : '',
+            'Postcode' => $hasProfile ? $user->profile->zip_code : '',
+            'Woonplaats' => $hasProfile ? $user->profile->town : '',
+            'Land' => $hasProfile ? $user->profile->country : '',
+            'Studie' => $hasProfile ? $user->profile->study : '',
+            'Studentnummer' => $hasProfile ? $user->profile->student_number : '',
+            'Telefoon ouders' => $hasProfile ? $user->profile->parent_phone : '',
+            'Adres ouders' => $hasProfile ? $user->profile->parent_address : '',
+            'Postcode ouders' => $hasProfile ? $user->profile->parent_zip_code : '',
+            'Woonplaats ouders' => $hasProfile ? $user->profile->parent_town : '',
+            'Gebruikersnaam' => $user->username
+        ];
+    }
+
+    public function formerMemberToCsv(User $user)
+    {
+        $hasProfile = ! empty($user->profile);
+        $hasYearGroup = $hasProfile && ! empty($user->profile->yearGroup);
+
+        return [
+            'Initialen' => $hasProfile ? $user->profile->initials : '',
+            'Voornaam' => $user->firstname,
+            'Tussenvoegsel' => $user->middlename,
+            'Achternaam' => $user->lastname,
+            'Regio' => $hasProfile ? $user->profile->present()->regionName : '',
+            'Jaarverband' => $hasYearGroup ? $user->profile->yearGroup->name : '',
+            'Jaar van lidmaatschap' => $hasYearGroup ? (int) $user->profile->yearGroup->year : '',
+            'Inauguratiedatum' => $hasProfile ? $user->profile->present()->inaugurationDateSimple : '',
             'Bedankdatum' => $hasProfile ? $user->profile->present()->resignationDateSimple : '',
             'Reunist' => $hasProfile && $user->profile->reunist ? 'Ja' : 'Nee',
             'Email' => $user->email,
@@ -98,26 +130,21 @@ class UserTransformer {
             'Adres' => $hasProfile ? $user->profile->address : '',
             'Postcode' => $hasProfile ? $user->profile->zip_code : '',
             'Woonplaats' => $hasProfile ? $user->profile->town : '',
+            'Land' => $hasProfile ? $user->profile->country : '',
             'Studie' => $hasProfile ? $user->profile->study : '',
-            'Studentnummer' => $hasProfile ? $user->profile->student_number : '',
             'Bedrijf' => $hasProfile ? $user->profile->company : '',
             'Functie' => $hasProfile ? $user->profile->profession : '',
-            'Telefoon ouders' => $hasProfile ? $user->profile->parent_phone : '',
-            'Adres ouders' => $hasProfile ? $user->profile->parent_address : '',
-            'Postcode ouders' => $hasProfile ? $user->profile->parent_zip_code : '',
-            'Woonplaats ouders' => $hasProfile ? $user->profile->parent_town : '',
             'Gebruikersnaam' => $user->username
         ];
     }
 
-    public function batchCsv(Collection $users)
+    public function collectionOfMembers(Collection $users)
     {
-        $batch = [];
-        foreach($users as $user)
-        {
-            $batch[] = $this->csv($user);
-        }
+        return $users->map([$this, 'memberToCsv']);
+    }
 
-        return $batch;
+    public function collectionOfFormerMembers(Collection $users)
+    {
+        return $users->map([$this, 'formerMemberToCsv']);
     }
 }
