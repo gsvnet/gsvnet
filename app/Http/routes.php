@@ -213,6 +213,7 @@ Route::get('forum/{slug}', 'ForumThreadsController@getShowThread');
 // Malfonds
 Route::get('admin/leden/{id}/invite', 'Malfonds\InvitationController@create');
 Route::post('admin/leden/{id}/invite', 'Malfonds\InvitationController@store');
+Route::post('admin/leden/{id}/invite-via-mail', 'Malfonds\InvitationController@inviteByMail');
 
 Route::group(['prefix' => 'api', 'middleware' => ['cors']], function() {
     Route::group(['middleware' => ['loginViaToken', 'tokenAuth']], function() {

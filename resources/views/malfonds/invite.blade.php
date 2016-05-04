@@ -18,9 +18,14 @@
         </div>
         <div class="col-xs-12 col-md-6">
             <h2>Optie 2: Uitnodiging versturen per email</h2>
-            {!!  Former::vertical_open()->action(action('Admin\MemberController@updateRegion', $member->id))->method('POST') !!}
+            {!! Former::vertical_open()->action(action('Malfonds\InvitationController@inviteByMail', $member->id))->method('POST') !!}
+            {!! Former::populateField('name', $member->present()->fullName)!!}
+            {!! Former::populateField('email', $member->email)!!}
 
-            {!! Former::email()->label('Email') !!}
+            {!! Former::text('name')->label('Naam') !!}
+            {!! Former::email('email')->label('Email') !!}
+            {!! Former::select('title')->label('Aanspreektitel')->options(['amice of amica' => 'Amice of amica', 'amice' => 'Amice', 'amica' => 'Amica']) !!}
+            {!! Former::textarea('message')->label('Persoonlijk bericht')->rows(6) !!}
 
             {!! Former::submit()->class('btn btn-primary') !!}
             {!! Former::close() !!}
