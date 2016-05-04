@@ -240,6 +240,7 @@ Route::group(['prefix' => 'api', 'middleware' => ['cors']], function() {
         
         // Invites
         Route::post('members/{id}/invite', 'Malfonds\MemberController@invite');
+        Route::put('members/{id}/invite', 'Malfonds\MemberController@requestInvite');
     });
     
     Route::post('login', 'Malfonds\SessionController@login');
