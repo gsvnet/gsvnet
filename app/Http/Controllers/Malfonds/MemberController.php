@@ -13,6 +13,8 @@ use GSV\Events\Members\Verifications\GenderWasVerified;
 use GSV\Events\Members\Verifications\NameWasVerified;
 use GSV\Events\Members\Verifications\YearGroupWasVerified;
 use GSVnet\Auth\InviteValidator;
+use GSVnet\Auth\TokenRepository;
+use GSVnet\Auth\TokenTransformer;
 use GSVnet\Users\MemberTransformer;
 use GSVnet\Users\MemberTransformerWithoutYeargroup;
 use GSVnet\Users\UsersRepository;
@@ -25,14 +27,21 @@ class MemberController extends CoreApiController
      * @var UsersRepository
      */
     protected $users;
+    
+    /**
+     * @var TokenRepository
+     */
+    protected $tokens;
 
     /**
      * MemberController constructor.
      * @param UsersRepository $users
+     * @param TokenRepository $tokens
      */
-    public function __construct(UsersRepository $users)
+    public function __construct(UsersRepository $users, TokenRepository $tokens)
     {
         $this->users = $users;
+        $this->tokens = $tokens;
     }
 
     public function index(Request $request)
@@ -190,5 +199,20 @@ class MemberController extends CoreApiController
         $this->dispatch(InviteMember::fromRequest($request, $request->user(), $member));
 
         return $this->itemWasCreated()->withArray();
+    }
+
+    public function requestInvite(Request $request, $userId)
+    {
+        $this->authorize('users.show');
+        
+        $member = $this->users->memberOrFormerByIdWithProfile($userId);
+
+        if ($member->isVerified() or $member->getKey() === $request->user()->getKey()) {
+            return $this->errorBadRequest();
+        }
+        
+        $token = $this->tokens->getOrCreateFor($member);
+        
+        return $this->itemWasUpdated()->withItem($token, new TokenTransformer);
     }
 }
