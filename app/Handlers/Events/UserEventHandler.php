@@ -78,7 +78,10 @@ class UserEventHandler
 
         $events->listen(self::$profileChanges, 'GSV\Handlers\Events\Members\ProfileUpdates@changedProfile');
         $events->listen(self::$verifyAccountWhen, 'GSV\Handlers\Events\Members\ProfileUpdates@tookAccountInUse');
-        $events->listen(self::$informAbactisFor, AbactisInformer::class);
+
+        // Disable this for now, since a lot of mails are coming in
+        // $events->listen(self::$informAbactisFor, AbactisInformer::class);
+        
         $events->listen(self::$informNewsletterFor, NewsletterInformer::class);
 
         $events->listen('user.registered', 'GSVnet\Users\UserMailer@registered');
