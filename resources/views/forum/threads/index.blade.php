@@ -50,4 +50,10 @@
         @include('forum._sidebar')
     </div>
 </div>
+
+@can('users.show')
+    @if (!Auth::user()->isVerified())
+        <a href="https://www.malfonds.nl/" class="snackbar">Werk je gegevens bij! Kost 1 minuut.</a>
+    @endif
+@endcan
 @stop
