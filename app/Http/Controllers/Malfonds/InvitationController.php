@@ -47,7 +47,7 @@ class InvitationController extends MalfondsController
     {
         $this->authorize('users.show');
         $member = $this->users->memberOrFormerByIdWithProfile($userId);
-        $token = $this->tokens->getActiveByUserId($member);
+        $token = $this->tokens->getActiveByUserId($userId);
 
         if ($token) {
             $token->prolong();
