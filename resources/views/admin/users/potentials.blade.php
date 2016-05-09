@@ -11,7 +11,7 @@
                 <tr>
                     <th>Gebruikersnaam</th>
                     <th>Voornaam</th>
-                    <th>tussenvoegsel</th>
+                    <th>t/v</th>
                     <th>Achternaam</th>
                     <th>Email</th>
                     <th>Aanmelddatum</th>
