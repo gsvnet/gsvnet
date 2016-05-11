@@ -63,6 +63,7 @@ class UserEventHandler
         MemberEmailWasChanged::class,
         GenderWasChanged::class,
         MembershipStatusWasChanged::class,
+        YearGroupWasChanged::class,
     ];
 
     static $verifyAccountWhen = [
