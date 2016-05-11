@@ -123,6 +123,11 @@ class UsersRepository extends BaseRepository
             ->get();
     }
 
+    public function getAllVerifiedByType($type)
+    {
+        return User::with('profile.yearGroup')->where('type', $type)->where('verified', true)->get();
+    }
+
     public function paginateLatelyRegistered($amount)
     {
         return User::orderBy('created_at', 'DESC')->paginate($amount);

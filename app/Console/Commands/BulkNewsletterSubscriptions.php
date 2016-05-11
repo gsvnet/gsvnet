@@ -23,19 +23,41 @@ class BulkNewsletterSubscriptions extends Command
      */
     protected $description = 'Update newsletter subscriptions.';
 
-    protected $newsletterlist;
+    /**
+     * @var NewsletterList
+     */
+    protected $newsletterList;
+    
+    /**
+     * @var UserTransformer
+     */
     protected $userTransformer;
+    
+    /**
+     * @var UsersRepository
+     */
+    private $users;
 
+    /**
+     * @var array
+     */
     private $values = [
         'leden' => User::MEMBER,
         'oud-leden' => User::FORMERMEMBER
     ];
 
-    public function __construct(NewsletterList $newsletterList, UserTransformer $userTransformer)
+    /**
+     * BulkNewsletterSubscriptions constructor.
+     * @param NewsletterList $newsletterList
+     * @param UserTransformer $userTransformer
+     * @param UsersRepository $users
+     */
+    public function __construct(NewsletterList $newsletterList, UserTransformer $userTransformer, UsersRepository $users)
     {
         parent::__construct();
-        $this->newsletterlist = $newsletterList;
+        $this->newsletterList = $newsletterList;
         $this->userTransformer = $userTransformer;
+        $this->users = $users;
     }
 
     /**
@@ -53,16 +75,16 @@ class BulkNewsletterSubscriptions extends Command
         }
 
         $type = $this->values[$for];
+        
+        $users = $this->users->getAllVerifiedByType($type);
 
-        $users = User::where('type', '=', $type)->get();
-
-        $unsubscribeBatch = $this->userTransformer->batchMailchimpUnsubscribe($users);
+//        $unsubscribeBatch = $this->userTransformer->batchMailchimpUnsubscribe($users);
         $subscribeBatch = $this->userTransformer->batchMailchimpSubscribe($users);
-
+     
         try {
-            $this->info(json_encode($this->newsletterlist->batchSubscribeTo($type, $subscribeBatch)));
+            $this->info(json_encode($this->newsletterList->batchSubscribeTo($type, $subscribeBatch)));
         } catch (\Mailchimp_Error $e) {
-			$this->info($e->getMessage());
+            $this->info($e->getMessage());
         }
     }
 
