@@ -1,10 +1,11 @@
 <?php namespace GSV\Console\Commands;
 
+use GSVnet\Newsletters\NewsletterList;
+use GSVnet\Users\User;
+use GSVnet\Users\UsersRepository;
+use GSVnet\Users\UserTransformer;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
-use GSVnet\Users\User;
-use GSVnet\Users\UserTransformer;
-use GSVnet\Newsletters\NewsletterList;
 
 class BulkNewsletterSubscriptions extends Command
 {
