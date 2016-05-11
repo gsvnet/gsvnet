@@ -22,11 +22,17 @@ class UserTransformer {
             $titel = 'Amice of amica';
         }
 
+        list($year, $group) = ($user->profile && $user->profile->yearGroup)
+            ? [$user->profile->yearGroup->year, $user->profile->yearGroup->name]
+            : [0, ''];
+
         return [
             'FNAME' => $user->firstname,
             'LNAME' => $user->present()->fullLastname,
             'TITEL' => $titel,
-            'TITEL_LOW' => strtolower($titel)
+            'TITEL_LOW' => strtolower($titel),
+            'JAAR' => $year,
+            'VERBAND' => $group,
         ];
     }
 
