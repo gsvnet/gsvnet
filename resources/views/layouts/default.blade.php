@@ -80,7 +80,7 @@
                     animation-iteration-count: infinite;
                 }
             </style>
-            <a href="https://www.malfonds.nl/" class="snackbar snackbar--animated">Verifieer je gegevens! Kost 30 seconden. Klik hier.</a>
+            <a href="https://www.malfonds.nl/" class="snackbar snackbar--animated" title="Verifieer je gegevens">Verifieer je gegevens! Kost 30 seconden &amp; dit verdwijnt. Klik hier</a>
         @endif
     @endcan
 
