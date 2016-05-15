@@ -1,6 +1,7 @@
 <?php namespace GSV\Console;
 
 use GSV\Console\Commands\BulkNewsletterSubscriptions;
+use GSV\Console\Commands\InviteViaCLI;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
@@ -13,5 +14,6 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         BulkNewsletterSubscriptions::class,
+        InviteViaCLI::class,
     ];
 }
