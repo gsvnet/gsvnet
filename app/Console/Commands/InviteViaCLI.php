@@ -67,8 +67,6 @@ class InviteViaCLI extends Command
         
         $list = json_decode($file);
 
-        $list = array_slice($list, 0, 4);
-
         array_map([$this, 'invite'], $list);
     }
 
