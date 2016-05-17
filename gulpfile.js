@@ -54,6 +54,7 @@ gulp.task('scripts', function() {
 gulp.task('forum-scripts', function() {
    return gulp.src([
        './bower_components/pica/dist/pica.min.js',
+       './resources/assets/components/javascripts/load-image.js',
        './resources/assets/front/javascripts/image-upload.js'
    ]).pipe(concat('forum.js')).pipe(uglify()).pipe(gulp.dest('public/build-javascripts/'));
 });
