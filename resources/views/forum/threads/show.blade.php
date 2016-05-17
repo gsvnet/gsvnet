@@ -77,3 +77,11 @@
         </div>
     </div>
 @stop
+
+@section('javascripts')
+    @parent
+
+    @if(Auth::check())
+    <script async src="/build-javascripts/forum.js"></script>
+    @endif
+@endsection

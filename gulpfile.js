@@ -51,6 +51,13 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('public/build-javascripts/'))
 });
 
+gulp.task('forum-scripts', function() {
+   return gulp.src([
+       './bower_components/pica/dist/pica.min.js',
+       './resources/assets/front/javascripts/image-upload.js'
+   ]).pipe(concat('forum.js')).pipe(uglify()).pipe(gulp.dest('public/build-javascripts/'));
+});
+
 gulp.task('backend-scripts', function() {
   return gulp.src([
       './bower_components/jquery/dist/jquery.min.js',
