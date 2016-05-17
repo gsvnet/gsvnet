@@ -12,6 +12,12 @@
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="schrijven">
             {!! Former::textarea('body')->placeholder('Tekst')->label('Reageer')->rows(10) !!}
+            @if(Auth::check())
+                <p class="imgur-upload">
+                    <label for="imgur-file-upload" class="control-label">+ Foto (<span id="imgur-help-text">klik of sleep</span>)</label>
+                    <input type="file" id="imgur-file-upload" style="display: none" accept="image/*" />
+                </p>
+            @endif
         </div>
         <div role="tabpanel" class="tab-pane" id="bekijken">
             <div class="loading-indicator">
@@ -47,3 +53,4 @@
         <a href="{{ URL::action('ForumThreadsController@getIndex') }}" title="Terug naar de laatste topics" class="button disabled">&laquo; Terug</a>
     </div>
 {!! Former::close() !!}
+
