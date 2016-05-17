@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 {{-- // TODO: move styling to SASS --}}
-                <div id="markdown-preview" style="min-height: 13em;
+                <div id="markdown-preview" class="body" style="min-height: 13em;
                         background-color: #FFF;
                         overflow: auto;
                         padding: 0 1.2em;
