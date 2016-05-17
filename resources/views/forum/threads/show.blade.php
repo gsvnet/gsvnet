@@ -82,6 +82,6 @@
     @parent
 
     @if(Auth::check())
-    <script async src="/build-javascripts/forum.js"></script>
+    <script async src="/build-javascripts/forum.js?v=1.0.1"></script>
     @endif
 @endsection
