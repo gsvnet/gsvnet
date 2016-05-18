@@ -39,7 +39,8 @@ class UserProfile extends Model {
         'resignation_date',
         'company',
         'profession',
-        'business_url'
+        'business_url',
+        'alive',
     ];
     
     public $presenter = 'GSVnet\Users\Profiles\ProfilePresenter';
