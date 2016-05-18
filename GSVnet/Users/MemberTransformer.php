@@ -34,6 +34,7 @@ class MemberTransformer extends BaseTransformer
             'company' => $member->profile->company,
             'profession' => $member->profile->profession,
             'business_url' => $member->profile->business_url,
+            'alive' => (bool) $member->profile->alive,
         ];
     }
 
