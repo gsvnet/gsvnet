@@ -19,7 +19,7 @@
             <div class="carousel-make-height">
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="/images/banner/sociaal1600.jpg" srcset="/images/banner/sociaal600.jpg 600w, /images/banner/sociaal1024.jpg 1024w, /images/banner/sociaal1600.jpg 1600w" alt="Sociaal"/>
+                        <img src="/images/banner/sociaal-1600.jpg" srcset="/images/banner/sociaal-600.jpg 600w, /images/banner/sociaal-1024.jpg 1024w, /images/banner/sociaal-1600.jpg 1600w" alt="Sociaal"/>
                         <div class="slide-description-wrapper">
                             <div class="slide-description">
                                 <div class="slide-description-box">
@@ -43,7 +43,7 @@
                     </div>
 
                     <div class="item">
-                        <img src="/images/banner/gala-2013-1600.jpg" srcset="/images/banner/gala-2013-600.jpg 600w, /images/banner/gala-2013-1024.jpg 1024w, /images/banner/gala-2013-1600.jpg 1600w" alt="Studentikoze Studentenvereniging"/>
+                        <img src="/images/banner/studentikoos-1600.jpg" srcset="/images/banner/studentikoos-600.jpg 600w, /images/banner/studentikoos-1024.jpg 1024w, /images/banner/studentikoos-1600.jpg 1600w" alt="Studentikoze Studentenvereniging"/>
                         <div class="slide-description-wrapper">
                             <div class="slide-description">
                                 <div class="slide-description-box">
@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="item">
-                        <img src="/images/banner/intellectueel1600.jpg" srcset="/images/banner/intellectueel600.jpg 600w, /images/banner/intellectueel1024.jpg 1024w, /images/banner/intellectueel1600.jpg 1600w" alt="Intellectuele Studentenvereniging"/>
+                        <img src="/images/banner/intellectueel-1600.jpg" srcset="/images/banner/intellectueel-600.jpg 600w, /images/banner/intellectueel-1024.jpg 1024w, /images/banner/intellectueel-1600.jpg 1600w" alt="Intellectuele Studentenvereniging"/>
                         <div class="slide-description-wrapper">
                             <div class="slide-description">
                                 <div class="slide-description-box">
@@ -67,6 +67,7 @@
                     </div>
                 </div>
             </div>
+
 
             <!-- Controls -->
             <a class="left carousel-control" href="#homepage-carousel" data-slide="prev">
