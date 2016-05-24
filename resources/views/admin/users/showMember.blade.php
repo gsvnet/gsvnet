@@ -326,6 +326,13 @@
                 </tbody>
             </table>
 
+
+            @can('users.manage')
+                <hr>
+                <h3>In leven</h3>
+                <p>In leven? {{$profile->alive ? 'yes' : 'no'}}</p>
+            @endcan
+
             <hr>
 
             @if ($committees->count() > 0)
