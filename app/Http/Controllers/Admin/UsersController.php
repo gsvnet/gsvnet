@@ -221,6 +221,11 @@ class UsersController extends AdminBaseController
         if ($user->wasOrIsMember()) {
             // Members, former members
             $committees = $user->committeesSorted;
+
+            if (! $user->profile->alive) {
+                return view('admin.users.showDeceasedMember')->with(compact('user', 'profile', 'committees'));
+            }
+
             return view('admin.users.showMember')->with(compact('user', 'profile', 'committees'));
         }
 

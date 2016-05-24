@@ -13,6 +13,7 @@ use GSV\Commands\Members\ChangePhone;
 use GSV\Commands\Members\ChangeRegion;
 use GSV\Commands\Members\ChangeStudy;
 use GSV\Commands\Members\ChangeYearGroup;
+use GSV\Commands\Members\MemberIsAlive;
 use GSV\Commands\Users\ChangeEmail;
 use GSV\Commands\Users\ChangePassword;
 use GSV\Commands\Users\SetProfilePictureCommand;
@@ -357,6 +358,26 @@ class MemberController extends AdminBaseController
         }
 
         flash()->success("Foto van {$member->present()->fullName()} succesvol opgeslagen");
+        return redirect()->action('Admin\UsersController@show', $id);
+    }
+
+    public function editAlive($id)
+    {
+        $user = $this->users->memberOrFormerByIdWithProfile($id);
+        $this->authorize('users.manage');
+
+        return view('admin.users.update.alive')->with(compact('user'));
+    }
+
+    public function updateAlive(Request $request, $id)
+    {
+        $this->authorize('users.manage');
+
+        $member = $this->users->memberOrFormerByIdWithProfile($id);
+
+        $this->dispatch(MemberIsAlive::fromForm($request, $member));
+
+        flash()->success("Status gewijzigd");
         return redirect()->action('Admin\UsersController@show', $id);
     }
 }

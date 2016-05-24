@@ -5,28 +5,8 @@
         <h1><a href="{{ action('MemberController@showPhoto', $profile->id) }}" title="Grote foto"><img src="{!! $profile->present()->xsmallProfileImage !!}" width="102" height="102" alt="Profielfoto"/></a> {{ $user->present()->fullName }}</h1>
     </div>
 
-    @can('user.manage.password', $user)
-    <div class="row">
-        <div class="col-xs-12">
-            <ul class="nav nav-pills">
-                <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editPassword', $user->id) }}">
-                        <i class="fa fa-unlock-alt"></i> Wachtwoord wijzigen
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <hr>
-    @endcan
-
     <div class="row">
         <div class="col-xs-12 col-md-8">
-
-            @cannot('users.manage')
-                <div class="alert alert-info" role="alert"><strong>Tip: Klopt er iets niet wat u zelf niet kunt wijzigen? Mail de abactis!</strong></div>
-            @endcan
 
             {{-- Name --}}
 
@@ -128,60 +108,6 @@
                 </tbody>
             </table>
 
-            {{-- Email --}}
-
-            <h3>
-                <i class="glyphicon glyphicon-envelope"></i>
-                Email
-
-                @can('user.manage.email', $user)
-                    <a href="{{ action('Admin\MemberController@editEmail', $user->id) }}">(wijzig)</a>
-                @endcan
-            </h3>
-            <table class='table table-striped table-hover' style="table-layout: fixed;">
-                <tbody>
-                <tr>
-                    <th>Email</th>
-                    <td>{{ $user->email }}</td>
-                </tr>
-                </tbody>
-            </table>
-
-            {{-- Contactgegevens --}}
-
-            <h3>
-                <i class="glyphicon glyphicon-home"></i>
-                Contactgegevens
-
-                @can('user.manage.address', $user)
-                    <a href="{{ action('Admin\MemberController@editContactDetails', $user->id) }}">(wijzig)</a>
-                @endcan
-            </h3>
-            <table class='table table-striped table-hover' style="table-layout: fixed;">
-                <tbody>
-                <tr>
-                    <th>Telefoon</th>
-                    <td>{{ $profile->phone }}</td>
-                </tr>
-                <tr>
-                    <th>Adres</th>
-                    <td>{{ $profile->address }}</td>
-                </tr>
-                <tr>
-                    <th>Postcode</th>
-                    <td>{{ $profile->zip_code }}</td>
-                </tr>
-                <tr>
-                    <th>Plaats</th>
-                    <td>{{ $profile->town }}</td>
-                </tr>
-                <tr>
-                    <th>Land</th>
-                    <td>{{ $profile->country }}</td>
-                </tr>
-                </tbody>
-            </table>
-
             {{-- Profile picture --}}
 
             <h3>
@@ -266,66 +192,6 @@
                 </tr>
                 </tbody>
             </table>
-
-            <hr>
-
-            {{-- Business --}}
-
-            <h3>
-                <i class="glyphicon glyphicon-briefcase"></i> 
-                Werkgegevens
-
-                @can('user.manage.business', $user)
-                    <a href="{{ action('Admin\MemberController@editBusiness', $user->id) }}">(wijzig)</a>
-                @endcan
-            </h3>
-            <table class='table table-striped table-hover' style="table-layout: fixed;">
-                <tbody>
-                <tr>
-                    <th>Bedrijf</th>
-                    <td>{{ $profile->company }}</td>
-                </tr>
-                <tr>
-                    <th>Functie</th>
-                    <td>{{ $profile->profession }}</td>
-                </tr>
-                <tr>
-                    <th>LinkedIn</th>
-                    <td>{{ $profile->business_url }}</td>
-                </tr>
-                </tbody>
-            </table>
-
-            {{-- Parents --}}
-
-            <h3>
-               <i class="fa fa-users"></i> Gegevens ouders
-
-                @can('user.manage.parents', $user)
-                    <a href="{{ action('Admin\MemberController@editParentContactDetails', $user->id) }}">(wijzig)</a>
-                @endcan
-            </h3>
-            <table class='table table-striped table-hover' style="table-layout: fixed;">
-                <tbody>
-                <tr>
-                    <th>Telefoon</th>
-                    <td>{{ $profile->parent_phone }}</td>
-                </tr>
-                <tr>
-                    <th>Adres</th>
-                    <td>{{ $profile->parent_address }}</td>
-                </tr>
-                <tr>
-                    <th>Postcode</th>
-                    <td>{{ $profile->parent_zip_code }}</td>
-                </tr>
-                <tr>
-                    <th>Plaats</th>
-                    <td>{{ $profile->parent_town }}</td>
-                </tr>
-                </tbody>
-            </table>
-
 
             @can('users.manage')
                 <hr>
