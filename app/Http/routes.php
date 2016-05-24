@@ -143,6 +143,8 @@ Route::group([
     Route::put('leden/{user}/reunistschap',  'MemberController@updateAlumniStatus');
     Route::get('leden/{user}/tijd-van-lidmaatschap', 'MemberController@editMembershipPeriod');
     Route::put('leden/{user}/tijd-van-lidmaatschap', 'MemberController@updateMembershipPeriod');
+    Route::get('leden/{user}/in-leven', 'MemberController@editAlive');
+    Route::put('leden/{user}/in-leven', 'MemberController@updateAlive');
 
     // Some actions (post requests therefore)
     Route::get('leden/{user}/lidmaatschap', 'MemberController@editMembershipStatus');
