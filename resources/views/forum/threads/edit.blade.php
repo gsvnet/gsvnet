@@ -24,7 +24,7 @@
 
             @can('threads.show-private')
             <div>
-                {!! Former::checkbox('public')->text('Maak topic publiek voor niet-GSV leden')->label('Publiek') !!}
+                {!! Former::checkbox('public')->value('yes')->text('Maak topic publiek voor niet-GSV leden')->label('Publiek') !!}
             </div>
             @endcan
 
