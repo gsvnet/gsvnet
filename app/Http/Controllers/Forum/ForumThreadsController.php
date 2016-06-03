@@ -13,6 +13,7 @@ use GSVnet\Forum\Threads\ThreadSlug;
 use GSVnet\Permissions\NoPermissionException;
 use GSVnet\Tags\TagRepository;
 use GSVnet\Users\UsersRepository;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
@@ -124,7 +125,7 @@ class ForumThreadsController extends BaseController {
         return view('forum.threads.edit', compact('thread', 'tags'));
     }
 
-    public function postEditThread($threadId)
+    public function postEditThread(Request $request, $threadId)
     {
         $thread = $this->threads->requireById($threadId);
 
@@ -132,15 +133,15 @@ class ForumThreadsController extends BaseController {
 
         $data = [
             'threadId' => $threadId,
-            'subject' => Input::get('subject'),
-            'body' => Input::get('body'),
-            'tags' => $this->tags->getTagsByIds(Input::get('tags')),
-            'public' => Input::get('public', false)
+            'subject' => $request->get('subject'),
+            'body' => $request->get('body'),
+            'tags' => $this->tags->getTagsByIds($request->get('tags')),
+            'public' => $request->exists('public')
         ];
 
         if(Gate::denies('threads.show-private'))
             $data['public'] = true;
-
+        
         $this->dispatchFromArray(EditThreadCommand::class, $data);
 
         return redirect()->action('ForumThreadsController@getShowThread', [$thread->slug]);
