@@ -154,7 +154,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-
+        Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider::class,
 
         GSV\Providers\NewsletterServiceProvider::class,
         GSV\Providers\ComposerServiceProvider::class,
@@ -218,5 +218,6 @@ return [
 
         'Flash' => Laracasts\Flash\Flash::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Bugsnag' => Bugsnag\BugsnagLaravel\BugsnagFacade::class,
     ],
 ];
