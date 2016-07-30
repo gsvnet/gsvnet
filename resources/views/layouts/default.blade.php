@@ -121,6 +121,18 @@
         @include('login-dialog')
     @endif
 
+    @cannot('ads.hide')
+    <script>
+        window.__lc = window.__lc || {};
+        window.__lc.license = 8049971;
+        (function() {
+          var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+          lc.src = 'https://cdn.livechatinc.com/tracking.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+        })();
+    </script>
+    @endcan
+
     @section('javascripts')
         @if (Auth::check())
         <script>
