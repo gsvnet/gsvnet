@@ -17,7 +17,7 @@
             <div id="preview-image"></div>
         </div>
 
-        {!! Former::file('photo_path')->label('Upload een foto van jezelf')->accept('image')->required() !!}
+        {{--!! Former::file('photo_path')->label('Upload een foto van jezelf (niet verplicht)')->accept('image') !!--}}
 
         <div class="form-group {{$errors->has('firstname') || $errors->has('middlename') || $errors->has('lastname') ? ' has-error' : ''}}">
             <label for="firstname" class="control-label">Naam<sup>*</sup></label>

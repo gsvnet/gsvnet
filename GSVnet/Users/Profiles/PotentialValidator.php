@@ -5,7 +5,7 @@ use GSVnet\Core\Validator;
 class PotentialValidator extends Validator
 {
     static $rules = [
-        'photo_path' => 'required|image',
+        'photo_path' => 'image',
         'firstname' => 'required',
         'lastname' => 'required',
         'gender' => 'required|in:0,1',
