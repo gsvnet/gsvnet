@@ -63,7 +63,7 @@
                 <li><a href="#eerste-jaar" title="Lees over je eerste jaar">Eerste jaar?</a></li>
                 <li><a href="#gereformeerd" title="Lees over gereformeerd">Gereformeerd?</a></li>
                 <li><a href="#verplichtingen" title="Lees over verplichtingen">Verplichtingen?</a></li>
-                <li><a href="#studie" title="Lees over het combineren van studie en GSV">Studie & GSV?</a></li>
+                <li><a href="#studie" title="Lees over het combineren van studie en GSV">Studie &amp; GSV?</a></li>
                 <li><a href="#uniek" title="Lees over wat de GSV bijzonder maakt">Uniek?</a></li>
                 <li><a href="#kosten" title="Lees over kosten">Kosten?</a></li>
                 <li><a href="#intentieverklaring" title="Lees over de intentieverklaring">Intentieverklaring?</a></li>
