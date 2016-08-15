@@ -6,11 +6,11 @@
 
 @section('content')
     <div class="column-holder" role="main">
-        <h1>Veel gestelde vragen</h1>
-        <p class="delta">Lees wat je wil weten voor je lid wordt!</p>
+        <h1>Veelgestelde vragen</h1>
+        <p class="delta">Lees wat je wilt weten voor je lid wordt!</p>
         <div class="main-content">
             <h2 id="hoe">Hoe word ik lid?</h2>
-            <p>Je kan je zowel via de site als in de sociëteit aanmelden.</p>
+            <p>Je kunt je zowel via de site als in de sociëteit aanmelden.</p>
             <p><a href="{{URL::action('MemberController@becomeMember')}}" title="Word lid!" class="button">Word lid!</a></p>
 
             <h2 id="voor-wie">Kan iedereen lid worden?</h2>
@@ -27,6 +27,9 @@
 
             <h2 id="verplichtingen">Veel verplichtingen?</h2>
             <p>Op dinsdagavond hebben wij standaard onze bijbelkringavonden, hiervan wordt verwacht dat je daarbij bent. Verder is elke donderdagavond de sociëteit geopend. Niet verplicht, wel een leuke gelegenheid om iedereen weer even te zien en op de hoogte te blijven van wat er gebeurt. Voor de rest geldt er wat de beschrijving van het eerste jaar ook al genoemd wordt: hoe meer tijd je investeert, hoe meer contacten bij de vereniging en hoe meer plezier je hieraan zult beleven.</p>
+
+            <h2 id="studie">Is de GSV te combineren met je studie?</h2>
+            <p>Elk jaar blijkt dat de GSV en studeren goed samengaan. Bij het plannen van activiteiten wordt rekening gehouden met jouw studiemomenten. Daarnaast zijn er activiteiten die het studeren bevorderen. Kijk voor meer informatie op <a href="{{ URL::action('MemberController@study') }}" title="GSV en studie">deze pagina</a>.</p>
 
             <h2 id="uniek">Wat is het verschil tussen GSV en andere christelijke studentenverenigingen? Wat maakt de GSV uniek?</h2>
             <p>De GSV is de beste combinatie tussen de christelijke basis en alles wat het studentenleven te bieden heeft. Daar waar andere christelijke verenigingen de punten gezelligheid en studentikoziteit reduceren tot de wekelijkse borrel is onze vereniging ermee doorvlochten. Niet alleen bijbel en bier, maar ook tradities, mores, een novitiaat dat je uitdaagt jezelf echt voor 100% ergens voor in te zetten enzovoort. Daarnaast heeft de GSV een unieke structuur die ervoor zorgt dat wij een zeer hechte vereniging zijn. Wat dat laatste inhoudt valt het beste te merken tijdens een van onze open sociëteitsavonden. Kom dus vooral eens kijken en ervaar zelf wat ons anders maakt!</p>
@@ -60,6 +63,7 @@
                 <li><a href="#eerste-jaar" title="Lees over je eerste jaar">Eerste jaar?</a></li>
                 <li><a href="#gereformeerd" title="Lees over gereformeerd">Gereformeerd?</a></li>
                 <li><a href="#verplichtingen" title="Lees over verplichtingen">Verplichtingen?</a></li>
+                <li><a href="#studie" title="Lees over het combineren van studie en GSV">Studie & GSV?</a></li>
                 <li><a href="#uniek" title="Lees over wat de GSV bijzonder maakt">Uniek?</a></li>
                 <li><a href="#kosten" title="Lees over kosten">Kosten?</a></li>
                 <li><a href="#intentieverklaring" title="Lees over de intentieverklaring">Intentieverklaring?</a></li>

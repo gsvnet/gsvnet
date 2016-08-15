@@ -99,6 +99,11 @@ class MemberController extends BaseController
         return redirect()->action('MemberController@becomeMember');
     }
 
+    public function study()
+    {
+        return view('word-lid.study');
+    }
+
     public function faq()
     {
         return view('word-lid.faq');

@@ -59,6 +59,7 @@ Route::post('registreer', 'RegisterController@store');
 // Word lid
 Route::group(['prefix' => 'word-lid'], function() {
     Route::get('/', 'MemberController@index');
+    Route::get('/studie-en-vereniging', 'MemberController@study');
     Route::get('/veel-gestelde-vragen', 'MemberController@faq');
     Route::get('inschrijven',  'MemberController@becomeMember');
     Route::post('inschrijven', 'MemberController@store');

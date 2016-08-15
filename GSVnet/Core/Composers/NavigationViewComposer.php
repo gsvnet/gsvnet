@@ -232,9 +232,13 @@ class NavigationViewComposer {
                         'url' => action('MemberController@index'),
                         'title' => 'Lid worden?'
                     ],
+                    'studie' => [
+                        'url' => action('MemberController@study'),
+                        'title' => 'Studie & Vereniging'
+                    ],
                     'veel-gestelde-vragen' => [
                         'url' => action('MemberController@faq'),
-                        'title' => 'Veel gestelde vragen'
+                        'title' => 'Veelgestelde vragen'
                     ],
                     'inschrijven' => [
                         'url' => action('MemberController@becomeMember'),

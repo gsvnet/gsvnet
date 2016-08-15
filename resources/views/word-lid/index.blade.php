@@ -13,6 +13,11 @@
             <p>De GSV is de meest hechte christelijke studentenvereniging van Groningen. Onze vereniging biedt de perfecte combinatie van christelijke waarden en het echte studentenleven.</p>
             <p>Door onze lange historie heen hebben wij keer op keer bewezen de beste match te zijn tussen het échte studentenleven en het christelijk geloof.</p>
 
+            <h2>Wat is de GSV?</h2>
+            <p>
+                <iframe src="https://prezi.com/embed/b6j6hhz8z9bl/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0&amp;landing_data=bHVZZmNaNDBIWnNjdEVENDRhZDFNZGNIUE1lNjhCRUpSbVVNaldpOExIVmtlRFlVaEdHeWNYblFhYStBRVpzb2IyST0&amp;landing_sign=CZ6SiEAGtW_r5ftf5uHZ1Mc6yMErDchAiwcHXeLT2pM" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" id="iframe_container" frameborder="0" height="600" width="560"></iframe>
+            </p>
+
             <h2>KEI-week 2015 aftermovie</h2>
             <p>Bekijk hieronder de aftermovie van de afgelopen keiweeek.</p>
             <p>
