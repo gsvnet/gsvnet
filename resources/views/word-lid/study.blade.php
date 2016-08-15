@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="column-holder" role="main">
-        <h1>Studie & Vereniging</h1>
+        <h1>Studie &amp; Vereniging</h1>
         <p class="delta">Lees over het combineren van je studie met de GSV.</p>
         <div class="main-content">
             <p>Elk jaar opnieuw blijkt: GSV en de studie gaan goed samen! Een vaakgehoorde reden om niet (of pas in het tweede studiejaar) lid te worden van een studentenvereniging is de veronderstelling dat een vereniging je studie negatief beïnvloedt. Maar hier wordt iets vergeten: wij zijn allemaal studenten en moeten allemaal studeren! Sinds de invoering van het BSA (bindend studieadvies) is er steeds meer druk op de studie komen te liggen. In maximaal twee jaar tijd je propedeuse halen is noodzakelijk.</p>
