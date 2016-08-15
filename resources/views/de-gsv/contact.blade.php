@@ -59,6 +59,22 @@
 							<span class="list-description">{!!HTML::mailto('assessorsecundus@gsvnet.nl')!!}</span>
 						</li>
 					</ul>
+					<h3>Partners</h3>
+					<ul class="unstyled-list title-description-list">
+						<li>
+							<span class="list-title">IFES-medewerker</span>
+							<address>
+								Frederik Boersema<br />
+								tel. 06-49942102
+							</address>
+							<span class="list-description">{!! HTML::link('https://www.ifes.nl') !!}</span>
+						</li>
+						<li>
+							<span class="list-title">Student Coaching</span>
+							Wakker bij Bakker<br />
+							<span class="list-description">{!! HTML::link('http://www.wakkerbijbakker.nl') !!}</span>
+						</li>
+					</ul>
 				</div>
 				<div class="content-column">
 					<h3>Commissies</h3>
