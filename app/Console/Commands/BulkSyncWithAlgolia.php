@@ -39,6 +39,7 @@ class BulkSyncWithAlgolia extends Command
         $formattedList = $users->map(function (User $user) use ($transformer) {
             try {
                 $formatted = $transformer->transform($user);
+                $formatted['yeargroup'] = $transformer->includeYearGroup($user);
                 return $formatted;
             } catch (\Exception $e) {
                 return null;
