@@ -88,8 +88,6 @@
         <div class="main-content has-border-bottom">
             <p>Op deze site kun je meer lezen over de GSV en wat er allemaal valt te beleven bij onze studentenverenging. Wil je lid worden, of ben je gewoon nieuwsgierig? <a href="/word-lid" class="more" title="Lid worden">Lees wat je moet weten</a></p>
 
-            <p><a href="https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/13903278_1350963341598527_4960315025129703593_n.jpg?oh=1e598c162a69cc0fb7278ecdff420f97&amp;oe=5812F761"><img style="width:100%" src="https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/13903278_1350963341598527_4960315025129703593_n.jpg?oh=1e598c162a69cc0fb7278ecdff420f97&oe=5812F761"></img></a></p>
-
             <h2>Over de GSV</h2>
             <p>De GSV, de Gereformeerde Studenten Vereniging, is een christelijke studentenvereniging met een gereformeerde basis. De vereniging bestaat uit een hechte groep van zo’n 200 studenten die elke week bij elkaar komen op bijbelkring en tijdens soosavonden. </p>
 
