@@ -5,6 +5,7 @@ namespace GSV\Console\Commands;
 use AlgoliaSearch\Client as AlgoliaClient;
 use GSVnet\Users\MemberTransformer;
 use GSVnet\Users\User;
+use GSVnet\Users\YearGroupTransformer;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -34,12 +35,13 @@ class BulkSyncWithAlgolia extends Command
         /** @var Collection $users */
         $users = User::with('profile.yearGroup')->whereIn('type', [User::FORMERMEMBER, User::MEMBER])->get();
 
-        $transformer = new MemberTransformer;
+        $memberTransformer = new MemberTransformer;
+        $yeargroupTransformer = new YearGroupTransformer;
 
-        $formattedList = $users->map(function (User $user) use ($transformer) {
+        $formattedList = $users->map(function (User $member) use ($memberTransformer, $yeargroupTransformer) {
             try {
-                $formatted = $transformer->transform($user);
-                $formatted['yeargroup'] = $transformer->includeYearGroup($user);
+                $formatted = $memberTransformer->transform($member);
+                $formatted['yeargroup'] = $yeargroupTransformer->transform($member->profile->yearGroup);
                 return $formatted;
             } catch (\Exception $e) {
                 return null;
