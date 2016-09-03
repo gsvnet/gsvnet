@@ -160,6 +160,7 @@ return [
         GSV\Providers\ComposerServiceProvider::class,
         GSV\Providers\ResponsesServiceProvider::class,
         GSV\Providers\EventsServiceProvider::class,
+        GSV\Providers\AlgoliaServiceProvider::class,
     ],
 
     /*
