@@ -12,6 +12,7 @@ class MemberTransformer extends BaseTransformer
         return [
             'id' => $member->id,
             'year_group_id' => $member->profile->year_group_id,
+            'fullname' => $member->present()->fullName(),
             'firstname' => $member->firstname,
             'middlename' => $member->middlename,
             'lastname' => $member->lastname,

@@ -1,6 +1,7 @@
 <?php namespace GSV\Console;
 
 use GSV\Console\Commands\BulkNewsletterSubscriptions;
+use GSV\Console\Commands\BulkSyncWithAlgolia;
 use GSV\Console\Commands\InviteViaCLI;
 use GSV\Console\Commands\StandardizePhoneNumbers;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -17,5 +18,6 @@ class Kernel extends ConsoleKernel
         BulkNewsletterSubscriptions::class,
         InviteViaCLI::class,
         StandardizePhoneNumbers::class,
+        BulkSyncWithAlgolia::class,
     ];
 }
