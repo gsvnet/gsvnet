@@ -12,4 +12,7 @@
     <p>
         <a href="{!! URL::action('Admin\UsersController@exportMembers') !!}" class="btn btn-sm btn-primary"><i class="fa fa-download"></i> Ledenbestand (csv)</a>
     </p>
+    <p>
+        <a href="{!! URL::action('Admin\MemberController@exportNewspaperRecipients') !!}" class="btn btn-sm btn-primary"><i class="fa fa-download"></i> SIC-ontvangers (csv)</a>
+    </p>
 @stop

@@ -36,6 +36,7 @@ class MemberTransformer extends BaseTransformer
             'profession' => $member->profile->profession,
             'business_url' => $member->profile->business_url,
             'alive' => (bool) $member->profile->alive,
+            'receive_newspaper' => (bool) $member->profile->receive_newspaper,
         ];
     }
 
