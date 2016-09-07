@@ -168,6 +168,10 @@ return [
         'user.manage.study' => [
             'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
             'senate' => true
+        ],
+        'user.manage.receive_newspaper' => [
+            'committee' => ['webcie', 'malversacie'],
+            'senate' => true
         ]
     ],
 ];

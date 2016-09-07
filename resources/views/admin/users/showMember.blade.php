@@ -182,6 +182,27 @@
                 </tbody>
             </table>
 
+            @if ($user->isMember())
+                {{-- SIC fysiek thuis ontvangen --}}
+
+                <h3>
+                    <i class="fa fa-newspaper-o"></i>
+                    SIC thuis ontvangen
+
+                    @can('user.manage.receive_newspaper', $user)
+                        <a href="{{ action('Admin\MemberController@editNewspaper', $user->id) }}">(wijzig)</a>
+                    @endcan
+                </h3>
+                <table class='table table-striped table-hover' style="table-layout: fixed;">
+                    <tbody>
+                    <tr>
+                        <th>SIC thuis ontvangen</th>
+                        <td>{{ $profile->receive_newspaper ? 'Ja' : 'Nee' }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            @endif
+
             {{-- Profile picture --}}
 
             <h3>

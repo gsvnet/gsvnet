@@ -41,6 +41,7 @@ class UserProfile extends Model {
         'profession',
         'business_url',
         'alive',
+        'receive_newspaper'
     ];
     
     public $presenter = 'GSVnet\Users\Profiles\ProfilePresenter';

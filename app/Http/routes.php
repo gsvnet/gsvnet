@@ -146,6 +146,8 @@ Route::group([
     Route::put('leden/{user}/tijd-van-lidmaatschap', 'MemberController@updateMembershipPeriod');
     Route::get('leden/{user}/in-leven', 'MemberController@editAlive');
     Route::put('leden/{user}/in-leven', 'MemberController@updateAlive');
+    Route::get('leden/{user}/sic-ontvangen', 'MemberController@editNewspaper');
+    Route::put('leden/{user}/sic-ontvangen', 'MemberController@updateNewspaper');
 
     // Some actions (post requests therefore)
     Route::get('leden/{user}/lidmaatschap', 'MemberController@editMembershipStatus');
@@ -155,6 +157,7 @@ Route::group([
 
     Route::get('leden/oudleden.csv', 'UsersController@exportFormerMembers');
     Route::get('leden/leden.csv', 'UsersController@exportMembers');
+    Route::get('leden/sic-ontvangers.csv', 'MemberController@exportNewspaperRecipients');
     Route::get('leden/updates', 'MemberController@latestUpdates');
 
     Route::resource('gebruikers', 'UsersController');

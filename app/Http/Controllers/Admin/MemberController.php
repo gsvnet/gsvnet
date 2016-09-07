@@ -1,5 +1,6 @@
 <?php namespace Admin;
 
+use Carbon\Carbon;
 use GSV\Commands\Members\ChangeAlumniStatus;
 use GSV\Commands\Members\ChangeMembershipStatus;
 use GSV\Commands\Members\ChangePeriodOfMembership;
@@ -14,6 +15,7 @@ use GSV\Commands\Members\ChangeRegion;
 use GSV\Commands\Members\ChangeStudy;
 use GSV\Commands\Members\ChangeYearGroup;
 use GSV\Commands\Members\MemberIsAlive;
+use GSV\Commands\Members\ReceiveNewspaper;
 use GSV\Commands\Users\ChangeEmail;
 use GSV\Commands\Users\ChangePassword;
 use GSV\Commands\Users\SetProfilePictureCommand;
@@ -24,6 +26,11 @@ use GSVnet\Users\ValueObjects\Gender;
 use GSVnet\Users\YearGroupRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use GSVnet\Users\UserTransformer;
+use Maatwebsite\Excel\Classes\LaravelExcelWorksheet;
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Writers\CellWriter;
+use Maatwebsite\Excel\Writers\LaravelExcelWriter;
 
 class MemberController extends AdminBaseController
 {
@@ -379,5 +386,50 @@ class MemberController extends AdminBaseController
 
         flash()->success("Status gewijzigd");
         return redirect()->action('Admin\UsersController@show', $id);
+    }
+
+    public function editNewspaper($id)
+    {
+        $user = $this->users->memberOrFormerByIdWithProfile($id);
+        $this->authorize('user.manage.receive_newspaper', $user);
+
+        return view('admin.users.update.newspaper')->with(compact('user'));
+    }
+
+    public function updateNewspaper(Request $request, $id)
+    {
+        $member = $this->users->memberOrFormerByIdWithProfile($id);
+        $this->authorize('user.manage.receive_newspaper', $member);
+
+        $this->dispatch(ReceiveNewspaper::fromForm($request, $member));
+
+        flash()->success("Voorkeuren opgeslagen");
+        return redirect()->action('Admin\UsersController@show', $id);
+    }
+
+    public function exportNewspaperRecipients()
+    {
+        $this->authorize('users.show');
+        $transformer = new UserTransformer;
+        $date = Carbon::now()->format('d-m-Y');
+
+        $recipients = $this->users->getSICRecipients();
+
+        $recipients = $transformer->collectionOfMembers($recipients);
+
+        Excel::create("SIC-ontvangers-{$date}", function (LaravelExcelWriter $excel) use ($date, $recipients) {
+            $excel->setTitle("SIC-ontvangers-{$date}");
+            $excel->sheet('SIC-ontvangers', function (LaravelExcelWorksheet $sheet) use ($recipients) {
+                $sheet->fromArray($recipients);
+                $sheet->setAutoFilter();
+                $sheet->setAutoSize(true);
+                $sheet->setColumnFormat([
+                    'L' => 'General' // The phone column :)
+                ]);
+                $sheet->cells('A1:Z1', function(CellWriter $cells) {
+                    $cells->setFontWeight(true);
+                });
+            });
+        })->export('xls');
     }
 }
