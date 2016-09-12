@@ -144,6 +144,28 @@ class UserTransformer {
         ];
     }
 
+    public function memberSICData(User $user)
+    {
+        $hasProfile = ! empty($user->profile);
+
+        return [
+            'Initialen' => $hasProfile ? $user->profile->initials : '',
+            'Voornaam' => $user->firstname,
+            'Tussenvoegsel' => $user->middlename,
+            'Achternaam' => $user->lastname,
+            'Geslacht' => $hasProfile ? $user->profile->present()->genderLocalized : '',
+            'Adres' => $hasProfile ? $user->profile->address : '',
+            'Postcode' => $hasProfile ? $user->profile->zip_code : '',
+            'Woonplaats' => $hasProfile ? $user->profile->town : '',
+            'Land' => $hasProfile ? $user->profile->country : '',
+        ];
+    }
+
+    public function collectionMemberSICData(Collection $users)
+    {
+        return $users->map([$this, 'memberSICData']);
+    }
+
     public function collectionOfMembers(Collection $users)
     {
         return $users->map([$this, 'memberToCsv']);
