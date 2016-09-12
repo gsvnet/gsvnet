@@ -413,9 +413,7 @@ class MemberController extends AdminBaseController
         $transformer = new UserTransformer;
         $date = Carbon::now()->format('d-m-Y');
 
-        $recipients = $this->users->getSICRecipients();
-
-        $recipients = $transformer->collectionOfMembers($recipients);
+        $recipients = $transformer->collectionMemberSICData($this->users->getSICRecipients());
 
         Excel::create("SIC-ontvangers-{$date}", function (LaravelExcelWriter $excel) use ($date, $recipients) {
             $excel->setTitle("SIC-ontvangers-{$date}");
@@ -423,10 +421,7 @@ class MemberController extends AdminBaseController
                 $sheet->fromArray($recipients);
                 $sheet->setAutoFilter();
                 $sheet->setAutoSize(true);
-                $sheet->setColumnFormat([
-                    'L' => 'General' // The phone column :)
-                ]);
-                $sheet->cells('A1:Z1', function(CellWriter $cells) {
+                $sheet->cells('A1:Z1', function (CellWriter $cells) {
                     $cells->setFontWeight(true);
                 });
             });
