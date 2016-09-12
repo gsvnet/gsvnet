@@ -284,8 +284,8 @@ class UsersRepository extends BaseRepository
 
     public function getSICRecipients()
     {
-        return User::where(['users.type' => User::MEMBER, 'user_profiles.receive_newspaper' => true])
-            ->join('user_profiles', 'users.id', '=', 'user_profiles.user_id')
+        return User::with('profile')
+            ->where(['users.type' => User::MEMBER, 'user_profiles.receive_newspaper' => true])
             ->orderBy('lastname', 'ASC')
             ->orderBy('firstname', 'ASC')
             ->get();
