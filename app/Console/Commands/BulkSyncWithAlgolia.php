@@ -8,6 +8,7 @@ use GSVnet\Users\User;
 use GSVnet\Users\YearGroupTransformer;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Collection;
+use Throwable;
 
 class BulkSyncWithAlgolia extends Command
 {
@@ -43,7 +44,7 @@ class BulkSyncWithAlgolia extends Command
                 $formatted = $memberTransformer->transform($member);
                 $formatted['yeargroup'] = $yeargroupTransformer->transform($member->profile->yearGroup);
                 return $formatted;
-            } catch (\Exception $e) {
+            } catch (Throwable $e) {
                 return null;
             }
         })->filter();
