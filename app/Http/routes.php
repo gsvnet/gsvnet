@@ -87,6 +87,7 @@ Route::group([
     ], function() {
 
     Route::get('/', 'AdminController@index');
+    Route::get('/me', 'AdminController@redirectToMyProfile');
 
     // events, albums/{photo}, files
     Route::resource('events',       'EventController');
