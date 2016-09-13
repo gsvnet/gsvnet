@@ -49,8 +49,11 @@ class MemberController extends AdminBaseController
      * @param UsersRepository $users
      * @param YearGroupRepository $yearGroups
      */
-    public function __construct(ProfileActionsRepository $actions, UsersRepository $users, YearGroupRepository $yearGroups)
-    {
+    public function __construct(
+        ProfileActionsRepository $actions,
+        UsersRepository $users,
+        YearGroupRepository $yearGroups
+    ) {
         parent::__construct();
         $this->users = $users;
         $this->yearGroups = $yearGroups;
@@ -413,7 +416,11 @@ class MemberController extends AdminBaseController
         $transformer = new UserTransformer;
         $date = Carbon::now()->format('d-m-Y');
 
-        $recipients = $transformer->collectionMemberSICData($this->users->getSICRecipients());
+        $members = $this->users->getSICRecipients()->sortBy(function (User $user) {
+            return $user->profile->zip_code;
+        });
+
+        $recipients = $transformer->collectionMemberSICData($members);
 
         Excel::create("SIC-ontvangers-{$date}", function (LaravelExcelWriter $excel) use ($date, $recipients) {
             $excel->setTitle("SIC-ontvangers-{$date}");

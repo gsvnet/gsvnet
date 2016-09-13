@@ -286,12 +286,7 @@ class UsersRepository extends BaseRepository
 
     public function getSICRecipients()
     {
-        return User::with([
-            'profile' => function ($query) {
-                // Order by zip code :)
-                $query->orderBy('zip_code', 'ASC');
-            }
-        ])->whereHas('profile', function ($query) {
+        return User::with('profile')->whereHas('profile', function ($query) {
             // Filter on people who want to receive SIC
             $query->where('receive_newspaper', true);
         })->where('users.type', User::MEMBER)->get();
