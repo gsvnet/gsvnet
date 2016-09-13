@@ -100,10 +100,10 @@ class StandardizeAddresses extends Command
             );
 
             $new = new Address(
-                trim($user->profile->address),
+                preg_replace('/\s+/', ' ', ucfirst(mb_strtolower(trim($user->profile->address)))),
                 preg_replace('/^(\d{4})\s*([A-Z]{2})$/', '$1$2', trim(mb_strtoupper($user->profile->zip_code))),
-                trim($user->profile->town),
-                trim($user->profile->country)
+                preg_replace('/\s+/', ' ', ucfirst(mb_strtolower(trim($user->profile->town)))),
+                preg_replace('/\s+/', ' ', ucfirst(mb_strtolower(trim($user->profile->country)))) ?: 'Nederland'
             );
 
             if ($old->equals($new)) {
