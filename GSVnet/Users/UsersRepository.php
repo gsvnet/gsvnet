@@ -48,7 +48,8 @@ class UsersRepository extends BaseRepository
      */
     public function memberOrFormerByIdWithProfile($id)
     {
-        return User::whereIn('type', [User::FORMERMEMBER, User::MEMBER, User::POTENTIAL])->with('profile.yearGroup')->findOrFail($id);
+        return User::whereIn('type',
+            [User::FORMERMEMBER, User::MEMBER, User::POTENTIAL])->with('profile.yearGroup')->findOrFail($id);
     }
 
     /**
@@ -215,8 +216,9 @@ class UsersRepository extends BaseRepository
     {
         $user = $this->byId($id);
 
-        if (!$user->isPotential())
+        if (!$user->isPotential()) {
             throw new \Exception;
+        }
 
         $user->type = User::MEMBER;
         $user->save();
@@ -284,13 +286,14 @@ class UsersRepository extends BaseRepository
 
     public function getSICRecipients()
     {
-        return User::with('profile')
-            ->whereHas('profile', function ($query) {
-                $query->where('receive_newspaper', true);
-            })
-            ->where('users.type', User::MEMBER)
-            ->orderBy('lastname', 'ASC')
-            ->orderBy('firstname', 'ASC')
-            ->get();
+        return User::with([
+            'profile' => function ($query) {
+                // Order by zip code :)
+                $query->orderBy('zip_code', 'ASC');
+            }
+        ])->whereHas('profile', function ($query) {
+            // Filter on people who want to receive SIC
+            $query->where('receive_newspaper', true);
+        })->where('users.type', User::MEMBER)->get();
     }
 }
