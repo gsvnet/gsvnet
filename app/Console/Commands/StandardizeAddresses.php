@@ -112,7 +112,8 @@ class StandardizeAddresses extends Command
                 "'{$old->getStreet()}' -> '{$new->getStreet()}', " .
                 "'{$old->getZipCode()}' -> '{$new->getZipCode()}', " .
                 "'{$old->getTown()}' -> '{$new->getTown()}', " .
-                "'{$old->getCountry()}' -> '{$new->getCountry()}'?"
+                "'{$old->getCountry()}' -> '{$new->getCountry()}'?",
+                true
             );
 
             if ($confirmed) {
