@@ -76,7 +76,11 @@ class StandardizeAddresses extends Command
         }
 
         $type = $this->values[$for];
-        $users = $this->users->getAllVerifiedByType($type);
+
+        // Find users and sort by zip code.
+        $users = $this->users->getAllVerifiedByType($type)->sortBy(function (User $user) {
+            return $user->profile->zip_code;
+        });
 
         $users->each([$this, 'standardizeAddress']);
     }
