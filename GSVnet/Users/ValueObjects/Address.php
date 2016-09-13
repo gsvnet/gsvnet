@@ -31,6 +31,14 @@ class Address extends ValueObject {
         ]);
     }
 
+    public function equals(Address $other)
+    {
+        return $this->street === $other->street
+            && $this->country === $other->country
+            && $this->town === $other->town
+            && $this->zipCode === $other->zipCode;
+    }
+
     public function getStreet()
     {
         return $this->street;
