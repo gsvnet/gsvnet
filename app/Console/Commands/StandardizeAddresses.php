@@ -88,22 +88,35 @@ class StandardizeAddresses extends Command
         }
 
         try {
-            if ($oldZip = $user->profile->zip_code === null) {
+            $old = new Address(
+                $user->profile->address,
+                $user->profile->zip_code,
+                $user->profile->town,
+                $user->profile->country
+            );
+
+            $new = new Address(
+                trim($user->profile->address),
+                preg_replace('/^(\d{4})\s*([A-Z]{2})$/', '$1$2', trim(mb_strtoupper($user->profile->zip_code))),
+                trim($user->profile->town),
+                trim($user->profile->country)
+            );
+
+            if ($old->equals($new)) {
                 return;
             }
 
-            $newZip = preg_replace('/^(\d{4})\s*([A-Z]{2})$/', '$1$2', trim(mb_strtoupper($oldZip)));
+            // Show a confirm message with changes being made.
+            $confirmed = $this->confirm(
+                "{$user->present()->fullName}: " .
+                "'{$old->getStreet()}' -> '{$new->getStreet()}', " .
+                "'{$old->getZipCode()}' -> '{$new->getZipCode()}', " .
+                "'{$old->getTown()}' -> '{$new->getTown()}', " .
+                "'{$old->getCountry()}' -> '{$new->getCountry()}'?"
+            );
 
-            // Ask to save if not the same
-            if ($newZip !== $user->profile->zip_code && $this->confirm("Postcode '{$oldZip}' van {$user->present()->fullName} opslaan als '{$newZip}'?",
-                    true)
-            ) {
-                $this->dispatch(new ChangeAddress($user, $user, new Address(
-                    $user->profile->address,
-                    $newZip,
-                    $user->profile->town,
-                    $user->profile->country
-                )));
+            if ($confirmed) {
+                $this->dispatch(new ChangeAddress($user, $user, $new));
             }
         } catch (\Exception $e) {
             $this->error($e->getMessage());
