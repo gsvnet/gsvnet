@@ -129,6 +129,14 @@ class UsersRepository extends BaseRepository
         return User::with('profile.yearGroup')->where('type', $type)->where('verified', true)->get();
     }
 
+    public function getAllVerifiedAndAliveByType($type)
+    {
+        return User::with('profile.yearGroup')->whereHas('profile', function ($query) {
+            // Filter people that are alive.
+            $query->where('alive', true);
+        })->where('type', $type)->where('verified', true)->get();
+    }
+
     public function paginateLatelyRegistered($amount)
     {
         return User::orderBy('created_at', 'DESC')->paginate($amount);

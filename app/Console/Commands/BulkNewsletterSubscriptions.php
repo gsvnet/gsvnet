@@ -77,7 +77,7 @@ class BulkNewsletterSubscriptions extends Command
 
         $type = $this->values[$for];
         
-        $users = $this->users->getAllVerifiedByType($type);
+        $users = $this->users->getAllVerifiedAndAliveByType($type);
 
 //        $unsubscribeBatch = $this->userTransformer->batchMailchimpUnsubscribe($users);
         $subscribeBatch = $this->userTransformer->batchMailchimpSubscribe($users);
