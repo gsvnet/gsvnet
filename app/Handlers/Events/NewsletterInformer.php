@@ -40,7 +40,7 @@ class NewsletterInformer implements ShouldQueue
         $user = $event->getUser();
 
         // Add to mailing lists
-        if ($user->wasOrIsMember()) {
+        if ($user->wasOrIsMember() && $user->profile && $user->profile->alive) {
             $data = $this->transformer->mailchimpSubscribe($user);
             try {
                 $this->list->subscribeTo($user->type, $user->email, $data);
