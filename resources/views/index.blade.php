@@ -103,7 +103,7 @@
                     <a href="/de-gsv/pijlers#sociaal" class="block-link">
                         <h3>Sociaal</h3>
                         <div class="icon i-social"></div>
-                        <p>Een studentenvereniging is er natuurlijk voor de gezelligheid. Alleen al op onze Sociëteit kun je elkaar elke donderdagavond ontmoeten om een biertje te drinken.</p>
+                        <p>Een vereniging is er natuurlijk voor de gezelligheid. Alleen al op onze Sociëteit kun je elkaar elke donderdagavond ontmoeten om een biertje te drinken.</p>
                     </a>
                 </div>
             </div>
