@@ -47,7 +47,6 @@
                 <table class="table table-striped table-hover sort-table">
                     <thead>
                     <tr>
-                        <th>Gebruikersnaam</th>
                         <th>Voornaam</th>
                         <th>t/v</th>
                         <th>Achternaam</th>
@@ -62,11 +61,9 @@
                         <tr>
                             <td>
                                 <a href="{{ URL::action('Admin\UsersController@show', $profile->user->id) }}" alt="{{ $profile->user->present()->fullName }}">
-                                    {{ $profile->user->username }}
+                                    {{ $profile->user->firstname }}
                                 </a>
                             </td>
-
-                            <td>{{ $profile->user->firstname }}</td>
                             <td>{{ $profile->user->middlename }}</td>
                             <td>{{ $profile->user->lastname }}</td>
                             @if($profile->yearGroup)
