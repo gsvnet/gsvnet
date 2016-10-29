@@ -44,7 +44,7 @@ class OnlineUserCounter
         $user = Auth::guard($guard)->user();
 
         // Skip over non-members
-        if (is_null($user) or !$user->wasOrIsMember()) {
+        if (is_null($user) || !$user->wasOrIsMember()) {
             return $next($request);
         }
 

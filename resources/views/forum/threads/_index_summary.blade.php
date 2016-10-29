@@ -11,7 +11,7 @@
         <h3><a href="{{ $thread->present()->lastPageUrl }}" title="Forum topic {{{ $thread->subject }}}">{{{ $thread->subject }}}</a></h3>
 
         <ul class="inline-list grey">
-            <li>door 
+            <li>door
             @can('users.show')
                 <a href="{{ $thread->author->present()->profileUrl }}">{{{ $thread->author->username }}}</a>
             @else
