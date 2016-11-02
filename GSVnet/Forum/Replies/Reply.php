@@ -27,4 +27,9 @@ class Reply extends Model
     {
         return $this->belongsTo(Thread::class, 'thread_id');
     }
+
+    public function event()
+    {
+        return $this->belongsTo('GSVnet\Events\Event', 'event_id');
+    }
 }

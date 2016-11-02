@@ -153,6 +153,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->belongsToMany(self::class, 'family_relations', 'parent_id', 'child_id');
     }
 
+    public function events()
+    {
+        return $this->belongsToMany('GSVnet\Events\Event');
+    }
+
     public function isMember()
     {
         return $this->type == static::MEMBER;

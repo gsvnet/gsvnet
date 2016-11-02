@@ -57,7 +57,7 @@ class Event extends Model {
         if ($this->exists) {
             $query->where('id', '!=', $this->id);
         }
-        
+
         return $query->count();
     }
 
@@ -70,5 +70,10 @@ class Event extends Model {
         }
 
         return Str::slug($this->title . $append);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany('GSVnet\Users\User');
     }
 }

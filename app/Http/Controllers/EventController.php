@@ -55,11 +55,47 @@ class EventController extends BaseController {
 
     public function showEvent($year, $month, $slug)
     {
-        $date = Carbon::createFromDate($year, Config::get("gsvnet.months.$month"), 1);
-        $event = $this->events->byYearMonthSlug($date, $slug);
+        $event = $this->events->bySlug($slug);
 
         return view('events.show')
             ->with('event', $event)
-            ->with('types', Config::get('gsvnet.eventTypes'));
+            ->with('types', Config::get('gsvnet.eventTypes'))
+            ->with('year', $year)
+            ->with('month', $month)
+            ->with('slug', $slug);
+    }
+
+    public function participate($year, $month, $slug)
+    {
+        $event = $this->events->bySlug($slug);
+        $user = Auth::user();
+        $event->users()->save($user);
+
+        return redirect()->back();
+    }
+
+    public function likeReply(LikeReplyValidator $validator, $replyId)
+    {
+        $data = [
+            'userId' => Auth::user()->id,
+            'replyId' => $replyId
+        ];
+
+        try {
+            $validator->validate($data);
+        } catch(ValidationException $e) {
+            return response()->json($e->getErrors(), 400);
+        }
+
+        $this->dispatchFrom(LikeReplyCommand::class, new Collection($data));
+
+        return response()->json();
+    }
+
+    //TODO: Potentially obsolete
+    public function eventFromDate($year, $month, $slug)
+    {
+        $date = Carbon::createFromDate($year, Config::get("gsvnet.months.$month"), 1);
+        return $this->events->byYearMonthSlug($date, $slug);
     }
 }

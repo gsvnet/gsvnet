@@ -22,6 +22,21 @@
             <div itemprop="description">
                 {!! $event->present()->descriptionFormatted !!}
             </div>
+            @if(Permission::has('events.show-private'))
+                <div style="margin-top:3em">
+                    <a style="float:right" class="button" href="{{URL::action('EventController@participate', array('year'=>$year, 'month'=>$month, 'slug'=>$slug))}}" rel="nofollow">Ben ik bij</a>
+                    <h3>Deelnemers:</h3>
+                    @if(count($event->users) > 0)
+                    <ol>
+                        @foreach($event->users as $user)
+                            <li>{{$user->firstname}} {{$user->lastname}}</li>
+                        @endforeach
+                    </ol>
+                    @else
+                        <p>Nog geen deelnemers</p>
+                    @endif
+                </div>
+            @endif
         </div>
 
         <div class="secondary-column">
