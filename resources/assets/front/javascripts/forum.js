@@ -226,7 +226,7 @@ var Forum = (function()
 
     function initLustrumCountdown(){
         var labels = ['dagen', 'uren', 'min', 'sec'],
-            targetDate = '2016/11/16',
+            targetDate = '2016/11/17',
             template = $('#lustrum-countdown-template').html(),
             currDate = '00:00:00:00',
             nextDate = '00:00:00:00',
