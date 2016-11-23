@@ -296,7 +296,7 @@ class NavigationViewComposer {
                         }
                     ],'lustrumfotos' => [
                         'title' => "Lustrumfoto's",
-                        'url' => '/albums/lustrumfotos',
+                        'url' => '/albums/lustrum-intense',
                         'visible' => function(){
                             return Gate::allows('photos.show-private');
                         }
