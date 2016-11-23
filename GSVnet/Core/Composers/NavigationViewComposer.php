@@ -294,6 +294,12 @@ class NavigationViewComposer {
                         'visible' => function(){
                             return Gate::allows('docs.show');
                         }
+                    ],'lustrumfotos' => [
+                        'title' => "Lustrumfoto's",
+                        'url' => '/albums/lustrumfotos',
+                        'visible' => function(){
+                            return Gate::allows('photos.show-private');
+                        }
                     ],
                     'bestanden' => [
                         'title' => 'GSVdocs',
