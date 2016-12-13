@@ -8,12 +8,12 @@ Het installeren is het beste beschreven op de site van Laravel zelf: http://lara
 
 Als het installeren is gelukt is het tijd om een kopie van de site te downloaden. Dat gaat door middel van Git (versiebeheer software): https://bitbucket.org/harmenstoppels/gsvnet. Maak op je computer op een geschikte plek een mapje `websites` of iets dergelijks. Ga daarin en voer het commando `git clone git@bitbucket.org:harmenstoppels/gsvnet.git`. Dat maakt het mapje `gsvnet` aan, met daarin de hele eigen code. Ga dat mapje in en kopieer het bestand `.env.example` naar `.env`. Dit bestandje bevat alle omgevingsvariabelen die niet met de buitenwereld worden gedeeld (zoals wachtwoorden of lokale instellingen). Het voorbeeld .env-file hoef je hoef je niet echt aan te passen.
 
-Pas vervolgens het `Homestead.yaml` file aan zoals beschreven staat in de documentatie van Laravel over Homestead, en run `vagrant destroy` en `vagrant up` of iets beters uit de documentatie om het lokale gsvnet bereikbaar te maken voor de virtuele machine. Dat eenmaal gedaan, log je via `ssh` in op de virtuele machine (`vagrant ssh`) en voer je de volgende commando's uit in de `~/gsvnet`-map.
+Pas vervolgens het `Homestead.yaml` file aan zoals beschreven staat in de documentatie van Laravel over Homestead (https://laravel.com/docs/5.3/homestead#configuring-homestead) Iets wat niet in de tutorial staat maar wel belangrijk is: zorg dat de namen en locatie van de ssh sleutels in het Homestead.yaml file (standaard ~/.ssh/id_rsa.pub en ~/.ssh/id_rsa) overeen komen met de namen en locatie van de ssh sleutel op je computer, in het geval je geen ssh sleutels op je computer hebt moet je ze aanmaken, want je hebt ze nodig om in te loggen in de virtuele machine. Run `vagrant destroy` en `vagrant up` of iets beters uit de documentatie vanuit de Homestead map om het lokale gsvnet bereikbaar te maken voor de virtuele machine. Dat eenmaal gedaan, log je via `ssh` in op de virtuele machine (`vagrant ssh`) en voer je de volgende commando's uit in de `~/gsvnet`-map.
 
 1. `composer install` om alle externe dependencies van het project automatisch te downloaden (superhandig!)
 2. `php artisan migrate` om de database in te stellen
 3. `php artisan db:seed` om de database te vullen met random data, zodat je dat zelf niet hoeft te doen
-4. `npm install` om alle Javascript-ontwikkelaarsdependencies te installeren
+4. `npm install` om alle Javascript-ontwikkelaarsdependencies te installeren (geeft dit een protocol error symlink (als je bijvoorbeeld vagrant vanaf windows draait) dan kun je de tag '--no-bin-links' gebruiken om symlinks uit te zetten)
 5. `bower install` om de front-end dependencies te downloaden (zoals jQuery e.d.)
 5. `gulp` om het filesystem te watchen, zodat elke verandering van een SASS of JavaScript-bestand gelijk een nieuwe build van geminifiede CSS en JavaScript triggert (ook superhandig!).
 
