@@ -9,7 +9,6 @@
     <div class="main-content">
         <div class="forum-editor-form">
             <h1>Je reactie verwijderen?</h1>
-            <?php print_r($reply->id); ?>
             {!! Form::model($reply, ['method' => 'delete']) !!}
                 <div class="form-row">
                     <p><label class="field-title">Weet je het zeker?</label></p>

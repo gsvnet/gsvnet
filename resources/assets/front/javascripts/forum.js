@@ -240,7 +240,6 @@ var Forum = (function()
             labels.forEach(function(label, i){
                 obj[label] = parsed[i]
             });
-            console.log(obj);
             return obj;
         }
         // Return the time components that diffs
