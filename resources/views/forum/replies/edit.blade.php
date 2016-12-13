@@ -1,5 +1,6 @@
 @extends('layouts.default')
 
+@section('body-id', 'reply-update-page')
 @section('title', 'Reactie bewerken')
 @section('description', 'Reactie bewerken')
 
@@ -9,14 +10,17 @@
         <h1>Bewerk je reactie</h1>
     </div>
 
-    <div class="main-content">
+    <div class="main-content" style="padding-top:1em;">
         {!! Former::open()->action(action('ForumRepliesController@postEditReply', [$reply->id])) !!}
         {!! Former::populate($reply) !!}
-        {!! Former::textarea('body')->label('Reactie')->placeholder('Reactie')->rows(10) !!}
+        @include('forum._editor')
 
-        <div class="control-group">
-            <input type="submit" value="Bewerk" class="button">
+        <div id="forum-editor-controls">
+            <div class="control-group">
+                <input type="submit" value="Bewerk" class="button float-right">
+            </div>
         </div>
+
 
         {!! Former::close() !!}
     </div>
@@ -25,3 +29,11 @@
     </div>
 </div>
 @stop
+
+@section('javascripts')
+    @parent
+
+    @if(Auth::check())
+        <script async src="/build-javascripts/forum.js?v=1.0.2"></script>
+    @endif
+@endsection

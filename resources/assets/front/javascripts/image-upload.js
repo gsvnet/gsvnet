@@ -1,6 +1,6 @@
 var Upload = (function () {
     var fileInput = document.getElementById('imgur-file-upload');
-    var dropZone = document.getElementById('reply-form');
+    var dropZone = document.getElementById('forum-editor-form');
     var outputElement = document.getElementById('body');
     var helpText = document.getElementById('imgur-help-text');
     var maxWidth = 631;

@@ -59,6 +59,10 @@
 	display: none;
 }
 
+.vertical-spacing {
+	height: 2em;
+}
+
 blockquote {
 	margin-left: 0;
 	margin-right: 0;
@@ -86,15 +90,36 @@ img.emo {
   }
 }
 
-#reply-form {
+#forum-editor-form {
   padding: 1em;
   background: $lightGrey;
   position: relative;
+  margin-bottom: 0;
 
   .tab-pane {
     min-height: 300px;
   }
+
+  p {
+    margin-bottom: 0em;
+  }
 }
+
+#forum-editor-controls {
+	background: $lightGrey;
+	padding: 1em;
+	overflow: hidden;
+}
+
+#markdown-preview {
+	min-height: 13em;
+	background-color: #FFF;
+	overflow: auto;
+	padding: 0 1.2em;
+	margin: 0 -1em 1em;
+	border: 1px solid #EEE;
+}
+
 .loading-indicator {
   font-family: $font-family-sans;
   transition: all .3s linear;
@@ -139,6 +164,16 @@ img.emo {
 	transform: translateZ(0);
 	transform: translate3d(0,0,0);
 }
+
+.lustrum-countdown .dagen .count{
+	font-size: 1.2em;
+	line-height: 3.6em;
+}
+
+.lustrum-countdown .dagen .count.bottom{
+	line-height: 0;
+}
+
 .lustrum-countdown .count {
 	background: #202020;
 	color: #f8f8f8;
