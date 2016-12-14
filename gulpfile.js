@@ -94,6 +94,6 @@ gulp.task('backend-css', function() {
 });
 
 gulp.task('default', ['scripts', 'css'], function(){
-  gulp.watch('resources/assets/**/*.js', ['scripts', 'backend-scripts']);
+  gulp.watch('resources/assets/**/*.js', ['scripts', 'backend-scripts', 'forum-scripts']);
   gulp.watch('resources/assets/**/*', ['css', 'backend-css']);
 });

@@ -17,16 +17,16 @@ var Upload = (function () {
             }
 
             loadImage(file, function (rotated) {
-                console.log('hoi 1');
+                //console.log('hoi 1');
                 var width = Math.min(rotated.width, maxWidth);
                 var height = rotated.height * width / rotated.width;
                 canvas.width = width;
                 canvas.height = height;
 
                 pica.resizeCanvas(rotated, canvas, function() {
-                    console.log('hoi 2');
+                    //console.log('hoi 2');
                     canvas.toBlob(function(blob) {
-                        console.log('hoi 3');
+                        //console.log('hoi 3');
                         var request = new XMLHttpRequest();
                         var formData = new FormData();
 
@@ -37,7 +37,7 @@ var Upload = (function () {
                         request.setRequestHeader('Authorization', 'Client-ID c9fd3e097596f79');
                         request.setRequestHeader('Accept', 'application/json');
                         request.addEventListener('load', function() {
-                            console.log('hoi 4');
+                            // console.log('hoi 4');
                             helpText.innerHTML = 'klik of sleep';
                             var response = JSON.parse(this.responseText);
                             var link = response.data.link.replace(/^http:/, '');

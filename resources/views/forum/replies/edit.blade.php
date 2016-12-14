@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts._forum')
 
 @section('body-id', 'reply-update-page')
 @section('title', 'Reactie bewerken')
@@ -30,8 +30,4 @@
 
 @section('javascripts')
     @parent
-
-    @if(Auth::check())
-        <script async src="/build-javascripts/forum.js?v=1.0.3"></script>
-    @endif
 @endsection

@@ -4,7 +4,7 @@
 @section('body-id', 'forum-statistics-page')
 
 @section('javascripts')
-    <script src="/build-javascripts/app.js?v=1.4.7"></script>
+    @parent
 
     @if(!Config::get('app.debug'))
         @include('partials/_analytics')
