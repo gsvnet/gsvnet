@@ -29,11 +29,11 @@
             <div class="_post">
                 <div class="forum-post-data">
                     <div class="avatar">
-                        {!! Auth::user()->present()->avatarDeferred(40) !!}
+                        {!! $author->present()->avatarDeferred(40) !!}
                     </div>
                     <div class="info">
                         <strong class="author">
-                            {{ Auth::user()->username }}
+                            {{ $author->username }}
                         </strong>
                         <ul class="inline-list grey">
                             <li>Nu</li>

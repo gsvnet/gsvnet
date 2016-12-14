@@ -43,9 +43,10 @@ class ForumRepliesController extends BaseController {
     public function getEditReply($replyId)
     {
         $reply = $this->replies->getById($replyId);
+        $author = $reply->author;
         $this->authorize('reply.manage', $reply);
 
-        return view('forum.replies.edit', compact('reply'));
+        return view('forum.replies.edit', compact('reply', 'author'));
     }
 
     public function postEditReply(EditReplyValidator $validator, $replyId)

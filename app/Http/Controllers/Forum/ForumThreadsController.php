@@ -70,17 +70,21 @@ class ForumThreadsController extends BaseController {
 
         $replies = $this->threads->getThreadRepliesPaginated($thread, $this->repliesPerPage);
 
-        // Thread visitation
         if( Auth::check() )
         {
+           if (Auth::user()->approved)
+           {
+               $author = Auth::user();
+           }
+
+            // Thread visitation
             $this->dispatchFromArray(VisitThreadCommand::class, [
                 'userId' => Auth::user()->id,
                 'threadId' => $thread->id
             ]);
         }
 
-
-        return view('forum.threads.show', compact('thread', 'replies'));
+        return view('forum.threads.show', compact('thread', 'replies', 'author'));
     }
 
     public function getCreateThread()
@@ -117,12 +121,13 @@ class ForumThreadsController extends BaseController {
     public function getEditThread($threadId)
     {
         $thread = $this->threads->requireById($threadId);
+        $author = $thread->author;
 
         $this->authorize('thread.manage', $thread);
 
         $tags = $this->tags->getAllForForum();
 
-        return view('forum.threads.edit', compact('thread', 'tags'));
+        return view('forum.threads.edit', compact('thread', 'tags', 'author'));
     }
 
     public function postEditThread(Request $request, $threadId)
