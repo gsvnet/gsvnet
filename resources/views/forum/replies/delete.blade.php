@@ -7,7 +7,7 @@
 <div class="column-holder">
 
     <div class="main-content">
-        <div class="reply-form">
+        <div class="forum-editor-form">
             <h1>Je reactie verwijderen?</h1>
             {!! Form::model($reply, ['method' => 'delete']) !!}
                 <div class="form-row">

@@ -91,10 +91,6 @@ return [
 
         'threads.show-private' => [
             'type' => [User::MEMBER, User::FORMERMEMBER, User::INTERNAL_COMMITTEE]
-        ],
-
-        'sponsor-program.show' => [
-            'type' => [User::MEMBER, User::FORMERMEMBER, User::INTERNAL_COMMITTEE]
         ]
     ],
 

@@ -18,7 +18,7 @@
             <p><a href="{{ URL::action('ForumThreadsController@statistics') }}" title="Toplijsten forumposters">Vind je hier</a></p>
         @endcan
 
-        <h2>Tiende Lustrum der GSV</h2>
+        <h2>Elfde Lustrum der GSV</h2>
         <div id="lustrum-countdown" class="lustrum-countdown"></div>
         <script type="text/template" id="lustrum-countdown-template">
             <div class="time %label%">

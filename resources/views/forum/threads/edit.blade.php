@@ -16,7 +16,8 @@
             {!! Former::open()->action(action('ForumThreadsController@postEditThread', [$thread->id])) !!}
             {!! Former::populate($thread) !!}
             {!! Former::text('subject')->label('Onderwerp')->placeholder('Onderwerp')->class('form-control wide') !!}
-            {!! Former::textarea('body')->label('Tekst')->placeholder('Tekst')->rows(10) !!}
+            @include('forum._editor')
+            <div class="vertical-spacing"></div>
 
             <div class="form-row tags">
                 @include('forum._tag_chooser', ['comment' => $thread])

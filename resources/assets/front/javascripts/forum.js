@@ -154,7 +154,7 @@ var Forum = (function()
     }
 
     function initThreadPage() {
-        var replyForm = $('#reply-form');
+        var replyForm = $('#forummessage-form');
         replyField = $('#body');
 
         quoteLinks = $('._quote_forum_post');
@@ -172,6 +172,7 @@ var Forum = (function()
     function initCreateOrUpdatePage() {
         bindTagChooser();
         questionSelectToTag();
+        initEditor();
     }
 
     function loadDeferredAvatars() {
@@ -226,7 +227,7 @@ var Forum = (function()
 
     function initLustrumCountdown(){
         var labels = ['dagen', 'uren', 'min', 'sec'],
-            targetDate = '2016/11/17',
+            targetDate = '2021/11/17',
             template = $('#lustrum-countdown-template').html(),
             currDate = '00:00:00:00',
             nextDate = '00:00:00:00',
@@ -296,6 +297,7 @@ var Forum = (function()
     }
 
     return {
+        initEditor: initEditor,
         initThreadPage: initThreadPage,
         initCreateOrUpdatePage: initCreateOrUpdatePage,
         loadDeferredAvatars: loadDeferredAvatars,

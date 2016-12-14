@@ -29,7 +29,6 @@ class HomeController extends BaseController {
 
     public function sponsorProgram()
     {
-        $this->authorize('sponsor-program.show');
         return view('ad-page');
     }
 }

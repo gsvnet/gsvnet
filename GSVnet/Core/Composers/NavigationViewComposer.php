@@ -311,9 +311,6 @@ class NavigationViewComposer {
                     'sponsorprogramma' => [
                         'title' => 'Sponsors',
                         'url' => action('HomeController@sponsorProgram'),
-                        'visible' => function(){
-                            return Gate::allows('sponsor-program.show');
-                        }
                     ],
                     'uitloggen' => [
                         'title' => 'Uitloggen',

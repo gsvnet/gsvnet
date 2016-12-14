@@ -1,6 +1,6 @@
 <?php
 
-// We keep the home route name as some build in functions use the 'home' name
+// We keep the home route name as some built in functions use the 'home' name
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@showIndex']);
 
 // Login and logout routes
@@ -26,6 +26,9 @@ Route::group(['prefix' => 'intern', 'middleware' => 'auth'], function() {
     Route::get('jaarbundel/{id}',  'UserController@showUser')->where('id', '[0-9]+');
     Route::get('jaarbundel/adressen', 'UserController@showAddresses');
 });
+
+//Sponsors
+Route::get('sponsors', 'HomeController@sponsorProgram');
 
 Route::group(['prefix' => 'uploads'], function() {
     Route::get('bestanden/{id}', 'FilesController@show');

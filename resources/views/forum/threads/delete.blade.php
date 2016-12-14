@@ -11,7 +11,7 @@
     </div>
 
     <div class="main-content has-border-bottom">
-        <div class="reply-form">
+        <div class="forum-editor-form">
             {!! Form::model($thread, ['method' => 'delete']) !!}
                 <div class="form-row">
                     <label class="field-title">Weet je het heel zeker?</label>

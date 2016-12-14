@@ -16,7 +16,8 @@ app = (function() {
 		'thread-index-page': threadsIndex,
 		'thread-search-page': threadsIndex,
 		'thread-create-page': createAndUpdateThread,
-		'thread-update-page': createAndUpdateThread
+		'thread-update-page': createAndUpdateThread,
+		'reply-update-page': updateReply
 	};
 
 	function home() {
@@ -192,6 +193,14 @@ app = (function() {
 	function createAndUpdateThread()
 	{
 		Forum.initCreateOrUpdatePage();
+		Forum.loadDeferredAvatars();
+		Forum.initLustrumCountdown();
+	}
+
+	function updateReply()
+	{
+		Forum.loadDeferredAvatars();
+		Forum.initEditor();
 	}
 
 	return {
