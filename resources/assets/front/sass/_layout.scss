@@ -1,4 +1,8 @@
 /** UTILITIES **/
+img {
+	max-width: 100%;
+}
+
 .dot-after:after {
 	content:'\00B7';
 	padding-left:5px;
