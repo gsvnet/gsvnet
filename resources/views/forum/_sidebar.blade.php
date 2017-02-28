@@ -18,18 +18,6 @@
             <p><a href="{{ URL::action('ForumThreadsController@statistics') }}" title="Toplijsten forumposters">Vind je hier</a></p>
         @endcan
 
-        <h2>Elfde Lustrum der GSV</h2>
-        <div id="lustrum-countdown" class="lustrum-countdown"></div>
-        <script type="text/template" id="lustrum-countdown-template">
-            <div class="time %label%">
-                <span class="count curr top">%curr%</span>
-                <span class="count next top">%next%</span>
-                <span class="count next bottom">%next%</span>
-                <span class="count curr bottom">%curr%</span>
-                <span class="label">%label%</span>
-            </div>
-        </script>
-
         @if(count($events) > 0)
             @can('events.show-private')
                 <h2>Komende activiteiten</h2>

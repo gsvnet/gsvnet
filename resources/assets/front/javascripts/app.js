@@ -186,7 +186,6 @@ app = (function() {
 
 	function threadsIndex() {
 		Forum.loadDeferredAvatars();
-		Forum.initLustrumCountdown();
 
 	}
 
@@ -194,7 +193,6 @@ app = (function() {
 	{
 		Forum.initCreateOrUpdatePage();
 		Forum.loadDeferredAvatars();
-		Forum.initLustrumCountdown();
 	}
 
 	function updateReply()
