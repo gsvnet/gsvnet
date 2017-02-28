@@ -91,7 +91,15 @@ class ForumThreadsController extends BaseController {
     {
         $tags = $this->tags->getAllForForum();
 
-        return view('forum.threads.create', compact('tags'));
+        if( Auth::check() )
+        {
+           if (Auth::user()->approved)
+           {
+               $author = Auth::user();
+           }
+        }
+
+        return view('forum.threads.create', compact('tags', 'author'));
     }
 
     public function postCreateThread(StartThreadValidator $validator)
