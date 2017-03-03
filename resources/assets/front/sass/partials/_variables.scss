@@ -1,0 +1,29 @@
+// === COLORS ===
+$primary: #2F0b30; //#2A1443;//#420f14;
+$secondary: lighten($primary, 15%); //#6b151d; //#4f267e;
+$tertiary: lighten($primary, 20%);
+$transparent: transparentize($primary,.2);
+$transparent-less: transparentize($primary,.15);
+$transparent-secondary: transparentize($secondary, .2);
+$text-color: #111;
+
+
+$complement: #DDD; //#da9c40; //#A0B08E; //#E2C044; //#6c196e
+$accent: #E2C044;
+
+// === FONTS ===
+
+// === DIMENSIONS ===
+
+$media-phone-min: 360px;
+$media-tablet-min: 600px;
+$media-small-desktop-min: 800px;
+$media-desktop-min: 1200px;
+$media-big-desktop-min: 1800px;
+
+$nav-shrunk-height: 56px;
+$full-height-without-nav: calc(100vh - #{$nav-shrunk-height});
+
+// === TIMINGS ===
+
+$general-shrink-time: .5s;

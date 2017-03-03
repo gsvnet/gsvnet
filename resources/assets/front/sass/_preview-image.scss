@@ -1,0 +1,27 @@
+#preview-image.visible {
+	width: 308px;
+	height: 284px;
+	float: right;
+	cursor: pointer;
+	background: transparent url('/images/persoon.png') no-repeat;
+}
+
+#preview-image.has-image {
+	background: 0;
+	height: auto;
+    padding: 10px;
+    border: 1px solid $lightGrey;
+}
+
+#preview-image canvas {
+	max-width: 100%;
+	vertical-align: bottom;
+}
+
+
+@media only screen and (max-width: $firstbreakpoint){
+	#preview-image.visible {
+		float: none;
+        margin: 0 auto;
+	}
+}

@@ -1,0 +1,23 @@
+@extends('layouts.default')
+
+@section('title', 'Geschiedenis')
+@section('description', 'De Gereformeerde Studenten Vereniging werd opgericht op 23 juni 1966 en was verbonden aan de Gereformeerde Kerken (Vrijgemaakt). Sinds 2004 is de GSV een zelfstandige organisatie met een duidelijke gereformeerde identiteit.')
+@section('body-id', 'history-page')
+
+@section('content')
+    <article class="artikel column-holder" role="main">
+        <div>
+            <h1>Geschiedenis</h1>
+            <p class="lead">Al meer dan 115 jaar is er sprake van een Gereformeerde Studentenvereniging in Groningen. Door veranderingen in kerk en maatschappij is de GSV van nu (sinds 1966) verre van hetzelfde als de oorspronkelijke ‘GSV’ uit 1899 (SSR Vera Et Recti Amici). Echter ondanks een tweetal afscheidingen in de afgelopen eeuw zijn de studentikoziteit en de tradities gebleven. De GSV is nog steeds een plaats waar christelijke academici (gezellig) samenkomen om in de ‘zandbak’ van het studentenleven voorbereid te worden op het leven daarna. Uiteraard op de manier die wij al jarenlang gewend zijn: met een kritische kijk op onszelf en de wereld om ons heen.</p>
+        </div>
+
+        <h2>Ontstaan</h2>
+        <p>De GSV heeft al een lange geschiedenis. Van oorsprong is het een voortzetting van de studentenvereniging ‘Hendrik de Cock’ (het huidige Dionysos). Hendrik de Cock werd in 1947 opgericht als een studentenvereniging vanuit de Gereformeerde Kerken (Vrijgemaakt). Echter,  in de jaren zestig kwam er vanuit de vereniging kritiek op deze verbondenheid met de vrijgemaakte kerk, die "zich niet als kerk gedroeg, maar als fascistisch systeem waarin men nauwelijks kon ademhalen." Deze kritiek hing samen met ontwikkelingen binnen het kerkverband zelf. Uiteindelijk had dit conflict een scheuring binnen de vrijgemaakte kerk tot gevolg. Ook binnen Hendrik de Cock werkte de scheuring door. Een aantal leden werd 'buiten verband' . Zo raakte de vereniging in conflict met haar statuten die de vereniging aan de vrijgemaakte kerk verbond. Er werd opgemerkt dat er veel leden waren die niet principieel achter het kerkelijke karakter van de vereniging stonden en daarbij ook de statuten in twijfel trokken en van de voorwaarde voor kerkverband voor lidmaatschap van de vereniging af wilden.</p>
+
+        <h2>De jaren vanaf 1966</h2>
+        <p>Dit ging twaalf leden van de vereniging te ver, en deze besloten dan ook op 23 juni 1966 de ‘Gereformeerde Studenten Vereniging’ op te richten. In datzelfde jaar stelde Hendrik de Cock zich open voor niet-Vrijgemaakten. Toch gingen er over de jaren binnen de GSV ook steeds meer stemmen op om de vereniging open te stellen. Eerst was er sprake van ‘gastleden’ maar al gauw wilde men ook daar van af. In 2004 is uiteindelijk besloten om de GSV open te stellen, maar met de voorwaarde dat alle leden een intentieverklaring zouden ondertekenen waarin ze de Gereformeerde grondslag van de vereniging zouden onderschrijven. GSV was niet zozeer meer een ‘verlengstuk van de kerk’, maar koos er nu voor om een zelfstandige organisatie te zijn met een duidelijke ‘gereformeerde’ identiteit. Iedereen die denkt te passen bij die verenigingsidentiteit kon dus volwaardig lid worden. Vanaf 2004 ging de GSV zich ook steeds meer focussen op vier ‘pijlers’: christelijk, sociaal, intellectueel en studentikoos. Dit waren volgens de leden de aspecten van de vereniging waar ze zich op moest gaan richten.</p>
+
+        <h2>En nu?</h2>
+        <p>De GSV is tegenwoordig een moderne vereniging die haar eigen dansfeesten, competities, kampen en soosavonden organiseert. In vergelijking met 1966 is de vereniging erg veranderd, maar dat betekent ook dat er meer ruimte is gekomen voor diversiteit en andere meningen. Daarnaast heeft de GSV sinds de laatste decennia meer gezelschap gekregen van verenigingen met een meer evangelische inslag die ook haar stempel drukken op het studentenleven en met wie ook is besloten om een Overleg Christelijk Studentenverenigingen Groningen op te richten die ook wil proberen over verschillen heen te kijken en gezamenlijk een christelijk geluid in Groningen te laten horen. De GSV blijft echter een vereniging vanuit een stevig gereformeerd fundament wat zich uit in een ruimte voor kritiek, een focus op intellectualiteit maar ook op omzien naar elkaar. Vanuit die basis is zij een plek te zijn waar sociale, intellectuele, studentikoze, maar bovenal ook christelijke activiteiten centraal staan, voor haar leden van nu en van de toekomst.</p>
+    </article>
+@stop

@@ -1,0 +1,65 @@
+.directannonces {
+    margin: auto;
+    border-top: 1px solid #EEE;
+    padding: 2em 0;
+
+    .annoncesholder {
+        margin: 0 -1em;
+        overflow: hidden;  
+    }
+
+    h2 {
+        margin-bottom: 1em;
+    }
+
+    p {
+        padding: .5em 1em;
+        float: left;
+        box-sizing: border-box;
+		width: 33%;
+        height: 80px;
+        position: relative;
+
+        img {
+            max-height: 80px;
+        }
+
+        &.half {
+
+            a {
+                box-sizing: border-box;
+                max-width: 50%;
+
+                &:first-of-type {
+                    padding-right: 1em;
+                    float: left;
+                }
+
+                &:last-of-type {
+                    padding-left: 1em;
+                    float: right;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $firstbreakpoint){
+
+	.directannonces {
+
+        .annoncesholder {
+            margin: 0; 
+        }
+
+        h2 {
+            margin-bottom: .5em;
+        }
+
+        p {
+            width: 50%;
+            padding: .2em .5em;
+            margin: 0;
+        }
+    }
+}
