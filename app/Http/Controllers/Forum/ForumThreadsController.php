@@ -212,6 +212,8 @@ class ForumThreadsController extends BaseController {
 
     public function getTrashed()
     {
+        $this->authorize('thread.manage');
+
         $threads = $this->threads->getTrashedPaginated();
 
         return view('forum.threads.thrashed', compact('threads'));
