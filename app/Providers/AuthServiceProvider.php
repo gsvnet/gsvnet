@@ -44,8 +44,8 @@ class AuthServiceProvider extends ServiceProvider
         }
 
         // Register entity-specific permissions here
-        $gate->define('thread.manage', function (User $user, Thread $thread) {
-            return $user->id == $thread->author_id || $this->has($user, 'thread.manage');
+        $gate->define('thread.manage', function (User $user, Thread $thread = null) {
+            return ($thread && $user->id == $thread->author_id) || $this->has($user, 'thread.manage');
         });
 
         $gate->define('thread.like', function (User $user, Thread $thread) {

@@ -83,7 +83,7 @@ class ThreadRepository extends EloquentRepository
         $query = $this->model->where('slug', '=', $slug);
         
         // Include removed ones if permissions allow
-        if ( Gate::allows('threads.manage'))
+        if (Gate::allows('thread.manage'))
         {
             $query->withTrashed();
         }

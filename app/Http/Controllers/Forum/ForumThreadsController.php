@@ -59,8 +59,10 @@ class ForumThreadsController extends BaseController {
 
     // show a thread
     public function getShowThread($threadSlug)
-    {
+    {        
         $thread = $this->threads->getBySlug($threadSlug);
+
+        //return $thread;
 
         if ( ! $thread)
             return redirect()->action('ForumThreadsController@getIndex');
