@@ -1,0 +1,282 @@
+.nav-bar {
+	@include container;
+	@include clearfix;
+	padding: 0;
+	font-family: $font-family-sans;
+}
+
+// This is the wrapper of the toggle icon for the mobile menu
+.nav-bar-extras {
+	position: absolute;
+	right: 2em;
+	top: 25px;
+	z-index: $gsvnet-z-index-base + 2;
+}
+
+.logo {
+	display: block;
+	margin: 0;
+	text-align: center;
+	float: left;
+
+	&.active {
+		background: $darkPurple;
+	}
+}
+
+.logo-link {
+	display: block;
+	width: 90px;
+	height: 90px;
+	padding-right: 14px;
+	background: url(../images/logo-74.png) no-repeat center center;
+}
+
+.logo-link span {
+	display: none;
+}
+
+.nav-bar-links {
+	@include clearfix;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	z-index: $gsvnet-z-index-base;
+	transition: transform 0.3s cubic-bezier(.62,.28,.23,.99);
+}
+
+.top-level-link {
+	text-decoration: none;
+	padding: 0 .8em;
+	display: inline-block;
+	border-left: 1px solid #DDD;
+	line-height: 90px;
+
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.has-sub-menu .top-level-link {
+	padding-right: 3px;
+}
+
+.active-menu {
+	background: $darkPurple;
+	color: #FFF;
+
+	& a:link, & a:visited {
+		color: #FFF;
+	}
+
+	&:after {
+		width: 0;
+		height: 0;
+		content: "";
+		margin-left: -10px;
+		display: block;
+		position: absolute;
+		bottom: -9px;
+		left: 50%;
+		z-index: 1;
+		border-top: 10px solid #2a1443;
+		border-right: 10px solid transparent;
+		border-left: 10px solid transparent;
+	}
+}
+
+.top-level-menuitem {
+	display: block;
+	float: left;
+	position: relative;
+}
+
+.top-caret {
+	display: inline-block;
+	cursor: pointer;
+	padding: 0 7px 0 4px;
+	line-height: 90px; 
+	-webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -ms-user-select: none;
+    vertical-align: top; /* lost 1px bug in chrome op */
+}
+
+.active-menu.active-sub-menu .top-caret {
+	background: $lightPurple;
+}
+
+.active-sub-menu .top-caret {
+	background: $grey;
+}
+
+.nav-toggle {
+	background: $lightPurple;
+	padding: 1em;
+	border: 0;
+	display: none;
+	float: right;
+	
+	&:hover {
+		background: $lighterPurple;
+	}
+
+	.icon-bar {
+		width: 22px;
+		height: 2px;
+		background: #FFF;
+		display: block;
+	}
+
+	.icon-bar + .icon-bar {
+		margin-top: 4px;
+	}
+}
+
+.nav-profile-image {
+	vertical-align: -6px;
+	margin-right: 9px;
+}
+
+/** Top Sub menu **/
+.sub-level-menu {
+    display: none;
+	position: absolute;
+	top: 90px;
+	left: 0;
+	list-style-type: none;
+	padding: 0;
+	background: #FFF;
+	z-index: $gsvnet-z-index-base + 1;
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	height: 0;
+	width: 0;
+	overflow: hidden;
+}
+
+.active-sub-menu .sub-level-menu{
+	height: auto;
+	min-width: 200px;
+	width: auto;
+	display: block;
+}
+
+.sub-level-link, a.sub-level-link:link, a.sub-level-link:visited {
+	display: block;
+	padding: 0 .8em;
+	line-height: 3;
+	border: 1px solid $lightGrey;
+	border-top: 0;
+	color: $body-copy-color;
+}
+
+.extra-submenu-nav {
+	background: #FFF;
+	font-family: $font-family-sans;
+	padding-top: 1em;
+}
+
+.extra-submenu {
+	@include container;
+	@include clearfix;
+	padding: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+
+	border-bottom: 1px solid #DDD;
+
+	.top-level-link {
+		border: 0;
+		line-height: 45px;
+	}
+
+	.active .top-level-link {
+		font-weight: 900;
+	}
+}
+
+
+/** Responsive **/
+@media only screen and (max-width: $firstbreakpoint){
+
+	.extra-submenu-nav {
+		display: none;
+	}
+
+	.top-caret {
+		display: block;
+		float: right;
+		text-align: center;
+		padding: 0;
+		width: 14%;
+
+		.caret {
+			border-top-color: #FFF;
+		}
+	}
+
+	.top-level-link:link,
+	.top-level-link:visited {
+		background: $darkPurple;
+		color: #FFF;
+		border: 0;
+		display: block;
+		float: left;
+		padding: 0 0 0 4%;
+		width: 82%;
+	}
+
+	.sub-level-menu {
+		width: 100%;
+		position: static;
+	}
+
+	.nav-toggle {
+		display: block;
+	}
+
+	.nav-bar-links {
+		position: absolute;
+		bottom: 100%;
+		left: 0;
+		width: 100%;
+		background: $darkPurple;
+		padding-top: 76px;
+	}
+
+	.main-menu-active {
+		transform: translateY(100%);
+		-webkit-box-shadow: 0 0 50px rgba(0,0,0,0.5);
+		-moz-box-shadow: 0 0 50px rgba(0,0,0,0.5);
+		box-shadow: 0 0 50px rgba(0,0,0,0.5);
+	}
+
+	.active-menu:after {
+		background: 0;
+		width: auto;
+		height: 0;
+		overflow: hidden;
+		content: "";
+		display: none;
+		position: static;
+		bottom: auto;
+		left: auto;
+		right: auto;
+		z-index: $gsvnet-z-index-base + 1;
+	}
+
+	.top-level-menuitem {
+		@include clearfix;
+		float: none;
+		display: block;
+		height: auto;
+	}
+}
+
+
+@media only screen and (max-width: 480px){
+	.nav-bar-extras {
+		right: 1em;
+	}
+}

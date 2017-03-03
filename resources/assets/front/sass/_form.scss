@@ -1,0 +1,142 @@
+.form-group {
+	margin-bottom: 1em;
+	font-family: $font-family-sans;
+}
+
+
+.control-label {
+	cursor: pointer;
+	display: block;
+	font-weight: bold;
+}
+
+.radio {
+	margin-right: 1em;
+	cursor: pointer;
+
+	input {
+		margin-right: .2em;
+	}
+}
+
+.form-control {
+	padding: .2em .5em;
+	border: 1px solid $grey;
+	box-sizing: border-box;
+
+	&.wide {
+		width: 100%;
+	}
+}
+
+textarea.form-control {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.has-error {
+	.control-label {
+		color: #b94a48;
+	}
+	
+	.form-control {
+		border-color: #b94a48;
+	}
+
+}
+
+.form-row-horizontal {
+
+	.form-group {
+		display: inline-block;
+	}
+}
+
+.help-block {
+	font-style: italic;
+	margin-left: 1em;
+}
+
+.inline-form-row {
+	.form-control, .form-group {
+		display: inline-block;
+	}
+	font-family: $font-family-sans;
+}
+
+// validation blocks
+.error-bar {
+	background: #d9534f;
+	color: #FFF;
+	padding: 1em;
+	margin-bottom: 2em;
+}
+
+// SPECIFIC FORMS
+
+#user-search-form-toggler span {
+	display: none;
+}
+
+@media only screen and (max-width: $firstbreakpoint){
+	#user-search-form-toggler {
+		cursor: pointer;
+
+		span {
+			display: inline-block;
+			width: 0;
+			height: 0;
+			border-left: 8px solid transparent;
+			border-right: 8px solid transparent;
+			border-top: 8px solid $darkPurple;
+			text-indent: -999px;
+			vertical-align: middle;
+		}
+	}
+
+	#user-search-form {
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height .3s ease;
+
+		&.visible {
+			height: auto;
+			max-height: 400px;
+		}
+	}
+}
+
+#become-member-form {
+
+	@media only screen and (min-width: $firstbreakpoint) {
+		.side-helper {
+			float: right;
+			width: 30%;
+			font-style: italic;
+		}
+	}
+
+	textarea.form-control {
+		width: 50%;
+	}
+
+	h2 {
+		margin-top: 1em;
+		padding-top: 1em;
+		border-top: 1px solid $lightGrey;
+		
+		&:first-of-type {
+			margin-top: 0;
+			padding-top: 0;
+			border-top: 0;
+		}
+	}
+
+	@media only screen and (max-width: $firstbreakpoint) {
+		.form-control, textarea.form-control {
+			display: block;
+			width: 100%;
+			margin-bottom: 6px;
+		}
+	}
+}

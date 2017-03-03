@@ -1,0 +1,161 @@
+.back-link {
+	float: left;
+	display: block;
+	width: 22px;
+	height: 60px;
+	height: 3.33333rem;
+	margin-right: 18px;
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+.forum-post-data {
+	@include clearfix;
+	margin-bottom: .5em;
+	h6 {
+		margin-bottom: 0;
+	}
+}
+
+.comment {
+	padding-top: 2em;
+	border-top: 1px solid $lightGrey;
+}
+
+.avatar, .like-box {
+	float: left;
+	margin-right: 1em;
+}
+
+.like-box {
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: $darkGrey;
+    color: #FFF;
+}
+
+.body {
+	margin-bottom: 1.5em;
+
+	img {
+		max-width: 100%;
+	}
+}
+
+._post {
+	.info {
+		font-family: $font-family-sans;
+		padding-left: 58px;
+	}
+
+	.author {
+		display: block;
+		line-height: 1;
+	}
+}
+
+.hidden-form {
+	display: none;
+}
+
+.vertical-spacing {
+	height: 2em;
+}
+
+blockquote {
+	margin-left: 0;
+	margin-right: 0;
+	padding-left: 1em;
+	border-left: 4px solid #EEE;
+}
+
+img.emo {
+	vertical-align: baseline;
+}
+
+.forum .body a {
+
+  &:link, &:visited {
+    color: #5400B3;
+    border-bottom: 2px solid $lightGrey;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:active, &:focus {
+    background: $lightGrey;
+  }
+}
+
+#forum-editor-form {
+  padding: 1em;
+  background: $lightGrey;
+  position: relative;
+  margin-bottom: 0;
+
+  .tab-pane {
+    min-height: 300px;
+  }
+
+  p {
+    margin-bottom: 0em;
+  }
+}
+
+#forum-editor-controls {
+	background: $lightGrey;
+	padding: 1em;
+	overflow: hidden;
+}
+
+#markdown-preview {
+	min-height: 13em;
+	background-color: #FFF;
+	overflow: auto;
+	padding: 0 1.2em;
+	margin: 0 -1em 1em;
+	border: 1px solid #EEE;
+}
+
+.loading-indicator {
+  font-family: $font-family-sans;
+  transition: all .3s linear;
+  top: .2em;
+  right: 1em;
+  position: absolute;
+  opacity: 0;
+}
+.loading .loading-indicator {
+  opacity: 1;
+}
+.ad-img {
+  max-width: 100%;
+  height: auto;
+}
+.stats--former-member, .stats--former-member a {
+  color: #CCC;
+  background: #FAFAFA;
+}
+
+.online-users-row {
+	margin-bottom: 0;
+	font-family: $font-family-sans;
+}
+
+.online-indicator {
+	background: #FF5722;
+	border-radius: 100%; 
+	height: 12px;
+	width: 12px;
+	line-height: 1em;
+	display: inline-block;
+	vertical-align: middle;
+	margin-bottom: 6px;
+	
+	&.online-indicator--online {
+		background: #8BC34A;
+	}
+}

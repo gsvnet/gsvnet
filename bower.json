@@ -1,0 +1,34 @@
+{
+  "name": "gsvnet",
+  "version": "3.0.0",
+  "authors": [
+    "Harmen <=>"
+  ],
+  "description": "GSVnet",
+  "main": "gulpfile.js",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "gsv"
+  ],
+  "license": "MIT",
+  "homepage": "http://gsvnet.nl",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~3.2.1",
+    "magnific-popup": "~1.0.0",
+    "listjs": "~1.1.1",
+    "jquery-touchswipe": "~1.6.8",
+    "matchMedia": "~0.2.0",
+    "socket.io-client": "~1.3.7",
+    "pica": "~2.0.2"
+  }
+}

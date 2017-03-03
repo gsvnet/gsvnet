@@ -1,0 +1,13 @@
+*.sass-cache*
+*Thumb.db*
+*.sqlite
+public/uploads/photos/
+public/uploads/files/
+public/packages/
+storage/uploads/
+node_modules/
+.idea/
+/vendor
+.env
+bower_components/
+.DS_Store

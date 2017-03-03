@@ -1,0 +1,68 @@
+.pagination {
+	margin: 18px 0;
+	padding: 0;
+}
+
+.pagination > li {
+	display: inline-block;
+	// margin-right: 0.5em;
+}
+
+.pagination > li:last-child {
+	margin-right: 0;
+}
+
+.pagination > li > a, .pagination > li > span {
+	display: inline-block;
+	// background: $lightPurple;
+	// color: #FFF;
+	line-height: 2.5em;
+	padding: 0 1em;
+	text-decoration: none;
+	border: 0;
+
+	&:hover {
+		background: $lighterPurple;
+		color: white;
+	}
+
+	&:active {
+		-moz-box-shadow: inset 0px 0px 5px rgba(0,0,0,0.5);
+		-webkit-box-shadow: inset 0px 0px 5px rgba(0,0,0,0.5);
+		box-shadow: inset 0px 0px 5px rgba(0,0,0,0.5);
+	}
+}
+
+.pagination > li.active a, .pagination > li.active > span {
+	background: $darkPurple;
+	color: white;
+
+	&:active {
+		-moz-box-shadow: none;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+}
+.pagination > li.disabled { background: none; }
+.pagination > li.disabled a, .pagination > li.disabled > span {
+	color: $grey;
+	background: none;
+	user-select: none;
+	cursor: default;
+
+	&:active {
+		-moz-box-shadow: none;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+}
+
+@media only screen and (max-width: 480px){
+	.pagination > li {
+		display: none;
+
+		&:first-child, &:nth-child(2), &:nth-last-child(2), &:last-child, &.active, &.disabled {
+			display: inline-block;
+		}
+	}
+}

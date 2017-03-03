@@ -1,0 +1,44 @@
+.article-slideshow-section {
+	@include clearfix;
+}
+
+.article-slideshow {
+	position: relative;
+
+	.article-slide {
+		float: left;
+	}
+}
+
+.article-slideshow-wrapper {
+	width: 100%;
+	margin: 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.slideshow-nav-button {
+	z-index: 1000;
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+
+	span {
+		color: $darkPurple;
+		display: block;
+		background: #FFF;
+		line-height: 54px;
+		width: 54px;
+		text-align: center;
+		border-radius: 54px;
+	}
+}
+
+.slideshow-nav-left {
+	left: 0;
+}
+
+.slideshow-nav-right {
+	right: 0;
+}

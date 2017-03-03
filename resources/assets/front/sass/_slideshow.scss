@@ -1,0 +1,210 @@
+.slideshow {
+  margin: 0 auto;
+  position: relative;
+
+  .slide {
+    background: #333;
+    display: block;
+  }
+
+  img {
+    vertical-align: bottom;
+    width: 100%;
+  }
+
+  .slide-description-wrapper {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    opacity: 1;
+    transition: opacity 1s ease;
+  }
+
+  .slide-description {
+    @include container;
+  }
+
+  .slide-description-box {
+    width: 292px;
+    background: $darkPurple;
+    background: rgba($darkPurple, 0.8);
+    
+    color: $white;
+    padding: 18px;
+    margin-bottom: 18px;
+  }
+
+  .slide-title {
+    @extend .delta;
+  }
+
+  .slider-video-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0);
+
+    transition: background 2s ease;
+  }
+
+  .slider-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.play-video {
+  display: block;
+
+  .video-button {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -30px 0 0 -31px;
+    width: 62px;
+    height: 60px;
+    background-image: url(../images/video-play-button.png);
+    background-repeat: no-repeat;
+    transition: all 0.3s ease;
+    z-index: 101;
+  }
+
+  &:hover .video-button {
+    -webkit-transform:scale(1.2);
+    -moz-transform:scale(1.2);
+    -ms-transform:scale(1.2);
+    -o-transform:scale(1.2);
+    transform:scale(1.2);
+  }
+
+  &:active .video-button {
+    -webkit-transform:scale(1);
+    -moz-transform:scale(1);
+    -ms-transform:scale(1);
+    -o-transform:scale(1);
+    transform:scale(1);
+  }
+
+  .shadow {
+    transition: all 0.3s ease;
+    position: absolute;
+    background: #000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+  }
+
+  &:hover .shadow {
+    opacity: .3;
+  }
+}
+
+.video-playing {
+  .play-video {
+    .video-button {
+      display: none;
+    }
+
+    &:hover .shadow {
+      opacity: 0;
+    }
+  }
+
+  .slide-description-wrapper {
+    opacity: 0;
+  }
+
+  .slider-video-wrap {
+    background: rgba(0,0,0,1);
+  }
+
+  &:hover {
+    .slide-description-wrapper {
+      opacity: 1;
+    }
+  }
+}
+
+.svg .video-button{
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE1LjAuMiwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHdpZHRoPSI2MHB4IiBoZWlnaHQ9IjYwcHgiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNjAgNjAiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8Y2lyY2xlIGZpbGw9IiNFQ0VDRUQiIGN4PSIzMCIgY3k9IjMwIiByPSIzMCIvPgo8cG9seWdvbiBmaWxsPSIjNzA3QjhEIiBwb2ludHM9IjIzLjUzMSwxOC4wMzEgMjMuNTMxLDQxLjk2OSA0Mi40NjksMzAgIi8+Cjwvc3ZnPg==);
+}
+
+/** Responsive **/
+@media only screen and (max-width: $firstbreakpoint){
+  .slideshow-spacer {
+    height: 100px;
+    background: $darkPurple;
+  }
+
+  .slideshow {
+    .slide-description {
+      width: auto;
+    }
+    
+    .slide-description-wrapper {
+      top: 100%;
+    }
+
+    .slide-description-box {
+      width: auto;
+      padding: 18px 36px;
+    }
+
+    .slide-description-text, 
+    .slide-title {
+      display: inline;
+      font-size: initial;
+    }
+
+    .slide-title {
+      font-weight: bold;
+    }
+  }
+
+  .top-slideshow .carousel-inner {
+    overflow: visible;
+  }
+
+  .slideshow-wrap {
+    overflow: hidden;
+  }
+
+  .video-playing {
+    .slide-description-wrapper {
+      opacity: 1;
+    }
+  }
+}
+
+
+@media only screen and (max-width: 480px){
+  .slideshow-spacer {
+    height: 115px;
+  }
+
+  .video-button {
+    -webkit-transform:scale(0.8);
+    -moz-transform:scale(0.8);
+    -ms-transform:scale(0.8);
+    -o-transform:scale(0.8);
+    transform:scale(0.8);
+  }
+
+  a.item {
+    &:hover .video-button {
+      -webkit-transform:scale(1);
+      -moz-transform:scale(1);
+      -ms-transform:scale(1);
+      -o-transform:scale(1);
+      transform:scale(1);
+    }
+  }
+}

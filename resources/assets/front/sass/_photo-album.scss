@@ -1,0 +1,139 @@
+.photo-tile {
+	padding: 0 18px 0 0;
+	margin-bottom: 18px;
+	float: left;
+	width: 308px;
+	height: 308px;
+	overflow: hidden;
+	position: relative;
+
+	img {
+		vertical-align: bottom;
+	}
+
+	&.tile-number-4, &.tile-number-8 {
+		width: 634px;
+	}
+
+	&.tile-number-2, &.tile-number-4, &.tile-number-7, &.tile-number-9 {
+		padding-right: 0;
+	}
+
+	&.tile-number-0, &.tile-number-3, &.tile-number-5, &.tile-number-8 {
+		clear: left;
+	}
+
+	.photo-description {
+		margin: 0;
+		text-align: center;
+		line-height: 308px;
+	}
+
+    .full-tile-link {
+        text-align: center;
+        display: block;
+        color: #FFF;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        margin-top: -3em;
+        font-size: 1.2em;
+        padding: 0 1em;
+        box-sizing: border-box;
+        text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+    }
+}
+
+.photo-link {
+	display: block;
+	overflow: hidden;
+}
+
+.photos {
+	@include clearfix;
+}
+
+.gallery {
+	.photo-link {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 620px;
+	    transition: all 0.2s ease;
+
+		&:hover {
+			top: -312px;
+		}
+	}
+}
+
+.word-lid-tile {
+    & > .spacer {
+        background: $darkPurple;
+        background: linear-gradient(to right, darken($lightPurple, 2%), lighten($lighterPurple, 10%));
+        width: 100%;
+        padding-bottom: 100%;
+        position: relative;
+    }
+
+    &:hover > .spacer {
+        background: $lighterPurple;
+    }
+}
+
+@media only screen and (max-width: $firstbreakpoint){
+
+	.photo-tile {
+		box-sizing: border-box;
+		width: 33%;
+		height: auto;
+
+		&.tile-number-4, &.tile-number-8 {
+			width: 66%;
+		}
+
+		&.tile-number-2, &.tile-number-4, &.tile-number-7, &.tile-number-9 {
+			padding-right: 18px;
+		}
+
+		img {
+			height: auto;
+			width: 100%;
+		}
+
+		.photo-description {
+			text-align: left;
+			line-height: 1;
+			padding-top: .2em;
+		}
+	}
+
+	.gallery {
+		.photo-link {
+			position: static;
+			height: auto;
+		}
+	}
+}
+
+
+@media only screen and (max-width: 723px){
+	.photo-tile{
+
+		width: 50%;
+
+		&.tile-number-4, &.tile-number-8 {
+			width: 50%;
+			overflow: hidden;
+
+			img {
+				width: 206%;
+			}
+		}
+
+		&.tile-number-0, &.tile-number-3, &.tile-number-5, &.tile-number-8 {
+			clear: none;
+		}
+
+	}
+}
