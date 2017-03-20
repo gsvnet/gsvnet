@@ -56,7 +56,11 @@
                             </td>
                             <td>{{ $profile->user->middlename }}</td>
                             <td>{{ $profile->user->lastname }}</td>
-                            <td>{{ $profile->yearGroup->present()->nameWithYear }}</td>
+                            @if($profile->yearGroup)
+                                <td>{{ $profile->yearGroup->present()->nameWithYear }}</td>
+                            @else
+                                <td class="text-muted">Onbekend</td>
+                            @endif
                             <td>
                                 @if($profile->user->isVerified())
                                     Ja
