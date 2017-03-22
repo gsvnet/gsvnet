@@ -295,6 +295,13 @@ class NavigationViewComposer {
                             return Gate::allows('docs.show');
                         }
                     ],
+                    'gsv-fotos' => [
+                        'title' => 'GSV-foto\'s',
+                        'url' => 'https://www.dropbox.com/sh/35nn6690kcvk7wx/AACnG0OpTvw4I1WcvwUhOZYaa?dl=0',
+                        'visible' => function(){
+                            return Gate::allows('docs.show');
+                        }
+                    ],
                     'bestanden' => [
                         'title' => 'GSVdocs',
                         'url' => action('FilesController@index'),
