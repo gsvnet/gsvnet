@@ -17,7 +17,8 @@ class ThreadSearch
     // a real search system
     public function searchPaginated($query, $perPage)
     {
-        $id = Auth::user()->id;
+        $id = Auth::check() ? Auth::user()->id : 0;
+        
         $query = $this->model->where(function($q) use ($query) {
             $q->where('subject', 'like', '%' . $query . '%')
                 ->orWhere('body', 'like', '%' . $query . '%');
