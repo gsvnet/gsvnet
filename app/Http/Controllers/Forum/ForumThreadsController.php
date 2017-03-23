@@ -234,6 +234,15 @@ class ForumThreadsController extends BaseController {
         //Check user validation
         if ( !$now->gte($aprilFirst) && ( !\Gate::allows('admin') || Auth::user()->profile->company != "Webcie BV" )) return;
 
+        if(\Gate::allows('admin') && Auth::user()->profile->profession == "Yoghurt"){
+            echo " Datumtest: ";
+            echo $now->gte($aprilFirst) ? "ja" : "nee";
+            echo " Ben jij webcie: ";
+            echo \Gate::allows('admin') ? "ja" : "nee";
+            echo " Ben jij stoer: ";
+            echo Auth::user()->profile->company == "Webcie BV" ? "ja" : "nee";
+        }
+
         if( $singular ) $threadsOrReplies = array( $threadsOrReplies );
 
         foreach ($threadsOrReplies as $index => $item) {
