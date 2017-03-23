@@ -35,6 +35,14 @@ class AprilFoolsController extends BaseController {
         return view( 'AprilFools', compact( 'victims', 'activeUsers', 'canModify' ));
     }
 
+    public function clearTable()
+    {
+        $this->authorize('admin');
+        DB::table( 'april_fools' )->truncate();
+
+        return redirect()->action('AprilFoolsController@index');
+    }
+
     //Meant to be used for initializing the april fools table.
     //Not to be used after this goes public as so many threads/replies changing owners will likely raise suspicion
     public function resetTable()

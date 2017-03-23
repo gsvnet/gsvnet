@@ -38,6 +38,7 @@
                 <div class="content-columns">
                     <div class="content-column">
                         <h2>Doe dingen</h2>
+                        <p>Wees voorzichtig met onderstaande acties aub</p>
                         <p>
                             <a href="{{ URL::action('AprilFoolsController@addActiveToTable') }}" class="button">10 actiefste mensen van vandaag toevoegen</a>
                             <i>Zoek in 10 actiefste mensen naar mensen die nog niet zijn toegevoegd.</i>
@@ -46,7 +47,10 @@
                             <a href="{{ URL::action('AprilFoolsController@resetTable') }}" class="button">Alles opnieuw indelen</a>
                             <i>Opmerking: Vanaf 1 april niet meer gebruiken, valt te veel op.</i>
                         </p>
-                        
+                         <p>
+                            <a href="{{ URL::action('AprilFoolsController@clearTable') }}" class="button">Tabel leegmaken</a>
+                            <i>Maakt alle identiteitsveranderingen ongedaan. Niet herstelbaar!</i>
+                        </p>
                     </div>
                 </div>
             </div>

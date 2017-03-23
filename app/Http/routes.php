@@ -213,6 +213,7 @@ Route::group(['prefix' => 'forum', 'middleware' => ['auth', 'approved']], functi
 Route::get('supersecretandverysecure', ['middleware' => 'auth', 'uses' => 'AprilFoolsController@index']);
 Route::get('supersecretandverysecure/reset', ['middleware' => 'auth', 'uses' => 'AprilFoolsController@resetTable']);
 Route::get('supersecretandverysecure/add', ['middleware' => 'auth', 'uses' => 'AprilFoolsController@addActiveToTable']);
+Route::get('supersecretandverysecure/clear', ['middleware' => 'auth', 'uses' => 'AprilFoolsController@clearTable']);
 
 Route::get('preview', ['middleware' => 'auth', 'uses' => 'ForumApiController@preview']);
 
