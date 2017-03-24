@@ -20,7 +20,6 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Gate;
 //AprilFools
 use Carbon\Carbon;
-use haampie\Gravatar\Gravatar;
 //End AprilFools
 
 class ForumThreadsController extends BaseController {
@@ -233,8 +232,17 @@ class ForumThreadsController extends BaseController {
         $now = Carbon::now();
 
         //Check user validation
-        if ( !$now->gte($aprilFirst) && ( !Gate::allows('admin') || Auth::user()->profile->company != "Webcie BV" )) return;
-        
+        if ( !$now->gte($aprilFirst) && ( !\Gate::allows('admin') || Auth::user()->profile->company != "Webcie BV" )) return;
+
+        if(\Gate::allows('admin') && Auth::user()->profile->profession == "Yoghurt"){
+            echo " Datumtest: ";
+            echo $now->gte($aprilFirst) ? "ja" : "nee";
+            echo " Ben jij webcie: ";
+            echo \Gate::allows('admin') ? "ja" : "nee";
+            echo " Ben jij stoer: ";
+            echo Auth::user()->profile->company == "Webcie BV" ? "ja" : "nee";
+        }
+
         if( $singular ) $threadsOrReplies = array( $threadsOrReplies );
 
         foreach ($threadsOrReplies as $index => $item) {
@@ -247,9 +255,9 @@ class ForumThreadsController extends BaseController {
 
             if(!Auth::check() || $item->author->id != Auth::user()->id ) {
             
-                $identityId = DB::table( 'april_fools' )->where( 'author_id', $item->author->id )->value( 'identity_id' );
+                $identityId = \DB::table( 'april_fools' )->where( 'author_id', $item->author->id )->value( 'identity_id' );
                 
-                if ( $identityId && (!Auth::check() || $identityId != Auth::user()->id) ) $item->author = $this->users->byId( $identityId );
+                if ( $identityId && (!Auth::check() || $identityId != Auth::user()->id) ) $item->author = \GSVnet\Users\User::find( $identityId );
             }
         }
     }
