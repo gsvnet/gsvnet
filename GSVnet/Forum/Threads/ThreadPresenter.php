@@ -7,6 +7,8 @@ use Carbon\Carbon, Auth;
 
 class ThreadPresenter extends Presenter
 {
+    private $identity_theft = false;
+
     public function url()
     {
         if ( ! $this->slug) {
@@ -55,13 +57,20 @@ class ThreadPresenter extends Presenter
         if ( ! $this->mostRecentReply) {
             return null;
         }
-        $this->AprilFools($this->mostRecentReply, true);
+        if (! $this->identity_theft) {
+            $this->AprilFools($this->mostRecentReply, true);
+            $this->identity_theft = true;
+        }
         return $this->mostRecentReply->author->username;
     }
 
     public function mostRecentReplyAvatarDeferred()
     {
-        $this->AprilFools($this->mostRecentReply, true);
+        if (!$this->identity_theft){
+            $this->AprilFools($this->mostRecentReply, true);
+            $this->identity_theft = true;
+        }
+
         return $this->mostRecentReply->author->present()->avatarDeferred(45);
     }
 
