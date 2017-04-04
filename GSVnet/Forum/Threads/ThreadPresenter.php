@@ -59,12 +59,6 @@ class ThreadPresenter extends Presenter
         return $this->mostRecentReply->author->username;
     }
 
-    public function mostRecentReplyAvatarDeferred()
-    {
-        $this->AprilFools($this->mostRecentReply, true);
-        return $this->mostRecentReply->author->present()->avatarDeferred(45);
-    }
-
     public function latestReplyUrl()
     {
         if ( ! $this->mostRecentReply) {
