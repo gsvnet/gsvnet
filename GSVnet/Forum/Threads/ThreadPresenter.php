@@ -55,7 +55,7 @@ class ThreadPresenter extends Presenter
         if ( ! $this->mostRecentReply) {
             return null;
         }
-        $this->AprilFools($this->mostRecentReply, true);
+        $reply = $this->AprilFools($this->mostRecentReply, true);
         return $this->mostRecentReply->author->username;
     }
 
