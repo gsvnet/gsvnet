@@ -233,7 +233,7 @@ class ForumThreadsController extends BaseController {
         $now = Carbon::now();
 
         //Check user validation
-        if ( !$now->gte($aprilFirst) && ( !Gate::allows('admin') || Auth::user()->profile->company != "Webcie BV" )) return;
+        //if ( !$now->gte($aprilFirst) && ( !Gate::allows('admin') || Auth::user()->profile->company != "Webcie BV" )) return;
         
         if( $singular ) $threadsOrReplies = array( $threadsOrReplies );
 
