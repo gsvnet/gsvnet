@@ -209,11 +209,6 @@ Route::group(['prefix' => 'forum', 'middleware' => ['auth', 'approved']], functi
     Route::delete('threads/{id}/like', 'ForumApiController@dislikeThread');
 });
 
-//April fools
-Route::get('supersecretandverysecure', ['middleware' => 'auth', 'uses' => 'AprilFoolsController@index']);
-Route::get('supersecretandverysecure/reset', ['middleware' => 'auth', 'uses' => 'AprilFoolsController@resetTable']);
-Route::get('supersecretandverysecure/add', ['middleware' => 'auth', 'uses' => 'AprilFoolsController@addActiveToTable']);
-
 Route::get('preview', ['middleware' => 'auth', 'uses' => 'ForumApiController@preview']);
 
 Route::group(['prefix' => 'api', 'middleware' => ['auth', 'approved', 'has:member-or-former-member']], function() {

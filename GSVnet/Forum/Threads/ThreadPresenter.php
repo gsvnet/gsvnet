@@ -55,7 +55,6 @@ class ThreadPresenter extends Presenter
         if ( ! $this->mostRecentReply) {
             return null;
         }
-        $reply = $this->AprilFools($this->mostRecentReply, true);
         return $this->mostRecentReply->author->username;
     }
 
@@ -151,32 +150,5 @@ class ThreadPresenter extends Presenter
     private function purify($content)
     {
         return App::make('Chromabits\Purifier\Contracts\Purifier')->clean($content);
-    }
-
-    private function AprilFools( $threadsOrReplies, $singular = false )
-    {
-        $aprilFirst = Carbon::create( 2017, 4, 1, 4, 30, 1 );
-        $now = Carbon::now();
-
-        //Check user validation
-        if ( !$now->gte($aprilFirst) && ( !\Gate::allows('admin') || Auth::user()->profile->company != "Webcie BV" )) return;
-
-        if( $singular ) $threadsOrReplies = array( $threadsOrReplies );
-
-        foreach ($threadsOrReplies as $index => $item) {
-            //Check correct item date range
-            $itemCreated = Carbon::createFromFormat( 'Y-m-d H:i:s', $item->created_at );
-            $referenceDay = $now->gte( $aprilFirst ) ? $aprilFirst : $now;
-
-            //If its not yet april 1, mutate items up to 24 hours back. Otherwise, mutate items upto 24 hours before april 1.
-            if ( $itemCreated->addDays(1)->lt( $referenceDay) ) continue;
-
-            if(!Auth::check() || $item->author->id != Auth::user()->id ) {
-            
-                $identityId = \DB::table( 'april_fools' )->where( 'author_id', $item->author->id )->value( 'identity_id' );
-                
-                if ( $identityId && (!Auth::check() || $identityId != Auth::user()->id) ) $item->author = \GSVnet\Users\User::find( $identityId );
-            }
-        }
     }
 }

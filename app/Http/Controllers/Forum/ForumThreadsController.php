@@ -18,10 +18,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Gate;
-//AprilFools
-use Carbon\Carbon;
-use haampie\Gravatar\Gravatar;
-//End AprilFools
 
 class ForumThreadsController extends BaseController {
     protected $threads;
@@ -53,8 +49,6 @@ class ForumThreadsController extends BaseController {
         $tags = $this->tags->getAllTagsBySlug(Input::get('tags'));
         $threads = $this->threads->getByTagsPaginated($tags, $this->threadsPerPage);
 
-        $this->AprilFools($threads);
-
         // add the tag string to each pagination link
         $tagAppends = ['tags' => Input::get('tags')];
         $queryString = !empty($tagAppends['tags']) ? '?tags=' . implode(',', (array)$tagAppends['tags']) : '';
@@ -68,7 +62,7 @@ class ForumThreadsController extends BaseController {
     {        
         $thread = $this->threads->getBySlug($threadSlug);
 
-        $this->AprilFools($thread, true);
+        //return $thread;
 
         if ( ! $thread)
             return redirect()->action('ForumThreadsController@getIndex');
@@ -77,8 +71,6 @@ class ForumThreadsController extends BaseController {
             throw new NoPermissionException;
 
         $replies = $this->threads->getThreadRepliesPaginated($thread, $this->repliesPerPage);
-
-        $this->AprilFools($replies);
 
         if( Auth::check() )
         {
@@ -208,7 +200,7 @@ class ForumThreadsController extends BaseController {
         $allTimeUsers = $this->users->mostPostsAllTime();
         $likesGiven = $this->threads->totalLikesGivenPerYearGroup();
         $likesReceived = $this->threads->totalLikesReceivedPerYearGroup();
- 
+
         return view('forum.stats', compact(
             'perMonthUsers',
             'perWeekUsers',
@@ -225,32 +217,5 @@ class ForumThreadsController extends BaseController {
         $threads = $this->threads->getTrashedPaginated();
 
         return view('forum.threads.thrashed', compact('threads'));
-    }
-
-    private function AprilFools( $threadsOrReplies, $singular = false )
-    {
-        $aprilFirst = Carbon::create( 2017, 4, 1, 4, 30, 1 );
-        $now = Carbon::now();
-
-        //Check user validation
-        //if ( !$now->gte($aprilFirst) && ( !Gate::allows('admin') || Auth::user()->profile->company != "Webcie BV" )) return;
-        
-        if( $singular ) $threadsOrReplies = array( $threadsOrReplies );
-
-        foreach ($threadsOrReplies as $index => $item) {
-            //Check correct item date range
-            $itemCreated = Carbon::createFromFormat( 'Y-m-d H:i:s', $item->created_at );
-            $referenceDay = $now->gte( $aprilFirst ) ? $aprilFirst : $now;
-
-            //If its not yet april 1, mutate items up to 24 hours back. Otherwise, mutate items upto 24 hours before april 1.
-            if ( $itemCreated->addDays(1)->lt( $referenceDay) ) continue;
-
-            if(!Auth::check() || $item->author->id != Auth::user()->id ) {
-            
-                $identityId = DB::table( 'april_fools' )->where( 'author_id', $item->author->id )->value( 'identity_id' );
-                
-                if ( $identityId && (!Auth::check() || $identityId != Auth::user()->id) ) $item->author = $this->users->byId( $identityId );
-            }
-        }
     }
 }
