@@ -88,18 +88,17 @@
                         <div class="social">
                             <span>
                                 <a href="https://facebook.com/GSVgroningen/" class="fa-stack">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-circle fa-fb-circle fa-stack-2x"></i>
                                     <i class="fa fa-facebook fa-stack-1x"></i>
                                 </a>
                             </span>
                             <span>
                                 <a href="https://www.instagram.com/_u/gsvgroningen/" class="fa-stack">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-circle fa-ig-circle fa-stack-2x"></i>
                                     <i class="fa fa-instagram fa-stack-1x"></i>
                                 </a>
                             </span>
                         </div>
-                        {{--  <a class="button" href="https://nl-nl.facebook.com/GSVgroningen/">Bezoek ons op facebook!</a>  --}}
                     </div>
                 </div>
             </div>
@@ -238,7 +237,7 @@
                     template: 1,
                     content: {
                         $HEADER: 'Christelijk',
-                        $TEXT: 'Binnen de GSV speelt het christelijke geloof een centrale rol. Elke dinsdag is er Bijbelkring waar je in een kleine groep verdieping zoekt in het geloof. Daarnaast hebben we het jaarlijks bezinningsweekend en verschillende sing-inns.',
+                        $TEXT: 'Binnen de GSV speelt het christelijke geloof een centrale rol. Elke dinsdag is er Bijbelkring, waar je in een kleine groep verdieping zoekt in het geloof. Daarnaast hebben we het jaarlijks bezinningsweekend en verschillende sing-ins.',
                         $BACKGROUND: '/images/pijlers_christelijk_resized.jpg'
                     }
                 },
