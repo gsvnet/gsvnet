@@ -24,6 +24,7 @@ class ChangeParentsDetailsHandler {
         $profile->parent_town = $command->address->getTown();
 //        $profile->parent_country = $command->address->getCountry(); // Parent country is not supported currently
         $profile->parent_phone = $command->phone->getPhone();
+        $profile->parent_email = $command->email->getEmail();
 
         $this->profiles->save($profile);
 

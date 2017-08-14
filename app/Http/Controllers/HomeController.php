@@ -17,6 +17,50 @@ class HomeController extends BaseController {
 
 	public function showIndex()
 	{
+        // Temporary filter to decide which index page to show
+        $ua = $_SERVER['HTTP_USER_AGENT'];
+        //echo $ua;
+        $browser = array();
+
+        // Test ua
+        //$ua = "Mozilla/5.0 (Linux; U; Android 4.0.3; de-ch; HTC Sensation Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30";
+        
+        preg_match_all("/(Chromium|Chrome|Safari|Firefox|OPR|MSIE|version)[\/|\s]([\d]+)/i", $ua, $browser_matches);
+        //print_r($browser_matches);
+
+        $freezeVersion = false;
+        foreach($browser_matches[1] as $i => $match) {
+            if(strtolower($match) == 'version') {
+                $browser['version'] = $browser_matches[2][$i];
+                $freezeVersion = true;
+            } else {
+                if(!isset($browser['name']) || $browser['name'] == 'Safari') {
+                    $browser['name'] = strtolower($match);
+                    if(!$freezeVersion) {
+                        $browser['version'] = $browser_matches[2][$i];
+                    }
+                }
+            }
+        }
+
+        //print_r($browser);
+
+        // Safari can probably be 9 once JS actually gets transpiled
+        $requirements = array(
+            'chrome' => 29,
+            'firefox' => 28,
+            'safari' => 10,
+            'opr' => 17
+        );
+        // echo '<br><br>';
+        // echo array_key_exists($browser['name'], $requirements);
+        // echo '<br>';
+        // echo $requirements[$browser['name']];
+
+        if(array_key_exists($browser['name'], $requirements) && $browser['version'] >= $requirements[$browser['name']]) {
+            return view('index_new');
+        }  
+
 		// Get the coming events and show it in the sidebar
 		$events = $this->events->upcoming(5);
         $birthdays = $this->profiles->byUpcomingBirthdays(1);

@@ -19,6 +19,7 @@
             <hr>
 
             {!! Former::text('parent_phone')->label('Telefoon') !!}
+            {!! Former::text('parent_email')->label('Emailadres') !!}
 
             <button type='submit' class='btn btn-success'>
                 <i class="glyphicon glyphicon-ok"></i> Opslaan
