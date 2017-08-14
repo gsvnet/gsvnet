@@ -153,7 +153,7 @@ nav {
         text-decoration: none;
     }
 
-    .links, .mobile-links {
+    .links {
         width: 100%;
         border-bottom: 1px solid rgba(255,255,255,.3);
     }
@@ -178,6 +178,7 @@ nav {
     .mobile-nav-links {
         transform: translateX(100%);
         position: fixed;
+        overflow: scroll;
         right: 0%;
         width: calc(90% - #{$_nav-logo-size / 2});
         top: 0;
@@ -206,8 +207,8 @@ nav {
             }
 
             &.focus {
-                position: absolute;
-                bottom: 2rem;
+                display: inline-block;
+                margin-top: 1.5rem;
                 background: $secondary;
                 transition: all .8s;
                 border: 1px solid rgba(255,255,255,.1);
@@ -217,20 +218,6 @@ nav {
                     background: $tertiary;
                 }
             }
-        }
-    }
-
-    .mobile-links {
-        @include flex-xy(flex-start, center, row wrap);
-        height: $_nav-logo-size - 10px;
-
-        @include for-small-desktop-up() {
-            display: none;
-        }
-
-        a {
-            display: flex;
-            padding: 0 .5rem;
         }
     }
 
@@ -391,7 +378,7 @@ section, .subsection {
 
     &.partial {
         height: auto;
-        min-height: auto;
+        //min-height: auto;
         padding: 1rem 0;
 
         @include for-desktop-up() {
@@ -831,7 +818,7 @@ header, section, .subsection {
         flex-wrap: nowrap;
 
         .icon-text-container {
-            flex-basis: 0;
+            flex-basis: auto;
         }
     }
 }

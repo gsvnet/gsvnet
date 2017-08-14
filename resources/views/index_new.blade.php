@@ -26,13 +26,6 @@
 
         <nav id="nav-menu" class="shrunk">
             <a href="#intro" class="logo"><div></div></a>
-            <!-- <div class="mobile-links">
-                <a href="#gsv">GSV</a>
-                <a href="#activiteiten">KEI-week</a>
-                <a href="#fotos">Foto's</a>
-                <a href="{{ action('MemberController@study') }}">Studeren</a>
-                <a href="{{ action('ForumThreadsController@getIndex') }}">Forum</a>
-            </div> -->
             <div id="mobile-nav-toggle">
                 <i class="fa fa-bars"></i>
             </div>
@@ -212,24 +205,7 @@
     
     </div>
 
-    <!--script src="/build-javascripts/homepage.js?v=1.5.5"></script-->
-    <script src="/build-javascripts/jquery.min.js?update28"></script>
-    <script src="/build-javascripts/jquery.fracs.min.js?update28"></script>
-    <script src="/build-javascripts/Utils.js?update28"></script>
-    <!-- <script src="/build-javascripts/overlay.js?update28"></script> -->
-    <script src="/build-javascripts/mediaQueryListener.js?update28"></script>
-    <script src="/build-javascripts/hashnavigation.js?update28"></script>
-    <script src="/build-javascripts/scrollHandler.js?update28"></script>
-    <script src="/build-javascripts/scrollresponse.js?update28"></script>
-    <script src="/build-javascripts/fullHeightMobile.js?update28"></script>
-    <script src="/build-javascripts/Rectangle.js?update28"></script>
-    <script src="/build-javascripts/NavMenu.js?update28"></script>
-    <script src="/build-javascripts/CoverVideo.js?update28"></script>
-    <script src="/build-javascripts/Tabs.js?update28"></script>
-    <script src="/build-javascripts/ImageZoom.js?update28"></script>
-    <script src="/build-javascripts/googleMap.js?update28"></script>
-    <script src="/build-javascripts/instafeed.min.js"></script>
-    <script src="/build-javascripts/InstagramFeed.js?update28"></script>
+    <script src="/build-javascripts/homepage.js?v=1.5.5"></script>
     <script>
         navMenu = NavMenu('#nav-menu', '.links > a', '.mobile-nav-links');
         initHashNavigation(navMenu.getHeight);
