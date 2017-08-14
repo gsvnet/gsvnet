@@ -83,9 +83,23 @@
                     <div class="trim">
                         <h1>Sta jij hier volgend jaar tussen?</h1>
                         <p>
-                            Of je net begint met je studie of al langer studeert; een christelijke studentenvereniging kan veel toevoegen aan je persoonlijke, sociale en geloofsontwikkeling. De GSV -Gereformeerde Studentenvereniging- biedt op dit moment ongeveer 200 leden een onvergetelijke studententijd! Op deze site en op onze facebook kun je ontdekken wie wij zijn. 
+                            Of je net begint met je studie of al langer studeert; een christelijke studentenvereniging kan veel toevoegen aan je persoonlijke, sociale en geloofsontwikkeling. De GSV -Gereformeerde Studentenvereniging- biedt op dit moment ongeveer 200 leden een onvergetelijke studententijd! Op deze site en via social media kun je ontdekken wie wij zijn. 
                         </p>
-                        <a class="button" href="https://nl-nl.facebook.com/GSVgroningen/">Bezoek ons op facebook!</a>
+                        <div class="social">
+                            <span>
+                                <a href="https://facebook.com/GSVgroningen/" class="fa-stack">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x"></i>
+                                </a>
+                            </span>
+                            <span>
+                                <a href="https://www.instagram.com/_u/gsvgroningen/" class="fa-stack">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-instagram fa-stack-1x"></i>
+                                </a>
+                            </span>
+                        </div>
+                        {{--  <a class="button" href="https://nl-nl.facebook.com/GSVgroningen/">Bezoek ons op facebook!</a>  --}}
                     </div>
                 </div>
             </div>
