@@ -176,7 +176,7 @@ var Forum = (function()
     }
 
     function loadDeferredAvatars() {
-        $(window).load(function() {
+        $(window).on('load', function() {
             $('[data-gravatar-url]').prepend(function(){
                 var $this = $(this), url, size;
                 

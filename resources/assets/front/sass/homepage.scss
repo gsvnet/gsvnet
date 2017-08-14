@@ -929,6 +929,15 @@ header, section, .subsection {
 
 // === END CONTENT SECTIONS ===
 
+.social {
+    display: flex;
+    font-size: 1.5rem;
+
+    .fa-instagram, .fa-facebook {
+        color: #fff;
+    }
+}
+
 button, a.button {
     padding: 1rem 2rem;
     border: 0;
