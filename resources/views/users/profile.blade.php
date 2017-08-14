@@ -119,6 +119,10 @@
 								<span class="list-title">Telefoon</span>
 								<span class="list-description"><a href="tel:{{$member->profile->parent_phone}}" title="Bel de ouders van {{$member->firstname}}">{{$member->profile->parent_phone}}</a></span>
 							</li>
+							</li>
+								<span class="list-title">Email</span>
+								<span class="list-description"><a href="mailto:{{$member->profile->parent_email}}" title="Stuur een email naar de ouders van {{$member->firstname}}">{{$member->profile->parent_email}}</a></span>
+							</li>
 						</ul>
 					@endif
 				</div>

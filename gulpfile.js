@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var minify = require('gulp-minify-css');
 var autoprefixer = require('gulp-autoprefixer');
+var babel = require('gulp-babel');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var imagemin = require('gulp-imagemin');
@@ -8,6 +9,16 @@ var sass = require('gulp-sass');
 
 gulp.task('css', function(){
 	gulp.src('resources/assets/front/sass/screen.scss')
+    .pipe(sass())
+ 		.pipe(minify())
+ 		.pipe(autoprefixer({
+      browsers: '> 5%'
+    }))
+	.pipe(gulp.dest('public/stylesheets/'));
+});
+
+gulp.task('homepage-css', function(){
+	gulp.src('resources/assets/front/sass/homepage.scss')
     .pipe(sass())
  		.pipe(minify())
  		.pipe(autoprefixer({
@@ -24,6 +35,31 @@ gulp.task('images', function(){
     ])
     .pipe(imagemin())
     .pipe(gulp.dest('public/images/'));
+});
+
+
+gulp.task('homepage-scripts', function() {
+  return gulp.src([
+      './bower_components/jquery/dist/jquery.min.js',
+      './bower_components/jquery-fracs/dist/jquery.fracs.min.js',
+      './bower_components/instafeed.js/instafeed.min.js',
+      'resources/assets/front/javascripts/index_new/Utils.js',
+      'resources/assets/front/javascripts/index_new/mediaQueryListener.js',
+      'resources/assets/front/javascripts/index_new/hashnavigation.js',
+      'resources/assets/front/javascripts/index_new/scrollHandler.js',
+      'resources/assets/front/javascripts/index_new/scrollresponse.js',
+      'resources/assets/front/javascripts/index_new/fullHeightMobile.js',
+      'resources/assets/front/javascripts/index_new/Rectangle.js',
+      'resources/assets/front/javascripts/index_new/NavMenu.js',
+      'resources/assets/front/javascripts/index_new/CoverVideo.js',
+      'resources/assets/front/javascripts/index_new/Tabs.js',
+      'resources/assets/front/javascripts/index_new/ImageZoom.js',
+      'resources/assets/front/javascripts/index_new/googleMap.js',
+      'resources/assets/front/javascripts/index_new/InstagramFeed.js'
+    ])
+    //.pipe(babel({presets: ['es2015']}))
+    //.pipe(uglify())
+    .pipe(gulp.dest('public/build-javascripts/'))
 });
 
 gulp.task('scripts', function() {
@@ -93,6 +129,6 @@ gulp.task('backend-css', function() {
 });
 
 gulp.task('default', ['scripts', 'css'], function(){
-  gulp.watch('resources/assets/**/*.js', ['scripts', 'backend-scripts', 'forum-scripts']);
-  gulp.watch('resources/assets/**/*', ['css', 'backend-css']);
+  gulp.watch('resources/assets/**/*.js', ['scripts', 'backend-scripts', 'forum-scripts', 'homepage-scripts']);
+  gulp.watch(['resources/assets/**/*.scss','resources/assets/**/*.css'], ['css', 'backend-css', 'homepage-css']);
 });

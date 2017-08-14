@@ -4,6 +4,7 @@ use GSV\Commands\Command;
 use GSVnet\Users\User;
 use GSVnet\Users\ValueObjects\OptionalAddress;
 use GSVnet\Users\ValueObjects\OptionalPhoneNumber;
+use GSVnet\Users\ValueObjects\OptionalEmail;
 use Illuminate\Http\Request;
 
 class ChangeParentsDetails extends Command {
@@ -24,15 +25,21 @@ class ChangeParentsDetails extends Command {
     public $phone;
 
     /**
+     * @var OptionalEmail
+     */
+    public $email;
+
+    /**
      * @var User
      */
     public $manager;
 
-    function __construct(User $user, User $manager, OptionalAddress $address, OptionalPhoneNumber $phone)
+    function __construct(User $user, User $manager, OptionalAddress $address, OptionalPhoneNumber $phone, OptionalEmail $email)
     {
         $this->user = $user;
         $this->address = $address;
         $this->phone = $phone;
+        $this->email = $email;
         $this->manager = $manager;
     }
 
@@ -49,6 +56,10 @@ class ChangeParentsDetails extends Command {
             $request->get('parent_phone')
         );
 
-        return new self($user, $request->user(), $address, $phone);
+        $email = new OptionalEmail(
+            $request->get('parent_email')
+        );
+
+        return new self($user, $request->user(), $address, $phone, $email);
     }
 }

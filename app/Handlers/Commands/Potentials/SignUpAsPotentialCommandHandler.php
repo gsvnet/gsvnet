@@ -43,6 +43,7 @@ class SignUpAsPotentialCommandHandler {
             'parent_zip_code' => $command->parentsZipCode,
             'parent_town' => $command->parentsTown,
             'parent_phone' => $command->parentsPhone,
+            'parent_email' => $command->parentsEmail
         ]);
 
         $user->profile()->save($profile);

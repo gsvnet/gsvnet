@@ -1,0 +1,102 @@
+@mixin google-font($font) {
+    $font: unquote($font);
+    @import url(https://fonts.googleapis.com/css?family=#{$font});
+}
+
+// === Breakpoints ===
+
+@mixin for-small-phone-only() {
+    @media only screen and (max-width: $media-phone-min - 1px) {
+        @content;
+    }
+}
+
+@mixin for-phone-up() {
+    @media only screen and (min-width: $media-phone-min) {
+        @content;
+    }
+}
+
+@mixin for-tablet-portrait-up() {
+    @media only screen and (min-width: $media-tablet-min) {
+        @content;
+    }
+}
+
+@mixin for-tablet-portrait-only() {
+    @media only screen and (min-width: $media-tablet-min) and (max-width: $media-small-desktop-min - 1px) {
+        @content;
+    }
+}
+
+@mixin for-small-desktop-up() {
+    @media only screen and (min-width: $media-small-desktop-min) {
+        @content;
+    }
+}
+
+@mixin for-desktop-up() {
+    @media only screen and (min-width: $media-desktop-min) {
+        @content;
+    }
+}
+
+@mixin for-big-desktop-up() {
+    @media only screen and (min-width: $media-big-desktop-min) {
+        @content;
+    }
+}
+
+@mixin define-breakpoint($name) {
+    &:after {
+      content: $name;
+      display: none;
+    }
+}
+
+// === End breakpoints ===
+
+@mixin for-touch-enabled() {
+    @media (hover: none), (-moz-touch-enabled: 1) {
+        @content;
+    }
+}
+
+@mixin for-touch-disabled() {
+    @media (hover), (-moz-touch-enabled: 0) {
+        @content;
+    }
+}
+
+@mixin absolute-fullsize($width: 100%, $height: 100%) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: $width;
+    height: $height;
+}
+
+@mixin flex-x($align: flex-start, $flow: row nowrap) {
+    display: flex;
+    flex-flow: $flow;
+    justify-content: $align;
+}
+
+@mixin flex-xy($xAlign: flex-start, $yAlign: flex-start, $flow: row nowrap) {
+    display: flex;
+    flex-flow: $flow;
+    justify-content: $xAlign;
+    align-items: $yAlign;
+}
+
+@mixin full-wh-percent() {
+    width: 100%;
+    height: 100%;
+}
+
+@function calc-flex-basis-double($flex-basis) {
+    $itemCount: floor(100% / $flex-basis);
+    $totalGutterWidth: 100% % $flex-basis;
+    $perItemGutterWidth: $totalGutterWidth / $itemCount;
+    @return $flex-basis * 2 + $perItemGutterWidth;
+}

@@ -337,6 +337,10 @@
                     <td>{{ $profile->parent_phone }}</td>
                 </tr>
                 <tr>
+                    <th>Emailadres</th>
+                    <td>{{ $profile->parent_email }}</td>
+                </tr>
+                <tr>
                     <th>Adres</th>
                     <td>{{ $profile->parent_address }}</td>
                 </tr>

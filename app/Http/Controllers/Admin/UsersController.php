@@ -294,7 +294,7 @@ class UsersController extends AdminBaseController
 
         // Natural parents
         if ($user->isMember()) {
-            $input = array_merge($input, $request->only('parent_phone', 'parent_address', 'parent_zip_code', 'parent_town'));
+            $input = array_merge($input, $request->only('parent_phone', 'parent_email', 'parent_address', 'parent_zip_code', 'parent_town'));
         }
 
         // Check if the region is valid
