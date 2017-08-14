@@ -28,13 +28,18 @@ class HomeController extends BaseController {
         preg_match_all("/(Chromium|Chrome|Safari|Firefox|OPR|MSIE|version)[\/|\s]([\d]+)/i", $ua, $browser_matches);
         //print_r($browser_matches);
 
+        $browser = array(
+            'name' => '',
+            'version' => ''
+        );
+
         $freezeVersion = false;
         foreach($browser_matches[1] as $i => $match) {
             if(strtolower($match) == 'version') {
                 $browser['version'] = $browser_matches[2][$i];
                 $freezeVersion = true;
             } else {
-                if(!isset($browser['name']) || $browser['name'] == 'Safari') {
+                if($browser['name'] == '' || $browser['name'] == 'Safari') {
                     $browser['name'] = strtolower($match);
                     if(!$freezeVersion) {
                         $browser['version'] = $browser_matches[2][$i];
