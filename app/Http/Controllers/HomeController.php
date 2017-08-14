@@ -45,11 +45,11 @@ class HomeController extends BaseController {
 
         //print_r($browser);
 
-        // Safari can probably be 9 once JS actually gets transpiled
+        // Safari 9 might give JS errors
         $requirements = array(
             'chrome' => 29,
             'firefox' => 28,
-            'safari' => 10,
+            'safari' => 9,
             'opr' => 17
         );
         // echo '<br><br>';
