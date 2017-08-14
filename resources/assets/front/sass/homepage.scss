@@ -204,6 +204,19 @@ nav {
             &:active {
                 color: $tertiary;
             }
+
+            &.focus {
+                position: absolute;
+                bottom: 2rem;
+                background: $secondary;
+                transition: all .8s;
+                border: 1px solid rgba(255,255,255,.1);
+                box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.8);
+
+                &:hover {
+                    background: $tertiary;
+                }
+            }
         }
     }
 

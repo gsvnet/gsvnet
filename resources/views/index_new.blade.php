@@ -43,6 +43,7 @@
                 <a href="#fotos">Foto's</a>
                 <a href="{{ action('MemberController@study') }}">Studeren</a>
                 <a href="{{ action('ForumThreadsController@getIndex') }}">Forum</a>
+                <a href="{{ action('MemberController@becomeMember') }}" id="register" class="focus">Word lid!</a> 
             </div>
             <div class="links">
                 <a href="#gsv">GSV</a>
