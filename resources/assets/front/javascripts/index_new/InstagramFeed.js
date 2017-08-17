@@ -4,7 +4,7 @@ class InstagramFeed {
         template: '<a href="{{link}}" target="_blank" style="background-image:url(\'{{image}}\');"><img src="{{image}}" style="visibility: hidden;"><p>{{caption}}</p></a>',
         limit: {
             min: 3,
-            max: 20,
+            max: 8,
             rows: 2
         },
         doubleWidth: {
