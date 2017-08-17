@@ -101,19 +101,20 @@ class InstagramFeed {
         
         if(this.gridWidth > 2) {
 
+            let desiredTileCount = this._getDesiredTileCount();
+
             this.$target.children().each((i, instaPost) => {
+                if(i + candidateCount >= desiredTileCount) {               
+                    return false;
+                }
+
                 let $instaPost = $(instaPost),
                     aspectRatio = $instaPost.data('aspectRatio'),
                     gridNumber = i + candidateCount + 1,
                     row = Math.floor(gridNumber / this.gridWidth);
-
-                //console.log(i, ' i, cc:', candidateCount, ', gn:' , gridNumber, this.gridWidth, row);
                 
                 // Tiles at the end of a row are not eligible
                 if (gridNumber / this.gridWidth == row) return true;
-
-                //console.log(' ^ not at the end of the row');
-                //console.log(aspectRatio, this.settings.doubleWidth.minAspectRatio, candidates[row]);
                 
                 if (
                     aspectRatio > this.settings.doubleWidth.minAspectRatio 
@@ -124,8 +125,7 @@ class InstagramFeed {
                     candidates[row] = $instaPost;
                 }
             });
-            
-            //console.log(candidates, $(candidates), '--------------------');
+
             $(candidates).each((undefined, instaPost) => {
                 if(instaPost) {
                     instaPost.addClass(this.settings.classNames.double);
@@ -141,8 +141,7 @@ class InstagramFeed {
     _limitRows () {
         let settings = this.settings,
             classNames = settings.classNames,
-            fillableRows = Math.min(Math.floor(this.tileCount + this.doubleCount / this.gridWidth), settings.limit.rows),
-            desiredTileCount = Math.max(fillableRows * this.gridWidth - this.doubleCount, settings.limit.min);
+            desiredTileCount = this._getDesiredTileCount(this.doubleCount);
         
         this.$target.children().removeClass(classNames.removed);
         this.$target.children().filter(`:gt(${desiredTileCount - 1})`).addClass(classNames.removed);
@@ -160,5 +159,11 @@ class InstagramFeed {
         for(let i=0; i<fillerCount; i++) {
             $target.append(`<${this.elementTag} class="${classNames.hidden}"></${this.elementTag}>`);
         }
+    }
+
+    _getDesiredTileCount (doubleCount = 0) {
+        let settings = this.settings,
+            fillableRows = Math.min(Math.floor(this.tileCount + doubleCount / this.gridWidth), settings.limit.rows);
+        return Math.max(fillableRows * this.gridWidth - doubleCount, settings.limit.min);
     }
 }
