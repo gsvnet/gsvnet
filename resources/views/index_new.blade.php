@@ -66,8 +66,8 @@
             <div id="video-controls">
                 <span class="fa-stack">
                     <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-stack-1x fa-volume-up"></i>
-                    <i class="fa fa-stack-1x fa-volume-off" style="display: none"></i>
+                    <i class="fa fa-stack-1x fa-volume-up"  style="display: none"></i>
+                    <i class="fa fa-stack-1x fa-volume-off"></i>
                 </span>
             </div>
         </header>

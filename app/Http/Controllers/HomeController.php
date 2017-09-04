@@ -17,6 +17,18 @@ class HomeController extends BaseController {
 
 	public function showIndex()
 	{
+		// Get the coming events and show it in the sidebar
+		$events = $this->events->upcoming(5);
+        $birthdays = $this->profiles->byUpcomingBirthdays(1);
+
+        return view('index')->with([
+            'events' => $events,
+            'birthdays' => $birthdays
+        ]);
+	}
+
+    public function showNewIndex()
+    {
         // Temporary filter to decide which index page to show
         $ua = $_SERVER['HTTP_USER_AGENT'];
         //echo $ua;
@@ -48,8 +60,6 @@ class HomeController extends BaseController {
             }
         }
 
-        //print_r($browser);
-
         // Safari 9 might give JS errors
         $requirements = array(
             'chrome' => 29,
@@ -57,24 +67,13 @@ class HomeController extends BaseController {
             'safari' => 9,
             'opr' => 17
         );
-        // echo '<br><br>';
-        // echo array_key_exists($browser['name'], $requirements);
-        // echo '<br>';
-        // echo $requirements[$browser['name']];
 
         if(array_key_exists($browser['name'], $requirements) && $browser['version'] >= $requirements[$browser['name']]) {
             return view('index_new');
-        }  
-
-		// Get the coming events and show it in the sidebar
-		$events = $this->events->upcoming(5);
-        $birthdays = $this->profiles->byUpcomingBirthdays(1);
-
-        return view('index')->with([
-            'events' => $events,
-            'birthdays' => $birthdays
-        ]);
-	}
+        } else {
+            $this->showIndex();
+        }
+    }
 
     public function sponsorProgram()
     {
