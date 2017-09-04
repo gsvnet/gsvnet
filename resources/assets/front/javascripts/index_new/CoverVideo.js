@@ -5,7 +5,7 @@ class CoverVideo {
         this.$overlay = $(overlay),
         this.videoId = videoId;
         this.videoAspectRatio = 1;
-        this.muted = false;
+        this.muted = true;
         this.preMuteAudio = 1;
         this.$audioControls = $(audioControls);
 
@@ -26,7 +26,7 @@ class CoverVideo {
         let $container = this.$audioControls.children().first(),
             $unmuted = $container.children().eq(1),
             $muted = $container.children().last();
-        if(!this.muted) {//this.player.volume > 0
+        if(!this.muted) {
             this.muted = true;
             $unmuted.hide();
             $muted.show();
@@ -54,6 +54,7 @@ class CoverVideo {
             params: {
                 'api': true,
                 'autoplay': true,
+                'mute': this.muted,
                 'controls': false,
                 'quality': ['720', '1080'],
                 'endscreen-enable': false,

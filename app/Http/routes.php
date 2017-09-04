@@ -3,6 +3,9 @@
 // We keep the home route name as some built in functions use the 'home' name
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@showIndex']);
 
+// Keep the new homepage accessible
+Route::get('welkom', ['as' => 'home', 'uses' => 'HomeController@showNewIndex']);
+
 // Login and logout routes
 Route::get('inloggen', ['middleware' => 'guest', 'uses' => 'SessionController@getLogin']);
 Route::post('inloggen', ['middleware' => 'guest', 'uses' => 'SessionController@postLogin']);
