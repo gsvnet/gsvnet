@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts._forum')
 
 @section('body-id', 'thread-create-page')
 @section('title', 'Nieuw onderwerp')
