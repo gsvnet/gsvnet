@@ -15,11 +15,29 @@ Messages = (function(){
     }
 
     function init() {
-        if(typeof USER_ID === 'undefined' || typeof notificationsUrl === 'undefined') {
+         if(typeof notificationsUrl === 'undefined') {
+            console.log('No notifications url!');
             return;
         }
 
         var updates = io.connect(notificationsUrl);
+
+        $indicator = $('.online-indicator').first();
+
+        if ($indicator) {
+            $indicator.addClass('online-indicator--online');
+            $counter = $('.online-number').first();
+            $term = $('.online-number-term').first();
+
+            updates.on('online', function(data) {
+                $counter.text(data);
+                $term.text(data == 1 ? "GSV'er" : "GSV'ers");
+            });
+        }
+
+        if(typeof USER_ID === 'undefined') {
+            return;
+        }
 
         updates.on('activity:app.reply', function (data) {
             if(data.user_id != USER_ID) {
@@ -36,19 +54,6 @@ Messages = (function(){
                 setTitle();
             }
         });
-
-        $indicator = $('.online-indicator').first();
-
-        if ($indicator) {
-            $indicator.addClass('online-indicator--online');
-            $counter = $('.online-number').first();
-            $term = $('.online-number-term').first();
-
-            updates.on('online', function(data) {
-                $counter.text(data);
-                $term.text(data == 1 ? "GSV'er" : "GSV'ers");
-            });
-        }
     }
 
     return {

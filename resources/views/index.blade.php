@@ -167,6 +167,8 @@
                     <h2>Sponsors</h2>
                     <p><img src="/images/ads/patrimonium.gif" title="Patrimonium" /></p>
                     <p><a href="http://www.oudmankeukens.nl/" title="Oudman Keukens" rel="nofollow"><img src="/images/ads/oudman.png" title="Oudman keukens" /></a></p>
+                    <p><a href="https://www.hoyhoy.nl/energie-vergelijken/" title="Hoyhoy Energievergelijker" rel="nofollow"><img src="/images/ads/hoyhoy.gif" title="Hoyhoy Energievergelijker" /></a></p>
+                    <p><a href="https://www.pricewise.nl/energie-vergelijken/" title="Pricewise Energie vergelijken" rel="nofollow"><img src="/images/ads/pricewise.gif" title="Pricewise Energie Vergelijken" /></a></p>
                 </div>
             </div>
         </div>

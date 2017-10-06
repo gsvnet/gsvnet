@@ -122,10 +122,13 @@
     @endif
 
     @section('javascripts')
+        <script>
+            var notificationsUrl = '{{Config::get('gsvnet.notificationsUrl')}}';
+        </script>
+
         @if (Auth::check())
         <script>
             var USER_ID = {{Auth::user()->id}};
-            var notificationsUrl = '{{Config::get('gsvnet.notificationsUrl')}}';
         </script>
         @endif
 
