@@ -73,7 +73,7 @@
 							<span class="list-title">Student Coaching</span>
 							Wakker bij Bakker<br />
 							<span class="list-description">{!! HTML::link('http://www.wakkerbijbakker.nl') !!}</span>
-							<p><a href="http://www.wakkerbijbakker.nl" title="Wakker bij Bakker Student Coaching" rel="nofollow"><img src="/images/ads/wakkerbijbakker.png" title="Wakker bij Bakker Student Coaching" /></a></p>
+							<p><a href="http://www.wakkerbijbakker.nl" title="Wakker bij Bakker Student Coaching"><img src="/images/ads/wakkerbijbakker.png" title="Wakker bij Bakker Student Coaching" /></a></p>
 						</li>
 					</ul>
 				</div>
