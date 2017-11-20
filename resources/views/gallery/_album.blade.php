@@ -11,4 +11,4 @@
         @endif
     </a>
 </div>
-<!-- Direct bestanden bewerken in Github testen -->
+<!-- Direct bestanden bewerken in Github testen, nu versie 2 -->
