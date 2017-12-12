@@ -172,6 +172,8 @@
                     <p><a href="https://www.autoverzekering.nl/" title="Autoverzekering vergelijken"><img src="/images/annonces/autoverzekering_nl.png" title="Autoverzekering vergelijken" alt="Autoverzekering vergelijken" /></a></p>
                     <p><a href="https://www.overstappen.nl/autoverzekering/" title="Autoverzekering"><img src="/images/annonces/overstappen_nl.png" title="Autoverzekering" alt="Autoverzekering" /></a></p>
                     <p><a href="http://www.rijschoolkoster.nl/" title="Rijschool Koster"><img src="/images/annonces/rijschoolkoster.png" title="Rijschool Koster" alt="Rijschool Koster" /></a></p>
+                    <p><a href="http://www.dressmeclothing.nl/" title="Kledingdrukkerij DressMe Clothing"><img src="/images/annonces/dressmeclothing.png" title="Kledingdrukkerij DressMe Clothing" alt="Kledingdrukkerij DressMe Clothing" /></a></p>
+                    <p><a href="https://www.zorgwijzer.nl/" title="Vergelijk zorgverzekeringen"><img src="/images/annonces/zorgwijzer.png" title="Vergelijk zorgverzekeringen" alt="Vergelijk zorgverzekeringen" /></a></p>
                 </div>
             </div>
         </div>

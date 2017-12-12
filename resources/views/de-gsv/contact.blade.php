@@ -40,6 +40,9 @@
 						</li>
 						<li>
 							<span class="list-title">Praeses</span>
+							<address>
+								tel. 06-36460508
+							</address>
 							<span class="list-description">{!!HTML::mailto('praeses@gsvnet.nl')!!}</span>
 						</li>
 						<li>
