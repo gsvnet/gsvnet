@@ -38,7 +38,7 @@
             </table>
             </div>
 
-            {!! $files->render() !!}
+            {!! $files->appends(Input::except(array('page')))->render() !!}
 
         </div>
 
