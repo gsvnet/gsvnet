@@ -67,9 +67,10 @@
 						<li>
 							<span class="list-title">IFES-medewerker</span>
 							<address>
-								Frederik Boersema<br />
-								tel. 06-49942102
+								Albert Veenstra<br />
+								tel. 06-41976719
 							</address>
+							<span class="list-description">{!!HTML::mailto('albert@ifes.nl')!!}</span>
 							<span class="list-description">{!! HTML::link('https://www.ifes.nl') !!}</span>
 						</li>
 						<li>
