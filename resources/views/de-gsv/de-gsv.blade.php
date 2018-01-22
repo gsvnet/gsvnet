@@ -30,15 +30,15 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="images/foto2.jpg" alt="De GSV" width="960" height="640">
+                    <img src="images/GSV.png" alt="De GSV" width="960" height="640">
                     <div class="carousel-caption">
                     De GSV
                     </div>
                 </div>
                 <div class="item">
-                    <img src="images/foto.jpg" alt="Mountenbiken op zomerkamp" width="960" height="640">
+                    <img src="images/Dies.png" alt="Dies Natalis" width="960" height="640">
                     <div class="carousel-caption">
-                    Mountainbiken op zomerkamp
+                    Dies Natalis
                     </div>
                 </div>
                 <div class="item">

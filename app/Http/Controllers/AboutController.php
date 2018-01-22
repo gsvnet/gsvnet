@@ -3,17 +3,16 @@
 use GSVnet\Committees\CommitteesRepository;
 use GSVnet\Senates\SenatesRepository;
 
-class AboutController extends BaseController {
-
-
+class AboutController extends BaseController
+{
     public function __construct(CommitteesRepository $committees, SenatesRepository $senates)
     {
         $this->committees = $committees;
         $this->senates = $senates;
     }
 
-	public function showAbout()
-	{
+    public function showAbout()
+    {
         return view('de-gsv.de-gsv');
     }
 
