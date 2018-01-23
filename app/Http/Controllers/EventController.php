@@ -60,6 +60,21 @@ class EventController extends BaseController {
 
         return view('events.show')
             ->with('event', $event)
-            ->with('types', Config::get('gsvnet.eventTypes'));
+            ->with('types', Config::get('gsvnet.eventTypes'))
+            ->with('year', $year)
+            ->with('month', $month)
+            ->with('slug', $slug);
     }
+
+    public function participate($year, $month, $slug)
+    {
+        $date = Carbon::createFromDate($year, Config::get("gsvnet.months.$month"), 1);
+        $event = $this->events->byYearMonthSlug($date, $slug);
+        
+        $user = Auth::user();
+        $event->users()->save($user);
+
+        return redirect()->back();
+    }
+
 }

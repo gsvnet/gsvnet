@@ -22,6 +22,29 @@
             <div itemprop="description">
                 {!! $event->present()->descriptionFormatted !!}
             </div>
+
+            @can('events.show-private')
+                <div style="margin-top:3em">
+                    <form method="post" action="{{URL::action('EventController@participate', array('year'=>$year, 'month'=>$month, 'slug'=>$slug))}}">
+                        <input type="submit" id="submit-reply" value="Ben ik bij" class="button float-right">
+                    </form>
+                    {{--  {!! Former::open()->action(action('EventController@participate', array('year'=>$year, 'month'=>$month, 'slug'=>$slug)))->method('post') !!}
+                    {!! Former::text('query')->placeholder('Zoeken op het forum')->label(false) !!}
+                    {!! Former::actions( Button::submit('Submit') ) !!}
+                    {!! Former::close() !!}  --}}
+                    {{--  <a style="float:right" class="button" href="{{URL::action('EventController@participate', array('year'=>$year, 'month'=>$month, 'slug'=>$slug))}}" rel="nofollow">Ben ik bij</a>                          --}}
+                    <h3>Deelnemers:</h3>
+                    @if(count($event->users) > 0)
+                    <ol>
+                        @foreach($event->users as $user)
+                            <li>{{$user->firstname}} {{$user->lastname}}</li>
+                        @endforeach
+                    </ol>
+                    @else
+                        <p>Nog geen deelnemers</p>
+                    @endif
+                </div>
+            @endcan
         </div>
 
         <div class="secondary-column">

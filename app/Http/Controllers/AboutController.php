@@ -3,8 +3,8 @@
 use GSVnet\Committees\CommitteesRepository;
 use GSVnet\Senates\SenatesRepository;
 
-class AboutController extends BaseController
-{
+class AboutController extends BaseController {
+    
     public function __construct(CommitteesRepository $committees, SenatesRepository $senates)
     {
         $this->committees = $committees;

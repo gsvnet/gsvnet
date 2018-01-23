@@ -4,6 +4,7 @@ use GSVnet\Forum\Replies\Reply;
 use GSVnet\Forum\Threads\Thread;
 use GSVnet\Users\ProfileActions\ProfileAction;
 use GSVnet\Users\Profiles\UserProfile;
+use GSVnet\Events\Event;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -141,6 +142,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function threads()
     {
         return $this->hasMany(Thread::class);
+    }
+
+    public function events()
+    {
+        return $this->belongsToMany(Event::class);
     }
 
     public function parents()

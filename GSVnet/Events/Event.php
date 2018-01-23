@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use GSVnet\Users\User;
 
 class Event extends Model {
 
@@ -12,6 +13,11 @@ class Event extends Model {
     protected $guarded = array();
 
     public $presenter = 'GSVnet\Events\EventPresenter';
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 
     public function scopePublic($query)
     {
