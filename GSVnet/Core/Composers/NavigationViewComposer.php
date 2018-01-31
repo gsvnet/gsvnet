@@ -1,6 +1,5 @@
 <?php namespace GSVnet\Core\Composers;
 
-use haampie\Gravatar\Gravatar;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;

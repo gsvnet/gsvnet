@@ -1,6 +1,5 @@
 <?php namespace GSVnet\Users\Profiles;
 
-use haampie\Gravatar\Gravatar;
 use Laracasts\Presenter\Presenter;
 use Carbon\Carbon;
 use Config;
