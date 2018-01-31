@@ -101,12 +101,13 @@ class UserPresenter extends Presenter
         return $string;
     }
 
-    public function avatar($size = 120)
+    public function avatar($size = 120, $className = '')
     {
-        $url = Gravatar::image($this->email, $size, 'mm', null, null, true);
-        return HTML::image($url, 'Avatar', ['width' => $size, 'height' => $size]);
+        return Gravatar::image($this->email, $size, 'mm', null, null, true);
+        //return HTML::image($url, 'Avatar', ['width' => $size, 'height' => $size]);
     }
 
+    // Let op: deze functie returned HTML, de functie hierboven returned een URL
     public function avatarDeferred($size = 120)
     {
         $url = Gravatar::image($this->email, $size, 'mm', null, null, true);

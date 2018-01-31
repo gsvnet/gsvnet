@@ -5,6 +5,7 @@ use Laracasts\Presenter\Presenter;
 use Carbon\Carbon;
 use Config;
 use URL;
+use HTML;
 
 class ProfilePresenter extends Presenter
 {
@@ -47,16 +48,16 @@ class ProfilePresenter extends Presenter
     {
         if ($this->photo_path != '')
             return action('MemberController@showPhoto', [$this->user->profile->id, 'x-small']);
-
-        return Gravatar::image($this->user->email, 102, 'mm', null, null, true);
+            
+        return $this->user->present()->avatar(102);
     }
 
     public function photo()
     {
         if ($this->photo_path != '')
-            action('MemberController@showPhoto', $this->user->profile->id);
+            return action('MemberController@showPhoto', $this->user->profile->id);
 
-        return Gravatar::image($this->user->email, 120, 'mm', null, null, true);
+        return $this->user->present()->avatar(120);
     }
 
     public function regionName()
