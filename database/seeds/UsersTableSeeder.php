@@ -23,6 +23,7 @@ class UsersTableSeeder extends Seeder {
     {
         $users = [];
         $profiles = [];
+        $password = bcrypt('testen');
 
         foreach( range(1, $this->totalUsers) as $userId)
         {
@@ -33,7 +34,7 @@ class UsersTableSeeder extends Seeder {
                 'middlename' => '',
                 'lastname' => $this->faker->lastName,
                 'username' => $this->faker->userName,
-                'password' => 'testen',
+                'password' => $password,
                 'email' => $this->faker->companyEmail,
                 'verified' => $this->faker->boolean(30),
                 'type' => rand(0,3),
