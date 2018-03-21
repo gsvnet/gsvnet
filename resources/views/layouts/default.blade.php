@@ -132,7 +132,7 @@
         </script>
         @endif
 
-        <script async src="/build-javascripts/app.js?v=1.5.6"></script>
+        <script async src="/build-javascripts/app.js?v=1.5.7"></script>
 
         @if(!Config::get('app.debug'))
             @include('partials/_analytics')
