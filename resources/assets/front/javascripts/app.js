@@ -21,12 +21,7 @@ app = (function() {
 	};
 
 	function home() {
-        if(!checkCookie('newsOverlay')) {
-            $('#newsOverlay').removeClass('hidden');
-            setCookie('newsOverlay');
-        }
-
-        function setCookie(cname, cvalue = true, exdays = 30) {
+        function setCookie(cname, cvalue, exdays) {
             var d = new Date();
             d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
             var expires = "expires="+d.toUTCString();
@@ -50,6 +45,11 @@ app = (function() {
         
         function checkCookie(cname) {
             return getCookie(cname) != "";
+        }
+        
+        if(!checkCookie('newsOverlay')) {
+            $('#newsOverlay').removeClass('hidden');
+            setCookie('newsOverlay', true, 30);
         }
 	}
 
