@@ -52,6 +52,30 @@
         outline: 0;
         padding: 0;
     }
+
+    .close-button2 {
+      margin: 20px;
+      background-color: #5C0120;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 24px;
+    }
+
+    .close-button2:hover {
+      margin: 20px;
+      background-color: #700026;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 24px;
+    }
 }
 
 @media only screen and (max-width: 480px){

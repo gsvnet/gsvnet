@@ -87,7 +87,10 @@
         <div id="newsPopup">
             <a href="#" class="close-button" onclick="$('#newsOverlay').hide()" class="button">x</a>
             <iframe src="https://player.vimeo.com/video/261181688" width="640" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-            <p>BREAKING NEWS: De GSV gaat samen met ATV! Met overweldigende meerderheid is besloten dat we vanaf juni samen verder zullen gaan onder de naam van de GSV. Het is een ontzettend gave stap en we hebben enorm veel zin in de komende tijd! Dit betekent ook dat vanaf komende zomer hbo-studenten lid kunnen worden bij de GSV. Op de hoogte blijven? Volg ons online: www.instagram.com/gsvgroningen www.gsvnet.nl</p>
+            <p><b>BREAKING NEWS</b>: De GSV gaat samen met ATV! Met overweldigende meerderheid is besloten dat we vanaf juni samen verder zullen gaan onder de naam van de GSV. Het is een ontzettend gave stap en we hebben enorm veel zin in de komende tijd! Dit betekent ook dat vanaf komende zomer hbo-studenten lid kunnen worden bij de GSV. Op de hoogte blijven? Volg ons online: <a href="https://www.instagram.com/gsvgroningen">www.instagram.com/gsvgroningen</a> en <a href="https://www.facebook.com/GSVgroningen/">www.facebook.com/GSVgroningen</a>.</p>
+            <div style="text-align:center;">
+              <button class="close-button2" onclick="$('#newsOverlay').hide()">Sluiten</button>
+            </div>
         </div>
     </div>
 
