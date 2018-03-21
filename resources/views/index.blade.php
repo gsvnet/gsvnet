@@ -83,6 +83,14 @@
 @stop
 
 @section('content')
+    <div id="newsOverlay">
+        <div id="newsPopup">
+            <a href="#" class="close-button" onclick="$('#newsOverlay').hide()" class="button">x</a>
+            <iframe src="https://player.vimeo.com/video/261181688" width="640" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <p>BREAKING NEWS: De GSV gaat samen met ATV! Met overweldigende meerderheid is besloten dat we vanaf juni samen verder zullen gaan onder de naam van de GSV. Het is een ontzettend gave stap en we hebben enorm veel zin in de komende tijd! Dit betekent ook dat vanaf komende zomer hbo-studenten lid kunnen worden bij de GSV. Op de hoogte blijven? Volg ons online: www.instagram.com/gsvgroningen www.gsvnet.nl</p>
+        </div>
+    </div>
+
     <div class="column-holder" role="main">
         <p class="delta">Denk je na over een actief studentenleven in Groningen? Dan ben je hier aan het juiste adres. De GSV is dé perfecte combinatie van christelijke waarden en het echte studentenleven.</p>
         <div class="main-content has-border-bottom">
