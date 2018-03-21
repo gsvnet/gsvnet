@@ -83,7 +83,7 @@
 @stop
 
 @section('content')
-    <div id="newsOverlay">
+    <div id="newsOverlay" onclick="(function(e, obj){if( e.target != obj ) return false;$(obj).hide();})(event, this)">
         <div id="newsPopup">
             <a href="#" class="close-button" onclick="$('#newsOverlay').hide()" class="button">x</a>
             <iframe src="https://player.vimeo.com/video/261181688" width="640" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
