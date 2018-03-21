@@ -83,13 +83,13 @@
 @stop
 
 @section('content')
-    <div id="newsOverlay" onclick="(function(e, obj){if( e.target != obj ) return false;$(obj).hide();})(event, this)">
+    <div id="newsOverlay" class="hidden" onclick="(function(e, obj){if( e.target != obj ) return false;$(obj).hide();})(event, this)">
         <div id="newsPopup">
             <a href="#" class="close-button" onclick="$('#newsOverlay').hide()" class="button">x</a>
             <iframe src="https://player.vimeo.com/video/261181688" width="640" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             <p><b>BREAKING NEWS</b>: De GSV gaat samen met ATV! Met overweldigende meerderheid is besloten dat we vanaf juni samen verder zullen gaan onder de naam van de GSV. Het is een ontzettend gave stap en we hebben enorm veel zin in de komende tijd! Dit betekent ook dat vanaf komende zomer hbo-studenten lid kunnen worden bij de GSV. Op de hoogte blijven? Volg ons online: <a href="https://www.instagram.com/gsvgroningen">www.instagram.com/gsvgroningen</a> en <a href="https://www.facebook.com/GSVgroningen/">www.facebook.com/GSVgroningen</a>.</p>
             <div style="text-align:center;">
-              <button class="close-button2" onclick="$('#newsOverlay').hide()">Sluiten</button>
+                <button class="close-button2" onclick="$('#newsOverlay').hide()">Sluiten</button>
             </div>
         </div>
     </div>
@@ -185,6 +185,7 @@
                     <p><a href="http://www.rijschoolkoster.nl/" title="Rijschool Koster"><img src="/images/annonces/rijschoolkoster.png" title="Rijschool Koster" alt="Rijschool Koster" /></a></p>
                     <p><a href="http://www.dressmeclothing.nl/" title="Kledingdrukkerij DressMe Clothing"><img src="/images/annonces/dressmeclothing.png" title="Kledingdrukkerij DressMe Clothing" alt="Kledingdrukkerij DressMe Clothing" /></a></p>
                     <p><a href="https://www.creditcard.nl/" title="Creditcard.nl"><img src="/images/annonces/creditcard_nl.png" title="Creditcard.nl" alt="Creditcard.nl" /></a></p>
+                    <p><a href="https://skepp.nl/nl/" title="Skepp.nl"><img src="/images/annonces/skepp.jpg" title="Skepp.nl" alt="Skepp.nl" /></a></p>
                 </div>
             </div>
         </div>

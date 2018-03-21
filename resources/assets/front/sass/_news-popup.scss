@@ -9,6 +9,10 @@
     background-color: rgba(0, 0, 0, .4);
     overflow: auto;
     z-index: 203;
+
+    &.hidden {
+        display: none !important;
+    }
 }
 
 #newsPopup {
