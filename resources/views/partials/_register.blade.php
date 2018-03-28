@@ -6,3 +6,8 @@
 {!! Former::text('register-email')->label('Email')->placeholder('Email')!!}
 {!! Former::password('register-password')->label('Wachtwoord')->placeholder('Wachtwoord')!!}
 {!! Former::password('register-password_confirmation')->label('Herhaal wachtwoord')->placeholder('Herhaal')!!}
+
+<!-- Honeypot input -->
+<div style="display: none;">
+  {!! Former::text('website')!!}
+</div>
