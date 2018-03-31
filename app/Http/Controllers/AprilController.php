@@ -26,12 +26,12 @@ class AprilController extends BaseController {
     $menCounter = 0;
     $womenCounter = 100;
 
-    $users = User::orderBy('lastname', 'ASC')
-        ->orderBy('firstname', 'ASC')
-        ->where('type', User::MEMBER)
-        ->orWhere('type', User::INTERNAL_COMMITTEE)
-        ->join('user_profiles', 'users.id', '=', 'user_profiles.user_id')
-        ->get();
+    $users = User::with('profile.yearGroup')
+            ->orderBy('lastname', 'ASC')
+            ->orderBy('firstname', 'ASC')
+            ->where('type', User::MEMBER)
+            ->orWhere('type', User::INTERNAL_COMMITTEE)
+            ->get();
 
     foreach ($users as $user) {
       $url = Gravatar::image($user->email, 120, 'mm', null, null, true);
