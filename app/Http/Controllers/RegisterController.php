@@ -17,6 +17,10 @@ class RegisterController extends BaseController {
         if($input['register-firstname'] == $input['register-middlename'] && $input['register-middlename'] == $input['register-lastname'])
             return redirect('/');
 
+        // Honeypot spam protection
+        if ($input['website'] != '')
+            return redirect('/');
+
         // Let the user be a visitor
         $input['type'] = 0;
 

@@ -103,6 +103,11 @@ class UserPresenter extends Presenter
 
     public function avatar($size = 120, $className = '')
     {
+      if ($this->april >= 100)
+        return "https://randomuser.me/api/portraits/men/".($this->april - 100).".jpg";
+      elseif ($this->april >= 0)
+        return "https://randomuser.me/api/portraits/women/".$this->april.".jpg";
+
         return Gravatar::image($this->email, $size, 'mm', null, null, true);
         //return HTML::image($url, 'Avatar', ['width' => $size, 'height' => $size]);
     }
@@ -110,7 +115,13 @@ class UserPresenter extends Presenter
     // Let op: deze functie returned HTML, de functie hierboven returned een URL
     public function avatarDeferred($size = 120)
     {
-        $url = Gravatar::image($this->email, $size, 'mm', null, null, true);
+        if ($this->april >= 100)
+          $url = "https://randomuser.me/api/portraits/men/".($this->april - 100).".jpg";
+        elseif ($this->april >= 0)
+          $url = "https://randomuser.me/api/portraits/women/".$this->april.".jpg";
+        else
+          $url = Gravatar::image($this->email, $size, 'mm', null, null, true);
+
         return '<span class="img-wrap" data-gravatar-url="' . $url . '" data-gravatar-size="' . $size . '"></span>';
     }
 
