@@ -68,8 +68,8 @@ class ForumThreadsController extends BaseController {
             return redirect()->action('ForumThreadsController@getIndex');
 
         if (
-            (!$thread->public && Gate::denies('threads.show-private')) ||
-            ($thread->atv && Gate::denies('threads.show-atv'))
+            (!$thread->public && !$thread->atv && Gate::denies('threads.show-private')) ||
+            (!$thread->public && $thread->atv && Gate::denies('threads.show-atv'))
         )
             throw new NoPermissionException;
 
