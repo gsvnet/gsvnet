@@ -10,9 +10,9 @@ class Thread extends Model
     use PresentableTrait;
     use SoftDeletes;
     use LikableTrait;
-    
+
     protected $table = 'forum_threads';
-    protected $fillable = ['subject', 'body', 'author_id', 'slug', 'public'];
+    protected $fillable = ['subject', 'body', 'author_id', 'slug', 'public', 'atv'];
     protected $with = ['author'];
     protected $dates = ['deleted_at'];
 

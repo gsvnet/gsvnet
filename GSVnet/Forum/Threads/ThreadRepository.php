@@ -34,6 +34,10 @@ class ThreadRepository extends EloquentRepository
         if ( Gate::denies('threads.show-private'))
         {
             $query = $query->public();
+
+            if ( !Gate::denies('threads.show-atv') ) {
+              $query = $query->orWhere('atv', '=', true);
+            }
         }
 
         if ( Auth::check() )
@@ -81,7 +85,7 @@ class ThreadRepository extends EloquentRepository
     public function getBySlug($slug)
     {
         $query = $this->model->where('slug', '=', $slug);
-        
+
         // Include removed ones if permissions allow
         if (Gate::allows('thread.manage'))
         {

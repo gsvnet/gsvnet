@@ -43,6 +43,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     const MEMBER = 2;
     const FORMERMEMBER = 3;
     const INTERNAL_COMMITTEE = 4;
+    const ATV = 5;
 
     /**
      * Get the unique identifier for the user.
