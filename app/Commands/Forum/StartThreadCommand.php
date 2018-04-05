@@ -10,8 +10,9 @@ class StartThreadCommand extends Command {
     public $tags;
     public $public;
     public $slug;
+    public $atv;
 
-    public function __construct($authorId, $subject, $body, $tags, $public, $slug)
+    public function __construct($authorId, $subject, $body, $tags, $public, $slug, $atv)
 	{
         $this->subject = $subject;
         $this->body = $body;
@@ -19,6 +20,7 @@ class StartThreadCommand extends Command {
         $this->tags = $tags;
         $this->authorId = $authorId;
         $this->slug = $slug;
+        $this->atv = $atv;
     }
 
 }

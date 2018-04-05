@@ -91,6 +91,10 @@ return [
 
         'threads.show-private' => [
             'type' => [User::MEMBER, User::FORMERMEMBER, User::INTERNAL_COMMITTEE]
+        ],
+
+        'threads.show-atv' => [
+          'type' => [User::MEMBER, User::FORMERMEMBER, User::INTERNAL_COMMITTEE, User::ATV]
         ]
     ],
 
