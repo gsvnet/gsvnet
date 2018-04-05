@@ -37,8 +37,8 @@ class ForumApiController extends BaseController {
         $thread = $reply->thread;
 
         if (
-          ! $thread->public && Gate::denies('threads.show-private') &&
-          $thread->atv && Gate::denies('threads.show-atv')
+          (!$thread->public && Gate::denies('threads.show-private')) ||
+          ($thread->atv && Gate::denies('threads.show-atv'))
         )
             throw new NoPermissionException;
 
@@ -53,8 +53,8 @@ class ForumApiController extends BaseController {
         $thread = $threads->requireById($threadId);
 
         if (
-          ! $thread->public && Gate::denies('threads.show-private') &&
-          $thread->atv && Gate::denies('threads.show-atv')
+          (!$thread->public && Gate::denies('threads.show-private')) ||
+          ($thread->atv && Gate::denies('threads.show-atv'))
         )
             throw new NoPermissionException;
 
