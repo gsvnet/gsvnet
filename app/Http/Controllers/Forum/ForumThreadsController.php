@@ -45,7 +45,6 @@ class ForumThreadsController extends BaseController {
     // show thread list - clean this method
     public function getIndex()
     {
-        dd(phpinfo());
         // query tags and retrieve the appropriate threads
         $tags = $this->tags->getAllTagsBySlug(Input::get('tags'));
         $threads = $this->threads->getByTagsPaginated($tags, $this->threadsPerPage);
