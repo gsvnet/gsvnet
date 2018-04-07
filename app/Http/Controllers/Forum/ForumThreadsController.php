@@ -45,6 +45,7 @@ class ForumThreadsController extends BaseController {
     // show thread list - clean this method
     public function getIndex()
     {
+        dd(phpinfo());
         // query tags and retrieve the appropriate threads
         $tags = $this->tags->getAllTagsBySlug(Input::get('tags'));
         $threads = $this->threads->getByTagsPaginated($tags, $this->threadsPerPage);
@@ -159,11 +160,16 @@ class ForumThreadsController extends BaseController {
             'subject' => $request->get('subject'),
             'body' => $request->get('body'),
             'tags' => $this->tags->getTagsByIds($request->get('tags')),
-            'public' => $request->exists('public')
+            'public' => $request->exists('public'),
+            'atv' => $request->exists('atv')
         ];
 
-        if(Gate::denies('threads.show-private'))
+        if (Gate::allows('threads.show-atv') && Gate::denies('threads.show-private')) {
+            $data['atv'] = true;
+        } else if (Gate::denies('threads.show-atv')) {
             $data['public'] = true;
+            $data['atv'] = false;
+        }
 
         $this->dispatchFromArray(EditThreadCommand::class, $data);
 
