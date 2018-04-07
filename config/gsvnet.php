@@ -14,7 +14,8 @@ return [
         'potential' => 1,
         'member' => 2,
         'formerMember' => 3,
-        'internalCommittee' => 4
+        'internalCommittee' => 4,
+        'atv' => 5
     ],
 
     'userTypesFormatted' => [
@@ -22,7 +23,8 @@ return [
         1 => 'Noviet',
         2 => 'Lid',
         3 => 'Oud-lid',
-        4 => 'Interne commissie'
+        4 => 'Interne commissie',
+        5 => 'ATV'
     ],
 
     'eventTypes' => [

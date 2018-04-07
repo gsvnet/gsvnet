@@ -56,7 +56,7 @@
         <h2>Studie</h2>
         <p class="side-helper">Als je nog geen studentnummer hebt, hoef je alleen je studie en startjaar in te vullen.</p>
         {!! Former::text('school')->label('Middelbare school')->placeholder('Middelbare school') !!}
-        {!! Former::select('studyStartYear')->label('Jaar van inschrijving bij de RuG')->range(date('Y')+1, date('Y')-5); !!}
+        {!! Former::select('studyStartYear')->label('Jaar van inschrijving bij je universiteit of hogeschool')->range(date('Y')+1, date('Y')-5); !!}
         <div class="form-group">
             <label for="study" class="control-label">Studie<sup>*</sup> en studentnummer (alleen als je dat al hebt)</label>
             <input type="text" class="form-control" value="{{old('study')}}" placeholder="Studie" id="study" name="study">

@@ -328,7 +328,7 @@ class UsersController extends AdminBaseController
         $this->authorize('users.manage');
         $user = $this->userManager->activateAtv($id);
 
-        flash()->success("Account van {$user->present()->fullName} is succesvol geactiveerd.");
+        flash()->success("Account van {$user->present()->fullName} is succesvol als ATV'er geactiveerd.");
 
         return redirect()->action('Admin\UsersController@index');
     }
