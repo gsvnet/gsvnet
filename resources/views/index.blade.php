@@ -175,19 +175,9 @@
                             <li>Geen verjaardagen deze week.</li>
                         @endif
                     </ul>
-                    <h2>Sponsors</h2>
-                    <p><img src="/images/annonces/patrimonium.gif" title="Patrimonium" /></p>
-                    <p><a href="http://www.oudmankeukens.nl/" title="Oudman Keukens" rel="nofollow"><img src="/images/annonces/oudman.png" title="Oudman keukens" /></a></p>
-                    <p><a href="https://www.hoyhoy.nl/energie-vergelijken/" title="energievergelijker"><img src="/images/annonces/hoyhoy.gif" title="energievergelijker" alt="energievergelijker" /></a></p>
-                    <p><a href="https://www.pricewise.nl/energie-vergelijken/" title="energie vergelijken"><img src="/images/annonces/pricewise.gif" title="energie vergelijken" alt="energie vergelijken" /></a></p>
-                    <p><a href="https://www.autoverzekering.nl/" title="Autoverzekering vergelijken"><img src="/images/annonces/autoverzekering_nl.png" title="Autoverzekering vergelijken" alt="Autoverzekering vergelijken" /></a></p>
-                    <p><a href="https://www.overstappen.nl/autoverzekering/" title="Autoverzekering"><img src="/images/annonces/overstappen_nl.png" title="Autoverzekering" alt="Autoverzekering" /></a></p>
-                    <p><a href="http://www.rijschoolkoster.nl/" title="Rijschool Koster"><img src="/images/annonces/rijschoolkoster.png" title="Rijschool Koster" alt="Rijschool Koster" /></a></p>
-                    <p><a href="http://www.dressmeclothing.nl/" title="Kledingdrukkerij DressMe Clothing"><img src="/images/annonces/dressmeclothing.png" title="Kledingdrukkerij DressMe Clothing" alt="Kledingdrukkerij DressMe Clothing" /></a></p>
-                    <p><a href="https://www.creditcard.nl/" title="Creditcard.nl"><img src="/images/annonces/creditcard_nl.png" title="Creditcard.nl" alt="Creditcard.nl" /></a></p>
-                    <p><a href="https://skepp.nl/nl/" title="Skepp.nl"><img src="/images/annonces/skepp.jpg" title="Skepp.nl" alt="Skepp.nl" /></a></p>
                 </div>
             </div>
         </div>
     </div>
+    @include('partials/_directads')
 @stop
