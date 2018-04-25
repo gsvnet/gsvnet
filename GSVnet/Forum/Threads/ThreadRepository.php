@@ -162,7 +162,7 @@ class ThreadRepository extends EloquentRepository
 
     public function slugExists($slug)
     {
-        return $this->model->where('slug', $slug)->exists();
+        return $this->model::withTrashed()->where('slug', $slug)->exists();
     }
 
     public function like(Thread $thread, Like $like)

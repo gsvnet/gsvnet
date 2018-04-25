@@ -12,5 +12,7 @@
         <p><a href="https://www.creditcard.nl/" title="Creditcard.nl"><img src="/images/annonces/creditcard_nl.png" title="Creditcard.nl" alt="Creditcard.nl" /></a></p>
         <p><a href="https://skepp.nl/nl/" title="Skepp.nl"><img src="/images/annonces/skepp.jpg" title="Skepp.nl" alt="Skepp.nl" /></a></p>
         <p><a href="https://www.easyswitch.nl/energie-vergelijken/" title="energie vergelijken"><img src="/images/annonces/easyswitch.png" title="energie vergelijken" alt="energie vergelijken" /></a></p>
+        <p><a href="https://www.huizenmarkt.nl/" title="Huurhuizen en Appartementen"><img src="/images/annonces/huizenmarkt.png" title="Huurhuizen en Appartementen" alt="Huurhuizen en Appartementen" /></a></p>
+        <p><a href="https://www.inshared.nl/autoverzekering/" title="autoverzekering"><img src="/images/annonces/inshared.png" title="autoverzekering" alt="autoverzekering" /></a></p>
     </div>
 </div>
