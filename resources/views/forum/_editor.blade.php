@@ -29,7 +29,7 @@
             <div class="_post">
                 <div class="forum-post-data">
                     <div class="avatar">
-                        <img src="{{ $author->present()->avatar(40) }}" width="40" height="40">
+                        <img src="{{ $author->present()->getAvatar(40) }}" width="40" height="40">
                     </div>
                     <div class="info">
                         <strong class="author">

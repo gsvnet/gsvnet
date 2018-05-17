@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAprilToUsersTable extends Migration
+class AddDefaultAvatarColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddAprilToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('april');
+            $table->integer('avatar')->default(-1);
         });
     }
 
@@ -25,7 +25,7 @@ class AddAprilToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('april');
+            $table->dropColumn('avatar');
         });
     }
 }

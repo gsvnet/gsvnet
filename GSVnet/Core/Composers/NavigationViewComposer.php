@@ -268,7 +268,7 @@ class NavigationViewComposer {
 
             'intern' => [
                 'title' => function(){
-                    return '<img src="' . Auth::user()->present()->avatar(24) . '" width="24" height="24" class="nav-profile-image">' . Auth::user()->firstname;
+                    return '<img src="' . Auth::user()->present()->getAvatar(24) . '" width="24" height="24" class="nav-profile-image">' . Auth::user()->firstname;
                 },
                 'url' => action('UserController@showProfile'),
                 'visible' => function(){return Auth::check();},

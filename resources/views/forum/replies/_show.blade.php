@@ -2,7 +2,7 @@
     <div class="forum-post-data">
         @if($reply->author)
         <div class="avatar">
-            <img src="{{ $reply->author->present()->avatar(40) }}" width="40" height="40">
+            <img src="{{ $reply->author->present()->getAvatar(40) }}" width="40" height="40">
         </div>
         @endif
         <div class="like-box">
