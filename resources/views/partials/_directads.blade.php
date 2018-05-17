@@ -14,5 +14,6 @@
         <p><a href="https://www.easyswitch.nl/energie-vergelijken/" title="energie vergelijken"><img src="/images/annonces/easyswitch.png" title="energie vergelijken" alt="energie vergelijken" /></a></p>
         <p><a href="https://www.huizenmarkt.nl/" title="Huurhuizen en Appartementen"><img src="/images/annonces/huizenmarkt.png" title="Huurhuizen en Appartementen" alt="Huurhuizen en Appartementen" /></a></p>
         <p><a href="https://www.inshared.nl/autoverzekering/" title="autoverzekering"><img src="/images/annonces/inshared.png" title="autoverzekering" alt="autoverzekering" /></a></p>
+        <p><a href="https://www.maxilia.nl/" title="Maxilia"><img src="/images/annonces/maxilia.jpg" title="Maxilia" alt="Maxilia" /></a></p>
     </div>
 </div>

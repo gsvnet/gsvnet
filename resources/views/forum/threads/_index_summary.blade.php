@@ -1,9 +1,9 @@
 <div class="media-row img-45 {{ $thread->present()->visited }}">
     <div class="media-details">
         @if($thread->mostRecentReply)
-            <a href="{{$thread->present()->latestReplyUrl}}" title="Ga naar de laatste reactie van het onderwerp {{{$thread->subject}}}">{!! $thread->mostRecentReply->author->present()->avatarDeferred(45) !!}</a>
+            <a href="{{$thread->present()->latestReplyUrl}}" title="Ga naar de laatste reactie van het onderwerp {{{$thread->subject}}}">{!! $thread->mostRecentReply->author->present()->getAvatarDeferred(45) !!}</a>
         @else
-            {!! $thread->author->present()->avatarDeferred(45) !!}
+            {!! $thread->author->present()->getAvatarDeferred(45) !!}
         @endif
         {!! $thread->present()->replyCounter !!}
     </div>

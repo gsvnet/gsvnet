@@ -124,6 +124,15 @@ class UsersRepository extends BaseRepository
             ->get();
     }
 
+    public function getAllByTypes(array $types)
+    {
+        return User::with('profile.yearGroup')
+            ->orderBy('lastname', 'ASC')
+            ->orderBy('firstname', 'ASC')
+            ->whereIn('type', $types)
+            ->get();
+    }
+
     public function getAllVerifiedByType($type)
     {
         return User::with('profile.yearGroup')->where('type', $type)->where('verified', true)->get();

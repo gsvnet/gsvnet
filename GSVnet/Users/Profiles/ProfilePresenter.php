@@ -48,7 +48,7 @@ class ProfilePresenter extends Presenter
         if ($this->photo_path != '')
             return action('MemberController@showPhoto', [$this->user->profile->id, 'x-small']);
             
-        return $this->user->present()->avatar(102);
+        return $this->user->present()->getAvatar(102);
     }
 
     public function photo()
@@ -56,7 +56,7 @@ class ProfilePresenter extends Presenter
         if ($this->photo_path != '')
             return action('MemberController@showPhoto', $this->user->profile->id);
 
-        return $this->user->present()->avatar(120);
+        return $this->user->present()->getAvatar(120);
     }
 
     public function regionName()
