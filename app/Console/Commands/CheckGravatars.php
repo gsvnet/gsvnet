@@ -50,11 +50,13 @@ class CheckGravatars extends Command
 
             $url = Gravatar::image($user->email, 120, 'mm', null, null, true);
             // If Gravatar image is the standard image and no default has been set already.
-            if (md5(file_get_contents($url)) == 'bb7cdd7a7ae85633dad820f21a2115cb' && $user->avatar === -1) {
-                if ($gender == 1)
-                $user->avatar = $menCounter++;
-                else
-                $user->avatar = $womenCounter++;
+            if (md5(file_get_contents($url)) == 'bb7cdd7a7ae85633dad820f21a2115cb') {
+                if( $user->avatar === -1) {
+                    if ($gender == 1)
+                        $user->avatar = $menCounter++;
+                    else
+                        $user->avatar = $womenCounter++;
+                }
             } else {
                 $user->avatar = -1;
             }

@@ -11,8 +11,16 @@
 
             {!! Former::vertical_open()->action(action('Admin\MemberController@updateYearGroup', $user->id))->method('PUT') !!}
             {!! Former::populate( $user->profile ) !!}
-
-            {!! Former::select('year_group_id')->label('Jaarverband')->fromQuery($yearGroups, 'name', 'id') !!}
+            Test: {{$user->profile->yearGroup->id}}
+            <!-- {!! Former::select('year_group_id')->label('Jaarverband')->fromQuery($yearGroups, 'name', 'id') !!} -->
+            <div class="form-group">
+                <label for="year_group_id">Jaarverband</label>
+                <select name="year_group_id" id="jaarverband" class="form-control">
+                    @foreach ($yearGroups as $yearGroup)
+                        <option value="{{$yearGroup->id}}" {{$user->profile->yearGroup->id == $yearGroup->id ? 'selected="selected"' : ''}}>{{$yearGroup->present()->nameWithYear}}</option>
+                    @endforeach
+                </select>
+            </div>
 
             <button type='submit' class='btn btn-success'>
                 <i class="glyphicon glyphicon-ok"></i> Opslaan

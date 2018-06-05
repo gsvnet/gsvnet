@@ -10,6 +10,26 @@ class YearGroupsSeeder extends Seeder {
         
         $yearGroups = [
             [
+                'year' => 2017,
+                'name' => 'Qamonris',
+                'created_at' => $time,
+                'updated_at' => $time
+            ],[
+                'year' => 2016,
+                'name' => 'Kibovelta',
+                'created_at' => $time,
+                'updated_at' => $time
+            ],[
+                'year' => 2015,
+                'name' => 'Doxantilon',
+                'created_at' => $time,
+                'updated_at' => $time
+            ],[
+                'year' => 2014,
+                'name' => 'Euzaño',
+                'created_at' => $time,
+                'updated_at' => $time
+            ],[
                 'year' => 2013,
                 'name' => 'Xiudez',
                 'created_at' => $time,
