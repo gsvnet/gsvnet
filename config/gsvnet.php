@@ -44,20 +44,24 @@ return [
     ],
 
     'regions' => [
-        1 => 'Regio 1',
-        2 => 'Regio 2',
-        3 => 'Regio 3',
-        4 => 'Regio IV',
-        5 => 'Rood',
-        6 => 'Oranje',
-        7 => 'Geel',
-        8 => 'Groen',
-        9 => 'Blauw',
-        10 => 'Paars',
-        11 => 'A',
-        12 => 'B',
-        13 => 'C',
-        14 => 'D'
+        1 => 'Regio Noord',
+        2 => 'Regio Oost',
+        3 => 'Regio Zuid',
+        4 => 'Regio West',
+        5 => 'Regio 1',
+        6 => 'Regio 2',
+        7 => 'Regio 3',
+        8 => 'Regio IV',
+        9 => 'Rood',
+        10 => 'Oranje',
+        11 => 'Geel',
+        12 => 'Groen',
+        13 => 'Blauw',
+        14 => 'Paars',
+        15 => 'A',
+        16 => 'B',
+        17 => 'C',
+        18 => 'D'
     ],
 
     'events' => [

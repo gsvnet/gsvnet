@@ -13,7 +13,7 @@
 				@if( isset($member->profile->yearGroup) )
 					{!! link_to_action('UserController@showUsers', $member->profile->yearGroup->present()->nameWithYear, ['jaarverband' => $member->profile->yearGroup->id]) !!} en
 				@endif
-				{!! link_to_action('UserController@showUsers', $member->profile->present()->regionName, ['region' => $member->profile->region]) !!}
+				{!! link_to_action('UserController@showUsers', $member->profile->present()->regionName, ['regio' => $member->profile->region]) !!}
 			</p>
 
             <div class="secondary-column">
