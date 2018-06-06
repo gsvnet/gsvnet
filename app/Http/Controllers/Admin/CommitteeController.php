@@ -44,6 +44,7 @@ class CommitteeController extends AdminBaseController {
     public function store()
     {
         $input = Input::only('name', 'description');
+        $input['public'] = Input::get('public', false);
         $input['unique_name'] = Str::slug(Input::get('unique_name'));
 
         $this->creatorValidator->validate($input);
@@ -87,6 +88,7 @@ class CommitteeController extends AdminBaseController {
     {
         $input = Input::only('name', 'description');
         $input['id'] = $id;
+        $input['public'] = Input::get('public', false);
         $input['unique_name'] = Str::slug(Input::get('unique_name'));
 
         $this->updaterValidator->forCommittee($id);
@@ -96,7 +98,7 @@ class CommitteeController extends AdminBaseController {
 
         flash()->success("{$committee->name} is succesvol bewerkt.");
 
-        redirect()->action('Admin\CommitteeController@show', $id);
+        return redirect()->action('Admin\CommitteeController@show', $id);
     }
 
     public function destroy($id)

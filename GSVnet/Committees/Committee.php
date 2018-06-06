@@ -13,6 +13,16 @@ class Committee extends Model {
 
     public $presenter = 'GSVnet\Committees\CommitteePresenter';
 
+    public function scopePublic($query)
+    {
+        return $query->wherePublic(true);
+    }
+
+    public function getPublicAttribute($value)
+    {
+        return $value == 1 ? true : null;
+    }
+
     // Change users to members?
     public function members()
     {

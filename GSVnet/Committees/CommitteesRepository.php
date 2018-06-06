@@ -38,7 +38,7 @@ class CommitteesRepository {
     */
     public function all()
     {
-        return Committee::orderBy('name', 'ASC')->get();
+        return Committee::orderBy('name', 'ASC')->public()->get();
     }
 
     /**
@@ -68,6 +68,7 @@ class CommitteesRepository {
         $committee->name        = $input['name'];
         $committee->unique_name = $input['unique_name'];
         $committee->description = $input['description'];
+        $committee->public      = $input['public'];
 
         $committee->save();
 
@@ -88,6 +89,7 @@ class CommitteesRepository {
         $committee->name        = $input['name'];
         $committee->unique_name = $input['unique_name'];
         $committee->description = $input['description'];
+        $committee->public      = $input['public'];
 
         $committee->save();
 

@@ -13,7 +13,8 @@
 				<thead>
 					<tr>
 						<th>Naam</th>
-						<th>Huidig aantal leden</th>
+                        <th>Openbaar</th>
+						<th>Totaal aantal leden</th>
 		                <th>Laatst bewerkt</th>
 					</tr>
 				</thead>
@@ -25,6 +26,7 @@
 							    {{ $committee->name }}
 						    </a>
                         </td>
+                        <td>{{ $committee->public ? 'ja' : 'nee' }}</td>
 						<td>{{ $committee->users->count() }}</td>
 		                <td>{{ $committee->updated_at }}</td>
 					</tr>
