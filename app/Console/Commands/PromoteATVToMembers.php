@@ -41,13 +41,16 @@ class PromoteATVToMembers extends Command
         $womenCounter = 100;
 
         $users = $this->users->getAllByType(User::ATV);
-        if (!$this->confirm('Wil je alle ' . count($users) . ' ATV\'ers veranderen in potentials?')) {
-            return;
-        }
+        $convertAll = $this->confirm('Wil je alle ' . count($users) . ' ATV\'ers veranderen in GSV\'ers?');
 
         $bar = $this->output->createProgressBar(count($users));
 
         foreach ($users as $user) {    
+            if(!$convertAll) {
+                if(!$this->confirm('Wil je ' . $user->firstname . ' ' . $user->lastname . ' veranderen in GSV\'er?')){
+                    continue;
+                }
+            }
             // Create empty user profile
             $profile = new UserProfile();
     
