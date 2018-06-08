@@ -12,7 +12,7 @@
             {!! Former::vertical_open()->action(action('Admin\MemberController@updateRegion', $user->id))->method('PUT') !!}
             {!! Former::populate( $user->profile ) !!}
 
-            {!! Former::select('region')->options(['geen' => 'Geen'] + $regions) !!}
+            {!! Former::select('region')->label('')->options(['geen' => 'Geen'] + $regions) !!}
 
             <button type='submit' class='btn btn-success'>
                 <i class="glyphicon glyphicon-ok"></i> Opslaan
