@@ -51,11 +51,11 @@ return [
         ],
 
         'docs.show' => [
-            'type' => [User::MEMBER, User::FORMERMEMBER]
+            'type' => [User::MEMBER]
         ],
 
         'docs.manage' => [
-            'type' => [User::MEMBER, User::FORMERMEMBER]
+            'type' => [User::MEMBER]
         ],
 
         'docs.publish' => [
