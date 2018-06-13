@@ -59,12 +59,12 @@
                     @endif
 
                     @can('threads.show-private')
-                        @if($thread->atv)
-                            <h2>ATV</h2>
-                            <p>Dit topic wordt gedeeld met ATV&apos;ers.</p>
-                        @elseif($thread->public)
+                        @if($thread->public)
                             <h2>Extern</h2>
                             <p>Dit topic staat extern en is dus door iedereen te bekijken.</p>
+                        @elseif($thread->atv)
+                            <h2>ATV</h2>
+                            <p>Dit topic wordt gedeeld met ATV&apos;ers.</p>
                         @else
                             <h2>Intern</h2>
                             <p>Dit topic staat intern en is dus alleen te bekijken door leden.</p>
