@@ -23,8 +23,6 @@
                 <li data-target="#christelijk-slideshow" data-slide-to="1"></li>
                 <li data-target="#christelijk-slideshow" data-slide-to="2"></li>
                 <li data-target="#christelijk-slideshow" data-slide-to="3"></li>
-                <li data-target="#christelijk-slideshow" data-slide-to="4"></li>
-                <li data-target="#christelijk-slideshow" data-slide-to="5"></li>
             </ol>
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
@@ -32,12 +30,6 @@
                     <img width="960" height="640" src="/images/over/christelijk-1.jpg" alt="Bezinningsweekend">
                     <div class="carousel-caption">
                         Bezinningsweekend
-                    </div>
-                </div>
-                <div class="item">
-                    <img width="960" height="640" src="/images/over/christelijk-2.jpg" alt="Diesconcert">
-                    <div class="carousel-caption">
-                       
                     </div>
                 </div>
                 <div class="item">
@@ -119,7 +111,6 @@
                 <li data-target="#sociaal-slideshow" data-slide-to="1"></li>
                 <li data-target="#sociaal-slideshow" data-slide-to="2"></li>
                 <li data-target="#sociaal-slideshow" data-slide-to="3"></li>
-                <li data-target="#sociaal-slideshow" data-slide-to="4"></li>
                                 
             </ol>
 
@@ -131,20 +122,6 @@
                         Sociëteit &mdash; voorzaal
                     </div>
                 </div>
-                <div class="item">
-                   <img width="960" height="640" src="/images/over/sociaal-2.jpg" alt="Sociëteit &mdash; achterzaal">
-                    <div class="carousel-caption">
-                        Sociëteit &mdash; achterzaal
-                    </div>
-                </div>
-                <!--
-                <div class="item">
-                   <img width="960" height="640" src="/images/over/sociaal-3.jpg" alt="Spelletjesavond">
-                    <div class="carousel-caption">
-                        Spelletjesavond
-                    </div>
-                </div>
-                -->
                 <div class="item">
                    <img width="960" height="640" src="/images/over/sociaal-4.jpg" alt="Sociëteit &mdash; voorzaal">
                     <div class="carousel-caption">
@@ -187,27 +164,20 @@
                 <li data-target="#studentikoos-slideshow" data-slide-to="1"></li>
                 <li data-target="#studentikoos-slideshow" data-slide-to="2"></li>
                 <li data-target="#studentikoos-slideshow" data-slide-to="3"></li>
-                <li data-target="#studentikoos-slideshow" data-slide-to="4"></li>
             </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <img width="960" height="640" src="/images/over/studentikoos-1.jpg" alt="Dies Natalis">
+                    <img width="960" height="640" src="/images/over/studentikoos-1.jpg" alt="Huishoudelijke vergadering">
                     <div class="carousel-caption">
-                        Dies Natalis
+                        Huishoudelijke vergadering
                     </div>
                 </div>
                     <div class="item">
                     <img width="960" height="640" src="/images/over/studentikoos-4.jpg" alt="Dies Natalis">
                     <div class="carousel-caption">
                         Dies Natalis
-                    </div>
-                </div>
-                <div class="item">
-                    <img width="960" height="640" src="/images/over/studentikoos-2.jpg" alt="Dies Natalis: jaarverbandsfoto">
-                    <div class="carousel-caption">
-                        Dies Natalis: jaarverbandsfoto
                     </div>
                 </div>
                 <div class="item">
