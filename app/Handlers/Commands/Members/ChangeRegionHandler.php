@@ -2,24 +2,12 @@
 
 use GSV\Commands\Members\ChangeRegion;
 use GSV\Events\Members\RegionWasChanged;
-use GSVnet\Users\Profiles\ProfilesRepository;
 
-class ChangeRegionHandler
-{
-    private $profiles;
-
-    public function __construct(ProfilesRepository $profiles)
-    {
-        $this->profiles = $profiles;
-    }
+class ChangeRegionHandler {
 
     public function handle(ChangeRegion $command)
     {
-        $profile = $command->user->profile;
-
-        $profile->region = $command->region->getRegion();
-
-        $this->profiles->save($profile);
+        $command->user->profile->regions()->sync($command->regions);
 
         event(new RegionWasChanged($command->user, $command->manager));
     }

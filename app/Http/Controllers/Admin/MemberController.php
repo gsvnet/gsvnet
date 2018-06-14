@@ -31,6 +31,7 @@ use Maatwebsite\Excel\Classes\LaravelExcelWorksheet;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\Writers\CellWriter;
 use Maatwebsite\Excel\Writers\LaravelExcelWriter;
+use GSVnet\Regions\RegionsRepository;
 
 class MemberController extends AdminBaseController
 {
@@ -43,6 +44,7 @@ class MemberController extends AdminBaseController
      * @var ProfileActionsRepository
      */
     private $actions;
+    private $regions;
 
     /**
      * @param ProfileActionsRepository $actions
@@ -52,12 +54,14 @@ class MemberController extends AdminBaseController
     public function __construct(
         ProfileActionsRepository $actions,
         UsersRepository $users,
-        YearGroupRepository $yearGroups
+        YearGroupRepository $yearGroups,
+        RegionsRepository $regions
     ) {
         parent::__construct();
         $this->users = $users;
         $this->yearGroups = $yearGroups;
         $this->actions = $actions;
+        $this->regions = $regions;
     }
 
     public function latestUpdates()
@@ -284,8 +288,12 @@ class MemberController extends AdminBaseController
         $this->authorize('users.manage');
 
         $user = $this->users->memberOrFormerByIdWithProfile($id);
-        $regions = Config::get('gsvnet.regions');
-        return view('admin.users.update.region')->with(compact('user', 'regions'));
+        $userRegions = $user->profile->regions;
+
+        $currentRegions = $this->regions->current();
+        $formerRegions = $this->regions->former();
+
+        return view('admin.users.update.region')->with(compact('user', 'userRegions', 'currentRegions', 'formerRegions'));
     }
 
     public function updateRegion(Request $request, $id)
@@ -293,7 +301,12 @@ class MemberController extends AdminBaseController
         $this->authorize('users.manage');
 
         $member = $this->users->memberOrFormerByIdWithProfile($id);
-        $this->dispatch(ChangeRegion::fromForm($request, $member));
+        $currentRegion = [ $request->get('current_region') ];
+        $formerRegion = $request->get('former_regions') ? $request->get('former_regions') : [];
+
+        $regions = $this->regions->byIds(array_merge( $currentRegion, $formerRegion ));
+
+        $this->dispatch(new ChangeRegion($member, $request->user(), $regions));
 
         flash()->success("Regio van {$member->present()->fullName()} succesvol aangepast");
         return redirect()->action('Admin\UsersController@show', $id);

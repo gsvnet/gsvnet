@@ -61,13 +61,16 @@ class ProfilePresenter extends Presenter
 
     public function regionName()
     {
-        $regions = Config::get('gsvnet.regions');
+        $region = $this->user->profile->current_region;
+        return $region ? 'Regio ' . $region->name : 'geen regio';
+    }
 
-        if (array_key_exists($this->region, $regions))
-            return $regions[$this->region];
-
-        else
-            return 'geen regio';
+    public function formerRegionLinks()
+    {
+        return $this->user->profile->former_regions->map(function($region, $i){
+            $searchUrl = action('UserController@showUsers', ['regio' => $region->id]);
+            return "<a href='". $searchUrl ."'>Regio " . $region->name . "</a>";
+        })->implode(', ');
     }
 
     public function student_number()

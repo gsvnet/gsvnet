@@ -43,27 +43,6 @@ return [
         'GSV'
     ],
 
-    'regions' => [
-        1 => 'Regio Noord',
-        2 => 'Regio Oost',
-        3 => 'Regio Zuid',
-        4 => 'Regio West',
-        5 => 'Regio 1',
-        6 => 'Regio 2',
-        7 => 'Regio 3',
-        8 => 'Regio IV',
-        9 => 'Rood',
-        10 => 'Oranje',
-        11 => 'Geel',
-        12 => 'Groen',
-        13 => 'Blauw',
-        14 => 'Paars',
-        15 => 'A',
-        16 => 'B',
-        17 => 'C',
-        18 => 'D'
-    ],
-
     'events' => [
         'maxYear' => date('Y') + 1,
         'minYear' => 2013

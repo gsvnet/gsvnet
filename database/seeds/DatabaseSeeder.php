@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder {
         'password_reminders',
         'photos',
         'profile_actions',
+        'regions',
+        'region_user_profile',
         'senates',
         'tagged_items',
         'tags',
@@ -49,6 +51,7 @@ class DatabaseSeeder extends Seeder {
         'TagSeeder',
         'ForumTableSeeder',
         'AdminUserSeeder',
+        'RegionsTableSeeder'
     ];
 
     /**

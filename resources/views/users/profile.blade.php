@@ -8,13 +8,21 @@
 	<div class="column-holder">
 		<h1>{{ $member->present()->fullName }}</h1>
 		@if( isset($member->profile) )
-			<p>
+			<div style='margin: auto auto 1.5em;'>
+            <div>
 				Lid van 
 				@if( isset($member->profile->yearGroup) )
 					{!! link_to_action('UserController@showUsers', $member->profile->yearGroup->present()->nameWithYear, ['jaarverband' => $member->profile->yearGroup->id]) !!} en
 				@endif
-				{!! link_to_action('UserController@showUsers', $member->profile->present()->regionName, ['regio' => $member->profile->region]) !!}
-			</p>
+				{!! link_to_action('UserController@showUsers', $member->profile->present()->regionName, ['regio' => $member->profile->user->profile->current_region]) !!}
+                
+			</div>
+            @if(count($formerRegions) > 0)
+                <div style='font-style: italic;'>
+                    Was lid van {!! $member->profile->present()->formerRegionLinks !!}
+                </div>
+            @endif
+            </div>
 
             <div class="secondary-column">
                 <div class="content-columns">

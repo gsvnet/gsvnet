@@ -53,9 +53,13 @@ class ProfilesRepository extends BaseRepository {
     public function search($keyword = '', $region = null, $yearGroup = null, $type = 2, $reunist = null)
     {
         // Initialize basic query
-        $query = UserProfile::with('user', 'yearGroup')->join('users', function($join) use ($type) {
-            $join->on('users.id', '=', 'user_profiles.user_id');
-        });
+        $query = UserProfile::with('user', 'yearGroup', 'regions')
+            ->join('users', function($join) use ($type) {
+                $join->on('users.id', '=', 'user_profiles.user_id');
+            })
+            ->leftJoin('region_user_profile', 'user_profiles.id', '=', 'region_user_profile.user_profile_id')
+            ->leftJoin('regions', 'region_user_profile.region_id', '=', 'regions.id')
+            ->groupBy('user_profiles.id');
 
         if(is_array($type))
             $query->whereIn('users.type', $type);
@@ -74,7 +78,7 @@ class ProfilesRepository extends BaseRepository {
 
         // Search for members inside region if region is valid
         if (isset($region))
-            $query->where('region', '=', $region);
+            $query->where('regions.id', '=', $region);
 
         // Search for members inside region if region is valid
         if (isset($yearGroup))
@@ -126,7 +130,6 @@ class ProfilesRepository extends BaseRepository {
         $profile = UserProfile::create(array('user_id' => $user->id));
         $profile->user_id = $user->id;
         $profile->reunist = 0;
-        $profile->region  = 0;
 
         $profile->phone            = $input['potential-phone'];
         $profile->address          = $input['potential-address'];
