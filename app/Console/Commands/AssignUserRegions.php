@@ -63,14 +63,14 @@ class AssignUserRegions extends Command
                 $regions[] = $member->profile->region;
             }
 
-            $regionCommittees->each(function($committee, $i) use ($member, $regions) {
+            foreach($regionCommittees as $i => $committee) {
                 if($member->committees->contains($committee->id)) {
                     $regions[] = $i + 1;
-                    echo "Member " . $member->firstname . " zit in commissie " . $committee->name . " (" . ($i + 1) . ").\n";
+                    echo "Member " . $member->firstname . " zit in commissie " . $committee->name . " (" . ($i + 1) . ").\n\n";
                 }
-            });
+            }
 
-            $member->profile->regions()->sync($regions);
+            if($member->profile)$member->profile->regions()->sync($regions);
             $bar->advance();
         }
         $bar->finish();       
