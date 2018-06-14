@@ -22,12 +22,14 @@ use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\Writers\CellWriter;
 use Maatwebsite\Excel\Writers\LaravelExcelWriter;
 use SplTempFileObject;
+use GSVnet\Regions\RegionsRepository;
 
 class UsersController extends AdminBaseController
 {
 
     protected $users;
     protected $yearGroups;
+    protected $regions;
     protected $validator;
     protected $profileCreatorValidator;
     protected $profileUpdaterValidator;
@@ -41,8 +43,9 @@ class UsersController extends AdminBaseController
         AdminProfileUpdaterValidator $profileUpdaterValidator,
         UsersRepository $users,
         ProfilesRepository $profiles,
-        YearGroupRepository $yearGroups)
-    {
+        YearGroupRepository $yearGroups,
+        RegionsRepository $regions
+    ) {
         $this->userManager = $userManager;
         $this->validator = $validator;
         $this->profileCreatorValidator = $profileCreatorValidator;
@@ -50,6 +53,7 @@ class UsersController extends AdminBaseController
         $this->users = $users;
         $this->yearGroups = $yearGroups;
         $this->profiles = $profiles;
+        $this->regions = $regions;
 
         parent::__construct();
     }
@@ -83,11 +87,11 @@ class UsersController extends AdminBaseController
         $this->authorize('users.show');
         $search = $request->get('zoekwoord', '');
         $type = User::MEMBER;
-        $regions = Config::get('gsvnet.regions');
+        $regions = $this->regions->all();
         $perPage = 300;
 
         // Search on region
-        if (!($region = $request->get('regio') and array_key_exists($region, $regions)))
+        if (!($region = $request->get('regio') and $this->regions->exists($region)))
             $region = null;
 
         // Enable search on yeargroup
@@ -106,13 +110,13 @@ class UsersController extends AdminBaseController
     {
         $this->authorize('users.show');
         $search = $request->get('zoekwoord', '');
-        $regions = Config::get('gsvnet.regions');
+        $regions = $this->regions->all();
         $type = User::FORMERMEMBER;
-        $perPage = 50;
+        $perPage = 300;
         $reunistInput = $request->get('reunist');
 
         // Search on region
-        if (!($region = $request->get('regio') and array_key_exists($region, $regions)))
+        if (!($region = $request->get('regio') and $this->regions->exists($region)))
             $region = null;
 
         // Enable search on yeargroup
@@ -298,7 +302,7 @@ class UsersController extends AdminBaseController
         }
 
         // Check if the region is valid
-        if (!array_key_exists($input['region'], Config::get('gsvnet.regions'))) {
+        if (!$this->regions->exists($input['region'])) {
             $input['region'] = null;
         }
 

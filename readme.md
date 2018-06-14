@@ -180,7 +180,8 @@ GROUP BY yg.id
 ORDER BY likes_given DESC;
 ```
 
-```sql
+Below queries no longer work because regions have their own table now
+<!-- ```sql
 -- Select number of likes received per region
 SELECT up.region, count(1) AS likes_received
 FROM likeable_likes AS ll
@@ -189,13 +190,13 @@ ON fr.id = ll.likable_id
 INNER JOIN user_profiles AS up
 ON fr.author_id = up.user_id
 WHERE ll.likable_type = 'GSVnet\\Forum\\Replies\\Reply'
-GROUP BY up.region;
+GROUP BY up.region; -->
 
--- Select number of likes given per region
+<!-- -- Select number of likes given per region
 SELECT up.region, count(1) AS likes_given
 FROM likeable_likes AS ll
 INNER JOIN user_profiles AS up
 ON ll.user_id = up.user_id
 WHERE ll.likable_type = 'GSVnet\\Forum\\Replies\\Reply'
 GROUP BY up.region;
-```
+``` -->

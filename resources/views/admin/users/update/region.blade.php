@@ -12,7 +12,25 @@
             {!! Former::vertical_open()->action(action('Admin\MemberController@updateRegion', $user->id))->method('PUT') !!}
             {!! Former::populate( $user->profile ) !!}
 
-            {!! Former::select('region')->label('')->options(['geen' => 'Geen'] + $regions) !!}
+            <div class="form-group">
+                <label for="region">Huidig</label>
+                <select name="current_region" id="current_region" class="form-control">
+                    <option value="-1">Geen</option>
+                    @foreach ($currentRegions as $region)
+                        <option value="{{$region->id}}" {{($user->profile->current_region && $user->profile->current_region->id == $region->id) ? 'selected="selected"' : ''}}>{{$region->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="region">Voorheen</label>
+                <select multiple name="former_regions[]" id="former_regions" class="form-control" style="height: 150px;">
+                    <option value="-1">Geen</option>
+                    @foreach ($formerRegions as $region)
+                        <option value="{{$region->id}}" {{($user->profile->regions->contains('id', $region->id)) ? 'selected="selected"' : ''}}>{{$region->name}}</option>
+                    @endforeach
+                </select>
+                <small>Houd de control-knop op je toetsenbord in om meerdere oud-regio's te selecteren.</small>
+            </div>
 
             <button type='submit' class='btn btn-success'>
                 <i class="glyphicon glyphicon-ok"></i> Opslaan

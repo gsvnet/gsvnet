@@ -13,6 +13,7 @@ class AdminUserSeeder extends Seeder {
 
         $faker = Faker\Factory::create('en_US');
         $yearGroupIds = DB::table('year_groups')->lists('id');
+        $regionIds = DB::table('regions')->lists('id');
 
         $harmen = User::create(array(
             'email'         => 'harmenstoppels@gmail.com',
@@ -25,10 +26,9 @@ class AdminUserSeeder extends Seeder {
             'approved'      => true
         ));
 
-        UserProfile::create(array(
+        $profile = UserProfile::create(array(
             'user_id' => $harmen->id,
             'year_group_id' => $faker->randomElement($yearGroupIds),
-            'region' => rand(1,4),
             'phone' => '050-4040544',
             'address' => 'Mooistraat 2',
             'zip_code' => '9712AX',
@@ -44,6 +44,8 @@ class AdminUserSeeder extends Seeder {
             'parent_town' => 'Opende',
             'parent_phone' => '0800-223344'
         ));
+
+        $profile->regions()->sync([$faker->randomElement($regionIds)]);
 
         $startDate = $faker->dateTimeBetween('-3 years', '-1 month');
 

@@ -23,8 +23,6 @@
                 <li data-target="#christelijk-slideshow" data-slide-to="1"></li>
                 <li data-target="#christelijk-slideshow" data-slide-to="2"></li>
                 <li data-target="#christelijk-slideshow" data-slide-to="3"></li>
-                <li data-target="#christelijk-slideshow" data-slide-to="4"></li>
-                <li data-target="#christelijk-slideshow" data-slide-to="5"></li>
             </ol>
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
@@ -32,12 +30,6 @@
                     <img width="960" height="640" src="/images/over/christelijk-1.jpg" alt="Bezinningsweekend">
                     <div class="carousel-caption">
                         Bezinningsweekend
-                    </div>
-                </div>
-                <div class="item">
-                    <img width="960" height="640" src="/images/over/christelijk-2.jpg" alt="Diesconcert">
-                    <div class="carousel-caption">
-                       
                     </div>
                 </div>
                 <div class="item">
@@ -73,7 +65,7 @@
         <h2 id="intellectueel">Intellectuele pijler</h2>
         <div class="i-intellectual icon"></div>
 
-        <p>Omdat we een academische vereniging zijn is er op de GSV ook ruimte voor verdiepende activiteiten. Door het jaar heen zijn er lezingen over de meest uiteenlopende onderwerpen; bijvoorbeeld een (christelijk) wetenschappelijk thema of over iets uit het bedrijfsleven. Ook zijn er drie avonden per jaar waarop GSV’ers elkaar bijvoorbeeld wat bijbrengen over hun studie of waar ze wat vertellen over hun scriptie of buitenlandreis. Ook culturele filmavondjes, discussieavonden of een pubquiz behoren tot de activiteiten in de intellectuele pijler.</p>
+        <p>Omdat de GSV van oorsprong een academische vereniging is, heeft de GSV ook een intellectueel karakter. Er is volop ruimte voor verdiepende activiteiten. Door het jaar heen worden er lezingen gehouden met de meest uiteenlopende onderwerpen. Van wetenschappelijke thema’s tot onderwerpen uit het bedrijfsleven. Ook is er veel ruimte voor eigen input. Zo zijn er 3 avonden per jaar waarop GSV’ers elkaar wat bijbrengen over hun studie, scriptie of een onderwerp waar ze gewoon veel van af weten. Verder worden er regelmatig filmavondjes, discussieavonden en gevarieerde pubquizzen gehouden. Maar deze intellectuele pijler is in meer te zien dan alleen de activiteiten. Bij de GSV zul je een groep mensen treffen die elkaar motiveert om te studeren, door samen af te spreken voor lunchpauzes in de kantine van de universiteitsbibliotheek of voor een kop koffie op het Zernike. Kritische geluiden zullen altijd gewaardeerd worden op de vereniging en voor een goed gesprek of een stevige discussie zijn altijd wel leden warm te krijgen.</p>
 
         <div id="intellectueel-slideshow" class="carousel slide article-slideshow">
             <!-- Indicators -->
@@ -119,7 +111,6 @@
                 <li data-target="#sociaal-slideshow" data-slide-to="1"></li>
                 <li data-target="#sociaal-slideshow" data-slide-to="2"></li>
                 <li data-target="#sociaal-slideshow" data-slide-to="3"></li>
-                <li data-target="#sociaal-slideshow" data-slide-to="4"></li>
                                 
             </ol>
 
@@ -131,20 +122,6 @@
                         Sociëteit &mdash; voorzaal
                     </div>
                 </div>
-                <div class="item">
-                   <img width="960" height="640" src="/images/over/sociaal-2.jpg" alt="Sociëteit &mdash; achterzaal">
-                    <div class="carousel-caption">
-                        Sociëteit &mdash; achterzaal
-                    </div>
-                </div>
-                <!--
-                <div class="item">
-                   <img width="960" height="640" src="/images/over/sociaal-3.jpg" alt="Spelletjesavond">
-                    <div class="carousel-caption">
-                        Spelletjesavond
-                    </div>
-                </div>
-                -->
                 <div class="item">
                    <img width="960" height="640" src="/images/over/sociaal-4.jpg" alt="Sociëteit &mdash; voorzaal">
                     <div class="carousel-caption">
@@ -187,27 +164,20 @@
                 <li data-target="#studentikoos-slideshow" data-slide-to="1"></li>
                 <li data-target="#studentikoos-slideshow" data-slide-to="2"></li>
                 <li data-target="#studentikoos-slideshow" data-slide-to="3"></li>
-                <li data-target="#studentikoos-slideshow" data-slide-to="4"></li>
             </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <img width="960" height="640" src="/images/over/studentikoos-1.jpg" alt="Dies Natalis">
+                    <img width="960" height="640" src="/images/over/studentikoos-1.jpg" alt="Huishoudelijke vergadering">
                     <div class="carousel-caption">
-                        Dies Natalis
+                        Huishoudelijke vergadering
                     </div>
                 </div>
                     <div class="item">
                     <img width="960" height="640" src="/images/over/studentikoos-4.jpg" alt="Dies Natalis">
                     <div class="carousel-caption">
                         Dies Natalis
-                    </div>
-                </div>
-                <div class="item">
-                    <img width="960" height="640" src="/images/over/studentikoos-2.jpg" alt="Dies Natalis: jaarverbandsfoto">
-                    <div class="carousel-caption">
-                        Dies Natalis: jaarverbandsfoto
                     </div>
                 </div>
                 <div class="item">

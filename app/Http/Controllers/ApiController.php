@@ -5,16 +5,19 @@ use GSVnet\Users\User;
 use GSVnet\Users\YearGroupRepository;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
+use GSVnet\Regions\RegionsRepository;
 
 class ApiController extends BaseController {
 
     private $profiles;
     private $yearGroups;
+    private $regions;
 
-    public function __construct(ProfilesRepository $profiles, YearGroupRepository $yearGroups)
+    public function __construct(ProfilesRepository $profiles, YearGroupRepository $yearGroups, RegionsRepository $regions)
     {
         $this->profiles = $profiles;
         $this->yearGroups = $yearGroups;
+        $this->regions = $regions;
         parent::__construct();
     }
 
@@ -22,14 +25,14 @@ class ApiController extends BaseController {
     {
         $search = Input::get('zoekwoord', '');
         $type = Input::get('type');
-        $regions = Config::get('gsvnet.regions');
+        $regions = $this->regions->all();
         $region = Input::get('regio');
         $reunistInput = Input::get('reunist');
         $reunist = null;
         $yearGroup = Input::get('jaarverband');
 
         // Search on region
-        if (! array_key_exists($region, $regions))
+        if (!$region || ! $this->regions->exists($region))
             $region = null;
 
         // Enable search on yeargroup

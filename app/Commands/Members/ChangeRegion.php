@@ -2,8 +2,7 @@
 
 use GSV\Commands\Command;
 use GSVnet\Users\User;
-use GSVnet\Users\ValueObjects\Region;
-use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
 
 class ChangeRegion extends Command
 {
@@ -14,26 +13,19 @@ class ChangeRegion extends Command
     public $user;
 
     /**
-     * @var Region
+     * @var Collection
      */
-    public $region;
+    public $regions;
 
     /**
      * @var user
      */
     public $manager;
 
-    function __construct(User $user, User $manager, Region $region)
+    function __construct(User $user, User $manager, Collection $regions)
     {
         $this->user = $user;
-        $this->region = $region;
+        $this->regions = $regions;
         $this->manager = $manager;
-    }
-
-    static function fromForm(Request $request, User $user)
-    {
-        $region = new Region($request->get('region'));
-
-        return new self($user, $request->user(), $region);
     }
 }

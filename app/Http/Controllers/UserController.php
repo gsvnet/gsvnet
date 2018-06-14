@@ -11,6 +11,7 @@ use GSVnet\Users\UsersRepository;
 use GSVnet\Users\UserManager;
 use GSVnet\Users\Profiles\ProfileManager;
 use GSVnet\Users\YearGroupRepository;
+use GSVnet\Regions\RegionsRepository;
 
 class UserController extends BaseController
 {
@@ -19,6 +20,7 @@ class UserController extends BaseController
     protected $profiles;
     protected $committees;
     protected $yearGroups;
+    protected $regions;
     protected $profileManager;
     protected $userManager;
 
@@ -28,8 +30,9 @@ class UserController extends BaseController
         CommitteesRepository $committees,
         UserManager $userManager,
         ProfileManager $profileManager,
-        YearGroupRepository $yearGroups)
-    {
+        YearGroupRepository $yearGroups,
+        RegionsRepository $regions
+    ) {
         parent::__construct();
         $this->profiles = $profiles;
         $this->users = $users;
@@ -38,6 +41,7 @@ class UserController extends BaseController
         $this->userManager = $userManager;
         $this->profileManager = $profileManager;
         $this->committees = $committees;
+        $this->regions = $regions;
     }
 
     /**
@@ -50,11 +54,17 @@ class UserController extends BaseController
         $member = $this->users->byIdWithProfileAndYearGroup($request->user()->id);
         $committees = $this->committees->byUserOrderByRecent($member);
         $senates = $member->senates;
+        if($member->profile && $member->profile->regions){
+            $formerRegions = $member->profile->regions->intersect($this->regions->former());
+        } else {
+            $formerRegions = [];
+        }
 
         return view('users.profile')
             ->with('member', $member)
             ->with('committees', $committees)
-            ->with('senates', $senates);
+            ->with('senates', $senates)
+            ->with('formerRegions', $formerRegions);
     }
 
     /**
@@ -66,12 +76,12 @@ class UserController extends BaseController
     {
         $this->authorize('users.show');
         $search = $request->get('naam', '');
-        $regions = Config::get('gsvnet.regions');
+        $regions = $this->regions->all();
         $oudLeden = $request->get('oudleden');
 
-        if (!($region = $request->get('regio') and array_key_exists($region, $regions))) {
+        // Search on region
+        if (!($region = $request->get('regio') and $this->regions->exists($region)))
             $region = null;
-        }
 
         // Enable search on yeargroup
         if (!($yeargroup = $request->get('jaarverband') and $this->yearGroups->exists($yeargroup))) {
@@ -101,11 +111,17 @@ class UserController extends BaseController
         $member = $this->users->byIdWithProfileAndYearGroup($id);
         $committees = $this->committees->byUserOrderByRecent($member);
         $senates = $member->senates;
-
+        if($member->profile && $member->profile->regions){
+            $formerRegions = $member->profile->regions->intersect($this->regions->former());
+        } else {
+            $formerRegions = [];
+        }
+        
         return view('users.profile')
             ->with('member', $member)
             ->with('committees', $committees)
-            ->with('senates', $senates);
+            ->with('senates', $senates)
+            ->with('formerRegions', $formerRegions);
     }
 
     public function editProfile(Request $request)

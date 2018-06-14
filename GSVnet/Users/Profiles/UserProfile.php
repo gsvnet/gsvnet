@@ -2,6 +2,7 @@
 
 use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class UserProfile extends Model {
 
@@ -17,7 +18,6 @@ class UserProfile extends Model {
     protected $fillable = [
         'user_id',
         'year_group_id',
-        'region',
         'initials',
         'phone',
         'address',
@@ -59,5 +59,38 @@ class UserProfile extends Model {
     public function user()
     {
         return $this->belongsTo('GSVnet\Users\User');
+    }
+
+    public function regions()
+    {
+        return $this->belongsToMany('GSVnet\Regions\Region', 'region_user_profile')
+                ->orderBy(\DB::raw('end_date IS NULL'), 'desc')
+                ->orderBy('end_date', 'desc')
+                ->orderBy('name', 'asc');
+    }
+
+    public function getCurrentRegionAttribute()
+    {
+        $region = $this->regions->first();
+
+        if($region && $region->end_date) {
+            $end_date = Carbon::createFromFormat('Y-m-d H:i:s', $region->end_date);
+            
+            if($end_date->isPast()) {
+                $region = null;
+            }
+        }
+        return !$region ? null : $region;
+    }
+
+    public function getFormerRegionsAttribute()
+    {
+        return $this->regions->filter(function ($region, $i){
+            if($region->end_date) {
+                $end_date = Carbon::createFromFormat('Y-m-d H:i:s', $region->end_date);
+                return $end_date->isPast();
+            }
+            return false;
+        });
     }
 }

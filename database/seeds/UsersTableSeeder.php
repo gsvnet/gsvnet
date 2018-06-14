@@ -37,7 +37,7 @@ class UsersTableSeeder extends Seeder {
                 'password' => $password,
                 'email' => $this->faker->companyEmail,
                 'verified' => $this->faker->boolean(30),
-                'type' => rand(0,3),
+                'type' => $type,
                 'approved' => true,
                 'created_at' => $this->time,
                 'updated_at' => $this->time
@@ -50,7 +50,6 @@ class UsersTableSeeder extends Seeder {
                 $profiles[] = [
                     'user_id' => $userId,
                     'year_group_id' => $group,
-                    'region' => rand(1,4),
                     'phone' => $this->faker->phoneNumber,
                     'address' => $this->faker->streetAddress,
                     'zip_code' => $this->faker->postcode,

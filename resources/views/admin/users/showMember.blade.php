@@ -74,7 +74,7 @@
                     <tr>
                         <th>Regio</th>
                         <td>
-                            {{ $profile->present()->regionName() }} 
+                            {{ $profile->present()->regionName }} 
                             @can('users.manage', $user)
                                 <a href="{{ action('Admin\MemberController@editRegion', $user->id) }}">(wijzig)</a>
                             @endcan

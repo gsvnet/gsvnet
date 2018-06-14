@@ -4,7 +4,7 @@
     </div>
     <div class="user-details">
         <h3>
-            {!! link_to_action('UserController@showUser', $member->user->present()->fullName, [$member->id], ['class' => 'search-users']) !!}
+            {!! link_to_action('UserController@showUser', $member->user->present()->fullName, [$member->user->id], ['class' => 'search-users']) !!}
         </h3>
         <ul class="user-details-list">
             <li>
@@ -16,7 +16,7 @@
                 <a href="tel:{{$member->phone}}" title="Bel {{$member->user->fullName}}">{{$member->phone}}</a>
             </li>
             <li>
-                <span class="dot-after">{{$member->yearGroup->name or 'Geen jaarverband'}}</span>
+                <span class="dot-after">{{$member->yearGroup->present()->name()}}</span>
                 {{$member->present()->regionName}}
             </li>
         </ul>

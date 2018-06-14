@@ -49,7 +49,7 @@ class UsersRepository extends BaseRepository
     public function memberOrFormerByIdWithProfile($id)
     {
         return User::whereIn('type',
-            [User::FORMERMEMBER, User::MEMBER, User::POTENTIAL])->with('profile.yearGroup')->findOrFail($id);
+            [User::FORMERMEMBER, User::MEMBER, User::POTENTIAL])->with('profile.yearGroup', 'profile.regions')->findOrFail($id);
     }
 
     /**

@@ -31,8 +31,8 @@
                 <label for="regio">Regio</label>
                 <select name="regio" id="regio" class="form-control">
                     <option value="0">Maakt niet uit</option>
-                    @foreach ($regions as $key => $region)
-                        <option value="{{$key}}" {{Input::get('regio') == $key ? 'selected="selected"' : ''}}>{{$region}}</option>
+                    @foreach ($regions as $region)
+                        <option value="{{$region->id}}" {{Input::get('regio') == $region->id ? 'selected="selected"' : ''}}>{{$region->name}}</option>
                     @endforeach
                 </select>
             </div>

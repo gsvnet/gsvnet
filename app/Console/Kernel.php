@@ -8,6 +8,7 @@ use GSV\Console\Commands\StandardizePhoneNumbers;
 use GSV\Console\Commands\CheckGravatars;
 use GSV\Console\Commands\PromoteATVToMembers;
 use GSV\Console\Commands\RegionsToCommittees;
+use GSV\Console\Commands\AssignUserRegions;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -27,7 +28,8 @@ class Kernel extends ConsoleKernel
         BulkSyncWithAlgolia::class,
         CheckGravatars::class,
         PromoteATVToMembers::class,
-        RegionsToCommittees::class
+        RegionsToCommittees::class,
+        AssignUserRegions::class
     ];
 
     protected function schedule(Schedule $schedule)

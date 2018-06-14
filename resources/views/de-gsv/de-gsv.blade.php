@@ -9,15 +9,13 @@
     <article class="artikel column-holder" role="main">
         <div>
             <h1>Over de GSV</h1>
-            <p class="lead">De Gereformeerde Studentenvereniging, de GSV, is een christelijke studentenvereniging met een gereformeerde basis. De vereniging bestaat uit een hechte groep van zo&rsquo;n 200 studenten die elke week bij elkaar komen in bijbelkringen voor Bijbelstudie, maar ook voor een biertje op soos. Binnen de vereniging worden veel activiteiten georganiseerd die passen bij een van de vier pijlers die de GSV karakteriseren: de christelijke, de intellectuele, de sociale en de studentikoze pijler.</p>
+            <p class="lead">De Gereformeerde Studentenvereniging, de GSV, is een christelijke studentenvereniging met een gereformeerde basis. De vereniging bestaat uit een hechte groep van zo&rsquo;n 200 studenten die elke week bij elkaar komen in bijbelkringen voor Bijbelstudie, maar ook voor een biertje op soos. Er worden veel activiteiten georganiseerd die passen bij een van de vier pijlers die de GSV karakteriseren: de christelijke, de intellectuele, de sociale en de studentikoze pijler.</p>
         </div>
 
-        <p>De GSV is opgericht in 1966 en is al zo’n goed 50 jaar d&eacute; academische vereniging met gereformeerde grondslag in Groningen. Als doelstelling heeft de vereniging: &ldquo;elkaar steunen in het dienen van de Here, met name in de studie.&rdquo;</p>
         <aside class="note">
             <b>Elkaar steunen</b> in het dienen van de Here, met name in de studie.
         </aside>
-
-        <p>Dit uit zich in de vele verschillende aspecten van de vereniging. We houden bijvoorbeeld bijbelkring en sing-ins om zo God te dienen en samen christen te zijn, maar ook zijn er door het jaar heen lezingen en studiegerelateerde avonden die ook de ruimte bieden voor discussie en verdieping. Het sociale aspect van de vereniging komt naar voren, in het elkaar leren kennen en ontmoeten op soosavonden en feestjes. Het doel van de vereniging is om de Heer te dienen in de academische wereld en elkaar te steunen in het zijn van christen binnen de universiteit. </p>
+        <p>Al meer dan 50 jaar is de GSV één van de meest hechte verenigingen van Groningen. De vereniging met gereformeerde grondslag heeft als doel: ‘elkaar steunen in het dienen van de Here, met name in de studie.’ De GSV is veelzijdig en weet zich op verschillende manieren te uiten. Zo houden we bijbelkring en sing-ins om ons geloof te uiten en samen christen te zijn, maar worden er door het jaar heen ook lezingen en andere studiegerelateerde activiteiten georganiseerd. Daarnaast ontmoeten we elkaar elke donderdagavond op onze soos aan de Hereweg 40 en houden we van een goed feestje.</p>
 
         <div id="about-slideshow" class="carousel slide article-slideshow">
             <!-- Indicators -->
@@ -42,7 +40,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=Hereweg%2040,Groningen,Nederland&amp;size=480x320&amp;zoom=14&amp;sensor=false&amp;markers=color:purple%7Clabel:S%7CHereweg%2040,Groningen,Nederland&amp;key=AIzaSyC7OBIlZm97iBfHUYCR8Ie4llHLTlkHNMk&amp;scale=2" alt="Adres sociëteit" width="960" height="640">
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=Hereweg%2040,Groningen,Nederland&size=480x320&zoom=14&sensor=false&markers=color:purple%7Clabel:S%7CHereweg%2040,Groningen,Nederland&key=AIzaSyC7OBIlZm97iBfHUYCR8Ie4llHLTlkHNMk&scale=2" alt="Adres sociëteit" width="960" height="640">
                     <div class="carousel-caption">
                     Sociëteit bij Hereweg 40 in Groningen
                     </div>
@@ -58,6 +56,6 @@
             </a>
         </div>
 
-        <p>Hoewel de vereniging vanuit een Gereformeerd vrijgemaakte traditie is opgericht, staat zij open voor alle christenen die het eens kunnen zijn met de gereformeerde basis en grondbeginselen. Zo verwelkomt de vereniging elk jaar rond de 40 nieuwe leden, die meteen een goed begin van hun studententijd hebben bij de GSV. De GSV is naast een gereformeerde ook een academische vereniging. Dit betekent dat alleen universitaire studenten lid kunnen worden van de vereniging. Dit geeft de vereniging haar eigen studentikoze maar ook verdiepende karakter.</p>
+        <p>Hoewel de vereniging vanuit een gereformeerd vrijgemaakte traditie is opgericht, staat zij open voor alle christenen die het eens kunnen zijn met de gereformeerde basis en grondbeginselen. Zo verwelkomt de vereniging elk jaar rond de 40 nieuwe leden, die meteen een goed begin van hun studententijd hebben bij de GSV. Van oorsprong is de GSV een academische vereniging, maar sinds  de fusie met GHBOV Ad Tempus Vitae staat zij ook open voor hbo-studenten. Het studentikoze karakter van de GSV komt naar voren in huishoudelijke vergaderingen en jarenlange tradities.</p>
     </article>
 @stop
