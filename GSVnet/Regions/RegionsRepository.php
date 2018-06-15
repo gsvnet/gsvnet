@@ -73,6 +73,7 @@ class RegionsRepository {
     public function current()
     {
         return Region::current()
+                    ->orderBy('end_date', 'DESC')
                     ->orderBy('name', 'ASC')
                     ->get();
     }
@@ -86,7 +87,8 @@ class RegionsRepository {
     public function former()
     {
         return Region::former()
-                    ->orderBy('name', 'ASC')
-                    ->get();
+            ->orderBy('end_date', 'DESC')
+            ->orderBy('name', 'ASC')
+            ->get();
     }
 }
