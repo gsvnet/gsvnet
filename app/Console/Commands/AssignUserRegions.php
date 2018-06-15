@@ -71,7 +71,10 @@ class AssignUserRegions extends Command
                     $regions[] = $i + 1 + 4;
                 }
             }
-            echo "Member " . $member->firstname . " " . $member->lastname . " zit in regio's " . implode(',', $regions) . ".\n\n";
+            $regions = array_unique($regions);
+
+            if(count($regions) > 0)
+                echo "Member " . $member->firstname . " " . $member->lastname . " zit in regio's " . implode(',', $regions) . ".\n\n";
 
             $member->profile->user->profile->regions()->sync($regions);
             $bar->advance();
