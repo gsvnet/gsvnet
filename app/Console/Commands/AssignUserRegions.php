@@ -59,6 +59,9 @@ class AssignUserRegions extends Command
         foreach($members as $member) {
             $regions = [];
 
+            if(!$member->profile)
+                continue;
+
             if($member->profile->region) {
                 $regions[] = $member->profile->region;
             }
@@ -70,7 +73,7 @@ class AssignUserRegions extends Command
                 }
             }
 
-            //if($member->profile)$member->profile->regions()->sync($regions);
+            //$member->profile->regions()->sync($regions);
             $bar->advance();
         }
         $bar->finish();       
