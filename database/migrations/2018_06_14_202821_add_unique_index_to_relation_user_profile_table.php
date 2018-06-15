@@ -13,7 +13,7 @@ class AddUniqueIndexToRelationUserProfileTable extends Migration
     public function up()
     {
         Schema::table('region_user_profile', function(Blueprint $table) {
-            $table->unique(['user_id', 'region_id']);
+            $table->unique(['region_id', 'user_profile_id']);
         });
     }
 
@@ -25,7 +25,7 @@ class AddUniqueIndexToRelationUserProfileTable extends Migration
     public function down()
     {
         Schema::table('region_user_profile', function(Blueprint $table) {
-            $table->dropUnique(['user_id', 'region_id']);
+            $table->dropUnique(['region_id', 'user_profile_id']);
         });
     }
 }
