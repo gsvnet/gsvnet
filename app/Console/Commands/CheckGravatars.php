@@ -32,17 +32,11 @@ class CheckGravatars extends Command
 
     public function handle()
     {
-        $menCounter = 0;
-        $womenCounter = 100;
+        $menCounter = rand(0, 99);
+        $womenCounter = rand(100, 199);
 
         $users = $this->users->getAllByTypes([User::MEMBER, User::INTERNAL_COMMITTEE]);
-        // $users = User::with('profile.yearGroup')
-        //         ->orderBy('lastname', 'ASC')
-        //         ->orderBy('firstname', 'ASC')
-        //         ->where('type', User::MEMBER)
-        //         ->orWhere('type', User::INTERNAL_COMMITTEE)
-        //         ->limit(20)
-        //         ->get();
+
         $bar = $this->output->createProgressBar(count($users));
 
         foreach ($users as $user) {
