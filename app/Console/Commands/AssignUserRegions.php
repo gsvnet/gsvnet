@@ -68,12 +68,12 @@ class AssignUserRegions extends Command
 
             foreach($regionCommittees as $i => $committee) {
                 if($member->committees->contains($committee->id)) {
-                    $regions[] = $i + 1;
+                    $regions[] = $i + 1 + 4;
                     echo "Member " . $member->firstname . " zit in commissie " . $committee->name . " (" . ($i + 1) . ").\n\n";
                 }
             }
 
-            $member->profile->user->profile->regions()->attach($regions);
+            $member->profile->user->profile->regions()->sync($regions);
             $bar->advance();
         }
         $bar->finish();       
