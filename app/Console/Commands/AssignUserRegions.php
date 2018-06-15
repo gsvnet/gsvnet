@@ -70,7 +70,7 @@ class AssignUserRegions extends Command
                 }
             }
 
-            if($member->profile)$member->profile->regions()->sync($regions);
+            //if($member->profile)$member->profile->regions()->sync($regions);
             $bar->advance();
         }
         $bar->finish();       
