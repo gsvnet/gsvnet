@@ -65,7 +65,7 @@
         <h2 id="intellectueel">Intellectuele pijler</h2>
         <div class="i-intellectual icon"></div>
 
-        <p>Omdat de GSV van oorsprong een academische vereniging is, heeft de GSV ook een intellectueel karakter. Er is volop ruimte voor verdiepende activiteiten. Door het jaar heen worden er lezingen gehouden met de meest uiteenlopende onderwerpen. Van wetenschappelijke thema’s tot onderwerpen uit het bedrijfsleven. Ook is er veel ruimte voor eigen input. Zo zijn er 3 avonden per jaar waarop GSV’ers elkaar wat bijbrengen over hun studie, scriptie of een onderwerp waar ze gewoon veel van af weten. Verder worden er regelmatig filmavondjes, discussieavonden en gevarieerde pubquizzen gehouden. Maar deze intellectuele pijler is in meer te zien dan alleen de activiteiten. Bij de GSV zul je een groep mensen treffen die elkaar motiveert om te studeren, door samen af te spreken voor lunchpauzes in de kantine van de universiteitsbibliotheek of voor een kop koffie op het Zernike. Kritische geluiden zullen altijd gewaardeerd worden op de vereniging en voor een goed gesprek of een stevige discussie zijn altijd wel leden warm te krijgen.</p>
+        <p>Omdat de GSV van oorsprong een academische vereniging is, heeft de GSV ook een intellectueel karakter. Er is volop ruimte voor verdiepende activiteiten. Door het jaar heen worden er lezingen gehouden met de meest uiteenlopende onderwerpen. Van wetenschappelijke thema’s tot onderwerpen uit het bedrijfsleven. Ook is er veel ruimte voor eigen input. Zo zijn er 3 avonden per jaar waarop GSV’ers elkaar wat bijbrengen over hun studie, scriptie of een onderwerp waar ze gewoon veel van af weten. Verder worden er regelmatig filmavondjes, discussieavonden en gevarieerde pubquizzen gehouden.</p>
 
         <div id="intellectueel-slideshow" class="carousel slide article-slideshow">
             <!-- Indicators -->
@@ -98,7 +98,7 @@
             </a>
         </div>
 
-        <p>Maar de GSV is meer dan alleen de activiteiten. Bij de GSV zul je een groep mensen treffen die als studenten elkaar motiveert om te studeren, of juist afspreekt om nu en dan even pauze te houden in de kantine van de Universiteitsbibliotheek. Kritische geluiden worden altijd gewaardeerd op de vereniging en voor een goed gesprek of een goede discussie zijn veel leden zeker wel warm te krijgen.</p>
+        <p>Maar deze intellectuele pijler is in meer te zien dan alleen de activiteiten. Bij de GSV zul je een groep mensen treffen die elkaar motiveert om te studeren, door samen af te spreken voor lunchpauzes in de kantine van de universiteitsbibliotheek of voor een kop koffie op het Zernike. Kritische geluiden zullen altijd gewaardeerd worden op de vereniging en voor een goed gesprek of een stevige discussie zijn altijd wel leden warm te krijgen.</p>
 
         <h2 id="sociaal">Sociale pijler</h2>
         <div class="i-social icon"></div>
