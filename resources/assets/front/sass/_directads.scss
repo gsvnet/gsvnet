@@ -23,6 +23,24 @@
         img {
             max-height: 80px;
         }
+
+        &.half {
+
+            a {
+                box-sizing: border-box;
+                max-width: 50%;
+
+                &:first-of-type {
+                    padding-right: 1em;
+                    float: left;
+                }
+
+                &:last-of-type {
+                    padding-left: 1em;
+                    float: right;
+                }
+            }
+        }
     }
 }
 
