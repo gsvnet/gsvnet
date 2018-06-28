@@ -218,7 +218,11 @@
 			line-height: inherit;
 			border-radius: 0;
 			margin-top: 0;
-		}
+        }
+        
+        .media-avatar {
+            min-height: calc(10vw - #{$column-padding} / 10);
+        }
 	}
 
 	.media-rows {
