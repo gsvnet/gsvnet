@@ -61,6 +61,16 @@
                     </div>
                 </div>
             </div>
+        @else
+            <div class="secondary-column">
+                <div class="content-columns">
+                    <div class="content-column">
+						@if(Auth::check() && Auth::user()->id == $member->id)
+							<p>{!! link_to_action('UserController@editProfile', 'Bewerk je profiel', [], ['class'=>'button']) !!}</p>
+						@endif
+                    </div>
+                </div>
+            </div>
 		@endif
 		<div class="main-content">
 			<div class="content-columns">
