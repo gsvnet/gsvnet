@@ -79,7 +79,7 @@ textarea.form-control {
 }
 
 @media only screen and (max-width: $firstbreakpoint){
-	.js #user-search-form-toggler {
+	#user-search-form-toggler {
 		cursor: pointer;
 
 		span {
@@ -94,8 +94,7 @@ textarea.form-control {
 		}
 	}
 
-	.js #user-search-form {
-		height: 0;
+	#user-search-form {
 		max-height: 0;
 		overflow: hidden;
 		transition: max-height .3s ease;
