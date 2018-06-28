@@ -63,6 +63,10 @@ return [
             'senate' => true
         ],
 
+        'dropbox.show' => [
+            'type' => [User::MEMBER, User::FORMERMEMBER]
+        ],
+
         'events.show-private' => [
             'type' => [User::MEMBER, User::FORMERMEMBER],
         ],

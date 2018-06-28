@@ -291,14 +291,14 @@ class NavigationViewComposer {
                         'title' => 'BK-materiaal',
                         'url' => 'https://www.dropbox.com/sh/o06lxxza7u6a5ka/AACsPUF-MisVV3DSvrpb2B32a?dl=0',
                         'visible' => function(){
-                            return Gate::allows('docs.show');
+                            return Gate::allows('dropbox.show');
                         }
                     ],
                     'gsv-fotos' => [
                         'title' => 'GSV-foto\'s',
                         'url' => 'https://www.dropbox.com/sh/35nn6690kcvk7wx/AACnG0OpTvw4I1WcvwUhOZYaa?dl=0',
                         'visible' => function(){
-                            return Gate::allows('docs.show');
+                            return Gate::allows('dropbox.show');
                         }
                     ],
                     'bestanden' => [
