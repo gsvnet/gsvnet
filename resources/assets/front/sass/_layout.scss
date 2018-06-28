@@ -192,8 +192,8 @@ hr {
 @media only screen and (max-width: $firstbreakpoint){
 	.column-holder, .nav-bar {
 		width: auto;
-		padding-left: 36px;
-		padding-right: 36px;
+		padding-left: $column-padding;
+		padding-right: $column-padding;
 	}
 
 	.main-content, .secondary-column {
@@ -256,8 +256,8 @@ hr {
 
 	.column-holder, .nav-bar {
 		width: auto;
-		padding-left: 18px;
-		padding-right: 18px;
+		padding-left: $column-padding / 2;
+		padding-right: $column-padding / 2;
 	}
 
 	.secondary-column .content-column, .content-column {
