@@ -83,23 +83,10 @@
 @stop
 
 @section('content')
-    <div id="newsOverlay" class="hidden" onclick="(function(e, obj){if( e.target != obj ) return false;$(obj).hide();})(event, this)">
-        <div id="newsPopup">
-            <a href="#" class="close-button" onclick="$('#newsOverlay').hide()" class="button">x</a>
-            <iframe src="https://player.vimeo.com/video/261181688" width="640" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-            <p><b>BREAKING NEWS</b>: De GSV gaat samen met ATV! Met overweldigende meerderheid is besloten dat we vanaf juni samen verder zullen gaan onder de naam van de GSV. Het is een ontzettend gave stap en we hebben enorm veel zin in de komende tijd! Dit betekent ook dat vanaf komende zomer hbo-studenten lid kunnen worden bij de GSV. Op de hoogte blijven? Volg ons online: <a href="https://www.instagram.com/gsvgroningen">www.instagram.com/gsvgroningen</a> en <a href="https://www.facebook.com/GSVgroningen/">www.facebook.com/GSVgroningen</a>.</p>
-            <div style="text-align:center;">
-                <button class="close-button2" onclick="$('#newsOverlay').hide()">Sluiten</button>
-            </div>
-        </div>
-    </div>
-
     <div class="column-holder" role="main">
         <p class="delta">Denk je na over een actief studentenleven in Groningen? Dan ben je hier aan het juiste adres. De GSV is dé perfecte combinatie van christelijke waarden en het echte studentenleven.</p>
         <div class="main-content has-border-bottom">
             <p>Op deze site kun je meer lezen over de GSV en wat er allemaal valt te beleven bij onze studentenverenging. Wil je lid worden, of ben je gewoon nieuwsgierig? <a href="/word-lid" class="more" title="Lid worden">Lees wat je moet weten</a></p>
-
-            <p><a href="https://scontent-ams3-1.xx.fbcdn.net/v/t1.0-9/39090130_2203888582972661_1427212650298736640_n.png?_nc_cat=0&amp;oh=c659052a8b29418dd245f64231d82642&amp;oe=5C0A5086"><img style="width:100%" src="https://scontent-ams3-1.xx.fbcdn.net/v/t1.0-9/39090130_2203888582972661_1427212650298736640_n.png?_nc_cat=0&amp;oh=c659052a8b29418dd245f64231d82642&amp;oe=5C0A5086"></img></a></p>
 
             <h2>Over de GSV</h2>
             <p>De GSV, de Gereformeerde Studenten Vereniging, is een christelijke studentenvereniging met een gereformeerde basis. De vereniging bestaat uit een hechte groep van zo’n 200 studenten die elke week bij elkaar komen op bijbelkring en tijdens soosavonden. </p>

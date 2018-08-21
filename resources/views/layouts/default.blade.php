@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700,400italic">
     @section('stylesheets')
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.8.4">
+        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.8.5">
     @show
 </head>
 <body id="@yield('body-id', 'gsvnet')">
@@ -120,20 +120,6 @@
     @if (Auth::guest())
         @include('login-dialog')
     @endif
-
-    @cannot('ads.hide')
-        <!-- Start of LiveChat (www.livechatinc.com) code -->
-        <script type="text/javascript">
-        window.__lc = window.__lc || {};
-        window.__lc.license = 9976455;
-        (function() {
-        var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
-        lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
-        })();
-        </script>
-        <!-- End of LiveChat code -->
-    @endcan
 
     @section('javascripts')
         <script>
