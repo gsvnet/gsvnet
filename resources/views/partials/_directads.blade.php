@@ -15,5 +15,6 @@
         <p><a href="https://www.huizenmarkt.nl/" title="Huurhuizen en Appartementen"><img src="/images/annonces/huizenmarkt.png" title="Huurhuizen en Appartementen" alt="Huurhuizen en Appartementen" /></a></p>
         <p><a href="https://www.inshared.nl/autoverzekering/" title="autoverzekering"><img src="/images/annonces/inshared.png" title="autoverzekering" alt="autoverzekering" /></a></p>
         <p><a href="https://www.maxilia.nl/" title="Maxilia"><img src="/images/annonces/maxilia.jpg" title="Maxilia" alt="Maxilia" /></a></p>
+        <p><a href="https://www.geld.nl/" title="Geld.nl"><img src="/images/annonces/geld_nl.png" title="Geld.nl" alt="Geld.nl" /></a></p>
     </div>
 </div>
