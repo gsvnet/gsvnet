@@ -62,14 +62,14 @@ class ProfilePresenter extends Presenter
     public function regionName()
     {
         $region = $this->user->profile->current_region;
-        return $region ? 'Regio ' . $region->name : 'geen regio';
+        return $region ? $region->name : 'geen regio';
     }
 
     public function formerRegionLinks()
     {
         return $this->user->profile->former_regions->map(function($region, $i){
             $searchUrl = action('UserController@showUsers', ['regio' => $region->id]);
-            return "<a href='". $searchUrl ."'>Regio " . $region->name . "</a>";
+            return "<a href='". $searchUrl ."'>" . $region->name . "</a>";
         })->implode(', ');
     }
 
