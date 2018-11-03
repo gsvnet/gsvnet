@@ -219,9 +219,6 @@ Route::group(['prefix' => 'api', 'middleware' => ['auth', 'approved', 'has:membe
     Route::get('search/members', 'ApiController@members');
 });
 
-Route::get('supersecretandverysecure', ['middleware' => 'auth', 'uses' => 'AprilController@index']);
-Route::post('supersecretandverysecure', ['middleware' => 'auth', 'uses' => 'AprilController@initialise']);
-
 // Forum index, search, show comment, show thread
 Route::get('forum',      'ForumThreadsController@getIndex');
 Route::get('forum/zoek', 'ForumThreadsController@getSearch');
@@ -235,31 +232,31 @@ Route::post('admin/leden/{id}/invite-via-mail', 'Malfonds\InvitationController@i
 Route::group(['prefix' => 'api', 'middleware' => ['cors']], function() {
     Route::group(['middleware' => ['loginViaToken', 'tokenAuth']], function() {
         Route::get('me', 'Malfonds\MemberController@me');
-
+    
         Route::resource('members', 'Malfonds\MemberController');
         Route::resource('yeargroups', 'Malfonds\YearGroupController');
         Route::get('members/{id}/familie', 'Malfonds\MemberController@family');
-
+    
         Route::get('members/{id}/history', 'Malfonds\MemberHistoryController@show');
-
+    
         Route::put('members/{id}/naam', 'Malfonds\MemberController@updateName');
         Route::put('members/{id}/email', 'Malfonds\MemberController@updateEmail');
         Route::put('members/{id}/adres', 'Malfonds\MemberController@updateAddress');
         Route::put('members/{id}/jaarverband', 'Malfonds\MemberController@updateYearGroup');
         Route::put('members/{id}/geslacht', 'Malfonds\MemberController@updateGender');
         Route::put('members/{id}/wachtwoord', 'Malfonds\MemberController@updatePassword');
-
+    
         // Verifications
         Route::post('members/{id}/naam/verifieer', 'Malfonds\MemberController@verifyName');
         Route::post('members/{id}/email/verifieer', 'Malfonds\MemberController@verifyEmail');
         Route::post('members/{id}/jaarverband/verifieer', 'Malfonds\MemberController@verifyYearGroup');
         Route::post('members/{id}/geslacht/verifieer', 'Malfonds\MemberController@verifyGender');
         Route::post('members/{id}/familie/verifieer', 'Malfonds\MemberController@verifyFamily');
-
+        
         // Invites
         Route::post('members/{id}/invite', 'Malfonds\MemberController@invite');
         Route::put('members/{id}/invite', 'Malfonds\MemberController@requestInvite');
     });
-
+    
     Route::post('login', 'Malfonds\SessionController@login');
 });
