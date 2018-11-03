@@ -18,7 +18,7 @@ class ThreadSearch
     public function searchPaginated($query, $perPage)
     {
         $id = Auth::check() ? Auth::user()->id : 0;
-
+        
         $query = $this->model->where(function($q) use ($query) {
             $q->where('subject', 'like', '%' . $query . '%')
                 ->orWhere('body', 'like', '%' . $query . '%');
@@ -34,10 +34,6 @@ class ThreadSearch
         if (Gate::denies('threads.show-private'))
         {
             $query = $query->public();
-
-            if ( !Gate::denies('threads.show-atv') ) {
-              $query = $query->orWhere('atv', '=', true);
-            }
         }
 
         return $query->paginate($perPage, ['forum_threads.*']);

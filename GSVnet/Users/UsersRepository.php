@@ -216,16 +216,6 @@ class UsersRepository extends BaseRepository
         return $user;
     }
 
-    public function activateAtv($id)
-    {
-        $user = $this->byId($id);
-        $user->approved = true;
-        $user->type = 5;
-        $user->save();
-
-        return $user;
-    }
-
     /**
      *   Accept user's membership
      *   This method sets the user's type to member

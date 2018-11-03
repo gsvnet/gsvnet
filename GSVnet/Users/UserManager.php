@@ -46,16 +46,6 @@ class UserManager
         return $user;
     }
 
-    public function activateAtv($id)
-    {
-        $user = $this->users->byId($id);
-        $this->users->activateAtv($id);
-
-        Event::fire('user.activated', ['user' => $user]);
-
-        return $user;
-    }
-
     /**
     *   Activates user and sends mail
     */

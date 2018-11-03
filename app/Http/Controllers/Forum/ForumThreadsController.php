@@ -59,7 +59,7 @@ class ForumThreadsController extends BaseController {
 
     // show a thread
     public function getShowThread($threadSlug)
-    {
+    {        
         $thread = $this->threads->getBySlug($threadSlug);
 
         //return $thread;
@@ -67,10 +67,7 @@ class ForumThreadsController extends BaseController {
         if ( ! $thread)
             return redirect()->action('ForumThreadsController@getIndex');
 
-        if (
-          ! $thread->public && Gate::denies('threads.show-private') &&
-          $thread->atv && Gate::denies('threads.show-atv')
-        )
+        if ( ! $thread->public && Gate::denies('threads.show-private'))
             throw new NoPermissionException;
 
         $replies = $this->threads->getThreadRepliesPaginated($thread, $this->repliesPerPage);
@@ -116,16 +113,13 @@ class ForumThreadsController extends BaseController {
             'authorId' => Auth::user()->id,
             'body' => Input::get('body'),
             'public' => Input::get('public', false),
-            'atv' => Input::get('atv', false),
             'tags' => $this->tags->getTagsByIds(Input::get('tags')),
             'subject' => $subject,
             'slug' => $slug
         ];
 
-        if (Gate::denies('threads.show-atv')) {
+        if(Gate::denies('threads.show-private'))
             $data['public'] = true;
-            $data['atv'] = false;
-        }
 
         $validator->beforeValidation()->validate($data);
 
@@ -162,7 +156,7 @@ class ForumThreadsController extends BaseController {
 
         if(Gate::denies('threads.show-private'))
             $data['public'] = true;
-
+        
         $this->dispatchFromArray(EditThreadCommand::class, $data);
 
         return redirect()->action('ForumThreadsController@getShowThread', [$thread->slug]);

@@ -21,7 +21,6 @@ class StartThreadCommandHandler {
             'author_id' => $command->authorId,
             'public' => $command->public,
             'slug' => $command->slug,
-            'atv' => $command->atv,
             'reply_count' => 0,
             'most_recent_reply_id' => null
         ]);

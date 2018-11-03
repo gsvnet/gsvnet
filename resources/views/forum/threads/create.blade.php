@@ -28,12 +28,6 @@
             </div>
             @endcan
 
-            @can('threads.show-atv')
-            <div>
-                {!! Former::checkbox('atv')->text('Maak topic zichtbaar voor ATV&apos;ers (niet nodig als topic al publiek is)')->label('Zichtbaar voor ATV?') !!}
-            </div>
-            @endcan
-
             <div class="control-group">
                 <input type="submit" value="Opslaan" class="button">
             </div>
