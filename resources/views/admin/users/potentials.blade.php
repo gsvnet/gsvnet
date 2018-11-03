@@ -45,17 +45,6 @@
                         {!!
                             Former::close()
                         !!}
-
-                        {!!
-                        Former::inline_open()
-                        ->action(action('Admin\UsersController@activateAtv', $user->id))
-                        !!}
-                        <button type='submit' class='btn btn-success btn-xs'>
-                            <i class="glyphicon glyphicon-ok"></i> Registratie goedkeuren (ATV)
-                        </button>
-                        {!!
-                        Former::close()
-                        !!}
                         @endif
 
                         @if ($user->isPotential() && Gate::allows('users.manage'))
