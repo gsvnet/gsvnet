@@ -122,9 +122,7 @@ class ForumThreadsController extends BaseController {
             'slug' => $slug
         ];
 
-        if (Gate::allows('threads.show-atv') && Gate::denies('threads.show-private')) {
-            $data['atv'] = true;
-        } else if (Gate::denies('threads.show-atv')) {
+        if (Gate::denies('threads.show-atv')) {
             $data['public'] = true;
             $data['atv'] = false;
         }
