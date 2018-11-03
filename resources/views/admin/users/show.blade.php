@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-header">
-        <h1><img src="{{ $user->present()->getAvatar(102) }}" width="102" height="102"> {{ $user->present()->fullName }}</h1>
+        <h1><img src="{{ $user->present()->avatar(102) }}" width="102" height="102"> {{ $user->present()->fullName }}</h1>
 
         @can('users.manage')
         {!! Former::inline_open()

@@ -1,7 +1,7 @@
 <div class="thread _post">
     <div class="forum-post-data">
         <div class="avatar">
-            <img src="{{ $thread->author->present()->getAvatar(40) }}" width="40" height="40">
+            <img src="{{ $thread->author->present()->avatar(40) }}" width="40" height="40">
         </div>
         <div class="like-box">
             @can('thread.like', $thread)
