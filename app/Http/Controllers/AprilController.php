@@ -13,13 +13,13 @@ class AprilController extends BaseController {
   }
 
   public function index() {
-    $this->authorize('admin');
+    //$this->authorize('admin');
 
     return view('April');
   }
 
   public function initialise() {
-    $this->authorize('admin');
+    //$this->authorize('admin');
 
     // The women avatar ids have, as I've decided in all my wisdom,
     // an offset of 100.
