@@ -18,7 +18,6 @@ class EditThreadCommandHandler {
 
         $thread->body = $command->body;
         $thread->public = $command->public;
-        $thread->atv = $command->atv;
         $thread->subject = $command->subject;
 
         $this->threads->save($thread);
