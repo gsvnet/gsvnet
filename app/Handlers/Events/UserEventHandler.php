@@ -5,6 +5,7 @@ use GSV\Events\Members\BirthDayWasChanged;
 use GSV\Events\Members\BusinessWasChanged;
 use GSV\Events\Members\GenderWasChanged;
 use GSV\Events\Members\MemberEmailWasChanged;
+use GSV\Events\Members\MemberFileWasCreated;
 use GSV\Events\Members\MembershipStatusWasChanged;
 use GSV\Events\Members\NameWasChanged;
 use GSV\Events\Members\ParentDetailsWereChanged;
@@ -82,6 +83,7 @@ class UserEventHandler
 
         // Disable this for now, since a lot of mails are coming in
         // $events->listen(self::$informAbactisFor, AbactisInformer::class);
+        $events->listen(MemberFileWasCreated::class, 'GSV\Handlers\Events\AbactisInformer@sendMemberFile');
         
         $events->listen(self::$informNewsletterFor, NewsletterInformer::class);
 

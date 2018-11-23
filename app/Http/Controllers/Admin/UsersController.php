@@ -1,6 +1,5 @@
 <?php namespace Admin;
 
-use Carbon\Carbon;
 use GSV\Commands\Users\RegisterUserCommand;
 use GSVnet\Users\Profiles\AdminProfileCreatorValidator;
 use GSVnet\Users\Profiles\AdminProfileUpdaterValidator;
@@ -14,14 +13,7 @@ use GSVnet\Users\UserTransformer;
 use GSVnet\Users\UserValidator;
 use GSVnet\Users\YearGroupRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
-use League\Csv\Reader;
-use League\Csv\Writer;
-use Maatwebsite\Excel\Classes\LaravelExcelWorksheet;
-use Maatwebsite\Excel\Facades\Excel;
-use Maatwebsite\Excel\Writers\CellWriter;
-use Maatwebsite\Excel\Writers\LaravelExcelWriter;
-use SplTempFileObject;
+use GSVnet\Users\MemberFiler;
 use GSVnet\Regions\RegionsRepository;
 
 class UsersController extends AdminBaseController
@@ -34,6 +26,7 @@ class UsersController extends AdminBaseController
     protected $profileCreatorValidator;
     protected $profileUpdaterValidator;
     protected $userManager;
+    protected $filer;
     private $profiles;
 
     public function __construct(
@@ -44,7 +37,8 @@ class UsersController extends AdminBaseController
         UsersRepository $users,
         ProfilesRepository $profiles,
         YearGroupRepository $yearGroups,
-        RegionsRepository $regions
+        RegionsRepository $regions,
+        MemberFiler $filer
     ) {
         $this->userManager = $userManager;
         $this->validator = $validator;
@@ -54,6 +48,7 @@ class UsersController extends AdminBaseController
         $this->yearGroups = $yearGroups;
         $this->profiles = $profiles;
         $this->regions = $regions;
+        $this->filer = $filer;
 
         parent::__construct();
     }
@@ -137,40 +132,7 @@ class UsersController extends AdminBaseController
     public function exportMembers()
     {
         $this->authorize('users.show');
-        $transformer = new UserTransformer;
-        $date = Carbon::now()->format('d-m-Y');
-
-        $formerMembers = $this->users->getAllByType(User::FORMERMEMBER);
-        $members = $this->users->getAllByType(User::MEMBER);
-
-        $former = $transformer->collectionOfFormerMembers($formerMembers);
-        $current = $transformer->collectionOfMembers($members);
-
-        Excel::create("ledenbestand-{$date}", function (LaravelExcelWriter $excel) use ($date, $former, $current) {
-            $excel->setTitle("ledenbestand-{$date}");
-            $excel->sheet('Oud-leden', function (LaravelExcelWorksheet $sheet) use ($former) {
-                $sheet->fromArray($former);
-                $sheet->setAutoFilter();
-                $sheet->setAutoSize(true);
-                $sheet->setColumnFormat([
-                    'N' => 'General' // The phone column :)
-                ]);
-                $sheet->cells('A1:Z1', function(CellWriter $cells) {
-                    $cells->setFontWeight(true);
-                });
-            });
-            $excel->sheet('Leden', function (LaravelExcelWorksheet $sheet) use ($current) {
-                $sheet->fromArray($current);
-                $sheet->setAutoFilter();
-                $sheet->setAutoSize(true);
-                $sheet->setColumnFormat([
-                    'L' => 'General' // Phone column
-                ]);
-                $sheet->cells('A1:Z1', function(CellWriter $cells) {
-                    $cells->setFontWeight(true);
-                });
-            });
-        })->export('xls');
+        $this->filer->fileMembers()->export('xls');
     }
 
     public function create()

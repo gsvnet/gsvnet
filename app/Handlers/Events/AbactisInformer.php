@@ -1,5 +1,7 @@
 <?php namespace GSV\Handlers\Events;
 
+use Carbon\Carbon;
+use GSV\Events\Members\MemberFileWasCreated;
 use GSV\Events\Members\ProfileEvent;
 use GSVnet\Users\ProfileActions\ProfileActionPresenter;
 use Illuminate\Contracts\Config\Repository;
@@ -7,7 +9,7 @@ use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Message;
 
-class AbactisInformer implements ShouldQueue
+class AbactisInformer
 {
     /**
      * @var Mailer $mailer
@@ -34,7 +36,7 @@ class AbactisInformer implements ShouldQueue
         // Don't send an email if someone manages someone else's profile
         if ($event->getManager()->getKey() != $event->getUser()->getKey())
             return;
-        
+
         $user = $event->getUser();
         $change = ProfileActionPresenter::$map[get_class($event)];
 
@@ -44,6 +46,23 @@ class AbactisInformer implements ShouldQueue
         $this->mailer->send('emails.users.profile-update', compact('user'), function (Message $message) use ($to, $subject) {
             $message->to($to, 'Abactis der GSV');
             $message->subject($subject);
+        });
+    }
+
+    public function sendMemberFile(MemberFileWasCreated $event)
+    {
+        $months = [
+            '', 'januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli',
+            'augustus', 'september', 'oktober', 'november', 'december'
+        ];
+        $month = $months[$event->getAt()->month];
+        $year = $event->getAt()->year;
+        $filePath = $event->getFilePath();
+        $subject = "Ledenbestand " . $month . " " . $year;
+        $this->mailer->send('emails.admin.memberfile', compact(['month', 'year']), function ($m) use ($subject, $filePath) {
+            $m->to('loran.knol@gmail.com', 'Abactis der GSV');
+            $m->subject($subject);
+            $m->attach($filePath, ['mime' => 'application/vnd.ms-excel']);
         });
     }
 }
