@@ -45,7 +45,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // php7.0-zip had to be installed
 
         // The Excel package and Laravel's Storage use slightly different file system perspectives.
         $excelFolder = storage_path('app/ledenbestanden/');
@@ -57,11 +56,11 @@ class Kernel extends ConsoleKernel
             $filePath = $storageInfo['full'];
 
             event(new MemberFileWasCreated($filePath));
-        })->daily();
+        })->monthly();
 
         // Clean up the member file.
         $schedule->call(function () use ($excelFolderStorage) {
             Storage::deleteDirectory($excelFolderStorage);
-        })->dailyAt('1:00');
+        })->monthlyOn(2);
     }
 }

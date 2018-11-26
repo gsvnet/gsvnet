@@ -58,9 +58,10 @@ class AbactisInformer
         $month = $months[$event->getAt()->month];
         $year = $event->getAt()->year;
         $filePath = $event->getFilePath();
+        $to = $this->config->get('gsvnet.email.senate');
         $subject = "Ledenbestand " . $month . " " . $year;
-        $this->mailer->send('emails.admin.memberfile', compact(['month', 'year']), function ($m) use ($subject, $filePath) {
-            $m->to('loran.knol@gmail.com', 'Abactis der GSV');
+        $this->mailer->send('emails.admin.memberfile', compact(['month', 'year']), function ($m) use ($to, $subject, $filePath) {
+            $m->to($to, 'Abactis der GSV');
             $m->subject($subject);
             $m->attach($filePath, ['mime' => 'application/vnd.ms-excel']);
         });
