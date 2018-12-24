@@ -433,8 +433,8 @@
                                                                 Contactgegevens:<br/>
                                                                 malversacie@gsvnet.nl<br/>
                                                                 Gereformeerde Studentenvereniging<br/>
-                                                                Postbus 1030<br/>
-                                                                9701 BA Groningen
+                                                                Hereweg 40<br/>
+                                                                9725 AE Groningen
                                                             </small>
                                                         </p>
                                                     </th>

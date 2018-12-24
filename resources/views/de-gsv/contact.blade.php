@@ -13,8 +13,8 @@
 				<div class="content-column">
 					<address>
 						<h3>Abactiaat</h3>
-						Postbus 1030<br/>
-						9701 BA Groningen<br/>
+						Hereweg 40<br/>
+						9725 AE Groningen<br/>
 						{!!HTML::mailto('abactis@gsvnet.nl')!!}
 					</address>
 					
