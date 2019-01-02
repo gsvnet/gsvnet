@@ -23,8 +23,7 @@
 					<address>
 						<h3>Sociëteit</h3>
 						Hereweg 40<br/>
-						Postbus 7005<br/>
-						9701 JA Groningen<br/>
+						9725 AE Groningen<br/>
 						{!!HTML::mailto('voorzitter@vgse.nl')!!}
 					</address>
 				</div>
