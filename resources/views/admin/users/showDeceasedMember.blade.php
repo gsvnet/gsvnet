@@ -41,7 +41,11 @@
                     <tr>
                         <th>Jaarverband</th>
                         <td>
-                            {{ $profile->yearGroup->present()->nameWithYear() }}
+                            @if($profile->yearGroup)
+                                {{ $profile->yearGroup->present()->nameWithYear }}
+                            @else
+                                Onbekend
+                            @endif
                             @can('users.manage', $user)
                                 <a href="{{ action('Admin\MemberController@editYearGroup', $user->id) }}">(wijzig)</a>
                             @endcan

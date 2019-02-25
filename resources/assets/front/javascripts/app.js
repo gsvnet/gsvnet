@@ -124,7 +124,7 @@ app = (function() {
 	}
 
 	function photos() {
-        var currentIndex;
+        var prevIndex;
         var prev = $('[rel="prev"]');
         var next = $('[rel="next"]');
         var prevUrl = prev.attr('href');
@@ -152,20 +152,24 @@ app = (function() {
 				}
 			},
             callbacks: {
-                open: function() {
-                    currentIndex = this.index;
-                },
                 change: function () {
-                    if(hasPrevUrl && this.currItem.index - currentIndex > 2)
-                    {
+                    if(
+                        hasPrevUrl 
+                        && prevIndex == 0 
+                        && this.index == this.items.length - 1
+                    ) {
                         location.href = prevUrl;
-                    }
-                    if(hasNextUrl && currentIndex - this.currItem.index > 2)
-                    {
+
+                    } else if(
+                        hasNextUrl 
+                        && prevIndex == this.items.length - 1 
+                        && this.index == 0
+                    ) {
                         location.href = nextUrl;
+
                     }
 
-                    currentIndex = this.currItem.index;
+                    prevIndex = this.index;
                 }
             }
 		});
