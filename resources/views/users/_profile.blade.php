@@ -16,7 +16,7 @@
                 <a href="tel:{{$member->phone}}" title="Bel {{$member->user->fullName}}">{{$member->phone}}</a>
             </li>
             <li>
-                <span class="dot-after">{{$member->yearGroup->present()->name()}}</span>
+                <span class="dot-after">{{$member->present()->yearGroupName}}</span>
                 {{$member->present()->regionName}}
             </li>
         </ul>

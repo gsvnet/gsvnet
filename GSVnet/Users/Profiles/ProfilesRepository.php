@@ -80,7 +80,7 @@ class ProfilesRepository extends BaseRepository {
         if (isset($region))
             $query->where('regions.id', '=', $region);
 
-        // Search for members inside region if region is valid
+        // Search for members inside year group if year group is valid
         if (isset($yearGroup))
             $query->where('year_group_id', '=', $yearGroup);
 

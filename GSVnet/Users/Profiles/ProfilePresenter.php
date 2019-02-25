@@ -65,6 +65,12 @@ class ProfilePresenter extends Presenter
         return $region ? $region->name : 'geen regio';
     }
 
+    public function yearGroupName()
+    {
+        $yearGroup = $this->user->profile->yearGroup;
+        return $yearGroup ? $yearGroup->name : 'geen jaarverband';
+    }
+
     public function formerRegionLinks()
     {
         return $this->user->profile->former_regions->map(function($region, $i){
