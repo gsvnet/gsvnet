@@ -168,12 +168,26 @@ class ThreadRepository extends EloquentRepository
 
     public function incrementLikeCount($threadId)
     {
-        $this->model->where('id', $threadId)->increment('like_count');
+        //$this->model->where('id', $threadId)->increment('like_count');
+        /* NOTE: The increment method above seems to update timestamps, which we don't want here */
+
+        $thread = $this->model->where('id', $threadId)->first();
+        
+        $thread->timestamps = false;
+        $thread->like_count++;
+        $thread->save();
     }
 
     public function decrementLikeCount($threadId)
     {
-        $this->model->where('id', $threadId)->decrement('like_count');
+        //$this->model->where('id', $threadId)->decrement('like_count');
+        /* NOTE: The decrement method above seems to update timestamps, which we don't want here */
+
+        $thread = $this->model->where('id', $threadId)->first();
+        
+        $thread->timestamps = false;
+        $thread->like_count--;
+        $thread->save();
     }
 
     public function totalLikesGivenPerYearGroup()
