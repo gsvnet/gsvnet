@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-header">
-        <h1><a href="{{ action('MemberController@showPhoto', $profile->id) }}" title="Grote foto"><img src="{!! $profile->present()->xsmallProfileImage !!}" width="102" height="102" alt="Profielfoto"/></a> {{ $user->present()->fullName }}</h1>
+        <h1><a href="{!! $profile->present()->xsmallProfileImage !!}" title="Grote foto"><img src="{!! $profile->present()->xsmallProfileImage !!}" width="102" height="102" alt="Profielfoto"/></a> {{ $user->present()->fullName }}</h1>
     </div>
 
     @can('user.manage.password', $user)
