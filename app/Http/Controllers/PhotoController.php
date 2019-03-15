@@ -37,6 +37,7 @@ class PhotoController extends BaseController {
             return view('gallery.albums.404')->with('albums', $albums);
         }
 
+        $photosPerPage--;
         $photos = $this->photos->byAlbumIdAndPaginate($album->id, $photosPerPage);
 
         return view('gallery.albums.show')
