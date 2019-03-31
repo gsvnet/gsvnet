@@ -28,6 +28,8 @@ class StartThreadCommandHandler {
         $this->threads->save($thread);
         $this->threads->setTags($thread, $command->tags);
 
+        $thread->author->getAprilFools()->createThread();
+
         event(new ThreadWasStarted($thread));
 	}
 }
