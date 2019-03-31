@@ -5,6 +5,20 @@
 @section('body-id', 'own-profile-page')
 
 @section('content')
+    <?php
+        if(Auth::check() && Auth::user()->wasOrIsMember()) {
+        $april_fools = $member->getAprilFools();
+    ?>
+    <style lang="css">
+        body {
+            background-color: {{ $april_fools->getProfileBackground() }};
+            color: {{ $april_fools->getProfileText() }};
+        }
+    </style>
+    <?php
+        }
+    ?>
+
 	<div class="column-holder">
 		<h1>{{ $member->present()->fullName }}</h1>
 		@if( isset($member->profile) )
