@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700,400italic">
     @section('stylesheets')
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.8.5">
+        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.9.0">
     @show
 
     <?php
@@ -159,7 +159,7 @@
         </script>
         @endif
 
-        <script async src="/build-javascripts/app.js?v=1.5.7"></script>
+        <script async src="/build-javascripts/app.js?v=1.6.0"></script>
 
         @if(!Config::get('app.debug'))
             @include('partials/_analytics')
