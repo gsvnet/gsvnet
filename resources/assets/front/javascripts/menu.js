@@ -51,10 +51,42 @@ Menu = (function(){
         }
 	}
 
+	function initColorShifts() {
+        $(".top-level-link").css("transition", "background-color 5s");
+        $(".active-menu").css("transition", "background-color 5s");
+        $(".top-header").css("transition", "background-color 5s");
+        $(".nav-toggle").css("transition", "background-color 5s");
+        $(".button").css("transition", "background-color 5s");
+        changeColor();
+        window.setInterval(changeColor, 10000);
+	}
+
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+	function changeColor() {
+		var color = getRandomColor();
+
+		$mainMenu.css("background-color", color);
+		$(".top-level-link").css("background-color", color);
+        $(".active-menu").css("background-color", color);
+        $(".top-header").css("background-color", color);
+        $(".nav-toggle").css("background-color", color);
+        $(".button").css("background-color", color);
+	}
+
 	return {
 		// Initializes the menu
 		init: function(menu, carets, toggler) {
 			$mainMenu = menu;
+
+			initColorShifts();
 
 			if(Modernizr.touch)
 			{
