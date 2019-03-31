@@ -2,6 +2,7 @@
 
 use GSVnet\Forum\Replies\Reply;
 use GSVnet\Forum\Threads\Thread;
+use GSVnet\Users\AprilFools;
 use GSVnet\Users\ProfileActions\ProfileAction;
 use GSVnet\Users\Profiles\UserProfile;
 use Illuminate\Database\Eloquent\Model;
@@ -123,6 +124,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             ->withPivot('function');
     }
 
+    public function aprilFools()
+    {
+        return $this->hasOne(AprilFools::class);
+    }
+
     public function profile()
     {
         return $this->hasOne(UserProfile::class);
@@ -192,5 +198,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
                     ->orWhereNull('committee_user.end_date');
             })
             ->withPivot('start_date', 'end_date');
+    }
+
+    // Ensure that we always have an AprilFools object to work with
+    public function getAprilFools()
+    {
+        if($this->AprilFools) {
+            return $this->AprilFools;
+        }
+
+        return $this->AprilFools()->create([]);
     }
 }

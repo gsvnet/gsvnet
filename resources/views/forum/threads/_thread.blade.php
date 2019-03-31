@@ -15,7 +15,10 @@
         <div class="info">
             <strong class="author">
                 @can('users.show')
-                    <a href="{{ $thread->author->present()->profileUrl }}">{{ $thread->author->username }}</a>
+                    <a style="color:{{$thread->author->getAprilFools()->getNameColor()}}" href="{{ $thread->author->present()->profileUrl }}">{{{ $thread->author->username }}}</a>
+                    @if($thread->author->getAprilFools()->donator)
+                        <i><small>Donateur</small></i>
+                    @endif
                 @else
                     {{ $thread->author->username }}
                 @endcan
