@@ -40,6 +40,9 @@ class AprilFoolsController extends BaseController {
         if(request()->has('special_menu')) {
             Auth::user()->getAprilFools()->spendOnSpecialMenu();
         }
+        if(request()->has('remove_special_menu')) {
+            Auth::user()->getAprilFools()->removeSpecialMenu();
+        }
 
         return redirect()->action('AprilFoolsController@index');
     }
