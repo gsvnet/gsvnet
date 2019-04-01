@@ -60,7 +60,13 @@
         Mocht je de vereniging extra financieel willen steunen, dan geven de websitecredits daar ook mogelijkheid toe. Via onderstaand formulier kun je kiezen tussen bundels van verschillende grootte.</p>
         <div class="credits-overzicht">
             <h2>Overzicht</h2>
-            <p>Jouw credits: {{ Auth::user()->getAprilFools()->creditBalance() }}</p>
+            <p>
+                <table style="max-width: 360px;">
+                    <tr><td>Verdiend:</td><td>{{ Auth::user()->getAprilFools()->credits_earned }}</td></tr>
+                    <tr><td>Uitgegeven:</td><td>{{ Auth::user()->getAprilFools()->credits_spent }}</td></tr>
+                    <tr><td>Saldo:</td><td>{{ Auth::user()->getAprilFools()->creditBalance() }}</td></tr>
+                </table>
+            </p>
             <a id="buy_credits_toggle" onclick="showBuyMenu(this);event.preventDefault();" class="button" rel="nofollow">Credits kopen</a>
             <div id="buy_credits" style="display:none;">
                 <div id="loader">
@@ -156,8 +162,8 @@
             <div style="margin-top:1em;">
                 <form id="remove_special_menu_form" method="post" action="/spend-gsv-credits">
                     <div style="display:none;"><input name="remove_special_menu" id="remove_special_menu" type="checkbox"></div>
-                    <strong>Geheim menu verwijderen</strong><br>Als je de verantwoordelijkheid die het geheime menu met zich meebrengt niet langer aankunt, kun je deze hieronder afkopen.<br>
-                    <div><i>Prijs: 500 credits</i> <a onclick="removeSpecialMenu();event.preventDefault();" class="button small_button" rel="nofollow">Koop</a></div>
+                    <strong>Geheim menu verwijderen</strong><br>Als je de verantwoordelijkheid die het geheime menu met zich meebrengt niet langer aankunt, kun je deze hieronder voor een symbolisch bedrag afkopen.<br>
+                    <div><i>Prijs: 300 credits</i> <a onclick="removeSpecialMenu();event.preventDefault();" class="button small_button" rel="nofollow">Koop</a></div>
                 </form>
             </div>
             @endif
@@ -238,7 +244,7 @@
         }
 
         function removeSpecialMenu() {
-            $('#buy_special_menu').prop('checked', true);
+            $('#remove_special_menu').prop('checked', true);
             $('#remove_special_menu_form').submit();
         }
     </script>
