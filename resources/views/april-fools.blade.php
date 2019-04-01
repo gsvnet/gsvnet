@@ -60,7 +60,13 @@
         Mocht je de vereniging extra financieel willen steunen, dan geven de websitecredits daar ook mogelijkheid toe. Via onderstaand formulier kun je kiezen tussen bundels van verschillende grootte.</p>
         <div class="credits-overzicht">
             <h2>Overzicht</h2>
-            <p>Jouw credits: {{ Auth::user()->getAprilFools()->creditBalance() }}</p>
+            <p>
+                <table style="max-width: 360px;">
+                    <tr><td>Verdiend:</td><td>{{ Auth::user()->getAprilFools()->credits_earned }}</td></tr>
+                    <tr><td>Uitgegeven:</td><td>{{ Auth::user()->getAprilFools()->credits_spent }}</td></tr>
+                    <tr><td>Saldo:</td><td>{{ Auth::user()->getAprilFools()->creditBalance() }}</td></tr>
+                </table>
+            </p>
             <a id="buy_credits_toggle" onclick="showBuyMenu(this);event.preventDefault();" class="button" rel="nofollow">Credits kopen</a>
             <div id="buy_credits" style="display:none;">
                 <div id="loader">
@@ -116,6 +122,7 @@
                         <option value="" style="background-color:#000;">kies...</option>
                         <option value="#FFF" style="background-color:#FFF;">Wit</option>
                         <option value="#EEE" style="background-color:#CCC;">Grijs</option>
+                        <option value="#444" style="background-color:#444;">Licht zwart</option>
                         <option value="#000" style="background-color:#000;">Zwart</option>
                         <option value="#00FF00" style="background-color:#00FF00;">Groen</option>
                         <option value="#FF0000" style="background-color:#FF0000;">Rood</option>
@@ -134,6 +141,7 @@
                         <option value="" style="background-color:#000;">kies...</option>
                         <option value="#FFF" style="background-color:#FFF;">Wit</option>
                         <option value="#EEE" style="background-color:#CCC;">Grijs</option>
+                        <option value="#444" style="background-color:#444;">Licht zwart</option>
                         <option value="#000" style="background-color:#000;">Zwart</option>
                         <option value="#00FF00" style="background-color:#00FF00;">Groen</option>
                         <option value="#FF0000" style="background-color:#FF0000;">Rood</option>
@@ -144,6 +152,7 @@
                     <div><i>Prijs: 10 credits</i> <a onclick="buyTextColor();event.preventDefault();" class="button small_button" rel="nofollow">Koop</a></div>
                 </form>
             </div>
+            @if(!Auth::user()->getAprilFools()->special_menu)
             <div style="margin-top:1em;">
                 <form id="purchase_special_menu_form" method="post" action="/spend-gsv-credits">
                     <div style="display:none;"><input name="special_menu" id="buy_special_menu" type="checkbox"></div>
@@ -151,6 +160,15 @@
                     <div><i>Prijs: 50 credits</i> <a onclick="buySpecialMenu();event.preventDefault();" class="button small_button" rel="nofollow">Koop</a></div>
                 </form>
             </div>
+            @else
+            <div style="margin-top:1em;">
+                <form id="remove_special_menu_form" method="post" action="/spend-gsv-credits">
+                    <div style="display:none;"><input name="remove_special_menu" id="remove_special_menu" type="checkbox"></div>
+                    <strong>Geheim menu verwijderen</strong><br>Als je de verantwoordelijkheid die het geheime menu met zich meebrengt niet langer aankunt, kun je deze hieronder voor een symbolisch bedrag afkopen.<br>
+                    <div><i>Prijs: 300 credits</i> <a onclick="removeSpecialMenu();event.preventDefault();" class="button small_button" rel="nofollow">Koop</a></div>
+                </form>
+            </div>
+            @endif
         </div>
     </article>
     
@@ -225,6 +243,11 @@
         function buySpecialMenu() {
             $('#buy_special_menu').prop('checked', true);
             $('#purchase_special_menu_form').submit();
+        }
+
+        function removeSpecialMenu() {
+            $('#remove_special_menu').prop('checked', true);
+            $('#remove_special_menu_form').submit();
         }
     </script>
 @stop
