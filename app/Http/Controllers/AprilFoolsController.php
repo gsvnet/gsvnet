@@ -30,7 +30,7 @@ class AprilFoolsController extends BaseController {
             ]
         ]);
 
-        dd(request()->all());
+        //dd(request()->all());
         if(request()->has('bg-color')) {
             Auth::user()->getAprilFools()->spendOnBgColor($request['bg-color']);
         }
