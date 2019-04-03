@@ -55,6 +55,14 @@
         <p>
             Ook Patrimonium zorgt voor geld op de GSV-rekening. Wij krijgen namelijk €100 als zij een huis aanbieden en wij deze kunnen vullen met GSV’ers, of dit namens een GSV’er kunnen vullen. Hier kunnen we niet veel aan doen totdat ons een huis wordt aangeboden.
         </p>
+
+        <h2>NederlandReview</h2>
+        <p>
+            NederlandReview is Nederlands nationale verzamelsite voor reviews, ervaringen, feedback en klachten over alle bedrijven, winkels en webwinkels in Nederland. Jij bepaalt nu zelf welke winkel je graag wilt gebruiken voor jouw (online) aankopen. Ga niet zomaar uit van de (verkoop)praatjes van een winkel; vertrouw op duizenden meningen van Nederlanders die u voor gingen. Want zeg nou zelf, wie geloof je eerder: een verkoper, uw vriend met één mening of de reviews van honderden klanten die bij hetzelfde bedrijf dezelfde computer, laptop, autoverzekering, vakantie of mobiele abonnement hebben gekocht? Heb je zelf ervaringen met één of meerdere bedrijven? Laat een review achter en help mee om anderen te laten weten hoe goed of slecht dit bedrijf is wat betreft bestelgemak, service, prijs en levering!
+        </p>
+        <p>
+            <a href="https://nederlandreview.nl/" title="NederlandReview" class="button">NederlandReview</a>
+        </p>
     </article>
 
 @stop
