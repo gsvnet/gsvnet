@@ -14,7 +14,10 @@ class SenatePresenter extends Presenter
 
         $end_date = Carbon::createFromFormat('Y-m-d', $this->end_date);
         $border_date = Carbon::now()->subYears(5);
-        if (Auth::user()->isVisitor() and $end_date < $border_date) {
+        if (
+            (!Auth::check() or Auth::user()->isVisitor())
+            and $end_date < $border_date
+        ) {
             $this->canPresent = false;
         }
     }
