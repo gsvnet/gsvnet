@@ -130,9 +130,9 @@ gulp.task('backend-css', function () {
     return gulp.src([
         'resources/assets/components/css/selectize.min.css',
         'resources/assets/components/css/selectize.bootstrap3.min.css',
-        './bower_components/pickadate/lib/compressed/themes/classic.css',
-        './bower_components/pickadate/lib/compressed/themes/classic.date.css',
-        './bower_components/pickadate/lib/compressed/themes/classic.time.css',
+        './bower_components/pickadate/lib/compressed/themes/default.css',
+        './bower_components/pickadate/lib/compressed/themes/default.date.css',
+        './bower_components/pickadate/lib/compressed/themes/default.time.css',
         'resources/assets/back/css/admin.css'
     ])
         .pipe(concat("admin.css"))
