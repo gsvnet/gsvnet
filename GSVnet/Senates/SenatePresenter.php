@@ -1,10 +1,28 @@
 <?php namespace GSVnet\Senates;
 
 use GSVnet\Markdown\HtmlMarkdownConverter;
+use Illuminate\Support\Facades\Auth;
 use Laracasts\Presenter\Presenter, Carbon\Carbon, Config;
 
 class SenatePresenter extends Presenter
 {
+    private $canPresent = true;
+
+    public function __construct($entity)
+    {
+        parent::__construct($entity);
+
+        $end_date = Carbon::createFromFormat('Y-m-d', $this->end_date);
+        $border_date = Carbon::now()->subYears(5);
+        if (Auth::user()->isVisitor() and $end_date < $border_date) {
+            $this->canPresent = false;
+        }
+    }
+
+    public function canPresent() {
+        return $this->canPresent;
+    }
+
     public function senateFunction()
     {
         $functions = Config::get('gsvnet.senateFunctions');
@@ -28,6 +46,10 @@ class SenatePresenter extends Presenter
 
     public function bodyFormatted()
     {
+        if (!$this->canPresent) {
+            return "De daden van deze Senaat zijn verhuld door de tijd...";
+        }
+
         return $this->convertMarkdown($this->body);
     }
 
