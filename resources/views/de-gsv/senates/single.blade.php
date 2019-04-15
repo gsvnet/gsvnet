@@ -13,6 +13,7 @@
         </div>
 
         <div class="secondary-column">
+            @if ($currentSenate->present()->canPresent())
             <div class="content-columns content-column">
                 <h2>Leden</h2>
                 <ul class="unstyled-list title-description-list">
@@ -29,6 +30,7 @@
                 </ul>
 
             </div>
+            @endif
             <div class="content-columns content-column">
                 @include('de-gsv.senates._list')
             </div>
