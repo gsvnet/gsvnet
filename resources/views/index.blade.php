@@ -144,6 +144,7 @@
                         </ul>
                     @endif
                 </div>
+                @if (Auth::check() and Auth::user()->isMember())
                 <div class="content-column">
                     <h2>Verjaardagen</h2>
                     <ul class="unstyled-list title-description-list">
@@ -165,6 +166,7 @@
                         @endif
                     </ul>
                 </div>
+                @endif
             </div>
         </div>
     </div>

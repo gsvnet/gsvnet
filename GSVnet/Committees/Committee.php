@@ -20,7 +20,7 @@ class Committee extends Model {
 
     public function getPublicAttribute($value)
     {
-        return $value == 1 ? true : null;
+        return $value == 1 ? 1 : null;
     }
 
     // Change users to members?
