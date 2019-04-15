@@ -26,12 +26,12 @@ class Event extends Model {
 
     public function getPublicAttribute($value)
     {
-        return $value == 1 ? true : null;
+        return $value == 1 ? 1 : null;
     }
 
     public function getPublishedAttribute($value)
     {
-        return $value == 1 ? true : null;
+        return $value == 1 ? 1 : null;
     }
 
     public function generateNewSlug()
