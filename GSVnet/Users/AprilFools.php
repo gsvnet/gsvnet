@@ -142,12 +142,12 @@ class AprilFools extends Model
 
     public function removeSpecialMenu()
     {
-        if($this->creditBalance() < 300) {
+        if($this->creditBalance() < 500) {
             return;
         }
 
         $this->special_menu = false;
-        $this->credits_spent += 300;
+        $this->credits_spent += 500;
         $this->save();
     }
 }
