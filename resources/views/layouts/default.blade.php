@@ -40,33 +40,6 @@
         <!-- Stylesheets -->
         <link rel="stylesheet" href="/stylesheets/screen.css?v=1.8.5">
     @show
-
-    <?php
-        if(Auth::check() && Auth::user()->wasOrIsMember()) {
-        $april_fools = Auth::user()->getAprilFools();
-    ?>
-    <style lang="css">
-        body {
-            background-color: {{ $april_fools->getProfileBackground() }};
-            color: {{ $april_fools->getProfileText() }};
-        }
-    </style>
-    <?php
-            if($april_fools->special_menu) {
-    ?>
-    <script>
-        window.onload=(function(oldLoad){
-        return function(){
-            oldLoad && oldLoad();
-            startColorShifts();
-        }
-        })(window.onload)
-    </script>
-
-    <?php
-            }
-        }
-    ?>
 </head>
 <body id="@yield('body-id', 'gsvnet')">
     <div class="overal-header">

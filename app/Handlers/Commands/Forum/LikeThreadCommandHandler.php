@@ -22,7 +22,6 @@ class LikeThreadCommandHandler {
         $reply = $this->threads->getById($command->threadId);
 
         $this->threads->like($reply, $like);
-        $reply->author->getAprilFools()->receiveLike();
 
         event(new ThreadWasLiked($command->threadId, $like->id));
     }
