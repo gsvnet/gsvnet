@@ -32,11 +32,6 @@ Route::group(['prefix' => 'intern', 'middleware' => 'auth'], function() {
 //Sponsors
 Route::get('sponsors', 'HomeController@sponsorProgram');
 
-//April fools
-Route::get('gsv-credits', 'AprilFoolsController@index')->middleware(['auth', 'has:member-or-former-member']);;
-Route::post('gsv-credits/{bundle}', 'AprilFoolsController@purchase')->middleware(['auth', 'has:member-or-former-member']);;
-Route::post('spend-gsv-credits', 'AprilFoolsController@spend')->middleware(['auth', 'has:member-or-former-member']);;
-
 Route::group(['prefix' => 'uploads'], function() {
     Route::get('bestanden/{id}', 'FilesController@show');
     // Shows photo corresponding to photo id

@@ -22,7 +22,6 @@ class LikeReplyCommandHandler {
         $reply = $this->replies->getById($command->replyId);
 
         $this->replies->like($reply, $like);
-        $reply->author->getAprilFools()->receiveLike();
 
         event(new ReplyWasLiked($command->replyId, $like->id));
     }

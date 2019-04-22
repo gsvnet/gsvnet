@@ -28,8 +28,6 @@ class ReplyToThreadCommandHandler {
 
         $this->replies->save($reply);
 
-        $reply->author->getAprilFools()->postReply();
-
         event(new ThreadWasRepliedTo($thread, $reply));
 	}
 

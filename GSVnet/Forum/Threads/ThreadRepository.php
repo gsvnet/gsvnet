@@ -51,7 +51,7 @@ class ThreadRepository extends EloquentRepository
 
     public function getThreadRepliesPaginated(Thread $thread, $perPage = 20)
     {
-        $query = $thread->replies()->with('author', 'author.AprilFools');
+        $query = $thread->replies()->with('author');
 
         if( Auth::check() )
         {
