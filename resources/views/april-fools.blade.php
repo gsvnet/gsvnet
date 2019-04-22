@@ -122,7 +122,6 @@
                         <option value="" style="background-color:#000;">kies...</option>
                         <option value="#FFF" style="background-color:#FFF;">Wit</option>
                         <option value="#EEE" style="background-color:#CCC;">Grijs</option>
-                        <option value="#444" style="background-color:#444;">Licht zwart</option>
                         <option value="#000" style="background-color:#000;">Zwart</option>
                         <option value="#00FF00" style="background-color:#00FF00;">Groen</option>
                         <option value="#FF0000" style="background-color:#FF0000;">Rood</option>
@@ -141,7 +140,6 @@
                         <option value="" style="background-color:#000;">kies...</option>
                         <option value="#FFF" style="background-color:#FFF;">Wit</option>
                         <option value="#EEE" style="background-color:#CCC;">Grijs</option>
-                        <option value="#444" style="background-color:#444;">Licht zwart</option>
                         <option value="#000" style="background-color:#000;">Zwart</option>
                         <option value="#00FF00" style="background-color:#00FF00;">Groen</option>
                         <option value="#FF0000" style="background-color:#FF0000;">Rood</option>
