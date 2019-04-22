@@ -5,11 +5,6 @@
             <a class="button" href="{{ action('ForumThreadsController@getCreateThread') }}" rel="nofollow">Nieuw topic</a>
         </p>
 
-        <h2>GSV-credits</h2>
-        <p>
-            <a class="button" href="{{ action('AprilFoolsController@index') }}" rel="nofollow">GSV-credits</a>
-        </p>
-
         <div class="search">
             <h2>Het forum doorzoeken</h2>
             {!! Former::open()->action(action('ForumThreadsController@getSearch'))->method('get') !!}

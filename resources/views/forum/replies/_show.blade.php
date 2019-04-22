@@ -18,10 +18,7 @@
             @if($reply->author)
             <strong class="author">
                 @can('users.show')
-                    <a style="color:{{$reply->author->getAprilFools()->getNameColor()}}" href="{{ $reply->author->present()->profileUrl }}">{{{ $reply->author->username }}}</a>
-                    @if($reply->author->getAprilFools()->donator)
-                        <i><small>Donateur</small></i>
-                    @endif
+                    <a href="{{ $reply->author->present()->profileUrl }}">{{{ $reply->author->username }}}</a>
                 @else
                     {{ $reply->author->username }}
                 @endcan
