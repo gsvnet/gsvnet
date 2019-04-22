@@ -30,7 +30,7 @@ class AprilFoolsController extends BaseController {
             ]
         ]);
 
-        dd(request()->all());
+        //dd(request()->all());
         if(request()->has('bg-color')) {
             Auth::user()->getAprilFools()->spendOnBgColor($request['bg-color']);
         }
@@ -39,9 +39,6 @@ class AprilFoolsController extends BaseController {
         }
         if(request()->has('special_menu')) {
             Auth::user()->getAprilFools()->spendOnSpecialMenu();
-        }
-        if(request()->has('remove_special_menu')) {
-            Auth::user()->getAprilFools()->removeSpecialMenu();
         }
 
         return redirect()->action('AprilFoolsController@index');

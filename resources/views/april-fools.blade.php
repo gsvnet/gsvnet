@@ -144,7 +144,6 @@
                     <div><i>Prijs: 10 credits</i> <a onclick="buyTextColor();event.preventDefault();" class="button small_button" rel="nofollow">Koop</a></div>
                 </form>
             </div>
-            @if(!Auth::user()->getAprilFools()->special_menu)
             <div style="margin-top:1em;">
                 <form id="purchase_special_menu_form" method="post" action="/spend-gsv-credits">
                     <div style="display:none;"><input name="special_menu" id="buy_special_menu" type="checkbox"></div>
@@ -152,15 +151,6 @@
                     <div><i>Prijs: 50 credits</i> <a onclick="buySpecialMenu();event.preventDefault();" class="button small_button" rel="nofollow">Koop</a></div>
                 </form>
             </div>
-            @else
-            <div style="margin-top:1em;">
-                <form id="remove_special_menu_form" method="post" action="/spend-gsv-credits">
-                    <div style="display:none;"><input name="remove_special_menu" id="remove_special_menu" type="checkbox"></div>
-                    <strong>Geheim menu verwijderen</strong><br>Als je de verantwoordelijkheid die het geheime menu met zich meebrengt niet langer aankunt, kun je deze hieronder afkopen.<br>
-                    <div><i>Prijs: 500 credits</i> <a onclick="removeSpecialMenu();event.preventDefault();" class="button small_button" rel="nofollow">Koop</a></div>
-                </form>
-            </div>
-            @endif
         </div>
     </article>
     
@@ -235,11 +225,6 @@
         function buySpecialMenu() {
             $('#buy_special_menu').prop('checked', true);
             $('#purchase_special_menu_form').submit();
-        }
-
-        function removeSpecialMenu() {
-            $('#buy_special_menu').prop('checked', true);
-            $('#remove_special_menu_form').submit();
         }
     </script>
 @stop
