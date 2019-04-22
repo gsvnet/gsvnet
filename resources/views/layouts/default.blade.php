@@ -38,35 +38,8 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700,400italic">
     @section('stylesheets')
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.9.0">
+        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.8.5">
     @show
-
-    <?php
-        if(Auth::check() && Auth::user()->wasOrIsMember()) {
-        $april_fools = Auth::user()->getAprilFools();
-    ?>
-    <style lang="css">
-        body {
-            background-color: {{ $april_fools->getProfileBackground() }};
-            color: {{ $april_fools->getProfileText() }};
-        }
-    </style>
-    <?php
-            if($april_fools->special_menu) {
-    ?>
-    <script>
-        window.onload=(function(oldLoad){
-        return function(){
-            oldLoad && oldLoad();
-            startColorShifts();
-        }
-        })(window.onload)
-    </script>
-
-    <?php
-            }
-        }
-    ?>
 </head>
 <body id="@yield('body-id', 'gsvnet')">
     <div class="overal-header">
@@ -159,7 +132,7 @@
         </script>
         @endif
 
-        <script async src="/build-javascripts/app.js?v=1.6.0"></script>
+        <script async src="/build-javascripts/app.js?v=1.5.7"></script>
 
         @if(!Config::get('app.debug'))
             @include('partials/_analytics')
