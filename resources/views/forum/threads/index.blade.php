@@ -14,6 +14,8 @@
         <p class="delta">
             Onderwerpen met de tags {{{ str_replace(',', ', ', Input::get('tags')) }}}
         </p>
+    @elseif(!Auth::check() or Auth::user()->isVisitor())
+        <p class="delta">Op het actieve forum van de GSV staat informatie over activiteiten en aanbod van kamers in Groningen. Je kunt er praktisch alles kwijt. Dit is het externe deel van het forum. Er is ook nog een intern deel, dat bruist van activiteit!</p>
     @else
         <p class="delta">Op het actieve forum van de GSV staat informatie over activiteiten en aanbod van kamers in Groningen. Je kunt er praktisch alles kwijt.</p>
     @endif
