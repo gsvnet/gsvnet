@@ -33,6 +33,7 @@ class PotentialMailer {
         ];
 
         $novcie = $this->config->get('gsvnet.email.membership');
+        $prescie = $this->config->get('gsvnet.email.prescie');
         $webcie = $this->config->get('gsvnet.email.admin');
 
         $this->mailer->queue('emails.users.join', $data, function(Message $message) use ($user)
@@ -41,10 +42,10 @@ class PotentialMailer {
             $message->to($user->email, $user->present()->fullName);
         });
 
-        $this->mailer->queue('emails.membership.application', $data, function(Message $message) use ($novcie, $webcie)
+        $this->mailer->queue('emails.membership.application', $data, function(Message $message) use ($novcie, $prescie, $webcie)
         {
             $message->to($novcie, 'Novcie');
-            $message->cc($webcie, 'Webcie');
+            $message->cc(array($prescie, $webcie));
             $message->subject('Nieuwe aanmelding');
         });
     }

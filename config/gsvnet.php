@@ -73,6 +73,7 @@ return [
         'admin' => env('ADMIN_MAIL', 'webcie@gsvnet.nl'),
         'senate' => env('SENATE_MAIL', 'abactis@gsvnet.nl'),
         'membership' => env('NOVCIE_MAIL', 'novcie@gsvnet.nl'),
+        'prescie' => env('PRESCIE_MAIL', 'prescie@gsvnet.nl'),
         'profile' => env('PROFILE_MAIL', 'abactis@gsvnet.nl')
     ],
 
