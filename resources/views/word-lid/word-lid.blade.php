@@ -12,7 +12,7 @@
                 <h1>Gefeliciteerd!</h1>
                 <p class="delta">Je hebt je officieel aangemeld bij de GSV</p>
 
-                <p>Alvast bedankt voor je opgave! Je ontvangt zo spoedig mogelijk een mail met specifieke informatie. Neem contact op met de Novcie (novcie@gsvnet.nl) indien je binnen een uur geen bevestiginsmail ontvangen hebt.</p>
+                <p>Alvast bedankt voor je opgave! Je ontvangt zo spoedig mogelijk een mail met specifieke informatie. Neem contact op met de PRescie (prescie@gsvnet.nl) indien je binnen een uur geen bevestiginsmail ontvangen hebt.</p>
             </div>
         @else
             <div class="column-holder" role="main">
