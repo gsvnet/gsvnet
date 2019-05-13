@@ -17,7 +17,7 @@
         @else
             <div class="column-holder" role="main">
                 <h1>Word lid!</h1>
-                <p class="delta">Supermooi dat je interesse hebt in de GSV! Volg de stappen om je aan te melden voor ons novitiaat. Dat duurt dit jaar van <strong>20 tot en met 29 augustus</strong>, houd deze dagen dus vrij!</p>
+                <p class="delta">Supermooi dat je interesse hebt in de GSV! Volg de stappen om je aan te melden voor ons novitiaat. Dat duurt dit jaar van <strong>19 tot en met 28 augustus</strong>, houd deze dagen dus vrij!</p>
                 <p>Voel je vooral vrij om voorafgaand aan het novitiaat mee te genieten van alle activiteiten die wij organiseren tijdens de KEIweek.</p>
             </div>
             @include('word-lid.become-member')
