@@ -63,6 +63,15 @@
         <p>
             <a href="https://nederlandreview.nl/" title="NederlandReview" class="button">NederlandReview</a>
         </p>
+
+        <h2>Belsimpel</h2>
+        <p>
+            <b>Wie zijn we?</b>
+            <br>
+            Het Groningse <a href="https://www.belsimpel.nl">Belsimpel</a>, opgericht in 2008, is inmiddels uitgegroeid tot een grote speler in de telecomwereld. Met een hecht team van meer dan 500 gemotiveerde, energieke en slimme studenten en professionals gaan we elke dag tot het uiterste om de Mobiele Wereld te veranderen. Wij zijn geen provider, wij zijn geen winkel en we zijn ook geen zoekmachine. We zijn een manier: een Methode™ om te vinden wat het beste bij de klant past op gebied van mobiele telefonie.
+            <br><br>
+            Krijg jij er een kick van om elke dag tot het uiterste te gaan? Wil jij onderdeel zijn van onze win-cultuur? Tijdens je studie kun je al praktijkervaring opdoen in een parttime bijbaan. Al bijna afgestudeerd? Wie weet hebben wij dan de perfecte uitdaging voor je, zoals een Management Traineeship. Kijk voor meer informatie en alle parttime en fulltime vacatures op: <a href="https://www.werkenbijbelsimpel.nl">www.werkenbijbelsimpel.nl</a>.
+        </p>
     </article>
 
 @stop
