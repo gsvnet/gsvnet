@@ -9,7 +9,7 @@
         <p><a href="https://www.overstappen.nl/autoverzekering/" title="Autoverzekering"><img src="/images/annonces/overstappen_nl.png" title="Autoverzekering" alt="Autoverzekering" /></a></p>
         <p><a href="http://www.rijschoolkoster.nl/" title="Rijschool Koster"><img src="/images/annonces/rijschoolkoster.png" title="Rijschool Koster" alt="Rijschool Koster" /></a></p>
         <p><a href="http://www.dressmeclothing.nl/" title="Kledingdrukkerij DressMe Clothing"><img src="/images/annonces/dressmeclothing.png" title="Kledingdrukkerij DressMe Clothing" alt="Kledingdrukkerij DressMe Clothing" /></a></p>
-        <p><a href="https://www.creditcard.nl/" title="Creditcard.nl"><img src="/images/annonces/creditcard_nl.png" title="Creditcard.nl" alt="Creditcard.nl" /></a></p>
+        <p><a href="https://www.uitvaartverzekeringvergelijken.com" title="Uitvaartverzekeringen vergelijken"><img src="/images/annonces/uitvaartverzekering.png" title="Uitvaartverzekeringen vergelijken" alt="uitvaartverzekeringvergelijken.com" /></a></p>
         <p><a href="https://www.werkenbijbelsimpel.nl" title="Werkenbijbelsimpel.nl"><img src="/images/annonces/logo_belsimpel.png" title="Werkenbijbelsimpel.nl" alt="Werkenbijbelsimpel.nl" /></a></p>
         <p><a href="https://www.easyswitch.nl/energie-vergelijken/" title="energie vergelijken"><img src="/images/annonces/easyswitch.png" title="energie vergelijken" alt="energie vergelijken" /></a></p>
         <p><a href="https://www.huizenmarkt.nl/" title="Huurhuizen en Appartementen"><img src="/images/annonces/huizenmarkt.png" title="Huurhuizen en Appartementen" alt="Huurhuizen en Appartementen" /></a></p>
