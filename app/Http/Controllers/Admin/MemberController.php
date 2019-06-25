@@ -14,6 +14,7 @@ use GSV\Commands\Members\ChangePhone;
 use GSV\Commands\Members\ChangeRegion;
 use GSV\Commands\Members\ChangeStudy;
 use GSV\Commands\Members\ChangeYearGroup;
+use GSV\Commands\Members\ForgetMember;
 use GSV\Commands\Members\MemberIsAlive;
 use GSV\Commands\Members\ReceiveNewspaper;
 use GSV\Commands\Users\ChangeEmail;
@@ -446,5 +447,34 @@ class MemberController extends AdminBaseController
                 });
             });
         })->export('xls');
+    }
+
+    public function forget(Request $request, $id)
+    {
+        $this->authorize('users.manage');
+        $user = $this->users->byId($id);
+
+        $this->dispatch(new ForgetMember(
+            $user,
+            $request->user(),
+            "Straat",
+            "1111AA",
+            "Stad",
+            "harmenstoppels@gmail.com",
+            "1966-06-23",
+            null,
+            "+31600000000",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        ));
+
+        flash()->success("Profiel en account opgeschoond.");
+
+        return redirect()->action('Admin\UsersController@show', $id);
     }
 }

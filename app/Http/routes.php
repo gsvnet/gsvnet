@@ -114,6 +114,7 @@ Route::group([
         Route::post('/{user}/profiel/create', 'UsersController@storeProfile');
         Route::put('/{user}/profiel', 'UsersController@updateProfile');
         Route::delete('/{user}/profiel', 'UsersController@destroyProfile');
+        Route::post('/{user}/forget', 'MemberController@forget');
 
         Route::get('/gasten',     'UsersController@showGuests');
         Route::get('/novieten',   'UsersController@showPotentials');
