@@ -362,6 +362,21 @@
                 <p>{{$profile->alive ? 'Ja' : 'Nee'}}</p>
             @endcan
 
+            @can('users.manage', $user)
+                <hr>
+                <h3>
+                    {!! Former::inline_open()
+                        ->action(action('Admin\MemberController@forget', $user->id))
+                        ->method('POST') !!}
+
+                    <button type='submit' class='btn btn-danger'>
+                        <i class="glyphicon glyphicon-trash"></i> Gegevens vergeten (conform AVG)
+                    </button>
+
+                    {!! Former::close() !!}
+                </h3>
+            @endcan
+
             <hr>
 
             @if ($committees->count() > 0)

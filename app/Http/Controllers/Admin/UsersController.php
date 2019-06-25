@@ -9,7 +9,6 @@ use GSVnet\Users\RegisterUserValidator;
 use GSVnet\Users\User;
 use GSVnet\Users\UserManager;
 use GSVnet\Users\UsersRepository;
-use GSVnet\Users\UserTransformer;
 use GSVnet\Users\UserValidator;
 use GSVnet\Users\YearGroupRepository;
 use Illuminate\Http\Request;
@@ -180,6 +179,10 @@ class UsersController extends AdminBaseController
 
         // Committees or ordinary forum users do not need a fancy profile page
         if (!$user->wasOrIsMember() && !$user->isPotential())
+            return view('admin.users.show')->with(compact('user'));
+
+        // Since GDPR, not all (former) members still have profiles
+        if (!$user->profile)
             return view('admin.users.show')->with(compact('user'));
 
         $profile = $user->profile;
