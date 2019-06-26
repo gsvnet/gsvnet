@@ -18,6 +18,9 @@ class ForgetMember extends Command {
     public $phone;
     public $study;
     public $studentNumber;
+    public $company;
+    public $profession;
+    public $business_url;
     public $parentAddress;
     public $parentZipCode;
     public $parentTown;
@@ -36,6 +39,9 @@ class ForgetMember extends Command {
         $phone,
         $study,
         $studentNumber,
+        $company,
+        $profession,
+        $business_url,
         $parentAddress,
         $parentZipCode,
         $parentTown,
@@ -54,6 +60,9 @@ class ForgetMember extends Command {
         $this->phone = $phone;
         $this->study = $study;
         $this->studentNumber = $studentNumber;
+        $this->company = $company;
+        $this->profession = $profession;
+        $this->business_url = $business_url;
         $this->parentAddress = $parentAddress;
         $this->parentZipCode = $parentZipCode;
         $this->parentTown = $parentTown;

@@ -5,6 +5,7 @@ namespace GSV\Handlers\Commands\Members;
 
 use GSV\Commands\Members\ChangeAddress;
 use GSV\Commands\Members\ChangeBirthDay;
+use GSV\Commands\Members\ChangeBusiness;
 use GSV\Commands\Members\ChangeGender;
 use GSV\Commands\Members\ChangeParentsDetails;
 use GSV\Commands\Members\ChangePhone;
@@ -14,6 +15,7 @@ use GSV\Commands\Users\ChangeEmail;
 use GSVnet\Core\Exceptions\ValidationException;
 use GSVnet\Users\Profiles\ProfilesRepository;
 use GSVnet\Users\ValueObjects\Address;
+use GSVnet\Users\ValueObjects\Business;
 use GSVnet\Users\ValueObjects\Date;
 use GSVnet\Users\ValueObjects\Email;
 use GSVnet\Users\ValueObjects\Gender;
@@ -51,6 +53,15 @@ class ForgetMemberHandler
         dispatch(new ChangeGender($user, $manager, new Gender($command->gender)));
         dispatch(new ChangePhone($user, $manager, new PhoneNumber($command->phone)));
         dispatch(new ChangeStudy($user, $manager, new Study($command->study, $command->studentNumber)));
+        dispatch(new ChangeBusiness(
+            $user,
+            $manager,
+            new Business(
+                $command->company,
+                $command->profession,
+                $command->business_url
+            )
+        ));
         dispatch(new ChangeParentsDetails(
             $user,
             $manager,
