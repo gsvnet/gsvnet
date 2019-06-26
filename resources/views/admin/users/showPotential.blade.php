@@ -125,11 +125,6 @@
                     </tr>
 
                     <tr>
-                        <th>Kerk</th>
-                        <td>{{$profile->church}}</td>
-                    </tr>
-
-                    <tr>
                         <th>Studie</th>
                         <td>{{$profile->study}}</td>
                     </tr>

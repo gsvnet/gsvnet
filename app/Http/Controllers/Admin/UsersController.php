@@ -250,7 +250,7 @@ class UsersController extends AdminBaseController
         $user = $this->users->byId($id);
 
         $input = $request->only('region', 'year_group_id', 'inauguration_date', 'initials', 'phone', 'address',
-            'zip_code', 'town', 'study', 'student_number', 'birthdate', 'church', 'gender');
+            'zip_code', 'town', 'study', 'student_number', 'birthdate', 'gender');
         $input['user_id'] = $id;
 
         // Set some specific info for former members
