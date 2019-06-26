@@ -4,7 +4,7 @@
     <div class="page-header">
     	<h1>Senaten</h1>
     </div>
-	<p class="delta">Voeg een senaat toe of bewerk er een</p>
+	<p class="delta">Voeg een senaat toe of bewerk er een. Thomas en Loran zijn Awesome</p>
 
 	@include('admin.senates.create')
 
