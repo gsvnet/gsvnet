@@ -4,9 +4,9 @@ namespace GSV\Commands\Members;
 
 
 use GSV\Commands\Command;
-use GSV\Http\Requests\Request;
 use GSVnet\Users\User;
 use GSVnet\Users\ValueObjects\Username;
+use Illuminate\Http\Request;
 
 class ChangeUsername extends Command {
 

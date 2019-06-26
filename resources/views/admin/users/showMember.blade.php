@@ -51,6 +51,23 @@
                 </tbody>
             </table>
 
+            <h3>
+                <i class="glyphicon glyphicon-comment"></i>
+                Gebruikersnaam
+                @can('users.manage')
+                    <a href="{{ action('Admin\MemberController@editUsername', $user->id) }}">(wijzig)</a>
+                @endcan
+
+            </h3>
+            <table class='table table-striped table-hover' style="table-layout: fixed;">
+                <tbody>
+                <tr>
+                    <th>Gebruikersnaam</th>
+                    <td>{{ $user->username }}</td>
+                </tr>
+                </tbody>
+            </table>
+
             {{-- Lid status --}}
 
             <h3>
