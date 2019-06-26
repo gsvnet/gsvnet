@@ -13,6 +13,7 @@ use GSV\Commands\Members\ChangePeriodOfMembership;
 use GSV\Commands\Members\ChangePhone;
 use GSV\Commands\Members\ChangeRegion;
 use GSV\Commands\Members\ChangeStudy;
+use GSV\Commands\Members\ChangeUsername;
 use GSV\Commands\Members\ChangeYearGroup;
 use GSV\Commands\Members\ForgetMember;
 use GSV\Commands\Members\MemberIsAlive;
@@ -25,6 +26,7 @@ use GSVnet\Users\User;
 use GSVnet\Users\UsersRepository;
 use GSVnet\Users\UserTransformer;
 use GSVnet\Users\ValueObjects\Gender;
+use GSVnet\Users\ValueObjects\Username;
 use GSVnet\Users\YearGroupRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -84,6 +86,24 @@ class MemberController extends AdminBaseController
         $this->authorize('user.manage.name', $member);
 
         $this->dispatch(ChangeName::fromForm($request, $member));
+
+        flash()->success("Naam {$member->present()->fullName()} succesvol aangepast");
+        return redirect()->action('Admin\UsersController@show', $id);
+    }
+
+    public function editUsername($id)
+    {
+        $user = $this->users->memberOrFormerByIdWithProfile($id);
+        $this->authorize('users.manage');
+        return view('admin.users.update.username')->with(compact('user'));
+    }
+
+    public function updateUsername(Request $request, $id)
+    {
+        $member = $this->users->memberOrFormerByIdWithProfile($id);
+        $this->authorize('users.manage');
+
+        $this->dispatch(ChangeUsername::fromForm($request, $member));
 
         flash()->success("Naam {$member->present()->fullName()} succesvol aangepast");
         return redirect()->action('Admin\UsersController@show', $id);
