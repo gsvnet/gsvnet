@@ -22,9 +22,10 @@ class ChangeMembershipStatusHandler
 
     public function handle(ChangeMembershipStatus $command)
     {
+        $oldStatus = $command->user->type;
         $command->user->type = $command->status;
         $this->users->save($command->user);
 
-        event(new MembershipStatusWasChanged($command->user, $command->manager));
+        event(new MembershipStatusWasChanged($command->user, $command->manager, $oldStatus));
     }
 }
