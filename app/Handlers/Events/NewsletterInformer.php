@@ -42,6 +42,7 @@ class NewsletterInformer implements ShouldQueue
     {
         $user = $event->getUser();
 
+        // Remove from old mailing lists if necessary
         if ($event instanceof MembershipStatusWasChanged) {
             if ($event->getOldStatus() == User::MEMBER || $event->getOldStatus() == User::FORMERMEMBER)
                 $this->list->unsubscribeFrom($event->getOldStatus(), $user->email);
