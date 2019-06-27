@@ -62,7 +62,9 @@ class NewsletterManager {
     {
         try {
             App::make('GSVnet\Newsletters\NewsletterList')->unsubscribeFrom($data['list'], $data['email']);
-        } catch(\Mailchimp_Error $e) { }
+        } catch(\Mailchimp_Error $e) {
+            echo "Mailchimp error; contact the webcie";
+        }
 
         $job->delete();
     }
@@ -71,7 +73,9 @@ class NewsletterManager {
     {
         try {
             App::make('GSVnet\Newsletters\NewsletterList')->subscribeTo($data['list'], $data['email'], $data['user']);
-        } catch(\Mailchimp_Error $e) { }
+        } catch(\Mailchimp_Error $e) {
+            echo "Mailchimp error; contact the webcie";
+        }
 
         $job->delete();
     }
