@@ -469,32 +469,20 @@ class MemberController extends AdminBaseController
         })->export('xls');
     }
 
+    public function setForget($id)
+    {
+        $user = $this->users->memberOrFormerByIdWithProfile($id);
+        $this->authorize('users.manage');
+
+        return view('admin.users.settingsForget')->with(compact('user'));
+    }
+
     public function forget(Request $request, $id)
     {
         $this->authorize('users.manage');
         $user = $this->users->byId($id);
 
-        $this->dispatch(new ForgetMember(
-            $user,
-            $request->user(),
-            "Straat",
-            "1111AA",
-            "Stad",
-            "harmenstoppels@gmail.com",
-            "1966-06-23",
-            null,
-            "+31600000000",
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
-        ));
+        $this->dispatch(ForgetMember::fromForm($request, $user));
 
         flash()->success("Profiel en account opgeschoond.");
 

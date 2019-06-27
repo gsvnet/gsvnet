@@ -48,6 +48,16 @@ class NewsletterManager {
         }
     }
 
+    public function forgetUser(User $user)
+    {
+        if ($user->wasOrIsMember()) {
+            Queue::push('GSVnet\Newsletters\NewsletterManager@removeUserFromMailingList', [
+                'list' => $user->type,
+                'email' => $user->email
+            ]);
+        }
+    }
+
     public function removeUserFromMailingList($job, $data)
     {
         try {

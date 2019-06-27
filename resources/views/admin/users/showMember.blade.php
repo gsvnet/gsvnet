@@ -379,19 +379,17 @@
                 <p>{{$profile->alive ? 'Ja' : 'Nee'}}</p>
             @endcan
 
-            @can('users.manage', $user)
+            @can('users.manage')
                 <hr>
-                <h3>
-                    {!! Former::inline_open()
-                        ->action(action('Admin\MemberController@forget', $user->id))
-                        ->method('POST') !!}
+                {!! Former::inline_open()
+                    ->action(action('Admin\MemberController@setForget', $user->id))
+                    ->method('GET') !!}
 
-                    <button type='submit' class='btn btn-danger'>
-                        <i class="glyphicon glyphicon-trash"></i> Gegevens vergeten (conform AVG)
-                    </button>
+                <button type='submit' class='btn btn-primary'>
+                    <i class="glyphicon glyphicon-trash"></i> Gegevens vergeten (conform AVG)
+                </button>
 
-                    {!! Former::close() !!}
-                </h3>
+                {!! Former::close() !!}
             @endcan
 
             <hr>
