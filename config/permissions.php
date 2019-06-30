@@ -80,6 +80,10 @@ return [
             'senate' => true
         ],
 
+        'senates.show' => [
+            'type' => [User::MEMBER, User::FORMERMEMBER]
+        ],
+
         'senates.manage' => [
             'committee' => ['webcie'],
             'senate' => true
