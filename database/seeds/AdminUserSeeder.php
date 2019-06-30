@@ -35,7 +35,6 @@ class AdminUserSeeder extends Seeder {
             'town' => 'Groningen',
             'study' => 'Technische Wiskunde',
             'birthdate' => '1992-10-10',
-            'church' => 'GKV',
             'gender' => 0,
             'student_number' => 's1111111',
             'reunist' => 0,

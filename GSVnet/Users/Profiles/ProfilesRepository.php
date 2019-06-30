@@ -137,7 +137,6 @@ class ProfilesRepository extends BaseRepository {
         $profile->town             = $input['potential-town'];
         $profile->study            = $input['potential-study'];
         $profile->birthdate        = $input['potential-birthdate'];
-        $profile->church           = $input['potential-church'];
         $profile->gender           = $input['potential-gender'];
         $profile->student_number   = $input['potential-student-number'];
 

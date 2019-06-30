@@ -56,7 +56,6 @@ class UsersTableSeeder extends Seeder {
                     'town' => $this->faker->city,
                     'study' => $this->faker->randomElement($this->studies),
                     'birthdate' => $this->faker->dateTimeThisCentury->format('Y-m-d'),
-                    'church' => 'GKV',
                     'gender' => rand(0,1),
                     'student_number' => 's' . (string) rand(1000000, 3000000),
                     'reunist' => $type == 3 ? rand(0,1) : 0,

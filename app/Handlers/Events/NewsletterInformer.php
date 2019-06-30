@@ -1,7 +1,10 @@
 <?php namespace GSV\Handlers\Events;
 
+use GSV\Events\Members\MembershipStatusWasChanged;
 use GSV\Events\Members\ProfileEvent;
 use GSVnet\Newsletters\NewsletterList;
+use GSVnet\Newsletters\NewsletterManager;
+use GSVnet\Users\User;
 use GSVnet\Users\UserTransformer;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Log\Writer;
@@ -38,6 +41,12 @@ class NewsletterInformer implements ShouldQueue
     public function handle(ProfileEvent $event)
     {
         $user = $event->getUser();
+
+        // Remove from old mailing lists if necessary
+        if ($event instanceof MembershipStatusWasChanged) {
+            if ($event->getOldStatus() == User::MEMBER || $event->getOldStatus() == User::FORMERMEMBER)
+                $this->list->unsubscribeFrom($event->getOldStatus(), $user->email);
+        }
 
         // Add to mailing lists
         if ($user->wasOrIsMember() && $user->profile && $user->profile->alive) {

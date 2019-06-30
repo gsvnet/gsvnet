@@ -136,6 +136,8 @@ Route::group([
     Route::put('leden/{user}/jaarverband',   'MemberController@updateYearGroup');
     Route::get('leden/{user}/naam',          'MemberController@editName');
     Route::put('leden/{user}/naam',          'MemberController@updateName');
+    Route::get('leden/{user}/gebruikersnaam','MemberController@editUsername');
+    Route::put('leden/{user}/gebruikersnaam','MemberController@updateUsername');
     Route::get('leden/{user}/werk',          'MemberController@editBusiness');
     Route::put('leden/{user}/werk',          'MemberController@updateBusiness');
     Route::get('leden/{user}/foto',          'MemberController@editPhoto');
@@ -150,8 +152,8 @@ Route::group([
     Route::put('leden/{user}/reunistschap',  'MemberController@updateAlumniStatus');
     Route::get('leden/{user}/tijd-van-lidmaatschap', 'MemberController@editMembershipPeriod');
     Route::put('leden/{user}/tijd-van-lidmaatschap', 'MemberController@updateMembershipPeriod');
-    Route::get('leden/{user}/in-leven', 'MemberController@editAlive');
-    Route::put('leden/{user}/in-leven', 'MemberController@updateAlive');
+    Route::get('leden/{user}/in-leven',      'MemberController@editAlive');
+    Route::put('leden/{user}/in-leven',      'MemberController@updateAlive');
     Route::get('leden/{user}/sic-ontvangen', 'MemberController@editNewspaper');
     Route::put('leden/{user}/sic-ontvangen', 'MemberController@updateNewspaper');
 
@@ -160,6 +162,9 @@ Route::group([
     Route::post('leden/{user}/lidmaatschap/maak-oud-lid', 'MemberController@makeFormerMember');
     Route::post('leden/{user}/lidmaatschap/maak-lid', 'MemberController@makeMember');
 
+    // Deleting user data according to GDPR rules
+    Route::get('leden/{user}/forget', 'MemberController@setForget');
+    Route::post('leden/{user}/forget', 'MemberController@forget');
 
     Route::get('leden/oudleden.csv', 'UsersController@exportFormerMembers');
     Route::get('leden/leden.csv', 'UsersController@exportMembers');
