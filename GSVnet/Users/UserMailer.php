@@ -89,7 +89,6 @@ class UserMailer extends Mailer {
             'town' => 'Woonplaats',
             'study' => 'Studie',
             'birthdate' => 'Geboortedatum',
-            'church' => 'Kerk',
             'gender' => 'Geslacht',
             'student_number' => 'Studentnummer',
             'parent_address' => 'Adres ouders',

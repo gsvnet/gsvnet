@@ -9,7 +9,6 @@ use GSVnet\Users\RegisterUserValidator;
 use GSVnet\Users\User;
 use GSVnet\Users\UserManager;
 use GSVnet\Users\UsersRepository;
-use GSVnet\Users\UserTransformer;
 use GSVnet\Users\UserValidator;
 use GSVnet\Users\YearGroupRepository;
 use Illuminate\Http\Request;
@@ -182,6 +181,10 @@ class UsersController extends AdminBaseController
         if (!$user->wasOrIsMember() && !$user->isPotential())
             return view('admin.users.show')->with(compact('user'));
 
+        // Since GDPR, not all (former) members still have profiles
+        if (!$user->profile)
+            return view('admin.users.show')->with(compact('user'));
+
         $profile = $user->profile;
 
         if ($user->wasOrIsMember()) {
@@ -247,7 +250,7 @@ class UsersController extends AdminBaseController
         $user = $this->users->byId($id);
 
         $input = $request->only('region', 'year_group_id', 'inauguration_date', 'initials', 'phone', 'address',
-            'zip_code', 'town', 'study', 'student_number', 'birthdate', 'church', 'gender');
+            'zip_code', 'town', 'study', 'student_number', 'birthdate', 'gender');
         $input['user_id'] = $id;
 
         // Set some specific info for former members

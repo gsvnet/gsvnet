@@ -51,6 +51,23 @@
                 </tbody>
             </table>
 
+            <h3>
+                <i class="glyphicon glyphicon-comment"></i>
+                Gebruikersnaam
+                @can('users.manage')
+                    <a href="{{ action('Admin\MemberController@editUsername', $user->id) }}">(wijzig)</a>
+                @endcan
+
+            </h3>
+            <table class='table table-striped table-hover' style="table-layout: fixed;">
+                <tbody>
+                <tr>
+                    <th>Gebruikersnaam</th>
+                    <td>{{ $user->username }}</td>
+                </tr>
+                </tbody>
+            </table>
+
             {{-- Lid status --}}
 
             <h3>
@@ -360,6 +377,19 @@
                 <hr>
                 <p><strong>In leven</strong> <a href="{{ action('Admin\MemberController@editAlive', $user->id) }}">(wijzig)</a></p>
                 <p>{{$profile->alive ? 'Ja' : 'Nee'}}</p>
+            @endcan
+
+            @can('users.manage')
+                <hr>
+                {!! Former::inline_open()
+                    ->action(action('Admin\MemberController@setForget', $user->id))
+                    ->method('GET') !!}
+
+                <button type='submit' class='btn btn-primary'>
+                    <i class="glyphicon glyphicon-trash"></i> Gegevens vergeten (conform AVG)
+                </button>
+
+                {!! Former::close() !!}
             @endcan
 
             <hr>

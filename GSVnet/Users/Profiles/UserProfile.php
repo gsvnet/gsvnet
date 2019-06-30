@@ -26,7 +26,6 @@ class UserProfile extends Model {
         'study',
         'country',
         'birthdate',
-        'church',
         'gender',
         'student_number',
         'reunist',

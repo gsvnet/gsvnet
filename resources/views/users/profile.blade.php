@@ -109,10 +109,6 @@
 								<span class="list-description">{{$member->profile->present()->genderLocalized}}</span>
 							</li>
 							<li>
-								<span class="list-title">Kerkgezindte</span>
-								<span class="list-description">{{$member->profile->church}}</span>
-							</li>
-							<li>
 								<span class="list-title">Studie</span>
 								<span class="list-description">{{$member->profile->study}}</span>
 							</li>
