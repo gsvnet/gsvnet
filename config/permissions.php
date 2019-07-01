@@ -80,6 +80,10 @@ return [
             'senate' => true
         ],
 
+        'senates.show' => [
+            'type' => [User::MEMBER, User::FORMERMEMBER]
+        ],
+
         'senates.manage' => [
             'committee' => ['webcie'],
             'senate' => true
@@ -95,6 +99,10 @@ return [
 
         'threads.show-private' => [
             'type' => [User::MEMBER, User::FORMERMEMBER, User::INTERNAL_COMMITTEE]
+        ],
+
+        'extension.manage' => [
+            'committee' => ['webcie']
         ]
     ],
 
