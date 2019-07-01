@@ -85,4 +85,10 @@
         <i class='glyphicon glyphicon-tower'></i> Senaten
     </a>
     @endcan
+
+    @can('extension.manage')
+    <a href="{{ action('Admin\ExtensionController@index') }}" class="list-group-item {{ Request::segment(2) == 'extension' ? 'active' : '' }}">
+        <i class='glyphicon glyphicon-plus'></i> Extensie
+    </a>
+    @endcan
 </div>
