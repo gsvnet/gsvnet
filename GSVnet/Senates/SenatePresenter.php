@@ -1,7 +1,6 @@
 <?php namespace GSVnet\Senates;
 
 use GSVnet\Markdown\HtmlMarkdownConverter;
-use Illuminate\Support\Facades\Auth;
 use Laracasts\Presenter\Presenter, Carbon\Carbon, Config;
 
 class SenatePresenter extends Presenter
@@ -14,10 +13,7 @@ class SenatePresenter extends Presenter
 
         $end_date = Carbon::createFromFormat('Y-m-d', $this->end_date);
         $border_date = Carbon::now()->subYears(5);
-        if (
-            (!Auth::check() or !Auth::user()->wasOrIsMember())
-            and $end_date < $border_date
-        ) {
+        if (\Gate::denies('senates.show') and $end_date < $border_date) {
             $this->canPresent = false;
         }
     }

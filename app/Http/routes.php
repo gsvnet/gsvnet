@@ -179,6 +179,10 @@ Route::group([
     // Hier nog een route voor ajax calls naar users db
     Route::post('senaten/{senate}/members',            'Senates\MembersController@store');
     Route::delete('senaten/{senate}/members/{member}', 'Senates\MembersController@destroy');
+
+    // Extension
+    Route::get('extension', 'ExtensionController@index');
+    Route::post('extension', 'ExtensionController@store');
 });
 
 // Forum
@@ -262,4 +266,9 @@ Route::group(['prefix' => 'api', 'middleware' => ['cors']], function() {
     });
     
     Route::post('login', 'Malfonds\SessionController@login');
+});
+
+// Shop extension
+Route::group(['prefix' => 'api', 'middleware' => ['cors']], function() {
+    Route::get('shops', 'ExtensionApiController@show');
 });
