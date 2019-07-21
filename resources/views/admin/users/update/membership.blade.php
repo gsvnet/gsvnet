@@ -10,7 +10,7 @@
             @if ($user->isMember())
                 <div class="form-group">
                     {!! Former::vertical_open()->action(action('Admin\MemberController@makeReunist', $user->id))->method('POST') !!}
-                    <button type='submit' class='btn btn-success'>
+                    <button type='submit' class='btn btn-success btn-confirm'>
                         <i class="glyphicon glyphicon-ok"></i> Reünist maken
                     </button>
                     {!! Former::close() !!}
@@ -18,7 +18,7 @@
 
                 <div class="form-group">
                     {!! Former::vertical_open()->action(action('Admin\MemberController@makeExMember', $user->id))->method('POST') !!}
-                    <button type='submit' class='btn btn-success'>
+                    <button type='submit' class='btn btn-success btn-confirm'>
                         <i class="glyphicon glyphicon-ok"></i> Ex-lid maken
                     </button>
                     {!! Former::close() !!}
@@ -27,7 +27,7 @@
             @elseif($user->isReunist())
                 <div class="form-group">
                     {!! Former::vertical_open()->action(action('Admin\MemberController@makeMember', $user->id))->method('POST') !!}
-                    <button type='submit' class='btn btn-success'>
+                    <button type='submit' class='btn btn-success btn-confirm'>
                         <i class="glyphicon glyphicon-ok"></i> Lid maken
                     </button>
                     {!! Former::close() !!}
@@ -35,7 +35,7 @@
 
                 <div class="form-group">
                     {!! Former::vertical_open()->action(action('Admin\MemberController@makeExMember', $user->id))->method('POST') !!}
-                    <button type='submit' class='btn btn-success'>
+                    <button type='submit' class='btn btn-success btn-confirm'>
                         <i class="glyphicon glyphicon-ok"></i> Ex-lid maken
                     </button>
                     {!! Former::close() !!}
