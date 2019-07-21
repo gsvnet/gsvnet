@@ -12,11 +12,11 @@ return [
      */
     'general' => [
         'ads.hide' => [
-            'type' => [User::MEMBER, User::FORMERMEMBER]
+            'type' => [User::MEMBER, User::REUNIST]
         ],
 
-        'member-or-former-member' => [
-            'type' => [User::MEMBER, User::FORMERMEMBER]
+        'member-or-reunist' => [
+            'type' => [User::MEMBER, User::REUNIST]
         ],
 
         'user.become-member' => [
@@ -24,7 +24,7 @@ return [
         ],
 
         'users.show' => [
-            'type' => [User::MEMBER, User::FORMERMEMBER],
+            'type' => [User::MEMBER, User::REUNIST],
         ],
 
         'users.manage' => [
@@ -38,11 +38,11 @@ return [
         ],
 
         'committees.show-novcie' => [
-            'type' => [User::MEMBER, User::FORMERMEMBER]
+            'type' => [User::MEMBER, User::REUNIST]
         ],
 
         'photos.show-private' => [
-            'type' => [User::MEMBER, User::FORMERMEMBER]
+            'type' => [User::MEMBER]
         ],
 
         'photos.manage' => [
@@ -64,15 +64,15 @@ return [
         ],
 
         'dropbox.show' => [
-            'type' => [User::MEMBER, User::FORMERMEMBER]
+            'type' => [User::MEMBER]
         ],
 
         'events.show-private' => [
-            'type' => [User::MEMBER, User::FORMERMEMBER],
+            'type' => [User::MEMBER, User::REUNIST],
         ],
 
         'events.manage' => [
-            'type' => [User::MEMBER, User::FORMERMEMBER],
+            'type' => [User::MEMBER],
         ],
 
         'events.publish' => [
@@ -81,7 +81,7 @@ return [
         ],
 
         'senates.show' => [
-            'type' => [User::MEMBER, User::FORMERMEMBER]
+            'type' => [User::MEMBER, User::REUNIST]
         ],
 
         'senates.manage' => [
@@ -94,11 +94,11 @@ return [
         ],
 
         'users.edit-profile' => [
-            'type' => ['potential', User::MEMBER, User::FORMERMEMBER, User::INTERNAL_COMMITTEE]
+            'type' => ['potential', User::MEMBER, User::REUNIST, User::EXMEMBER, User::INTERNAL_COMMITTEE]
         ],
 
         'threads.show-private' => [
-            'type' => [User::MEMBER, User::FORMERMEMBER, User::INTERNAL_COMMITTEE]
+            'type' => [User::MEMBER, User::REUNIST, User::INTERNAL_COMMITTEE]
         ],
 
         'extension.manage' => [

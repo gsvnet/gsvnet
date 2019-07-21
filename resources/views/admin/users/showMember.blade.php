@@ -135,16 +135,6 @@
                             @endcan
                         </td>
                     </tr>
-                    <tr>
-                        <th>Reunist?</th>
-                        <td>
-                            {{ $profile->present()->alumniStatus() }}
-
-                            @can('users.manage', $user)
-                                <a href="{{ action('Admin\MemberController@editAlumniStatus', $user->id) }}">(wijzig)</a>
-                            @endcan
-                        </td>
-                    </tr>
                     @endif
                 </tbody>
             </table>

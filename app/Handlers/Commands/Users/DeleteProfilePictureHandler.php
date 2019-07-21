@@ -23,7 +23,7 @@ class DeleteProfilePictureHandler {
         $profile->photo_path = null;
         $profile->save();
 
-        if ($command->user->wasOrIsMember()) {
+        if ($command->user->isMemberOrReunist()) {
             event(new ProfilePictureWasChanged($command->user, $command->manager));
         }
     }

@@ -2,7 +2,6 @@
 
 use Carbon\Carbon;
 use GSV\Commands\Members\ChangeAddress;
-use GSV\Commands\Members\ChangeAlumniStatus;
 use GSV\Commands\Members\ChangeBirthDay;
 use GSV\Commands\Members\ChangeBusiness;
 use GSV\Commands\Members\ChangeGender;
@@ -333,25 +332,6 @@ class MemberController extends AdminBaseController
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
-    public function editAlumniStatus($id)
-    {
-        $this->authorize('users.manage');
-
-        $user = $this->users->memberOrFormerByIdWithProfile($id);
-        return view('admin.users.update.alumni')->with(compact('user'));
-    }
-
-    public function updateAlumniStatus(Request $request, $id)
-    {
-        $this->authorize('users.manage');
-
-        $member = $this->users->memberOrFormerByIdWithProfile($id);
-        $this->dispatch(ChangeAlumniStatus::fromForm($request, $member));
-
-        flash()->success("Reüniststatus van {$member->present()->fullName()} succesvol gewijzigd");
-        return redirect()->action('Admin\UsersController@show', $id);
-    }
-
     public function editMembershipStatus($id)
     {
         $this->authorize('users.manage');
@@ -360,15 +340,27 @@ class MemberController extends AdminBaseController
         return view('admin.users.update.membership')->with(compact('user'));
     }
 
-    public function makeFormerMember(Request $request, $id)
+    public function makeReunist(Request $request, $id)
     {
         $this->authorize('users.manage');
 
         $member = $this->users->memberOrFormerByIdWithProfile($id);
 
-        $this->dispatch(new ChangeMembershipStatus(User::FORMERMEMBER, $member, $request->user()));
+        $this->dispatch(new ChangeMembershipStatus(User::REUNIST, $member, $request->user()));
 
-        flash()->success("{$member->present()->fullName()} is nu oud-lid");
+        flash()->success("{$member->present()->fullName()} is nu reünist");
+        return redirect()->action('Admin\UsersController@show', $id);
+    }
+
+    public function makeExMember(Request $request, $id)
+    {
+        $this->authorize('users.manage');
+
+        $member = $this->users->memberOrFormerByIdWithProfile($id);
+
+        $this->dispatch(new ChangeMembershipStatus(User::EXMEMBER, $member, $request->user()));
+
+        flash()->success("{$member->present()->fullName()} is nu ex-lid");
         return redirect()->action('Admin\UsersController@show', $id);
     }
 

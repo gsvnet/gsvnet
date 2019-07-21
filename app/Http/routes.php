@@ -88,7 +88,7 @@ Route::group(['prefix' => 'wachtwoord-vergeten'], function() {
 Route::group([
         'prefix' => 'admin',
         'namespace' => 'Admin',
-        'middleware' => ['auth', 'has:member-or-former-member']
+        'middleware' => ['auth', 'has:member-or-reunist']
     ], function() {
 
     Route::get('/', 'AdminController@index');
@@ -148,8 +148,6 @@ Route::group([
     Route::put('leden/{user}/studie',        'MemberController@updateStudy');
     Route::get('leden/{user}/regio',         'MemberController@editRegion');
     Route::put('leden/{user}/regio',         'MemberController@updateRegion');
-    Route::get('leden/{user}/reunistschap',  'MemberController@editAlumniStatus');
-    Route::put('leden/{user}/reunistschap',  'MemberController@updateAlumniStatus');
     Route::get('leden/{user}/tijd-van-lidmaatschap', 'MemberController@editMembershipPeriod');
     Route::put('leden/{user}/tijd-van-lidmaatschap', 'MemberController@updateMembershipPeriod');
     Route::get('leden/{user}/in-leven',      'MemberController@editAlive');
@@ -159,7 +157,8 @@ Route::group([
 
     // Some actions (post requests therefore)
     Route::get('leden/{user}/lidmaatschap', 'MemberController@editMembershipStatus');
-    Route::post('leden/{user}/lidmaatschap/maak-oud-lid', 'MemberController@makeFormerMember');
+    Route::post('leden/{user}/lidmaatschap/maak-reunist', 'MemberController@makeReunist');
+    Route::post('leden/{user}/lidmaatschap/maak-ex-lid', 'MemberController@makeExMember');
     Route::post('leden/{user}/lidmaatschap/maak-lid', 'MemberController@makeMember');
 
     // Deleting user data according to GDPR rules
@@ -222,7 +221,7 @@ Route::group(['prefix' => 'forum', 'middleware' => ['auth', 'approved']], functi
 
 Route::get('preview', ['middleware' => 'auth', 'uses' => 'ForumApiController@preview']);
 
-Route::group(['prefix' => 'api', 'middleware' => ['auth', 'approved', 'has:member-or-former-member']], function() {
+Route::group(['prefix' => 'api', 'middleware' => ['auth', 'approved', 'has:member-or-reunist']], function() {
     Route::get('search/members', 'ApiController@members');
 });
 

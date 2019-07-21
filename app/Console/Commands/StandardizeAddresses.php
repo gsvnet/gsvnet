@@ -48,7 +48,7 @@ class StandardizeAddresses extends Command
      */
     private $values = [
         'leden' => User::MEMBER,
-        'oud-leden' => User::FORMERMEMBER
+        'reünisten' => User::REUNIST
     ];
 
     /**
@@ -71,7 +71,7 @@ class StandardizeAddresses extends Command
         $for = $this->argument('of');
 
         if (!array_key_exists($for, $this->values)) {
-            $this->error('Kies uit leden of oud-leden');
+            $this->error('Kies uit leden of reünisten');
             return;
         }
 
@@ -138,7 +138,7 @@ class StandardizeAddresses extends Command
     protected function getArguments()
     {
         return [
-            ['of', InputArgument::REQUIRED, 'leden of oud-leden'],
+            ['of', InputArgument::REQUIRED, 'leden of reünisten'],
         ];
     }
 

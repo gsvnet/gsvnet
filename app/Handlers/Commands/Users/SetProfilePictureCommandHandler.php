@@ -29,7 +29,7 @@ class SetProfilePictureCommandHandler
         $profile->photo_path = $path;
         $profile->save();
 
-        if ($command->user->wasOrIsMember()) {
+        if ($command->user->isMemberOrReunist()) {
             event(new ProfilePictureWasChanged($command->user, $command->manager));
         }
     }

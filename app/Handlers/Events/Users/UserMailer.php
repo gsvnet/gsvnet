@@ -38,10 +38,10 @@ class UserMailer {
         });
     }
 
-    public function notifyFormerMember(UserWasRegistered $event)
+    public function notifyReunist(UserWasRegistered $event)
     {
         $user = $event->user;
-        if($user->type != User::FORMERMEMBER)
+        if($user->type != User::REUNIST)
             return;
 
         $data = [

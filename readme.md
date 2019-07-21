@@ -33,7 +33,7 @@ In dit stuk licht ik een paar domein-gerelateerde (gerelateerd aan de GSV) progr
 1. Gasten `User::VISITOR`. Kan berichten plaatsen op het externe forum.
 2. Potentials `User::POTENTIAL`. Heeft zich aangemeld via het word lid-formulier en heeft een GSV-profiel
 3. Leden `User::MEMBER`. Kan intern en heeft eigen profiel. Staat vermeld in de jaarbundel.
-4. Oud-leden `User::FORMERMEMBER`. Kan intern en heeft een eigen profiel.
+4. Oud-leden `User::REUNIST`. Kan intern en heeft een eigen profiel.
 5. Commissies `User::COMMITTEE`. Kan ook intern, maar staat niet in de jaarbundel.
 
 Al deze types gebruikers kunnen inloggen op GSVnet. Een `User` van het type `POTENTIAL`, `MEMBER` en `FORMERMEMBER` is 1 op 1 gekoppeld met een `GSVnet\Users\Profiles\UserProfile`. Daarin staan allerlei specifieke (GSV-gerelateerde) persoonsgegevens. Een `UserProfile` is ∞ op 1 gekoppeld aan een `GSVnet\Users\YearGroup`. Dat model representeert een jaarverband. N.B.: dit is de enige plek waarop de koppeling via `UserProfile` gaat, op alle andere plekken wordt gekoppeld met het unieke `id` van een `User`.
