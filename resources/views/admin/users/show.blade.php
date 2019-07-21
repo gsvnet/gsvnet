@@ -11,7 +11,6 @@
         <button type='submit' class='btn btn-danger'>
             <i class="glyphicon glyphicon-trash"></i> Verwijderen
         </button>
-
         {!! Former::close() !!}
         @endcan
     </div>
@@ -35,6 +34,23 @@
                 <dt>Geregistreerd</dt>
                 <dd>{{$user->created_at}} <em>{{ $user->present()->registeredSince}}</em></dd>
             </dl>
+            @can('users.manage')
+            <div class="form-group">
+                {!! Former::vertical_open()->action(action('Admin\MemberController@makeMember', $user->id))->method('POST') !!}
+                <button type='submit' class='btn btn-success btn-confirm'>
+                    <i class="glyphicon glyphicon-ok"></i> Lid maken
+                </button>
+                {!! Former::close() !!}
+            </div>
+
+            <div class="form-group">
+                {!! Former::vertical_open()->action(action('Admin\MemberController@makeReunist', $user->id))->method('POST') !!}
+                <button type='submit' class='btn btn-success btn-confirm'>
+                    <i class="glyphicon glyphicon-ok"></i> Reünist maken
+                </button>
+                {!! Former::close() !!}
+            </div>
+            @endcan
         </div>
     </div>
 @stop
