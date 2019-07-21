@@ -27,8 +27,7 @@ class ApiController extends BaseController {
         $type = Input::get('type');
         $regions = $this->regions->all();
         $region = Input::get('regio');
-        $reunistInput = Input::get('reunist');
-        $reunist = null;
+        $reunist = Input::get('reunist');
         $yearGroup = Input::get('jaarverband');
 
         // Search on region
@@ -40,16 +39,16 @@ class ApiController extends BaseController {
             $yearGroup = null;
 
         // Search for reunists?
-        if($reunistInput == 'ja')
-            $reunist = true;
-        if($reunistInput == 'nee')
-            $reunist = false;
+        if($reunist == 'ja')
+            $type = [$type, User::REUNIST];
+        else
+            $type = [$type];
 
         // Search types
-        if ($type != User::MEMBER && $type != User::FORMERMEMBER)
-            $type = [User::MEMBER, User::FORMERMEMBER];
+        if (!in_array(User::MEMBER, $type) && !in_array(User::REUNIST, $type))
+            $type = [User::MEMBER, User::REUNIST];
 
-        $profiles = $this->profiles->searchLimit($search, $region, $yearGroup, $type, 30, $reunist);
+        $profiles = $this->profiles->searchLimit($search, $region, $yearGroup, $type, 30);
 
         $formatted = $profiles->map(function($profile){
             return [

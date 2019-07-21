@@ -38,11 +38,6 @@ class ProfilePresenter extends Presenter
         return $this->gender === null ? 'Nee' : ($this->gender == 1 ? 'Man' : 'Vrouw');
     }
 
-    public function alumniStatus()
-    {
-        return $this->reunist ? 'Ja' : 'Nee';
-    }
-
     public function xsmallProfileImage()
     {
         if ($this->photo_path != '')

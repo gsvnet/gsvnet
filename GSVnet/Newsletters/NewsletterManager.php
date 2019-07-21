@@ -36,7 +36,7 @@ class NewsletterManager {
         }
 
         // Add to mailing lists
-        if($new->wasOrIsMember())
+        if($new->isMemberOrReunist())
         {
             $data = [
                 'list' => $new->type,

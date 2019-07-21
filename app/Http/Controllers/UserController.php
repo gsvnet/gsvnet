@@ -89,8 +89,8 @@ class UserController extends BaseController
         }
 
         $perPage = 50;
-        $type = $oudLeden == '1' ? [User::MEMBER, User::FORMERMEMBER] : User::MEMBER;
-        $members = $this->profiles->searchAndPaginate($search, $region, $yeargroup, $type, $perPage);
+        $types = $oudLeden == '1' ? [User::MEMBER, User::REUNIST, User::EXMEMBER] : User::MEMBER;
+        $members = $this->profiles->searchAndPaginate($search, $region, $yeargroup, $types, $perPage);
 
         // Select year groups
         $yearGroups = $this->yearGroups->all();

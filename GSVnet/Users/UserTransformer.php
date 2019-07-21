@@ -113,7 +113,7 @@ class UserTransformer {
         ];
     }
 
-    public function formerMemberToCsv(User $user)
+    public function reunistToCsv(User $user)
     {
         $hasProfile = ! empty($user->profile);
         $hasYearGroup = $hasProfile && ! empty($user->profile->yearGroup);
@@ -128,7 +128,7 @@ class UserTransformer {
             'Jaar van lidmaatschap' => $hasYearGroup ? (int) $user->profile->yearGroup->year : '',
             'Inauguratiedatum' => $hasProfile ? $user->profile->present()->inaugurationDateSimple : '',
             'Bedankdatum' => $hasProfile ? $user->profile->present()->resignationDateSimple : '',
-            'Reunist' => $hasProfile && $user->profile->reunist ? 'Ja' : 'Nee',
+            'Reunist' => $user->isReunist() ? 'Ja' : 'Nee',
             'Email' => $user->email,
             'Geslacht' => $hasProfile ? $user->profile->present()->genderLocalized : '',
             'Geboortedatum' => $hasProfile ? $user->profile->birthdate : '',
@@ -140,6 +140,26 @@ class UserTransformer {
             'Studie' => $hasProfile ? $user->profile->study : '',
             'Bedrijf' => $hasProfile ? $user->profile->company : '',
             'Functie' => $hasProfile ? $user->profile->profession : '',
+            'Gebruikersnaam' => $user->username
+        ];
+    }
+
+    public function exMemberToCsv(User $user)
+    {
+        $hasProfile = ! empty($user->profile);
+
+        return [
+            'Initialen' => $hasProfile ? $user->profile->initials : '',
+            'Voornaam' => $user->firstname,
+            'Tussenvoegsel' => $user->middlename,
+            'Achternaam' => $user->lastname,
+            'Regio' => $hasProfile ? $user->profile->present()->regionName : '',
+            'Jaarverband' => $hasYearGroup ? $user->profile->yearGroup->name : '',
+            'Jaar van lidmaatschap' => $hasYearGroup ? (int) $user->profile->yearGroup->year : '',
+            'Inauguratiedatum' => $hasProfile ? $user->profile->present()->inaugurationDateSimple : '',
+            'Bedankdatum' => $hasProfile ? $user->profile->present()->resignationDateSimple : '',
+            'Reunist' => $user->isReunist() ? 'Ja' : 'Nee',
+            'Email' => $user->email,
             'Gebruikersnaam' => $user->username
         ];
     }
@@ -171,8 +191,13 @@ class UserTransformer {
         return $users->map([$this, 'memberToCsv']);
     }
 
-    public function collectionOfFormerMembers(Collection $users)
+    public function collectionOfReunists(Collection $users)
     {
-        return $users->map([$this, 'formerMemberToCsv']);
+        return $users->map([$this, 'reunistToCsv']);
+    }
+
+    public function collectionOfExMembers(Collection $users)
+    {
+        return $users->map([$this, 'exMemberToCsv']);
     }
 }

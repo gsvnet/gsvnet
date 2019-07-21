@@ -6,6 +6,6 @@ return [
     'key' => env('MAILCHIMP_APIKEY'),
     'lists' => [
         User::MEMBER => env('MAILCHIMP_MEMBERS', 'c5f9a07ee4'),
-        User::FORMERMEMBER => env('MAILCHIMP_FORMERMEMBERS', 'f844adabde')
+        User::REUNIST => env('MAILCHIMP_FORMERMEMBERS', 'f844adabde')
     ]
 ];

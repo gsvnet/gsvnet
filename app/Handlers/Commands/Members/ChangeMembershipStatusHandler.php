@@ -2,6 +2,7 @@
 
 use GSV\Commands\Members\ChangeMembershipStatus;
 use GSV\Commands\Members\ChangeParentsDetails;
+use GSV\Commands\Members\ForgetMember;
 use GSV\Events\Members\MembershipStatusWasChanged;
 use GSVnet\Users\User;
 use GSVnet\Users\UsersRepository;
@@ -33,8 +34,8 @@ class ChangeMembershipStatusHandler
         $user->type = $command->status;
         $this->users->save($user);
 
-        // We don't need to keep parents' details of former members.
-        if ($user->type == User::FORMERMEMBER) {
+        // We don't need to keep parents' details of reunists.
+        if ($user->isReunist()) {
             dispatch(
                 new ChangeParentsDetails(
                     $user,
@@ -42,6 +43,27 @@ class ChangeMembershipStatusHandler
                     new OptionalAddress(null, null, null),
                     new OptionalPhoneNumber(null),
                     new OptionalEmail(null)
+                )
+            );
+        }
+
+        // Remove even more user details when changing to ex-member
+        if($user->isExMember()) {
+            dispatch(
+                new ForgetMember(
+                    $user,
+                    $command->manager,
+                    false, // name
+                    false, // username
+                    true, // address
+                    false, // email
+                    true, // profilePicture
+                    true, // birthday
+                    true, // gender
+                    true, // phone
+                    true, // study
+                    true, // business
+                    true // parents
                 )
             );
         }

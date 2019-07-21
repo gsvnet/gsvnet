@@ -44,7 +44,7 @@ class BulkNewsletterSubscriptions extends Command
      */
     private $values = [
         'leden' => User::MEMBER,
-        'oud-leden' => User::FORMERMEMBER
+        'reünisten' => User::REUNIST
     ];
 
     /**
@@ -71,7 +71,7 @@ class BulkNewsletterSubscriptions extends Command
         $for = $this->argument('for');
 
         if (!array_key_exists($for, $this->values)) {
-            $this->error('Kies uit leden of oud-leden');
+            $this->error('Kies uit leden of reünisten');
             return;
         }
 
@@ -97,7 +97,7 @@ class BulkNewsletterSubscriptions extends Command
     protected function getArguments()
     {
         return [
-            ['for', InputArgument::REQUIRED, 'Wie moeten er geupdate worden? leden|oud-leden '],
+            ['for', InputArgument::REQUIRED, 'Wie moeten er geupdate worden? leden|reünisten '],
         ];
     }
 

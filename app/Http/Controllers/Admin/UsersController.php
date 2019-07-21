@@ -105,9 +105,20 @@ class UsersController extends AdminBaseController
         $this->authorize('users.show');
         $search = $request->get('zoekwoord', '');
         $regions = $this->regions->all();
-        $type = User::FORMERMEMBER;
         $perPage = 300;
-        $reunistInput = $request->get('reunist');
+        $reunist = $request->get('reunist');
+
+        // Search for any former member or a specific group?
+        switch($reunist) {
+            case -1:
+                $types = User::EXMEMBER;
+                break;
+            case 1:
+                $types = User::REUNIST;
+                break;
+            default:
+                $types = [User::REUNIST, User::EXMEMBER];
+        }
 
         // Search on region
         if (!($region = $request->get('regio') and $this->regions->exists($region)))
@@ -117,10 +128,7 @@ class UsersController extends AdminBaseController
         if (!($yearGroup = $request->get('jaarverband') and $this->yearGroups->exists($yearGroup)))
             $yearGroup = null;
 
-        // Search for reunists?
-        $reunist = $reunistInput == 'ja' ? true : ($reunistInput == 'nee' ? false : null);
-
-        $profiles = $this->profiles->searchAndPaginate($search, $region, $yearGroup, $type, $perPage, $reunist);
+        $profiles = $this->profiles->searchAndPaginate($search, $region, $yearGroup, $types, $perPage);
         $yearGroups = $this->yearGroups->all();
 
         return view('admin.users.oud-leden')->with('profiles', $profiles)
@@ -178,7 +186,7 @@ class UsersController extends AdminBaseController
         $user = $this->users->byId($id);
 
         // Committees or ordinary forum users do not need a fancy profile page
-        if (!$user->wasOrIsMember() && !$user->isPotential())
+        if (!$user->isMemberOrReunist() && !$user->isPotential())
             return view('admin.users.show')->with(compact('user'));
 
         // Since GDPR, not all (former) members still have profiles
@@ -187,7 +195,7 @@ class UsersController extends AdminBaseController
 
         $profile = $user->profile;
 
-        if ($user->wasOrIsMember()) {
+        if ($user->isMemberOrReunist()) {
             // Members, former members
             $committees = $user->committeesSorted;
 
