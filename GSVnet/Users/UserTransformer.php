@@ -147,6 +147,7 @@ class UserTransformer {
     public function exMemberToCsv(User $user)
     {
         $hasProfile = ! empty($user->profile);
+        $hasYearGroup = $hasProfile && ! empty($user->profile->yearGroup);
 
         return [
             'Initialen' => $hasProfile ? $user->profile->initials : '',
