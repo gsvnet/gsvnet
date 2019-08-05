@@ -30,7 +30,7 @@ class MemberFiler {
         $reunistData = $transformer->collectionOfReunists($reunists);
         $exMemberData = $transformer->collectionOfExMembers($exMembers);
 
-        $file = Excel::create("ledenbestand-{$date}", function (LaravelExcelWriter $excel) use ($date, $former, $current) {
+        $file = Excel::create("ledenbestand-{$date}", function (LaravelExcelWriter $excel) use ($date, $exMemberData, $reunistData, $memberData) {
             $excel->setTitle("ledenbestand-{$date}");
             $excel->sheet('Oud-leden', function (LaravelExcelWorksheet $sheet) use ($exMemberData) {
                 $sheet->fromArray($exMemberData);
