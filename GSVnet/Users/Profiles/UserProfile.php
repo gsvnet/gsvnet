@@ -33,6 +33,7 @@ class UserProfile extends Model {
         'parent_zip_code',
         'parent_town',
         'parent_phone',
+        'parent_email',
         'photo_path',
         'inauguration_date',
         'resignation_date',
