@@ -1,7 +1,7 @@
 <div class="column-holder directannonces">
     <h2>Sponsors</h2>
     <div class="annoncesholder">
-        <p class="half"><a href="http://www.patrimonium-groningen.nl/"><img src="/images/annonces/patrimonium.gif" title="Patrimonium" /></a><a href="https://www.fit.nl/" title="Fitness Tips"><img src="/images/annonces/fit_nl.png" title="Fitness Tips" alt="Fitness Tips" /></a></p>
+        <p><a href="https://smartranking.nl/"><img src="/images/annonces/smartranking-logo.jpg" title="SmartRanking" /></a></p>
         <p><a href="http://www.oudmankeukens.nl/" title="Oudman Keukens" rel="nofollow"><img src="/images/annonces/oudman.png" title="Oudman keukens" /></a></p>
         <p><a href="https://www.hoyhoy.nl/energie-vergelijken/" title="energievergelijker"><img src="/images/annonces/hoyhoy.gif" title="energievergelijker" alt="energievergelijker" /></a></p>
         <p><a href="https://www.pricewise.nl/energie-vergelijken/" title="energie vergelijken"><img src="/images/annonces/pricewise.gif" title="energie vergelijken" alt="energie vergelijken" /></a></p>
