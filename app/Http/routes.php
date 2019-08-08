@@ -6,6 +6,9 @@ Route::get('/', ['as' => 'home', 'uses' => 'HomeController@showIndex']);
 // Keep the new homepage accessible
 Route::get('welkom', ['as' => 'home', 'uses' => 'HomeController@showNewIndex']);
 
+// KEI-week 2019
+Route::get('kei-week', 'HomeController@showKeiWeek');
+
 // Login and logout routes
 Route::get('inloggen', ['middleware' => 'guest', 'uses' => 'SessionController@getLogin']);
 Route::post('inloggen', ['middleware' => 'guest', 'uses' => 'SessionController@postLogin']);
