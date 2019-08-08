@@ -79,4 +79,9 @@ class HomeController extends BaseController {
     {
         return view('ad-page');
     }
+
+    public function showKeiWeek()
+    {
+        return view('kei-week');
+    }
 }
