@@ -43,9 +43,6 @@
                 <td>Borrel en speciaalbier</td>
                 <td>Sociëteit</td>
             </tr>
-        </table>
-
-        <table>
             <tr>
                 <td colspan="3"><b>Dinsdag 13 augustus</b></td>
             </tr>
@@ -74,9 +71,6 @@
                 <td>Silent disco</td>
                 <td>Sociëteit</td>
             </tr>
-        </table>
-
-        <table>
             <tr>
                 <td colspan="3"><b>Woensdag 14 augustus</b></td>
             </tr>
@@ -105,9 +99,6 @@
                 <td>Saloonparty</td>
                 <td>Sociëteit</td>
             </tr>
-        </table>
-
-        <table>
             <tr>
                 <td colspan="3"><b>Donderdag 15 augustus</b></td>
             </tr>
@@ -136,9 +127,6 @@
                 <td>Schuimfeest</td>
                 <td>Sociëteit</td>
             </tr>
-        </table>
-
-        <table>
             <tr>
                 <td colspan="3"><b>Vrijdag 16 augustus</b></td>
             </tr>
