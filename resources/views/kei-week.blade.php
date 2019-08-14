@@ -119,7 +119,7 @@
             </tr>
             <tr>
                 <td>20:30</td>
-                <td>Barbecue</td>
+                <td>Sing-in</td>
                 <td>Sociëteit</td>
             </tr>
             <tr>
