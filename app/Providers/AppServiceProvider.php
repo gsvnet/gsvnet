@@ -32,9 +32,6 @@ class AppServiceProvider extends ServiceProvider {
 			'Illuminate\Contracts\Auth\Registrar',
 			'GSV\Services\Registrar'
 		);
-
-		$this->app->alias('bugsnag.logger', \Illuminate\Contracts\Logging\Log::class);
-		$this->app->alias('bugsnag.logger', \Psr\Log\LoggerInterface::class);
 	}
 
 }
