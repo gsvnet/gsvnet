@@ -5,6 +5,7 @@ use GSV\Console\Commands\BulkSyncWithAlgolia;
 use GSV\Console\Commands\InviteViaCLI;
 use GSV\Console\Commands\StandardizeAddresses;
 use GSV\Console\Commands\StandardizePhoneNumbers;
+use GSV\Console\Commands\MigrateFormerMembers;
 use GSV\Events\Members\MemberFileWasCreated;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -26,6 +27,7 @@ class Kernel extends ConsoleKernel
         StandardizePhoneNumbers::class,
         StandardizeAddresses::class,
         BulkSyncWithAlgolia::class,
+        MigrateFormerMembers::class
     ];
 
     private $filer;
