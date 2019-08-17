@@ -25,18 +25,17 @@ class ProfilesRepository extends BaseRepository {
      * @param int $yearGroup
      * @param int|array $type
      * @param int $amount
-     * @param null $reunist
      *
      * @return UserProfile[]
      */
-    public function searchAndPaginate($search, $region = null, $yearGroup = null, $type = 2, $amount = 20, $reunist = null)
+    public function searchAndPaginate($search, $region = null, $yearGroup = null, $type = 2, $amount = 20)
     {
-        return $this->search($search, $region, $yearGroup, $type, $reunist)->paginate($amount);
+        return $this->search($search, $region, $yearGroup, $type)->paginate($amount);
     }
 
-    public function searchLimit($search, $region = null, $yearGroup = null, $type = 2, $amount = 20, $reunist = null)
+    public function searchLimit($search, $region = null, $yearGroup = null, $type = 2, $amount = 20)
     {
-        return $this->search($search, $region, $yearGroup, $type, $reunist)->take($amount)->get();
+        return $this->search($search, $region, $yearGroup, $type)->take($amount)->get();
     }
 
     /**
@@ -46,11 +45,10 @@ class ProfilesRepository extends BaseRepository {
      * @param int $region
      * @param int $yearGroup
      * @param int $type
-     * @param null $reunist
      *
      * @return UserProfile[]
      */
-    public function search($keyword = '', $region = null, $yearGroup = null, $type = 2, $reunist = null)
+    public function search($keyword = '', $region = null, $yearGroup = null, $type = 2)
     {
         // Initialize basic query
         $query = UserProfile::with('user', 'yearGroup', 'regions')
@@ -83,9 +81,6 @@ class ProfilesRepository extends BaseRepository {
         // Search for members inside year group if year group is valid
         if (isset($yearGroup))
             $query->where('year_group_id', '=', $yearGroup);
-
-        if (isset($reunist))
-            $query->where('reunist', $reunist);
 
         // Retrieve results
         return $query;
@@ -129,7 +124,6 @@ class ProfilesRepository extends BaseRepository {
     {
         $profile = UserProfile::create(array('user_id' => $user->id));
         $profile->user_id = $user->id;
-        $profile->reunist = 0;
 
         $profile->phone            = $input['potential-phone'];
         $profile->address          = $input['potential-address'];

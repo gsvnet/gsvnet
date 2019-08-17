@@ -44,12 +44,12 @@ class NewsletterInformer implements ShouldQueue
 
         // Remove from old mailing lists if necessary
         if ($event instanceof MembershipStatusWasChanged) {
-            if ($event->getOldStatus() == User::MEMBER || $event->getOldStatus() == User::FORMERMEMBER)
+            if (in_array($event->getOldStatus(), [User::MEMBER, User::REUNIST, User::EXMEMBER]))
                 $this->list->unsubscribeFrom($event->getOldStatus(), $user->email);
         }
 
         // Add to mailing lists
-        if ($user->wasOrIsMember() && $user->profile && $user->profile->alive) {
+        if ($user->isMemberOrReunist() && $user->profile && $user->profile->alive) {
             $data = $this->transformer->mailchimpSubscribe($user);
             try {
                 $this->list->subscribeTo($user->type, $user->email, $data);

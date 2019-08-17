@@ -44,7 +44,7 @@ class UserPresenter extends Presenter
         return $this->created_at->diffForHumans();
     }
 
-    public function membershipType($showReunist = true)
+    public function membershipType()
     {
         $string = '';
         switch ($this->type) {
@@ -57,10 +57,11 @@ class UserPresenter extends Presenter
             case User::MEMBER:
                 $string .= 'Lid';
                 break;
-            case User::FORMERMEMBER:
-                $string .= 'Oud-lid';
-                if ($showReunist && isset($this->profile))
-                    $string .= $this->profile->reunist == 1 ? ' en reünist' : ', niet reünist';
+            case User::REUNIST:
+                $string .= 'Reünist';
+                break;
+            case User::EXMEMBER:
+                $string .= 'Ex-lid';
                 break;
             case User::INTERNAL_COMMITTEE:
                 $string .= 'Commissie';

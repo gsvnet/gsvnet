@@ -30,7 +30,7 @@
 
         </div>
         <div class="secondary-column">
-            @if($user->wasOrIsMember())
+            @if($user->isMemberOrReunist())
                 <h2>Wil je je GSV-profiel wijzigen?</h2>
                 <p><a href="{{action('Admin\UsersController@show', $user->id)}}" class="button">GSV-profiel wijzigen</a></p>
             @endif

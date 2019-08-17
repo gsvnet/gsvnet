@@ -39,7 +39,7 @@ class InvitationController extends MalfondsController
         $this->authorize('users.show');
         $member = $this->users->memberOrFormerByIdWithProfile($userId);
         $token = $this->tokens->getActiveByUserId($userId);
-        $this->authorize('member-or-former-member');
+        $this->authorize('member-or-reunist');
         return view('malfonds.invite', compact('member', 'token'));
     }
     

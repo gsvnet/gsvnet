@@ -49,7 +49,7 @@ class UsersRepository extends BaseRepository
     public function memberOrFormerByIdWithProfile($id)
     {
         return User::whereIn('type',
-            [User::FORMERMEMBER, User::MEMBER, User::POTENTIAL])->with('profile.yearGroup', 'profile.regions')->findOrFail($id);
+            [User::MEMBER, User::REUNIST, User::EXMEMBER, User::POTENTIAL])->with('profile.yearGroup', 'profile.regions')->findOrFail($id);
     }
 
     /**
@@ -101,7 +101,7 @@ class UsersRepository extends BaseRepository
     {
         return User::orderBy('lastname', 'ASC')
             ->orderBy('firstname', 'ASC')
-            ->where('type', User::FORMERMEMBER)
+            ->where('type', User::REUNIST)
             ->with('profile')
             ->paginate($amount);
     }
@@ -152,7 +152,7 @@ class UsersRepository extends BaseRepository
     public function allOfYearGroup($yearGroupId)
     {
         return User::with('profile')
-            ->whereIn('type', [User::FORMERMEMBER, User::MEMBER])
+            ->whereIn('type', [User::REUNIST, User::MEMBER])
             ->whereHas('profile', function ($query) use ($yearGroupId) {
                 $query->where('year_group_id', $yearGroupId);
             })->orderBy('lastname')->orderBy('firstname')->get();

@@ -28,7 +28,7 @@ $(document).ready(function(){
         interval: 15
     });
 
-    $('.btn-danger').click( function() {
+    $('.btn-danger, .btn-confirm').click(function() {
         return confirm('Zeker weten?');
     });
 

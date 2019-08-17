@@ -23,8 +23,8 @@
                 <label for="reunist">Reunist</label>
                 <select name="reunist" id="reunist" class="form-control">
                     <option value="0">Doet er niet toe</option>
-                    <option value="ja" {{Input::get('reunist') == 'ja' ? 'selected="selected"' : ''}}>Ja</option>
-                    <option value="nee" {{Input::get('reunist') == 'nee' ? 'selected="selected"' : ''}}>Nee</option>
+                    <option value="1" {{Input::get('reunist') == '1' ? 'selected="selected"' : ''}}>Ja</option>
+                    <option value="-1" {{Input::get('reunist') == '-1' ? 'selected="selected"' : ''}}>Nee</option>
                 </select>
             </div>
             <div class="form-group">
@@ -57,6 +57,7 @@
                     </tr>
                     </thead>
                     <tbody>
+                    
                     @foreach($profiles as $profile)
                         <tr>
                             <td>
@@ -71,7 +72,7 @@
                             @else
                                 <td class="text-muted">Onbekend</td>
                             @endif
-                            <td>{{ $profile->reunist == 0 ? 'Nee': 'Ja'}}</td>
+                            <td>{{ $profile->user->isReunist() == 0 ? 'Nee': 'Ja'}}</td>
                             <td>
                                 @if($profile->user->isVerified())
                                     Ja

@@ -41,8 +41,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     const VISITOR = 0;
     const POTENTIAL = 1;
     const MEMBER = 2;
-    const FORMERMEMBER = 3;
+    const REUNIST = 3;
     const INTERNAL_COMMITTEE = 4;
+    const EXMEMBER = 5;
 
     /**
      * Get the unique identifier for the user.
@@ -160,7 +161,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function wasOrIsMember()
     {
-        return $this->type == static::MEMBER || $this->type == static::FORMERMEMBER;
+        return in_array($this->type, [static::MEMBER, static::REUNIST, static::EXMEMBER]);
+    }
+
+    public function isFormerMember()
+    {
+        return $this->type == static::REUNIST || $this->type == static::EXMEMBER;
+    }
+
+    public function isMemberOrReunist()
+    {
+        return $this->type == static::MEMBER || $this->type == static::REUNIST;
     }
 
     public function isPotential()
@@ -168,9 +179,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->type == static::POTENTIAL;
     }
 
-    public function isFormerMember()
+    public function isReunist()
     {
-        return $this->type == static::FORMERMEMBER;
+        return $this->type == static::REUNIST;
+    }
+
+    public function isExMember()
+    {
+        return $this->type == static::EXMEMBER;
     }
 
     public function isVisitor()

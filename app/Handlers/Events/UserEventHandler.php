@@ -75,7 +75,7 @@ class UserEventHandler
     public function subscribe(Dispatcher $events)
     {
         $events->listen(UserWasRegistered::class, 'GSV\Handlers\Events\Users\UserMailer@sendWelcomeEmail');
-        $events->listen(UserWasRegistered::class, 'GSV\Handlers\Events\Users\UserMailer@notifyFormerMember');
+        $events->listen(UserWasRegistered::class, 'GSV\Handlers\Events\Users\UserMailer@notifyReunist');
         $events->listen(PotentialSignedUp::class, 'GSV\Handlers\Events\Potentials\PotentialMailer@sendWelcomeMail');
 
         $events->listen(self::$profileChanges, 'GSV\Handlers\Events\Members\ProfileUpdates@changedProfile');

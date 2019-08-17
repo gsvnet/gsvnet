@@ -34,7 +34,7 @@ class BulkSyncWithAlgolia extends Command
         $index = $algolia->initIndex('jaarbundel');
 
         /** @var Collection $users */
-        $users = User::with('profile.yearGroup')->whereIn('type', [User::FORMERMEMBER, User::MEMBER])->get();
+        $users = User::with('profile.yearGroup')->whereIn('type', [User::REUNIST, User::EXMEMBER, User::MEMBER])->get();
 
         $memberTransformer = new MemberTransformer;
         $yeargroupTransformer = new YearGroupTransformer;

@@ -4,25 +4,29 @@ return [
     /**
      *   User Types
      *
-     *   visitor:      ingelogd maar niet word lid ingevuld
-     *   potential:    ingelogd, heeft word lid ingevuld, maar is nog niet confirmed
-     *   member:       ingelogd, en is confirmed lid van vereniging
-     *   formerMember: ingelogd, oud lid van vereninging
+     *   visitor:      geregistreerd maar niet word lid ingevuld
+     *   potential:    geregistreerd, heeft word lid ingevuld, maar is nog geen lid
+     *   member:       lid bij de vereniging
+     *   reunist:       reünist bij de vereninging
+     *   exMember:     ex-lid van de vereniging
+     *   
      */
     'userTypes' => [
         'visitor' => 0,
         'potential' => 1,
         'member' => 2,
-        'formerMember' => 3,
-        'internalCommittee' => 4
+        'reunist' => 3,
+        'internalCommittee' => 4,
+        'exMember' => 5
     ],
 
     'userTypesFormatted' => [
         0 => 'Gast',
         1 => 'Noviet',
         2 => 'Lid',
-        3 => 'Oud-lid',
-        4 => 'Interne commissie'
+        3 => 'Reünist',
+        4 => 'Interne commissie',
+        5 => 'Ex-lid'
     ],
 
     'eventTypes' => [

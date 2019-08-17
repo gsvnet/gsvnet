@@ -8,24 +8,41 @@
     <div class="row">
         <div class="col-xs-12 col-md-6">
             @if ($user->isMember())
-                {!! Former::vertical_open()->action(action('Admin\MemberController@makeFormerMember', $user->id))->method('POST') !!}
+                <div class="form-group">
+                    {!! Former::vertical_open()->action(action('Admin\MemberController@makeReunist', $user->id))->method('POST') !!}
+                    <button type='submit' class='btn btn-success btn-confirm'>
+                        <i class="glyphicon glyphicon-ok"></i> Reünist maken
+                    </button>
+                    {!! Former::close() !!}
+                </div>
 
-                <button type='submit' class='btn btn-success'>
-                    <i class="glyphicon glyphicon-ok"></i> Oud-lid maken
-                </button>
+                <div class="form-group">
+                    {!! Former::vertical_open()->action(action('Admin\MemberController@makeExMember', $user->id))->method('POST') !!}
+                    <button type='submit' class='btn btn-success btn-confirm'>
+                        <i class="glyphicon glyphicon-ok"></i> Ex-lid maken
+                    </button>
+                    {!! Former::close() !!}
+                </div>
 
-                <a class='btn btn-default' href="{{ URL::previous() }}">Terug</a>
-                {!! Former::close() !!}
-            @elseif($user->isFormerMember())
-                {!! Former::vertical_open()->action(action('Admin\MemberController@makeMember', $user->id))->method('POST') !!}
+            @elseif($user->isReunist())
+                <div class="form-group">
+                    {!! Former::vertical_open()->action(action('Admin\MemberController@makeMember', $user->id))->method('POST') !!}
+                    <button type='submit' class='btn btn-success btn-confirm'>
+                        <i class="glyphicon glyphicon-ok"></i> Lid maken
+                    </button>
+                    {!! Former::close() !!}
+                </div>
 
-                <button type='submit' class='btn btn-success'>
-                    <i class="glyphicon glyphicon-ok"></i> Lid maken
-                </button>
-
-                <a class='btn btn-default' href="{{ URL::previous() }}">Terug</a>
-                {!! Former::close() !!}
+                <div class="form-group">
+                    {!! Former::vertical_open()->action(action('Admin\MemberController@makeExMember', $user->id))->method('POST') !!}
+                    <button type='submit' class='btn btn-success btn-confirm'>
+                        <i class="glyphicon glyphicon-ok"></i> Ex-lid maken
+                    </button>
+                    {!! Former::close() !!}
+                </div>
             @endif
+            
+            <a class='btn btn-default' href="{{ URL::previous() }}">Terug</a>
         </div>
     </div>
 @stop

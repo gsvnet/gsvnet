@@ -29,7 +29,7 @@ class MemberTransformer extends BaseTransformer
             'birthdate' => $member->profile->birthdate,
             'gender' => $member->profile->gender === Gender::UNKOWN ? null : ($member->profile->gender == Gender::MALE ? 'male' : 'female'),
             'student_number' => $member->profile->student_number,
-            'reunist' => (bool) $member->profile->reunist,
+            'reunist' => (bool) $member->isReunist(),
             'inauguration_date' => $member->profile->inauguration_date,
             'resignation_date' => $member->profile->resignation_date,
             'company' => $member->profile->company,

@@ -26,13 +26,13 @@ class RegisterUserCommandHandler {
         $user->username = $command->userName;
         $user->type = $command->type;
         $user->email = $command->email;
-        $user->password = $command->password;
+        $user->password = bcrypt($command->password);
         $user->approved = $command->approved;
 
         $this->users->save($user);
 
         // Create a profile for potentials, members and former members
-        if($user->type != User::VISITOR)
+        if($user->type != User::VISITOR && $user->type != User::EXMEMBER)
             $this->profiles->createProfileFor($user);
 
         event(new UserWasRegistered($user));
