@@ -51,6 +51,7 @@ class MigrateFormerMembers extends Command
                 if($action == 'Uitvoeren')$this->dispatch(new ChangeMembershipStatus(User::EXMEMBER, $user, $adminUser));
             } else {
                 $reunistCount++;
+                if($action == 'Uitvoeren')$this->dispatch(new ChangeMembershipStatus(User::REUNIST, $user, $adminUser));
             }
         });
         $this->line($reunistCount . " reunisten, " . $exmemberCount . " ex-leden");
