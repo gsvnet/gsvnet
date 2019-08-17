@@ -244,6 +244,10 @@ class NavigationViewComposer {
                         'url' => action('MemberController@faq'),
                         'title' => 'Veelgestelde vragen'
                     ],
+                    'klachtencommissie' => [
+                        'url' => action('MemberController@complaints'),
+                        'title' => 'Klachtencommissie'
+                    ],
                     'inschrijven' => [
                         'url' => action('MemberController@becomeMember'),
                         'title' => 'Inschrijven'
