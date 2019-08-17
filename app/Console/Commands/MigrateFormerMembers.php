@@ -45,7 +45,7 @@ class MigrateFormerMembers extends Command
         $exmemberCount = 0;
 
         User::with("profile")->where('type', User::REUNIST)->get()->each(function($user) use(&$exmemberCount, &$reunistCount, $action, $adminUser) {
-            $this->line($user->firstname . " " . $user->lastname . " >>> " . ($user->profile->reunist ? "Reünist" : "Ex-lid"));
+            $this->line($user->firstname . " " . $user->lastname . " >>> " . ($user->profile && $user->profile->reunist ? "Reünist" : "Ex-lid"));
             if(!$user->profile || !$user->profile->reunist) {
                 $exmemberCount++;
                 if($action == 'Uitvoeren')$this->dispatch(new ChangeMembershipStatus(User::EXMEMBER, $user, $adminUser));
