@@ -109,6 +109,11 @@ class MemberController extends BaseController
         return view('word-lid.faq');
     }
 
+    public function complaints()
+    {
+        return view('word-lid.complaints');
+    }
+
     // Show original (resized) photo
     public function showPhoto(Request $request, $profile_id, $type = '')
     {

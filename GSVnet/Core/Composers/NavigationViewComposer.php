@@ -205,6 +205,11 @@ class NavigationViewComposer {
                 ]
             ],
 
+            'kei-week' => [
+                'title' => 'KEI-week 2019',
+                'url' => action('HomeController@showKeiWeek')
+            ],
+
             'forum' => [
                 'title' => 'Forum',
                 'url' => action('ForumThreadsController@getIndex')
@@ -238,6 +243,10 @@ class NavigationViewComposer {
                     'veel-gestelde-vragen' => [
                         'url' => action('MemberController@faq'),
                         'title' => 'Veelgestelde vragen'
+                    ],
+                    'klachtencommissie' => [
+                        'url' => action('MemberController@complaints'),
+                        'title' => 'Klachtencommissie'
                     ],
                     'inschrijven' => [
                         'url' => action('MemberController@becomeMember'),

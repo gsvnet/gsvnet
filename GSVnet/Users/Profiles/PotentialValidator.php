@@ -22,7 +22,8 @@ class PotentialValidator extends Validator
         'parentsAddress' => 'required_if:parents-same-address,0',
         'parentsZipCode' => 'required_if:parents-same-address,0',
         'parentsTown' => 'required_if:parents-same-address,0',
-        'parentsPhone' => 'required'
+        'parentsPhone' => 'required',
+        'parentsEmail' => 'required|email'
     ];
 
     static $messages = [
@@ -47,6 +48,8 @@ class PotentialValidator extends Validator
         'parentsAddress.required_if' => 'Vul het adres van je ouders in',
         'parentsZipCode.required_if' => 'Vul de postcode van je ouders in',
         'parentsTown.required_if' => 'Vul de woonplaats van je ouders in',
-        'parentsPhone.required' => 'Vul het telefoonnummer van je ouders in'
+        'parentsPhone.required' => 'Vul het telefoonnummer van je ouders in',
+        'parentsEmail.required' => 'Vul het emailadres van je ouders in',
+        'parentsEmail.email' => 'Vul een geldig emailadres van je ouders in'
     ];
 }
