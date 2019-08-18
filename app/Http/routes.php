@@ -162,7 +162,7 @@ Route::group([
     // Some actions (post requests therefore)
     Route::get('leden/{user}/lidmaatschap', 'MemberController@editMembershipStatus');
     Route::post('leden/{user}/lidmaatschap/maak-reunist', 'MemberController@makeReunist');
-    Route::post('leden/{user}/lidmaatschap/maak-ex-lid', 'MemberController@makeExMember');
+    Route::post('leden/{user}/lidmaatschap/maak-oud-lid', 'MemberController@makeExMember');
     Route::post('leden/{user}/lidmaatschap/maak-lid', 'MemberController@makeMember');
 
     // Deleting user data according to GDPR rules

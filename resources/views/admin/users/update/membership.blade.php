@@ -19,7 +19,7 @@
                 <div class="form-group">
                     {!! Former::vertical_open()->action(action('Admin\MemberController@makeExMember', $user->id))->method('POST') !!}
                     <button type='submit' class='btn btn-success btn-confirm'>
-                        <i class="glyphicon glyphicon-ok"></i> Ex-lid maken
+                        <i class="glyphicon glyphicon-ok"></i> Oud-lid maken
                     </button>
                     {!! Former::close() !!}
                 </div>
@@ -36,7 +36,7 @@
                 <div class="form-group">
                     {!! Former::vertical_open()->action(action('Admin\MemberController@makeExMember', $user->id))->method('POST') !!}
                     <button type='submit' class='btn btn-success btn-confirm'>
-                        <i class="glyphicon glyphicon-ok"></i> Ex-lid maken
+                        <i class="glyphicon glyphicon-ok"></i> Oud-lid maken
                     </button>
                     {!! Former::close() !!}
                 </div>
