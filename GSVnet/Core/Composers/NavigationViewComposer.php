@@ -190,6 +190,10 @@ class NavigationViewComposer {
                         'title' => 'Senaten',
                         'url' => action('AboutController@showSenates')
                     ],
+                    'vertrouwenspersonen' => [
+                        'title' => 'Vertrouwenspersonen',
+                        'url' => action('AboutController@showConfidants')
+                    ],
                     'commissies' => [
                         'title' => 'Commissies',
                         'url' => action('AboutController@showCommittees')
