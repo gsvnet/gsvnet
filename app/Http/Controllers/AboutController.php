@@ -61,6 +61,11 @@ class AboutController extends BaseController
         return view('de-gsv.former-members');
     }
 
+    public function showConfidants()
+    {
+        return view('de-gsv.confidants');
+    }
+
     public function showContact()
     {
         return view('de-gsv.contact');

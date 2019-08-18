@@ -50,6 +50,8 @@ Route::group(['prefix' => 'de-gsv'], function() {
     Route::get('/pijlers', 'AboutController@showPillars');
     Route::get('/geschiedenis', 'AboutController@showHistory');
 
+    Route::get('vertrouwenspersonen', 'AboutController@showConfidants');
+
     Route::get('commissies', 'AboutController@showCommittees');
     Route::get('commissies/{id}', 'AboutController@showCommittee');
 
