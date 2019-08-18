@@ -7,8 +7,8 @@ return [
      *   visitor:      geregistreerd maar niet word lid ingevuld
      *   potential:    geregistreerd, heeft word lid ingevuld, maar is nog geen lid
      *   member:       lid bij de vereniging
-     *   reunist:       reünist bij de vereninging
-     *   exMember:     ex-lid van de vereniging
+     *   reunist:      reünist bij de vereninging
+     *   exMember:     oud-lid van de vereniging
      *   
      */
     'userTypes' => [
@@ -26,7 +26,7 @@ return [
         2 => 'Lid',
         3 => 'Reünist',
         4 => 'Interne commissie',
-        5 => 'Ex-lid'
+        5 => 'Oud-lid'
     ],
 
     'eventTypes' => [
