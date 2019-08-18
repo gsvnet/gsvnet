@@ -6,6 +6,7 @@ use GSV\Commands\Members\ForgetMember;
 use GSV\Events\Members\MembershipStatusWasChanged;
 use GSVnet\Users\User;
 use GSVnet\Users\UsersRepository;
+use GSVnet\Users\Profiles\UserProfile;
 use GSVnet\Users\ValueObjects\OptionalAddress;
 use GSVnet\Users\ValueObjects\OptionalEmail;
 use GSVnet\Users\ValueObjects\OptionalPhoneNumber;
@@ -33,6 +34,14 @@ class ChangeMembershipStatusHandler
 
         $user->type = $command->status;
         $this->users->save($user);
+
+        /* Ensure the user has a profile if needed */
+        if($user->wasOrIsMember() && !$command->user->profile) {
+            $profile = new UserProfile();
+            $user->profile()->save($profile);
+            // Saving does not seem to refresh the property, so manually do so.
+            $user->profile = $profile;
+        }
 
         // We don't need to keep parents' details of reunists.
         if ($user->isReunist()) {

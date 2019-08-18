@@ -44,15 +44,18 @@ class MigrateFormerMembers extends Command
         $reunistCount = 0;
         $exmemberCount = 0;
 
-        User::with("profile")->where('type', User::REUNIST)->get()->each(function($user) use(&$exmemberCount, &$reunistCount, $action, $adminUser) {
-            $this->line($user->firstname . " " . $user->lastname . " >>> " . ($user->profile && $user->profile->reunist ? "Reünist" : "Ex-lid"));
+        User::with("profile")->where('type', User::EXMEMBER)->get()->each(function($user) use(&$exmemberCount, &$reunistCount, $action, $adminUser) {
+            $log = $user->firstname . " " . $user->lastname . " >>> ";
             if(!$user->profile || !$user->profile->reunist) {
                 $exmemberCount++;
                 if($action == 'Uitvoeren')$this->dispatch(new ChangeMembershipStatus(User::EXMEMBER, $user, $adminUser));
+                $log .= "Ex-lid";
             } else {
                 $reunistCount++;
                 if($action == 'Uitvoeren')$this->dispatch(new ChangeMembershipStatus(User::REUNIST, $user, $adminUser));
+                $log .= "Reünist";
             }
+            $this->line($log);
         });
         $this->line($reunistCount . " reunisten, " . $exmemberCount . " ex-leden");
         ($action == 'Uitvoeren') ? $this->info("Migratie voltooid!") : $this->info("Overzicht gereed.");
