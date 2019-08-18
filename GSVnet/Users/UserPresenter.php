@@ -61,7 +61,7 @@ class UserPresenter extends Presenter
                 $string .= 'Reünist';
                 break;
             case User::EXMEMBER:
-                $string .= 'Ex-lid';
+                $string .= 'Oud-lid';
                 break;
             case User::INTERNAL_COMMITTEE:
                 $string .= 'Commissie';

@@ -360,7 +360,7 @@ class MemberController extends AdminBaseController
 
         $this->dispatch(new ChangeMembershipStatus(User::EXMEMBER, $member, $request->user()));
 
-        flash()->success("{$member->present()->fullName()} is nu ex-lid");
+        flash()->success("{$member->present()->fullName()} is nu oud-lid");
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
