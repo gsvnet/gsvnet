@@ -9,6 +9,9 @@ Route::get('welkom', ['as' => 'home', 'uses' => 'HomeController@showNewIndex']);
 // KEI-week 2019
 Route::get('kei-week', 'HomeController@showKeiWeek');
 
+// Privacy-related stuff
+Route::get('privacy-statement', 'PublicFilesController@showPrivacyStatement');
+
 // Login and logout routes
 Route::get('inloggen', ['middleware' => 'guest', 'uses' => 'SessionController@getLogin']);
 Route::post('inloggen', ['middleware' => 'guest', 'uses' => 'SessionController@postLogin']);
