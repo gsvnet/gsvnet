@@ -109,12 +109,16 @@
                     <meta itemprop="region" content="Groningen" />
                     <meta itemprop="country-name" content="Nederland" />
                 </span>
-                <a href="/de-gsv/contact" title="Contact">Contactgegevens</a>
+                <a href="/de-gsv/contact" title="Contact">Contactgegevens.</a>
             </p>
             <meta itemprop="latitude" content="53.2093731" />
             <meta itemprop="longitude" content="6.5723083" />
             <p></p>
         </address>
+
+        <p class="right">
+            <i><a href="/privacy-statement" title="Privacy statement">Privacy statement</a></i>
+        </p>
     </footer>
 
     @if (Auth::guest())

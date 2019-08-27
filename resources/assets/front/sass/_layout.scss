@@ -181,9 +181,20 @@ hr {
 /** Footer **/
 .site-footer {
 	@include container;
+
+	@media only screen and (min-width: $firstbreakpoint) {
+		.right {
+			float: right;
+		}
+	}
+
+	.right {
+		font-size: smaller;
+	}
 }
 
 .address-info {
+	display: inline-block;
 	font-size: smaller;
 }
 
