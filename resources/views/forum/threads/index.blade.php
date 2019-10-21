@@ -20,6 +20,12 @@
         <p class="delta">Op het actieve forum van de GSV staat informatie over activiteiten en aanbod van kamers in Groningen. Je kunt er praktisch alles kwijt.</p>
     @endif
 
+    @if(Auth::check() && Auth::user()->profile()->first() !== Null && Auth::user()->profile()->first()->yearGroup()->first() !== Null)
+        @if(Auth::user()->profile()->first()->yearGroup()->first()->name != "Chezulas")
+            <p>Vanavond sjaarsborrel aan de Turkooi. Thema: foute kersttrui.</p>
+        @endif
+    @endif
+
     <section class="main-content forum has-border-bottom">
         <p class="online-users-row">
             <span class="online-indicator"></span>
