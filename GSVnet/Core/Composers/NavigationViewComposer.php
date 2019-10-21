@@ -209,11 +209,6 @@ class NavigationViewComposer {
                 ]
             ],
 
-            'kei-week' => [
-                'title' => 'KEI-week 2019',
-                'url' => action('HomeController@showKeiWeek')
-            ],
-
             'forum' => [
                 'title' => 'Forum',
                 'url' => action('ForumThreadsController@getIndex')
