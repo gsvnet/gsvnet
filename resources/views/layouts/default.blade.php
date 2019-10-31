@@ -117,7 +117,7 @@
         </address>
 
         <p class="right">
-            <i><a href="/privacy-statement" title="Privacy statement">Privacy statement</a></i>
+            <i><a href="/privacy-statement" title="Privacyverklaring">Privacyverklaring</a></i>
         </p>
     </footer>
 
