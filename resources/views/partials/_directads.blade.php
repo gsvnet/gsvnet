@@ -12,9 +12,9 @@
         <p><a href="https://www.uitvaartverzekeringvergelijken.com" title="Uitvaartverzekeringen vergelijken"><img src="/images/annonces/uitvaartverzekering.png" title="Uitvaartverzekeringen vergelijken" alt="uitvaartverzekeringvergelijken.com" /></a></p>
         <p><a href="https://www.werkenbijbelsimpel.nl" title="Werkenbijbelsimpel.nl"><img src="/images/annonces/logo_belsimpel.png" title="Werkenbijbelsimpel.nl" alt="Werkenbijbelsimpel.nl" /></a></p>
         <p><a href="https://www.easyswitch.nl/energie-vergelijken/" title="energie vergelijken"><img src="/images/annonces/easyswitch.png" title="energie vergelijken" alt="energie vergelijken" /></a></p>
-        <p><a href="https://www.huizenmarkt.nl/" title="Huurhuizen en Appartementen"><img src="/images/annonces/huizenmarkt.png" title="Huurhuizen en Appartementen" alt="Huurhuizen en Appartementen" /></a></p>
         <p><a href="https://www.inshared.nl/autoverzekering" title="autoverzekering"><img src="/images/annonces/inshared.png" title="autoverzekering" alt="autoverzekering" /></a></p>
-        <p><a href="https://www.maxilia.nl/" title="Maxilia"><img src="/images/annonces/maxilia.jpg" title="Maxilia" alt="Maxilia" /></a></p>
+        <p><a href="https://skepp.nl/nl/" title="Skepp"><img src="/images/annonces/Logo SKEPP.jpg" title="Skepp" alt="Skepp" /></a></p>
         <p><a href="https://www.geld.nl/" title="Geld.nl"><img src="/images/annonces/geld_nl.png" title="Geld.nl" alt="Geld.nl" /></a></p>
+        <p><a href="#" title="Free spot"></a></p>
     </div>
 </div>
