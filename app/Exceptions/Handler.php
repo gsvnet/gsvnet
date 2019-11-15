@@ -80,7 +80,7 @@ class Handler extends ExceptionHandler
                 }
                 break;
             case CSPException::class:
-                return response(view('errors.cspexception'));
+                return response(view('errors.gsvg-vgst'));
 
         }
 
