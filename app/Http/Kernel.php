@@ -11,6 +11,7 @@ use GSV\Http\Middleware\OnlineUserCounter;
 use GSV\Http\Middleware\RedirectIfAuthenticated;
 use GSV\Http\Middleware\ValidEventDate;
 use GSV\Http\Middleware\VerifyCsrfToken;
+use GSV\Http\Middleware\FrameGuard;
 use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -33,7 +34,8 @@ class Kernel extends HttpKernel
         AddQueuedCookiesToResponse::class,
         StartSession::class,
         ShareErrorsFromSession::class,
-        OnlineUserCounter::class
+        OnlineUserCounter::class,
+        FrameGuard::class
     ];
 
     /**
