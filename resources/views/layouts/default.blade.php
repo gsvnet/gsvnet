@@ -58,7 +58,7 @@
     @show
 
     @can('users.show')
-        @if (!Auth::user()->isVerified())
+        @if (!Auth::user()->isVerified() && !App::environment('local'))
             <style>
                 @-webkit-keyframes  spaceboots {
                     0%   { -webkit-transform: translate(2px, 1px)   rotate(0deg);  }
