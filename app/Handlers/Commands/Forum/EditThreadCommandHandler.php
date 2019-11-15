@@ -20,6 +20,12 @@ class EditThreadCommandHandler {
         $thread->public = $command->public;
         $thread->subject = $command->subject;
 
+        // Determine whether nothing but the public flag has been changed
+        // If so, don't update timestamps, so the topic doesn't jump to the top
+        if(!array_diff_key($thread->getDirty(), ["public" => null])) {
+            $thread->timestamps = false;
+        }
+
         $this->threads->save($thread);
         $this->threads->setTags($thread, $command->tags);
     }
