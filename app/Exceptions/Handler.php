@@ -3,6 +3,7 @@
 use Exception;
 use GSVnet\Core\Exceptions\ValidationException;
 use GSVnet\Core\Exceptions\ValueObjectValidationException;
+use GSVnet\Core\Exceptions\CSPException;
 use GSVnet\Permissions\NoPermissionException;
 use GSVnet\Permissions\UserAccountNotApprovedException;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -78,6 +79,8 @@ class Handler extends ExceptionHandler
                     abort(404);
                 }
                 break;
+            case CSPException::class:
+                return response(view('errors.cspexception'));
 
         }
 
