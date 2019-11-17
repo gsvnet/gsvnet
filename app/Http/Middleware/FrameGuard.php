@@ -23,9 +23,9 @@ class FrameGuard
         
         $response = $next($request);
 
-        return $response->withHeaders([
-            'Content-Security-Policy' => "frame-ancestors 'none'",
-            'X-Frame-Options' => 'deny'
-        ]);
+        $response->headers->set('Content-Security-Policy', "frame-ancestors 'none'");
+        $response->headers->set('X-Frame-Options', 'deny');
+
+        return $response;
     }
 }
