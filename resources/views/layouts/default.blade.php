@@ -136,6 +136,8 @@
         </script>
         @endif
 
+        @include('partials/_proxyredirect')
+        
         <script async src="/build-javascripts/app.js?v=1.5.7"></script>
 
         @if(!Config::get('app.debug'))
