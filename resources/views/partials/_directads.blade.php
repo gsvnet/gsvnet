@@ -15,6 +15,6 @@
         <p><a href="https://www.inshared.nl/autoverzekering" title="autoverzekering"><img src="/images/annonces/inshared.png" title="autoverzekering" alt="autoverzekering" /></a></p>
         <p><a href="https://skepp.nl/nl/" title="Skepp"><img src="/images/annonces/Logo SKEPP.jpg" title="Skepp" alt="Skepp" /></a></p>
         <p><a href="https://www.geld.nl/" title="Geld.nl"><img src="/images/annonces/geld_nl.png" title="Geld.nl" alt="Geld.nl" /></a></p>
-        <p><a href="#" title="Free spot"></a></p>
+        <p><a href="https://www.diamondsbyme.nl/" title="Diamonds By Me"><img src="/images/annonces/diamonds_by_me.png" title="Diamonds By Me" alt="Diamonds By Me" /></a></p>
     </div>
 </div>
