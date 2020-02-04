@@ -6,8 +6,8 @@ Route::get('/', ['as' => 'home', 'uses' => 'HomeController@showIndex']);
 // Keep the new homepage accessible
 Route::get('welkom', ['as' => 'home', 'uses' => 'HomeController@showNewIndex']);
 
-// KEI-week 2019
-Route::get('kei-week', 'HomeController@showKeiWeek');
+// Kiezel 2020
+Route::get('kei-week', 'HomeController@showKiezel');
 
 // Privacy-related stuff
 Route::get('privacy-statement', 'PublicFilesController@showPrivacyStatement');

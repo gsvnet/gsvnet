@@ -209,6 +209,11 @@ class NavigationViewComposer {
                 ]
             ],
 
+            'kiezel' => [
+                'title' => 'Kiezel',
+                'url' => action('HomeController@showKiezel')
+            ],
+
             'forum' => [
                 'title' => 'Forum',
                 'url' => action('ForumThreadsController@getIndex')
