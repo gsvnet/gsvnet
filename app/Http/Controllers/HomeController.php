@@ -80,8 +80,8 @@ class HomeController extends BaseController {
         return view('ad-page');
     }
 
-    public function showKeiWeek()
+    public function showKiezel()
     {
-        return view('kei-week');
+        return view('kiezel');
     }
 }
