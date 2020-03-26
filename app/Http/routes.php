@@ -7,7 +7,7 @@ Route::get('/', ['as' => 'home', 'uses' => 'HomeController@showIndex']);
 Route::get('welkom', ['as' => 'home', 'uses' => 'HomeController@showNewIndex']);
 
 // Kiezel 2020
-Route::get('kei-week', 'HomeController@showKiezel');
+// Route::get('kei-week', 'HomeController@showKiezel');
 
 // Privacy-related stuff
 Route::get('privacy-statement', 'PublicFilesController@showPrivacyStatement');

@@ -130,6 +130,11 @@
                     <h2>Word lid</h2>
                     <p><a href="/word-lid/inschrijven" class="button" title="Meld je aan">Meld je aan!</a></p>
 
+                    <div class="social-box">
+                        <a href="https://www.instagram.com/gsvgroningen/"><div class="icon i-instagram"></div></a>
+                        <a href="https://nl-nl.facebook.com/GSVgroningen/"><div class="icon i-facebook"></div></a>
+                    </div>
+
                     @if(count($events) > 0)
                         <h2>Komende activiteiten</h2>
                         <ul class="unstyled-list title-description-list">

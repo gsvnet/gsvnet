@@ -51,6 +51,21 @@ img, iframe {
 		@include typl8-typescale(18, $typl8-font-base, $typl8-typescale-unit);
 		text-transform: uppercase;
 	}
+
+	.icon {
+		height: 50px;
+		width: 50px;
+		float: left;
+		margin: 18px 18px 18px 0;
+	}
+
+	.social-box {
+		clear: left;
+
+		a {
+			display: inline-block;
+		}
+	}
 }
 
 /** Article page **/
