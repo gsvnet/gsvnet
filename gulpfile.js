@@ -6,6 +6,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify-es').default;
 var imagemin = require('gulp-imagemin');
 var sass = require('gulp-sass');
+var webpack = require('webpack-stream');
 
 gulp.task('css', function (done) {
     gulp.src('resources/assets/front/sass/screen.scss')
@@ -40,6 +41,40 @@ gulp.task('images', function (done) {
         .pipe(gulp.dest('public/images/'));
     done();
 });
+
+/*gulp.task('april-fools', function (done) {
+    gulp.src([
+        'resources/assets/front/sass/aprilfools.scss'
+    ])
+        .pipe(sass())
+        .pipe(cleanCSS())
+        .pipe(autoprefixer())
+        .pipe(gulp.dest('public/stylesheets/'));
+
+    return gulp.src([
+        'resources/assets/front/javascripts/april_fools/popup/index.js'
+    ])
+        //.pipe(concat("af.js"))
+        .pipe(webpack({
+            mode: 'production',
+            output: {
+                filename: 'af.js',
+            },
+            module: {
+                rules: [
+                    {
+                        test: /\.js$/,
+                        exclude: /node_modules/,
+                        use: ['babel-loader']
+                    }
+                ]
+            }
+        }))
+        //.pipe(uglify())
+        .pipe(gulp.dest('public/build-javascripts/'));
+
+});*/
+
 
 gulp.task('homepage-scripts', function () {
     return gulp.src([
