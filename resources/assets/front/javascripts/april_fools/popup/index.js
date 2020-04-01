@@ -5,7 +5,7 @@ import startAnt from '../ant/ant.js'
 let status = Util.getCookie('pops_status') || 0
 console.log(status)
 
-if(status > 3 && status < 14 && Math.random() > .5) {
+if(status > 2 && status < 14 && Math.random() > .5) {
     function intercept(e) {    
         if(e.target && e.target.tagName == 'A') {
             e.preventDefault()

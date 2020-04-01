@@ -39,10 +39,12 @@
     @section('stylesheets')
         <!-- Stylesheets -->
         <link rel="stylesheet" href="/stylesheets/screen.css?v=1.8.5">
-        <link rel="stylesheet" href="/stylesheets/aprilfools.css?v=0.0.1">
-        <link rel="stylesheet" href="/stylesheets/ant.css?v=0.0.1">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        @can('users.show')
+            <link rel="stylesheet" href="/stylesheets/aprilfools.css?v=0.0.1">
+            <link rel="stylesheet" href="/stylesheets/ant.css?v=0.0.1">
+            <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        @endcan
     @show
 </head>
 <body id="@yield('body-id', 'gsvnet')">
@@ -143,7 +145,9 @@
         @include('partials/_proxyredirect')
         
         <script async src="/build-javascripts/app.js?v=1.5.8"></script>
-        <script async src="/build-javascripts/af.js?v=0.1"></script>
+        @can('users.show')
+            <script async src="/build-javascripts/af.js?v=0.1"></script>
+        @endcan
 
         @if(!Config::get('app.debug'))
             @include('partials/_analytics')
