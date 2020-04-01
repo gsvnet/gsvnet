@@ -3,14 +3,15 @@ import Vector2D from "./Vector2D"
 import Util from "./Util"
 
 const ROTATION_SPEED = 150
-const MOVEMENT_SPEED = 120
+const MOVEMENT_SPEED = 140
 const SCREEN_BORDER = 50 // Document border in pixels that the ant will not try to move in
 
 class Ant {
 
     // @pickups array of css selectors of valid items to pickup and move
     constructor(pickups = []) {
-        this.pickups = pickups
+        this.pickups = this.listPickups(pickups)
+        console.log(this.pickups)
         this.currentPickup
         this.moveQueue = [{ move: 'moveRandom' }]
         this.documentDimensions = Util.getDocumentDimensions()
@@ -86,7 +87,7 @@ class Ant {
         const moves = {
             'pause': {
                 debug: 'taking a break',
-                chance: 0.45,
+                chance: 0.40,
                 do: function () {
                     this.pauseFor(Util.randomInteger(3, 5))
                 }
@@ -104,10 +105,13 @@ class Ant {
             },
             'moveToElement': {
                 debug: 'moving to a page element in order to pick it up',
-                chance: 0.4,
+                chance: 0.45,
                 do: function () {
-                    const selector = Util.arraySample(this.pickups)
-                    const pickup = Util.arraySample(document.querySelectorAll(selector))
+                    const pickup = Util.arraySample(this.pickups)
+                    if(!pickup) {
+                        console.log('no valid pickup', pickup)
+                        return
+                    }
                     const { x, y } = Util.getElementXY(pickup)
                     const target = [x - (this.el.offsetHeight / 2.2), y]
                     console.log(pickup)
@@ -212,6 +216,14 @@ class Ant {
         const name = prompt("Naam:", this.nametag.innerText)
         this.nametag.innerText = name.substr(0, 16)
         Util.setCookie('ant_name', name, 30)
+    }
+
+    listPickups(pickups) {
+        const els = [];
+        pickups.forEach(selector => {
+            els.push(...document.querySelectorAll(selector))
+        })
+        return els
     }
 
     getPosition() {
