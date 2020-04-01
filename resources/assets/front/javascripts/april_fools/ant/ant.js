@@ -13,6 +13,21 @@ function startAnt() {
     console.log(ant)
     scene.add(ant)
     scene.loop()
+    //addPauseButton(scene)
+    window.pauze = function() {
+        scene.togglePause()
+    }
+}
+
+function addPauseButton(scene) {
+    const el = document.createElement('a')
+    el.classList.add('button', 'ant_pause-button')
+    el.innerText = 'Pauzeren'
+    el.onclick = () => {
+        const paused = scene.togglePause()
+        el.innerText = paused ? 'Doorgaan' : 'Pauzeren'
+    }
+    document.body.appendChild(el)
 }
 
 export default startAnt
