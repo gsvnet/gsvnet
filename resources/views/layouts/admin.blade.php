@@ -48,7 +48,7 @@
         </div>
 
         @section('javascripts')
-            <script src="/build-javascripts/admin.js?v=1.3"></script>
+            <script src="/build-javascripts/admin.js?v=1.3.1"></script>
             <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         @show
     </body>
