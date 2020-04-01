@@ -4,7 +4,7 @@ import Util from './components/Util'
 
 function startAnt() {
     const scene = new Scene()
-    const ant = new Ant(['p', 'h1', 'h2', 'h3', 'time', '.form-group', '.avatar', '.author'])
+    const ant = new Ant(['p', 'h1', 'h2', 'h3', '.form-group', '.avatar', '.author'])
     window.ant = ant
     console.log(ant)
     scene.add(ant)
