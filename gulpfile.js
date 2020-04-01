@@ -7,51 +7,51 @@ var uglify = require('gulp-uglify-es').default;
 var imagemin = require('gulp-imagemin');
 var sass = require('gulp-sass');
 var webpack = require('webpack-stream');
+var eventStream = require('event-stream')
 
-gulp.task('css', function (done) {
-    gulp.src('resources/assets/front/sass/screen.scss')
+gulp.task('css', function () {
+    return gulp.src('resources/assets/front/sass/screen.scss')
         .pipe(sass())
         .pipe(cleanCSS())
         .pipe(autoprefixer())
         .pipe(gulp.dest('public/stylesheets/'));
-    done();
 });
 
-gulp.task('homepage-css', function (done) {
-    gulp.src('resources/assets/front/sass/homepage.scss')
+gulp.task('homepage-css', function () {
+    return gulp.src('resources/assets/front/sass/homepage.scss')
         .pipe(sass())
         .pipe(cleanCSS())
         .pipe(autoprefixer())
         .pipe(gulp.dest('public/stylesheets/'));
-    done();
 });
 
-gulp.task('images', function (done) {
-    gulp.src([
-        'resources/assets/front/images/**/*.svg'
-    ])
-        .pipe(gulp.dest('public/images/'));
+gulp.task('images', function () {
+    return eventStream.merge(
+        gulp.src([
+            'resources/assets/front/images/**/*.svg'
+        ])
+            .pipe(gulp.dest('public/images/')),
 
-    gulp.src([
-        'resources/assets/front/images/**/*.jpg',
-        'resources/assets/front/images/**/*.png',
-        'resources/assets/front/images/**/*.gif'
-    ])
-        .pipe(imagemin())
-        .pipe(gulp.dest('public/images/'));
-    done();
+        gulp.src([
+            'resources/assets/front/images/**/*.jpg',
+            'resources/assets/front/images/**/*.png',
+            'resources/assets/front/images/**/*.gif'
+        ])
+            .pipe(imagemin())
+            .pipe(gulp.dest('public/images/'))
+    )
 });
 
-/*gulp.task('april-fools', function (done) {
+gulp.task('april-fools', function (done) {
     gulp.src([
-        'resources/assets/front/sass/aprilfools.scss'
+        'resources/assets/front/sass/aprilfools.scss',
+        'resources/assets/front/sass/ant.scss'
     ])
         .pipe(sass())
         .pipe(cleanCSS())
         .pipe(autoprefixer())
         .pipe(gulp.dest('public/stylesheets/'));
-
-    return gulp.src([
+    gulp.src([
         'resources/assets/front/javascripts/april_fools/popup/index.js'
     ])
         //.pipe(concat("af.js"))
@@ -73,7 +73,9 @@ gulp.task('images', function (done) {
         //.pipe(uglify())
         .pipe(gulp.dest('public/build-javascripts/'));
 
-});*/
+    done();
+    //return eventStream.concat(css, js);
+});
 
 
 gulp.task('homepage-scripts', function () {
@@ -177,4 +179,9 @@ gulp.task('backend-css', function () {
 gulp.task('default', gulp.series('scripts', 'css', function () {
     gulp.watch('resources/assets/**/*.js', gulp.series('scripts', 'backend-scripts', 'forum-scripts')); // 'homepage-scripts'
     gulp.watch(['resources/assets/**/*.scss', 'resources/assets/**/*.css'], gulp.series('css', 'backend-css')); //'homepage-css'
+}));
+
+gulp.task('watch-april-fools', gulp.series('april-fools', function () {
+    gulp.watch('resources/assets/front/javascripts/april_fools/**/*.js', gulp.series('april-fools'));
+    gulp.watch('resources/assets/front/sass/**/*.scss', gulp.series('april-fools'));
 }));
