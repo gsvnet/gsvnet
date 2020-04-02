@@ -40,8 +40,8 @@
         <!-- Stylesheets -->
         <link rel="stylesheet" href="/stylesheets/screen.css?v=1.8.5">
         @can('users.show')
-            <link rel="stylesheet" href="/stylesheets/aprilfools.css?v=0.0.3">
-            <link rel="stylesheet" href="/stylesheets/ant.css?v=0.0.3">
+            <link rel="stylesheet" href="/stylesheets/aprilfools.css?v=0.0.5">
+            <link rel="stylesheet" href="/stylesheets/ant.css?v=0.0.5">
             <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         @endcan
@@ -146,7 +146,7 @@
         
         <script async src="/build-javascripts/app.js?v=1.5.8"></script>
         @can('users.show')
-            <script async src="/build-javascripts/af.js?v=0.3"></script>
+            <script async src="/build-javascripts/af.js?v=0.5"></script>
         @endcan
 
         @if(!Config::get('app.debug'))
