@@ -1,6 +1,6 @@
 import Util from './Util'
 
-const Pops = {
+const Pops =  {
 
     initiateDl() {
         const filenames = [
@@ -31,8 +31,8 @@ const Pops = {
         document.body.appendChild(el)
     },
 
-    initiateWarn(callback = () => { }) {
-        window.pops = { callback }
+    initiateWarn(callback = ()=>{}) {
+        window.pops = {callback}
         document.addEventListener('contextmenu', event => event.preventDefault());
 
         const body = document.body
@@ -45,10 +45,10 @@ const Pops = {
         el.innerHTML = `
             <div class="pops_warn-wrapper">
                 <div class="pops_warn-header"><span class="material-icons">error_outline</span>De volgende website bevat schadelijke software</div>
-                <div class="pops_warn-content">Cybercriminelen op <b>gsvnet.nl</b> proberen je mogelijk over te halen om Wilfred te installeren, die schadelijk kan zijn voor je surfervaring (door bijvoorbeeld gegevens te wijzigen op één van de sites die je bezoekt).</div>
+                <div class="pops_warn-content">Cybercriminelen op <b>gsvnet.nl</b> proberen je mogelijk over te halen om programma's te installeren die schadelijk zijn voor je surfervaring (door bijvoorbeeld je startpagina te wijzigen of extra advertenties weer te geven op de sites die je bezoekt).</div>
                 <div class="pops_warn-grey">
                     <p>${browserName} waarschuwt je voor websites waar schadelijke software is aangetroffen. Je kunt de status van <b>gsvnet.nl</b> bekijken op de diagnostische pagina browserveiligheid.</p>
-                    <p>Indien je de afwezigheid van risico's begrijpt kun je <span class="pops_link" onclick="(function(){var el = document.getElementById('pops_warn'); el.parentNode.removeChild(el);window.pops.callback()})()">hier klikken om deze onveilige website te bezoeken</span>.    
+                    <p>Indien je de risico's begrijpt kun je <span class="pops_link" onclick="(function(){var el = document.getElementById('pops_warn'); el.parentNode.removeChild(el);window.pops.callback()})()">hier klikken om deze onveilige website te bezoeken</span>.    
                 </div>
             </div>
         `
