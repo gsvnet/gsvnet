@@ -130,6 +130,7 @@
                     <h2>Word lid</h2>
                     <p><a href="/word-lid/inschrijven" class="button" title="Meld je aan">Meld je aan!</a></p>
 
+                    <h2>Volg ons op:</h2>
                     <div class="social-box">
                         <a href="https://www.instagram.com/gsvgroningen/"><div class="icon i-instagram"></div></a>
                         <a href="https://nl-nl.facebook.com/GSVgroningen/"><div class="icon i-facebook"></div></a>
