@@ -4,21 +4,14 @@ class Scene {
         this.lastFrameTime = (new Date().getTime())
         this.currentFrameTime = 0
         this.elements = []
-        this.pause = false
     }
 
     add(sceneElement) {
         this.elements.push(sceneElement)
     }
 
-    togglePause() {
-        this.pause = !this.pause
-        if(!this.pause)this.loop()
-        return this.pause
-    }
-
     loop() {
-        if(!this.pause)requestAnimationFrame(this.loop.bind(this))
+        requestAnimationFrame(this.loop.bind(this))
         this.currentFrameTime = new Date().getTime()
         const deltaTime = (this.currentFrameTime - this.lastFrameTime) / 1000
 
