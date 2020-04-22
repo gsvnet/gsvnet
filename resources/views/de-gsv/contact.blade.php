@@ -63,10 +63,9 @@
 						<li>
 							<span class="list-title">IFES-medewerker</span>
 							<address>
-								Albert Veenstra<br />
-								tel. 06-41976719
+								Alexandra Matz
 							</address>
-							<span class="list-description">{!!HTML::mailto('albert@ifes.nl')!!}</span>
+							<span class="list-description">{!!HTML::mailto('alexandra.matz@ifes.nl')!!}</span>
 							<span class="list-description">{!! HTML::link('https://www.ifes.nl') !!}</span>
 						</li>
 						<li>

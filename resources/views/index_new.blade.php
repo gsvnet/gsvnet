@@ -218,7 +218,7 @@
     
     </div>
 
-    <script src="/build-javascripts/homepage.js?v=1.5.6"></script>
+    <script src="/build-javascripts/homepage.js?v=1.5.5"></script>
     <script>
         navMenu = NavMenu('#nav-menu', '.links > a', '.mobile-nav-links');
         initHashNavigation(navMenu.getHeight);
