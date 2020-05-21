@@ -9,6 +9,9 @@ Route::get('welkom', ['as' => 'home', 'uses' => 'HomeController@showNewIndex']);
 // Kiezel 2020
 // Route::get('kei-week', 'HomeController@showKiezel');
 
+// Corona Q&A
+Route::get('corona', 'HomeController@showCorona');
+
 // Privacy-related stuff
 Route::get('privacy-statement', 'PublicFilesController@showPrivacyStatement');
 
