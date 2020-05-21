@@ -28,7 +28,7 @@
             <p>Tijdens het novitiaat wordt uiteraard rekening gehouden met de richtlijnen van het RIVM en de GGD. We houden de ontwikkelingen in de gaten en maken afspraken met de RUG/Hanze, zodat we de veiligheid van onze aspirant-leden kunnen waarborgen.</p>
 
             <h3>Wat gebeurt er als het novitiaat niet door kan gaan?</h3>
-            <p>Momenteel zijn we druk bezig met het opstellen van een plan voor een alternatieve introductieperiode. Hierbij wordt rekening gehouden met alle mogelijke scenario’s. We doen ons best je zo veel mogelijk op de hoogte te houden van de veranderingen via de website en onze sociale media. Wil je direct op de hoogte blijven? Stuur dan een mailtje naar prescie@gsvnet.nl.</p>
+            <p>Momenteel zijn we druk bezig met het opstellen van een plan voor een alternatieve introductieperiode. Hierbij wordt rekening gehouden met alle mogelijke scenario’s. We doen ons best je zo veel mogelijk op de hoogte te houden van de veranderingen via de website en onze sociale media. Wil je direct op de hoogte blijven? Stuur dan een mailtje naar {!! HTML::mailto('prescie@gsvnet.nl') !!}.</p>
 
             <h3>Hoe kan ik op de hoogte worden gehouden van de veranderingen van het novitiaat?</h3>
             <p>Je kan op de hoogte blijven van veranderingen door een mailtje te sturen naar {!! HTML::mailto('prescie@gsvnet.nl') !!}. Daarnaast zullen wij ons best doen onze website zo veel mogelijk te updaten bij eventuele veranderingen.</p>
