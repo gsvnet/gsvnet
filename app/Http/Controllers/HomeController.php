@@ -84,4 +84,9 @@ class HomeController extends BaseController {
     {
         return view('kiezel');
     }
+
+    public function showCorona()
+    {
+        return view('corona');
+    }
 }

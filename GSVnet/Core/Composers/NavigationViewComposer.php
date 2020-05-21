@@ -209,6 +209,11 @@ class NavigationViewComposer {
                 ]
             ],
 
+            'corona' => [
+              'title' => 'Q&A Corona',
+              'url' => action('HomeController@showCorona')
+            ],
+
             'forum' => [
                 'title' => 'Forum',
                 'url' => action('ForumThreadsController@getIndex')
