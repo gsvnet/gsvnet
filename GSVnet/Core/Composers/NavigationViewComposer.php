@@ -214,6 +214,11 @@ class NavigationViewComposer {
               'url' => action('HomeController@showCorona')
             ],
 
+            'kei-week' => [
+                'title' => 'KEI-week',
+                'url' => action('HomeController@showKei')
+            ],
+
             'forum' => [
                 'title' => 'Forum',
                 'url' => action('ForumThreadsController@getIndex')
