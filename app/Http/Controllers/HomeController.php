@@ -85,6 +85,11 @@ class HomeController extends BaseController {
         return view('kiezel');
     }
 
+    public function showKei()
+    {
+        return view('kei');
+    }
+
     public function showCorona()
     {
         return view('corona');
