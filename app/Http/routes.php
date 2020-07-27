@@ -69,6 +69,10 @@ Route::group(['prefix' => 'de-gsv'], function() {
 
     Route::get('contact', 'AboutController@showContact');
     Route::get('oud-leden', 'AboutController@showFormerMembers');
+
+    // Albums, moved here for extra space in the menu
+    Route::get('albums', 'PhotoController@showAlbums');
+    Route::get('albums/{slug}', 'PhotoController@showPhotos');
 });
 
 // Register
@@ -85,9 +89,6 @@ Route::group(['prefix' => 'word-lid'], function() {
     Route::post('inschrijven', 'MemberController@store');
 });
 
-// Albums
-Route::get('albums', 'PhotoController@showAlbums');
-Route::get('albums/{slug}', 'PhotoController@showPhotos');
 // Events
 Route::get('activiteiten', 'EventController@showIndex');
 Route::get('activiteiten/{year}/{month?}', 'EventController@showMonth')->middleware('checkDate');
