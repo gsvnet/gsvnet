@@ -12,9 +12,6 @@ Route::get('welkom', ['as' => 'home', 'uses' => 'HomeController@showNewIndex']);
 // Kei 2020
 Route::get('kei', 'HomeController@showKei');
 
-// Corona Q&A
-Route::get('corona', 'HomeController@showCorona');
-
 // Privacy-related stuff
 Route::get('privacy-statement', 'PublicFilesController@showPrivacyStatement');
 
@@ -69,10 +66,6 @@ Route::group(['prefix' => 'de-gsv'], function() {
 
     Route::get('contact', 'AboutController@showContact');
     Route::get('oud-leden', 'AboutController@showFormerMembers');
-
-    // Albums, moved here for extra space in the menu
-    Route::get('albums', 'PhotoController@showAlbums');
-    Route::get('albums/{slug}', 'PhotoController@showPhotos');
 });
 
 // Register
@@ -83,11 +76,17 @@ Route::post('registreer', 'RegisterController@store');
 Route::group(['prefix' => 'word-lid'], function() {
     Route::get('/', 'MemberController@index');
     Route::get('/studie-en-vereniging', 'MemberController@study');
+    // Corona Q&A
+    Route::get('corona', 'MemberController@showCorona');
     Route::get('/veel-gestelde-vragen', 'MemberController@faq');
     Route::get('klachtencommissie', 'MemberController@complaints');
     Route::get('inschrijven',  'MemberController@becomeMember');
     Route::post('inschrijven', 'MemberController@store');
 });
+
+// Albums
+Route::get('albums', 'PhotoController@showAlbums');
+Route::get('albums/{slug}', 'PhotoController@showPhotos');
 
 // Events
 Route::get('activiteiten', 'EventController@showIndex');

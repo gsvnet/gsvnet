@@ -178,10 +178,6 @@ class NavigationViewComposer {
                         'title' => 'Over de GSV',
                         'url' => action('AboutController@showAbout')
                     ],
-                    'albums' => [
-                        'title' => 'Fotoalbum',
-                        'url' => action('PhotoController@showAlbums')
-                    ],
                     'geschiedenis' => [
                         'title' => 'Geschiedenis',
                         'url' => action('AboutController@showHistory')
@@ -213,11 +209,6 @@ class NavigationViewComposer {
                 ]
             ],
 
-            'corona' => [
-              'title' => 'Q&A Corona',
-              'url' => action('HomeController@showCorona')
-            ],
-
             'kei' => [
                 'title' => 'KEI-week',
                 'url' => action('HomeController@showKei')
@@ -226,6 +217,12 @@ class NavigationViewComposer {
             'forum' => [
                 'title' => 'Forum',
                 'url' => action('ForumThreadsController@getIndex')
+            ],
+
+
+            'albums' => [
+                'title' => 'Fotoalbum',
+                'url' => action('PhotoController@showAlbums')
             ],
 
             'activiteiten' => [
@@ -247,6 +244,10 @@ class NavigationViewComposer {
                     'studie' => [
                         'url' => action('MemberController@study'),
                         'title' => 'Studie & Vereniging'
+                    ],
+                    'corona' => [
+                        'url' => action('MemberController@showCorona'),
+                        'title' => 'Q&A Corona'
                     ],
                     'veel-gestelde-vragen' => [
                         'url' => action('MemberController@faq'),

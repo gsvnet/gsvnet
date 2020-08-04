@@ -89,9 +89,4 @@ class HomeController extends BaseController {
     {
         return view('kei');
     }
-
-    public function showCorona()
-    {
-        return view('corona');
-    }
 }
