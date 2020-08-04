@@ -104,6 +104,11 @@ class MemberController extends BaseController
         return view('word-lid.study');
     }
 
+    public function showCorona()
+    {
+        return view('word-lid.corona');
+    }
+
     public function faq()
     {
         return view('word-lid.faq');
