@@ -246,8 +246,8 @@ class NavigationViewComposer {
                         'title' => 'Studie & Vereniging'
                     ],
                     'corona' => [
-                        'title' => 'Q&A Corona',
-                        'url' => action('MemberController@showCorona')
+                        'url' => action('MemberController@showCorona'),
+                        'title' => 'Q&A Corona'
                     ],
                     'veel-gestelde-vragen' => [
                         'url' => action('MemberController@faq'),
