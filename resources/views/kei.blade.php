@@ -56,7 +56,7 @@
         <h3>Lezing</h3>
         <p>Lezingen zijn een belangrijk onderdeel van onze intellectuele pijler. Op woensdagavond zal Jan Adze Nicolai een lezing houden over het basisinkomen. Daarna is er de gelegenheid om vragen te stellen en met elkaar na te praten over het thema.</p>
         <h3>Bourgondische borrel</h3>
-        <p>Na het pop-rock concert is het tijd om met z’n allen na te genieten op onze sociëteit van een lekker hapje en drankje geheel in bourgondische sferen!</p>
+        <p>Na de lezing is het tijd om met z’n allen na te genieten op onze sociëteit van een lekker hapje en drankje geheel in bourgondische sferen!</p>
 
         <h2>Donderdag - Nineties</h2>
         <h3>Spelmiddag</h3>
