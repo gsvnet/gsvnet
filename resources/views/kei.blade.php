@@ -8,14 +8,22 @@
     <article class="artikel column-holder">
         <div>
             <h1>KEI-week 2020</h1>
-            <p class="lead">Wat leuk dat je een kijkje neemt op onze KEI-week-pagina! Van 10-14 augustus zal de KEI-week plaatsvinden en ben je van harte welkom op onze sociëteit! Het programma van deze week vind je hieronder. Naast de activiteiten kunnen we je natuurlijk ook een rondleiding geven door ons pand en ben je van harte welkom om gezellig met ons een drankje te drinken.</p>
+            <p class="lead">
+                Wat leuk dat je een kijkje neemt op onze KEI-week pagina! Voordat je verder gaat naar de activiteiten eerst even dit: <br>
+                Naar aanleiding van de persconferentie van afgelopen donderdag een update over de activiteiten in de KEI-week. We zijn in overleg met de Gemeente Groningen, de onderwijsinstellingen in Groningen, de GGD en de veiligheidsregio Groningen over wat de conferentie betekent voor ons. Alles wat wij zullen organiseren is dus in overleg met deze instanties en uiteraard in lijn met de adviezen van het RIVM.
+            </p>
+            <p>
+                Naar aanleiding van dit overleg kunnen de activiteiten op maandag en dinsdag in ieder geval doorgang vinden in de KEI-week! Meld je daarvoor hieronder aan, of meld je aan bij de deur als je je niet online hoeft aan te melden. <br>
+                Na dinsdag zullen de activiteiten doorgaan tot nader order. Ook dan kun je in ieder geval langskomen op de sociëteit voor een rondleiding. Verder kun je ons uiteraard ook vinden op de informatiemarkt! <br>
+                Verdere ontwikkelingen kun je volgen via deze pagina of via social media.
+            </p>
         </div>
 
         <img src="/images/KEI2020.jpg" alt="Programma KEI-week"> <br>
 
         <p>
             <br>
-            Als vanzelfsprekend houden we rekening met de coronamaatregelen van de horeca. Daaronder valt dat je vooraf moet reserveren. Dit betekent dat je je moet opgeven voor de activiteiten die op de poster staan. Het opgaveformulier zal te zijner tijd gedeeld worden.
+            Als vanzelfsprekend houden we rekening met de coronamaatregelen van de horeca. Daaronder valt dat je vooraf moet reserveren. Dit betekent dat je je moet opgeven voor de activiteiten die op de poster staan. <br>
             Ook zal de GSV te zien zijn op het online platform dat opgezet is door het dagelijks bestuur van stichting KEI in de vorm van Q&A’s en de specifieke video. Houd voor al onze updates deze pagina in de gaten en volg ons op {!! HTML::link('https://www.instagram.com/gsvgroningen', 'Instagram') !!} en {!! HTML::link('https://nl-nl.facebook.com/GSVgroningen', 'Facebook') !!}.
 
             <br>
