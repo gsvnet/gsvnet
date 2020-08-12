@@ -20,10 +20,10 @@
                 <p>Ook tijdens de coronacrisis heeft de GSV een geweldige meerwaarde. Nu de RUG en de Hanze voor een groot gedeelte na de zomer verder gaan met online lesgeven, kan het moeilijk zijn om contact te maken met medestudenten. Dan biedt een studentenvereniging echt een uitkomst. Ook nu organiseren we tal van activiteiten die betrekking hebben op onze vier pijlers: christelijk, intellectueel, studentikoos en sociaal. Door middel van online activiteiten of activiteiten op afstand blijven we ondanks de crisis toch betrokken bij elkaar. Daarnaast gaan we onze sociëteit zo in te richten dat we elkaar straks toch weer op anderhalve meter kunnen ontmoeten. Zo zorgen we ervoor dat jij ook nu de tijd van je leven kunt hebben.</p>
 
                 <h3>Wat is het novitiaat?</h3>
-                <p>Het novitiaat is de introductieperiode van de GSV. Tijdens deze week maak je kennis met de activiteiten en de structuur van de GSV en maak je kennis met je jaarverband. Door de coronamaatregelen zal deze week er anders uitzien dan we gewend zijn, maar de doelen blijven hetzelfde. Het novitiaat loopt dit jaar van maandag 17 tot en met woensdag 26 augustus. Deze datum is voorwaardelijk en kan dus gewijzigd worden.</p>
+                <p>Het novitiaat is de introductieperiode van de GSV. Tijdens deze week maak je kennis met de activiteiten en de structuur van de GSV en maak je kennis met je jaarverband. Door de coronamaatregelen gaat deze week helaas niet door. Er wordt echter gewerkt aan een alternatieve manier van kennismaken.</p>
 
                 <h3>Gaat het novitiaat dit jaar wel door?</h3>
-                <p>Het novitiaat gaat vooralsnog door zoals gepland. We houden de ontwikkeling rondom het virus en de daarbij behorende maatregelen in de gaten en hebben nauw contact met de gemeente Groningen en de RUG/Hanze. Zodra er veranderingen plaatsvinden zullen wij onze planning daar uiteraard op aanpassen.</p>
+                <p>Het novitiaat gaat dit jaar helaas niet door. Er wordt gewerkt aan een alternatieve manier om kennis te maken met de GSV.</p>
 
                 <h3>Wordt er tijdens het novitiaat ook rekening gehouden met de coronamaatregelen?</h3>
                 <p>Tijdens het novitiaat wordt uiteraard rekening gehouden met de richtlijnen van het RIVM en de GGD. We houden de ontwikkelingen in de gaten en maken afspraken met de RUG/Hanze, zodat we de veiligheid van onze aspirant-leden kunnen waarborgen.</p>
