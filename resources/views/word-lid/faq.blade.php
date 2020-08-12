@@ -14,7 +14,7 @@
             <p><a href="{{URL::action('MemberController@becomeMember')}}" title="Word lid!" class="button">Word lid!</a></p>
 
             <h2 id="voor-wie">Kan iedereen lid worden?</h2>
-            <p>Iedereen die aan de RUG, de Hanzehogeschool of aan een andere gelijkwaardige vereniging staat ingeschreven kan lid worden van de GSV. Een vereiste voor het lidmaatschap is echter wel dat je het novitiaat hebt doorlopen, waarover hieronder meer.</p>
+            <p>Iedereen die aan de RUG, de Hanzehogeschool of aan een andere gelijkwaardige vereniging staat ingeschreven kan lid worden van de GSV. Een vereiste voor het lidmaatschap is gebruikelijk dat je het novitiaat hebt doorlopen, maar dat gaat dit jaar helaas niet door vanwege Corona. Er wordt gewerkt aan een alternatieve manier van kennismaken.</p>
 
             <h2 id="18-jaar">Ik ben onder de 18, maakt dat uit?</h2>
             <p>Iedereen die ingeschreven staat bij de RUG, Hanzehogeschool of een andere gelijkwaardige instantie kan lid worden, dus ook als je onder de 18 bent. Wel is sinds januari 2014 de alcoholgrens opgeschoven naar 18 jaar. Dit wordt bij de GSV dan ook gewoon gehandhaafd.</p>
@@ -47,7 +47,7 @@
 
             <h2 id="novitiaat">Wat is het Novitiaat?</h2>
             <p>Het novitiaat is een intensieve kennismaking met de GSV, welke anderhalve week duurt. Hierbij ga je eerst een week op kamp waar je kennis kunt maken met de structuur en activiteiten van de GSV. Ook leer je je eigen jaarverband goed kennen. In de halve week daarna maak je kennis met de GSV-leden zelf door allerlei bruisende activiteiten in de stad. Het novitiaat van de GSV heeft een ontgroenend karakter.</p>
-            <p>Dit jaar is het novitiaat van maandag 17 tot en met woensdag 26 augustus.</p>
+            <p><b>Dit jaar gaat het novitiaat echter helaas niet door. Er wordt gewerkt aan een alternatieve manier van kennismaken met de vereniging.</b></p>
 
             <h2 id="bevestiging">Ik heb me aangemeld, maar geen bevestiging ontvangen. Wat nu?</h2>
             <p>Het is mogelijk dat er iets mis is gegaan tijdens het aanmelden voor de GSV. Heb je geen ontvangstbevestiging per mail gekregen nadat je je hebt aangemeld? Neem dan even contact op met de PRescie via {!! HTML::mailto('prescie@gsvnet.nl') !!}.</p>
