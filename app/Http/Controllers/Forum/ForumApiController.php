@@ -36,7 +36,10 @@ class ForumApiController extends BaseController {
         $reply = $replies->requireById($replyId);
         $thread = $reply->thread;
 
-        if ( ! $thread->public && Gate::denies('threads.show-private'))
+        if ( ! $thread->public && Gate::denies('threads.show-internal'))
+            throw new NoPermissionException;
+
+        if ($thread->private && Gate::denies('threads.show-private'))
             throw new NoPermissionException;
 
         return response()->json([
@@ -49,7 +52,10 @@ class ForumApiController extends BaseController {
     {
         $thread = $threads->requireById($threadId);
 
-        if ( ! $thread->public && Gate::denies('threads.show-private'))
+        if ( ! $thread->public && Gate::denies('threads.show-internal'))
+            throw new NoPermissionException;
+
+        if ($thread->private && Gate::denies('threads.show-private'))
             throw new NoPermissionException;
 
         return response()->json([

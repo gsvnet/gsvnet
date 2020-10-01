@@ -58,13 +58,18 @@
                         <p>Een volgende webcie kan dit misschien duidelijker aangeven met mooie rode letters, maar dit topic is dus verwijderd en alleen zichtbaar voor mensen met speciale rechten.</p>
                     @endif
 
-                    @can('threads.show-private')
+                    @can('threads.show-internal')
                         @if($thread->public)
                             <h2>Extern</h2>
                             <p>Dit topic staat extern en is dus door iedereen te bekijken.</p>
+                        @elseif($thread->private)
+                            @can('threads.show-private')
+                                <h2>Privé</h2>
+                                <p>Dit topic is privé en dus alleen te bekijken door leden.</p>
+                            @endcan
                         @else
                             <h2>Intern</h2>
-                            <p>Dit topic staat intern en is dus alleen te bekijken door leden.</p>
+                            <p>Dit topic staat intern en is dus alleen te bekijken door leden en reünisten.</p>
                         @endif
                     @endcan
 

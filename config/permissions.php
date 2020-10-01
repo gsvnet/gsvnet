@@ -98,6 +98,10 @@ return [
         ],
 
         'threads.show-private' => [
+            'type' => [User::MEMBER, User::INTERNAL_COMMITTEE]
+        ],
+
+        'threads.show-internal' => [
             'type' => [User::MEMBER, User::REUNIST, User::INTERNAL_COMMITTEE]
         ],
 
