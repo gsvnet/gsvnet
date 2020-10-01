@@ -8,14 +8,16 @@ class EditThreadCommand extends Command {
     public $subject;
     public $body;
     public $public;
+    public $private;
     public $tags;
 
-    public function __construct($threadId, $subject, $body, $public, $tags)
+    public function __construct($threadId, $subject, $body, $public, $private, $tags)
 	{
         $this->threadId = $threadId;
         $this->subject = $subject;
         $this->body = $body;
         $this->public = $public;
+        $this->private = $private;
         $this->tags = $tags;
     }
 

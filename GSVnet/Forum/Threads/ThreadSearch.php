@@ -30,11 +30,16 @@ class ThreadSearch
             }]);
 
         // Only show public threads when the user does not
-        // have permission to see private threads
-        if (Gate::denies('threads.show-private'))
+        // have permission to see internal threads
+        if (Gate::denies('threads.show-internal'))
         {
             $query = $query->public();
         }
+
+        // Don't show private threads (even more private than internal)
+        // if the user doesn't have permission to view them
+        if (Gate::denies('threads.show-private'))
+            $query = $query->where('private', '=', 0);
 
         return $query->paginate($perPage, ['forum_threads.*']);
     }

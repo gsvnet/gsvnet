@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="content-column">
-        @can('threads.show-private')
+        @can('threads.show-internal')
             <h2>Forumstatistieken</h2>
             <p><a href="{{ URL::action('ForumThreadsController@statistics') }}" title="Toplijsten forumposters">Vind je hier</a></p>
         @endcan

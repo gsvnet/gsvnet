@@ -22,11 +22,25 @@
                 @include('forum._tag_chooser')
             </div>
 
-            @can('threads.show-private')
-            <div>
-                {!! Former::checkbox('public')->text('Maak topic zichtbaar voor externen')->label('Publiek?') !!}
-            </div>
-            @endcan
+            @if(Gate::allows('threads.show-internal') and Gate::denies('threads.show-private'))
+                <div>
+                    {!! Former::checkbox('visibility')
+                        ->value('public')
+                        ->text('Maak topic zichtbaar voor externen')
+                        ->label('Publiek?') !!}
+                </div>
+            @elseif(Gate::allows('threads.show-private'))
+                <div>
+                    {!! Former::radios('Toegang')
+                        ->radios([
+                            'Privé' => ['name' => 'visibility', 'value' => 'private'],
+                            'Intern' => ['name' => 'visibility', 'value' => 'internal'],
+                            'Publiek' => ['name' => 'visibility', 'value' => 'public']
+                        ])
+                        ->check('internal') !!}
+                    <p>Privé: alleen toegang voor leden. Intern: tevens toegang voor reünisten. Publiek: toegang voor iedereen.</p>
+                </div>
+            @endif
 
             <div class="control-group">
                 <input type="submit" value="Opslaan" class="button">
