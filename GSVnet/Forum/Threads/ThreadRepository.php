@@ -31,10 +31,13 @@ class ThreadRepository extends EloquentRepository
                 ->whereIn('tagged_items.tag_id', $tags->pluck('id'));
         }
 
-        if ( Gate::denies('threads.show-private'))
+        if ( Gate::denies('threads.show-internal'))
         {
             $query = $query->public();
         }
+
+        if (Gate::denies('threads.show-private'))
+            $query = $query->where('private', '=', 0);
 
         if ( Auth::check() )
         {
@@ -104,10 +107,13 @@ class ThreadRepository extends EloquentRepository
     {
         $query = $this->model->onlyTrashed()->with(['mostRecentReply', 'mostRecentReply.author', 'tags']);
 
-        if ( Gate::denies('threads.show-private'))
+        if ( Gate::denies('threads.show-internal'))
         {
             $query = $query->public();
         }
+
+        if (Gate::denies('threads.show-private'))
+            $query = $query->where('private', '=', 0);
 
         if ( Auth::check() )
         {

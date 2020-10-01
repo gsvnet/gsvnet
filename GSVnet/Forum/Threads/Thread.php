@@ -12,7 +12,7 @@ class Thread extends Model
     use LikableTrait;
     
     protected $table = 'forum_threads';
-    protected $fillable = ['subject', 'body', 'author_id', 'slug', 'public'];
+    protected $fillable = ['subject', 'body', 'author_id', 'slug', 'public', 'private'];
     protected $with = ['author'];
     protected $dates = ['deleted_at'];
 
@@ -64,6 +64,11 @@ class Thread extends Model
     }
 
     public function getPublicAttribute($value)
+    {
+        return $value == 1 ? true : null;
+    }
+
+    public function getPrivateAttribute($value)
     {
         return $value == 1 ? true : null;
     }

@@ -67,7 +67,10 @@ class ForumThreadsController extends BaseController {
         if ( ! $thread)
             return redirect()->action('ForumThreadsController@getIndex');
 
-        if ( ! $thread->public && Gate::denies('threads.show-private'))
+        if ( ! $thread->public && Gate::denies('threads.show-internal'))
+            throw new NoPermissionException;
+
+        if ($thread->private && Gate::denies('threads.show-private'))
             throw new NoPermissionException;
 
         $replies = $this->threads->getThreadRepliesPaginated($thread, $this->repliesPerPage);
@@ -108,18 +111,23 @@ class ForumThreadsController extends BaseController {
     {
         $subject = Input::get('subject');
         $slug = ThreadSlug::generate($subject);
+        $visibility = Input::get('visibility', 'internal');
 
         $data = [
             'authorId' => Auth::user()->id,
             'body' => Input::get('body'),
-            'public' => Input::get('public', false),
+            'public' => $visibility == 'public',
+            'private' => $visibility == 'private',
             'tags' => $this->tags->getTagsByIds(Input::get('tags')),
             'subject' => $subject,
             'slug' => $slug
         ];
 
-        if(Gate::denies('threads.show-private'))
+        if(Gate::denies('threads.show-internal'))
             $data['public'] = true;
+
+        if(Gate::denies('threads.show-private'))
+            $data['private'] = false;
 
         $validator->beforeValidation()->validate($data);
 
@@ -137,7 +145,9 @@ class ForumThreadsController extends BaseController {
 
         $tags = $this->tags->getAllForForum();
 
-        return view('forum.threads.edit', compact('thread', 'tags', 'author'));
+        $visibility = ($thread->public ? 'public' : ($thread->private ? 'private' : 'internal'));
+
+        return view('forum.threads.edit', compact('thread', 'tags', 'author', 'visibility'));
     }
 
     public function postEditThread(Request $request, $threadId)
@@ -146,16 +156,21 @@ class ForumThreadsController extends BaseController {
 
         $this->authorize('thread.manage', $thread);
 
+        $visibility = $request->get('visibility', 'internal');
         $data = [
             'threadId' => $threadId,
             'subject' => $request->get('subject'),
             'body' => $request->get('body'),
             'tags' => $this->tags->getTagsByIds($request->get('tags')),
-            'public' => $request->exists('public')
+            'public' => $visibility == 'public',
+            'private' => $visibility == 'private'
         ];
 
-        if(Gate::denies('threads.show-private'))
+        if(Gate::denies('threads.show-internal'))
             $data['public'] = true;
+
+        if(Gate::denies('threads.show-private'))
+            $data['private'] = false;
         
         $this->dispatchFromArray(EditThreadCommand::class, $data);
 
