@@ -65,7 +65,7 @@ Route::group(['prefix' => 'de-gsv'], function() {
     Route::get('senaten/{senaat}', 'AboutController@showSenate');
 
     Route::get('contact', 'AboutController@showContact');
-    Route::get('oud-leden', 'AboutController@showFormerMembers');
+    // Route::get('oud-leden', 'AboutController@showFormerMembers');
 });
 
 // Register
