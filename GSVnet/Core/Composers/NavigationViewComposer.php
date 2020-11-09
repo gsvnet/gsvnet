@@ -202,10 +202,10 @@ class NavigationViewComposer {
                         'title' => 'Contact',
                         'url' => action('AboutController@showContact')
                     ],
-                    'oud-leden' => [
-                        'title' => 'Oud-leden',
-                        'url' => action('AboutController@showFormerMembers')
-                    ]
+//                    'oud-leden' => [
+//                        'title' => 'Oud-leden',
+//                        'url' => action('AboutController@showFormerMembers')
+//                    ]
                 ]
             ],
 
