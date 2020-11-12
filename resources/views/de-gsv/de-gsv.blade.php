@@ -9,7 +9,7 @@
     <article class="artikel column-holder" role="main">
         <div>
             <h1>Over de GSV</h1>
-            <p class="lead">De Gereformeerde Studentenvereniging, de GSV, is een christelijke studentenvereniging met een gereformeerde basis. De vereniging bestaat uit een hechte groep van zo&rsquo;n 200 studenten die elke week bij elkaar komen in bijbelkringen voor Bijbelstudie, maar ook voor een biertje op soos. Er worden veel activiteiten georganiseerd die passen bij een van de vier pijlers die de GSV karakteriseren: de christelijke, de intellectuele, de sociale en de studentikoze pijler.</p>
+            <p class="lead">De Gereformeerde Studentenvereniging, de GSV, is een christelijke studentenvereniging met een gereformeerde basis. De vereniging bestaat uit een hechte groep van zo&rsquo;n 200 studenten die elke week bij elkaar komen in bijbelkringen voor Bijbelstudie, maar ook voor een biertje op soos. Er worden veel activiteiten georganiseerd die passen bij een van de vijf pijlers die de GSV karakteriseren: de christelijke, de intellectuele, de sociale, de sportieve en de studentikoze pijler.</p>
         </div>
 
         <aside class="note">
