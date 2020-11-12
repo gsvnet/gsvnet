@@ -5,7 +5,7 @@
 
 @section('content')
     <div class="column-holder">
-        <h1>Balen zeg</h1>
+        <h1>Klein beetje dom schat</h1>
         @if (Session::has('status'))
             {{ Session::get('status') }}
         @endif
