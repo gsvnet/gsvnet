@@ -16,7 +16,7 @@
         @section('senate')
 
             <p>
-                De vijf functies binnen de Senaat zijn die van praeses, abactis, fiscus, assessor primus en assessor secundus. Deze vijf houden zich respectievelijk bezig met het voorzitten van de vereniging, het bijhouden van de ledenadministratie en de post, de financiële kant van de GSV, de externe relaties en de interne commissies. Samen vormen zij een jaar lang een hecht team dat elk jaar probeert het beste uit de vereniging te halen.
+                De vijf functies binnen de Senaat zijn die van flutvis, abactis, fiscus, assessor primus en assessor secundus. Deze vijf houden zich respectievelijk bezig met het voorzitten van de vereniging, het bijhouden van de ledenadministratie en de post, de financiële kant van de GSV, de externe relaties en de interne commissies. Samen vormen zij een jaar lang een hecht team dat elk jaar probeert het beste uit de vereniging te halen.
             </p>
         @show
         </div>
