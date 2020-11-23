@@ -1,5 +1,7 @@
 <div class="content-columns">
     <div class="content-column">
+        <div id="flipdown" class="flipdown"></div>
+
         <h2>Maak een nieuw topic</h2>
         <p>
             <a class="button" href="{{ action('ForumThreadsController@getCreateThread') }}" rel="nofollow">Nieuw topic</a>
