@@ -72,11 +72,6 @@
             <br><br>
             Krijg jij er een kick van om elke dag tot het uiterste te gaan? Wil jij onderdeel zijn van onze win-cultuur? Tijdens je studie kun je al praktijkervaring opdoen in een parttime bijbaan. Al bijna afgestudeerd? Wie weet hebben wij dan de perfecte uitdaging voor je, zoals een Management Traineeship. Kijk voor meer informatie en alle parttime en fulltime vacatures op: <a href="https://www.werkenbijbelsimpel.nl">www.werkenbijbelsimpel.nl</a>.
         </p>
-
-        <h2>Uitvaartverzekeringwijzer.net</h2>
-        <p>
-            Uitvaartverzekeringwijzer.net is een vergelijkingssite waar je verschillende levensverzekeringen kunt afsluiten. Denk hierbij aan de <a href="https://uitvaartverzekeringwijzer.net">uitvaartverzekering</a> en de <a href="https://uitvaartverzekeringwijzer.net/begrafenisverzekering">begrafenisverzekering</a>. De website geeft onafhankelijk informatie over alles omtrent deze verzekeringen. Wanneer u via deze website één van bovenstaande verzekeringen afsluit dan is de kans groot dat <a href="https://uitvaartverzekeringwijzer.net">uitvaartverzekeringwijzer.net</a> de GSV ook volgend jaar weer financieel zal steunen. Ben je daarom opzoek naar een verzekering? Twijfel niet en vergelijk snel via dé <a href="https://uitvaartverzekeringwijzer.net/levensverzekering">levensverzekering vergelijker</a> van Nederland.
-        </p>
     </article>
 
 @stop
