@@ -13,7 +13,11 @@ class AboutController extends BaseController
 
     public function showAbout()
     {
-        return view('de-gsv.de-gsv');
+        $key = Config::get('google.key');
+        $mapUrl = "https://maps.googleapis.com/maps/api/staticmap?center=Hereweg%2040,Groningen,Nederland&size=480x320&zoom=14&sensor=false&markers=color:purple%7Clabel:S%7CHereweg%2040,Groningen,Nederland&key=".$key."&scale=2";
+        $mapImage = base64_encode(file_get_contents($mapUrl));
+        
+        return view('de-gsv.de-gsv', compact('mapImage'));
     }
 
     public function showCommittees(CommitteesRepository $committeesRepo)

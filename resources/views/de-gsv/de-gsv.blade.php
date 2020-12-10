@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=Hereweg%2040,Groningen,Nederland&size=480x320&zoom=14&sensor=false&markers=color:purple%7Clabel:S%7CHereweg%2040,Groningen,Nederland&key=***REMOVED***&scale=2" alt="Adres sociëteit" width="960" height="640">
+                    <img src="data:image/png;base64,{{ $mapImage }}" alt="Adres sociëteit" width="960" height="640">
                     <div class="carousel-caption">
                     Sociëteit bij Hereweg 40 in Groningen
                     </div>
