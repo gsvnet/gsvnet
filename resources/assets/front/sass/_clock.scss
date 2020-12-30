@@ -1,0 +1,57 @@
+#flipdown {
+  height: auto;
+  overflow: hidden;
+
+  .rotor,
+  .rotor-leaf {
+    width: 30px;
+    height: 60px;
+  }
+
+  .rotor-leaf-front,
+  .rotor-leaf-rear,
+  .rotor-top,
+  .rotor-bottom {
+    width: 30px;
+    height: 30px;
+    font-size: 2rem;
+  }
+
+  .rotor:after {
+    width: 30px;
+    height: 30px;
+  }
+
+  .rotor-leaf-front,
+  .rotor-top {
+    line-height: 60px;
+  }
+
+  .rotor-group:nth-child(n+2):nth-child(-n+3):before {
+    bottom: 13px;
+    left: 75px;
+  }
+
+  .rotor-group:nth-child(n+2):nth-child(-n+3):after {
+    bottom: 43px;
+    left: 75px;
+  }
+
+  .rotor-group-heading {
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 550px) {
+    width: 100%;
+
+    .rotor-group:nth-child(n+2):nth-child(-n+3):before {
+      bottom: 13px;
+      left: 70px;
+    }
+
+    .rotor-group:nth-child(n+2):nth-child(-n+3):after {
+      bottom: 43px;
+      left: 70px;
+    }
+  }
+}

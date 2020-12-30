@@ -1,6 +1,8 @@
 <div class="content-columns">
     <div class="content-column">
+        <h2>Countdown tot elfde lustrum</h2>
         <div id="flipdown" class="flipdown"></div>
+        <br>
 
         <h2>Maak een nieuw topic</h2>
         <p>
