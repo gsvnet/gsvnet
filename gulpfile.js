@@ -10,10 +10,14 @@ var webpack = require('webpack-stream');
 var eventStream = require('event-stream')
 
 gulp.task('css', function () {
-    return gulp.src('resources/assets/front/sass/screen.scss')
+    return gulp.src([
+        'resources/assets/front/sass/screen.scss',
+        './bower_components/flipdown/dist/flipdown.css'
+    ])
         .pipe(sass())
         .pipe(cleanCSS())
         .pipe(autoprefixer())
+        .pipe(concat('screen.css'))
         .pipe(gulp.dest('public/stylesheets/'));
 });
 
@@ -115,6 +119,7 @@ gulp.task('scripts', function () {
         'resources/assets/components/javascripts/modernizr.js',
         './bower_components/jquery/dist/jquery.min.js',
         './bower_components/socket.io-client/socket.io.js',
+        './bower_components/flipdown/dist/flipdown.js',
         'resources/assets/components/javascripts/list-to-menu.js',
         'resources/assets/components/javascripts/load-image.min.js',
         'resources/assets/components/javascripts/list.min.js',
@@ -137,6 +142,7 @@ gulp.task('scripts', function () {
 gulp.task('forum-scripts', function () {
     return gulp.src([
         './bower_components/pica/dist/pica.min.js',
+        './bower_components/flipdown/dist/flipdown.js',
         './resources/assets/components/javascripts/load-image.js',
         './resources/assets/front/javascripts/image-upload.js'
     ]).pipe(concat('forum.js')).pipe(uglify()).pipe(gulp.dest('public/build-javascripts/'));
