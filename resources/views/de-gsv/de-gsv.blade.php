@@ -9,7 +9,7 @@
     <article class="artikel column-holder" role="main">
         <div>
             <h1>Over de GSV</h1>
-            <p class="lead">De Gereformeerde Studentenvereniging, de GSV, is een christelijke studentenvereniging met een gereformeerde basis. De vereniging bestaat uit een hechte groep van zo&rsquo;n 200 studenten die elke week bij elkaar komen in bijbelkringen voor Bijbelstudie, maar ook voor een biertje op soos. Er worden veel activiteiten georganiseerd die passen bij een van de vier pijlers die de GSV karakteriseren: de christelijke, de intellectuele, de sociale en de studentikoze pijler.</p>
+            <p class="lead">De Gereformeerde Studentenvereniging, de GSV, is een christelijke studentenvereniging met een gereformeerde basis. De vereniging bestaat uit een hechte groep van zo&rsquo;n 200 studenten die elke week bij elkaar komen in bijbelkringen voor Bijbelstudie, maar ook voor een biertje op soos. Er worden veel activiteiten georganiseerd die passen bij een van de vijf pijlers die de GSV karakteriseren: de christelijke, de intellectuele, de sociale, de sportieve en de studentikoze pijler.</p>
         </div>
 
         <aside class="note">
@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=Hereweg%2040,Groningen,Nederland&size=480x320&zoom=14&sensor=false&markers=color:purple%7Clabel:S%7CHereweg%2040,Groningen,Nederland&key=***REMOVED***&scale=2" alt="Adres sociëteit" width="960" height="640">
+                    <img src="data:image/png;base64,{{ $mapImage }}" alt="Adres sociëteit" width="960" height="640">
                     <div class="carousel-caption">
                     Sociëteit bij Hereweg 40 in Groningen
                     </div>
