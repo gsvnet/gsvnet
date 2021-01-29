@@ -219,7 +219,7 @@ app = (function() {
 	function threadsIndex() {
 		Forum.loadDeferredAvatars();
 
-		new FlipDown(1637017200, {
+		new FlipDown(1637096400, {
 			headings: ["Dagen", "Uren", "Minuten", "Seconden"]
 		}).start();
 	}
