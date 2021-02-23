@@ -9,7 +9,7 @@
             <p class="delta">Als je niet kan vinden wat je zoekt moet je contact opnemen met de webcie.</p>
         @else
             <h1>Forum doorzoeken</h1>
-            <p class="delta">Je doorzoek alleen het forum</p>
+            <p class="delta">Je doorzoekt alleen het forum</p>
         @endif
         <section class="main-content forum">
 

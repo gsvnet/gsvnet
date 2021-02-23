@@ -3,6 +3,7 @@
 use DB, Permission;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use GSVnet\Forum\Replies\ReplySearch;
 
 class ThreadSearch
 {
@@ -18,10 +19,14 @@ class ThreadSearch
     public function searchPaginated($query, $perPage)
     {
         $id = Auth::check() ? Auth::user()->id : 0;
+       
+
+        $thread_ids = app(ReplySearch::class)->searchReplys($query);
         
-        $query = $this->model->where(function($q) use ($query) {
+        $query = $this->model->where(function($q) use ($query, $thread_ids) {
             $q->where('subject', 'like', '%' . $query . '%')
-                ->orWhere('body', 'like', '%' . $query . '%');
+                ->orWhere('body', 'like', '%' . $query . '%')
+                ->orWhereIn('id', $thread_ids);
             })
             ->orderBy('updated_at', 'desc')
             ->with(['mostRecentReply'])
