@@ -78,6 +78,7 @@ class UserController extends BaseController
         $search = $request->get('naam', '');
         $regions = $this->regions->all();
         $oudLeden = $request->get('oudleden');
+        $address = $request->get('adres');
 
         // Search on region
         if (!($region = $request->get('regio') and $this->regions->exists($region)))
@@ -90,7 +91,7 @@ class UserController extends BaseController
 
         $perPage = 50;
         $types = $oudLeden == '1' ? [User::MEMBER, User::REUNIST, User::EXMEMBER] : User::MEMBER;
-        $members = $this->profiles->searchAndPaginate($search, $region, $yeargroup, $types, $perPage);
+        $members = $this->profiles->searchAndPaginate($search, $region, $yeargroup, $types, $address, $perPage);
 
         // Select year groups
         $yearGroups = $this->yearGroups->all();

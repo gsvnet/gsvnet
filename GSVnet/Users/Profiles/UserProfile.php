@@ -54,11 +54,16 @@ class UserProfile extends Model {
         return $query->where(function($q) use ($search) {
             $q->where('firstname', 'like', $search . '%')
             ->orwhere('middlename', 'like', $search . '%')
-            ->orwhere('lastname', 'like', $search . '%')
-            ;
+            ->orwhere('lastname', 'like', $search . '%');
             });
     }
 
+    public function scopeSearchAddress($query, $search) {
+        return $query->where(function($q) use ($search) {
+            $q->where('address', 'like', '%' . $search . '%');
+            });
+    }
+    
     public function yearGroup()
     {
         return $this->belongsTo('GSVnet\Users\YearGroup');
