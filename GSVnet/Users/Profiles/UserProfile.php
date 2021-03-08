@@ -67,8 +67,8 @@ class UserProfile extends Model {
 
     public function inmates() 
     {
-        return UserProfile::where('address', $this->address)
-        ->where('user_id', '!=', $this->user_id)            
+        return UserProfile::whereRaw("REPLACE(`address`, ' ' ,'') LIKE ?", [str_replace(' ', '', $this->address)])
+        ->where('user_id', '!=', $this->user_id)
         ->get();
     }
     
