@@ -58,10 +58,18 @@ class UserProfile extends Model {
             });
     }
 
-    public function scopeSearchAddress($query, $search) {
+    public function scopeSearchAddress($query, $search) 
+    {
         return $query->where(function($q) use ($search) {
             $q->where('address', 'like', '%' . $search . '%');
             });
+    }
+
+    public function inmates() 
+    {
+        return UserProfile::where('address', $this->address)
+        ->where('user_id', '!=', $this->user_id)            
+        ->get();
     }
     
     public function yearGroup()
