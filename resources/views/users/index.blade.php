@@ -16,10 +16,6 @@
 				<input type="search" class="form-control search-user-input" id="naam" name="naam" placeholder="typ maar gewoon iets" value="{{{Input::get('name', '')}}}">
 			</div>
 			<div class="form-group">
-				<label class="control-label" for="adres">Adres</label>
-				<input type="search" class="form-control search-user-input" id="adres" name="adres" placeholder="Niet relevant" value="{{{Input::get('adres', '')}}}">
-			</div>
-			<div class="form-group">
 				<label class="control-label" for="regio">Regio</label>
 				<select name="regio" id="regio">
 					<option value="0">Maakt niet uit</option>

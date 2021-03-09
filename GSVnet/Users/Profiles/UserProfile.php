@@ -58,13 +58,6 @@ class UserProfile extends Model {
             });
     }
 
-    public function scopeSearchAddress($query, $search) 
-    {
-        return $query->where(function($q) use ($search) {
-            $q->where('address', 'like', '%' . $search . '%');
-            });
-    }
-
     public function inmates() 
     {
         return UserProfile::whereRaw("REPLACE(`address`, ' ' ,'') LIKE ?", [str_replace(' ', '', $this->address)])

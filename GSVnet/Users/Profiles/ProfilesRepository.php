@@ -28,9 +28,9 @@ class ProfilesRepository extends BaseRepository {
      *
      * @return UserProfile[]
      */
-    public function searchAndPaginate($search, $region = null, $yearGroup = null, $type = 2, $address, $amount = 20)
+    public function searchAndPaginate($search, $region = null, $yearGroup = null, $type = 2, $amount = 20)
     {
-        return $this->search($search, $region, $yearGroup, $type, $address)->paginate($amount);
+        return $this->search($search, $region, $yearGroup, $type)->paginate($amount);
     }
 
     public function searchLimit($search, $region = null, $yearGroup = null, $type = 2, $amount = 20)
@@ -48,7 +48,7 @@ class ProfilesRepository extends BaseRepository {
      *
      * @return UserProfile[]
      */
-    public function search($keyword = '', $region = null, $yearGroup = null, $type = 2, $address = '')
+    public function search($keyword = '', $region = null, $yearGroup = null, $type = 2)
     {
         // Initialize basic query
         $query = UserProfile::with('user', 'yearGroup', 'regions')
@@ -69,11 +69,6 @@ class ProfilesRepository extends BaseRepository {
         if ( ! empty($keyword))
         {
             $query->searchNameAndPhone($keyword);
-        }
-
-        if ( ! empty($address))
-        {
-            $query->searchAddress($address);
         }
 
         // Search for members inside region if region is valid
