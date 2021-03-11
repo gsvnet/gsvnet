@@ -32,7 +32,10 @@ Route::group(['prefix' => 'intern', 'middleware' => 'auth'], function() {
 
     // Ads
     Route::get('sponsorprogramma', 'HomeController@sponsorProgram');
+});
 
+// Jaarbundel
+Route::group(['middleware' => 'auth'], function() {
     // Only logged in users can view the member list if they have permission
     Route::get('jaarbundel',       'UserController@showUsers');
     Route::get('jaarbundel/{id}',  'UserController@showUser')->where('id', '[0-9]+');

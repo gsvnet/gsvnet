@@ -18,13 +18,15 @@ class HomeController extends BaseController {
 	public function showIndex()
 	{
 		// Get the coming events and show it in the sidebar
-		$events = $this->events->upcoming(5);
-        $birthdays = $this->profiles->byUpcomingBirthdays(1);
+//		$events = $this->events->upcoming(5);
+//        $birthdays = $this->profiles->byUpcomingBirthdays(1);
+//
+//        return view('index')->with([
+//            'events' => $events,
+//            'birthdays' => $birthdays
+//        ]);
 
-        return view('index')->with([
-            'events' => $events,
-            'birthdays' => $birthdays
-        ]);
+        return redirect()->away("https://www.gsvgroningen.nl", 301);
 	}
 
     public function showNewIndex()

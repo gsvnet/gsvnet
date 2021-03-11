@@ -170,49 +170,54 @@ class NavigationViewComposer {
     private function getStructure()
     {
         return [
-            'de-gsv' => [
-                'url' => action('AboutController@showAbout'),
-                'title' => 'De GSV',
-                'submenu' => [
-                    'over-de-gsv' => [
-                        'title' => 'Over de GSV',
-                        'url' => action('AboutController@showAbout')
-                    ],
-                    'geschiedenis' => [
-                        'title' => 'Geschiedenis',
-                        'url' => action('AboutController@showHistory')
-                    ],
-                    'pijlers' => [
-                        'title' => 'Pijlers',
-                        'url' => action('AboutController@showPillars')
-                    ],
-                    'senaten' => [
-                        'title' => 'Senaten',
-                        'url' => action('AboutController@showSenates')
-                    ],
-                    'vertrouwenspersonen' => [
-                        'title' => 'Vertrouwenspersonen',
-                        'url' => action('AboutController@showConfidants')
-                    ],
-                    'commissies' => [
-                        'title' => 'Commissies',
-                        'url' => action('AboutController@showCommittees')
-                    ],
-                    'contact' => [
-                        'title' => 'Contact',
-                        'url' => action('AboutController@showContact')
-                    ],
-//                    'oud-leden' => [
-//                        'title' => 'Oud-leden',
-//                        'url' => action('AboutController@showFormerMembers')
-//                    ]
-                ]
+            'gsvgroningen' => [
+                'title' => 'GSV Groningen',
+                'url' => action('HomeController@showIndex')
             ],
 
-            'kei' => [
-                'title' => 'KEI-week',
-                'url' => action('HomeController@showKei')
-            ],
+//            'de-gsv' => [
+//                'url' => action('AboutController@showAbout'),
+//                'title' => 'De GSV',
+//                'submenu' => [
+//                    'over-de-gsv' => [
+//                        'title' => 'Over de GSV',
+//                        'url' => action('AboutController@showAbout')
+//                    ],
+//                    'geschiedenis' => [
+//                        'title' => 'Geschiedenis',
+//                        'url' => action('AboutController@showHistory')
+//                    ],
+//                    'pijlers' => [
+//                        'title' => 'Pijlers',
+//                        'url' => action('AboutController@showPillars')
+//                    ],
+//                    'senaten' => [
+//                        'title' => 'Senaten',
+//                        'url' => action('AboutController@showSenates')
+//                    ],
+//                    'vertrouwenspersonen' => [
+//                        'title' => 'Vertrouwenspersonen',
+//                        'url' => action('AboutController@showConfidants')
+//                    ],
+//                    'commissies' => [
+//                        'title' => 'Commissies',
+//                        'url' => action('AboutController@showCommittees')
+//                    ],
+//                    'contact' => [
+//                        'title' => 'Contact',
+//                        'url' => action('AboutController@showContact')
+//                    ],
+////                    'oud-leden' => [
+////                        'title' => 'Oud-leden',
+////                        'url' => action('AboutController@showFormerMembers')
+////                    ]
+//                ]
+//            ],
+
+//            'kei' => [
+//                'title' => 'KEI-week',
+//                'url' => action('HomeController@showKei')
+//            ],
 
             'forum' => [
                 'title' => 'Forum',
@@ -220,48 +225,65 @@ class NavigationViewComposer {
             ],
 
 
-            'albums' => [
-                'title' => 'Fotoalbum',
-                'url' => action('PhotoController@showAlbums')
-            ],
+//            'albums' => [
+//                'title' => 'Fotoalbum',
+//                'url' => action('PhotoController@showAlbums')
+//            ],
+//
+//            'activiteiten' => [
+//                'title' => 'Activiteiten',
+//                'url' => action('EventController@showIndex')
+//            ],
 
-            'activiteiten' => [
-                'title' => 'Activiteiten',
-                'url' => action('EventController@showIndex')
-            ],
+//            'word-lid' => [
+//                'title' => 'Word lid!',
+//                'url' => action('MemberController@index'),
+//                'visible' => function(){
+//                    return Auth::guest() || Gate::allows('user.become-member');
+//                },
+//                'submenu' => [
+//                    'lid-worden' => [
+//                        'url' => action('MemberController@index'),
+//                        'title' => 'Lid worden?'
+//                    ],
+//                    'studie' => [
+//                        'url' => action('MemberController@study'),
+//                        'title' => 'Studie & Vereniging'
+//                    ],
+//                    'corona' => [
+//                        'url' => action('MemberController@showCorona'),
+//                        'title' => 'Q&A Corona'
+//                    ],
+//                    'veel-gestelde-vragen' => [
+//                        'url' => action('MemberController@faq'),
+//                        'title' => 'Veelgestelde vragen'
+//                    ],
+//                    'klachtencommissie' => [
+//                        'url' => action('MemberController@complaints'),
+//                        'title' => 'Klachtencommissie'
+//                    ],
+//                    'inschrijven' => [
+//                        'url' => action('MemberController@becomeMember'),
+//                        'title' => 'Inschrijven'
+//                    ]
+//                ]
+//            ],
 
-            'word-lid' => [
-                'title' => 'Word lid!',
-                'url' => action('MemberController@index'),
+
+            'jaarbundel' => [
+                'title' => 'Jaarbundel',
+                'url' => action('UserController@showUsers'),
                 'visible' => function(){
-                    return Auth::guest() || Gate::allows('user.become-member');
-                },
-                'submenu' => [
-                    'lid-worden' => [
-                        'url' => action('MemberController@index'),
-                        'title' => 'Lid worden?'
-                    ],
-                    'studie' => [
-                        'url' => action('MemberController@study'),
-                        'title' => 'Studie & Vereniging'
-                    ],
-                    'corona' => [
-                        'url' => action('MemberController@showCorona'),
-                        'title' => 'Q&A Corona'
-                    ],
-                    'veel-gestelde-vragen' => [
-                        'url' => action('MemberController@faq'),
-                        'title' => 'Veelgestelde vragen'
-                    ],
-                    'klachtencommissie' => [
-                        'url' => action('MemberController@complaints'),
-                        'title' => 'Klachtencommissie'
-                    ],
-                    'inschrijven' => [
-                        'url' => action('MemberController@becomeMember'),
-                        'title' => 'Inschrijven'
-                    ]
-                ]
+                    return Auth::check() && Gate::allows('users.show');
+                }
+            ],
+
+            'gsv-fotos' => [
+                'title' => 'GSV-foto\'s',
+                'url' => 'https://www.dropbox.com/sh/35nn6690kcvk7wx/AACnG0OpTvw4I1WcvwUhOZYaa?dl=0',
+                'visible' => function(){
+                    return Auth::check() && Gate::allows('dropbox.show');
+                }
             ],
 
             'inloggen' => [
@@ -298,23 +320,17 @@ class NavigationViewComposer {
                             return Gate::allows('users.edit-profile');
                         }
                     ],
-                    'jaarbundel' => [
-                        'title' => 'Jaarbundel',
-                        'url' => action('UserController@showUsers'),
-                        'visible' => function(){
-                            return Gate::allows('users.show');
-                        }
+                    'commissies' => [
+                        'title' => 'Commissies',
+                        'url' => action('AboutController@showCommittees')
+                    ],
+                    'senaten' => [
+                        'title' => 'Senaten',
+                        'url' => action('AboutController@showSenates')
                     ],
                     'bk-materiaal' => [
                         'title' => 'BK-materiaal',
                         'url' => 'https://www.dropbox.com/sh/o06lxxza7u6a5ka/AACsPUF-MisVV3DSvrpb2B32a?dl=0',
-                        'visible' => function(){
-                            return Gate::allows('dropbox.show');
-                        }
-                    ],
-                    'gsv-fotos' => [
-                        'title' => 'GSV-foto\'s',
-                        'url' => 'https://www.dropbox.com/sh/35nn6690kcvk7wx/AACnG0OpTvw4I1WcvwUhOZYaa?dl=0',
                         'visible' => function(){
                             return Gate::allows('dropbox.show');
                         }
