@@ -16,6 +16,9 @@ class UserProfile extends Model {
     protected $table = 'user_profiles';
 
     protected $fillable = [
+        'firstname',
+        'middlename',
+        'lastname',
         'user_id',
         'year_group_id',
         'initials',
@@ -48,9 +51,20 @@ class UserProfile extends Model {
 
     public function scopeSearchNameAndPhone($query, $search)
     {
-        return $query->whereRaw("MATCH(users.firstname, users.middlename, users.lastname) AGAINST(? IN BOOLEAN MODE)", [$search]);
+        return $query->where(function($q) use ($search) {
+            $q->where('firstname', 'like', $search . '%')
+            ->orwhere('middlename', 'like', $search . '%')
+            ->orwhere('lastname', 'like', $search . '%');
+            });
     }
 
+    public function inmates() 
+    {
+        return UserProfile::whereRaw("REPLACE(`address`, ' ' ,'') LIKE ?", [str_replace(' ', '', $this->address)])
+        ->where('user_id', '!=', $this->user_id)
+        ->get();
+    }
+    
     public function yearGroup()
     {
         return $this->belongsTo('GSVnet\Users\YearGroup');
