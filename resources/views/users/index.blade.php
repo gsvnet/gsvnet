@@ -12,7 +12,7 @@
 			<h2 id="user-search-form-toggler">Zoek een GSV'er <span></span></h2>
 			{!! Form::open(array('method'=>'get', 'id' => 'user-search-form')) !!}
 			<div class="form-group">
-				<label class="control-label" for="naam">Zoekterm</label>
+				<label class="control-label" for="naam">Naam</label>
 				<input type="search" class="form-control search-user-input" id="naam" name="naam" placeholder="typ maar gewoon iets" value="{{{Input::get('name', '')}}}">
 			</div>
 			<div class="form-group">

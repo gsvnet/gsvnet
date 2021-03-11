@@ -41,6 +41,15 @@
                         </address>
                     </div>
                     <div class="content-column">
+						<h2>Huisgenoten</h2>
+                        <ul class="list secondary-menu">
+                            @forelse($member->profile->inmates() as $inmate)
+                                <li>{!! link_to_action('UserController@showUser', $inmate->user->present()->fullName, [$inmate->user->id]) !!}</li>
+                            @empty
+                                <li>Geen</li>
+                            @endforelse
+                        </ul>
+
                         <h2>Pa of ma</h2>
                         <ul class="list secondary-menu">
                             @forelse($member->parents as $parent)
