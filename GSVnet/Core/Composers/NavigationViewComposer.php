@@ -270,6 +270,14 @@ class NavigationViewComposer {
 //            ],
 
 
+            'activiteiten' => [
+                'title' => 'Activiteiten',
+                'url' => action('EventController@showIndex'),
+                'visible' => function(){
+                    return Auth::check() && Gate::allows('events.show-private');
+                }
+            ],
+
             'jaarbundel' => [
                 'title' => 'Jaarbundel',
                 'url' => action('UserController@showUsers'),
