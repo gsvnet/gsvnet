@@ -350,6 +350,13 @@ class NavigationViewComposer {
                             return Gate::allows('docs.show');
                         }
                     ],
+                    'admin' => [
+                        'title' => 'Admin',
+                        'url' => action('Admin\AdminController@index'),
+                        'visible' => function(){
+                            return Gate::allows('admin.show');
+                        }
+                    ],
                     'sponsorprogramma' => [
                         'title' => 'Sponsors',
                         'url' => action('HomeController@sponsorProgram'),

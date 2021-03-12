@@ -89,6 +89,10 @@ return [
             'senate' => true
         ],
 
+        'admin.show' => [
+            'type' => [User::MEMBER, User::REUNIST]
+        ],
+
         'admin' => [
             'committee' => ['webcie']
         ],
