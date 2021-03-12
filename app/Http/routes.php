@@ -10,7 +10,7 @@ Route::get('welkom', ['as' => 'home', 'uses' => 'HomeController@showNewIndex']);
 // Route::get('kiezel', 'HomeController@showKiezel');
 
 // Kei 2020
-Route::get('kei', 'HomeController@showKei');
+// Route::get('kei', 'HomeController@showKei');
 
 // Privacy-related stuff
 Route::get('privacy-statement', 'PublicFilesController@showPrivacyStatement');
