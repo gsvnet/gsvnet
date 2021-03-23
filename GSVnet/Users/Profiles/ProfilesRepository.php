@@ -68,7 +68,9 @@ class ProfilesRepository extends BaseRepository {
 
         if ( ! empty($keyword))
         {
-            $query->searchNameAndPhone($keyword);
+            $words = explode(' ', $keyword);
+
+            $query->searchNameAndPhone($words);
         }
 
         // Search for members inside region if region is valid
