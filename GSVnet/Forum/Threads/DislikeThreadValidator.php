@@ -29,10 +29,8 @@ class DislikeThreadValidator extends Validator {
 
         if($likes == 0)
         {
-            $this->addError('userId', 'Nog niet geliket');
-        }
-
-        if($thread->author_id == $data['userId'])
+            $this->addError('userId', 'Bericht nog niet geliket');
+        } else if($thread->author_id == $data['userId'])
         {
             $this->addError('userId', 'Niet je eigen posts liken!');
         }

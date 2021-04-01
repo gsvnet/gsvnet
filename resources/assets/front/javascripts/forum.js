@@ -217,7 +217,8 @@ var Forum = (function()
                 url: url,
                 type: method,
                 error: function(message){
-                    alert('Er ging iets fout met liken. Niet leuk :*(');
+                    response = message.responseJSON.userId
+                    alert(response);
                 }
             });
 

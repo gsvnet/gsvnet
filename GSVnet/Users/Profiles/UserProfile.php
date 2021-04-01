@@ -49,19 +49,26 @@ class UserProfile extends Model {
     
     public $presenter = 'GSVnet\Users\Profiles\ProfilePresenter';
 
-    public function scopeSearchNameAndPhone($query, $search)
+    public function scopeSearchNameAndPhone($query, $words)
     {
-        return $query->where(function($q) use ($search) {
-            $q->where('firstname', 'like', $search . '%')
-            ->orwhere('middlename', 'like', $search . '%')
-            ->orwhere('lastname', 'like', $search . '%');
-            });
+        foreach ($words as $key) {
+            $query = $query->where(function($q) use ($key) {
+                $q->orwhere('firstname', 'like', $key . '%')
+                ->orwhere('middlename', 'like', $key . '%')
+                ->orwhere('lastname', 'like', $key . '%');
+                });
+        }
+
+        return $query;
     }
 
     public function inmates() 
     {
-        return UserProfile::whereRaw("REPLACE(`address`, ' ' ,'') LIKE ?", [str_replace(' ', '', $this->address)])
+        return $this->whereRaw("REPLACE(`address`, ' ' ,'') LIKE ?", [str_replace(' ', '', $this->address)])
         ->where('user_id', '!=', $this->user_id)
+        ->whereHas('user', function($q){
+            $q->where('type', 2);
+        })
         ->get();
     }
     
