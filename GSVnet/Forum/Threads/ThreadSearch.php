@@ -16,12 +16,15 @@ class ThreadSearch
 
     // this stuff is just a placeholder until we implement
     // a real search system
-    public function searchPaginated($query, $perPage)
+    public function searchPaginated($query, $replies, $perPage)
     {
         $id = Auth::check() ? Auth::user()->id : 0;
        
-
-        $thread_ids = app(ReplySearch::class)->searchReplys($query);
+        if($replies) {
+            $thread_ids = app(ReplySearch::class)->searchReplys($query);
+        } else {
+            $thread_ids = [];
+        }
         
         $query = $this->model->where(function($q) use ($query, $thread_ids) {
             $q->where('subject', 'like', '%' . $query . '%')
