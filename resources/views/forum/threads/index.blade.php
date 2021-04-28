@@ -8,13 +8,6 @@
 @section('body-id', 'thread-index-page')
 
 @section('content')
-
-@if(rand(0, 1) < 0.05)
-<div class="nyan">
-    <iframe class="nyan" src="https://www.youtube.com/embed/EErY75MXYXI?controls=0&autoplay=1&modestbranding=1&disablekb=1&iv_load_policy=3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-@endif
-
 <div class="column-holder">
     <h1>Forum</h1>
     @if(Input::has('tags'))
