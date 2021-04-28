@@ -7,7 +7,7 @@ var uglify = require('gulp-uglify-es').default;
 var imagemin = require('gulp-imagemin');
 var sass = require('gulp-sass');
 var webpack = require('webpack-stream');
-var eventStream = require('event-stream')
+var eventStream = require('event-stream');
 
 gulp.task('css', function () {
     return gulp.src([
