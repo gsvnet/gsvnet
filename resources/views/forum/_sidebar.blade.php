@@ -13,6 +13,7 @@
             <h2>Het forum doorzoeken</h2>
             {!! Former::open()->action(action('ForumThreadsController@getSearch'))->method('get') !!}
             {!! Former::text('query')->placeholder('Zoeken op het forum')->label(false) !!}
+            {!! Former::checkbox('replies', 'Doorzoek ook de berichten') !!}
             {!! Former::close() !!}
         </div>
     </div>
