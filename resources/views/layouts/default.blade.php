@@ -42,10 +42,12 @@
     @show
 </head>
 <body id="@yield('body-id', 'gsvnet')">
-    <div class="overal-header">
-        @include('layouts.header')
-        @yield('top-slideshow')
-    </div>
+    @section('header')
+        <div class="overal-header">
+            @include('layouts.header')
+            @yield('top-slideshow')
+        </div>
+    @show
 
     @yield('content')
 
@@ -98,28 +100,30 @@
         @endif
     @endcan
 
-    <footer class="site-footer column-holder">
-        <p>Caput sapientiae est reverentia Domini</p>
-        <address class="address-info" itemscope itemtype="http://data-vocabulary.org/Organization">
-            <p>
-                <span itemprop="name"><a href="//www.gsvnet.nl/" itemprop="url">Gereformeerde Studenten Vereniging</a></span>.
-                <span itemprop="address" itemscope itemtype="http://data-vocabulary.org/Address">
-                    <span itemprop="street-address">Hereweg 40</span>,
-                    <span itemprop="locality">Groningen</span>.
-                    <meta itemprop="region" content="Groningen" />
-                    <meta itemprop="country-name" content="Nederland" />
-                </span>
-                <a href="/de-gsv/contact" title="Contact">Contactgegevens.</a>
-            </p>
-            <meta itemprop="latitude" content="53.2093731" />
-            <meta itemprop="longitude" content="6.5723083" />
-            <p></p>
-        </address>
+    @section('footer')
+        <footer class="site-footer column-holder">
+            <p>Caput sapientiae est reverentia Domini</p>
+            <address class="address-info" itemscope itemtype="http://data-vocabulary.org/Organization">
+                <p>
+                    <span itemprop="name"><a href="//www.gsvnet.nl/" itemprop="url">Gereformeerde Studenten Vereniging</a></span>.
+                    <span itemprop="address" itemscope itemtype="http://data-vocabulary.org/Address">
+                        <span itemprop="street-address">Hereweg 40</span>,
+                        <span itemprop="locality">Groningen</span>.
+                        <meta itemprop="region" content="Groningen" />
+                        <meta itemprop="country-name" content="Nederland" />
+                    </span>
+                    <a href="/de-gsv/contact" title="Contact">Contactgegevens.</a>
+                </p>
+                <meta itemprop="latitude" content="53.2093731" />
+                <meta itemprop="longitude" content="6.5723083" />
+                <p></p>
+            </address>
 
-        <p class="right">
-            <i><a href="/privacy-statement" title="Privacyverklaring">Privacyverklaring</a></i>
-        </p>
-    </footer>
+            <p class="right">
+                <i><a href="/privacy-statement" title="Privacyverklaring">Privacyverklaring</a></i>
+            </p>
+        </footer>
+    @show
 
     @if (Auth::guest())
         @include('login-dialog')
