@@ -289,3 +289,8 @@ Route::group(['prefix' => 'api', 'middleware' => ['cors']], function() {
 Route::group(['prefix' => 'api', 'middleware' => ['cors']], function() {
     Route::get('shops', 'ExtensionApiController@show');
 });
+
+// Iframes
+Route::group(['prefix' => 'iframe'], function() {
+    Route::get('inschrijven', 'MemberController@becomeMemberIFrame');
+});
