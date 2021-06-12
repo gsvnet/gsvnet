@@ -23,8 +23,8 @@ class FrameGuard
         
         $response = $next($request);
 
-        $response->headers->set('Content-Security-Policy', "frame-ancestors 'none'");
-        $response->headers->set('X-Frame-Options', 'deny');
+        $response->headers->set('Content-Security-Policy', "frame-ancestors 'self'");
+        $response->headers->set('X-Frame-Options', 'SAMEORIGIN');
 
         return $response;
     }
