@@ -15,13 +15,7 @@
                 <p>Alvast bedankt voor je opgave! Je ontvangt zo spoedig mogelijk een mail met specifieke informatie. Neem contact op met de PRescie (prescie@gsvnet.nl) indien je binnen een uur geen bevestiginsmail ontvangen hebt.</p>
             </div>
         @else
-            <div class="column-holder" role="main">
-                <h1>Word lid!</h1>
-                <p class="delta">Supermooi dat je interesse hebt in de GSV! Volg de stappen om je aan te melden voor de GSV. Gewoonlijk dien je dan ook onze introductieperiode te doorlopen (het "novitiaat"), maar die gaat vanwege Corona helaas niet door. Er wordt gewerkt aan een alternatieve manier van kennismaken met de vereniging.</p>
-                <p>Voel je vooral vrij om voorafgaand aan het novitiaat mee te genieten van alle activiteiten die wij organiseren tijdens de KEIweek.</p>
-            </div>
             @include('word-lid.become-member')
-
         @endif
     </div>
 @stop
