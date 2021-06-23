@@ -104,7 +104,7 @@ class ProfilesRepository extends BaseRepository {
         {
             return UserProfile::whereRaw("$birthday between \"{$from}\" and \"{$to}\"")
                 ->whereHas('user', function($q) {
-                    $q->where('type', '=', User::Member);
+                    $q->where('type', '=', User::MEMBER);
                 })
                 ->orderBy(\DB::raw($birthday))
                 ->orderBy('birthdate', 'ASC')

@@ -13,6 +13,7 @@ use GSVnet\Forum\Threads\ThreadSlug;
 use GSVnet\Permissions\NoPermissionException;
 use GSVnet\Tags\TagRepository;
 use GSVnet\Users\UsersRepository;
+use GSVnet\Users\Profiles\ProfilesRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -28,13 +29,19 @@ class ForumThreadsController extends BaseController {
     protected $threadsPerPage = 50;
     protected $repliesPerPage = 20;
 
-    public function __construct(ThreadRepository $threads, ReplyRepository $replies, TagRepository $tags, UsersRepository $users, EventsRepository $events)
+    public function __construct(ThreadRepository $threads,
+                                ReplyRepository $replies,
+                                TagRepository $tags,
+                                UsersRepository $users,
+                                ProfilesRepository $profiles,
+                                EventsRepository $events)
     {
         parent::__construct();
 
         $this->threads = $threads;
         $this->tags = $tags;
         $this->users = $users;
+        $this->profiles = $profiles;
         $this->replies = $replies;
 
         $events = $events->upcoming(5);
@@ -54,7 +61,11 @@ class ForumThreadsController extends BaseController {
         $queryString = !empty($tagAppends['tags']) ? '?tags=' . implode(',', (array)$tagAppends['tags']) : '';
         $threads->appends($tagAppends);
 
-        return view('forum.threads.index', compact('threads', 'tags', 'queryString'));
+        // Get the birthdays
+        $birthdays = $this->profiles->byUpcomingBirthdays(1);
+
+        return view('forum.threads.index',
+            compact('threads', 'tags', 'queryString', 'birthdays'));
     }
 
     // show a thread
