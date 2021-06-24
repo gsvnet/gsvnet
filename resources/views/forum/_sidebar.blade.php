@@ -39,32 +39,6 @@
             @endcan
         @endif
 
-        @if (Auth::check() and Auth::user()->isMember())
-            <hr>
-            <div class="content-column">
-                <h2>Verjaardagen</h2>
-                <ul class="unstyled-list title-description-list">
-                    @if ($birthdays->count())
-                        @foreach ($birthdays as $profile)
-                            <li>
-                                <span class="list-title">
-                                    @can('users.show')
-                                        {!! link_to_action('UserController@showUser', $profile->user->present()->fullName, $profile->user->id) !!}
-                                    @else
-                                        {{ $profile->user->present()->fullName }}
-                                    @endcan
-                                </span>
-                                <time class="list-description grey">{{ $profile->present()->birthday }}</time>
-                            </li>
-                        @endforeach
-                    @else
-                        <li>Geen verjaardagen deze week.</li>
-                    @endif
-                </ul>
-            </div>
-        @endif
-
-        <hr>
         <h2>Sponsors</h2>
         <p>
             <a href="https://partnerprogramma.bol.com/click/click?p=1&amp;t=url&amp;s=33791&amp;f=TXL&amp;url=http%3A%2F%2Fwww.bol.com&amp;name=GSV-tekstadvertentie" title="Bol.com" class="button">Bol.com</a>
