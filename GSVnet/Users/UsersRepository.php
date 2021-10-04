@@ -286,10 +286,37 @@ class UsersRepository extends BaseRepository
             return User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.type, users.username, users.firstname, users.middlename, users.lastname'))
                 ->join('forum_replies', 'users.id', '=', 'forum_replies.author_id')
                 ->groupBy('forum_replies.author_id')
-                ->orderBy('num', 'DESC')
+                ->orderBy('num', 'DESC', 'users.lastname')
                 ->take($num)
                 ->get();
         });
+    }
+
+    public function postsAllTimeUser($userid)
+    {
+        return User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.type, users.username, users.firstname, users.middlename, users.lastname'))
+            ->join('forum_replies', 'users.id', '=', 'forum_replies.author_id')
+            ->groupBy('forum_replies.author_id')
+            ->where('users.id', $userid)
+            ->first();
+    }
+
+    public function postsAllTimeUserRank($activeUser)
+    {
+        $users = User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.type, users.username, users.firstname, users.middlename, users.lastname'))
+            ->join('forum_replies', 'users.id', '=', 'forum_replies.author_id')
+            ->groupBy('forum_replies.author_id')
+            ->orderBy('num', 'DESC', 'users.lastname')
+            ->get();
+        
+        $rank = 1;
+        foreach ($users as $user) {
+            if ($user->id == $activeUser->id) {
+                break;
+            }
+            $rank++;
+        }
+        return $rank;
     }
 
     public function getSICRecipients()
