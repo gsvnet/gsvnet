@@ -49,8 +49,5 @@
                 </div>
             @endif
         </section>
-        <div class="secondary-column">
-            @include('forum._sidebar', ['query' => $query])
-        </div>
     </div>
 @stop

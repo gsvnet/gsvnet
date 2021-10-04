@@ -20,9 +20,5 @@
 
         {!! $threads->render() !!}
     </section>
-
-    <div class="secondary-column">
-        @include('forum._sidebar')
-    </div>
 </div>
 @stop
