@@ -32,10 +32,5 @@
             {!! Former::close() !!}
         </div>
     </div>
-
-
-    <div class="secondary-column">
-        @include('forum._sidebar')
-    </div>
 </div>
 @stop
