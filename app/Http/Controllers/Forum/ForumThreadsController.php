@@ -213,6 +213,8 @@ class ForumThreadsController extends BaseController {
         $perMonthUsers = $this->users->mostPostsPreviousMonth();
         $perWeekUsers = $this->users->mostPostsPreviousWeek();
         $allTimeUsers = $this->users->mostPostsAllTime();
+        $allTimeUser = $this->users->postsAllTimeUser(Auth::user()->id);
+        $allTimeUserRank = $this->users->postsAllTimeUserRank($allTimeUser);
         $likesGiven = $this->threads->totalLikesGivenPerYearGroup();
         $likesReceived = $this->threads->totalLikesReceivedPerYearGroup();
 
@@ -221,7 +223,9 @@ class ForumThreadsController extends BaseController {
             'perWeekUsers',
             'allTimeUsers',
             'likesGiven',
-            'likesReceived'
+            'likesReceived',
+            'allTimeUser',
+            'allTimeUserRank'
         ));
     }
 

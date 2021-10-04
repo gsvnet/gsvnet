@@ -147,7 +147,13 @@
                     @foreach ($allTimeUsers as $index => $user)
                         @include('forum/_posts_row', ['index' => $index + 1, 'user' => $user])
                     @endforeach
+
                 </tbody>
+                <tfoot style = 'border-top: 2px solid' align = 'center'>
+                    @if ($allTimeUserRank > 250)
+                        @include('forum/_posts_row', ['index' => $allTimeUserRank, 'user' => $allTimeUser])
+                    @endif
+                </tfoot>
             </table>
         </section>
         <div class="secondary-column">
