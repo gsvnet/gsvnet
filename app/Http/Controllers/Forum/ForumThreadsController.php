@@ -202,7 +202,9 @@ class ForumThreadsController extends BaseController {
     public function getSearch()
     {
         $query = Input::get('query');
-        $results = app(ThreadSearch::class)->searchPaginated($query, $this->threadsPerPage);
+        $replies = Input::get('replies');
+        
+        $results = app(ThreadSearch::class)->searchPaginated($query, $replies, $this->threadsPerPage);
         $results->appends(['query' => $query]);
 
         return view('forum.search', compact('query', 'results'));

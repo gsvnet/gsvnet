@@ -35,6 +35,11 @@ class MemberController extends BaseController
         return view('word-lid.word-lid');
     }
 
+    public function becomeMemberIFrame()
+    {
+        return view('iframes.word-lid');
+    }
+
     /**
      * This method is still a mess due to new requirements... It currently has too many
      * responsibilities. Should be refactored.
