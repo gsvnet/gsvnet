@@ -120,6 +120,7 @@
 			max-width: 45px;
 			min-height: 1px;
 			border-radius: 50%;
+			border: $darkPurple 0px solid;
 			overflow: hidden;
 		}
 
@@ -139,7 +140,7 @@
 		background: #EEE;
 		text-decoration: none;
 		display: block;
-		border-radius: 2px;
+		border-radius: 50%;
 		font-family: $font-family-sans;
 
 		&.small {
@@ -155,6 +156,13 @@
 		.media-counter, a.media-counter:link, a.media-counter:visited {
 			background: $darkPurple;
 			color: #FFF;
+		}
+
+		.img-wrap {
+			border-bottom: $darkPurple 3px solid;
+			border-left: $darkPurple 2px solid;
+			border-right: $darkPurple 2px solid;
+			border-top: $darkPurple 1px solid;
 		}
 	}
 	
@@ -220,8 +228,8 @@
 			line-height: inherit;
 			border-radius: 0;
 			margin-top: 0;
-        }
-        
+        }    
+
         .media-avatar {
             min-height: calc(10vw - #{$column-padding} / 10);
         }
