@@ -5,7 +5,7 @@
         @else
             {!! $thread->author->present()->avatarDeferred(45) !!}
         @endif
-        {!! $thread->present()->replyCounter !!}
+    <!--    {!! $thread->present()->replyCounter !!} Deleted for design improvement, can be uncommented without problems-->
     </div>
     <div class="media-body">
         <h3><a href="{{ $thread->present()->lastPageUrl }}" title="Forum topic {{{ $thread->subject }}}">{{{ $thread->subject }}}</a></h3>
@@ -22,6 +22,10 @@
             @if($thread->mostRecentReply)
                 <li><a href="{{$thread->present()->latestReplyUrl}}" title="Ga naar de laatste reactie van het onderwerp {{{$thread->subject}}}"><time datetime="{{{$thread->mostRecentReply->created_at->toISO8601String()}}}" title="{{{$thread->mostRecentReply->created_at->formatLocalized('%A %e %B %Y %T')}}}">{{ $thread->mostRecentReply->present()->updated_ago }}</time> door {{{ $thread->present()->mostRecentReplier }}}</a></li>
             @endif
+
+            <li>
+                {!! $thread->present()->replyCounterList !!} berichten
+            </li>
         </ul>
     </div>
 </div>

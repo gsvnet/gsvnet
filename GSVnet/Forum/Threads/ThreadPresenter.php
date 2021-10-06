@@ -113,6 +113,11 @@ class ThreadPresenter extends Presenter
         return '<a class="' . $class . '" href="' . $this->lastPageUrl . '">' . $count . '</a>';
     }
 
+    public function replyCounterList()
+    {
+        return $this->reply_count + 1;
+    }
+
     public function visited()
     {
         if( !Auth::check() )

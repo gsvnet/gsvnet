@@ -1,12 +1,12 @@
 <div class="thread _post">
     <div class="forum-post-data">
         <div class="avatar">
-            <img src="{{ $thread->author->present()->avatar(40) }}" width="40" height="40">
+            <img src="{{ $thread->author->present()->avatar(40) }}" width="40" height="40" style="border-radius: 50%">
         </div>
-        <div class="like-box">
+        <div class="like-box" style="border-radius: 15%">
             @can('thread.like', $thread)
-                <button class="like-box--button {!! $thread->present()->likeClass !!}" data-type="thread" data-id="{!! $thread->id !!}">
-                    +<span class="like-box--count">{{ $thread->like_count }}</span>
+                <button style="border-radius: 15%" class="like-box--button {!! $thread->present()->likeClass !!}" data-type="thread" data-id="{!! $thread->id !!}">
+                    +<span style="border-radius: 15%" class="like-box--count">{{ $thread->like_count }}</span>
                 </button>
             @else
                 +{{ $thread->like_count }}

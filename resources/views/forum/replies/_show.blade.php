@@ -2,13 +2,13 @@
     <div class="forum-post-data">
         @if($reply->author)
         <div class="avatar">
-            <img src="{{ $reply->author->present()->avatar(40) }}" width="40" height="40">
+            <img src="{{ $reply->author->present()->avatar(40) }}" width="40" height="40" style="border-radius: 50%">
         </div>
         @endif
-        <div class="like-box">
+        <div class="like-box" style="border-radius: 15%">
             @can('reply.like', $reply)
-                <button class="like-box--button {!! $reply->present()->likeClass !!}" data-type="reply" data-id="{!! $reply->id !!}">
-                    +<span class="like-box--count">{{ $reply->like_count }}</span>
+                <button style="border-radius: 15%" class="like-box--button {!! $reply->present()->likeClass !!}" data-type="reply" data-id="{!! $reply->id !!}">
+                    +<span style="border-radius: 15%" class="like-box--count">{{ $reply->like_count }}</span>
                 </button>
             @else
                 +{{ $reply->like_count }}
