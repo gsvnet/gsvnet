@@ -76,6 +76,7 @@ class ApiController extends BaseController {
                 'description' => $event->meta_description,
                 'start_date' => $event->start_date,
                 'start_time' => $event->start_time,
+                'end_date' => $event->end_date,
                 'type' => $event->type
             ];
         });
