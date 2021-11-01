@@ -6,18 +6,24 @@ use GSVnet\Users\YearGroupRepository;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
 use GSVnet\Regions\RegionsRepository;
+use GSVnet\Events\EventsRepository;
 
 class ApiController extends BaseController {
 
     private $profiles;
     private $yearGroups;
     private $regions;
+    private $events;
 
-    public function __construct(ProfilesRepository $profiles, YearGroupRepository $yearGroups, RegionsRepository $regions)
+    public function __construct(ProfilesRepository $profiles,
+                                YearGroupRepository $yearGroups,
+                                RegionsRepository $regions,
+                                EventsRepository $events)
     {
         $this->profiles = $profiles;
         $this->yearGroups = $yearGroups;
         $this->regions = $regions;
+        $this->events = $events;
         parent::__construct();
     }
 
@@ -58,6 +64,21 @@ class ApiController extends BaseController {
             ];
         });
 
+        return response()->json($formatted);
+    }
+
+    public function events() {
+        $events = $this->events->upcoming();
+
+        $formatted = $events->map(function($event) {
+            return [
+                'title' => $event->title,
+                'description' => $event->meta_description,
+                'start_date' => $event->start_date,
+                'start_time' => $event->start_time,
+                'type' => $event->type
+            ];
+        });
         return response()->json($formatted);
     }
 }
