@@ -159,10 +159,8 @@
 		}
 
 		.img-wrap {
-			border-bottom: $darkPurple 3px solid;
-			border-left: $darkPurple 2px solid;
-			border-right: $darkPurple 2px solid;
-			border-top: $darkPurple 1px solid;
+			border: #FFF 2px solid;
+			outline: $darkPurple 2px solid;
 		}
 	}
 	
@@ -204,7 +202,7 @@
 
 .media-rows {
 	&.has-counters {
-		.media-body {
+		.media-body {	
 			padding-right: 50px;
 		}
 	}
