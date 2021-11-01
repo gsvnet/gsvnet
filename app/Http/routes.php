@@ -285,9 +285,12 @@ Route::group(['prefix' => 'api', 'middleware' => ['cors']], function() {
     Route::post('login', 'Malfonds\SessionController@login');
 });
 
-// Shop extension
 Route::group(['prefix' => 'api', 'middleware' => ['cors']], function() {
+    // Shop extension
     Route::get('shops', 'ExtensionApiController@show');
+
+    // API for GSVGroningen.nl
+    Route::get('events', 'ApiController@events');
 });
 
 // Iframes

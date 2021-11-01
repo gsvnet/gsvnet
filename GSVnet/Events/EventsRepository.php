@@ -81,7 +81,7 @@ class EventsRepository {
         return Event::published($published)->public()->orderBy('start_date', 'desc')->orderBy('start_time', 'desc')->paginate($amount);
     }
 
-    public function upcoming($amount = 10, $published = true)
+    public function upcoming($amount = null, $published = true)
     {
         $events = Event::where('end_date', '>=', date('Y-m-d'))
             ->orderBy('start_date', 'asc')
@@ -91,6 +91,10 @@ class EventsRepository {
         if (Gate::denies('events.show-private'))
         {
             $events = $events->public();
+        }
+
+        if ($amount == null) {
+            return $events->get();
         }
 
         return $events->paginate($amount);
