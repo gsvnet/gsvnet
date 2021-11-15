@@ -160,7 +160,11 @@
 
 		.img-wrap {
 			border: #FFF 2px solid;
-			outline: $darkPurple 2px solid;
+		}
+
+		.media-details {
+			border: $darkPurple 2px solid;
+			border-radius: 50%;
 		}
 	}
 	
