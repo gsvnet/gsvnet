@@ -19,13 +19,17 @@
             @endcan
             </li>
 
+            <li>
+                @if($thread->present()->replyCounterList == 1)
+                    {!! $thread->present()->replyCounterList !!} bericht
+                @else
+                    {!! $thread->present()->replyCounterList !!} berichten
+                @endif
+            </li>
+
             @if($thread->mostRecentReply)
                 <li><a href="{{$thread->present()->latestReplyUrl}}" title="Ga naar de laatste reactie van het onderwerp {{{$thread->subject}}}"><time datetime="{{{$thread->mostRecentReply->created_at->toISO8601String()}}}" title="{{{$thread->mostRecentReply->created_at->formatLocalized('%A %e %B %Y %T')}}}">{{ $thread->mostRecentReply->present()->updated_ago }}</time> door {{{ $thread->present()->mostRecentReplier }}}</a></li>
             @endif
-
-            <li>
-                {!! $thread->present()->replyCounterList !!} berichten
-            </li>
         </ul>
     </div>
 </div>
