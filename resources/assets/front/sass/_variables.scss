@@ -1,7 +1,7 @@
 //-- Colors
-$body-copy-color: #d95635;
-$darkPurple: #1a6d4f;
-$lightPurple: #d95635;
+$body-copy-color: #444;
+$darkPurple: #2A1443;
+$lightPurple: lighten($darkPurple, 15%);
 $lighterPurple: lighten($darkPurple, 20%);
 $white: #FFF;
 $darkGrey: #AAA;
