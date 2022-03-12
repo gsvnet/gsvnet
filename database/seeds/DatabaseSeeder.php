@@ -51,7 +51,8 @@ class DatabaseSeeder extends Seeder {
         'TagSeeder',
         'ForumTableSeeder',
         'AdminUserSeeder',
-        'RegionsTableSeeder'
+        'RegionsTableSeeder',
+        'LikeSeeder'
     ];
 
     /**
