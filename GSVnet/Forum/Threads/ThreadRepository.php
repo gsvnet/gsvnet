@@ -63,6 +63,9 @@ class ThreadRepository extends EloquentRepository
             $query->with(['likes' => function($q) use ($id){
                 $q->where('user_id', $id);
             }]);
+
+            // Get all false likes
+            $query->with('falselikes.user');
         }
 
         $query->orderBy('created_at', 'asc');
