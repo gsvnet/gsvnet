@@ -219,17 +219,9 @@ app = (function() {
 		let closeButtons = document.getElementsByClassName("modal-button");
 		let likers = document.getElementsByClassName("likers");
 		for (var i = 0; i < likers.length; i++) {
-			window.addEventListener("click", function(modal) {
+			likers[i].onclick = function(container, modal, button) {
 				return function(e) {
-					if (e.target === modal) {
-						closeModal(modal);
-					}
-				}
-			}(modals[i]));
-
-			likers[i].onclick = function(container, modal) {
-				return function(e) {
-					if (e.target === container) {
+					if (e.target !== modal && e.target !== button) {
 						let modalContent = modal.childNodes[1];
 
 						modal.style.display = 'block';
@@ -240,13 +232,21 @@ app = (function() {
 						}, 100);
 					}
 				}
-			}(likers[i], modals[i]);
+			}(likers[i], modals[i], closeButtons[i]);
 
 			closeButtons[i].onclick = function(modal) {
 				return function(e) {
 					closeModal(modal);
 				}
 			}(modals[i]);
+
+			window.addEventListener("click", function(modal) {
+				return function(e) {
+					if (e.target === modal) {
+						closeModal(modal);
+					}
+				}
+			}(modals[i]));
 		}
 
 		function closeModal(modal) {
