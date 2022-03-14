@@ -46,9 +46,31 @@
         {!! $reply->present()->bodyFormatted !!}
     </div>
     <div class="likers">
+        @php
+            $falselikers = [];
+            for ($i = 0; $i < $reply->like_count; $i++) {
+                $falselikers[] = $reply->falselikes[$i]->user;
+            }
+
+            // Check if user has liked the post. If so, put user at the top of the
+            // falselikers list.
+            $ids = array_map(function ($user) {
+                return $user->id;
+            }, $falselikers);
+            if (Auth::check() && !$reply->likes->isEmpty()) {
+                if (in_array(Auth::user()->id, $ids)) {
+                    $idx = array_search(Auth::user()->id, $ids);
+                    $falselikers[$idx] = $falselikers[0];
+                }
+                $falselikers[0] = Auth::user();
+            }
+        @endphp
+
         <div class="images">
             @for($i = 0; $i < min($reply->like_count, 3); $i++)
-                <img src="{{ $reply->falselikes[$i]->user->present()->avatar(40) }}" width="40" height="40" style="border-radius: 50%">
+                <div>
+                    <img src="{{ $falselikers[$i]->present()->avatar(40) }}" width="40" height="40" style="border-radius: 50%">
+                </div>
             @endfor
         </div>
 
@@ -65,8 +87,8 @@
                 <ul>
                     @for($i = 0; $i < $reply->like_count; $i++)
                         <li>
-                            <img src="{{ $reply->falselikes[$i]->user->present()->avatar(40) }}" width="40" height="40" style="border-radius: 50%">
-                            <div class="text">{!! $reply->falselikes[$i]->user->username !!}</div>
+                            <img src="{{ $falselikers[$i]->present()->avatar(40) }}" width="40" height="40" style="border-radius: 50%">
+                            <div class="text">{!! $falselikers[$i]->username !!}</div>
                         </li>
                     @endfor
                 </ul>
