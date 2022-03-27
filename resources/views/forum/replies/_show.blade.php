@@ -45,7 +45,7 @@
     <div class="body">
         {!! $reply->present()->bodyFormatted !!}
     </div>
-    <div class="likers">
+    <div class="likers" data-id="{!! $reply->id !!}">
         @php
             $falselikers = [];
             for ($i = 0; $i < $reply->like_count; $i++) {
@@ -58,6 +58,7 @@
                 return $user->id;
             }, $falselikers);
             if (Auth::check() && !$reply->likes->isEmpty()) {
+                // If user is already in the falselikers list, switch them with the user at the top of the list.
                 if (in_array(Auth::user()->id, $ids)) {
                     $idx = array_search(Auth::user()->id, $ids);
                     $falselikers[$idx] = $falselikers[0];

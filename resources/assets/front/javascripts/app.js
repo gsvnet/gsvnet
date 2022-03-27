@@ -214,51 +214,6 @@ app = (function() {
 		Forum.initThreadPage();
 		Forum.loadDeferredAvatars();
         Forum.initLikes();
-
-		let modals = document.getElementsByClassName("modal-bg");
-		let closeButtons = document.getElementsByClassName("modal-button");
-		let likers = document.getElementsByClassName("likers");
-		for (var i = 0; i < likers.length; i++) {
-			likers[i].onclick = function(container, modal, button) {
-				return function(e) {
-					if (e.target !== modal && e.target !== button) {
-						let modalContent = modal.childNodes[1];
-
-						modal.style.display = 'block';
-
-						setTimeout(() => {
-							modal.style.backgroundColor = "rgba(0,0,0,0.4)";
-							modalContent.style.marginTop = "15%";
-						}, 100);
-					}
-				}
-			}(likers[i], modals[i], closeButtons[i]);
-
-			closeButtons[i].onclick = function(modal) {
-				return function(e) {
-					closeModal(modal);
-				}
-			}(modals[i]);
-
-			window.addEventListener("click", function(modal) {
-				return function(e) {
-					if (e.target === modal) {
-						closeModal(modal);
-					}
-				}
-			}(modals[i]));
-		}
-
-		function closeModal(modal) {
-			let modalContent = modal.childNodes[1];
-
-			modal.style.backgroundColor = "rgba(0,0,0,0)";
-			modalContent.style.marginTop = "100vh";
-
-			setTimeout(() => {
-				modal.style.display = 'none';
-			}, 500);
-		}
 	}
 
 	function threadsIndex() {
