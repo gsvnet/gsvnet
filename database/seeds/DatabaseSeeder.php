@@ -35,8 +35,7 @@ class DatabaseSeeder extends Seeder {
         'user_profiles',
         'user_senate',
         'users',
-        'year_groups',
-        'falsible_falselikes'
+        'year_groups'
     ];
 
     protected $seeders = [
@@ -52,8 +51,7 @@ class DatabaseSeeder extends Seeder {
         'TagSeeder',
         'ForumTableSeeder',
         'AdminUserSeeder',
-        'RegionsTableSeeder',
-        'LikeSeeder'
+        'RegionsTableSeeder'
     ];
 
     /**

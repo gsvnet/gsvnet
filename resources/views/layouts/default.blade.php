@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700,400italic">
     @section('stylesheets')
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.8.9">
+        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.8.8">
     @show
 </head>
 <body id="@yield('body-id', 'gsvnet')">
@@ -122,10 +122,6 @@
             <p class="right">
                 <i><a href="/privacy-statement" title="Privacyverklaring">Privacyverklaring</a></i>
             </p>
-
-            @if(Auth::check())
-                <div id="js-username" style="display: none">{{ Auth::user()->username }}</div>
-            @endif
         </footer>
     @show
 
@@ -146,7 +142,7 @@
 
         @include('partials/_proxyredirect')
         
-        <script async src="/build-javascripts/app.js?v=1.5.9"></script>
+        <script async src="/build-javascripts/app.js?v=1.5.8"></script>
 
         @if(!Config::get('app.debug'))
             @include('partials/_analytics')
