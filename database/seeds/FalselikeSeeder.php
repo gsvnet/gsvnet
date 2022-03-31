@@ -24,6 +24,8 @@ class FalselikeSeeder extends Seeder {
     }
 
     public function run() {
+        DB::table('falsible_falselikes')->truncate();
+
         $this->createFalseLikes($this->threads);
         $this->createFalseLikes($this->replies);
     }
