@@ -6,12 +6,15 @@ use GSV\Commands\Forum\StartThreadCommand;
 use GSV\Commands\Forum\VisitThreadCommand;
 use GSV\Http\Validators\StartThreadValidator;
 use GSVnet\Events\EventsRepository;
+use GSVnet\Forum\Falselike;
+use GSVnet\Forum\Like;
 use GSVnet\Forum\Replies\ReplyRepository;
 use GSVnet\Forum\Threads\ThreadRepository;
 use GSVnet\Forum\Threads\ThreadSearch;
 use GSVnet\Forum\Threads\ThreadSlug;
 use GSVnet\Permissions\NoPermissionException;
 use GSVnet\Tags\TagRepository;
+use GSVnet\Users\User;
 use GSVnet\Users\UsersRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -89,7 +92,7 @@ class ForumThreadsController extends BaseController {
             ]);
         }
 
-        return view('forum.threads.show', compact('thread', 'replies', 'author'));
+        return view('forum.threads.show', compact('thread', 'replies', 'author', 'activeUsers'));
     }
 
     public function getCreateThread()
