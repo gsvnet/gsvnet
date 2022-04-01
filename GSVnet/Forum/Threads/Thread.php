@@ -1,5 +1,6 @@
 <?php namespace GSVnet\Forum\Threads;
 
+use GSVnet\Forum\FalsibleTrait;
 use GSVnet\Forum\LikableTrait;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
@@ -10,6 +11,7 @@ class Thread extends Model
     use PresentableTrait;
     use SoftDeletes;
     use LikableTrait;
+    use FalsibleTrait;
     
     protected $table = 'forum_threads';
     protected $fillable = ['subject', 'body', 'author_id', 'slug', 'public', 'private'];

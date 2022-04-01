@@ -1,5 +1,6 @@
 <?php namespace GSVnet\Forum\Replies;
 
+use GSVnet\Forum\FalsibleTrait;
 use GSVnet\Users\User;
 use GSVnet\Forum\LikableTrait;
 use GSVnet\Forum\Threads\Thread;
@@ -10,6 +11,7 @@ class Reply extends Model
 {
     use PresentableTrait;
     use LikableTrait;
+    use FalsibleTrait;
     
     protected $table = 'forum_replies';
     protected $fillable = ['body', 'author_id', 'thread_id'];
