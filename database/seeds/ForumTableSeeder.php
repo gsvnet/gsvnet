@@ -14,8 +14,8 @@ class ForumTableSeeder extends Seeder {
     private $time;
     private $faker;
     private $userIds;
-    private $numThreads = 30;
-    private $maxReplies = 40;
+    private $numThreads = 7000; // In GSVnet 7154
+    private $maxReplies = 60; // In GSVnet a total of 367916
 
     function __construct()
     {
@@ -35,6 +35,8 @@ class ForumTableSeeder extends Seeder {
 
         foreach ($threads as $id => $thread)
         {
+            echo $id." out of ".$this->numThreads."\r";
+
             $replyId++;
             $tagIds = $this->faker->randomElements($this->tagIds, 2);
 
@@ -43,6 +45,8 @@ class ForumTableSeeder extends Seeder {
 
             $threads[$id]['most_recent_reply_id'] = $replyId;
             $threads[$id]['updated_at'] = $lastReply['created_at'];
+
+            $toBeSavedThreads[] = $threads[$id];
 
             for ($i = 1; $i < $thread['reply_count']; $i++, $replyId++)
             {
@@ -53,9 +57,19 @@ class ForumTableSeeder extends Seeder {
             {
                 $tags[] = $this->generateTag($id+1, $tagId);
             }
+
+            if ($id % 100 == 0) {
+                DB::table('forum_threads')->insert($toBeSavedThreads);
+                DB::table('forum_replies')->insert($replies);
+                DB::table('tagged_items')->insert($tags);
+
+                $toBeSavedThreads = [];
+                $replies = [];
+                $tags = [];
+            }
         }
 
-        DB::table('forum_threads')->insert($threads);
+        DB::table('forum_threads')->insert($toBeSavedThreads);
         DB::table('forum_replies')->insert($replies);
         DB::table('tagged_items')->insert($tags);
     }
