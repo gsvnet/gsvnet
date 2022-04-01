@@ -18,7 +18,7 @@ class CreateFalsibleFalselikesTable extends Migration
             $table->string('falsible_type', 100);
             $table->string('user_id', 36)->index();
             $table->timestamps();
-            $table->unique(['falsible_id', 'falsible_type', 'user_id'], 'likeable_likes_unique');
+//            $table->unique(['falsible_id', 'falsible_type', 'user_id'], 'likeable_likes_unique');
         });
     }
 
