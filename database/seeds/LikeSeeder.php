@@ -9,10 +9,14 @@ use Illuminate\Support\Facades\DB;
 
 class LikeSeeder extends Seeder
 {
+    private $replies;
+    private $threads;
     private $userIds;
     private $time;
 
     public function __construct() {
+        $this->replies = Reply::all();
+        $this->threads = Thread::all();
         $this->userIds = User::lists('id')->all();
         $this->time = Carbon::now();
     }
@@ -24,46 +28,30 @@ class LikeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('likeable_likes')->truncate();
-
         $likes = [];
 
-        $this->generateLikes('forum_replies', Reply::class);
-        $this->generateLikes('forum_threads', Thread::class);
+        $this->generateLikes($this->replies);
+        $this->generateLikes($this->threads);
 
         DB::table('likeable_likes')->insert($likes);
     }
 
-    private function generateLikes($table, $class) {
-        $count = DB::table($table)->count();
-        $bar = $this->command->getOutput()->createProgressBar($count);
+    private function generateLikes($collection) {
+        $likes = [];
 
-        DB::table($table)->chunk(100, function($likables) use ($table, $class, $bar) {
-            $likes = [];
+        foreach ($collection as $likable_item) {
+            $numLikes = rand(2, 40);
+            // Silently allow this to be the author of the reply
+            $likers = array_rand(array_flip($this->userIds), $numLikes);
 
-            foreach ($likables as $likable) {
-                $bar->advance();
+            foreach ($likers as $liker)
+                $likes[] = $this->generateLike(get_class($likable_item), $likable_item->id, $liker);
 
-                $numLikes = rand(0, 40);
+            $likable_item->like_count = $numLikes;
+            $likable_item->save();
+        }
 
-                if ($numLikes != 0) {
-                    // Silently allow this to be the author of the reply
-                    $likers = array_rand(array_flip($this->userIds), $numLikes);
-
-                    if ($numLikes == 1)
-                        $likers = [$likers];
-
-                    foreach ($likers as $liker)
-                        $likes[] = $this->generateLike($class, $likable->id, $liker);
-
-                    DB::table($table)->where('id', $likable->id)->update(['like_count' => $numLikes]);
-                }
-            }
-
-            DB::table('likeable_likes')->insert($likes);
-        });
-
-        $bar->finish();
+        DB::table('likeable_likes')->insert($likes);
     }
 
     private function generateLike($likable_type, $likable_id, $liker) {

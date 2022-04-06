@@ -11,10 +11,14 @@ use Illuminate\Support\Facades\DB;
 
 class FalselikeSeeder extends Seeder {
 
+    private $threads;
+    private $replies;
     private $userIds;
     private $time;
 
     public function __construct() {
+        $this->threads = Thread::with('likes')->get();
+        $this->replies = Reply::with('likes')->get();
         $this->userIds = User::where('type', User::MEMBER)->pluck('id')->toArray();
         $this->time = Carbon::now();
     }
@@ -22,44 +26,30 @@ class FalselikeSeeder extends Seeder {
     public function run() {
         DB::table('falsible_falselikes')->truncate();
 
-        $this->createFalseLikes(Thread::class);
-        $this->createFalseLikes(Reply::class);
+        $this->createFalseLikes($this->threads);
+        $this->createFalseLikes($this->replies);
     }
 
-    public function createFalseLikes($model) {
-        $count = $model::count();
-        $bar = $this->command->getOutput()->createProgressBar($count);
+    private function createFalseLikes($falsibles) {
+        $falseLikes = [];
 
-        $model::with('likes')->chunk(100, function ($falsibles) use ($bar) {
-            $falseLikes = [];
+        foreach ($falsibles as $falsible) {
+            $numLikes = $falsible->likes->count();
+            $randKeys = array_rand($this->userIds, $numLikes);
 
-            foreach ($falsibles as $falsible) {
-                $bar->advance();
+            for ($i = 0; $i < $numLikes; $i++) {
+                $like = $falsible->likes[$i];
 
-                $numLikes = $falsible->likes->count();
-
-                if ($numLikes > 0)
-                    $randKeys = array_rand($this->userIds, $numLikes);
-
-                if ($numLikes == 1)
-                    $randKeys = [$randKeys];
-
-                for ($i = 0; $i < $numLikes; $i++) {
-                    $like = $falsible->likes[$i];
-
-                    $falseLikes[] = [
-                        'falsible_id' => $like->likable_id,
-                        'falsible_type' => $like->likable_type,
-                        'user_id' => $this->userIds[$randKeys[$i]],
-                        'created_at' => $this->time,
-                        'updated_at' => $this->time
-                    ];
-                }
+                $falseLikes[] = [
+                    'falsible_id' => $like->likable_id,
+                    'falsible_type' => $like->likable_type,
+                    'user_id' => $this->userIds[$randKeys[$i]],
+                    'created_at' => $this->time,
+                    'updated_at' => $this->time
+                ];
             }
+        }
 
-            DB::table('falsible_falselikes')->insert($falseLikes);
-        });
-
-        $bar->finish();
+        DB::table('falsible_falselikes')->insert($falseLikes);
     }
 }
