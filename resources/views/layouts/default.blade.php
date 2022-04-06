@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700,400italic">
     @section('stylesheets')
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.8.8">
+        <link rel="stylesheet" href="/stylesheets/screen.css?v=1.10.0">
     @show
 </head>
 <body id="@yield('body-id', 'gsvnet')">
@@ -142,7 +142,7 @@
 
         @include('partials/_proxyredirect')
         
-        <script async src="/build-javascripts/app.js?v=1.5.8"></script>
+        <script async src="/build-javascripts/app.js?v=1.7.0"></script>
 
         @if(!Config::get('app.debug'))
             @include('partials/_analytics')
