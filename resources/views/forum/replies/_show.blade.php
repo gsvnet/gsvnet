@@ -70,8 +70,6 @@
                         </li>
                     @endfor
                 </ul>
-
-                <button class="modal-button">Sluiten</button>
             </div>
         </div>
     </div>
