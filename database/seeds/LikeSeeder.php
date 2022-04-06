@@ -40,7 +40,7 @@ class LikeSeeder extends Seeder
         $likes = [];
 
         foreach ($collection as $likable_item) {
-            $numLikes = rand(2, 40);
+            $numLikes = rand(2, 10);
             // Silently allow this to be the author of the reply
             $likers = array_rand(array_flip($this->userIds), $numLikes);
 

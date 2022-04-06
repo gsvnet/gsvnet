@@ -122,10 +122,6 @@
             <p class="right">
                 <i><a href="/privacy-statement" title="Privacyverklaring">Privacyverklaring</a></i>
             </p>
-
-            @if(Auth::check())
-                <div id="js-username" style="display: none">{{ Auth::user()->username }}</div>
-            @endif
         </footer>
     @show
 

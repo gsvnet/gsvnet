@@ -37,11 +37,6 @@ abstract class EloquentRepository
         return $this->model->find($id);
     }
 
-    public function getByIdWithFalselikeUsers($id)
-    {
-        return $this->model->with('falselikes.user')->find($id);
-    }
-
     public function requireById($id)
     {
         $model = $this->getById($id);
