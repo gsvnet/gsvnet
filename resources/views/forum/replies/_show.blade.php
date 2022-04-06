@@ -45,32 +45,4 @@
     <div class="body">
         {!! $reply->present()->bodyFormatted !!}
     </div>
-    <div class="likers">
-        <div class="images">
-            @for($i = 0; $i < min($reply->like_count, 3); $i++)
-                <img src="{{ $reply->falselikes[$i]->user->present()->avatar(40) }}" width="40" height="40" style="border-radius: 50%">
-            @endfor
-        </div>
-
-        <div class="text">
-            @if($reply->like_count != 1)
-                {!! $reply->like_count !!} GSV'ers vinden dit leuk.
-            @else
-                1 GSV'er vindt dit leuk.
-            @endif
-        </div>
-
-        <div class="modal-bg">
-            <div class="modal-content">
-                <ul>
-                    @for($i = 0; $i < $reply->like_count; $i++)
-                        <li>
-                            <img src="{{ $reply->falselikes[$i]->user->present()->avatar(40) }}" width="40" height="40" style="border-radius: 50%">
-                            <div class="text">{!! $reply->falselikes[$i]->user->username !!}</div>
-                        </li>
-                    @endfor
-                </ul>
-            </div>
-        </div>
-    </div>
 </div>

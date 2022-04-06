@@ -214,23 +214,6 @@ app = (function() {
 		Forum.initThreadPage();
 		Forum.loadDeferredAvatars();
         Forum.initLikes();
-
-		let modals = document.getElementsByClassName("modal-bg");
-		let likers = document.getElementsByClassName("likers");
-		for (var i = 0; i < likers.length; i++) {
-			likers[i].onclick = function(modal) {
-				return function() {
-					modal.style.display = 'block';
-				}
-			}(modals[i]);
-
-			window.addEventListener("click", function(modal) {
-				return function(event) {
-					if (event.target == modal)
-						modal.style.display = 'none';
-				}
-			}(modals[i]));
-		}
 	}
 
 	function threadsIndex() {
