@@ -189,23 +189,13 @@ var Forum = (function()
     }
 
     function initLikes() {
-        let gravatarUrl = $('.nav-profile-image').attr('src');
-        gravatarUrl = gravatarUrl.replaceAll(/s=([0-9]+)/g, 's=40');
-
-        let avatarEl = `<img src="${gravatarUrl}" width="40" height="40" style="border-radius: 50%">`;
-
         $('.like-box--button').click(function(){
             var $this = $(this),
                 type = $this.data('type'),
                 id = $this.data('id'),
                 method, url,
                 counter = $this.find('.like-box--count'),
-                likes = parseInt(counter.html(), 10),
-                likers = $(`.likers[data-id="${id}"]`),
-                likersShortlist = likers.children('.images'),
-                likersLonglist = likers.children('.modal-bg').children('.modal-content').children('ul'),
-                likersCounter = likers.children('.text'),
-                username = $('#js-username').get(0).textContent;
+                likes = parseInt(counter.html(), 10);
 
             if(!urlTypes.hasOwnProperty(type))
                 return;
@@ -215,29 +205,13 @@ var Forum = (function()
             if($this.hasClass('liked'))
             {
                 method = 'DELETE';
-                likes -= 1;
+                counter.html(likes - 1);
                 $this.removeClass('liked');
-
-                likersShortlist.children().get(0).remove();
-                likersLonglist.children().get(0).remove();
             } else {
                 method = 'POST';
-                likes += 1;
+                counter.html(likes + 1);
                 $this.addClass('liked');
-
-                if (likersShortlist.children().length === 3)
-                    likersShortlist.children().get(0).remove();
-
-                likersShortlist.prepend(`<div>${avatarEl}</div>`);
-                likersLonglist.prepend(`<li>${avatarEl} <div class="text">${username}</div></li>`);
             }
-
-            counter.html(likes);
-
-            if (likes === 1)
-                likersCounter.html("1 GSV'er vindt dit leuk.");
-            else
-                likersCounter.html(likes + " GSV'ers vinden dit leuk.");
 
             $.ajax({
                 url: url,
@@ -250,52 +224,6 @@ var Forum = (function()
 
             return false;
         });
-
-        // Setting up closing and opening of modal boxes
-        let modals = document.getElementsByClassName("modal-bg");
-        let closeButtons = document.getElementsByClassName("modal-button");
-        let likers = document.getElementsByClassName("likers");
-        for (var i = 0; i < likers.length; i++) {
-            likers[i].onclick = function(container, modal, button) {
-                return function(e) {
-                    if (e.target !== modal && e.target !== button) {
-                        let modalContent = modal.childNodes[1];
-
-                        modal.style.display = 'block';
-
-                        setTimeout(() => {
-                            modal.style.backgroundColor = "rgba(0,0,0,0.4)";
-                            modalContent.style.marginTop = "3em";
-                        }, 100);
-                    }
-                }
-            }(likers[i], modals[i], closeButtons[i]);
-
-            closeButtons[i].onclick = function(modal) {
-                return function(e) {
-                    closeModal(modal);
-                }
-            }(modals[i]);
-
-            window.addEventListener("click", function(modal) {
-                return function(e) {
-                    if (e.target === modal) {
-                        closeModal(modal);
-                    }
-                }
-            }(modals[i]));
-        }
-
-        function closeModal(modal) {
-            let modalContent = modal.childNodes[1];
-
-            modal.style.backgroundColor = "rgba(0,0,0,0)";
-            modalContent.style.marginTop = "100vh";
-
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 500);
-        }
     }
 
     return {
