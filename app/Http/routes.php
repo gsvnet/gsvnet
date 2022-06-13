@@ -71,9 +71,9 @@ Route::group(['prefix' => 'de-gsv'], function() {
     // Route::get('oud-leden', 'AboutController@showFormerMembers');
 });
 
-// Register
-Route::get('registreer', 'RegisterController@create');
-Route::post('registreer', 'RegisterController@store');
+// Register - disabled due to excess of spam
+//Route::get('registreer', 'RegisterController@create');
+//Route::post('registreer', 'RegisterController@store');
 
 // Word lid
 Route::group(['prefix' => 'word-lid'], function() {
