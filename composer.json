@@ -19,7 +19,7 @@
 		"pda/pheanstalk": "~3.0",
 		"msurguy/honeypot": "~1.0.1",
 		"mailchimp/mailchimp": "~2.0.4",
-		"erusev/parsedown": "~1.6.0",
+		"erusev/parsedown": "~1.7.2",
         "haampie/gravatar": "~1.4.0",
 		"predis/predis": "~1.0",
 		"laracasts/flash": "~1.3",
