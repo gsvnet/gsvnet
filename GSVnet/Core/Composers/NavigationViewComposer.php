@@ -299,19 +299,7 @@ class NavigationViewComposer {
                 'url' => action('SessionController@getLogin'),
                 'params' => ['data-mfp-src' => '#login-dialog', 'id' => 'login-link', 'rel' => 'nofollow'],
                 'visible' => function(){return Auth::guest();},
-                'rel' => 'nofollow',
-                'submenu' => [
-                    'registreren' => [
-                        'title' => 'Registreren',
-                        'params' => ['rel' => 'nofollow'],
-                        'url' => action('RegisterController@create')
-                    ],
-                    'inloggen' => [
-                        'title' => 'Inloggen',
-                        'params' => ['rel' => 'nofollow'],
-                        'url' => action('SessionController@getLogin'),
-                    ]
-                ]
+                'rel' => 'nofollow'
             ],
 
             'intern' => [
