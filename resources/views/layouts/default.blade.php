@@ -59,47 +59,6 @@
         @endif
     @show
 
-    @can('users.show')
-        @if (!Auth::user()->isVerified() && !App::environment('local'))
-            <style>
-                @-webkit-keyframes  spaceboots {
-                    0%   { -webkit-transform: translate(2px, 1px)   rotate(0deg);  }
-                    10%  { -webkit-transform: translate(-1px, -2px) rotate(-1deg);  }
-                    20%  { -webkit-transform: translate(-3px, 0px)  rotate(1deg);  }
-                    30%  { -webkit-transform: translate(0px, 2px)   rotate(0deg);  }
-                    40%  { -webkit-transform: translate(1px, -1px)  rotate(1deg);  }
-                    50%  { -webkit-transform: translate(-1px, 1px)  rotate(-1deg);  }
-                    60%  { -webkit-transform: translate(-3px, -2px)  rotate(0deg);  }
-                    70%  { -webkit-transform: translate(2px, 1px)   rotate(-1deg);  }
-                    80%  { -webkit-transform: translate(-1px, -2px) rotate(1deg);  }
-                    90%  { -webkit-transform: translate(2px, -1px)   rotate(0deg);  }
-                    100% { -webkit-transform: translate(1px, -2px)  rotate(-1deg);  }
-                }
-
-                @keyframes  spaceboots {
-                    0%   { transform: translate(2px, 1px)   rotate(0deg); }
-                    10%  { transform: translate(-1px, -2px) rotate(-1deg); }
-                    20%  {  transform: translate(-3px, 0px)  rotate(1deg); }
-                    30%  {  transform: translate(0px, 2px)   rotate(0deg); }
-                    40%  {  transform: translate(1px, -1px)  rotate(1deg); }
-                    50%  {  transform: translate(-1px, 1px)  rotate(-1deg); }
-                    60%  {  transform: translate(-3px, -2px)  rotate(0deg); }
-                    70%  {  transform: translate(2px, 1px)   rotate(-1deg); }
-                    80%  {  transform: translate(-1px, -2px) rotate(1deg); }
-                    90%  {  transform: translate(2px, -1px)   rotate(0deg); }
-                    100% {  transform: translate(1px, -2px)  rotate(-1deg); }
-                }
-
-                .snackbar--animated {
-                    animation-name: spaceboots;
-                    animation-duration: 1s;
-                    animation-iteration-count: infinite;
-                }
-            </style>
-            <a href="https://www.malfonds.nl/" class="snackbar snackbar--animated" title="Verifieer je gegevens">Verifieer je gegevens! Kost 30 seconden &amp; dit verdwijnt. Klik hier</a>
-        @endif
-    @endcan
-
     @section('footer')
         <footer class="site-footer column-holder">
             <p>Caput sapientiae est reverentia Domini</p>
