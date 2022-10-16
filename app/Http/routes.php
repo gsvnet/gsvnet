@@ -6,6 +6,9 @@ Route::get('/', ['as' => 'home', 'uses' => 'HomeController@showIndex']);
 // Keep the new homepage accessible
 Route::get('welkom', ['as' => 'home', 'uses' => 'HomeController@showNewIndex']);
 
+// Nothing to see here, move along
+Route::get('roos', 'HomeController@roos');
+
 // Kiezel 2020
 // Route::get('kiezel', 'HomeController@showKiezel');
 

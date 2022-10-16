@@ -91,4 +91,8 @@ class HomeController extends BaseController {
     {
         return view('kei');
     }
+
+    public function roos() {
+        return view('roos');
+    }
 }
