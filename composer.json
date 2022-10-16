@@ -14,7 +14,7 @@
 		"intervention/image": "~2.3.0",
 	    "chromabits/purifier": "~2.1",
 		"misd/linkify": "~1.1.2",
-		"guzzlehttp/guzzle": "~6.5",
+		"guzzlehttp/guzzle": "~4.0",
 		"laracasts/presenter": "~0.2.1",
 		"pda/pheanstalk": "~3.0",
 		"msurguy/honeypot": "~1.0.1",
