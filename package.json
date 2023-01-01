@@ -7,7 +7,7 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
-    "babel-loader": "^8.1.0",
+    "babel-loader": "^8.3.0",
     "browserslist": "^4.16.5",
     "event-stream": "^4.0.1",
     "gulp": "^4.0.2",
@@ -18,7 +18,7 @@
     "gulp-imagemin": "^7.1.0",
     "gulp-sass": "^4.0.2",
     "gulp-uglify-es": "^2.0.0",
-    "webpack-stream": "^5.2.1",
+    "webpack-stream": "^7.0.0",
     "flipdown": "^0.3.2"
   },
   "scripts": {
