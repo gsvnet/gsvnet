@@ -2,6 +2,7 @@
 
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider {
 
@@ -15,6 +16,11 @@ class AppServiceProvider extends ServiceProvider {
 		// Set locale to Dutch
 		setlocale(LC_ALL, 'nl_NL.UTF-8');
 		Carbon::setLocale(config('app.locale'));
+
+		Validator::extend(
+            'recaptcha',
+            'GSV\\Http\\Validators\\ReCaptcha@validate'
+        );  
 	}
 
 	/**

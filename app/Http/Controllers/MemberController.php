@@ -56,7 +56,7 @@ class MemberController extends BaseController
         $data = $request->only(['firstname', 'middlename', 'lastname', 'gender', 'birthDay', 'birthMonth', 'birthYear',
             'address', 'zipCode', 'town', 'email', 'phone', 'studyStartYear', 'study', 'studentNumber', 'username',
             'password', 'password_confirmation', 'parents-same-address', 'parentsAddress', 'parentsZipCode',
-            'parentsTown', 'parentsEmail', 'parentsPhone', 'message', 'school', 'photo_path']);
+            'parentsTown', 'parentsEmail', 'parentsPhone', 'message', 'school', 'photo_path', 'g-recaptcha-response']);
 
         // Construct a date from separate day, month and year fields.
         $data['birthdate'] = $data['birthYear'] . '-' . $data['birthMonth'] . '-' . $data['birthDay'];

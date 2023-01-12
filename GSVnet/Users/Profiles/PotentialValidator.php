@@ -1,6 +1,7 @@
 <?php namespace GSVnet\Users\Profiles;
 
 use GSVnet\Core\Validator;
+use GSVnet\Core\Http\Validators\ReCaptcha;
 
 class PotentialValidator extends Validator
 {
@@ -23,7 +24,8 @@ class PotentialValidator extends Validator
         'parentsZipCode' => 'required_if:parents-same-address,0',
         'parentsTown' => 'required_if:parents-same-address,0',
         'parentsPhone' => 'required',
-        'parentsEmail' => 'required|email'
+        'parentsEmail' => 'required|email',
+        'g-recaptcha-response'=>'required|recaptcha'
     ];
 
     static $messages = [
@@ -50,6 +52,8 @@ class PotentialValidator extends Validator
         'parentsTown.required_if' => 'Vul de woonplaats van je ouders in',
         'parentsPhone.required' => 'Vul het telefoonnummer van je ouders in',
         'parentsEmail.required' => 'Vul het emailadres van je ouders in',
-        'parentsEmail.email' => 'Vul een geldig emailadres van je ouders in'
+        'parentsEmail.email' => 'Vul een geldig emailadres van je ouders in',
+        'g-recaptcha-response.required'=>'Vul de verificatie van recaptcha in',
+        'g-recaptcha-response.recaptcha'=>'Vul de verificatie van recaptcha in'
     ];
 }
