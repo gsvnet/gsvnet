@@ -1,6 +1,4 @@
 {!! Former::open_vertical_for_files()->action(URL::action('MemberController@store'))->id('become-member-form')->novalidate() !!}
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
     <div class="column-holder" role="main">
 
         <h2>Wat leuk dat je lid wilt worden van de GSV! Vul het onderstaande formulier in om je in te schrijven.</h2>
@@ -103,7 +101,7 @@
         <h2>Opmerkingen</h2>
         {!! Former::textarea('message')->rows(4)->cols(50)->label('Vragen of opmerkingen?') !!}
         
-        <div class="g-recaptcha" data-sitekey="{{ env('G_RECAPTCHA_KEY') }}"></div>
+        <div class="g-recaptcha" data-sitekey="{{ env('G_RECAPTCHA_KEY', 'NO-KEY-FOUND') }}"></div>
 
     </div>
     <div class="column-holder">
@@ -112,3 +110,4 @@
         </div>
     </div>
 {!! Former::close() !!}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
