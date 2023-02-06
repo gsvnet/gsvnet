@@ -1,6 +1,6 @@
 <?php
 
-namespace GSV\Http\Validators;
+namespace App\Http\Validators;
 
 use GuzzleHttp\Client;
 

@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Users\Profiles;
+<?php namespace App\Helpers\Users\Profiles;
 
 use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -47,7 +47,7 @@ class UserProfile extends Model {
         'receive_newspaper'
     ];
     
-    public $presenter = 'GSV\Helpers\Users\Profiles\ProfilePresenter';
+    public $presenter = 'App\Helpers\Users\Profiles\ProfilePresenter';
 
     public function scopeSearchNameAndPhone($query, $words)
     {
@@ -74,17 +74,17 @@ class UserProfile extends Model {
     
     public function yearGroup()
     {
-        return $this->belongsTo('GSV\Helpers\Users\YearGroup');
+        return $this->belongsTo('App\Helpers\Users\YearGroup');
     }
 
     public function user()
     {
-        return $this->belongsTo('GSV\Helpers\Users\User');
+        return $this->belongsTo('App\Helpers\Users\User');
     }
 
     public function regions()
     {
-        return $this->belongsToMany('GSV\Helpers\Regions\Region', 'region_user_profile')
+        return $this->belongsToMany('App\Helpers\Regions\Region', 'region_user_profile')
                 ->orderBy(\DB::raw('end_date IS NULL'), 'desc')
                 ->orderBy('end_date', 'desc')
                 ->orderBy('name', 'asc');

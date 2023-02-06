@@ -1,12 +1,12 @@
-<?php namespace GSV\Helpers\Files;
+<?php namespace App\Helpers\Files;
 
-use GSV\Helpers\Permissions\NoPermissionException;
+use App\Helpers\Permissions\NoPermissionException;
 use Illuminate\Support\Facades\Gate;
 use Permission;
 
 /**
  * Class FilesRepository
- * @package GSV\Helpers\Files
+ * @package App\Helpers\Files
  */
 class FilesRepository
 {

@@ -1,7 +1,7 @@
-<?php namespace GSV\Helpers\Users\ProfileActions;
+<?php namespace App\Helpers\Users\ProfileActions;
 
 use DateTime;
-use GSV\Helpers\Users\User;
+use App\Helpers\Users\User;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 

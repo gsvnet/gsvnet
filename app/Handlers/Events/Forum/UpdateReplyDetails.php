@@ -1,8 +1,8 @@
-<?php namespace GSV\Handlers\Events\Forum;
+<?php namespace App\Handlers\Events\Forum;
 
-use GSV\Events\Forum\ReplyWasLiked;
-use GSV\Events\Forum\ReplyWasDisliked;
-use GSV\Helpers\Forum\Replies\ReplyRepository;
+use App\Events\Forum\ReplyWasLiked;
+use App\Events\Forum\ReplyWasDisliked;
+use App\Helpers\Forum\Replies\ReplyRepository;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class UpdateReplyDetails implements ShouldQueue {

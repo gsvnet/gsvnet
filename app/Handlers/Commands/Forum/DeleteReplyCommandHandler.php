@@ -1,8 +1,8 @@
-<?php namespace GSV\Handlers\Commands\Forum;
+<?php namespace App\Handlers\Commands\Forum;
 
-use GSV\Commands\Forum\DeleteReplyCommand;
-use GSV\Events\Forum\ReplyWasDeleted;
-use GSV\Helpers\Forum\Replies\ReplyRepository;
+use App\Commands\Forum\DeleteReplyCommand;
+use App\Events\Forum\ReplyWasDeleted;
+use App\Helpers\Forum\Replies\ReplyRepository;
 
 class DeleteReplyCommandHandler {
 

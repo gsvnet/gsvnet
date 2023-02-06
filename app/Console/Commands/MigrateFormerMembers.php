@@ -1,10 +1,10 @@
-<?php namespace GSV\Console\Commands;
+<?php namespace App\Console\Commands;
 
-use GSV\Helpers\Users\User;
+use App\Helpers\Users\User;
 use Illuminate\Console\Command;
-use GSV\Commands\Members\ChangeMembershipStatus;
+use App\Commands\Members\ChangeMembershipStatus;
 use Symfony\Component\Console\Input\InputArgument;
-use GSV\Helpers\Core\DispatchesJobs;
+use App\Helpers\Core\DispatchesJobs;
 
 class MigrateFormerMembers extends Command
 {

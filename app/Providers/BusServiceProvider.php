@@ -1,4 +1,4 @@
-<?php namespace GSV\Providers;
+<?php namespace App\Providers;
 
 use Collective\Bus\Dispatcher;
 use Illuminate\Support\ServiceProvider;
@@ -15,7 +15,7 @@ class BusServiceProvider extends ServiceProvider {
 		$dispatcher->mapUsing(function($command)
 		{
 			return Dispatcher::simpleMapping(
-				$command, 'GSV\Commands', 'GSV\Handlers\Commands'
+				$command, 'App\Commands', 'App\Handlers\Commands'
 			);
 		});
 	}

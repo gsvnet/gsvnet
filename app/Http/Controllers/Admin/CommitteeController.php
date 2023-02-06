@@ -3,11 +3,11 @@
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Str;
 
-use GSV\Helpers\Committees\CommitteesRepository;
-use GSV\Helpers\Committees\CommitteeCreatorValidator;
-use GSV\Helpers\Committees\CommitteeUpdaterValidator;
+use App\Helpers\Committees\CommitteesRepository;
+use App\Helpers\Committees\CommitteeCreatorValidator;
+use App\Helpers\Committees\CommitteeUpdaterValidator;
 
-use GSV\Helpers\Users\UsersRepository;
+use App\Helpers\Users\UsersRepository;
 
 class CommitteeController extends AdminBaseController {
 

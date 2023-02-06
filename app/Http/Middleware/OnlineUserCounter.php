@@ -1,7 +1,7 @@
-<?php namespace GSV\Http\Middleware;
+<?php namespace App\Http\Middleware;
 
 use Closure;
-use GSV\Helpers\Users\User;
+use App\Helpers\Users\User;
 use Illuminate\Contracts\Redis\Database;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
  * The size of the intersection of gsv_online with gsv_online_old gives the number of online members
  *
  * Class OnlineUserCounter
- * @package GSV\Http\Middleware
+ * @package App\Http\Middleware
  */
 class OnlineUserCounter
 {

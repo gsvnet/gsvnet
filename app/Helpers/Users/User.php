@@ -1,9 +1,9 @@
-<?php namespace GSV\Helpers\Users;
+<?php namespace App\Helpers\Users;
 
-use GSV\Helpers\Forum\Replies\Reply;
-use GSV\Helpers\Forum\Threads\Thread;
-use GSV\Helpers\Users\ProfileActions\ProfileAction;
-use GSV\Helpers\Users\Profiles\UserProfile;
+use App\Helpers\Forum\Replies\Reply;
+use App\Helpers\Forum\Threads\Thread;
+use App\Helpers\Users\ProfileActions\ProfileAction;
+use App\Helpers\Users\Profiles\UserProfile;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -92,7 +92,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function committees()
     {
-        return $this->belongsToMany('GSV\Helpers\Committees\Committee', 'committee_user')
+        return $this->belongsToMany('App\Helpers\Committees\Committee', 'committee_user')
                     ->withPivot('start_date', 'end_date')
                     ->withTimestamps();
     }
@@ -101,21 +101,21 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function committeesSorted()
     {
         // Maybe ->withTimestamps(); ?
-        return $this->belongsToMany('GSV\Helpers\Committees\Committee', 'committee_user')
+        return $this->belongsToMany('App\Helpers\Committees\Committee', 'committee_user')
                     ->withPivot('start_date', 'end_date')
                     ->orderBy('committee_user.end_date', 'desc');
     }
 
     public function senates()
     {
-        return $this->belongsToMany('GSV\Helpers\Senates\Senate', 'user_senate')
+        return $this->belongsToMany('App\Helpers\Senates\Senate', 'user_senate')
                     ->withPivot('function')
                     ->withTimestamps();
     }
 
     public function activeSenate()
     {
-        return $this->belongsToMany('GSV\Helpers\Senates\Senate', 'user_senate')
+        return $this->belongsToMany('App\Helpers\Senates\Senate', 'user_senate')
             ->where('start_date', '<=', new \DateTime('now'))
             ->where(function($q) {
                 return $q->where('end_date', '>=', new \DateTime('now'))
@@ -201,7 +201,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function activeCommittees()
     {
-        return $this->belongsToMany('GSV\Helpers\Committees\Committee', 'committee_user')
+        return $this->belongsToMany('App\Helpers\Committees\Committee', 'committee_user')
             ->where('committee_user.start_date', '<=', new \DateTime('now'))
             ->where(function($q) {
                 return $q->where('committee_user.end_date', '>=', new \DateTime('now'))

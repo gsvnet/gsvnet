@@ -1,9 +1,9 @@
-<?php namespace GSV\Handlers\Commands\Members;
+<?php namespace App\Handlers\Commands\Members;
 
 use Carbon\Carbon;
-use GSV\Commands\Members\InviteMember;
-use GSV\Helpers\Auth\Invite;
-use GSV\Helpers\Auth\TokenRepository;
+use App\Commands\Members\InviteMember;
+use App\Helpers\Auth\Invite;
+use App\Helpers\Auth\TokenRepository;
 use Illuminate\Mail\Mailer;
 use Illuminate\Mail\Message;
 

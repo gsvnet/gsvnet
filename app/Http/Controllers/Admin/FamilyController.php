@@ -1,6 +1,6 @@
 <?php namespace Admin;
 
-use GSV\Helpers\Users\UsersRepository;
+use App\Helpers\Users\UsersRepository;
 use Illuminate\Support\Facades\Input;
 
 class FamilyController extends AdminBaseController {

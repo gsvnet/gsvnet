@@ -1,24 +1,24 @@
-<?php namespace GSV\Helpers\Users\ProfileActions;
+<?php namespace App\Helpers\Users\ProfileActions;
 
-use GSV\Events\Members\AddressWasChanged;
-use GSV\Events\Members\BirthDayWasChanged;
-use GSV\Events\Members\BusinessWasChanged;
-use GSV\Events\Members\MemberEmailWasChanged;
-use GSV\Events\Members\GenderWasChanged;
-use GSV\Events\Members\MembershipStatusWasChanged;
-use GSV\Events\Members\NameWasChanged;
-use GSV\Events\Members\ParentDetailsWereChanged;
-use GSV\Events\Members\PeriodOfMembershipWasChanged;
-use GSV\Events\Members\PhoneNumberWasChanged;
-use GSV\Events\Members\ProfilePictureWasChanged;
-use GSV\Events\Members\RegionWasChanged;
-use GSV\Events\Members\StudyWasChanged;
-use GSV\Events\Members\Verifications\EmailWasVerified;
-use GSV\Events\Members\Verifications\FamilyWasVerified;
-use GSV\Events\Members\Verifications\GenderWasVerified;
-use GSV\Events\Members\Verifications\NameWasVerified;
-use GSV\Events\Members\Verifications\YearGroupWasVerified;
-use GSV\Events\Members\YearGroupWasChanged;
+use App\Events\Members\AddressWasChanged;
+use App\Events\Members\BirthDayWasChanged;
+use App\Events\Members\BusinessWasChanged;
+use App\Events\Members\MemberEmailWasChanged;
+use App\Events\Members\GenderWasChanged;
+use App\Events\Members\MembershipStatusWasChanged;
+use App\Events\Members\NameWasChanged;
+use App\Events\Members\ParentDetailsWereChanged;
+use App\Events\Members\PeriodOfMembershipWasChanged;
+use App\Events\Members\PhoneNumberWasChanged;
+use App\Events\Members\ProfilePictureWasChanged;
+use App\Events\Members\RegionWasChanged;
+use App\Events\Members\StudyWasChanged;
+use App\Events\Members\Verifications\EmailWasVerified;
+use App\Events\Members\Verifications\FamilyWasVerified;
+use App\Events\Members\Verifications\GenderWasVerified;
+use App\Events\Members\Verifications\NameWasVerified;
+use App\Events\Members\Verifications\YearGroupWasVerified;
+use App\Events\Members\YearGroupWasChanged;
 use Laracasts\Presenter\Presenter;
 
 class ProfileActionPresenter extends Presenter

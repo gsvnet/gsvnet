@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Albums;
+<?php namespace App\Helpers\Albums;
 
 use Illuminate\Support\Str;
 use URL;
@@ -25,7 +25,7 @@ class Album extends Model {
 
     public function photos()
     {
-        return $this->hasMany('GSV\Helpers\Albums\Photos\Photo');
+        return $this->hasMany('App\Helpers\Albums\Photos\Photo');
     }
 
     public function getSmallImageURLAttribute()

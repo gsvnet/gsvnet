@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Regions;
+<?php namespace App\Helpers\Regions;
 
-use GSV\Helpers\Users\User;
+use App\Helpers\Users\User;
 
 class RegionsRepository {
 

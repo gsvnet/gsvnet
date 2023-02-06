@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Files;
+<?php namespace App\Helpers\Files;
 
 use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -52,7 +52,7 @@ class File extends Model {
 
     public function labels()
     {
-        return $this->belongsToMany('GSV\Helpers\Files\Labels\Label', 'file_label');
+        return $this->belongsToMany('App\Helpers\Files\Labels\Label', 'file_label');
     }
 
     public function getSizeAttribute()

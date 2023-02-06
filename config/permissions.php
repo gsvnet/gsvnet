@@ -1,4 +1,4 @@
-<?php use GSV\Helpers\Users\User as User;
+<?php use App\Helpers\Users\User as User;
 
 /**
  * Permission configuration

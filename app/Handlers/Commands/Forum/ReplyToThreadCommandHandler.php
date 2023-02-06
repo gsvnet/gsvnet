@@ -1,9 +1,9 @@
-<?php namespace GSV\Handlers\Commands\Forum;
+<?php namespace App\Handlers\Commands\Forum;
 
-use GSV\Commands\Forum\ReplyToThreadCommand;
-use GSV\Events\Forum\ThreadWasRepliedTo;
-use GSV\Helpers\Forum\Replies\ReplyRepository;
-use GSV\Helpers\Forum\Threads\ThreadRepository;
+use App\Commands\Forum\ReplyToThreadCommand;
+use App\Events\Forum\ThreadWasRepliedTo;
+use App\Helpers\Forum\Replies\ReplyRepository;
+use App\Helpers\Forum\Threads\ThreadRepository;
 
 class ReplyToThreadCommandHandler {
 

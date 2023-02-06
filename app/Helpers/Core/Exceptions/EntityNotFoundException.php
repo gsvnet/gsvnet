@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Core\Exceptions;
+<?php namespace App\Helpers\Core\Exceptions;
 // Extend the Model Not Found Exception such that we can use  App::error($e ModelNotFoundException)
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 

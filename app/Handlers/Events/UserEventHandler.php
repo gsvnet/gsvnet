@@ -1,27 +1,27 @@
-<?php namespace GSV\Handlers\Events;
+<?php namespace App\Handlers\Events;
 
-use GSV\Events\Members\AddressWasChanged;
-use GSV\Events\Members\BirthDayWasChanged;
-use GSV\Events\Members\BusinessWasChanged;
-use GSV\Events\Members\GenderWasChanged;
-use GSV\Events\Members\MemberEmailWasChanged;
-use GSV\Events\Members\MemberFileWasCreated;
-use GSV\Events\Members\MembershipStatusWasChanged;
-use GSV\Events\Members\NameWasChanged;
-use GSV\Events\Members\ParentDetailsWereChanged;
-use GSV\Events\Members\PeriodOfMembershipWasChanged;
-use GSV\Events\Members\PhoneNumberWasChanged;
-use GSV\Events\Members\ProfilePictureWasChanged;
-use GSV\Events\Members\RegionWasChanged;
-use GSV\Events\Members\StudyWasChanged;
-use GSV\Events\Members\Verifications\EmailWasVerified;
-use GSV\Events\Members\Verifications\FamilyWasVerified;
-use GSV\Events\Members\Verifications\GenderWasVerified;
-use GSV\Events\Members\Verifications\NameWasVerified;
-use GSV\Events\Members\Verifications\YearGroupWasVerified;
-use GSV\Events\Members\YearGroupWasChanged;
-use GSV\Events\Potentials\PotentialSignedUp;
-use GSV\Events\Users\UserWasRegistered;
+use App\Events\Members\AddressWasChanged;
+use App\Events\Members\BirthDayWasChanged;
+use App\Events\Members\BusinessWasChanged;
+use App\Events\Members\GenderWasChanged;
+use App\Events\Members\MemberEmailWasChanged;
+use App\Events\Members\MemberFileWasCreated;
+use App\Events\Members\MembershipStatusWasChanged;
+use App\Events\Members\NameWasChanged;
+use App\Events\Members\ParentDetailsWereChanged;
+use App\Events\Members\PeriodOfMembershipWasChanged;
+use App\Events\Members\PhoneNumberWasChanged;
+use App\Events\Members\ProfilePictureWasChanged;
+use App\Events\Members\RegionWasChanged;
+use App\Events\Members\StudyWasChanged;
+use App\Events\Members\Verifications\EmailWasVerified;
+use App\Events\Members\Verifications\FamilyWasVerified;
+use App\Events\Members\Verifications\GenderWasVerified;
+use App\Events\Members\Verifications\NameWasVerified;
+use App\Events\Members\Verifications\YearGroupWasVerified;
+use App\Events\Members\YearGroupWasChanged;
+use App\Events\Potentials\PotentialSignedUp;
+use App\Events\Users\UserWasRegistered;
 use Illuminate\Contracts\Events\Dispatcher;
 
 class UserEventHandler
@@ -74,24 +74,24 @@ class UserEventHandler
 
     public function subscribe(Dispatcher $events)
     {
-        $events->listen(UserWasRegistered::class, 'GSV\Handlers\Events\Users\UserMailer@sendWelcomeEmail');
-        $events->listen(UserWasRegistered::class, 'GSV\Handlers\Events\Users\UserMailer@notifyReunist');
-        $events->listen(PotentialSignedUp::class, 'GSV\Handlers\Events\Potentials\PotentialMailer@sendWelcomeMail');
+        $events->listen(UserWasRegistered::class, 'App\Handlers\Events\Users\UserMailer@sendWelcomeEmail');
+        $events->listen(UserWasRegistered::class, 'App\Handlers\Events\Users\UserMailer@notifyReunist');
+        $events->listen(PotentialSignedUp::class, 'App\Handlers\Events\Potentials\PotentialMailer@sendWelcomeMail');
 
-        $events->listen(self::$profileChanges, 'GSV\Handlers\Events\Members\ProfileUpdates@changedProfile');
-        $events->listen(self::$verifyAccountWhen, 'GSV\Handlers\Events\Members\ProfileUpdates@tookAccountInUse');
+        $events->listen(self::$profileChanges, 'App\Handlers\Events\Members\ProfileUpdates@changedProfile');
+        $events->listen(self::$verifyAccountWhen, 'App\Handlers\Events\Members\ProfileUpdates@tookAccountInUse');
 
         // Disable this for now, since a lot of mails are coming in
         // $events->listen(self::$informAbactisFor, AbactisInformer::class);
-        $events->listen(MemberFileWasCreated::class, 'GSV\Handlers\Events\AbactisInformer@sendMemberFile');
+        $events->listen(MemberFileWasCreated::class, 'App\Handlers\Events\AbactisInformer@sendMemberFile');
         
         $events->listen(self::$informNewsletterFor, NewsletterInformer::class);
 
-        $events->listen('user.registered', 'GSV\Helpers\Users\UserMailer@registered');
-        $events->listen('user.activated', 'GSV\Helpers\Users\UserMailer@activated');
+        $events->listen('user.registered', 'App\Helpers\Users\UserMailer@registered');
+        $events->listen('user.activated', 'App\Helpers\Users\UserMailer@activated');
 
-        $events->listen('potential.registered', 'GSV\Helpers\Users\UserMailer@membership');
-        $events->listen('potential.accepted', 'GSV\Helpers\Users\UserMailer@membershipAccepted');
+        $events->listen('potential.registered', 'App\Helpers\Users\UserMailer@membership');
+        $events->listen('potential.accepted', 'App\Helpers\Users\UserMailer@membershipAccepted');
 
     }
 }

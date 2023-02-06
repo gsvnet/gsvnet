@@ -1,4 +1,4 @@
-<?php namespace GSV\Events\Users;
+<?php namespace App\Events\Users;
 
 class PasswordWasSet
 {

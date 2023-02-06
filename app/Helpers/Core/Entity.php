@@ -1,8 +1,8 @@
-<?php namespace GSV\Helpers\Core;
+<?php namespace App\Helpers\Core;
 
 use Validator;
-use GSV\Helpers\Core\Exceptions\NoValidationRulesFoundException;
-use GSV\Helpers\Core\Exceptions\NoValidatorInstantiatedException;
+use App\Helpers\Core\Exceptions\NoValidationRulesFoundException;
+use App\Helpers\Core\Exceptions\NoValidatorInstantiatedException;
 use Illuminate\Database\Eloquent\Model;
 
 abstract class Entity extends Model

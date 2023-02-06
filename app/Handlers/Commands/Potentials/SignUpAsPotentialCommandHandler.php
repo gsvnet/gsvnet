@@ -1,10 +1,10 @@
-<?php namespace GSV\Handlers\Commands\Potentials;
+<?php namespace App\Handlers\Commands\Potentials;
 
-use GSV\Commands\Potentials\SignUpAsPotentialCommand;
-use GSV\Events\Potentials\PotentialSignedUp;
-use GSV\Helpers\Users\Profiles\UserProfile;
-use GSV\Helpers\Users\User;
-use GSV\Helpers\Users\UsersRepository;
+use App\Commands\Potentials\SignUpAsPotentialCommand;
+use App\Events\Potentials\PotentialSignedUp;
+use App\Helpers\Users\Profiles\UserProfile;
+use App\Helpers\Users\User;
+use App\Helpers\Users\UsersRepository;
 
 class SignUpAsPotentialCommandHandler {
 

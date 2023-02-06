@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Auth;
+<?php namespace App\Helpers\Auth;
 
 use Laracasts\Presenter\Presenter;
 use Config;

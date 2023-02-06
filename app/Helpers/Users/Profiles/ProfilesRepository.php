@@ -1,7 +1,7 @@
-<?php namespace GSV\Helpers\Users\Profiles;
+<?php namespace App\Helpers\Users\Profiles;
 
-use GSV\Helpers\Core\BaseRepository;
-use GSV\Helpers\Users\User;
+use App\Helpers\Core\BaseRepository;
+use App\Helpers\Users\User;
 use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
 

@@ -1,4 +1,4 @@
-<?php namespace GSV\Providers;
+<?php namespace App\Providers;
 
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider {
 
 		Validator::extend(
             'recaptcha',
-            'GSV\\Http\\Validators\\ReCaptcha@validate'
+            'App\\Http\\Validators\\ReCaptcha@validate'
         );  
 	}
 
@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider {
 	{
 		$this->app->bind(
 			'Illuminate\Contracts\Auth\Registrar',
-			'GSV\Services\Registrar'
+			'App\Services\Registrar'
 		);
 	}
 

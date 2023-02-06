@@ -1,9 +1,9 @@
-<?php namespace GSV\Commands\Members;
+<?php namespace App\Commands\Members;
 
-use GSV\Commands\Command;
-use GSV\Helpers\Users\User;
-use GSV\Helpers\Users\ValueObjects\Address;
-use GSV\Helpers\Users\ValueObjects\PhoneNumber;
+use App\Commands\Command;
+use App\Helpers\Users\User;
+use App\Helpers\Users\ValueObjects\Address;
+use App\Helpers\Users\ValueObjects\PhoneNumber;
 use Illuminate\Http\Request;
 
 class ChangePhone extends Command {

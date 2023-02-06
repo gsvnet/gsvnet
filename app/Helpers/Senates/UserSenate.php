@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Senates;
+<?php namespace App\Helpers\Senates;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,11 +10,11 @@ class UserSenate extends Model {
 
     public function user()
     {
-        return $this->belongsTo('GSV\Helpers\Users\User');
+        return $this->belongsTo('App\Helpers\Users\User');
     }
 
     public function senate()
     {
-        return $this->belongsTo('GSV\Helpers\Senates\Senate');
+        return $this->belongsTo('App\Helpers\Senates\Senate');
     }
 }

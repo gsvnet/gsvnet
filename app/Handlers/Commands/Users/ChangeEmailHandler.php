@@ -1,9 +1,9 @@
-<?php namespace GSV\Handlers\Commands\Users;
+<?php namespace App\Handlers\Commands\Users;
 
-use GSV\Commands\Users\ChangeEmail;
-use GSV\Events\Members\MemberEmailWasChanged;
-use GSV\Helpers\Core\Exceptions\ValidationException;
-use GSV\Helpers\Users\UsersRepository;
+use App\Commands\Users\ChangeEmail;
+use App\Events\Members\MemberEmailWasChanged;
+use App\Helpers\Core\Exceptions\ValidationException;
+use App\Helpers\Users\UsersRepository;
 use Illuminate\Support\MessageBag;
 
 class ChangeEmailHandler

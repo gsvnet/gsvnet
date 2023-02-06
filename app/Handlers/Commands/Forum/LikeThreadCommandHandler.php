@@ -1,9 +1,9 @@
-<?php namespace GSV\Handlers\Commands\Forum;
+<?php namespace App\Handlers\Commands\Forum;
 
-use GSV\Commands\Forum\LikeThreadCommand;
-use GSV\Events\Forum\ThreadWasLiked;
-use GSV\Helpers\Forum\Like;
-use GSV\Helpers\Forum\Threads\ThreadRepository;
+use App\Commands\Forum\LikeThreadCommand;
+use App\Events\Forum\ThreadWasLiked;
+use App\Helpers\Forum\Like;
+use App\Helpers\Forum\Threads\ThreadRepository;
 
 class LikeThreadCommandHandler {
 

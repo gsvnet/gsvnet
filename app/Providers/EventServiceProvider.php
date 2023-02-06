@@ -1,7 +1,7 @@
-<?php namespace GSV\Providers;
+<?php namespace App\Providers;
 
-use GSV\Handlers\Events\ThreadEventHandler;
-use GSV\Handlers\Events\UserEventHandler;
+use App\Handlers\Events\ThreadEventHandler;
+use App\Handlers\Events\UserEventHandler;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 

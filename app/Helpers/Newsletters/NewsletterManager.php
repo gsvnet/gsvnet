@@ -1,7 +1,7 @@
-<?php namespace GSV\Helpers\Newsletters;
+<?php namespace App\Helpers\Newsletters;
 
-use GSV\Helpers\Users\User;
-use GSV\Helpers\Users\UserTransformer;
+use App\Helpers\Users\User;
+use App\Helpers\Users\UserTransformer;
 use Illuminate\Support\Facades\Config;
 use Queue, App, Log;
 
@@ -29,7 +29,7 @@ class NewsletterManager {
         // Remove old user from mailing lists
         if($old->wasOrIsMember())
         {
-            Queue::push('GSV\Helpers\Newsletters\NewsletterManager@removeUserFromMailingList', [
+            Queue::push('App\Helpers\Newsletters\NewsletterManager@removeUserFromMailingList', [
                 'list' => $old->type,
                 'email' => $old->email
             ]);
@@ -44,14 +44,14 @@ class NewsletterManager {
                 'user' => $this->userTransformer->mailchimpSubscribe($new)
             ];
 
-            Queue::push('GSV\Helpers\Newsletters\NewsletterManager@addUserToMailingList', $data);
+            Queue::push('App\Helpers\Newsletters\NewsletterManager@addUserToMailingList', $data);
         }
     }
 
     public function forgetUser(User $user)
     {
         if ($user->wasOrIsMember()) {
-            Queue::push('GSV\Helpers\Newsletters\NewsletterManager@removeUserFromMailingList', [
+            Queue::push('App\Helpers\Newsletters\NewsletterManager@removeUserFromMailingList', [
                 'list' => $user->type,
                 'email' => $user->email
             ]);
@@ -61,7 +61,7 @@ class NewsletterManager {
     public function removeUserFromMailingList($job, $data)
     {
         try {
-            App::make('GSV\Helpers\Newsletters\NewsletterList')->unsubscribeFrom($data['list'], $data['email']);
+            App::make('App\Helpers\Newsletters\NewsletterList')->unsubscribeFrom($data['list'], $data['email']);
         } catch(\Mailchimp_Error $e) {
             echo "Mailchimp error; contact the webcie";
         }
@@ -72,7 +72,7 @@ class NewsletterManager {
     public function addUserToMailingList($job, $data)
     {
         try {
-            App::make('GSV\Helpers\Newsletters\NewsletterList')->subscribeTo($data['list'], $data['email'], $data['user']);
+            App::make('App\Helpers\Newsletters\NewsletterList')->subscribeTo($data['list'], $data['email'], $data['user']);
         } catch(\Mailchimp_Error $e) {
             echo "Mailchimp error; contact the webcie";
         }

@@ -1,6 +1,6 @@
-<?php namespace GSV\Http\Validators;
+<?php namespace App\Http\Validators;
 
-use GSV\Helpers\Core\Validator;
+use App\Helpers\Core\Validator;
 
 class ReplyToThreadValidator extends Validator {
     static $rules = [

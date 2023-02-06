@@ -1,15 +1,15 @@
-<?php namespace GSV\Handlers\Commands\Members;
+<?php namespace App\Handlers\Commands\Members;
 
-use GSV\Commands\Members\ChangeMembershipStatus;
-use GSV\Commands\Members\ChangeParentsDetails;
-use GSV\Commands\Members\ForgetMember;
-use GSV\Events\Members\MembershipStatusWasChanged;
-use GSV\Helpers\Users\User;
-use GSV\Helpers\Users\UsersRepository;
-use GSV\Helpers\Users\Profiles\UserProfile;
-use GSV\Helpers\Users\ValueObjects\OptionalAddress;
-use GSV\Helpers\Users\ValueObjects\OptionalEmail;
-use GSV\Helpers\Users\ValueObjects\OptionalPhoneNumber;
+use App\Commands\Members\ChangeMembershipStatus;
+use App\Commands\Members\ChangeParentsDetails;
+use App\Commands\Members\ForgetMember;
+use App\Events\Members\MembershipStatusWasChanged;
+use App\Helpers\Users\User;
+use App\Helpers\Users\UsersRepository;
+use App\Helpers\Users\Profiles\UserProfile;
+use App\Helpers\Users\ValueObjects\OptionalAddress;
+use App\Helpers\Users\ValueObjects\OptionalEmail;
+use App\Helpers\Users\ValueObjects\OptionalPhoneNumber;
 
 class ChangeMembershipStatusHandler
 {

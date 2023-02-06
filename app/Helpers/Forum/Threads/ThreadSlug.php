@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Forum\Threads;
+<?php namespace App\Helpers\Forum\Threads;
 
-use GSV\Helpers\Core\Slug;
+use App\Helpers\Core\Slug;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 

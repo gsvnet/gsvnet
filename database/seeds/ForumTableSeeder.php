@@ -2,9 +2,9 @@
 
 use Carbon\Carbon;
 use Faker\Factory;
-use GSV\Helpers\Forum\Threads\Thread;
-use GSV\Helpers\Tags\Tag;
-use GSV\Helpers\Users\User;
+use App\Helpers\Forum\Threads\Thread;
+use App\Helpers\Tags\Tag;
+use App\Helpers\Users\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;

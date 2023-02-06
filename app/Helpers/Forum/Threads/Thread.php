@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Forum\Threads;
+<?php namespace App\Helpers\Forum\Threads;
 
-use GSV\Helpers\Forum\LikableTrait;
+use App\Helpers\Forum\LikableTrait;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -16,31 +16,31 @@ class Thread extends Model
     protected $with = ['author'];
     protected $dates = ['deleted_at'];
 
-    public $presenter = \GSV\Helpers\Forum\Threads\ThreadPresenter::class;
+    public $presenter = \App\Helpers\Forum\Threads\ThreadPresenter::class;
 
     public function author()
     {
-        return $this->belongsTo(\GSV\Helpers\Users\User::class, 'author_id');
+        return $this->belongsTo(\App\Helpers\Users\User::class, 'author_id');
     }
 
     public function replies()
     {
-        return $this->hasMany(\GSV\Helpers\Forum\Replies\Reply::class, 'thread_id');
+        return $this->hasMany(\App\Helpers\Forum\Replies\Reply::class, 'thread_id');
     }
 
     public function tags()
     {
-        return $this->belongsToMany(\GSV\Helpers\Tags\Tag::class, 'tagged_items', 'thread_id', 'tag_id');
+        return $this->belongsToMany(\App\Helpers\Tags\Tag::class, 'tagged_items', 'thread_id', 'tag_id');
     }
 
     public function visitations()
     {
-        return $this->hasMany(\GSV\Helpers\Forum\Threads\ThreadVisitation::class, 'thread_id');
+        return $this->hasMany(\App\Helpers\Forum\Threads\ThreadVisitation::class, 'thread_id');
     }
 
     public function mostRecentReply()
     {
-        return $this->belongsTo(\GSV\Helpers\Forum\Replies\Reply::class, 'most_recent_reply_id');
+        return $this->belongsTo(\App\Helpers\Forum\Replies\Reply::class, 'most_recent_reply_id');
     }
 
     public function setTags(array $tagIds)

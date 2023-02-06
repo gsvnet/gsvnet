@@ -1,12 +1,12 @@
 <?php
 
-namespace GSV\Console\Commands;
+namespace App\Console\Commands;
 
-use GSV\Commands\Members\InviteMember;
-use GSV\Helpers\Core\DispatchesJobs;
-use GSV\Helpers\Users\User;
-use GSV\Helpers\Users\UsersRepository;
-use GSV\Helpers\Users\ValueObjects\Email;
+use App\Commands\Members\InviteMember;
+use App\Helpers\Core\DispatchesJobs;
+use App\Helpers\Users\User;
+use App\Helpers\Users\UsersRepository;
+use App\Helpers\Users\ValueObjects\Email;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Filesystem\Filesystem;
 

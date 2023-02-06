@@ -1,6 +1,6 @@
-<?php namespace GSV\Commands\Forum;
+<?php namespace App\Commands\Forum;
 
-use GSV\Commands\Command;
+use App\Commands\Command;
 
 class DeleteReplyCommand extends Command {
 

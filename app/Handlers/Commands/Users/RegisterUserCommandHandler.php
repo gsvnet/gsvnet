@@ -1,10 +1,10 @@
-<?php namespace GSV\Handlers\Commands\Users;
+<?php namespace App\Handlers\Commands\Users;
 
-use GSV\Commands\Users\RegisterUserCommand;
-use GSV\Events\Users\UserWasRegistered;
-use GSV\Helpers\Users\Profiles\ProfilesRepository;
-use GSV\Helpers\Users\User;
-use GSV\Helpers\Users\UsersRepository;
+use App\Commands\Users\RegisterUserCommand;
+use App\Events\Users\UserWasRegistered;
+use App\Helpers\Users\Profiles\ProfilesRepository;
+use App\Helpers\Users\User;
+use App\Helpers\Users\UsersRepository;
 
 class RegisterUserCommandHandler {
 

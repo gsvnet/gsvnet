@@ -1,6 +1,6 @@
 <?php
 
-namespace GSV\Providers;
+namespace App\Providers;
 
 use AlgoliaSearch\Client;
 use Illuminate\Support\ServiceProvider;

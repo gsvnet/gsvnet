@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Senates;
+<?php namespace App\Helpers\Senates;
 
-use GSV\Helpers\Core\Validator;
+use App\Helpers\Core\Validator;
 
 class SenateValidator extends Validator
 {

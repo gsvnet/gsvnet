@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Senates;
+<?php namespace App\Helpers\Senates;
 
 use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -11,11 +11,11 @@ class Senate extends Model {
 
     public static $rules = array();
 
-    public $presenter = 'GSV\Helpers\Senates\SenatePresenter';
+    public $presenter = 'App\Helpers\Senates\SenatePresenter';
 
     public function members()
     {
-        return $this->belongsToMany('GSV\Helpers\Users\User', 'user_senate')
+        return $this->belongsToMany('App\Helpers\Users\User', 'user_senate')
             ->withPivot('function')->orderBy('function', 'ASC');
     }
 }

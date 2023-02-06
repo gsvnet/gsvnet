@@ -1,8 +1,8 @@
 <?php
 
 use Carbon\Carbon;
-use GSV\Helpers\Senates\Senate;
-use GSV\Helpers\Users\User;
+use App\Helpers\Senates\Senate;
+use App\Helpers\Users\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

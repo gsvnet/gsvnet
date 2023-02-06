@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Committees\CommitteeMembership;
+<?php namespace App\Helpers\Committees\CommitteeMembership;
 
-use GSV\Helpers\Core\Validator;
+use App\Helpers\Core\Validator;
 
 class MemberUpdaterValidator extends Validator
 {

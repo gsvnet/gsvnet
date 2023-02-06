@@ -1,7 +1,7 @@
-<?php namespace GSV\Events\Users;
+<?php namespace App\Events\Users;
 
-use GSV\Events\Event;
-use GSV\Helpers\Users\User;
+use App\Events\Event;
+use App\Helpers\Users\User;
 use Illuminate\Queue\SerializesModels;
 
 class UserWasRegistered extends Event  {

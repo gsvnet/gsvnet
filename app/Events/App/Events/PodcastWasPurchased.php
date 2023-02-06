@@ -1,8 +1,8 @@
 <?php
 
-namespace GSV\Events\App\Events;
+namespace App\Events\App\Events;
 
-use GSV\Events\Event;
+use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 

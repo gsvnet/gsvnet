@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Users\ProfileActions;
+<?php namespace App\Helpers\Users\ProfileActions;
 
-use GSV\Helpers\BaseTransformer;
+use App\Helpers\BaseTransformer;
 
 class ProfileActionsTransformer extends BaseTransformer
 {

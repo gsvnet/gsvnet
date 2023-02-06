@@ -1,6 +1,6 @@
 <?php
 
-use GSV\Helpers\Albums\Album, GSV\Helpers\Albums\Photos\Photo;
+use App\Helpers\Albums\Album, App\Helpers\Albums\Photos\Photo;
 use Illuminate\Database\Seeder;
 
 class PhotosTableSeeder extends Seeder {

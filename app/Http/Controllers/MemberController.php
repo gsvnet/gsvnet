@@ -1,14 +1,14 @@
 <?php
 
-use GSV\Helpers\Permissions\NoPermissionException;
+use App\Helpers\Permissions\NoPermissionException;
 use Illuminate\Support\Facades\Gate;
-use GSV\Commands\Potentials\PromoteGuestToPotentialCommand;
-use GSV\Commands\Potentials\SignUpAsPotentialCommand;
-use GSV\Commands\Users\SetProfilePictureCommand;
-use GSV\Helpers\Core\Exceptions\ValidationException;
-use GSV\Helpers\Users\Profiles\PotentialValidator;
-use GSV\Helpers\Users\Profiles\ProfilesRepository;
-use GSV\Helpers\Core\ImageHandler;
+use App\Commands\Potentials\PromoteGuestToPotentialCommand;
+use App\Commands\Potentials\SignUpAsPotentialCommand;
+use App\Commands\Users\SetProfilePictureCommand;
+use App\Helpers\Core\Exceptions\ValidationException;
+use App\Helpers\Users\Profiles\PotentialValidator;
+use App\Helpers\Users\Profiles\ProfilesRepository;
+use App\Helpers\Core\ImageHandler;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 

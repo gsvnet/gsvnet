@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Committees\CommitteeMembership;
+<?php namespace App\Helpers\Committees\CommitteeMembership;
 
 use Laracasts\Presenter\Presenter, Carbon\Carbon;
 

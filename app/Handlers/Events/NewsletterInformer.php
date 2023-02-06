@@ -1,11 +1,11 @@
-<?php namespace GSV\Handlers\Events;
+<?php namespace App\Handlers\Events;
 
-use GSV\Events\Members\MembershipStatusWasChanged;
-use GSV\Events\Members\ProfileEvent;
-use GSV\Helpers\Newsletters\NewsletterList;
-use GSV\Helpers\Newsletters\NewsletterManager;
-use GSV\Helpers\Users\User;
-use GSV\Helpers\Users\UserTransformer;
+use App\Events\Members\MembershipStatusWasChanged;
+use App\Events\Members\ProfileEvent;
+use App\Helpers\Newsletters\NewsletterList;
+use App\Helpers\Newsletters\NewsletterManager;
+use App\Helpers\Users\User;
+use App\Helpers\Users\UserTransformer;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Log\Writer;
 

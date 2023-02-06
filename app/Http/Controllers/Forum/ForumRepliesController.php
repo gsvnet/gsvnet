@@ -1,13 +1,13 @@
 <?php
 
-use GSV\Commands\Forum\DeleteReplyCommand;
-use GSV\Commands\Forum\EditReplyCommand;
-use GSV\Commands\Forum\ReplyToThreadCommand;
-use GSV\Http\Validators\DeleteReplyValidator;
-use GSV\Http\Validators\EditReplyValidator;
-use GSV\Http\Validators\ReplyToThreadValidator;
-use GSV\Helpers\Events\EventsRepository;
-use GSV\Helpers\Forum\Replies\ReplyRepository;
+use App\Commands\Forum\DeleteReplyCommand;
+use App\Commands\Forum\EditReplyCommand;
+use App\Commands\Forum\ReplyToThreadCommand;
+use App\Http\Validators\DeleteReplyValidator;
+use App\Http\Validators\EditReplyValidator;
+use App\Http\Validators\ReplyToThreadValidator;
+use App\Helpers\Events\EventsRepository;
+use App\Helpers\Forum\Replies\ReplyRepository;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View;
 

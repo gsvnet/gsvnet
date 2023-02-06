@@ -1,11 +1,11 @@
-<?php namespace GSV\Handlers\Events\Forum;
+<?php namespace App\Handlers\Events\Forum;
 
-use GSV\Events\Forum\ReplyWasDeleted;
-use GSV\Events\Forum\ThreadWasDisliked;
-use GSV\Events\Forum\ThreadWasLiked;
-use GSV\Events\Forum\ThreadWasRepliedTo;
+use App\Events\Forum\ReplyWasDeleted;
+use App\Events\Forum\ThreadWasDisliked;
+use App\Events\Forum\ThreadWasLiked;
+use App\Events\Forum\ThreadWasRepliedTo;
 
-use GSV\Helpers\Forum\Threads\ThreadRepository;
+use App\Helpers\Forum\Threads\ThreadRepository;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class UpdateThreadDetails implements ShouldQueue {

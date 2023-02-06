@@ -1,7 +1,7 @@
-<?php namespace GSV\Handlers\Commands\Members;
+<?php namespace App\Handlers\Commands\Members;
 
-use GSV\Commands\Members\ChangeRegion;
-use GSV\Events\Members\RegionWasChanged;
+use App\Commands\Members\ChangeRegion;
+use App\Events\Members\RegionWasChanged;
 
 class ChangeRegionHandler {
 

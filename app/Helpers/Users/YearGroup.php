@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Users;
+<?php namespace App\Helpers\Users;
 
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
@@ -14,10 +14,10 @@ class YearGroup extends Model {
      */
     protected $table = 'year_groups';
     
-    public $presenter = 'GSV\Helpers\Users\YearGroupPresenter';
+    public $presenter = 'App\Helpers\Users\YearGroupPresenter';
 
     public function userProfiles() {
-        return $this->hasMany('GSV\Helpers\Users\Profiles\UserProfile');
+        return $this->hasMany('App\Helpers\Users\Profiles\UserProfile');
     }
 
 }

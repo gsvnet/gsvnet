@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Events;
+<?php namespace App\Helpers\Events;
 
 use Laracasts\Presenter\Presenter, Carbon\Carbon;
 
@@ -177,6 +177,6 @@ class EventPresenter extends Presenter
 
     public function descriptionFormatted()
     {
-        return \App::make('GSV\Helpers\Markdown\HtmlMarkdownConverter')->convertMarkdownToHtml($this->description);
+        return \App::make('App\Helpers\Markdown\HtmlMarkdownConverter')->convertMarkdownToHtml($this->description);
     }
 }

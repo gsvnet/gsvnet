@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Files\Labels;
+<?php namespace App\Helpers\Files\Labels;
 
 
 class LabelsRepository

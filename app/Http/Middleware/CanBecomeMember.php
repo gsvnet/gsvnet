@@ -1,8 +1,8 @@
-<?php namespace GSV\Http\Middleware;
+<?php namespace App\Http\Middleware;
 
 use Illuminate\Support\Facades\Gate;
 use Closure;
-use GSV\Helpers\Permissions\NoPermissionException;
+use App\Helpers\Permissions\NoPermissionException;
 use Illuminate\Contracts\Auth\Guard;
 
 class CanBecomeMember {

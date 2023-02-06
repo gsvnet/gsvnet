@@ -1,7 +1,7 @@
-<?php namespace GSV\Helpers\Events;
+<?php namespace App\Helpers\Events;
 
-use GSV\Helpers\Core\Validator;
-use GSV\Helpers\Core\Exceptions\ValidationException;
+use App\Helpers\Core\Validator;
+use App\Helpers\Core\Exceptions\ValidationException;
 
 class EventValidator extends Validator
 {

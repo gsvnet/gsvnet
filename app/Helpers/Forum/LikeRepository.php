@@ -1,8 +1,8 @@
-<?php namespace GSV\Helpers\Forum;
+<?php namespace App\Helpers\Forum;
 
-use GSV\Helpers\Core\EloquentRepository;
-use GSV\Helpers\Forum\Replies\Reply;
-use GSV\Helpers\Forum\Threads\Thread;
+use App\Helpers\Core\EloquentRepository;
+use App\Helpers\Forum\Replies\Reply;
+use App\Helpers\Forum\Threads\Thread;
 
 class LikeRepository extends EloquentRepository {
 

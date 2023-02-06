@@ -1,7 +1,7 @@
-<?php namespace GSV\Helpers\Auth;
+<?php namespace App\Helpers\Auth;
 
 use Carbon\Carbon;
-use GSV\Helpers\Users\User;
+use App\Helpers\Users\User;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 

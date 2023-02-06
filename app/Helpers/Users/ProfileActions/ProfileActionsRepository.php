@@ -1,7 +1,7 @@
-<?php namespace GSV\Helpers\Users\ProfileActions;
+<?php namespace App\Helpers\Users\ProfileActions;
 
-use GSV\Helpers\Core\BaseRepository;
-use GSV\Helpers\Users\User;
+use App\Helpers\Core\BaseRepository;
+use App\Helpers\Users\User;
 
 class ProfileActionsRepository extends BaseRepository {
 

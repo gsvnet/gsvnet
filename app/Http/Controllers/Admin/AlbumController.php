@@ -2,9 +2,9 @@
 
 use View, Input, Redirect;
 
-use GSV\Helpers\Albums\AlbumsRepository;
-use GSV\Helpers\Albums\AlbumValidator;
-use GSV\Helpers\Albums\Photos\PhotosRepository;
+use App\Helpers\Albums\AlbumsRepository;
+use App\Helpers\Albums\AlbumValidator;
+use App\Helpers\Albums\Photos\PhotosRepository;
 
 class AlbumController extends AdminBaseController {
 

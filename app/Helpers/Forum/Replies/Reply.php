@@ -1,8 +1,8 @@
-<?php namespace GSV\Helpers\Forum\Replies;
+<?php namespace App\Helpers\Forum\Replies;
 
-use GSV\Helpers\Users\User;
-use GSV\Helpers\Forum\LikableTrait;
-use GSV\Helpers\Forum\Threads\Thread;
+use App\Helpers\Users\User;
+use App\Helpers\Forum\LikableTrait;
+use App\Helpers\Forum\Threads\Thread;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 

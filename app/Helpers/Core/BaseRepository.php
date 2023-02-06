@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Core;
+<?php namespace App\Helpers\Core;
 
 use Illuminate\Database\Eloquent\Model;
 

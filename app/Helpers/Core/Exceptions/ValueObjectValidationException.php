@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Core\Exceptions;
+<?php namespace App\Helpers\Core\Exceptions;
 
-use GSV\Helpers\Core\Exceptions\ValidationException as GSVValidationException;
+use App\Helpers\Core\Exceptions\ValidationException as GSVValidationException;
 
 class ValueObjectValidationException extends GSVValidationException {
     

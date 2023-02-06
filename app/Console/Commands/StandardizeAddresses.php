@@ -1,12 +1,12 @@
-<?php namespace GSV\Console\Commands;
+<?php namespace App\Console\Commands;
 
-use GSV\Commands\Members\ChangeAddress;
-use GSV\Helpers\Core\DispatchesJobs;
-use GSV\Helpers\Newsletters\NewsletterList;
-use GSV\Helpers\Users\User;
-use GSV\Helpers\Users\UsersRepository;
-use GSV\Helpers\Users\UserTransformer;
-use GSV\Helpers\Users\ValueObjects\Address;
+use App\Commands\Members\ChangeAddress;
+use App\Helpers\Core\DispatchesJobs;
+use App\Helpers\Newsletters\NewsletterList;
+use App\Helpers\Users\User;
+use App\Helpers\Users\UsersRepository;
+use App\Helpers\Users\UserTransformer;
+use App\Helpers\Users\ValueObjects\Address;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
 

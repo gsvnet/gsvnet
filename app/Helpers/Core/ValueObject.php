@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Core;
+<?php namespace App\Helpers\Core;
 
-use GSV\Helpers\Core\Exceptions\ValueObjectValidationException;
+use App\Helpers\Core\Exceptions\ValueObjectValidationException;
 use Illuminate\Support\Facades\Validator;
 
 class ValueObject {

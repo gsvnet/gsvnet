@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Albums\Photos;
+<?php namespace App\Helpers\Albums\Photos;
 
 use URL;
 use Illuminate\Database\Eloquent\Model;
@@ -16,7 +16,7 @@ class Photo extends Model {
     // The photo's album
     public function album()
     {
-        return $this->belongsTo('GSV\Helpers\Albums\Album');
+        return $this->belongsTo('App\Helpers\Albums\Album');
     }
 
     // Return the path to the original image

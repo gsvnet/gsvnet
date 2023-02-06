@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Core\Exceptions;
+<?php namespace App\Helpers\Core\Exceptions;
 
 class ValidationException extends \Exception {
 

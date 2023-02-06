@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Forum\Threads;
+<?php namespace App\Helpers\Forum\Threads;
 
-use GSV\Helpers\Core\FormModel;
+use App\Helpers\Core\FormModel;
 use App, Validator;
 
 class ThreadForm extends FormModel
@@ -16,7 +16,7 @@ class ThreadForm extends FormModel
         Validator::extend('max_tags', function ($attribute, $tagIds, $params) {
             $maxCount = $params[0];
 
-            $tagRepo = App::make('GSV\Helpers\Tags\TagRepository');
+            $tagRepo = App::make('App\Helpers\Tags\TagRepository');
             $tags = $tagRepo->getTagsByIds($tagIds);
 
             if ($tags->count() > $maxCount) {

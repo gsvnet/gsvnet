@@ -1,7 +1,7 @@
-<?php namespace GSV\Handlers\Commands\Members;
+<?php namespace App\Handlers\Commands\Members;
 
-use GSV\Commands\Members\ChangeYearGroup;
-use GSV\Events\Members\YearGroupWasChanged;
+use App\Commands\Members\ChangeYearGroup;
+use App\Events\Members\YearGroupWasChanged;
 
 class ChangeYearGroupHandler {
 

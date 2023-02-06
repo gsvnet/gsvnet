@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Albums;
+<?php namespace App\Helpers\Albums;
 
 use Illuminate\Support\Facades\Gate;
 

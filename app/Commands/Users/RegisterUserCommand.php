@@ -1,6 +1,6 @@
-<?php namespace GSV\Commands\Users;
+<?php namespace App\Commands\Users;
 
-use GSV\Commands\Command;
+use App\Commands\Command;
 
 class RegisterUserCommand extends Command {
 

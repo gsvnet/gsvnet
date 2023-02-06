@@ -1,6 +1,6 @@
 <?php
 
-use GSV\Helpers\Events\EventsRepository;
+use App\Helpers\Events\EventsRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Config;
 

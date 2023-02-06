@@ -1,8 +1,8 @@
 <?php
 
-use GSV\Helpers\Committees\Committee;
-use GSV\Helpers\Users\Profiles\UserProfile;
-use GSV\Helpers\Users\User;
+use App\Helpers\Committees\Committee;
+use App\Helpers\Users\Profiles\UserProfile;
+use App\Helpers\Users\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

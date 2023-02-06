@@ -1,8 +1,8 @@
-<?php namespace GSV\Handlers\Commands\Members;
+<?php namespace App\Handlers\Commands\Members;
 
-use GSV\Commands\Members\ChangeGender;
-use GSV\Events\Members\GenderWasChanged;
-use GSV\Helpers\Users\Profiles\ProfilesRepository;
+use App\Commands\Members\ChangeGender;
+use App\Events\Members\GenderWasChanged;
+use App\Helpers\Users\Profiles\ProfilesRepository;
 
 class ChangeGenderHandler {
 

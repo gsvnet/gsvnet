@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Committees;
+<?php namespace App\Helpers\Committees;
 
-use GSV\Helpers\Users\User;
+use App\Helpers\Users\User;
 
 class CommitteesRepository {
 

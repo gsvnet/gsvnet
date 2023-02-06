@@ -1,6 +1,6 @@
 <?php
 
-use GSV\Helpers\Files\Labels\Label;
+use App\Helpers\Files\Labels\Label;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

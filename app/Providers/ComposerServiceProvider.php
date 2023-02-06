@@ -1,4 +1,4 @@
-<?php namespace GSV\Providers;
+<?php namespace App\Providers;
 
 use View;
 use Illuminate\Support\ServiceProvider;
@@ -12,7 +12,7 @@ class ComposerServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        View::composer('layouts.default', 'GSV\Helpers\Core\Composers\NavigationViewComposer');
+        View::composer('layouts.default', 'App\Helpers\Core\Composers\NavigationViewComposer');
     }
 
     public function register(){}

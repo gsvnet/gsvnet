@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Senates;
+<?php namespace App\Helpers\Senates;
 
 class SenatesRepository {
 

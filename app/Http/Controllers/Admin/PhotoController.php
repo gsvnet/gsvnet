@@ -1,7 +1,7 @@
 <?php namespace Admin;
 
-use GSV\Helpers\Albums\Photos\PhotoManager;
-use GSV\Helpers\Albums\Photos\PhotosRepository;
+use App\Helpers\Albums\Photos\PhotoManager;
+use App\Helpers\Albums\Photos\PhotosRepository;
 use Request;
 use Input;
 

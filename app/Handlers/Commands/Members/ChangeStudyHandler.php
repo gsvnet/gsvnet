@@ -1,8 +1,8 @@
-<?php namespace GSV\Handlers\Commands\Members;
+<?php namespace App\Handlers\Commands\Members;
 
-use GSV\Commands\Members\ChangeStudy;
-use GSV\Events\Members\StudyWasChanged;
-use GSV\Helpers\Users\Profiles\ProfilesRepository;
+use App\Commands\Members\ChangeStudy;
+use App\Events\Members\StudyWasChanged;
+use App\Helpers\Users\Profiles\ProfilesRepository;
 
 class ChangeStudyHandler
 {

@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Newsletters\Mailchimp;
+<?php namespace App\Helpers\Newsletters\Mailchimp;
 
-use GSV\Helpers\Newsletters\NewsletterList as NewsletterListInterface;
+use App\Helpers\Newsletters\NewsletterList as NewsletterListInterface;
 use Illuminate\Contracts\Config\Repository;
 use Mailchimp;
 

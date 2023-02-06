@@ -1,11 +1,11 @@
 <?php
 
-namespace GSV\Handlers\Commands\Users;
+namespace App\Handlers\Commands\Users;
 
 
-use GSV\Commands\Users\DeleteProfilePicture;
-use GSV\Events\Members\ProfilePictureWasChanged;
-use GSV\Helpers\Core\ImageHandler;
+use App\Commands\Users\DeleteProfilePicture;
+use App\Events\Members\ProfilePictureWasChanged;
+use App\Helpers\Core\ImageHandler;
 
 class DeleteProfilePictureHandler {
 

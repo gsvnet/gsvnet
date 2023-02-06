@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Albums\Photos;
+<?php namespace App\Helpers\Albums\Photos;
 
 class PhotosRepository
 {

@@ -13,9 +13,9 @@
             {!! Former::populate( $user->profile ) !!}
 
             {!! Former::select('gender')->label('Geslacht')->options([
-                \GSV\Helpers\Users\ValueObjects\Gender::UNKOWN => 'Onbekend',
-                \GSV\Helpers\Users\ValueObjects\Gender::MALE => 'Man',
-                \GSV\Helpers\Users\ValueObjects\Gender::FEMALE => 'Vrouw',
+                \App\Helpers\Users\ValueObjects\Gender::UNKOWN => 'Onbekend',
+                \App\Helpers\Users\ValueObjects\Gender::MALE => 'Man',
+                \App\Helpers\Users\ValueObjects\Gender::FEMALE => 'Vrouw',
             ]) !!}
 
             <button type='submit' class='btn btn-success'>

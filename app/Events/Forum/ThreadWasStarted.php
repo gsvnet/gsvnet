@@ -1,7 +1,7 @@
-<?php namespace GSV\Events\Forum;
+<?php namespace App\Events\Forum;
 
-use GSV\Events\Event;
-use GSV\Helpers\Forum\Threads\Thread;
+use App\Events\Event;
+use App\Helpers\Forum\Threads\Thread;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Queue\SerializesModels;
 

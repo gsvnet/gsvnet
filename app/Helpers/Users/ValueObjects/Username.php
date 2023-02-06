@@ -1,9 +1,9 @@
 <?php
 
-namespace GSV\Helpers\Users\ValueObjects;
+namespace App\Helpers\Users\ValueObjects;
 
 
-use GSV\Helpers\Core\ValueObject;
+use App\Helpers\Core\ValueObject;
 
 class Username extends ValueObject {
 

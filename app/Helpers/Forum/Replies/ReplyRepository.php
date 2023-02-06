@@ -1,7 +1,7 @@
-<?php namespace GSV\Helpers\Forum\Replies;
+<?php namespace App\Helpers\Forum\Replies;
 
-use GSV\Helpers\Core\EloquentRepository;
-use GSV\Helpers\Forum\Like;
+use App\Helpers\Core\EloquentRepository;
+use App\Helpers\Forum\Like;
 
 class ReplyRepository extends EloquentRepository
 {

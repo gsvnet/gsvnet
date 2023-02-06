@@ -1,7 +1,7 @@
-<?php namespace GSV\Handlers\Commands\Forum;
+<?php namespace App\Handlers\Commands\Forum;
 
-use GSV\Commands\Forum\EditReplyCommand;
-use GSV\Helpers\Forum\Replies\ReplyRepository;
+use App\Commands\Forum\EditReplyCommand;
+use App\Helpers\Forum\Replies\ReplyRepository;
 
 class EditReplyCommandHandler {
 

@@ -1,10 +1,10 @@
-<?php namespace GSV\Exceptions;
+<?php namespace App\Exceptions;
 
 use Exception;
-use GSV\Helpers\Core\Exceptions\ValidationException;
-use GSV\Helpers\Core\Exceptions\ValueObjectValidationException;
-use GSV\Helpers\Permissions\NoPermissionException;
-use GSV\Helpers\Permissions\UserAccountNotApprovedException;
+use App\Helpers\Core\Exceptions\ValidationException;
+use App\Helpers\Core\Exceptions\ValueObjectValidationException;
+use App\Helpers\Permissions\NoPermissionException;
+use App\Helpers\Permissions\UserAccountNotApprovedException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Bugsnag\BugsnagLaravel\BugsnagExceptionHandler as ExceptionHandler;

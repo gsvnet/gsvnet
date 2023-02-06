@@ -1,7 +1,7 @@
-<?php namespace GSV\Helpers\Events;
+<?php namespace App\Helpers\Events;
 
 use Illuminate\Support\Facades\Gate;
-use GSV\Helpers\Permissions\NoPermissionException;
+use App\Helpers\Permissions\NoPermissionException;
 use Carbon\Carbon;
 
 class EventsRepository {

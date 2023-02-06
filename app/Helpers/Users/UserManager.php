@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Users;
+<?php namespace App\Helpers\Users;
 
 use Event;
 use Config;

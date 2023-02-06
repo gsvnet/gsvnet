@@ -1,8 +1,8 @@
-<?php namespace GSV\Handlers\Commands\Forum;
+<?php namespace App\Handlers\Commands\Forum;
 
-use GSV\Commands\Forum\StartThreadCommand;
-use GSV\Events\Forum\ThreadWasStarted;
-use GSV\Helpers\Forum\Threads\ThreadRepository;
+use App\Commands\Forum\StartThreadCommand;
+use App\Events\Forum\ThreadWasStarted;
+use App\Helpers\Forum\Threads\ThreadRepository;
 
 class StartThreadCommandHandler {
 

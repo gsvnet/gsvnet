@@ -1,24 +1,24 @@
 <?php namespace Malfonds;
 
-use GSV\Commands\Members\ChangeAddress;
-use GSV\Commands\Members\ChangeGender;
-use GSV\Commands\Members\ChangeName;
-use GSV\Commands\Members\ChangeYearGroup;
-use GSV\Commands\Members\InviteMember;
-use GSV\Commands\Users\ChangeEmail;
-use GSV\Commands\Users\ChangePassword;
-use GSV\Events\Members\Verifications\EmailWasVerified;
-use GSV\Events\Members\Verifications\FamilyWasVerified;
-use GSV\Events\Members\Verifications\GenderWasVerified;
-use GSV\Events\Members\Verifications\NameWasVerified;
-use GSV\Events\Members\Verifications\YearGroupWasVerified;
-use GSV\Helpers\Auth\InviteValidator;
-use GSV\Helpers\Auth\TokenRepository;
-use GSV\Helpers\Auth\TokenTransformer;
-use GSV\Helpers\Users\MemberTransformer;
-use GSV\Helpers\Users\MemberTransformerWithoutYeargroup;
-use GSV\Helpers\Users\UsersRepository;
-use GSV\Helpers\Users\YearGroupRepository;
+use App\Commands\Members\ChangeAddress;
+use App\Commands\Members\ChangeGender;
+use App\Commands\Members\ChangeName;
+use App\Commands\Members\ChangeYearGroup;
+use App\Commands\Members\InviteMember;
+use App\Commands\Users\ChangeEmail;
+use App\Commands\Users\ChangePassword;
+use App\Events\Members\Verifications\EmailWasVerified;
+use App\Events\Members\Verifications\FamilyWasVerified;
+use App\Events\Members\Verifications\GenderWasVerified;
+use App\Events\Members\Verifications\NameWasVerified;
+use App\Events\Members\Verifications\YearGroupWasVerified;
+use App\Helpers\Auth\InviteValidator;
+use App\Helpers\Auth\TokenRepository;
+use App\Helpers\Auth\TokenTransformer;
+use App\Helpers\Users\MemberTransformer;
+use App\Helpers\Users\MemberTransformerWithoutYeargroup;
+use App\Helpers\Users\UsersRepository;
+use App\Helpers\Users\YearGroupRepository;
 use Illuminate\Http\Request;
 
 class MemberController extends CoreApiController

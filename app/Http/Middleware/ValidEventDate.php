@@ -1,4 +1,4 @@
-<?php namespace GSV\Http\Middleware;
+<?php namespace App\Http\Middleware;
 
 use Closure;
 use Config;

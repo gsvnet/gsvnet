@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Tags;
+<?php namespace App\Helpers\Tags;
 
 use HTML;
 

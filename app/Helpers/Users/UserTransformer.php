@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Users;
+<?php namespace App\Helpers\Users;
 
-use GSV\Helpers\Users\ValueObjects\Gender;
+use App\Helpers\Users\ValueObjects\Gender;
 use Illuminate\Support\Collection;
 
 class UserTransformer {

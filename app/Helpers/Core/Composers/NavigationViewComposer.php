@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Core\Composers;
+<?php namespace App\Helpers\Core\Composers;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;

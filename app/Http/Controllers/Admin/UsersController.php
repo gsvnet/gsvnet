@@ -1,19 +1,19 @@
 <?php namespace Admin;
 
-use GSV\Commands\Users\RegisterUserCommand;
-use GSV\Helpers\Users\Profiles\AdminProfileCreatorValidator;
-use GSV\Helpers\Users\Profiles\AdminProfileUpdaterValidator;
-use GSV\Helpers\Users\Profiles\ProfilesRepository;
-use GSV\Helpers\Users\Profiles\UserProfile;
-use GSV\Helpers\Users\RegisterUserValidator;
-use GSV\Helpers\Users\User;
-use GSV\Helpers\Users\UserManager;
-use GSV\Helpers\Users\UsersRepository;
-use GSV\Helpers\Users\UserValidator;
-use GSV\Helpers\Users\YearGroupRepository;
+use App\Commands\Users\RegisterUserCommand;
+use App\Helpers\Users\Profiles\AdminProfileCreatorValidator;
+use App\Helpers\Users\Profiles\AdminProfileUpdaterValidator;
+use App\Helpers\Users\Profiles\ProfilesRepository;
+use App\Helpers\Users\Profiles\UserProfile;
+use App\Helpers\Users\RegisterUserValidator;
+use App\Helpers\Users\User;
+use App\Helpers\Users\UserManager;
+use App\Helpers\Users\UsersRepository;
+use App\Helpers\Users\UserValidator;
+use App\Helpers\Users\YearGroupRepository;
 use Illuminate\Http\Request;
-use GSV\Helpers\Users\MemberFiler;
-use GSV\Helpers\Regions\RegionsRepository;
+use App\Helpers\Users\MemberFiler;
+use App\Helpers\Regions\RegionsRepository;
 
 class UsersController extends AdminBaseController
 {

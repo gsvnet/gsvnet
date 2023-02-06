@@ -1,17 +1,17 @@
 <?php
-use GSV\Commands\Forum\DislikeReplyCommand;
-use GSV\Commands\Forum\DislikeThreadCommand;
-use GSV\Commands\Forum\LikeReplyCommand;
-use GSV\Commands\Forum\LikeThreadCommand;
-use GSV\Helpers\Core\Exceptions\ValidationException;
-use GSV\Helpers\Forum\Replies\DislikeReplyValidator;
-use GSV\Helpers\Forum\Replies\LikeReplyValidator;
-use GSV\Helpers\Forum\Replies\ReplyRepository;
-use GSV\Helpers\Forum\Threads\DislikeThreadValidator;
-use GSV\Helpers\Forum\Threads\LikeThreadValidator;
-use GSV\Helpers\Forum\Threads\ThreadRepository;
-use GSV\Helpers\Markdown\HtmlMarkdownConverter;
-use GSV\Helpers\Permissions\NoPermissionException;
+use App\Commands\Forum\DislikeReplyCommand;
+use App\Commands\Forum\DislikeThreadCommand;
+use App\Commands\Forum\LikeReplyCommand;
+use App\Commands\Forum\LikeThreadCommand;
+use App\Helpers\Core\Exceptions\ValidationException;
+use App\Helpers\Forum\Replies\DislikeReplyValidator;
+use App\Helpers\Forum\Replies\LikeReplyValidator;
+use App\Helpers\Forum\Replies\ReplyRepository;
+use App\Helpers\Forum\Threads\DislikeThreadValidator;
+use App\Helpers\Forum\Threads\LikeThreadValidator;
+use App\Helpers\Forum\Threads\ThreadRepository;
+use App\Helpers\Markdown\HtmlMarkdownConverter;
+use App\Helpers\Permissions\NoPermissionException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Gate;
 

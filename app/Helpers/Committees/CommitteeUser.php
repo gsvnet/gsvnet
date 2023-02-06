@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Committees;
+<?php namespace App\Helpers\Committees;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,11 +10,11 @@ class CommitteeUser extends Model {
 
     public function user()
     {
-        return $this->belongsTo('GSV\Helpers\Users\User');
+        return $this->belongsTo('App\Helpers\Users\User');
     }
 
     public function committee()
     {
-        return $this->belongsTo('GSV\Helpers\Committees\Committee');
+        return $this->belongsTo('App\Helpers\Committees\Committee');
     }
 }

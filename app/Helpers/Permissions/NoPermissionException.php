@@ -1,3 +1,3 @@
-<?php namespace GSV\Helpers\Permissions;
+<?php namespace App\Helpers\Permissions;
 
 class NoPermissionException extends \Exception {}

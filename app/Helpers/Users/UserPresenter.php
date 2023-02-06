@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Users;
+<?php namespace App\Helpers\Users;
 
 use haampie\Gravatar\Gravatar;
 use Laracasts\Presenter\Presenter;

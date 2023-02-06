@@ -1,10 +1,10 @@
 <?php
 
-namespace GSV\Handlers\Commands\Members;
+namespace App\Handlers\Commands\Members;
 
 
-use GSV\Commands\Members\ChangeUsername;
-use GSV\Helpers\Users\UsersRepository;
+use App\Commands\Members\ChangeUsername;
+use App\Helpers\Users\UsersRepository;
 
 class ChangeUsernameHandler {
 

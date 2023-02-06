@@ -1,7 +1,7 @@
-<?php namespace GSV\Helpers\Users;
+<?php namespace App\Helpers\Users;
 
-use GSV\Helpers\BaseTransformer;
-use GSV\Helpers\Users\ValueObjects\Gender;
+use App\Helpers\BaseTransformer;
+use App\Helpers\Users\ValueObjects\Gender;
 
 class MemberTransformer extends BaseTransformer
 {

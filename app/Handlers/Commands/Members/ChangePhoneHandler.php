@@ -1,10 +1,10 @@
-<?php namespace GSV\Handlers\Commands\Members;
+<?php namespace App\Handlers\Commands\Members;
 
-use GSV\Commands\Members\ChangeAddress;
-use GSV\Commands\Members\ChangePhone;
-use GSV\Events\Members\AddressWasChanged;
-use GSV\Events\Members\PhoneNumberWasChanged;
-use GSV\Helpers\Users\Profiles\ProfilesRepository;
+use App\Commands\Members\ChangeAddress;
+use App\Commands\Members\ChangePhone;
+use App\Events\Members\AddressWasChanged;
+use App\Events\Members\PhoneNumberWasChanged;
+use App\Helpers\Users\Profiles\ProfilesRepository;
 
 class ChangePhoneHandler {
 

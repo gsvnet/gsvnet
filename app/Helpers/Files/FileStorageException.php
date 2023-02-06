@@ -1,3 +1,3 @@
-<?php namespace GSV\Helpers\Files;
+<?php namespace App\Helpers\Files;
 
 class FileStorageException extends \Exception {}

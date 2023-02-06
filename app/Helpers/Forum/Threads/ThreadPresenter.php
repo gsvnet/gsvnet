@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Forum\Threads;
+<?php namespace App\Helpers\Forum\Threads;
 
 use Laracasts\Presenter\Presenter;
 use App;
@@ -144,12 +144,12 @@ class ThreadPresenter extends Presenter
 
     private function convertMarkdown($content)
     {
-        return App::make('GSV\Helpers\Markdown\HtmlMarkdownConverter')->convertMarkdownToHtml($content);
+        return App::make('App\Helpers\Markdown\HtmlMarkdownConverter')->convertMarkdownToHtml($content);
     }
 
     private function convertEmoticons($content)
     {
-        return App::make('GSV\Helpers\Emoticons\Emoticon')->toHTML($content);
+        return App::make('App\Helpers\Emoticons\Emoticon')->toHTML($content);
     }
 
     private function purify($content)

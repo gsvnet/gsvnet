@@ -1,6 +1,6 @@
 <?php
 
-namespace GSV\Events\Members;
+namespace App\Events\Members;
 
 use Carbon\Carbon;
 use Illuminate\Queue\SerializesModels;

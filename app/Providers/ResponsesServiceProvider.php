@@ -1,4 +1,4 @@
-<?php namespace GSV\Providers;
+<?php namespace App\Providers;
 
 use Intervention\Image\Facades\Image;
 use Response;

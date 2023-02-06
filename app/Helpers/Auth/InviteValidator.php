@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Auth;
+<?php namespace App\Helpers\Auth;
 
-use GSV\Helpers\Core\Validator;
+use App\Helpers\Core\Validator;
 
 class InviteValidator extends Validator
 {

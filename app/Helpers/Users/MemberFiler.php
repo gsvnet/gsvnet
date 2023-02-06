@@ -1,6 +1,6 @@
 <?php
 
-namespace GSV\Helpers\Users;
+namespace App\Helpers\Users;
 
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;

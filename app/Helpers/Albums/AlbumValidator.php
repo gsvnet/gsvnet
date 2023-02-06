@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Albums;
+<?php namespace App\Helpers\Albums;
 
-use GSV\Helpers\Core\Validator;
+use App\Helpers\Core\Validator;
 
 class AlbumValidator extends Validator
 {

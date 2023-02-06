@@ -1,7 +1,7 @@
-<?php namespace GSV\Helpers\Auth;
+<?php namespace App\Helpers\Auth;
 
-use GSV\Helpers\Core\BaseRepository;
-use GSV\Helpers\Users\User;
+use App\Helpers\Core\BaseRepository;
+use App\Helpers\Users\User;
 
 class TokenRepository extends BaseRepository
 {

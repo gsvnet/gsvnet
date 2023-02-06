@@ -1,7 +1,7 @@
-<?php namespace GSV\Http\Middleware;
+<?php namespace App\Http\Middleware;
 
 use Closure;
-use GSV\Helpers\Permissions\UserAccountNotApprovedException;
+use App\Helpers\Permissions\UserAccountNotApprovedException;
 
 class AccountNotApproved {
     protected $auth;

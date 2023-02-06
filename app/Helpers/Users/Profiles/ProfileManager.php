@@ -1,8 +1,8 @@
-<?php namespace GSV\Helpers\Users\Profiles;
+<?php namespace App\Helpers\Users\Profiles;
 
-use GSV\Helpers\Users\UsersRepository;
-use GSV\Helpers\Core\ImageHandler;
-use GSV\Helpers\Albums\Photos\PhotoStorageException;
+use App\Helpers\Users\UsersRepository;
+use App\Helpers\Core\ImageHandler;
+use App\Helpers\Albums\Photos\PhotoStorageException;
 use Event;
 
 

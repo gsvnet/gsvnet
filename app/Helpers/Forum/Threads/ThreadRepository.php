@@ -1,14 +1,14 @@
-<?php namespace GSV\Helpers\Forum\Threads;
+<?php namespace App\Helpers\Forum\Threads;
 
-use GSV\Helpers\Forum\Like;
-use GSV\Helpers\Forum\Replies\Reply;
-use GSV\Helpers\Permissions\Permission;
+use App\Helpers\Forum\Like;
+use App\Helpers\Forum\Replies\Reply;
+use App\Helpers\Permissions\Permission;
 use Illuminate\Support\Collection;
-use GSV\Helpers\Core\EloquentRepository;
+use App\Helpers\Core\EloquentRepository;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
-use GSV\Helpers\Core\Exceptions\EntityNotFoundException;
+use App\Helpers\Core\Exceptions\EntityNotFoundException;
 
 class ThreadRepository extends EloquentRepository
 {

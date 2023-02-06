@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Committees;
+<?php namespace App\Helpers\Committees;
 
-use GSV\Helpers\Core\Validator;
+use App\Helpers\Core\Validator;
 
 class CommitteeCreatorValidator extends Validator
 {

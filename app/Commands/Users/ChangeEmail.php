@@ -1,8 +1,8 @@
-<?php namespace GSV\Commands\Users;
+<?php namespace App\Commands\Users;
 
-use GSV\Commands\Command;
-use GSV\Helpers\Users\User;
-use GSV\Helpers\Users\ValueObjects\Email;
+use App\Commands\Command;
+use App\Helpers\Users\User;
+use App\Helpers\Users\ValueObjects\Email;
 use Illuminate\Http\Request;
 
 class ChangeEmail extends Command {

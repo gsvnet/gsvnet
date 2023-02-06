@@ -1,7 +1,7 @@
-<?php namespace GSV\Handlers\Commands\Forum;
+<?php namespace App\Handlers\Commands\Forum;
 
-use GSV\Commands\Forum\EditThreadCommand;
-use GSV\Helpers\Forum\Threads\ThreadRepository;
+use App\Commands\Forum\EditThreadCommand;
+use App\Helpers\Forum\Threads\ThreadRepository;
 
 class EditThreadCommandHandler {
 

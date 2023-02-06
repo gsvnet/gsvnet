@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Users;
+<?php namespace App\Helpers\Users;
 
-use GSV\Helpers\BaseTransformer;
+use App\Helpers\BaseTransformer;
 
 class YearGroupTransformer extends BaseTransformer
 {

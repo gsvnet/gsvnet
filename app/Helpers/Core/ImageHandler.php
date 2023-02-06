@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Core;
+<?php namespace App\Helpers\Core;
 /*
 / The ImageHandler class handles the storage n
 */

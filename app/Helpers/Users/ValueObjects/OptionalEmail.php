@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Users\ValueObjects;
+<?php namespace App\Helpers\Users\ValueObjects;
 
 class OptionalEmail extends Email {
 

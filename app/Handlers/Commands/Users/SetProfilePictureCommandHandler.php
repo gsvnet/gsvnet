@@ -1,9 +1,9 @@
-<?php namespace GSV\Handlers\Commands\Users;
+<?php namespace App\Handlers\Commands\Users;
 
-use GSV\Commands\Users\SetProfilePictureCommand;
-use GSV\Events\Members\ProfilePictureWasChanged;
-use GSV\Helpers\Albums\Photos\PhotoStorageException;
-use GSV\Helpers\Core\ImageHandler;
+use App\Commands\Users\SetProfilePictureCommand;
+use App\Events\Members\ProfilePictureWasChanged;
+use App\Helpers\Albums\Photos\PhotoStorageException;
+use App\Helpers\Core\ImageHandler;
 
 class SetProfilePictureCommandHandler
 {

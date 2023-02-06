@@ -1,7 +1,7 @@
-<?php namespace GSV\Handlers\Events\Users;
+<?php namespace App\Handlers\Events\Users;
 
-use GSV\Events\Users\UserWasRegistered;
-use GSV\Helpers\Users\User;
+use App\Events\Users\UserWasRegistered;
+use App\Helpers\Users\User;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Mail\Mailer;
 

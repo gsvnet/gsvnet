@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Users\Profiles;
+<?php namespace App\Helpers\Users\Profiles;
 
-use GSV\Helpers\Core\Validator;
+use App\Helpers\Core\Validator;
 
 class ProfileUpdatorValidator extends Validator
 {

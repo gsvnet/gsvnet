@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Permissions;
+<?php namespace App\Helpers\Permissions;
 
 class PermissionNotFoundException extends \Exception {
 }

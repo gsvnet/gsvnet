@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Auth;
+<?php namespace App\Helpers\Auth;
 
-use GSV\Helpers\BaseTransformer;
+use App\Helpers\BaseTransformer;
 
 class TokenTransformer extends BaseTransformer
 {

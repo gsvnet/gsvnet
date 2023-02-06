@@ -1,4 +1,4 @@
-<?php namespace GSV\Events\Members;
+<?php namespace App\Events\Members;
 
 class PhoneNumberWasChanged extends ProfileEvent
 {

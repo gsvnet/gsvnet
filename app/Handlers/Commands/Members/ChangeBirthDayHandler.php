@@ -1,8 +1,8 @@
-<?php namespace GSV\Handlers\Commands\Members;
+<?php namespace App\Handlers\Commands\Members;
 
-use GSV\Commands\Members\ChangeBirthDay;
-use GSV\Events\Members\BirthDayWasChanged;
-use GSV\Helpers\Users\Profiles\ProfilesRepository;
+use App\Commands\Members\ChangeBirthDay;
+use App\Events\Members\BirthDayWasChanged;
+use App\Helpers\Users\Profiles\ProfilesRepository;
 
 class ChangeBirthDayHandler {
 

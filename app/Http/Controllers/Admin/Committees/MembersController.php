@@ -1,10 +1,10 @@
 <?php namespace Admin\Committees;
 
-use GSV\Helpers\Committees\CommitteesRepository;
-use GSV\Helpers\Committees\CommitteeMembership\CommitteeMembershipRepository;
-use GSV\Helpers\Committees\CommitteeMembership\MemberCreatorValidator;
-use GSV\Helpers\Committees\CommitteeMembership\MemberUpdaterValidator;
-use GSV\Helpers\Users\UsersRepository;
+use App\Helpers\Committees\CommitteesRepository;
+use App\Helpers\Committees\CommitteeMembership\CommitteeMembershipRepository;
+use App\Helpers\Committees\CommitteeMembership\MemberCreatorValidator;
+use App\Helpers\Committees\CommitteeMembership\MemberUpdaterValidator;
+use App\Helpers\Users\UsersRepository;
 
 use Admin\AdminBaseController;
 use Redirect, Input, View;

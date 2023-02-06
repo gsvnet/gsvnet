@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Forum\Threads;
+<?php namespace App\Helpers\Forum\Threads;
 
-use GSV\Helpers\Core\Entity;
+use App\Helpers\Core\Entity;
 
 class ThreadVisitation extends Entity
 {
@@ -15,6 +15,6 @@ class ThreadVisitation extends Entity
 
     public function user()
     {
-        return $this->belongsTo('GSV\Helpers\Users\User', 'user_id');
+        return $this->belongsTo('App\Helpers\Users\User', 'user_id');
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace GSV\Helpers\Extension;
+namespace App\Helpers\Extension;
 
 
-use GSV\Helpers\Core\Validator;
+use App\Helpers\Core\Validator;
 
 class ExtensionFileValidator extends Validator
 {

@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Newsletters;
+<?php namespace App\Helpers\Newsletters;
 
 
 interface NewsletterList {

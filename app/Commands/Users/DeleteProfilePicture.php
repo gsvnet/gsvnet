@@ -1,9 +1,9 @@
 <?php
 
-namespace GSV\Commands\Users;
+namespace App\Commands\Users;
 
 
-use GSV\Helpers\Users\User;
+use App\Helpers\Users\User;
 
 class DeleteProfilePicture {
 

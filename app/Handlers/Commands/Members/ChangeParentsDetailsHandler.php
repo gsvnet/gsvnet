@@ -1,10 +1,10 @@
-<?php namespace GSV\Handlers\Commands\Members;
+<?php namespace App\Handlers\Commands\Members;
 
-use GSV\Commands\Members\ChangeAddress;
-use GSV\Commands\Members\ChangeParentsDetails;
-use GSV\Events\Members\AddressWasChanged;
-use GSV\Events\Members\ParentDetailsWereChanged;
-use GSV\Helpers\Users\Profiles\ProfilesRepository;
+use App\Commands\Members\ChangeAddress;
+use App\Commands\Members\ChangeParentsDetails;
+use App\Events\Members\AddressWasChanged;
+use App\Events\Members\ParentDetailsWereChanged;
+use App\Helpers\Users\Profiles\ProfilesRepository;
 
 class ChangeParentsDetailsHandler {
 

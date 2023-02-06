@@ -1,7 +1,7 @@
-<?php namespace GSV\Helpers\Users\ValueObjects;
+<?php namespace App\Helpers\Users\ValueObjects;
 
-use GSV\Helpers\Core\Exceptions\ValueObjectValidationException;
-use GSV\Helpers\Core\ValueObject;
+use App\Helpers\Core\Exceptions\ValueObjectValidationException;
+use App\Helpers\Core\ValueObject;
 use Illuminate\Support\MessageBag;
 
 class Gender extends ValueObject {

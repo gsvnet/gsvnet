@@ -1,6 +1,6 @@
 <?php
 
-use GSV\Helpers\Files\FileHandler;
+use App\Helpers\Files\FileHandler;
 
 // Did not really know where to put this single method, so I created a new controller.
 class PublicFilesController extends BaseController {

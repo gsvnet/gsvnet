@@ -1,4 +1,4 @@
-<?php namespace GSV\Http;
+<?php namespace App\Http;
 
 use App;
 use Illuminate\Http\Response as IlluminateResponse;

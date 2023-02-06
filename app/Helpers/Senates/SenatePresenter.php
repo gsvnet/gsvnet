@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Senates;
+<?php namespace App\Helpers\Senates;
 
-use GSV\Helpers\Markdown\HtmlMarkdownConverter;
+use App\Helpers\Markdown\HtmlMarkdownConverter;
 use Laracasts\Presenter\Presenter, Carbon\Carbon, Config;
 
 class SenatePresenter extends Presenter

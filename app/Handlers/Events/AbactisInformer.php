@@ -1,9 +1,9 @@
-<?php namespace GSV\Handlers\Events;
+<?php namespace App\Handlers\Events;
 
 use Carbon\Carbon;
-use GSV\Events\Members\MemberFileWasCreated;
-use GSV\Events\Members\ProfileEvent;
-use GSV\Helpers\Users\ProfileActions\ProfileActionPresenter;
+use App\Events\Members\MemberFileWasCreated;
+use App\Events\Members\ProfileEvent;
+use App\Helpers\Users\ProfileActions\ProfileActionPresenter;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Contracts\Queue\ShouldQueue;

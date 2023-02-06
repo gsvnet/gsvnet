@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Files;
+<?php namespace App\Helpers\Files;
 
-use GSV\Helpers\Core\Validator;
+use App\Helpers\Core\Validator;
 
 class FileUpdatorValidator extends Validator
 {

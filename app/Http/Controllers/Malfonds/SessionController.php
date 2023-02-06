@@ -1,8 +1,8 @@
 <?php namespace Malfonds;
 
-use GSV\Helpers\Auth\TokenRepository;
-use GSV\Helpers\Users\MemberTransformer;
-use GSV\Helpers\Users\UsersRepository;
+use App\Helpers\Auth\TokenRepository;
+use App\Helpers\Users\MemberTransformer;
+use App\Helpers\Users\UsersRepository;
 use Illuminate\Http\Request;
 use Auth;
 

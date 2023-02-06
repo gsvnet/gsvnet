@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Core;
+<?php namespace App\Helpers\Core;
 
-use GSV\Helpers\Core\Exceptions\ValidationException;
+use App\Helpers\Core\Exceptions\ValidationException;
 use Illuminate\Support\MessageBag;
 use Illuminate\Validation\Factory;
 

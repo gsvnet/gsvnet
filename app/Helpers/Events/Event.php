@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Events;
+<?php namespace App\Helpers\Events;
 
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
@@ -11,7 +11,7 @@ class Event extends Model {
     
     protected $guarded = array();
 
-    public $presenter = 'GSV\Helpers\Events\EventPresenter';
+    public $presenter = 'App\Helpers\Events\EventPresenter';
 
     public function scopePublic($query)
     {

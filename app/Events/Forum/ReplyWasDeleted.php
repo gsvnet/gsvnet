@@ -1,6 +1,6 @@
-<?php namespace GSV\Events\Forum;
+<?php namespace App\Events\Forum;
 
-use GSV\Events\Event;
+use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
 
 class ReplyWasDeleted extends Event {

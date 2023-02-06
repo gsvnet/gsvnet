@@ -1,17 +1,17 @@
 <?php
 
-use GSV\Commands\Users\ChangeEmail;
-use GSV\Commands\Users\ChangePassword;
-use GSV\Helpers\Users\EmailAndPasswordValidator ;
+use App\Commands\Users\ChangeEmail;
+use App\Commands\Users\ChangePassword;
+use App\Helpers\Users\EmailAndPasswordValidator ;
 use Illuminate\Http\Request;
-use GSV\Helpers\Committees\CommitteesRepository;
-use GSV\Helpers\Users\Profiles\ProfilesRepository;
-use GSV\Helpers\Users\User;
-use GSV\Helpers\Users\UsersRepository;
-use GSV\Helpers\Users\UserManager;
-use GSV\Helpers\Users\Profiles\ProfileManager;
-use GSV\Helpers\Users\YearGroupRepository;
-use GSV\Helpers\Regions\RegionsRepository;
+use App\Helpers\Committees\CommitteesRepository;
+use App\Helpers\Users\Profiles\ProfilesRepository;
+use App\Helpers\Users\User;
+use App\Helpers\Users\UsersRepository;
+use App\Helpers\Users\UserManager;
+use App\Helpers\Users\Profiles\ProfileManager;
+use App\Helpers\Users\YearGroupRepository;
+use App\Helpers\Regions\RegionsRepository;
 
 class UserController extends BaseController
 {

@@ -1,9 +1,9 @@
-<?php namespace GSV\Providers;
+<?php namespace App\Providers;
 
-use GSV\Helpers\Users\User;
-use GSV\Helpers\Forum\Replies\Reply;
-use GSV\Helpers\Forum\Threads\Thread;
-use GSV\Helpers\Permissions\PermissionCache;
+use App\Helpers\Users\User;
+use App\Helpers\Forum\Replies\Reply;
+use App\Helpers\Forum\Threads\Thread;
+use App\Helpers\Permissions\PermissionCache;
 use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;

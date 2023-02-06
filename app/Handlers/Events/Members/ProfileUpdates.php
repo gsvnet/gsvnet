@@ -1,9 +1,9 @@
-<?php namespace GSV\Handlers\Events\Members;
+<?php namespace App\Handlers\Events\Members;
 
-use GSV\Events\Members\ProfileEvent;
-use GSV\Helpers\Users\ProfileActions\ProfileAction;
-use GSV\Helpers\Users\ProfileActions\ProfileActionsRepository;
-use GSV\Helpers\Users\UsersRepository;
+use App\Events\Members\ProfileEvent;
+use App\Helpers\Users\ProfileActions\ProfileAction;
+use App\Helpers\Users\ProfileActions\ProfileActionsRepository;
+use App\Helpers\Users\UsersRepository;
 
 class ProfileUpdates
 {

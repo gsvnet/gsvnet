@@ -1,9 +1,9 @@
-<?php namespace GSV\Helpers\Forum\Threads;
+<?php namespace App\Helpers\Forum\Threads;
 
 use DB, Permission;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
-use GSV\Helpers\Forum\Replies\ReplySearch;
+use App\Helpers\Forum\Replies\ReplySearch;
 
 class ThreadSearch
 {

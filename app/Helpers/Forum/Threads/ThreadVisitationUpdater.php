@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Forum\Threads;
+<?php namespace App\Helpers\Forum\Threads;
 
 class ThreadVisitationUpdater
 {

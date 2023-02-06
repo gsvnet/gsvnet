@@ -1,4 +1,4 @@
-<?php namespace GSV\Commands;
+<?php namespace App\Commands;
 
 abstract class Command {
 

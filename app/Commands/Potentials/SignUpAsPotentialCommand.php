@@ -1,6 +1,6 @@
-<?php namespace GSV\Commands\Potentials;
+<?php namespace App\Commands\Potentials;
 
-use GSV\Commands\Command;
+use App\Commands\Command;
 
 class SignUpAsPotentialCommand extends Command {
     public $firstname;

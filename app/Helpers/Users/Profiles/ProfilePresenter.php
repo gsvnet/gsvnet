@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Users\Profiles;
+<?php namespace App\Helpers\Users\Profiles;
 
 use Laracasts\Presenter\Presenter;
 use Carbon\Carbon;

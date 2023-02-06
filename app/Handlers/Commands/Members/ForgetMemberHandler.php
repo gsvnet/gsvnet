@@ -1,35 +1,35 @@
 <?php
 
-namespace GSV\Handlers\Commands\Members;
+namespace App\Handlers\Commands\Members;
 
-use GSV\Commands\Members\ChangeAddress;
-use GSV\Commands\Members\ChangeBirthDay;
-use GSV\Commands\Members\ChangeBusiness;
-use GSV\Commands\Members\ChangeGender;
-use GSV\Commands\Members\ChangeName;
-use GSV\Commands\Members\ChangeParentsDetails;
-use GSV\Commands\Members\ChangePhone;
-use GSV\Commands\Members\ChangeStudy;
-use GSV\Commands\Members\ChangeUsername;
-use GSV\Commands\Members\ForgetMember;
-use GSV\Commands\Users\ChangeEmail;
-use GSV\Commands\Users\DeleteProfilePicture;
-use GSV\Helpers\Core\Exceptions\ValidationException;
-use GSV\Helpers\Newsletters\NewsletterList;
-use GSV\Helpers\Newsletters\NewsletterManager;
-use GSV\Helpers\Users\Profiles\ProfilesRepository;
-use GSV\Helpers\Users\ValueObjects\Address;
-use GSV\Helpers\Users\ValueObjects\Business;
-use GSV\Helpers\Users\ValueObjects\Date;
-use GSV\Helpers\Users\ValueObjects\Email;
-use GSV\Helpers\Users\ValueObjects\Gender;
-use GSV\Helpers\Users\ValueObjects\Name;
-use GSV\Helpers\Users\ValueObjects\OptionalAddress;
-use GSV\Helpers\Users\ValueObjects\OptionalEmail;
-use GSV\Helpers\Users\ValueObjects\OptionalPhoneNumber;
-use GSV\Helpers\Users\ValueObjects\PhoneNumber;
-use GSV\Helpers\Users\ValueObjects\Study;
-use GSV\Helpers\Users\ValueObjects\Username;
+use App\Commands\Members\ChangeAddress;
+use App\Commands\Members\ChangeBirthDay;
+use App\Commands\Members\ChangeBusiness;
+use App\Commands\Members\ChangeGender;
+use App\Commands\Members\ChangeName;
+use App\Commands\Members\ChangeParentsDetails;
+use App\Commands\Members\ChangePhone;
+use App\Commands\Members\ChangeStudy;
+use App\Commands\Members\ChangeUsername;
+use App\Commands\Members\ForgetMember;
+use App\Commands\Users\ChangeEmail;
+use App\Commands\Users\DeleteProfilePicture;
+use App\Helpers\Core\Exceptions\ValidationException;
+use App\Helpers\Newsletters\NewsletterList;
+use App\Helpers\Newsletters\NewsletterManager;
+use App\Helpers\Users\Profiles\ProfilesRepository;
+use App\Helpers\Users\ValueObjects\Address;
+use App\Helpers\Users\ValueObjects\Business;
+use App\Helpers\Users\ValueObjects\Date;
+use App\Helpers\Users\ValueObjects\Email;
+use App\Helpers\Users\ValueObjects\Gender;
+use App\Helpers\Users\ValueObjects\Name;
+use App\Helpers\Users\ValueObjects\OptionalAddress;
+use App\Helpers\Users\ValueObjects\OptionalEmail;
+use App\Helpers\Users\ValueObjects\OptionalPhoneNumber;
+use App\Helpers\Users\ValueObjects\PhoneNumber;
+use App\Helpers\Users\ValueObjects\Study;
+use App\Helpers\Users\ValueObjects\Username;
 
 class ForgetMemberHandler
 {

@@ -1,8 +1,8 @@
-<?php namespace GSV\Helpers\Users;
+<?php namespace App\Helpers\Users;
 
-use GSV\Helpers\Core\Mailer;
+use App\Helpers\Core\Mailer;
 use Config;
-use GSV\Helpers\Users\Profiles\UserProfile;
+use App\Helpers\Users\Profiles\UserProfile;
 
 class UserMailer extends Mailer {
 

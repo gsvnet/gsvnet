@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Files\Labels;
+<?php namespace App\Helpers\Files\Labels;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,7 +8,7 @@ class Label extends Model {
 
     public function files()
     {
-        return $this->belongsToMany('GSV\Helpers\Files\File', 'file_label');
+        return $this->belongsToMany('App\Helpers\Files\File', 'file_label');
     }
 
     public function __toString()

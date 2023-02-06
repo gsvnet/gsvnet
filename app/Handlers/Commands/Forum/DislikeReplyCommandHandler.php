@@ -1,8 +1,8 @@
-<?php namespace GSV\Handlers\Commands\Forum;
+<?php namespace App\Handlers\Commands\Forum;
 
-use GSV\Commands\Forum\DislikeReplyCommand;
-use GSV\Events\Forum\ReplyWasDisliked;
-use GSV\Helpers\Forum\LikeRepository;
+use App\Commands\Forum\DislikeReplyCommand;
+use App\Events\Forum\ReplyWasDisliked;
+use App\Helpers\Forum\LikeRepository;
 
 class DislikeReplyCommandHandler {
 

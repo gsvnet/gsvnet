@@ -1,5 +1,5 @@
 <?php
-use GSV\Helpers\Users\User;
+use App\Helpers\Users\User;
 
 return [
 

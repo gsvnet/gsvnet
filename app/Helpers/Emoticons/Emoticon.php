@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Emoticons;
+<?php namespace App\Helpers\Emoticons;
 
 class Emoticon
 {

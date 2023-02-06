@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Tags;
+<?php namespace App\Helpers\Tags;
 
-use GSV\Helpers\Core\EloquentRepository;
+use App\Helpers\Core\EloquentRepository;
 use Illuminate\Support\Collection;
 
 class TagRepository extends EloquentRepository

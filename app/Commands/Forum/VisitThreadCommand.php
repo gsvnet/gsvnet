@@ -1,6 +1,6 @@
-<?php namespace GSV\Commands\Forum;
+<?php namespace App\Commands\Forum;
 
-use GSV\Commands\Command;
+use App\Commands\Command;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;

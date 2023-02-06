@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Users;
+<?php namespace App\Helpers\Users;
 
-use GSV\Helpers\Core\Validator;
+use App\Helpers\Core\Validator;
 
 class UserCreatorValidator extends Validator
 {

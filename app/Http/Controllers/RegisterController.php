@@ -1,6 +1,6 @@
 <?php
 
-use GSV\Helpers\Users\UserManager;
+use App\Helpers\Users\UserManager;
 
 class RegisterController extends BaseController {
 

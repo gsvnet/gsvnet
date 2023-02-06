@@ -1,4 +1,4 @@
-<?php namespace GSV\Http;
+<?php namespace App\Http;
 
 use League\Fractal\Manager;
 use League\Fractal\Pagination\CursorInterface as FractalCursorInterface;

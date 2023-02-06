@@ -1,11 +1,11 @@
 <?php
 
-namespace GSV\Commands\Members;
+namespace App\Commands\Members;
 
 
-use GSV\Commands\Command;
-use GSV\Helpers\Users\User;
-use GSV\Helpers\Users\ValueObjects\Username;
+use App\Commands\Command;
+use App\Helpers\Users\User;
+use App\Helpers\Users\ValueObjects\Username;
 use Illuminate\Http\Request;
 
 class ChangeUsername extends Command {

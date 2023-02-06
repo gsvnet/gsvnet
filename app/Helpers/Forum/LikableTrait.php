@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Forum;
+<?php namespace App\Helpers\Forum;
 
 trait LikableTrait {
     public function likes()

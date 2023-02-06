@@ -1,6 +1,6 @@
-<?php namespace GSV\Handlers\Events\Potentials;
+<?php namespace App\Handlers\Events\Potentials;
 
-use GSV\Events\Potentials\PotentialSignedUp;
+use App\Events\Potentials\PotentialSignedUp;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Mail\Message;

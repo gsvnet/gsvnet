@@ -1,8 +1,8 @@
-<?php namespace GSV\Helpers\Users;
+<?php namespace App\Helpers\Users;
 
 use Cache;
 use Carbon\Carbon;
-use GSV\Helpers\Core\BaseRepository;
+use App\Helpers\Core\BaseRepository;
 
 class UsersRepository extends BaseRepository
 {

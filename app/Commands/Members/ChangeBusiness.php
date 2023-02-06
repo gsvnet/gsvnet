@@ -1,8 +1,8 @@
-<?php namespace GSV\Commands\Members;
+<?php namespace App\Commands\Members;
 
-use GSV\Commands\Command;
-use GSV\Helpers\Users\ValueObjects\Business;
-use GSV\Helpers\Users\User;
+use App\Commands\Command;
+use App\Helpers\Users\ValueObjects\Business;
+use App\Helpers\Users\User;
 use Illuminate\Http\Request;
 
 class ChangeBusiness extends Command {

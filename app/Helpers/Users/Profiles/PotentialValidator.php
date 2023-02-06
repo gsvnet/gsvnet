@@ -1,7 +1,7 @@
-<?php namespace GSV\Helpers\Users\Profiles;
+<?php namespace App\Helpers\Users\Profiles;
 
-use GSV\Helpers\Core\Validator;
-use GSV\Helpers\Core\Http\Validators\ReCaptcha;
+use App\Helpers\Core\Validator;
+use App\Helpers\Core\Http\Validators\ReCaptcha;
 
 class PotentialValidator extends Validator
 {

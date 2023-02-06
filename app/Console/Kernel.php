@@ -1,17 +1,17 @@
-<?php namespace GSV\Console;
+<?php namespace App\Console;
 
-use GSV\Console\Commands\BulkNewsletterSubscriptions;
-use GSV\Console\Commands\BulkSyncWithAlgolia;
-use GSV\Console\Commands\InviteViaCLI;
-use GSV\Console\Commands\StandardizeAddresses;
-use GSV\Console\Commands\StandardizePhoneNumbers;
-use GSV\Console\Commands\MigrateFormerMembers;
-use GSV\Events\Members\MemberFileWasCreated;
+use App\Console\Commands\BulkNewsletterSubscriptions;
+use App\Console\Commands\BulkSyncWithAlgolia;
+use App\Console\Commands\InviteViaCLI;
+use App\Console\Commands\StandardizeAddresses;
+use App\Console\Commands\StandardizePhoneNumbers;
+use App\Console\Commands\MigrateFormerMembers;
+use App\Events\Members\MemberFileWasCreated;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use GSV\Helpers\Users\MemberFiler;
+use App\Helpers\Users\MemberFiler;
 use Illuminate\Support\Facades\Storage;
 
 class Kernel extends ConsoleKernel

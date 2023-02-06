@@ -1,9 +1,9 @@
-<?php namespace GSV\Handlers\Commands\Members;
+<?php namespace App\Handlers\Commands\Members;
 
-use GSV\Commands\Members\ChangeName;
-use GSV\Events\Members\NameWasChanged;
-use GSV\Helpers\Users\Profiles\ProfilesRepository;
-use GSV\Helpers\Users\UsersRepository;
+use App\Commands\Members\ChangeName;
+use App\Events\Members\NameWasChanged;
+use App\Helpers\Users\Profiles\ProfilesRepository;
+use App\Helpers\Users\UsersRepository;
 
 class ChangeNameHandler {
 

@@ -139,12 +139,12 @@ return [
         /*
          * Application Service Providers...
          */
-        GSV\Providers\AppServiceProvider::class,
-        GSV\Providers\BusServiceProvider::class,
-        GSV\Providers\ConfigServiceProvider::class,
-        GSV\Providers\EventServiceProvider::class,
-        GSV\Providers\RouteServiceProvider::class,
-        GSV\Providers\AuthServiceProvider::class,
+        App\Providers\AppServiceProvider::class,
+        App\Providers\BusServiceProvider::class,
+        App\Providers\ConfigServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
 
         Former\FormerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
@@ -156,11 +156,11 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider::class,
 
-        GSV\Providers\NewsletterServiceProvider::class,
-        GSV\Providers\ComposerServiceProvider::class,
-        GSV\Providers\ResponsesServiceProvider::class,
-        GSV\Providers\EventsServiceProvider::class,
-        GSV\Providers\AlgoliaServiceProvider::class,
+        App\Providers\NewsletterServiceProvider::class,
+        App\Providers\ComposerServiceProvider::class,
+        App\Providers\ResponsesServiceProvider::class,
+        App\Providers\EventsServiceProvider::class,
+        App\Providers\AlgoliaServiceProvider::class,
     ],
 
     /*

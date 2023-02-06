@@ -1,7 +1,7 @@
-<?php namespace GSV\Helpers\Forum\Replies;
+<?php namespace App\Helpers\Forum\Replies;
 
-use GSV\Helpers\Core\Validator;
-use GSV\Helpers\Forum\LikeRepository;
+use App\Helpers\Core\Validator;
+use App\Helpers\Forum\LikeRepository;
 use Illuminate\Validation\Factory;
 
 class LikeReplyValidator extends Validator {

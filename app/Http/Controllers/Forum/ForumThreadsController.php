@@ -1,18 +1,18 @@
 <?php
 
-use GSV\Commands\Forum\DeleteThreadCommand;
-use GSV\Commands\Forum\EditThreadCommand;
-use GSV\Commands\Forum\StartThreadCommand;
-use GSV\Commands\Forum\VisitThreadCommand;
-use GSV\Http\Validators\StartThreadValidator;
-use GSV\Helpers\Events\EventsRepository;
-use GSV\Helpers\Forum\Replies\ReplyRepository;
-use GSV\Helpers\Forum\Threads\ThreadRepository;
-use GSV\Helpers\Forum\Threads\ThreadSearch;
-use GSV\Helpers\Forum\Threads\ThreadSlug;
-use GSV\Helpers\Permissions\NoPermissionException;
-use GSV\Helpers\Tags\TagRepository;
-use GSV\Helpers\Users\UsersRepository;
+use App\Commands\Forum\DeleteThreadCommand;
+use App\Commands\Forum\EditThreadCommand;
+use App\Commands\Forum\StartThreadCommand;
+use App\Commands\Forum\VisitThreadCommand;
+use App\Http\Validators\StartThreadValidator;
+use App\Helpers\Events\EventsRepository;
+use App\Helpers\Forum\Replies\ReplyRepository;
+use App\Helpers\Forum\Threads\ThreadRepository;
+use App\Helpers\Forum\Threads\ThreadSearch;
+use App\Helpers\Forum\Threads\ThreadSlug;
+use App\Helpers\Permissions\NoPermissionException;
+use App\Helpers\Tags\TagRepository;
+use App\Helpers\Users\UsersRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;

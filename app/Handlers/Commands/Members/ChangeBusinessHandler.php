@@ -1,8 +1,8 @@
-<?php namespace GSV\Handlers\Commands\Members;
+<?php namespace App\Handlers\Commands\Members;
 
-use GSV\Commands\Members\ChangeBusiness;
-use GSV\Events\Members\BusinessWasChanged;
-use GSV\Helpers\Users\Profiles\ProfilesRepository;
+use App\Commands\Members\ChangeBusiness;
+use App\Events\Members\BusinessWasChanged;
+use App\Helpers\Users\Profiles\ProfilesRepository;
 
 class ChangeBusinessHandler {
 

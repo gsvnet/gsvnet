@@ -1,9 +1,9 @@
-<?php namespace GSV\Handlers\Commands\Forum;
+<?php namespace App\Handlers\Commands\Forum;
 
-use GSV\Commands\Forum\LikeReplyCommand;
-use GSV\Events\Forum\ReplyWasLiked;
-use GSV\Helpers\Forum\Like;
-use GSV\Helpers\Forum\Replies\ReplyRepository;
+use App\Commands\Forum\LikeReplyCommand;
+use App\Events\Forum\ReplyWasLiked;
+use App\Helpers\Forum\Like;
+use App\Helpers\Forum\Replies\ReplyRepository;
 
 class LikeReplyCommandHandler {
 

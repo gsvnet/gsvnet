@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Markdown;
+<?php namespace App\Helpers\Markdown;
 
 class HtmlMarkdownConverter
 {

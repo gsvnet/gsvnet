@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Forum\Threads;
+<?php namespace App\Helpers\Forum\Threads;
 
-use GSV\Helpers\Permissions\NoPermissionException;
+use App\Helpers\Permissions\NoPermissionException;
 use Illuminate\Support\Facades\Gate;
 
 class ShowThreadFilter

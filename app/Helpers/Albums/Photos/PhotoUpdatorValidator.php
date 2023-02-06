@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Albums\Photos;
+<?php namespace App\Helpers\Albums\Photos;
 
-use GSV\Helpers\Core\Validator;
+use App\Helpers\Core\Validator;
 
 class PhotoUpdatorValidator extends Validator
 {

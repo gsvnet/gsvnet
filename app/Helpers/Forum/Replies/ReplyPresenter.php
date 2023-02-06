@@ -1,8 +1,8 @@
-<?php namespace GSV\Helpers\Forum\Replies;
+<?php namespace App\Helpers\Forum\Replies;
 
 use Chromabits\Purifier\Purifier;
-use GSV\Helpers\Emoticons\Emoticon;
-use GSV\Helpers\Markdown\HtmlMarkdownConverter;
+use App\Helpers\Emoticons\Emoticon;
+use App\Helpers\Markdown\HtmlMarkdownConverter;
 use Illuminate\Support\Facades\Auth;
 use Laracasts\Presenter\Presenter;
 

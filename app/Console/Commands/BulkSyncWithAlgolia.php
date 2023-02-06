@@ -1,11 +1,11 @@
 <?php
 
-namespace GSV\Console\Commands;
+namespace App\Console\Commands;
 
 use AlgoliaSearch\Client as AlgoliaClient;
-use GSV\Helpers\Users\MemberTransformer;
-use GSV\Helpers\Users\User;
-use GSV\Helpers\Users\YearGroupTransformer;
+use App\Helpers\Users\MemberTransformer;
+use App\Helpers\Users\User;
+use App\Helpers\Users\YearGroupTransformer;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Collection;
 use Throwable;

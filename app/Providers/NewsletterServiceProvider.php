@@ -1,4 +1,4 @@
-<?php namespace GSV\Providers;
+<?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -12,8 +12,8 @@ class NewsletterServiceProvider extends ServiceProvider {
     public function register()
     {
         $this->app->bind(
-            'GSV\Helpers\Newsletters\NewsletterList',
-            'GSV\Helpers\Newsletters\Mailchimp\NewsletterList'
+            'App\Helpers\Newsletters\NewsletterList',
+            'App\Helpers\Newsletters\Mailchimp\NewsletterList'
         );
     }
 }

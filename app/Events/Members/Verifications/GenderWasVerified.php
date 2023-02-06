@@ -1,6 +1,6 @@
-<?php namespace GSV\Events\Members\Verifications;
+<?php namespace App\Events\Members\Verifications;
 
-use GSV\Events\Members\ProfileEvent;
+use App\Events\Members\ProfileEvent;
 
 class GenderWasVerified extends ProfileEvent
 {

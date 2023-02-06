@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Tags;
+<?php namespace App\Helpers\Tags;
 
-use GSV\Helpers\Core\Entity;
+use App\Helpers\Core\Entity;
 
 class Tag extends Entity
 {

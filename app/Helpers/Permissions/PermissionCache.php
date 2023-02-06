@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Permissions;
+<?php namespace App\Helpers\Permissions;
 
-use GSV\Helpers\Users\User;
+use App\Helpers\Users\User;
 
 class PermissionCache
 {

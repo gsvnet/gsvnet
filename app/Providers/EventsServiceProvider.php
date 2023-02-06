@@ -1,4 +1,4 @@
-<?php namespace GSV\Providers;
+<?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use View;
@@ -10,6 +10,6 @@ class EventsServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        View::composer('events.sidebar', 'GSV\Helpers\Events\EventsSideBarComposer');
+        View::composer('events.sidebar', 'App\Helpers\Events\EventsSideBarComposer');
     }
 }

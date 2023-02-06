@@ -1,12 +1,12 @@
 <?php
 
-use GSV\Helpers\Users\Profiles\ProfilesRepository;
-use GSV\Helpers\Users\User;
-use GSV\Helpers\Users\YearGroupRepository;
+use App\Helpers\Users\Profiles\ProfilesRepository;
+use App\Helpers\Users\User;
+use App\Helpers\Users\YearGroupRepository;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
-use GSV\Helpers\Regions\RegionsRepository;
-use GSV\Helpers\Events\EventsRepository;
+use App\Helpers\Regions\RegionsRepository;
+use App\Helpers\Events\EventsRepository;
 
 class ApiController extends BaseController {
 

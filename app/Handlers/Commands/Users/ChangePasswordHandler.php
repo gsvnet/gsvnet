@@ -1,8 +1,8 @@
-<?php namespace GSV\Handlers\Commands\Users;
+<?php namespace App\Handlers\Commands\Users;
 
-use GSV\Commands\Users\ChangePassword;
-use GSV\Events\Users\PasswordWasSet;
-use GSV\Helpers\Users\UsersRepository;
+use App\Commands\Users\ChangePassword;
+use App\Events\Users\PasswordWasSet;
+use App\Helpers\Users\UsersRepository;
 
 class ChangePasswordHandler {
 

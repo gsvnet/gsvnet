@@ -1,4 +1,4 @@
-<?php namespace GSV\Helpers\Committees;
+<?php namespace App\Helpers\Committees;
 
 use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +11,7 @@ class Committee extends Model {
 
     public static $rules = array();
 
-    public $presenter = 'GSV\Helpers\Committees\CommitteePresenter';
+    public $presenter = 'App\Helpers\Committees\CommitteePresenter';
 
     public function scopePublic($query)
     {
@@ -26,7 +26,7 @@ class Committee extends Model {
     // Change users to members?
     public function members()
     {
-        return $this->belongsToMany('GSV\Helpers\Users\User', 'committee_user')
+        return $this->belongsToMany('App\Helpers\Users\User', 'committee_user')
             ->withPivot('id', 'start_date', 'end_date');
     }
 
@@ -34,7 +34,7 @@ class Committee extends Model {
     {
         // Select all active members, i.e. for which the current date is
         //  between the start and enddate
-        return $this->belongsToMany('GSV\Helpers\Users\User', 'committee_user')
+        return $this->belongsToMany('App\Helpers\Users\User', 'committee_user')
             ->where('committee_user.start_date', '<=', new \DateTime('now'))
             ->where(function($q) {
                 return $q->where('committee_user.end_date', '>=', new \DateTime('now'))

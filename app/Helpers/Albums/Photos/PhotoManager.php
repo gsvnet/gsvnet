@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Albums\Photos;
+<?php namespace App\Helpers\Albums\Photos;
 
-use GSV\Helpers\Core\ImageHandler;
+use App\Helpers\Core\ImageHandler;
 
 class PhotoManager
 {

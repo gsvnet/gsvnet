@@ -1,6 +1,6 @@
-<?php namespace GSV\Helpers\Forum\Replies;
+<?php namespace App\Helpers\Forum\Replies;
 
-use GSV\Helpers\Core\FormModel;
+use App\Helpers\Core\FormModel;
 
 class ReplyForm extends FormModel
 {
