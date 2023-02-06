@@ -111,97 +111,97 @@ Route::group([
     'namespace' => 'Admin',
     'middleware' => ['auth', 'has:member-or-reunist'],
 ], function () {
-        Route::get('/', 'AdminController@index');
-        Route::get('/me', 'AdminController@redirectToMyProfile');
+    Route::get('/', 'AdminController@index');
+    Route::get('/me', 'AdminController@redirectToMyProfile');
 
-        // events, albums/{photo}, files
-        Route::resource('events', 'EventController');
-        Route::resource('albums', 'AlbumController', ['except' => ['create']]);
-        Route::resource('albums.photo', 'PhotoController', ['except' => ['index', 'create']]);
-        Route::resource('files', 'FilesController');
+    // events, albums/{photo}, files
+    Route::resource('events', 'EventController');
+    Route::resource('albums', 'AlbumController', ['except' => ['create']]);
+    Route::resource('albums.photo', 'PhotoController', ['except' => ['index', 'create']]);
+    Route::resource('files', 'FilesController');
 
-        // Commissies
-        Route::resource('commissies', 'CommitteeController', ['except' => ['create']]);
+    // Commissies
+    Route::resource('commissies', 'CommitteeController', ['except' => ['create']]);
 
-        // Hier nog een route voor ajax calls naar users db
-        Route::resource('commissies/lidmaatschap', 'Committees\MembersController');
+    // Hier nog een route voor ajax calls naar users db
+    Route::resource('commissies/lidmaatschap', 'Committees\MembersController');
 
-        // Users
-        Route::group(['prefix' => 'gebruikers'], function () {
-            Route::post('/{user}/activeren', 'UsersController@activate');
-            Route::post('/{user}/accepteer-lid', 'UsersController@accept');
-            Route::post('/{user}/profiel/create', 'UsersController@storeProfile');
-            Route::put('/{user}/profiel', 'UsersController@updateProfile');
-            Route::delete('/{user}/profiel', 'UsersController@destroyProfile');
+    // Users
+    Route::group(['prefix' => 'gebruikers'], function () {
+        Route::post('/{user}/activeren', 'UsersController@activate');
+        Route::post('/{user}/accepteer-lid', 'UsersController@accept');
+        Route::post('/{user}/profiel/create', 'UsersController@storeProfile');
+        Route::put('/{user}/profiel', 'UsersController@updateProfile');
+        Route::delete('/{user}/profiel', 'UsersController@destroyProfile');
 
-            Route::get('/gasten', 'UsersController@showGuests');
-            Route::get('/novieten', 'UsersController@showPotentials');
-            Route::get('/leden', 'UsersController@showMembers');
-            Route::get('/oud-leden', 'UsersController@showFormerMembers');
-        });
-
-        // Each part of the profile
-        Route::get('leden/{user}/contact', 'MemberController@editContactDetails');
-        Route::put('leden/{user}/contact', 'MemberController@updateContactDetails');
-        Route::get('leden/{user}/email', 'MemberController@editEmail');
-        Route::put('leden/{user}/email', 'MemberController@updateEmail');
-        Route::get('leden/{user}/wachtwoord', 'MemberController@editPassword');
-        Route::put('leden/{user}/wachtwoord', 'MemberController@updatePassword');
-        Route::get('leden/{user}/geboortedatum', 'MemberController@editBirthDay');
-        Route::put('leden/{user}/geboortedatum', 'MemberController@updateBirthDay');
-        Route::get('leden/{user}/geslacht', 'MemberController@editGender');
-        Route::put('leden/{user}/geslacht', 'MemberController@updateGender');
-        Route::get('leden/{user}/jaarverband', 'MemberController@editYearGroup');
-        Route::put('leden/{user}/jaarverband', 'MemberController@updateYearGroup');
-        Route::get('leden/{user}/naam', 'MemberController@editName');
-        Route::put('leden/{user}/naam', 'MemberController@updateName');
-        Route::get('leden/{user}/gebruikersnaam', 'MemberController@editUsername');
-        Route::put('leden/{user}/gebruikersnaam', 'MemberController@updateUsername');
-        Route::get('leden/{user}/werk', 'MemberController@editBusiness');
-        Route::put('leden/{user}/werk', 'MemberController@updateBusiness');
-        Route::get('leden/{user}/foto', 'MemberController@editPhoto');
-        Route::put('leden/{user}/foto', 'MemberController@updatePhoto');
-        Route::get('leden/{user}/ouders', 'MemberController@editParentContactDetails');
-        Route::put('leden/{user}/ouders', 'MemberController@updateParentContactDetails');
-        Route::get('leden/{user}/studie', 'MemberController@editStudy');
-        Route::put('leden/{user}/studie', 'MemberController@updateStudy');
-        Route::get('leden/{user}/regio', 'MemberController@editRegion');
-        Route::put('leden/{user}/regio', 'MemberController@updateRegion');
-        Route::get('leden/{user}/tijd-van-lidmaatschap', 'MemberController@editMembershipPeriod');
-        Route::put('leden/{user}/tijd-van-lidmaatschap', 'MemberController@updateMembershipPeriod');
-        Route::get('leden/{user}/in-leven', 'MemberController@editAlive');
-        Route::put('leden/{user}/in-leven', 'MemberController@updateAlive');
-        Route::get('leden/{user}/sic-ontvangen', 'MemberController@editNewspaper');
-        Route::put('leden/{user}/sic-ontvangen', 'MemberController@updateNewspaper');
-
-        // Some actions (post requests therefore)
-        Route::get('leden/{user}/lidmaatschap', 'MemberController@editMembershipStatus');
-        Route::post('leden/{user}/lidmaatschap/maak-reunist', 'MemberController@makeReunist');
-        Route::post('leden/{user}/lidmaatschap/maak-oud-lid', 'MemberController@makeExMember');
-        Route::post('leden/{user}/lidmaatschap/maak-lid', 'MemberController@makeMember');
-
-        // Deleting user data according to GDPR rules
-        Route::get('leden/{user}/forget', 'MemberController@setForget');
-        Route::post('leden/{user}/forget', 'MemberController@forget');
-
-        Route::get('leden/oudleden.csv', 'UsersController@exportFormerMembers');
-        Route::get('leden/leden.csv', 'UsersController@exportMembers');
-        Route::get('leden/sic-ontvangers.csv', 'MemberController@exportNewspaperRecipients');
-        Route::get('leden/updates', 'MemberController@latestUpdates');
-
-        Route::resource('gebruikers', 'UsersController');
-        Route::resource('gebruikers.family', 'FamilyController');
-
-        // Senaten
-        Route::resource('senaten', 'SenateController');
-        // Hier nog een route voor ajax calls naar users db
-        Route::post('senaten/{senate}/members', 'Senates\MembersController@store');
-        Route::delete('senaten/{senate}/members/{member}', 'Senates\MembersController@destroy');
-
-        // Extension
-        Route::get('extension', 'ExtensionController@index');
-        Route::post('extension', 'ExtensionController@store');
+        Route::get('/gasten', 'UsersController@showGuests');
+        Route::get('/novieten', 'UsersController@showPotentials');
+        Route::get('/leden', 'UsersController@showMembers');
+        Route::get('/oud-leden', 'UsersController@showFormerMembers');
     });
+
+    // Each part of the profile
+    Route::get('leden/{user}/contact', 'MemberController@editContactDetails');
+    Route::put('leden/{user}/contact', 'MemberController@updateContactDetails');
+    Route::get('leden/{user}/email', 'MemberController@editEmail');
+    Route::put('leden/{user}/email', 'MemberController@updateEmail');
+    Route::get('leden/{user}/wachtwoord', 'MemberController@editPassword');
+    Route::put('leden/{user}/wachtwoord', 'MemberController@updatePassword');
+    Route::get('leden/{user}/geboortedatum', 'MemberController@editBirthDay');
+    Route::put('leden/{user}/geboortedatum', 'MemberController@updateBirthDay');
+    Route::get('leden/{user}/geslacht', 'MemberController@editGender');
+    Route::put('leden/{user}/geslacht', 'MemberController@updateGender');
+    Route::get('leden/{user}/jaarverband', 'MemberController@editYearGroup');
+    Route::put('leden/{user}/jaarverband', 'MemberController@updateYearGroup');
+    Route::get('leden/{user}/naam', 'MemberController@editName');
+    Route::put('leden/{user}/naam', 'MemberController@updateName');
+    Route::get('leden/{user}/gebruikersnaam', 'MemberController@editUsername');
+    Route::put('leden/{user}/gebruikersnaam', 'MemberController@updateUsername');
+    Route::get('leden/{user}/werk', 'MemberController@editBusiness');
+    Route::put('leden/{user}/werk', 'MemberController@updateBusiness');
+    Route::get('leden/{user}/foto', 'MemberController@editPhoto');
+    Route::put('leden/{user}/foto', 'MemberController@updatePhoto');
+    Route::get('leden/{user}/ouders', 'MemberController@editParentContactDetails');
+    Route::put('leden/{user}/ouders', 'MemberController@updateParentContactDetails');
+    Route::get('leden/{user}/studie', 'MemberController@editStudy');
+    Route::put('leden/{user}/studie', 'MemberController@updateStudy');
+    Route::get('leden/{user}/regio', 'MemberController@editRegion');
+    Route::put('leden/{user}/regio', 'MemberController@updateRegion');
+    Route::get('leden/{user}/tijd-van-lidmaatschap', 'MemberController@editMembershipPeriod');
+    Route::put('leden/{user}/tijd-van-lidmaatschap', 'MemberController@updateMembershipPeriod');
+    Route::get('leden/{user}/in-leven', 'MemberController@editAlive');
+    Route::put('leden/{user}/in-leven', 'MemberController@updateAlive');
+    Route::get('leden/{user}/sic-ontvangen', 'MemberController@editNewspaper');
+    Route::put('leden/{user}/sic-ontvangen', 'MemberController@updateNewspaper');
+
+    // Some actions (post requests therefore)
+    Route::get('leden/{user}/lidmaatschap', 'MemberController@editMembershipStatus');
+    Route::post('leden/{user}/lidmaatschap/maak-reunist', 'MemberController@makeReunist');
+    Route::post('leden/{user}/lidmaatschap/maak-oud-lid', 'MemberController@makeExMember');
+    Route::post('leden/{user}/lidmaatschap/maak-lid', 'MemberController@makeMember');
+
+    // Deleting user data according to GDPR rules
+    Route::get('leden/{user}/forget', 'MemberController@setForget');
+    Route::post('leden/{user}/forget', 'MemberController@forget');
+
+    Route::get('leden/oudleden.csv', 'UsersController@exportFormerMembers');
+    Route::get('leden/leden.csv', 'UsersController@exportMembers');
+    Route::get('leden/sic-ontvangers.csv', 'MemberController@exportNewspaperRecipients');
+    Route::get('leden/updates', 'MemberController@latestUpdates');
+
+    Route::resource('gebruikers', 'UsersController');
+    Route::resource('gebruikers.family', 'FamilyController');
+
+    // Senaten
+    Route::resource('senaten', 'SenateController');
+    // Hier nog een route voor ajax calls naar users db
+    Route::post('senaten/{senate}/members', 'Senates\MembersController@store');
+    Route::delete('senaten/{senate}/members/{member}', 'Senates\MembersController@destroy');
+
+    // Extension
+    Route::get('extension', 'ExtensionController@index');
+    Route::post('extension', 'ExtensionController@store');
+});
 
 // Forum
 Route::group(['prefix' => 'forum', 'middleware' => ['auth', 'approved']], function () {

@@ -2,13 +2,11 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Auth\AuthenticationException;
-use App\Helpers\Core\Exceptions\ValidationException;
-use App\Helpers\Core\Exceptions\ValueObjectValidationException;
 use App\Helpers\Permissions\NoPermissionException;
 use App\Helpers\Permissions\UserAccountNotApprovedException;
 use Bugsnag\BugsnagLaravel\BugsnagExceptionHandler as ExceptionHandler;
 use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Response;
 
 class Handler extends ExceptionHandler
@@ -84,6 +82,7 @@ class Handler extends ExceptionHandler
 
         return parent::render($request, $e);
     }
+
     /**
      * Convert an authentication exception into an unauthenticated response.
      *
