@@ -1,4 +1,6 @@
-<?php namespace App\Handlers\Events;
+<?php
+
+namespace App\Handlers\Events;
 
 use App\Events\Forum\ReplyWasDeleted;
 use App\Events\Forum\ReplyWasDisliked;
@@ -8,7 +10,8 @@ use App\Events\Forum\ThreadWasLiked;
 use App\Events\Forum\ThreadWasRepliedTo;
 use Illuminate\Contracts\Events\Dispatcher;
 
-class ThreadEventHandler {
+class ThreadEventHandler
+{
     public function subscribe(Dispatcher $events)
     {
         $events->listen(ThreadWasRepliedTo::class, 'App\Handlers\Events\Forum\UpdateThreadDetails@incrementReplies');

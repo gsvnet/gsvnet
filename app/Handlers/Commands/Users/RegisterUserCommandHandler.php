@@ -1,4 +1,6 @@
-<?php namespace App\Handlers\Commands\Users;
+<?php
+
+namespace App\Handlers\Commands\Users;
 
 use App\Commands\Users\RegisterUserCommand;
 use App\Events\Users\UserWasRegistered;
@@ -6,8 +8,8 @@ use App\Helpers\Users\Profiles\ProfilesRepository;
 use App\Helpers\Users\User;
 use App\Helpers\Users\UsersRepository;
 
-class RegisterUserCommandHandler {
-
+class RegisterUserCommandHandler
+{
     private $users;
 
     public function __construct(UsersRepository $users, ProfilesRepository $profiles)
@@ -16,7 +18,7 @@ class RegisterUserCommandHandler {
         $this->profiles = $profiles;
     }
 
-    function handle(RegisterUserCommand $command)
+    public function handle(RegisterUserCommand $command)
     {
         $user = new User;
 
@@ -32,8 +34,9 @@ class RegisterUserCommandHandler {
         $this->users->save($user);
 
         // Create a profile for potentials, members and former members
-        if($user->type != User::VISITOR && $user->type != User::EXMEMBER)
+        if ($user->type != User::VISITOR && $user->type != User::EXMEMBER) {
             $this->profiles->createProfileFor($user);
+        }
 
         event(new UserWasRegistered($user));
     }

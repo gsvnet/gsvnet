@@ -1,4 +1,6 @@
-<?php namespace App\Helpers\Permissions;
+<?php
+
+namespace App\Helpers\Permissions;
 
 use App\Helpers\Users\User;
 
@@ -10,7 +12,7 @@ class PermissionCache
     private $permissions = [];
 
     /**
-     * @param User $user
+     * @param  User  $user
      * @param $permission
      * @return bool
      */
@@ -20,7 +22,7 @@ class PermissionCache
     }
 
     /**
-     * @param User $user
+     * @param  User  $user
      * @param $permission
      * @return mixed
      */
@@ -30,22 +32,24 @@ class PermissionCache
     }
 
     /**
-     * @param User $user
+     * @param  User  $user
      * @param $permission
      * @param $access
-     * @return boolean
+     * @return bool
      */
     public function set(User $user, $permission, $access)
     {
-        if (! $this->hasUser($user))
+        if (! $this->hasUser($user)) {
             $this->permissions[$user->id] = [];
-        
+        }
+
         $this->permissions[$user->id][$permission] = $access;
+
         return $access;
     }
 
     /**
-     * @param User $user
+     * @param  User  $user
      * @return mixed
      */
     private function hasUser(User $user)
@@ -54,7 +58,7 @@ class PermissionCache
     }
 
     /**
-     * @param User $user
+     * @param  User  $user
      * @param $permission
      * @return mixed
      */

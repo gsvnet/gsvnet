@@ -26,7 +26,6 @@ class BulkSyncWithAlgolia extends Command
      */
     protected $description = 'Synchronize all members with algolia.';
 
-
     public function fire()
     {
         /** @var AlgoliaClient $algolia */
@@ -43,6 +42,7 @@ class BulkSyncWithAlgolia extends Command
             try {
                 $formatted = $memberTransformer->transform($member);
                 $formatted['yeargroup'] = $yeargroupTransformer->transform($member->profile->yearGroup);
+
                 return $formatted;
             } catch (Throwable $e) {
                 return null;

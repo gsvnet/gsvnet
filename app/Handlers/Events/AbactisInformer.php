@@ -1,20 +1,21 @@
-<?php namespace App\Handlers\Events;
+<?php
 
-use Carbon\Carbon;
+namespace App\Handlers\Events;
+
 use App\Events\Members\MemberFileWasCreated;
 use App\Events\Members\ProfileEvent;
 use App\Helpers\Users\ProfileActions\ProfileActionPresenter;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Mail\Mailer;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Message;
 
 class AbactisInformer
 {
     /**
-     * @var Mailer $mailer
+     * @var Mailer
      */
     protected $mailer;
+
     /**
      * @var Repository
      */
@@ -22,8 +23,9 @@ class AbactisInformer
 
     /**
      * AbactisInformer constructor.
-     * @param Mailer $mailer
-     * @param Repository $config
+     *
+     * @param  Mailer  $mailer
+     * @param  Repository  $config
      */
     public function __construct(Mailer $mailer, Repository $config)
     {
@@ -34,13 +36,14 @@ class AbactisInformer
     public function handle(ProfileEvent $event)
     {
         // Don't send an email if someone manages someone else's profile
-        if ($event->getManager()->getKey() != $event->getUser()->getKey())
+        if ($event->getManager()->getKey() != $event->getUser()->getKey()) {
             return;
+        }
 
         $user = $event->getUser();
         $change = ProfileActionPresenter::$map[get_class($event)];
 
-        $subject = "Wijziging " . strtolower($change) . " van " . $user->present()->fullName;
+        $subject = 'Wijziging '.strtolower($change).' van '.$user->present()->fullName;
         $to = $this->config->get('gsvnet.email.profile');
 
         $this->mailer->send('emails.users.profile-update', compact('user'), function (Message $message) use ($to, $subject) {
@@ -53,13 +56,13 @@ class AbactisInformer
     {
         $months = [
             '', 'januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli',
-            'augustus', 'september', 'oktober', 'november', 'december'
+            'augustus', 'september', 'oktober', 'november', 'december',
         ];
         $month = $months[$event->getAt()->month];
         $year = $event->getAt()->year;
         $filePath = $event->getFilePath();
         $to = $this->config->get('gsvnet.email.senate');
-        $subject = "Ledenbestand " . $month . " " . $year;
+        $subject = 'Ledenbestand '.$month.' '.$year;
         $this->mailer->send('emails.admin.memberfile', compact(['month', 'year']), function ($m) use ($to, $subject, $filePath) {
             $m->to($to, 'Abactis der GSV');
             $m->subject($subject);

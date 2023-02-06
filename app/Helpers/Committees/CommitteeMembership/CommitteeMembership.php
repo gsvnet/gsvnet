@@ -1,17 +1,19 @@
-<?php namespace App\Helpers\Committees\CommitteeMembership;
+<?php
 
-use Laracasts\Presenter\PresentableTrait;
+namespace App\Helpers\Committees\CommitteeMembership;
+
 use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
 
-class CommitteeMembership extends Model {
-    
+class CommitteeMembership extends Model
+{
     use PresentableTrait;
 
     protected $table = 'committee_user';
 
-    protected $guarded = array();
+    protected $guarded = [];
 
-    public static $rules = array();
+    public static $rules = [];
 
     public $presenter = 'App\Helpers\Committees\CommitteeMembership\CommitteeMembershipPresenter';
 

@@ -1,23 +1,26 @@
 <?php
 
-use Carbon\Carbon;
-use Faker\Factory;
-use App\Helpers\Forum\Threads\Thread;
 use App\Helpers\Tags\Tag;
 use App\Helpers\Users\User;
+use Carbon\Carbon;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class ForumTableSeeder extends Seeder {
-
+class ForumTableSeeder extends Seeder
+{
     private $time;
+
     private $faker;
+
     private $userIds;
+
     private $numThreads = 30;
+
     private $maxReplies = 40;
 
-    function __construct()
+    public function __construct()
     {
         $this->faker = Factory::create('nl_NL');
         $this->time = Carbon::now();
@@ -33,25 +36,22 @@ class ForumTableSeeder extends Seeder {
         $replies = [];
         $tags = [];
 
-        foreach ($threads as $id => $thread)
-        {
+        foreach ($threads as $id => $thread) {
             $replyId++;
             $tagIds = $this->faker->randomElements($this->tagIds, 2);
 
-            $lastReply = $this->generateReply($id+1, $thread['created_at'], 'now');
+            $lastReply = $this->generateReply($id + 1, $thread['created_at'], 'now');
             $replies[] = $lastReply;
 
             $threads[$id]['most_recent_reply_id'] = $replyId;
             $threads[$id]['updated_at'] = $lastReply['created_at'];
 
-            for ($i = 1; $i < $thread['reply_count']; $i++, $replyId++)
-            {
-                $replies[] = $this->generateReply($id+1, $thread['created_at'], $lastReply['created_at']);
+            for ($i = 1; $i < $thread['reply_count']; $i++, $replyId++) {
+                $replies[] = $this->generateReply($id + 1, $thread['created_at'], $lastReply['created_at']);
             }
 
-            foreach ($tagIds as $tagId)
-            {
-                $tags[] = $this->generateTag($id+1, $tagId);
+            foreach ($tagIds as $tagId) {
+                $tags[] = $this->generateTag($id + 1, $tagId);
             }
         }
 
@@ -65,20 +65,19 @@ class ForumTableSeeder extends Seeder {
         $threads = [];
         $date = $this->faker->dateTimeThisYear();
 
-        for($j = 0; $j < $this->numThreads; $j++)
-        {
+        for ($j = 0; $j < $this->numThreads; $j++) {
             $subject = $this->faker->text(20);
 
             $threads[] = [
                 'subject' => $this->faker->text(20),
                 'body' => $this->faker->paragraphs(rand(1, 5), true),
-                'slug' => Str::slug($subject . '-' . str_random(4)),
+                'slug' => Str::slug($subject.'-'.str_random(4)),
                 'public' => $this->faker->boolean(70),
                 'author_id' => $this->faker->randomElement($this->userIds),
                 'created_at' => $date,
                 'updated_at' => $date,
                 'like_count' => 0,
-                'reply_count' => rand(0, $this->maxReplies)
+                'reply_count' => rand(0, $this->maxReplies),
             ];
         }
 
@@ -95,7 +94,7 @@ class ForumTableSeeder extends Seeder {
             'author_id' => $this->faker->randomElement($this->userIds),
             'created_at' => $replied_on,
             'updated_at' => $replied_on,
-            'like_count' => 0
+            'like_count' => 0,
         ];
     }
 
@@ -105,7 +104,7 @@ class ForumTableSeeder extends Seeder {
             'thread_id' => $threadId,
             'tag_id' => $tagId,
             'created_at' => $this->time,
-            'updated_at' => $this->time
+            'updated_at' => $this->time,
         ];
     }
 }

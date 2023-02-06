@@ -1,4 +1,6 @@
-<?php namespace App\Helpers\Tags;
+<?php
+
+namespace App\Helpers\Tags;
 
 use App\Helpers\Core\EloquentRepository;
 use Illuminate\Support\Collection;
@@ -32,7 +34,10 @@ class TagRepository extends EloquentRepository
 
     public function getTagsByIds($ids)
     {
-        if ( ! $ids) return null;
+        if (! $ids) {
+            return null;
+        }
+
         return $this->model->whereIn('id', $ids)->get();
     }
 

@@ -1,19 +1,22 @@
-<?php namespace Admin;
+<?php
 
+namespace Admin;
+
+use App\Helpers\Committees\CommitteeCreatorValidator;
+use App\Helpers\Committees\CommitteesRepository;
+use App\Helpers\Committees\CommitteeUpdaterValidator;
+use App\Helpers\Users\UsersRepository;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Str;
 
-use App\Helpers\Committees\CommitteesRepository;
-use App\Helpers\Committees\CommitteeCreatorValidator;
-use App\Helpers\Committees\CommitteeUpdaterValidator;
-
-use App\Helpers\Users\UsersRepository;
-
-class CommitteeController extends AdminBaseController {
-
+class CommitteeController extends AdminBaseController
+{
     protected $committees;
+
     protected $users;
+
     protected $creatorValidator;
+
     protected $updaterValidator;
 
     public function __construct(
@@ -61,10 +64,10 @@ class CommitteeController extends AdminBaseController {
         $members = $committee->members;
 
         $users = $this->users->all();
-        $users = $users->map(function($user){
+        $users = $users->map(function ($user) {
             return [
-                'id' => $user->id, 
-                'name' => $user->firstname . ' ' . $user->middlename . ' ' . $user->lastname
+                'id' => $user->id,
+                'name' => $user->firstname.' '.$user->middlename.' '.$user->lastname,
             ];
         });
 
@@ -93,7 +96,7 @@ class CommitteeController extends AdminBaseController {
 
         $this->updaterValidator->forCommittee($id);
         $this->updaterValidator->validate($input);
-        
+
         $committee = $this->committees->update($id, $input);
 
         flash()->success("{$committee->name} is succesvol bewerkt.");

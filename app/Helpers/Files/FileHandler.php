@@ -1,4 +1,6 @@
-<?php namespace App\Helpers\Files;
+<?php
+
+namespace App\Helpers\Files;
 
 use File as F;
 
@@ -14,17 +16,18 @@ class FileHandler
     }
 
     /**
-    * Saves a file at the given location
-    * @file file from Input::file()
-    * @path string the location
-    */
+     * Saves a file at the given location
+     *
+     * @file file from Input::file()
+     * @path string the location
+     */
     public function make($file, $path = '/uploads/files/')
     {
         // Create a unique filename
-        $filename = time() . '-' . $file->getClientOriginalName();
-        $relativePath = $path . $filename;
+        $filename = time().'-'.$file->getClientOriginalName();
+        $relativePath = $path.$filename;
         // Move the file and restrict it's size
-        $file->move($this->basePath . $path, $filename);
+        $file->move($this->basePath.$path, $filename);
         // Finaly return the new relativePath of the file
         return $relativePath;
     }
@@ -36,14 +39,15 @@ class FileHandler
     */
     public function getPath($path)
     {
-        return $path = $this->basePath . $path;
+        return $path = $this->basePath.$path;
     }
 
     /**
-    * Updates a file by first removing the old one and then making the new one
-    * @file file from Input::file()
-    * @path string the location
-    */
+     * Updates a file by first removing the old one and then making the new one
+     *
+     * @file file from Input::file()
+     * @path string the location
+     */
     public function update($file, $path)
     {
         $this->destroy($path);
@@ -51,21 +55,22 @@ class FileHandler
     }
 
     /**
-    *   Deletes the file
-    */
+     *   Deletes the file
+     */
     public function destroy($path)
     {
-        if (F::exists($this->basePath . $path))
-            F::delete($this->basePath . $path);
+        if (F::exists($this->basePath.$path)) {
+            F::delete($this->basePath.$path);
+        }
     }
 
     public function fileSize($path)
     {
-        return filesize($this->basePath . $path);
+        return filesize($this->basePath.$path);
     }
 
     public function extension($path)
     {
-        return F::extension($this->basePath . $path);
+        return F::extension($this->basePath.$path);
     }
 }

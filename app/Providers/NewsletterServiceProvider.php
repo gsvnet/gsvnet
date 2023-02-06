@@ -1,9 +1,11 @@
-<?php namespace App\Providers;
+<?php
+
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class NewsletterServiceProvider extends ServiceProvider {
-
+class NewsletterServiceProvider extends ServiceProvider
+{
     /**
      * Register the service provider.
      *

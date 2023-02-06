@@ -1,14 +1,16 @@
-<?php namespace App\Helpers\Users\ProfileActions;
+<?php
 
-use DateTime;
+namespace App\Helpers\Users\ProfileActions;
+
 use App\Helpers\Users\User;
+use DateTime;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 
-class ProfileAction extends Model {
-    
+class ProfileAction extends Model
+{
     use PresentableTrait;
-    
+
     public $timestamps = false;
 
     protected $table = 'profile_actions';
@@ -16,7 +18,7 @@ class ProfileAction extends Model {
     protected $fillable = ['user_id', 'at', 'action'];
 
     protected $dates = ['at'];
-    
+
     protected $presenter = ProfileActionPresenter::class;
 
     public function user()
@@ -24,12 +26,12 @@ class ProfileAction extends Model {
         return $this->belongsTo(User::class);
     }
 
-    static function createForUser($id, DateTime $moment, $action)
+    public static function createForUser($id, DateTime $moment, $action)
     {
         return new static([
             'user_id' => $id,
             'at' => $moment,
-            'action' => $action
+            'action' => $action,
         ]);
     }
 }

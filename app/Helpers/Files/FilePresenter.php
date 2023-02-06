@@ -1,4 +1,6 @@
-<?php namespace App\Helpers\Files;
+<?php
+
+namespace App\Helpers\Files;
 
 use Laracasts\Presenter\Presenter;
 

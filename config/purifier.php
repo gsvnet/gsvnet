@@ -12,7 +12,7 @@ return [
             'AutoFormat.RemoveEmpty' => true,
             'AutoFormat.Linkify' => true,
             'HTML.Nofollow' => true,
-            'HTML.TargetBlank' => true
+            'HTML.TargetBlank' => true,
         ],
     ],
 ];

@@ -2,12 +2,11 @@
 
 namespace App\Helpers\Extension;
 
-
 use App\Helpers\Core\Validator;
 
 class ExtensionFileValidator extends Validator
 {
-    static $rules = [
-        'file' => 'required'
+    public static $rules = [
+        'file' => 'required',
     ];
 }

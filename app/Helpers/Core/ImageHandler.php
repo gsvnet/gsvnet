@@ -1,9 +1,14 @@
-<?php namespace App\Helpers\Core;
+<?php
+
+namespace App\Helpers\Core;
+
 /*
 / The ImageHandler class handles the storage n
 */
-use File, Image, Config;
+use Config;
+use File;
 use Illuminate\Filesystem\Filesystem;
+use Image;
 
 class ImageHandler
 {
@@ -11,26 +16,28 @@ class ImageHandler
     // zodat we dan alleen nog maar de naam van een bestand hoeven te weten,
     // maar hier moet eerst nog wat beter over nageacht worden voordat we dat implementeren...
     protected $basePath;
+
     protected $filesystem;
 
-    public function __construct($basePath = '', Filesystem $filesystem)
+    public function __construct($basePath, Filesystem $filesystem)
     {
         $this->filesystem = $filesystem;
         $this->basePath = storage_path($basePath);
     }
 
     /**
-    * Saves a photo at the given location
-    * @file file from Input::file()
-    * @path string the location
-    */
+     * Saves a photo at the given location
+     *
+     * @file file from Input::file()
+     * @path string the location
+     */
     public function make($file, $path = '/uploads/images/')
     {
         // Create a unique filename
-        $filename = time() . '-' . $file->getClientOriginalName();
-        $relativePath = $path . $filename;
+        $filename = time().'-'.$file->getClientOriginalName();
+        $relativePath = $path.$filename;
         // Move the file and restrict it's size
-        $file->move($this->basePath . $path, $filename);
+        $file->move($this->basePath.$path, $filename);
         $this->restrictImageSize($relativePath);
         // Finaly return the new relativePath of the file
         return $relativePath;
@@ -42,14 +49,11 @@ class ImageHandler
         return Image::make($this->getStoragePath($path, $dimension));
     }
 
-
     public function getStoragePath($path, $dimension = '')
     {
-        if ($this->dimensionIsValid($dimension))
-        {
-            return $this->basePath . $this->getOrCreate($path, $dimension);
-        } else 
-        {
+        if ($this->dimensionIsValid($dimension)) {
+            return $this->basePath.$this->getOrCreate($path, $dimension);
+        } else {
             throw new ImageDimensionNotValidException;
         }
     }
@@ -60,56 +64,57 @@ class ImageHandler
     public function update($file, $newPath, $path)
     {
         $this->destroy($path);
+
         return $this->make($file, $newPath);
     }
 
     // ToDo: only dependent on the photo his location, not the model
     public function destroy($path)
     {
-        $ext  = File::extension($this->basePath . $path);
-        $path = $this->basePath . str_replace('.' . $ext, '', $path);
+        $ext = File::extension($this->basePath.$path);
+        $path = $this->basePath.str_replace('.'.$ext, '', $path);
 
         // Delete old photo files
-        if (File::isFile($path . '.' . $ext))
-            File::delete($path . '.' . $ext);
+        if (File::isFile($path.'.'.$ext)) {
+            File::delete($path.'.'.$ext);
+        }
         // ugh this does not work as there are exentions..
-        if (File::isFile($path . '-small' . '.' . $ext))
-            File::delete($path . '-small' . '.' . $ext);
+        if (File::isFile($path.'-small'.'.'.$ext)) {
+            File::delete($path.'-small'.'.'.$ext);
+        }
 
-        if (File::isFile($path . '-wide' . '.' . $ext))
-            File::delete($path . '-wide' . '.' . $ext);
+        if (File::isFile($path.'-wide'.'.'.$ext)) {
+            File::delete($path.'-wide'.'.'.$ext);
+        }
     }
 
-
     /**
-    * Either create+return or return the resized image of the original image
-    * @param string $dimension either small or wide
-    */
+     * Either create+return or return the resized image of the original image
+     *
+     * @param  string  $dimension either small or wide
+     */
     private function getOrCreate($path, $dimension = '')
     {
-        $fullPath = $this->basePath . $path;
+        $fullPath = $this->basePath.$path;
 
         $dimensions = Config::get('photos.dimensions');
 
         // Check if we can find the original image's path, if not, throw an exception error
-        if (! File::isFile($fullPath))
-        {
+        if (! File::isFile($fullPath)) {
             throw new ImageFileNotFoundException;
         }
 
         // Return the full path if we don't need a certain dimension
-        if ($dimension === '')
-        {
+        if ($dimension === '') {
             return $path;
         }
 
         // Get the new filepath corresponding for the given dimension
-        $ext     = File::extension($this->basePath . $path);
-        $newPath = str_replace('.' . $ext, '', $path) . '-' . $dimension . '.' . $ext;
+        $ext = File::extension($this->basePath.$path);
+        $newPath = str_replace('.'.$ext, '', $path).'-'.$dimension.'.'.$ext;
 
         // If we can't find the file, resize the original photo and return the new path
-        if (! File::isFile($this->basePath . $newPath))
-        {
+        if (! File::isFile($this->basePath.$newPath)) {
             $img = Image::make($fullPath);
 
             // Rotate image if necessary
@@ -118,7 +123,7 @@ class ImageHandler
             // Resize the image while maintaining correct aspect ratio
             $img->fit($dimensions[$dimension][0], $dimensions[$dimension][1]);
             // finally we save the image as a new image
-            $img->save($this->basePath . $newPath);
+            $img->save($this->basePath.$newPath);
         }
 
         return $newPath;
@@ -129,7 +134,7 @@ class ImageHandler
     */
     private function restrictImageSize($path)
     {
-        $img = Image::make($this->basePath . $path);
+        $img = Image::make($this->basePath.$path);
 
         // Rotate automatically if needed
         $this->rotateByExifData($img);
@@ -137,14 +142,13 @@ class ImageHandler
         // Get the max width and height
         $dimensions = Config::get('photos.dimensions.max');
         // If the image which was found is larger than the given max dimensions, then resize it
-        if ($img->width() > $dimensions[0] or $img->height() > $dimensions[1])
-        {
+        if ($img->width() > $dimensions[0] or $img->height() > $dimensions[1]) {
             // Resize the image while maintaining correct aspect ratio
-            $img->resize($dimensions[0], $dimensions[1], function($constraint) {
+            $img->resize($dimensions[0], $dimensions[1], function ($constraint) {
                 $constraint->aspectRatio();
             });
             // finally we save the image as a new image
-            $img->save($this->basePath . $path);
+            $img->save($this->basePath.$path);
         }
     }
 
@@ -156,17 +160,15 @@ class ImageHandler
     private function rotateByExifData(&$img)
     {
         // Only check mimes on image/jpg files
-        if($img->mime != 'image/jpeg')
-        {
+        if ($img->mime != 'image/jpeg') {
             return false;
         }
 
         // Check if exif data exists
         // See: http://stackoverflow.com/questions/8106683/exif-read-data-incorrect-app1-exif-identifier-code
         // for more on this hacky check.
-        getimagesize($img->dirname .'/'. $img->basename, $info);
-        if (!isset($info["APP1"]) || strpos($info['APP1'], 'exif') !== 0)
-        {
+        getimagesize($img->dirname.'/'.$img->basename, $info);
+        if (! isset($info['APP1']) || strpos($info['APP1'], 'exif') !== 0) {
             return false;
         }
 
@@ -177,9 +179,8 @@ class ImageHandler
             return false;
         }
 
-        if( $orientation )
-        {
-            switch($orientation) {
+        if ($orientation) {
+            switch ($orientation) {
                 case 8:
                     $img->rotate(90);
                     break;
@@ -196,20 +197,20 @@ class ImageHandler
     }
 
     /**
-    *   Checks if a given dimension is valid
-    *
-    *   @param string $dimension
-    *   @throws InvalidArgumentException
-    */
+     *   Checks if a given dimension is valid
+     *
+     *   @param  string  $dimension
+     *
+     *   @throws InvalidArgumentException
+     */
     private function dimensionIsValid($dimension = '')
     {
         $dimensions = Config::get('photos.dimensions');
         // An empty dimension is handled as the original image
-        if ( $dimension !== '' and ! array_key_exists($dimension, $dimensions))
-        {
+        if ($dimension !== '' and ! array_key_exists($dimension, $dimensions)) {
             throw new \InvalidArgumentException("The given dimension: '$dimension' is not valid");
         }
+
         return true;
     }
-
 }

@@ -1,4 +1,6 @@
-<?php namespace App\Helpers\Core;
+<?php
+
+namespace App\Helpers\Core;
 
 use ArrayAccess;
 use Illuminate\Contracts\Bus\Dispatcher;

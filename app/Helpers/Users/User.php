@@ -1,18 +1,20 @@
-<?php namespace App\Helpers\Users;
+<?php
+
+namespace App\Helpers\Users;
 
 use App\Helpers\Forum\Replies\Reply;
 use App\Helpers\Forum\Threads\Thread;
 use App\Helpers\Users\ProfileActions\ProfileAction;
 use App\Helpers\Users\Profiles\UserProfile;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
-
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+{
     use PresentableTrait, Authenticatable, CanResetPassword;
 
     /**
@@ -24,6 +26,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     /**
      * Fillable fields
+     *
      * @var array
      */
     protected $fillable = ['username', 'firstname', 'middlename', 'lastname', 'email', 'password', 'type', 'verified'];
@@ -39,10 +42,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     // User types
     const VISITOR = 0;
+
     const POTENTIAL = 1;
+
     const MEMBER = 2;
+
     const REUNIST = 3;
+
     const INTERNAL_COMMITTEE = 4;
+
     const EXMEMBER = 5;
 
     /**
@@ -97,7 +105,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
                     ->withTimestamps();
     }
 
-
     public function committeesSorted()
     {
         // Maybe ->withTimestamps(); ?
@@ -117,7 +124,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return $this->belongsToMany('App\Helpers\Senates\Senate', 'user_senate')
             ->where('start_date', '<=', new \DateTime('now'))
-            ->where(function($q) {
+            ->where(function ($q) {
                 return $q->where('end_date', '>=', new \DateTime('now'))
                          ->orWhereNull('end_date');
             })
@@ -203,7 +210,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return $this->belongsToMany('App\Helpers\Committees\Committee', 'committee_user')
             ->where('committee_user.start_date', '<=', new \DateTime('now'))
-            ->where(function($q) {
+            ->where(function ($q) {
                 return $q->where('committee_user.end_date', '>=', new \DateTime('now'))
                     ->orWhereNull('committee_user.end_date');
             })

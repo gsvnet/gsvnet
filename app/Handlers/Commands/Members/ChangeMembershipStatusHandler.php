@@ -1,12 +1,14 @@
-<?php namespace App\Handlers\Commands\Members;
+<?php
+
+namespace App\Handlers\Commands\Members;
 
 use App\Commands\Members\ChangeMembershipStatus;
 use App\Commands\Members\ChangeParentsDetails;
 use App\Commands\Members\ForgetMember;
 use App\Events\Members\MembershipStatusWasChanged;
+use App\Helpers\Users\Profiles\UserProfile;
 use App\Helpers\Users\User;
 use App\Helpers\Users\UsersRepository;
-use App\Helpers\Users\Profiles\UserProfile;
 use App\Helpers\Users\ValueObjects\OptionalAddress;
 use App\Helpers\Users\ValueObjects\OptionalEmail;
 use App\Helpers\Users\ValueObjects\OptionalPhoneNumber;
@@ -20,7 +22,8 @@ class ChangeMembershipStatusHandler
 
     /**
      * ChangeMembershipStatusHandler constructor.
-     * @param UsersRepository $users
+     *
+     * @param  UsersRepository  $users
      */
     public function __construct(UsersRepository $users)
     {
@@ -36,7 +39,7 @@ class ChangeMembershipStatusHandler
         $this->users->save($user);
 
         /* Ensure the user has a profile if needed */
-        if($user->wasOrIsMember() && !$command->user->profile) {
+        if ($user->wasOrIsMember() && ! $command->user->profile) {
             $profile = new UserProfile();
             $user->profile()->save($profile);
             // Saving does not seem to refresh the property, so manually do so.
@@ -57,7 +60,7 @@ class ChangeMembershipStatusHandler
         }
 
         // Remove even more user details when changing to ex-member
-        if($user->isExMember()) {
+        if ($user->isExMember()) {
             dispatch(
                 new ForgetMember(
                     $user,

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateRegionsTable extends Migration
 {
@@ -12,12 +12,12 @@ class CreateRegionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('regions', function(Blueprint $table) {
-			$table->increments('id');
-			$table->string('name');
+        Schema::create('regions', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
             $table->datetime('start_date');
-			$table->datetime('end_date')->nullable();
-		});
+            $table->datetime('end_date')->nullable();
+        });
     }
 
     /**

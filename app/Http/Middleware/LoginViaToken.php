@@ -1,8 +1,10 @@
-<?php namespace App\Http\Middleware;
+<?php
+
+namespace App\Http\Middleware;
 
 use App\Helpers\Auth\TokenRepository;
-use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Http\Request;
 
 class LoginViaToken
 {
@@ -13,7 +15,8 @@ class LoginViaToken
 
     /**
      * LoginViaToken constructor.
-     * @param TokenRepository $tokens
+     *
+     * @param  TokenRepository  $tokens
      */
     public function __construct(TokenRepository $tokens)
     {
@@ -23,7 +26,7 @@ class LoginViaToken
     public function handle(Request $request, \Closure $next)
     {
         $token = $request->header('X-Auth-Token');
-        
+
         if ($token) {
             $this->maybeLoginViaToken($token);
         }
@@ -34,7 +37,7 @@ class LoginViaToken
     public function maybeLoginViaToken($tokenString)
     {
         $token = $this->tokens->getActiveToken($tokenString);
-        
+
         if ($token) {
             Auth::loginUsingId($token->user_id);
         }

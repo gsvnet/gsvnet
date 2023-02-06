@@ -1,13 +1,16 @@
-<?php namespace App\Handlers\Commands\Members;
+<?php
+
+namespace App\Handlers\Commands\Members;
 
 use App\Commands\Members\ChangeName;
 use App\Events\Members\NameWasChanged;
 use App\Helpers\Users\Profiles\ProfilesRepository;
 use App\Helpers\Users\UsersRepository;
 
-class ChangeNameHandler {
-
+class ChangeNameHandler
+{
     private $profiles;
+
     private $users;
 
     public function __construct(UsersRepository $users, ProfilesRepository $profiles)

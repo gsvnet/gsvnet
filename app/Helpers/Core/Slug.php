@@ -1,5 +1,8 @@
-<?php namespace App\Helpers\Core;
+<?php
 
-interface Slug {
-    static function generate($from = null);
+namespace App\Helpers\Core;
+
+interface Slug
+{
+    public static function generate($from = null);
 }

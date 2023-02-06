@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTokensTable extends Migration {
-
+class CreateTokensTable extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -13,8 +13,7 @@ class CreateTokensTable extends Migration {
      */
     public function up()
     {
-        Schema::create('invitation_tokens', function(Blueprint $table)
-        {
+        Schema::create('invitation_tokens', function (Blueprint $table) {
             $table->unsignedInteger('user_id')->index();
             $table->string('token', 16)->unique();
             $table->dateTime('expires_on')->index();

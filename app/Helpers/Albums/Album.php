@@ -1,17 +1,19 @@
-<?php namespace App\Helpers\Albums;
+<?php
 
+namespace App\Helpers\Albums;
+
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use URL;
-use Illuminate\Database\Eloquent\Model;
 
-class Album extends Model {
+class Album extends Model
+{
+    protected $fillable = ['name', 'description'];
 
-    protected $fillable = array('name', 'description');
-
-    public static $rules = array(
-        'name'        => 'required',
-        'description' => 'required'
-    );
+    public static $rules = [
+        'name' => 'required',
+        'description' => 'required',
+    ];
 
     public function scopePublic($query)
     {
@@ -31,12 +33,14 @@ class Album extends Model {
     public function getSmallImageURLAttribute()
     {
         $photo = $this->photos->first();
+
         return $photo->small_image_url;
     }
 
     public function getWideImageURLAttribute()
     {
         $photo = $this->photos->first();
+
         return $photo->wide_image_url;
     }
 
@@ -87,14 +91,12 @@ class Album extends Model {
 
     private function generateSlugByIncrementer($i)
     {
-        if ($i == 0)
-        {
+        if ($i == 0) {
             $append = '';
-        } else
-        {
-            $append = '-' . $i;
+        } else {
+            $append = '-'.$i;
         }
 
-        return Str::slug("{$this->name}" . $append);
+        return Str::slug("{$this->name}".$append);
     }
 }

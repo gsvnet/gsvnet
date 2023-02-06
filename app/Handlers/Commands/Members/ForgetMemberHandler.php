@@ -15,7 +15,6 @@ use App\Commands\Members\ForgetMember;
 use App\Commands\Users\ChangeEmail;
 use App\Commands\Users\DeleteProfilePicture;
 use App\Helpers\Core\Exceptions\ValidationException;
-use App\Helpers\Newsletters\NewsletterList;
 use App\Helpers\Newsletters\NewsletterManager;
 use App\Helpers\Users\Profiles\ProfilesRepository;
 use App\Helpers\Users\ValueObjects\Address;
@@ -34,9 +33,10 @@ use App\Helpers\Users\ValueObjects\Username;
 class ForgetMemberHandler
 {
     private $profiles;
+
     private $newsletterManager;
 
-    function __construct(ProfilesRepository $profiles, NewsletterManager $newsletterManager)
+    public function __construct(ProfilesRepository $profiles, NewsletterManager $newsletterManager)
     {
         $this->profiles = $profiles;
         $this->newsletterManager = $newsletterManager;
@@ -52,23 +52,24 @@ class ForgetMemberHandler
                 $user,
                 $manager,
                 new Name(
-                    "Onbekend",
+                    'Onbekend',
                     null,
-                    "persoon",
+                    'persoon',
                     null
                 )
             ));
         }
-        if ($command->username)
+        if ($command->username) {
             $this->handleUsername($user, $manager);
+        }
         if ($command->address) {
             dispatch(new ChangeAddress(
                 $user,
                 $manager,
                 new Address(
-                    "Straat 1",
-                    "1111AA",
-                    "Stad"
+                    'Straat 1',
+                    '1111AA',
+                    'Stad'
                 )
             ));
         }
@@ -76,16 +77,21 @@ class ForgetMemberHandler
             $this->newsletterManager->forgetUser($user);
             $this->handleEmail($user, $manager);
         }
-        if ($command->profilePicture)
+        if ($command->profilePicture) {
             dispatch(new DeleteProfilePicture($user, $manager));
-        if ($command->birthDay)
-            dispatch(new ChangeBirthDay($user, $manager, new Date("1966-06-23")));
-        if ($command->gender)
+        }
+        if ($command->birthDay) {
+            dispatch(new ChangeBirthDay($user, $manager, new Date('1966-06-23')));
+        }
+        if ($command->gender) {
             dispatch(new ChangeGender($user, $manager, new Gender(null)));
-        if ($command->phone)
-            dispatch(new ChangePhone($user, $manager, new PhoneNumber("+31600000000")));
-        if ($command->study)
+        }
+        if ($command->phone) {
+            dispatch(new ChangePhone($user, $manager, new PhoneNumber('+31600000000')));
+        }
+        if ($command->study) {
             dispatch(new ChangeStudy($user, $manager, new Study(null, null)));
+        }
         if ($command->business) {
             dispatch(new ChangeBusiness(
                 $user,
@@ -105,7 +111,8 @@ class ForgetMemberHandler
     }
 
     // Keeps trying to change the username until it finds a unique one.
-    private function handleUsername($user, $manager) {
+    private function handleUsername($user, $manager)
+    {
         $newUsername = str_random(15);
         try {
             dispatch(new ChangeUsername($user, $manager, new Username($newUsername)));
@@ -115,8 +122,9 @@ class ForgetMemberHandler
     }
 
     // Keeps trying to change the email until it finds a unique one.
-    private function handleEmail($user, $manager) {
-        $newEmail = str_random(15)."@gsvnet.nl";
+    private function handleEmail($user, $manager)
+    {
+        $newEmail = str_random(15).'@gsvnet.nl';
         try {
             dispatch(new ChangeEmail($user, $manager, new Email($newEmail)));
         } catch (ValidationException $e) {

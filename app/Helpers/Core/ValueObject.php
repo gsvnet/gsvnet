@@ -1,18 +1,19 @@
-<?php namespace App\Helpers\Core;
+<?php
+
+namespace App\Helpers\Core;
 
 use App\Helpers\Core\Exceptions\ValueObjectValidationException;
 use Illuminate\Support\Facades\Validator;
 
-class ValueObject {
-
-    static $rules = [];
+class ValueObject
+{
+    public static $rules = [];
 
     protected function validate($data)
     {
         $validator = Validator::make($data, static::$rules);
 
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             throw new ValueObjectValidationException($validator->messages());
         }
     }

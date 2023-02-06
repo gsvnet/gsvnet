@@ -1,21 +1,22 @@
-<?php namespace App\Helpers\Events;
+<?php
 
-use Illuminate\Support\Facades\Gate;
+namespace App\Helpers\Events;
+
 use App\Helpers\Permissions\NoPermissionException;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Gate;
 
-class EventsRepository {
+class EventsRepository
+{
     public function byId($id)
     {
         $event = Event::findOrFail($id);
 
-        if (! $event->public and Gate::denies('events.show-private'))
-        {
+        if (! $event->public and Gate::denies('events.show-private')) {
             throw new NoPermissionException;
         }
 
-        if (! $event->published and Gate::denies('events.publish'))
-        {
+        if (! $event->published and Gate::denies('events.publish')) {
             throw new NoPermissionException;
         }
 
@@ -26,18 +27,15 @@ class EventsRepository {
     {
         $event = Event::where('slug', '=', $slug)->first();
 
-        if( ! $event )
-        {
+        if (! $event) {
             \App::abort(404);
         }
 
-        if (! $event->public and Gate::denies('events.show-private'))
-        {
+        if (! $event->public and Gate::denies('events.show-private')) {
             throw new NoPermissionException;
         }
 
-        if (! $event->published and Gate::denies('events.publish'))
-        {
+        if (! $event->published and Gate::denies('events.publish')) {
             throw new NoPermissionException;
         }
 
@@ -54,18 +52,15 @@ class EventsRepository {
                     ->where('start_date', '>=', $start)
                     ->first();
 
-        if( ! $event )
-        {
+        if (! $event) {
             \App::abort(404);
         }
 
-        if (! $event->public and Gate::denies('events.show-private'))
-        {
+        if (! $event->public and Gate::denies('events.show-private')) {
             throw new NoPermissionException;
         }
 
-        if (! $event->published and Gate::denies('events.publish'))
-        {
+        if (! $event->published and Gate::denies('events.publish')) {
             throw new NoPermissionException;
         }
 
@@ -74,10 +69,10 @@ class EventsRepository {
 
     public function paginate($amount = 10, $published = true)
     {
-        if (Gate::allows('events.show-private'))
-        {
+        if (Gate::allows('events.show-private')) {
             return Event::published($published)->orderBy('start_date', 'desc')->orderBy('start_time', 'desc')->paginate($amount);
         }
+
         return Event::published($published)->public()->orderBy('start_date', 'desc')->orderBy('start_time', 'desc')->paginate($amount);
     }
 
@@ -88,8 +83,7 @@ class EventsRepository {
             ->orderBy('start_time', 'asc')
             ->published($published);
 
-        if (Gate::denies('events.show-private'))
-        {
+        if (Gate::denies('events.show-private')) {
             $events = $events->public();
         }
 
@@ -108,8 +102,7 @@ class EventsRepository {
             ->orderBy('start_time', 'asc')
             ->published($published);
 
-        if (Gate::denies('events.show-private'))
-        {
+        if (Gate::denies('events.show-private')) {
             $events = $events->public();
         }
 
@@ -117,11 +110,11 @@ class EventsRepository {
     }
 
     /**
-    * Create event
-    *
-    * @param array $input
-    * @return Event
-    */
+     * Create event
+     *
+     * @param  array  $input
+     * @return Event
+     */
     public function create(array $input)
     {
         $event = new Event();
@@ -132,12 +125,12 @@ class EventsRepository {
     }
 
     /**
-    * Update event
-    *
-    * @param int $id
-    * @param array $input
-    * @return Event
-    */
+     * Update event
+     *
+     * @param  int  $id
+     * @param  array  $input
+     * @return Event
+     */
     public function update($id, array $input)
     {
         $event = $this->byId($id);
@@ -148,12 +141,12 @@ class EventsRepository {
     }
 
     /**
-    * Delete event
-    *
-    * @param int $id
-    * @param array $input
-    * @return Event
-    */
+     * Delete event
+     *
+     * @param  int  $id
+     * @param  array  $input
+     * @return Event
+     */
     public function delete($id)
     {
         $event = $this->byId($id);
@@ -165,25 +158,23 @@ class EventsRepository {
     private function setEventProperties($event, $properties)
     {
         // Set properties
-        $event->title            = $properties['title'];
+        $event->title = $properties['title'];
         $event->meta_description = $properties['meta_description'];
-        $event->description      = $properties['description'];
-        $event->location         = $properties['location'];
-        $event->type             = $properties['type'];
-        $event->start_date       = $properties['start_date'];
-        $event->end_date         = $properties['end_date'];
-        $event->whole_day        = $properties['whole_day'];
-        $event->public           = $properties['public'];
+        $event->description = $properties['description'];
+        $event->location = $properties['location'];
+        $event->type = $properties['type'];
+        $event->start_date = $properties['start_date'];
+        $event->end_date = $properties['end_date'];
+        $event->whole_day = $properties['whole_day'];
+        $event->public = $properties['public'];
 
-        if (Gate::allows('events.publish'))
-        {
+        if (Gate::allows('events.publish')) {
             $event->published = $properties['published'];
         }
 
         // Check if whole day is NOT checked
-        if ($properties['whole_day'] == '0')
-        {
-            $event->start_time  = $properties['start_time'];
+        if ($properties['whole_day'] == '0') {
+            $event->start_time = $properties['start_time'];
         }
 
         // Slug

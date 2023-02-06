@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 class AddCountryToProfile extends Migration
@@ -13,8 +13,7 @@ class AddCountryToProfile extends Migration
      */
     public function up()
     {
-        Schema::table('user_profiles', function(Blueprint $table)
-        {
+        Schema::table('user_profiles', function (Blueprint $table) {
             $table->string('country');
         });
     }
@@ -26,8 +25,7 @@ class AddCountryToProfile extends Migration
      */
     public function down()
     {
-        Schema::table('user_profiles', function(Blueprint $table)
-        {
+        Schema::table('user_profiles', function (Blueprint $table) {
             $table->dropColumn('country');
         });
     }

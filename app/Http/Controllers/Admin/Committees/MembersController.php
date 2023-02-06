@@ -1,20 +1,23 @@
-<?php namespace Admin\Committees;
+<?php
 
-use App\Helpers\Committees\CommitteesRepository;
+namespace Admin\Committees;
+
+use Admin\AdminBaseController;
 use App\Helpers\Committees\CommitteeMembership\CommitteeMembershipRepository;
 use App\Helpers\Committees\CommitteeMembership\MemberCreatorValidator;
 use App\Helpers\Committees\CommitteeMembership\MemberUpdaterValidator;
+use App\Helpers\Committees\CommitteesRepository;
 use App\Helpers\Users\UsersRepository;
+use Input;
 
-use Admin\AdminBaseController;
-use Redirect, Input, View;
-
-class MembersController extends AdminBaseController {
-
-
+class MembersController extends AdminBaseController
+{
     protected $committees;
+
     protected $committeeMembership;
+
     protected $users;
+
     protected $creatorValidator;
 
     public function __construct(
@@ -29,7 +32,7 @@ class MembersController extends AdminBaseController {
         $this->users = $users;
         $this->creatorValidator = $creatorValidator;
         $this->updaterValidator = $updaterValidator;
-        
+
         $this->authorize('committees.manage');
 
         parent::__construct();
@@ -42,8 +45,9 @@ class MembersController extends AdminBaseController {
 
         $this->creatorValidator->validate($input);
 
-        if( $input['currently_member'] != '0' )
+        if ($input['currently_member'] != '0') {
             $input['end_date'] = null;
+        }
 
         $committee = $this->committees->byId($input['committee_id']);
         $member = $this->users->byId($input['member']);
@@ -87,8 +91,7 @@ class MembersController extends AdminBaseController {
 
         $this->updaterValidator->validate($input);
 
-        if( $input['currently_member'] != '0' )
-        {
+        if ($input['currently_member'] != '0') {
             $input['end_date'] = null;
         }
 

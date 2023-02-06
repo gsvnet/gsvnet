@@ -1,17 +1,18 @@
-<?php namespace App\Http;
+<?php
+
+namespace App\Http;
 
 use App\Http\Middleware\AccountNotApproved;
 use App\Http\Middleware\ApiAuthenticated;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CanBecomeMember;
-use App\Http\Middleware\CorsApi;
+use App\Http\Middleware\FrameGuard;
 use App\Http\Middleware\LoginViaToken;
 use App\Http\Middleware\MustHavePermission;
 use App\Http\Middleware\OnlineUserCounter;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\ValidEventDate;
 use App\Http\Middleware\VerifyCsrfToken;
-use App\Http\Middleware\FrameGuard;
 use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -22,7 +23,6 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class Kernel extends HttpKernel
 {
-
     /**
      * The application's global HTTP middleware stack.
      *
@@ -35,7 +35,7 @@ class Kernel extends HttpKernel
         StartSession::class,
         ShareErrorsFromSession::class,
         OnlineUserCounter::class,
-        FrameGuard::class
+        FrameGuard::class,
     ];
 
     /**

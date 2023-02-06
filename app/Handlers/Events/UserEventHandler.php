@@ -1,4 +1,6 @@
-<?php namespace App\Handlers\Events;
+<?php
+
+namespace App\Handlers\Events;
 
 use App\Events\Members\AddressWasChanged;
 use App\Events\Members\BirthDayWasChanged;
@@ -26,7 +28,7 @@ use Illuminate\Contracts\Events\Dispatcher;
 
 class UserEventHandler
 {
-    static $profileChanges = [
+    public static $profileChanges = [
         AddressWasChanged::class,
         BirthDayWasChanged::class,
         BusinessWasChanged::class,
@@ -49,7 +51,7 @@ class UserEventHandler
         FamilyWasVerified::class,
     ];
 
-    static $informAbactisFor = [
+    public static $informAbactisFor = [
         AddressWasChanged::class,
         BirthDayWasChanged::class,
         BusinessWasChanged::class,
@@ -59,7 +61,7 @@ class UserEventHandler
         StudyWasChanged::class,
     ];
 
-    static $informNewsletterFor = [
+    public static $informNewsletterFor = [
         NameWasChanged::class,
         MemberEmailWasChanged::class,
         GenderWasChanged::class,
@@ -67,9 +69,9 @@ class UserEventHandler
         YearGroupWasChanged::class,
     ];
 
-    static $verifyAccountWhen = [
+    public static $verifyAccountWhen = [
         MemberEmailWasChanged::class,
-        EmailWasVerified::class
+        EmailWasVerified::class,
     ];
 
     public function subscribe(Dispatcher $events)
@@ -84,7 +86,7 @@ class UserEventHandler
         // Disable this for now, since a lot of mails are coming in
         // $events->listen(self::$informAbactisFor, AbactisInformer::class);
         $events->listen(MemberFileWasCreated::class, 'App\Handlers\Events\AbactisInformer@sendMemberFile');
-        
+
         $events->listen(self::$informNewsletterFor, NewsletterInformer::class);
 
         $events->listen('user.registered', 'App\Helpers\Users\UserMailer@registered');
@@ -92,6 +94,5 @@ class UserEventHandler
 
         $events->listen('potential.registered', 'App\Helpers\Users\UserMailer@membership');
         $events->listen('potential.accepted', 'App\Helpers\Users\UserMailer@membershipAccepted');
-
     }
 }

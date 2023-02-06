@@ -4,7 +4,6 @@ namespace App\Events\App\Events;
 
 use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 class PodcastWasPurchased extends Event
 {

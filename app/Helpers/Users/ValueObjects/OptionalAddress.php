@@ -1,7 +1,9 @@
-<?php namespace App\Helpers\Users\ValueObjects;
+<?php
 
-class OptionalAddress extends Address {
+namespace App\Helpers\Users\ValueObjects;
 
+class OptionalAddress extends Address
+{
     // Simply set validation rules to none
-    static $rules = [];
+    public static $rules = [];
 }

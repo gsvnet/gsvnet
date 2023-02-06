@@ -1,14 +1,16 @@
-<?php namespace App\Commands\Members;
+<?php
+
+namespace App\Commands\Members;
 
 use App\Commands\Command;
 use App\Helpers\Users\User;
 use App\Helpers\Users\ValueObjects\OptionalAddress;
-use App\Helpers\Users\ValueObjects\OptionalPhoneNumber;
 use App\Helpers\Users\ValueObjects\OptionalEmail;
+use App\Helpers\Users\ValueObjects\OptionalPhoneNumber;
 use Illuminate\Http\Request;
 
-class ChangeParentsDetails extends Command {
-
+class ChangeParentsDetails extends Command
+{
     /**
      * @var User
      */
@@ -34,7 +36,7 @@ class ChangeParentsDetails extends Command {
      */
     public $manager;
 
-    function __construct(User $user, User $manager, OptionalAddress $address, OptionalPhoneNumber $phone, OptionalEmail $email)
+    public function __construct(User $user, User $manager, OptionalAddress $address, OptionalPhoneNumber $phone, OptionalEmail $email)
     {
         $this->user = $user;
         $this->address = $address;
@@ -43,7 +45,7 @@ class ChangeParentsDetails extends Command {
         $this->manager = $manager;
     }
 
-    static function fromForm(Request $request, User $user)
+    public static function fromForm(Request $request, User $user)
     {
         $address = new OptionalAddress(
             $request->get('parent_address'),

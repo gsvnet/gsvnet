@@ -1,9 +1,10 @@
 <?php
+
 use App\Helpers\Users\User;
 
 return [
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
     |--------------------------------------------------------------------------
@@ -14,12 +15,12 @@ return [
     |
     */
 
-	'defaults' => [
-		'guard' => 'web',
-		'passwords' => 'users',
-	],
+    'defaults' => [
+        'guard' => 'web',
+        'passwords' => 'users',
+    ],
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Authentication Guards
     |--------------------------------------------------------------------------
@@ -36,19 +37,19 @@ return [
     |
     */
 
-	'guards' => [
-		'web' => [
-			'driver' => 'session',
-			'provider' => 'users',
-		],
+    'guards' => [
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
 
-		'api' => [
-			'driver' => 'token',
-			'provider' => 'users',
-		],
-	],
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+        ],
+    ],
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | User Providers
     |--------------------------------------------------------------------------
@@ -65,14 +66,14 @@ return [
     |
     */
 
-	'providers' => [
-		'users' => [
-			'driver' => 'eloquent',
-			'model' => User::class,
-		],
-	],
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => User::class,
+        ],
+    ],
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Resetting Passwords
     |--------------------------------------------------------------------------
@@ -91,13 +92,13 @@ return [
     |
     */
 
-	'passwords' => [
-		'users' => [
-			'provider' => 'users',
-			'email' => 'emails.auth.reminder',
-			'table' => 'password_reminders',
-			'expire' => 60,
-		],
-	],
+    'passwords' => [
+        'users' => [
+            'provider' => 'users',
+            'email' => 'emails.auth.reminder',
+            'table' => 'password_reminders',
+            'expire' => 60,
+        ],
+    ],
 
 ];

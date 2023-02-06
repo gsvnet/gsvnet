@@ -1,4 +1,6 @@
-<?php namespace App\Helpers\Albums\Photos;
+<?php
+
+namespace App\Helpers\Albums\Photos;
 
 class PhotosRepository
 {
@@ -10,7 +12,7 @@ class PhotosRepository
     /**
      * Get by id
      *
-     * @param int $id
+     * @param  int  $id
      * @return Photo
      */
     public function byId($id)
@@ -21,8 +23,8 @@ class PhotosRepository
     /**
      * Get by album id and paginate photos
      *
-     * @param int $id
-     * @param int $amount
+     * @param  int  $id
+     * @param  int  $amount
      * @return Collection
      */
     public function byAlbumIdAndPaginate($id, $amount)
@@ -31,11 +33,11 @@ class PhotosRepository
     }
 
     /**
-    * Create photo
-    *
-    * @param array $input
-    * @return Photo
-    */
+     * Create photo
+     *
+     * @param  array  $input
+     * @return Photo
+     */
     public function create(array $input)
     {
         $photo = $this->getInstance();
@@ -48,12 +50,12 @@ class PhotosRepository
     }
 
     /**
-    * Update photo
-    *
-    * @param int $id
-    * @param array $input
-    * @return Photo
-    */
+     * Update photo
+     *
+     * @param  int  $id
+     * @param  array  $input
+     * @return Photo
+     */
     public function update($id, array $input)
     {
         $photo = $this->byId($id);
@@ -63,11 +65,11 @@ class PhotosRepository
     }
 
     /**
-    * Delete photo
-    *
-    * @param int $id
-    * @return Photo
-    */
+     * Delete photo
+     *
+     * @param  int  $id
+     * @return Photo
+     */
     public function delete($id)
     {
         $photo = $this->byId($id);

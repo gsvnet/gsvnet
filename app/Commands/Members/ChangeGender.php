@@ -1,12 +1,14 @@
-<?php namespace App\Commands\Members;
+<?php
+
+namespace App\Commands\Members;
 
 use App\Commands\Command;
 use App\Helpers\Users\User;
 use App\Helpers\Users\ValueObjects\Gender;
 use Illuminate\Http\Request;
 
-class ChangeGender extends Command {
-
+class ChangeGender extends Command
+{
     /**
      * @var User
      */
@@ -22,7 +24,7 @@ class ChangeGender extends Command {
      */
     public $manager;
 
-    function __construct(User $user, User $manager, Gender $gender)
+    public function __construct(User $user, User $manager, Gender $gender)
     {
         $this->user = $user;
         $this->gender = $gender;

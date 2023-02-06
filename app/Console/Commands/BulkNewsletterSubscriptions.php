@@ -1,4 +1,6 @@
-<?php namespace App\Console\Commands;
+<?php
+
+namespace App\Console\Commands;
 
 use App\Helpers\Newsletters\NewsletterList;
 use App\Helpers\Users\User;
@@ -9,7 +11,6 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class BulkNewsletterSubscriptions extends Command
 {
-
     /**
      * The console command name.
      *
@@ -28,12 +29,12 @@ class BulkNewsletterSubscriptions extends Command
      * @var NewsletterList
      */
     protected $newsletterList;
-    
+
     /**
      * @var UserTransformer
      */
     protected $userTransformer;
-    
+
     /**
      * @var UsersRepository
      */
@@ -44,14 +45,15 @@ class BulkNewsletterSubscriptions extends Command
      */
     private $values = [
         'leden' => User::MEMBER,
-        'reünisten' => User::REUNIST
+        'reünisten' => User::REUNIST,
     ];
 
     /**
      * BulkNewsletterSubscriptions constructor.
-     * @param NewsletterList $newsletterList
-     * @param UserTransformer $userTransformer
-     * @param UsersRepository $users
+     *
+     * @param  NewsletterList  $newsletterList
+     * @param  UserTransformer  $userTransformer
+     * @param  UsersRepository  $users
      */
     public function __construct(NewsletterList $newsletterList, UserTransformer $userTransformer, UsersRepository $users)
     {
@@ -70,18 +72,19 @@ class BulkNewsletterSubscriptions extends Command
     {
         $for = $this->argument('for');
 
-        if (!array_key_exists($for, $this->values)) {
+        if (! array_key_exists($for, $this->values)) {
             $this->error('Kies uit leden of reünisten');
+
             return;
         }
 
         $type = $this->values[$for];
-        
+
         $users = $this->users->getAllVerifiedAndAliveByType($type);
 
 //        $unsubscribeBatch = $this->userTransformer->batchMailchimpUnsubscribe($users);
         $subscribeBatch = $this->userTransformer->batchMailchimpSubscribe($users);
-     
+
         try {
             $this->info(json_encode($this->newsletterList->batchSubscribeTo($type, $subscribeBatch)));
         } catch (\Mailchimp_Error $e) {
@@ -110,5 +113,4 @@ class BulkNewsletterSubscriptions extends Command
     {
         return [];
     }
-
 }

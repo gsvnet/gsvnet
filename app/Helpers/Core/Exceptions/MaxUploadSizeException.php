@@ -1,3 +1,7 @@
-<?php namespace App\Helpers\Core\Exceptions;
+<?php
 
-class MaxUploadSizeException extends \Exception {}
+namespace App\Helpers\Core\Exceptions;
+
+class MaxUploadSizeException extends \Exception
+{
+}

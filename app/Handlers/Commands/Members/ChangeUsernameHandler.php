@@ -2,12 +2,11 @@
 
 namespace App\Handlers\Commands\Members;
 
-
 use App\Commands\Members\ChangeUsername;
 use App\Helpers\Users\UsersRepository;
 
-class ChangeUsernameHandler {
-
+class ChangeUsernameHandler
+{
     private $users;
 
     public function __construct(UsersRepository $users)

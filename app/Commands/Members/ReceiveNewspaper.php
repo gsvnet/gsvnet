@@ -1,18 +1,20 @@
-<?php namespace App\Commands\Members;
+<?php
+
+namespace App\Commands\Members;
 
 use App\Commands\Command;
 use App\Helpers\Users\User;
 use Illuminate\Http\Request;
 
-class ReceiveNewspaper extends Command {
-
+class ReceiveNewspaper extends Command
+{
     /**
      * @var User
      */
     public $user;
 
     /**
-     * @var boolean
+     * @var bool
      */
     public $receive_newspaper;
 
@@ -23,9 +25,10 @@ class ReceiveNewspaper extends Command {
 
     /**
      * ReceiveNewspaper constructor.
-     * @param User $user
-     * @param User $manager
-     * @param bool $receive_newspaper
+     *
+     * @param  User  $user
+     * @param  User  $manager
+     * @param  bool  $receive_newspaper
      */
     public function __construct(User $user, User $manager, bool $receive_newspaper)
     {
@@ -34,8 +37,8 @@ class ReceiveNewspaper extends Command {
         $this->manager = $manager;
     }
 
-    static function fromForm(Request $request, User $user)
+    public static function fromForm(Request $request, User $user)
     {
-        return new static($user, $request->user(), !! $request->get('receive_newspaper'));
+        return new static($user, $request->user(), (bool) $request->get('receive_newspaper'));
     }
 }

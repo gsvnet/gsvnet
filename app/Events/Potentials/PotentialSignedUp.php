@@ -1,17 +1,23 @@
-<?php namespace App\Events\Potentials;
+<?php
+
+namespace App\Events\Potentials;
 
 use App\Events\Event;
 use App\Helpers\Users\User;
 use Illuminate\Queue\SerializesModels;
 
-class PotentialSignedUp extends Event {
-
+class PotentialSignedUp extends Event
+{
     use SerializesModels;
 
     public $user;
+
     public $message;
+
     public $school;
+
     public $startYear;
+
     public $parentsEmail;
 
     public function __construct(User $user, $message, $school, $startYear, $parentsEmail)

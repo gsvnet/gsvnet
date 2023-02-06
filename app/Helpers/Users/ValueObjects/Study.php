@@ -1,4 +1,6 @@
-<?php namespace App\Helpers\Users\ValueObjects;
+<?php
+
+namespace App\Helpers\Users\ValueObjects;
 
 use App\Helpers\Core\ValueObject;
 
@@ -16,8 +18,9 @@ class Study extends ValueObject
 
     /**
      * Study constructor.
-     * @param string $study
-     * @param string $studentNumber
+     *
+     * @param  string  $study
+     * @param  string  $studentNumber
      */
     public function __construct($study, $studentNumber)
     {

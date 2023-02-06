@@ -9,7 +9,6 @@ return [
      *   member:       lid bij de vereniging
      *   reunist:      reünist bij de vereninging
      *   exMember:     oud-lid van de vereniging
-     *   
      */
     'userTypes' => [
         'visitor' => 0,
@@ -17,7 +16,7 @@ return [
         'member' => 2,
         'reunist' => 3,
         'internalCommittee' => 4,
-        'exMember' => 5
+        'exMember' => 5,
     ],
 
     'userTypesFormatted' => [
@@ -26,7 +25,7 @@ return [
         2 => 'Lid',
         3 => 'Reünist',
         4 => 'Interne commissie',
-        5 => 'Oud-lid'
+        5 => 'Oud-lid',
     ],
 
     'eventTypes' => [
@@ -34,7 +33,7 @@ return [
         'social',
         'collegiate',
         'christian',
-        'gsv'
+        'gsv',
     ],
 
     'eventTypesPresented' => [
@@ -42,12 +41,12 @@ return [
         'Sociaal',
         'Studentikoos',
         'Christelijk',
-        'GSV'
+        'GSV',
     ],
 
     'events' => [
         'maxYear' => date('Y') + 1,
-        'minYear' => 2013
+        'minYear' => 2013,
     ],
 
     'senateFunctions' => [
@@ -55,7 +54,7 @@ return [
         2 => 'Abactis',
         3 => 'Fiscus',
         4 => 'Assessor Primus',
-        5 => 'Assessor Secundus'
+        5 => 'Assessor Secundus',
     ],
 
     'months' => [
@@ -70,7 +69,7 @@ return [
         'september' => '09',
         'oktober' => '10',
         'november' => '11',
-        'december' => '12'
+        'december' => '12',
     ],
 
     'email' => [
@@ -78,7 +77,7 @@ return [
         'senate' => env('SENATE_MAIL', 'abactis@gsvnet.nl'),
         'membership' => env('NOVCIE_MAIL', 'novcie@gsvnet.nl'),
         'prescie' => env('PRESCIE_MAIL', 'prescie@gsvnet.nl'),
-        'profile' => env('PROFILE_MAIL', 'abactis@gsvnet.nl')
+        'profile' => env('PROFILE_MAIL', 'abactis@gsvnet.nl'),
     ],
 
     'notificationsUrl' => env('NOTIFICATIONS', 'https://notifications.gsvnet.nl/'),

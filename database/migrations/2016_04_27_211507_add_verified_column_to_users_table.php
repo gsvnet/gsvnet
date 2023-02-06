@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 class AddVerifiedColumnToUsersTable extends Migration
@@ -13,7 +13,7 @@ class AddVerifiedColumnToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function(Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->boolean('verified')->default(false);
         });
     }
@@ -25,7 +25,7 @@ class AddVerifiedColumnToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function(Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('verified');
         });
     }

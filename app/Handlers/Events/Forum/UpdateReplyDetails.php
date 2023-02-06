@@ -1,15 +1,17 @@
-<?php namespace App\Handlers\Events\Forum;
+<?php
 
-use App\Events\Forum\ReplyWasLiked;
+namespace App\Handlers\Events\Forum;
+
 use App\Events\Forum\ReplyWasDisliked;
+use App\Events\Forum\ReplyWasLiked;
 use App\Helpers\Forum\Replies\ReplyRepository;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class UpdateReplyDetails implements ShouldQueue {
-
+class UpdateReplyDetails implements ShouldQueue
+{
     private $replies;
 
-    function __construct(ReplyRepository $replies)
+    public function __construct(ReplyRepository $replies)
     {
         $this->replies = $replies;
     }

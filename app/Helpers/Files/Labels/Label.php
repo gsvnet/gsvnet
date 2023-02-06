@@ -1,9 +1,13 @@
-<?php namespace App\Helpers\Files\Labels;
+<?php
+
+namespace App\Helpers\Files\Labels;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Label extends Model {
+class Label extends Model
+{
     protected $fillable = ['name'];
+
     public $timestamps = false;
 
     public function files()

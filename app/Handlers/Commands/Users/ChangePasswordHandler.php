@@ -1,12 +1,15 @@
-<?php namespace App\Handlers\Commands\Users;
+<?php
+
+namespace App\Handlers\Commands\Users;
 
 use App\Commands\Users\ChangePassword;
 use App\Events\Users\PasswordWasSet;
 use App\Helpers\Users\UsersRepository;
 
-class ChangePasswordHandler {
-
-    public function __construct(UsersRepository $users){
+class ChangePasswordHandler
+{
+    public function __construct(UsersRepository $users)
+    {
         $this->users = $users;
     }
 

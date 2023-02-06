@@ -3,10 +3,11 @@
 namespace Admin;
 
 use App\Helpers\Extension\ExtensionFileValidator;
-use Input, File;
+use File;
+use Input;
 
-class ExtensionController extends AdminBaseController {
-
+class ExtensionController extends AdminBaseController
+{
     private $validator;
 
     public function __construct(ExtensionFileValidator $validator)
@@ -17,6 +18,7 @@ class ExtensionController extends AdminBaseController {
     public function index()
     {
         $this->authorize('extension.manage');
+
         return view('admin.extension.index');
     }
 
@@ -30,10 +32,11 @@ class ExtensionController extends AdminBaseController {
         $fileName = 'shops.json';
 
         $input['file']->move($path, $fileName);
-        if (File::exists($path.$fileName))
-            flash()->success("Bestand opgeslagen.");
-        else
-            flash()->error("Er is iets misgegaan.");
+        if (File::exists($path.$fileName)) {
+            flash()->success('Bestand opgeslagen.');
+        } else {
+            flash()->error('Er is iets misgegaan.');
+        }
 
         return view('admin.extension.index');
     }

@@ -1,17 +1,19 @@
-<?php namespace App\Helpers\Users;
+<?php
+
+namespace App\Helpers\Users;
 
 use App\Helpers\Users\ValueObjects\Gender;
 use Illuminate\Support\Collection;
 
-class UserTransformer {
-
-    static $genderMap = [
+class UserTransformer
+{
+    public static $genderMap = [
         Gender::MALE => 'Amice',
-        Gender::FEMALE => 'Amica'
+        Gender::FEMALE => 'Amica',
     ];
 
     /**
-     * @param User $user
+     * @param  User  $user
      * @return array
      */
     public function mailchimpSubscribe(User $user)
@@ -22,7 +24,7 @@ class UserTransformer {
             $titel = 'Amice of amica';
         }
 
-        list($year, $group) = ($user->profile && $user->profile->yearGroup)
+        [$year, $group] = ($user->profile && $user->profile->yearGroup)
             ? [$user->profile->yearGroup->year, $user->profile->yearGroup->name]
             : [0, ''];
 
@@ -37,18 +39,17 @@ class UserTransformer {
     }
 
     /**
-     * @param Collection $users
+     * @param  Collection  $users
      * @return array
      */
     public function batchMailchimpSubscribe(Collection $users)
     {
         $batch = [];
 
-        foreach($users as $user)
-        {
+        foreach ($users as $user) {
             $batch[] = [
                 'email' => ['email' => $user->email],
-                'merge_vars' => $this->mailchimpSubscribe($user)
+                'merge_vars' => $this->mailchimpSubscribe($user),
             ];
         }
 
@@ -56,25 +57,24 @@ class UserTransformer {
     }
 
     /**
-     * @param User $user
+     * @param  User  $user
      * @return array
      */
     public function mailchimpUnsubscribe(User $user)
     {
         return [
-            ['email' => $user->email]
+            ['email' => $user->email],
         ];
     }
 
     /**
-     * @param Collection $users
+     * @param  Collection  $users
      * @return array
      */
     public function batchMailchimpUnsubscribe(Collection $users)
     {
         $batch = [];
-        foreach($users as $user)
-        {
+        foreach ($users as $user) {
             $batch[] = $this->mailchimpUnsubscribe($user);
         }
 
@@ -109,7 +109,7 @@ class UserTransformer {
             'Adres ouders' => $hasProfile ? $user->profile->parent_address : '',
             'Postcode ouders' => $hasProfile ? $user->profile->parent_zip_code : '',
             'Woonplaats ouders' => $hasProfile ? $user->profile->parent_town : '',
-            'Gebruikersnaam' => $user->username
+            'Gebruikersnaam' => $user->username,
         ];
     }
 
@@ -140,7 +140,7 @@ class UserTransformer {
             'Studie' => $hasProfile ? $user->profile->study : '',
             'Bedrijf' => $hasProfile ? $user->profile->company : '',
             'Functie' => $hasProfile ? $user->profile->profession : '',
-            'Gebruikersnaam' => $user->username
+            'Gebruikersnaam' => $user->username,
         ];
     }
 
@@ -161,7 +161,7 @@ class UserTransformer {
             'Bedankdatum' => $hasProfile ? $user->profile->present()->resignationDateSimple : '',
             'Reunist' => $user->isReunist() ? 'Ja' : 'Nee',
             'Email' => $user->email,
-            'Gebruikersnaam' => $user->username
+            'Gebruikersnaam' => $user->username,
         ];
     }
 

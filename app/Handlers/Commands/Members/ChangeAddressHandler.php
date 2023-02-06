@@ -1,14 +1,16 @@
-<?php namespace App\Handlers\Commands\Members;
+<?php
+
+namespace App\Handlers\Commands\Members;
 
 use App\Commands\Members\ChangeAddress;
 use App\Events\Members\AddressWasChanged;
 use App\Helpers\Users\Profiles\ProfilesRepository;
 
-class ChangeAddressHandler {
-
+class ChangeAddressHandler
+{
     private $profiles;
 
-    function __construct(ProfilesRepository $profiles)
+    public function __construct(ProfilesRepository $profiles)
     {
         $this->profiles = $profiles;
     }

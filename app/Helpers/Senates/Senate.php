@@ -1,15 +1,17 @@
-<?php namespace App\Helpers\Senates;
+<?php
 
-use Laracasts\Presenter\PresentableTrait;
+namespace App\Helpers\Senates;
+
 use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
 
-class Senate extends Model {
+class Senate extends Model
+{
+    use PresentableTrait;
 
-	use PresentableTrait;
+    protected $guarded = [];
 
-    protected $guarded = array();
-
-    public static $rules = array();
+    public static $rules = [];
 
     public $presenter = 'App\Helpers\Senates\SenatePresenter';
 

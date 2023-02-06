@@ -1,4 +1,6 @@
-<?php namespace App\Providers;
+<?php
+
+namespace App\Providers;
 
 use App\Handlers\Events\ThreadEventHandler;
 use App\Handlers\Events\UserEventHandler;
@@ -12,13 +14,13 @@ class EventServiceProvider extends ServiceProvider
 
     protected $subscribe = [
         ThreadEventHandler::class,
-        UserEventHandler::class
+        UserEventHandler::class,
     ];
 
     /**
      * Register any other events for your application.
      *
-     * @param  \Illuminate\Contracts\Events\Dispatcher $events
+     * @param  \Illuminate\Contracts\Events\Dispatcher  $events
      * @return void
      */
     public function boot(DispatcherContract $events)

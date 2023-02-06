@@ -2,16 +2,16 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class CreateActivityTable extends Migration {
-
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
-        Schema::table('activity', function($t) {
+class CreateActivityTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('activity', function ($t) {
             $t->create();
 
             $t->increments('id');
@@ -22,16 +22,15 @@ class CreateActivityTable extends Migration {
 
             $t->timestamps();
         });
-	}
+    }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::drop('activity');
-	}
-
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('activity');
+    }
 }

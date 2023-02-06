@@ -1,11 +1,13 @@
-<?php namespace App\Http\Validators;
+<?php
+
+namespace App\Http\Validators;
 
 use App\Helpers\Core\Validator;
 use Illuminate\Support\Facades\Validator as LaravelValidator;
 
-class StartThreadValidator extends Validator {
-
-    static $rules = [
+class StartThreadValidator extends Validator
+{
+    public static $rules = [
         'body' => 'required',
         'subject' => 'required|min:3',
         'tags' => 'required|max_tags:3',

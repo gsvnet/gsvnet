@@ -1,14 +1,18 @@
-<?php namespace App\Helpers\Users\ValueObjects;
+<?php
+
+namespace App\Helpers\Users\ValueObjects;
 
 use App\Helpers\Core\ValueObject;
 
-class Business extends ValueObject {
-
+class Business extends ValueObject
+{
     private $company;
+
     private $function;
+
     private $url;
 
-    function __construct($company, $function, $url)
+    public function __construct($company, $function, $url)
     {
         $this->company = ucfirst(trim($company));
         $this->function = trim($function);

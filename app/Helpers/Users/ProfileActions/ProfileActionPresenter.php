@@ -1,10 +1,12 @@
-<?php namespace App\Helpers\Users\ProfileActions;
+<?php
+
+namespace App\Helpers\Users\ProfileActions;
 
 use App\Events\Members\AddressWasChanged;
 use App\Events\Members\BirthDayWasChanged;
 use App\Events\Members\BusinessWasChanged;
-use App\Events\Members\MemberEmailWasChanged;
 use App\Events\Members\GenderWasChanged;
+use App\Events\Members\MemberEmailWasChanged;
 use App\Events\Members\MembershipStatusWasChanged;
 use App\Events\Members\NameWasChanged;
 use App\Events\Members\ParentDetailsWereChanged;
@@ -56,11 +58,11 @@ class ProfileActionPresenter extends Presenter
     public function actionName()
     {
         if (array_key_exists($this->entity->action, self::$map)) {
-            return self::$map[$this->entity->action] . ' gewijzigd';
+            return self::$map[$this->entity->action].' gewijzigd';
         }
 
         if (array_key_exists($this->entity->action, self::$verifications)) {
-            return self::$verifications[$this->entity->action] . ' geverifieerd';
+            return self::$verifications[$this->entity->action].' geverifieerd';
         }
 
         return 'Onbekend';

@@ -1,17 +1,19 @@
-<?php namespace App\Console;
+<?php
+
+namespace App\Console;
 
 use App\Console\Commands\BulkNewsletterSubscriptions;
 use App\Console\Commands\BulkSyncWithAlgolia;
 use App\Console\Commands\InviteViaCLI;
+use App\Console\Commands\MigrateFormerMembers;
 use App\Console\Commands\StandardizeAddresses;
 use App\Console\Commands\StandardizePhoneNumbers;
-use App\Console\Commands\MigrateFormerMembers;
 use App\Events\Members\MemberFileWasCreated;
+use App\Helpers\Users\MemberFiler;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use App\Helpers\Users\MemberFiler;
 use Illuminate\Support\Facades\Storage;
 
 class Kernel extends ConsoleKernel
@@ -27,7 +29,7 @@ class Kernel extends ConsoleKernel
         StandardizePhoneNumbers::class,
         StandardizeAddresses::class,
         BulkSyncWithAlgolia::class,
-        MigrateFormerMembers::class
+        MigrateFormerMembers::class,
     ];
 
     private $filer;

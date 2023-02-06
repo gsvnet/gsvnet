@@ -1,8 +1,10 @@
-<?php namespace App\Helpers\Forum\Replies;
+<?php
 
-use Chromabits\Purifier\Purifier;
+namespace App\Helpers\Forum\Replies;
+
 use App\Helpers\Emoticons\Emoticon;
 use App\Helpers\Markdown\HtmlMarkdownConverter;
+use Chromabits\Purifier\Purifier;
 use Illuminate\Support\Facades\Auth;
 use Laracasts\Presenter\Presenter;
 
@@ -11,20 +13,21 @@ class ReplyPresenter extends Presenter
     // don't use this with $thread->replies, because it fires 4 queries per reply extra
     public function url()
     {
-
         $slug = $this->thread->slug;
         $threadUrl = action('ForumThreadsController@getShowThread', [$slug]);
 
-        return $threadUrl . app(ReplyQueryStringGenerator::class)->generate($this->entity);
+        return $threadUrl.app(ReplyQueryStringGenerator::class)->generate($this->entity);
     }
 
     public function likeClass()
     {
-        if(! Auth::check() )
+        if (! Auth::check()) {
             return '';
+        }
 
-        if($this->likes->isEmpty())
+        if ($this->likes->isEmpty()) {
             return '';
+        }
 
         return 'liked';
     }
@@ -45,6 +48,7 @@ class ReplyPresenter extends Presenter
         $body = $this->convertMarkdown($body);
         $body = $this->convertEmoticons($body);
         $body = $this->purify($body);
+
         return $body;
     }
 

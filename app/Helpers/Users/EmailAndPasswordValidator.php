@@ -1,17 +1,20 @@
-<?php namespace App\Helpers\Users;
+<?php
+
+namespace App\Helpers\Users;
 
 use App\Helpers\Core\Validator;
 
 class EmailAndPasswordValidator extends Validator
 {
-    static $rules = [
+    public static $rules = [
         'email' => null,
-        'password' => 'sometimes|confirmed'
+        'password' => 'sometimes|confirmed',
     ];
 
     public function forUser(User $user)
     {
-        self::$rules['email'] = 'required|email|unique:users,email,' . $user->id;
+        self::$rules['email'] = 'required|email|unique:users,email,'.$user->id;
+
         return $this;
     }
 }

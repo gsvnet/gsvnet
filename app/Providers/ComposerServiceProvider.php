@@ -1,10 +1,12 @@
-<?php namespace App\Providers;
+<?php
 
-use View;
+namespace App\Providers;
+
 use Illuminate\Support\ServiceProvider;
+use View;
 
-class ComposerServiceProvider extends ServiceProvider {
-
+class ComposerServiceProvider extends ServiceProvider
+{
     /**
      * Register bindings in the container.
      *
@@ -15,5 +17,7 @@ class ComposerServiceProvider extends ServiceProvider {
         View::composer('layouts.default', 'App\Helpers\Core\Composers\NavigationViewComposer');
     }
 
-    public function register(){}
+    public function register()
+    {
+    }
 }

@@ -1,11 +1,13 @@
-<?php namespace App\Helpers\Albums\Photos;
+<?php
+
+namespace App\Helpers\Albums\Photos;
 
 use App\Helpers\Core\Validator;
 
 class PhotoCreatorValidator extends Validator
 {
-    static $rules = [
+    public static $rules = [
         'photo' => 'required|image',
-        'album_id' => 'required'
+        'album_id' => 'required',
     ];
 }

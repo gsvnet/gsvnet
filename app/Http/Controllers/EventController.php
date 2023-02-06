@@ -4,8 +4,8 @@ use App\Helpers\Events\EventsRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Config;
 
-class EventController extends BaseController {
-
+class EventController extends BaseController
+{
     protected $events;
 
     public function __construct(EventsRepository $events)
@@ -14,10 +14,11 @@ class EventController extends BaseController {
         parent::__construct();
     }
 
-	public function showIndex()
-	{
+    public function showIndex()
+    {
         // Get all events which haven't finishes yet
         $events = $this->events->upcoming(10);
+
         return view('events.index')
             ->with('searchTimeRange', false)
             ->with('events', $events)
@@ -30,15 +31,13 @@ class EventController extends BaseController {
         $months = Config::get('gsvnet.months');
 
         // Create $start and $end variables, which represent the time spans.
-        if($strMonth)
-        {
+        if ($strMonth) {
             $month = $months[$strMonth];
-            $begin = $year . '-' . $month . '-01';
-            $end = (new DateTime($year . '-' . $month . '-01'))->format('Y-m-t');
-        } else
-        {
-            $begin = $year . '-01-01';
-            $end = $year . '-12-31';
+            $begin = $year.'-'.$month.'-01';
+            $end = (new DateTime($year.'-'.$month.'-01'))->format('Y-m-t');
+        } else {
+            $begin = $year.'-01-01';
+            $end = $year.'-12-31';
         }
 
         // Select all events that take place between $start and $end

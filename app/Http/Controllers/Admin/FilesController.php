@@ -1,17 +1,18 @@
-<?php namespace Admin;
+<?php
 
-use View, Input, Redirect;
+namespace Admin;
 
 use App\Helpers\Files\FileManager;
 use App\Helpers\Files\FilesRepository;
-
 use App\Helpers\Files\Labels\LabelsRepository;
+use Input;
 
 class FilesController extends AdminBaseController
 {
-
     protected $files;
+
     protected $labels;
+
     protected $manager;
 
     public function __construct(FilesRepository $files, LabelsRepository $labels, FileManager $manager)
@@ -30,10 +31,11 @@ class FilesController extends AdminBaseController
         $files = $this->files->paginate(10, false);
         $labels = $this->labels->all();
 
-        $checked = array();
+        $checked = [];
 
-        foreach ($labels as $label)
+        foreach ($labels as $label) {
             $checked[$label->id] = '';
+        }
 
         return view('admin.files.index')
             ->withFiles($files)
@@ -60,7 +62,7 @@ class FilesController extends AdminBaseController
         $labels = $this->labels->all();
 
         // Get the file's labels
-        $checked = array();
+        $checked = [];
         $fileIdLabels = array_pluck($file->labels->toArray(), 'id');
         foreach ($labels as $label) {
             $checked[$label->id] = in_array($label->id, $fileIdLabels) ? 'checked' : '';
@@ -93,5 +95,4 @@ class FilesController extends AdminBaseController
 
         return redirect()->action('Admin\FilesController@index');
     }
-
 }

@@ -1,6 +1,7 @@
-<?php namespace App\Events\Members;
+<?php
+
+namespace App\Events\Members;
 
 class BusinessWasChanged extends ProfileEvent
 {
-
 }

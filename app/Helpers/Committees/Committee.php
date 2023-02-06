@@ -1,15 +1,17 @@
-<?php namespace App\Helpers\Committees;
+<?php
 
-use Laracasts\Presenter\PresentableTrait;
+namespace App\Helpers\Committees;
+
 use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
 
-class Committee extends Model {
-    
+class Committee extends Model
+{
     use PresentableTrait;
 
-    protected $guarded = array();
+    protected $guarded = [];
 
-    public static $rules = array();
+    public static $rules = [];
 
     public $presenter = 'App\Helpers\Committees\CommitteePresenter';
 
@@ -36,13 +38,12 @@ class Committee extends Model {
         //  between the start and enddate
         return $this->belongsToMany('App\Helpers\Users\User', 'committee_user')
             ->where('committee_user.start_date', '<=', new \DateTime('now'))
-            ->where(function($q) {
+            ->where(function ($q) {
                 return $q->where('committee_user.end_date', '>=', new \DateTime('now'))
                     ->orWhereNull('committee_user.end_date');
             })
             ->withPivot('start_date', 'end_date');
     }
-
 
     public function users()
     {

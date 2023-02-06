@@ -1,4 +1,6 @@
-<?php namespace App\Events\Members;
+<?php
+
+namespace App\Events\Members;
 
 use App\Helpers\Users\User;
 
@@ -8,13 +10,14 @@ class MemberEmailWasChanged extends ProfileEvent
 
     /**
      * MemberEmailWasChanged constructor.
-     * @param User $member
-     * @param User $manager
+     *
+     * @param  User  $member
+     * @param  User  $manager
      * @param $oldEmail
      */
     public function __construct(User $member, User $manager, $oldEmail)
     {
-        parent::__construct($member, $manager);        
+        parent::__construct($member, $manager);
         $this->oldEmail = $oldEmail;
     }
 

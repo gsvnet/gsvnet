@@ -1,4 +1,7 @@
-<?php namespace Malfonds;
+<?php
+
+namespace Malfonds;
+
 use App\Helpers\Users\YearGroupRepository;
 use App\Helpers\Users\YearGroupTransformer;
 
@@ -11,7 +14,8 @@ class YearGroupController extends CoreApiController
 
     /**
      * YearGroupsController constructor.
-     * @param YearGroupRepository $groups
+     *
+     * @param  YearGroupRepository  $groups
      */
     public function __construct(YearGroupRepository $groups)
     {
@@ -22,8 +26,7 @@ class YearGroupController extends CoreApiController
     {
         $this->authorize('users.show');
         $groups = $this->groups->all();
-        
+
         return $this->withCollection($groups, new YearGroupTransformer);
     }
-
 }

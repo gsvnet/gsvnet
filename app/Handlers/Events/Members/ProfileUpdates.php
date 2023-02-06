@@ -1,4 +1,6 @@
-<?php namespace App\Handlers\Events\Members;
+<?php
+
+namespace App\Handlers\Events\Members;
 
 use App\Events\Members\ProfileEvent;
 use App\Helpers\Users\ProfileActions\ProfileAction;
@@ -7,7 +9,7 @@ use App\Helpers\Users\UsersRepository;
 
 class ProfileUpdates
 {
-    function __construct(ProfileActionsRepository $actions, UsersRepository $users)
+    public function __construct(ProfileActionsRepository $actions, UsersRepository $users)
     {
         $this->actions = $actions;
         $this->users = $users;

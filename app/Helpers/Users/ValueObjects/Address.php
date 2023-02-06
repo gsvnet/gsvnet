@@ -1,19 +1,24 @@
-<?php namespace App\Helpers\Users\ValueObjects;
+<?php
+
+namespace App\Helpers\Users\ValueObjects;
 
 use App\Helpers\Core\ValueObject;
 
-class Address extends ValueObject {
-
+class Address extends ValueObject
+{
     protected $street;
+
     protected $zipCode;
+
     protected $town;
+
     protected $country;
 
-    static $rules = [
+    public static $rules = [
         'address' => 'required',
         'zip_code' => 'required',
         'town' => 'required',
-        'country' => 'required'
+        'country' => 'required',
     ];
 
     public function __construct($street, $zipCode, $town, $country = 'Nederland')

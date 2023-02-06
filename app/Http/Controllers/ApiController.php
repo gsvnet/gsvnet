@@ -1,18 +1,20 @@
 <?php
 
+use App\Helpers\Events\EventsRepository;
+use App\Helpers\Regions\RegionsRepository;
 use App\Helpers\Users\Profiles\ProfilesRepository;
 use App\Helpers\Users\User;
 use App\Helpers\Users\YearGroupRepository;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
-use App\Helpers\Regions\RegionsRepository;
-use App\Helpers\Events\EventsRepository;
 
-class ApiController extends BaseController {
-
+class ApiController extends BaseController
+{
     private $profiles;
+
     private $yearGroups;
+
     private $regions;
+
     private $events;
 
     public function __construct(ProfilesRepository $profiles,
@@ -37,49 +39,55 @@ class ApiController extends BaseController {
         $yearGroup = Input::get('jaarverband');
 
         // Search on region
-        if (!$region || ! $this->regions->exists($region))
+        if (! $region || ! $this->regions->exists($region)) {
             $region = null;
+        }
 
         // Enable search on yeargroup
-        if (!$yearGroup || ! $this->yearGroups->exists($yearGroup))
+        if (! $yearGroup || ! $this->yearGroups->exists($yearGroup)) {
             $yearGroup = null;
+        }
 
         // Search for reunists?
-        if($reunist == 'ja')
+        if ($reunist == 'ja') {
             $type = [$type, User::REUNIST];
-        else
+        } else {
             $type = [$type];
+        }
 
         // Search types
-        if (!in_array(User::MEMBER, $type) && !in_array(User::REUNIST, $type))
+        if (! in_array(User::MEMBER, $type) && ! in_array(User::REUNIST, $type)) {
             $type = [User::MEMBER, User::REUNIST];
+        }
 
         $profiles = $this->profiles->searchLimit($search, $region, $yearGroup, $type, 30);
 
-        $formatted = $profiles->map(function($profile){
+        $formatted = $profiles->map(function ($profile) {
             return [
                 'id' => $profile->user->id,
                 'fullName' => $profile->user->present()->fullName,
-                'yearGroup' => $profile->yearGroup ? $profile->yearGroup->present()->nameWithYear : ''
+                'yearGroup' => $profile->yearGroup ? $profile->yearGroup->present()->nameWithYear : '',
             ];
         });
 
         return response()->json($formatted);
     }
 
-    public function events() {
+    public function events()
+    {
         $events = $this->events->upcoming();
 
-        $formatted = $events->map(function($event) {
+        $formatted = $events->map(function ($event) {
             return [
                 'title' => $event->title,
                 'description' => $event->meta_description,
                 'start_date' => $event->start_date,
                 'start_time' => $event->start_time,
                 'end_date' => $event->end_date,
-                'type' => $event->type
+                'type' => $event->type,
             ];
         });
+
         return response()->json($formatted);
     }
 }

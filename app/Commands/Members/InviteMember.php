@@ -1,4 +1,6 @@
-<?php namespace App\Commands\Members;
+<?php
+
+namespace App\Commands\Members;
 
 use App\Commands\Command;
 use App\Helpers\Users\User;
@@ -23,14 +25,17 @@ class InviteMember extends Command
     protected $email;
 
     protected $message;
+
     protected $name;
+
     protected $title;
 
     /**
      * InviteMember constructor.
-     * @param User $host
-     * @param User $guest
-     * @param Email $email
+     *
+     * @param  User  $host
+     * @param  User  $guest
+     * @param  Email  $email
      * @param $title
      * @param $name
      * @param $message
@@ -45,9 +50,10 @@ class InviteMember extends Command
         $this->title = $title;
     }
 
-    static function fromRequest(Request $request, User $host, User $guest)
+    public static function fromRequest(Request $request, User $host, User $guest)
     {
         $email = new Email($request->get('email'));
+
         return new self(
             $host,
             $guest,

@@ -1,12 +1,14 @@
-<?php namespace App\Commands\Members;
+<?php
+
+namespace App\Commands\Members;
 
 use App\Commands\Command;
-use App\Helpers\Users\ValueObjects\Business;
 use App\Helpers\Users\User;
+use App\Helpers\Users\ValueObjects\Business;
 use Illuminate\Http\Request;
 
-class ChangeBusiness extends Command {
-
+class ChangeBusiness extends Command
+{
     /**
      * @var User
      */
@@ -24,18 +26,19 @@ class ChangeBusiness extends Command {
 
     /**
      * ChangeBusiness constructor.
-     * @param User $user
-     * @param User $manager
-     * @param Business $business
+     *
+     * @param  User  $user
+     * @param  User  $manager
+     * @param  Business  $business
      */
-    function __construct(User $user, User $manager, Business $business)
+    public function __construct(User $user, User $manager, Business $business)
     {
         $this->user = $user;
         $this->business = $business;
         $this->manager = $manager;
     }
 
-    static function fromForm(Request $request, User $user)
+    public static function fromForm(Request $request, User $user)
     {
         $business = new Business(
             $request->get('company'),

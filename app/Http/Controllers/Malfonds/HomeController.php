@@ -1,4 +1,6 @@
-<?php namespace Malfonds;
+<?php
+
+namespace Malfonds;
 
 use Auth;
 
@@ -7,7 +9,7 @@ class HomeController extends MalfondsController
     public function home()
     {
         return response()->json([
-            'welkom' => Auth::user()->present()->fullName()
+            'welkom' => Auth::user()->present()->fullName(),
         ]);
     }
 }

@@ -1,14 +1,17 @@
-<?php namespace App\Helpers\Forum\Threads;
+<?php
+
+namespace App\Helpers\Forum\Threads;
 
 use App\Helpers\Core\Entity;
 
 class ThreadVisitation extends Entity
 {
-    protected $table      = 'forum_thread_visitations';
-    protected $fillable   = ['user_id', 'thread_id', 'visited_at'];
+    protected $table = 'forum_thread_visitations';
+
+    protected $fillable = ['user_id', 'thread_id', 'visited_at'];
 
     protected $validationRules = [
-        'user_id'   => 'required',
+        'user_id' => 'required',
         'thread_id' => 'required',
         'visited_at' => 'required',
     ];

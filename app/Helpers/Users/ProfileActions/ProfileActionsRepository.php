@@ -1,11 +1,13 @@
-<?php namespace App\Helpers\Users\ProfileActions;
+<?php
+
+namespace App\Helpers\Users\ProfileActions;
 
 use App\Helpers\Core\BaseRepository;
 use App\Helpers\Users\User;
 
-class ProfileActionsRepository extends BaseRepository {
-
-    function __construct(ProfileAction $model)
+class ProfileActionsRepository extends BaseRepository
+{
+    public function __construct(ProfileAction $model)
     {
         $this->model = $model;
     }

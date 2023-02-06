@@ -1,13 +1,15 @@
-<?php namespace App\Helpers\Committees;
+<?php
+
+namespace App\Helpers\Committees;
 
 use App\Helpers\Users\User;
 
-class CommitteesRepository {
-
+class CommitteesRepository
+{
     /**
      * Get by id
      *
-     * @param int $id
+     * @param  int  $id
      * @return Committee
      */
     public function byId($id)
@@ -18,7 +20,7 @@ class CommitteesRepository {
     /**
      * Get by slug
      *
-     * @param string $slug
+     * @param  string  $slug
      * @return Committee
      */
     public function bySlug($slug)
@@ -32,10 +34,10 @@ class CommitteesRepository {
     }
 
     /**
-    * Get all committees
-    *
-    * @return Collection
-    */
+     * Get all committees
+     *
+     * @return Collection
+     */
     public function all()
     {
         return Committee::orderBy('name', 'ASC')->public()->get();
@@ -44,7 +46,7 @@ class CommitteesRepository {
     /**
      * Get paginated committees
      *
-     * @param int $amount
+     * @param  int  $amount
      */
     public function paginate($amount)
     {
@@ -57,18 +59,18 @@ class CommitteesRepository {
     }
 
     /**
-    * Create committee
-    *
-    * @param array $input
-    * @return Committee
-    */
+     * Create committee
+     *
+     * @param  array  $input
+     * @return Committee
+     */
     public function create(array $input)
     {
-        $committee              = new Committee();
-        $committee->name        = $input['name'];
+        $committee = new Committee();
+        $committee->name = $input['name'];
         $committee->unique_name = $input['unique_name'];
         $committee->description = $input['description'];
-        $committee->public      = $input['public'];
+        $committee->public = $input['public'];
 
         $committee->save();
 
@@ -76,20 +78,20 @@ class CommitteesRepository {
     }
 
     /**
-    * Update committee
-    *
-    * @param int $id
-    * @param array $input
-    * @return Committee
-    */
+     * Update committee
+     *
+     * @param  int  $id
+     * @param  array  $input
+     * @return Committee
+     */
     public function update($id, array $input)
     {
-        $committee              = $this->byId($id);
+        $committee = $this->byId($id);
 
-        $committee->name        = $input['name'];
+        $committee->name = $input['name'];
         $committee->unique_name = $input['unique_name'];
         $committee->description = $input['description'];
-        $committee->public      = $input['public'];
+        $committee->public = $input['public'];
 
         $committee->save();
 
@@ -97,12 +99,12 @@ class CommitteesRepository {
     }
 
     /**
-    * Delete Committee
-    *
-    * @param int $id
-    * @return Committe
-    * @TODO: delete all committee members references
-    */
+     * Delete Committee
+     *
+     * @param  int  $id
+     * @return Committe
+     * @TODO: delete all committee members references
+     */
     public function delete($id)
     {
         $committee = $this->byId($id);

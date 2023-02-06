@@ -1,4 +1,6 @@
-<?php namespace App\Http\Middleware;
+<?php
+
+namespace App\Http\Middleware;
 
 use Auth;
 
@@ -9,6 +11,7 @@ class ApiAuthenticated
         if (Auth::guest()) {
             return response('Unauthorized.', 401);
         }
+
         return $next($request);
     }
 }

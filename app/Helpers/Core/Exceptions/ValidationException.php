@@ -1,14 +1,16 @@
-<?php namespace App\Helpers\Core\Exceptions;
+<?php
 
-class ValidationException extends \Exception {
+namespace App\Helpers\Core\Exceptions;
 
+class ValidationException extends \Exception
+{
     /**
      * @var string
      */
     protected $errors;
 
     /**
-     * @param string $errors
+     * @param  string  $errors
      */
     public function __construct($errors)
     {

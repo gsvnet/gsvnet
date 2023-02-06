@@ -1,7 +1,10 @@
-<?php namespace App\Helpers\Forum\Threads;
+<?php
 
+namespace App\Helpers\Forum\Threads;
+
+use App;
 use App\Helpers\Core\FormModel;
-use App, Validator;
+use Validator;
 
 class ThreadForm extends FormModel
 {

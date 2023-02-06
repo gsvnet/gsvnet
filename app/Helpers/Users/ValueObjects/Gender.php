@@ -1,18 +1,22 @@
-<?php namespace App\Helpers\Users\ValueObjects;
+<?php
+
+namespace App\Helpers\Users\ValueObjects;
 
 use App\Helpers\Core\Exceptions\ValueObjectValidationException;
 use App\Helpers\Core\ValueObject;
 use Illuminate\Support\MessageBag;
 
-class Gender extends ValueObject {
-
+class Gender extends ValueObject
+{
     const FEMALE = 0;
+
     const MALE = 1;
+
     const UNKOWN = null;
 
     private $gender;
 
-    function __construct($gender = null)
+    public function __construct($gender = null)
     {
         $this->gender = $gender === null ? null : (int) $gender;
         $this->validateGender();
@@ -27,10 +31,9 @@ class Gender extends ValueObject {
     {
         $possibilities = [static::MALE, static::FEMALE, static::UNKOWN];
 
-        if( !in_array($this->gender, $possibilities, true))
-        {
+        if (! in_array($this->gender, $possibilities, true)) {
             throw new ValueObjectValidationException(new MessageBag([
-                'gender' => 'Niet-bestaande sekse'
+                'gender' => 'Niet-bestaande sekse',
             ]));
         }
     }

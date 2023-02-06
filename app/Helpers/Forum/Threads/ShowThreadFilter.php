@@ -1,4 +1,6 @@
-<?php namespace App\Helpers\Forum\Threads;
+<?php
+
+namespace App\Helpers\Forum\Threads;
 
 use App\Helpers\Permissions\NoPermissionException;
 use Illuminate\Support\Facades\Gate;
@@ -9,7 +11,7 @@ class ShowThreadFilter
 
     public function __construct(ThreadRepository $threads)
     {
-        $this->threads  = $threads;
+        $this->threads = $threads;
     }
 
     public function filter($route)
@@ -17,10 +19,12 @@ class ShowThreadFilter
         $slug = $route->getParameter('slug');
         $thread = $this->threads->getBySlug($slug);
 
-        if ($thread->public)
+        if ($thread->public) {
             return;
+        }
 
-        if ( ! Gate::allows('photos.show-private'))
+        if (! Gate::allows('photos.show-private')) {
             throw new NoPermissionException;
+        }
     }
 }

@@ -1,10 +1,11 @@
-<?php namespace App\Helpers\Core;
+<?php
+
+namespace App\Helpers\Core;
 
 use Illuminate\Pagination\BootstrapThreePresenter;
 
-class PaginationPresenter extends BootstrapThreePresenter {
-
-
+class PaginationPresenter extends BootstrapThreePresenter
+{
     /**
      * Render the Pagination contents.
      *
@@ -12,12 +13,9 @@ class PaginationPresenter extends BootstrapThreePresenter {
      */
     public function render()
     {
-        if ($this->lastPage < 9)
-        {
+        if ($this->lastPage < 9) {
             $content = $this->getPageRange(1, $this->lastPage);
-        }
-        else
-        {
+        } else {
             $content = $this->getPageSlider();
         }
 
@@ -36,8 +34,7 @@ class PaginationPresenter extends BootstrapThreePresenter {
         // If the current page is very close to the beginning of the page range, we will
         // just render the beginning of the page range, followed by the last 2 of the
         // links in this list, since we will not have room to create a full slider.
-        if ($this->currentPage <= $window)
-        {
+        if ($this->currentPage <= $window) {
             $ending = $this->getFinish();
 
             return $this->getPageRange(1, $window + 1).$ending;
@@ -46,8 +43,7 @@ class PaginationPresenter extends BootstrapThreePresenter {
         // If the current page is close to the ending of the page range we will just get
         // this first couple pages, followed by a larger window of these ending pages
         // since we're too close to the end of the list to create a full on slider.
-        elseif ($this->currentPage >= $this->lastPage - $window)
-        {
+        elseif ($this->currentPage >= $this->lastPage - $window) {
             $start = $this->lastPage - 4;
 
             $content = $this->getPageRange($start, $this->lastPage);
@@ -58,14 +54,12 @@ class PaginationPresenter extends BootstrapThreePresenter {
         // If we have enough room on both sides of the current page to build a slider we
         // will surround it with both the beginning and ending caps, with this window
         // of pages in the middle providing a Google style sliding paginator setup.
-        else
-        {
+        else {
             $content = $this->getAdjacentRange();
 
             return $this->getStart().$content.$this->getFinish();
         }
     }
-
 
     /**
      * Get the page range for the current page window.
@@ -98,5 +92,4 @@ class PaginationPresenter extends BootstrapThreePresenter {
 
         return $this->getDots().$content;
     }
-
 }

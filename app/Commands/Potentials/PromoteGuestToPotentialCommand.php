@@ -1,29 +1,53 @@
-<?php namespace App\Commands\Potentials;
+<?php
+
+namespace App\Commands\Potentials;
 
 use App\Commands\Command;
 
-class PromoteGuestToPotentialCommand extends Command {
+class PromoteGuestToPotentialCommand extends Command
+{
     public $userId;
+
     public $firstname;
+
     public $middlename;
+
     public $lastname;
+
     public $gender;
+
     public $birthdate;
+
     public $address;
+
     public $zipCode;
+
     public $town;
+
     public $email;
+
     public $phone;
+
     public $study;
+
     public $studentNumber;
+
     public $studyStartYear;
+
     public $username;
+
     public $parentsAddress;
+
     public $parentsZipCode;
+
     public $parentsTown;
+
     public $parentsPhone;
+
     public $parentsEmail;
+
     public $message;
+
     public $school;
 
     /**

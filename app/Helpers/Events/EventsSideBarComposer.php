@@ -1,9 +1,11 @@
-<?php namespace App\Helpers\Events;
+<?php
+
+namespace App\Helpers\Events;
 
 use Config;
 
-class EventsSideBarComposer {
-
+class EventsSideBarComposer
+{
     protected $events;
 
     public function __construct(EventsRepository $events)
@@ -14,8 +16,7 @@ class EventsSideBarComposer {
     public function compose($view)
     {
         // if view does not have year, set year to current
-        if (! isset($view->year))
-        {
+        if (! isset($view->year)) {
             // Get current year
             $year = (int) date('Y');
             $view->withYear($year);
@@ -23,7 +24,7 @@ class EventsSideBarComposer {
 
         $year = $view->year;
 
-        $months = array('januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december');
+        $months = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
         $visibleYears = $this->getVisibleYears($year);
 
         $view->withMonths($months);
@@ -33,20 +34,22 @@ class EventsSideBarComposer {
     private function getVisibleYears($year)
     {
         $options = Config::get('gsvnet.events');
-        
+
         // Create list of visible years
-        $yearsList = array();
-        
+        $yearsList = [];
+
         // Previous year
-        if($options['minYear'] < $year)
+        if ($options['minYear'] < $year) {
             $yearsList[] = $year - 1;
+        }
 
         // Current year
         $yearsList[] = $year;
 
         // Next year
-        if($options['maxYear'] > $year)
+        if ($options['maxYear'] > $year) {
             $yearsList[] = $year + 1;
+        }
 
         return $yearsList;
     }

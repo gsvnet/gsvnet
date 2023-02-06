@@ -1,4 +1,6 @@
-<?php namespace App\Helpers\Markdown;
+<?php
+
+namespace App\Helpers\Markdown;
 
 class HtmlMarkdownConverter
 {
@@ -6,7 +8,6 @@ class HtmlMarkdownConverter
 
     public function __construct()
     {
-
         $this->markdownParser = \Parsedown::instance()
             ->setBreaksEnabled(true);
     }

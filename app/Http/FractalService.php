@@ -1,4 +1,6 @@
-<?php namespace App\Http;
+<?php
+
+namespace App\Http;
 
 use League\Fractal\Manager;
 use League\Fractal\Pagination\CursorInterface as FractalCursorInterface;
@@ -9,10 +11,10 @@ use League\Fractal\Resource\ResourceInterface as FractalResourceInterface;
 
 class FractalService
 {
-
     /**
      * FractalService constructor.
-     * @param Manager $fractal
+     *
+     * @param  Manager  $fractal
      */
     public function __construct(Manager $fractal)
     {
@@ -22,17 +24,17 @@ class FractalService
     /**
      * Create a new collection resource with the given transformer.
      *
-     * @param  array|object $collection
-     * @param  object $transformer
-     * @param  \League\Fractal\Pagination\CursorInterface $cursor
-     * @param  string $key
+     * @param  array|object  $collection
+     * @param  object  $transformer
+     * @param  \League\Fractal\Pagination\CursorInterface  $cursor
+     * @param  string  $key
      * @return \Illuminate\Http\Response
      */
     public function collection($collection, $transformer, FractalCursorInterface $cursor = null, $key = null)
     {
         $resource = new FractalCollection($collection, $transformer, $key);
 
-        if (!is_null($cursor)) {
+        if (! is_null($cursor)) {
             $resource->setCursor($cursor);
         }
 
@@ -42,9 +44,9 @@ class FractalService
     /**
      * Create a new item resource with the given transformer.
      *
-     * @param  array|object $item
-     * @param  object $transformer
-     * @param  string $key
+     * @param  array|object  $item
+     * @param  object  $transformer
+     * @param  string  $key
      * @return \Illuminate\Http\Response
      */
     public function item($item, $transformer, $key = null)
@@ -54,13 +56,12 @@ class FractalService
         return $this->build($resource);
     }
 
-
     /**
      * Create a new collection resource from a paginator with the given transformer.
      *
-     * @param  \League\Fractal\Pagination\PaginatorInterface $paginator
-     * @param  object $transformer
-     * @param  string $key
+     * @param  \League\Fractal\Pagination\PaginatorInterface  $paginator
+     * @param  object  $transformer
+     * @param  string  $key
      * @return \Illuminate\Http\Response
      */
     public function paginator(FractalPaginatorInterface $paginator, $transformer, $key = null)
@@ -75,7 +76,7 @@ class FractalService
     /**
      * Build the response.
      *
-     * @param  array|\League\Fractal\Resource\ResourceInterface $data
+     * @param  array|\League\Fractal\Resource\ResourceInterface  $data
      * @return \Illuminate\Http\Response
      */
     public function build($data)

@@ -5,9 +5,12 @@ use App\Helpers\Albums\Photos\PhotosRepository;
 use App\Helpers\Core\ImageHandler;
 use Illuminate\Support\Facades\Config;
 
-class PhotoController extends BaseController {
+class PhotoController extends BaseController
+{
     private $albums;
+
     private $photos;
+
     private $handler;
 
     public function __construct(AlbumsRepository $albums, PhotosRepository $photos, ImageHandler $handler)
@@ -18,8 +21,8 @@ class PhotoController extends BaseController {
         $this->handler = $handler;
     }
 
-	public function showAlbums()
-	{
+    public function showAlbums()
+    {
         $photosPerPage = Config::get('photos.photos_per_page');
         $albums = $this->albums->paginateWithFirstPhoto($photosPerPage);
 
@@ -31,9 +34,9 @@ class PhotoController extends BaseController {
         $album = $this->albums->bySlug($slug);
         $photosPerPage = Config::get('photos.photos_per_page');
 
-        if(!$album) {
-            
+        if (! $album) {
             $albums = $this->albums->paginateWithFirstPhoto($photosPerPage);
+
             return view('gallery.albums.404')->with('albums', $albums);
         }
 
@@ -45,12 +48,11 @@ class PhotoController extends BaseController {
             ->withPhotos($photos);
     }
 
-
     /**
      * Returns an image response
      *
      * @param $photo_id
-     * @param string $type
+     * @param  string  $type
      * @return
      */
     public function showPhoto($photo_id, $type = '')

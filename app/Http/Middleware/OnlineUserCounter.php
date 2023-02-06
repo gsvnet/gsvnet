@@ -1,7 +1,9 @@
-<?php namespace App\Http\Middleware;
+<?php
 
-use Closure;
+namespace App\Http\Middleware;
+
 use App\Helpers\Users\User;
+use Closure;
 use Illuminate\Contracts\Redis\Database;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,11 +16,11 @@ use Illuminate\Support\Facades\Auth;
  * The size of the intersection of gsv_online with gsv_online_old gives the number of online members
  *
  * Class OnlineUserCounter
- * @package App\Http\Middleware
  */
 class OnlineUserCounter
 {
     public static $key = 'gsv_online';
+
     /**
      * @var Database
      */
@@ -26,7 +28,8 @@ class OnlineUserCounter
 
     /**
      * OnlineUserCounter constructor.
-     * @param Database $redis
+     *
+     * @param  Database  $redis
      */
     public function __construct(Database $redis)
     {
@@ -35,8 +38,8 @@ class OnlineUserCounter
 
     /**
      * @param $request
-     * @param Closure $next
-     * @param  string|null $guard
+     * @param  Closure  $next
+     * @param  string|null  $guard
      * @return mixed
      */
     public function handle(Request $request, Closure $next, $guard = null)
@@ -44,11 +47,12 @@ class OnlineUserCounter
         $user = Auth::guard($guard)->user();
 
         // Skip over non-members
-        if (is_null($user) || !$user->isMemberOrReunist()) {
+        if (is_null($user) || ! $user->isMemberOrReunist()) {
             return $next($request);
         }
 
         $this->informRedis($user);
+
         return $next($request);
     }
 

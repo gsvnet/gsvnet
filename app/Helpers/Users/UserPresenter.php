@@ -1,41 +1,44 @@
-<?php namespace App\Helpers\Users;
+<?php
 
-use haampie\Gravatar\Gravatar;
-use Laracasts\Presenter\Presenter;
+namespace App\Helpers\Users;
+
 use Carbon\Carbon;
 use Config;
-use URL;
+use haampie\Gravatar\Gravatar;
 use HTML;
+use Laracasts\Presenter\Presenter;
+use URL;
 
 class UserPresenter extends Presenter
 {
-
     public function fullName()
     {
-        if (empty($this->entity->firstname) && empty($this->entity->middlename) && empty($this->entity->lastname))
+        if (empty($this->entity->firstname) && empty($this->entity->middlename) && empty($this->entity->lastname)) {
             return 'onbekend';
-
-
-        if (empty($this->entity->middlename)) {
-            return $this->firstname . ' ' . $this->lastname;
         }
 
-        return $this->firstname . ' ' . $this->middlename . ' ' . $this->lastname;
+        if (empty($this->entity->middlename)) {
+            return $this->firstname.' '.$this->lastname;
+        }
+
+        return $this->firstname.' '.$this->middlename.' '.$this->lastname;
     }
 
     public function fullLastname()
     {
         $middlename = $this->middlename;
 
-        if (empty($middlename))
+        if (empty($middlename)) {
             return $this->lastname;
-        else
-            return $this->middlename . ' ' . $this->lastname;
+        } else {
+            return $this->middlename.' '.$this->lastname;
+        }
     }
-    
+
     public function senateFunction()
     {
         $functions = Config::get('gsvnet.senateFunctions');
+
         return $functions[$this->pivot->function];
     }
 
@@ -85,20 +88,20 @@ class UserPresenter extends Presenter
     {
         $from = Carbon::createFromFormat('Y-m-d H:i:s', $this->pivot->start_date);
 
-        $string = $from->formatLocalized("%Y");
+        $string = $from->formatLocalized('%Y');
 
         if (is_null($this->pivot->end_date)) {
             $string .= ' tot heden';
         } else {
-
             $to = Carbon::createFromFormat('Y-m-d H:i:s', $this->pivot->end_date);
             if ($to->isFuture()) {
                 $string .= ' tot heden';
             } else {
                 $string .= ' tot ';
-                $string .= $to->formatLocalized("%Y");
+                $string .= $to->formatLocalized('%Y');
             }
         }
+
         return $string;
     }
 
@@ -112,7 +115,8 @@ class UserPresenter extends Presenter
     public function avatarDeferred($size = 120)
     {
         $url = Gravatar::image($this->email, $size, 'mm', null, null, true);
-        return '<span class="img-wrap" data-gravatar-url="' . $url . '" data-gravatar-size="' . $size . '"></span>';
+
+        return '<span class="img-wrap" data-gravatar-url="'.$url.'" data-gravatar-size="'.$size.'"></span>';
     }
 
     public function profileUrl()

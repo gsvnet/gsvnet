@@ -1,11 +1,13 @@
-<?php namespace App\Providers;
+<?php
 
-use App\Helpers\Users\User;
+namespace App\Providers;
+
 use App\Helpers\Forum\Replies\Reply;
 use App\Helpers\Forum\Threads\Thread;
 use App\Helpers\Permissions\PermissionCache;
-use Illuminate\Contracts\Config\Repository as Config;
+use App\Helpers\Users\User;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
+use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -20,16 +22,17 @@ class AuthServiceProvider extends ServiceProvider
     protected $permissions;
 
     /**
-     * @var PermissionCache $cache
+     * @var PermissionCache
      */
     protected $cache;
 
     /**
      * Register any application authentication / authorization services.
      *
-     * @param \Illuminate\Contracts\Auth\Access\Gate $gate
-     * @param Config $config
-     * @param PermissionCache $cache
+     * @param  \Illuminate\Contracts\Auth\Access\Gate  $gate
+     * @param  Config  $config
+     * @param  PermissionCache  $cache
+     *
      * @internal param PermissionManager $manager
      */
     public function boot(GateContract $gate, Config $config, PermissionCache $cache)
@@ -117,8 +120,9 @@ class AuthServiceProvider extends ServiceProvider
     public function has(User $user, $permission)
     {
         // Return result away if the permission has already been looked up
-        if ($this->cache->has($user, $permission))
+        if ($this->cache->has($user, $permission)) {
             return $this->cache->get($user, $permission);
+        }
 
         // Cache the result for further use
         return $this->cache->set($user, $permission, $this->hasPermission($user, $permission));
@@ -130,20 +134,24 @@ class AuthServiceProvider extends ServiceProvider
         $criteria = $this->permissions[$permission];
 
         // If no criteria are given, grant access right away
-        if (count($criteria) == 0)
+        if (count($criteria) == 0) {
             return true;
+        }
 
         // Check if type criteria is matched
-        if (array_key_exists('type', $criteria) and $this->checkTypeCriteria($user, $criteria['type']))
+        if (array_key_exists('type', $criteria) and $this->checkTypeCriteria($user, $criteria['type'])) {
             return true;
+        }
 
         // Check if committee criteria is matched
-        if (array_key_exists('committee', $criteria) and $this->checkCommitteeCriteria($user, $criteria['committee']))
+        if (array_key_exists('committee', $criteria) and $this->checkCommitteeCriteria($user, $criteria['committee'])) {
             return true;
+        }
 
         // Check senate criteria
-        if (array_key_exists('senate', $criteria) and $this->checkSenateCriteria($user))
+        if (array_key_exists('senate', $criteria) and $this->checkSenateCriteria($user)) {
             return true;
+        }
 
         // If none of the criteria is matched, return false
         return false;
@@ -166,5 +174,4 @@ class AuthServiceProvider extends ServiceProvider
         // Check if the user is active in a senate
         return $user->activeSenate->count() > 0;
     }
-
 }

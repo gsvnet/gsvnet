@@ -1,4 +1,6 @@
-<?php namespace App\Handlers\Commands\Members;
+<?php
+
+namespace App\Handlers\Commands\Members;
 
 use App\Commands\Members\ChangeStudy;
 use App\Events\Members\StudyWasChanged;
@@ -19,7 +21,7 @@ class ChangeStudyHandler
 
         $profile->study = $command->study->getStudy();
         $profile->student_number = $command->study->getStudentNumber();
-            
+
         $this->profiles->save($profile);
 
         event(new StudyWasChanged($command->user, $command->manager));

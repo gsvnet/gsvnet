@@ -1,13 +1,16 @@
-<?php namespace Admin;
+<?php
+
+namespace Admin;
 
 use App\Helpers\Albums\Photos\PhotoManager;
 use App\Helpers\Albums\Photos\PhotosRepository;
-use Request;
 use Input;
+use Request;
 
-class PhotoController extends AdminBaseController {
-
+class PhotoController extends AdminBaseController
+{
     protected $photos;
+
     protected $manager;
 
     public function __construct(PhotosRepository $photos, PhotoManager $manager)
@@ -28,8 +31,9 @@ class PhotoController extends AdminBaseController {
         $photo = $this->manager->create($input);
 
         // Check request type
-        if(Request::ajax())
+        if (Request::ajax()) {
             return response()->json('success', 200);
+        }
 
         flash()->success("{$photo->name} is succesvol opgeslagen.");
 

@@ -1,7 +1,9 @@
-<?php namespace App\Helpers\Newsletters;
+<?php
 
+namespace App\Helpers\Newsletters;
 
-interface NewsletterList {
+interface NewsletterList
+{
     /**
      * @param $listName
      * @param $email
@@ -30,4 +32,4 @@ interface NewsletterList {
      * @return mixed
      */
     public function batchUnsubscribeFrom($listname, $batch);
-} 
+}

@@ -1,21 +1,22 @@
 <?php
 
-use App\Helpers\Files\Labels\Label;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class LabelsTableSeeder extends Seeder {
-    public function run() {
+class LabelsTableSeeder extends Seeder
+{
+    public function run()
+    {
         $labels = [
             [
-                'name' => 'Commissies'
+                'name' => 'Commissies',
             ],
             [
-                'name' => 'Notulen'
+                'name' => 'Notulen',
             ],
             [
-                'name' => 'Senaat'
-            ]
+                'name' => 'Senaat',
+            ],
         ];
 
         DB::table('labels')->insert($labels);

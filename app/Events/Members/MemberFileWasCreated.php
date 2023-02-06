@@ -5,7 +5,8 @@ namespace App\Events\Members;
 use Carbon\Carbon;
 use Illuminate\Queue\SerializesModels;
 
-class MemberFileWasCreated {
+class MemberFileWasCreated
+{
     use SerializesModels;
 
     private $at;

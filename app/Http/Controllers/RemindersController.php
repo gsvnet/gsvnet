@@ -6,18 +6,21 @@ use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class RemindersController extends BaseController {
-
+class RemindersController extends BaseController
+{
     use ResetsPasswords;
 
     protected $subject = 'Verander je wachtwoord op GSVnet';
+
     protected $redirectTo = '/';
+
     protected $auth;
+
     protected $passwords;
 
     public function __construct(Guard $auth, PasswordBroker $passwords)
     {
-    	parent::__construct();
+        parent::__construct();
 
         $this->auth = $auth;
         $this->passwords = $passwords;
@@ -30,8 +33,9 @@ class RemindersController extends BaseController {
 
     public function getReset($token = null)
     {
-        if (is_null($token))
+        if (is_null($token)) {
             throw new NotFoundHttpException;
+        }
 
         return view('password.reset')->with('token', $token);
     }
@@ -48,8 +52,7 @@ class RemindersController extends BaseController {
             'email', 'password', 'password_confirmation', 'token'
         );
 
-        $response = $this->passwords->reset($credentials, function($user, $password)
-        {
+        $response = $this->passwords->reset($credentials, function ($user, $password) {
             $user->password = bcrypt($password);
 
             $user->save();
@@ -57,8 +60,7 @@ class RemindersController extends BaseController {
             $this->auth->login($user);
         });
 
-        switch ($response)
-        {
+        switch ($response) {
             case PasswordBroker::PASSWORD_RESET:
                 return redirect($this->redirectPath());
 

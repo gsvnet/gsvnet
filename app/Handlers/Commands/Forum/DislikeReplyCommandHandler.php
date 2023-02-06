@@ -1,14 +1,16 @@
-<?php namespace App\Handlers\Commands\Forum;
+<?php
+
+namespace App\Handlers\Commands\Forum;
 
 use App\Commands\Forum\DislikeReplyCommand;
 use App\Events\Forum\ReplyWasDisliked;
 use App\Helpers\Forum\LikeRepository;
 
-class DislikeReplyCommandHandler {
-
+class DislikeReplyCommandHandler
+{
     private $likes;
 
-    function __construct(LikeRepository $likes)
+    public function __construct(LikeRepository $likes)
     {
         $this->likes = $likes;
     }

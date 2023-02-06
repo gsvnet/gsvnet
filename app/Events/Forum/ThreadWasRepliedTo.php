@@ -1,4 +1,6 @@
-<?php namespace App\Events\Forum;
+<?php
+
+namespace App\Events\Forum;
 
 use App\Events\Event;
 use App\Helpers\Forum\Replies\Reply;
@@ -6,11 +8,12 @@ use App\Helpers\Forum\Threads\Thread;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Queue\SerializesModels;
 
-class ThreadWasRepliedTo extends Event implements ShouldBroadcast {
-
+class ThreadWasRepliedTo extends Event implements ShouldBroadcast
+{
     use SerializesModels;
 
     public $thread;
+
     public $reply;
 
     public function __construct(Thread $thread, Reply $reply)
@@ -42,9 +45,9 @@ class ThreadWasRepliedTo extends Event implements ShouldBroadcast {
     public function broadcastWith()
     {
         return [
-	        'user_id' => $this->reply->author_id,
+            'user_id' => $this->reply->author_id,
             'username' => $this->reply->author->username,
-            'subject' => $this->thread->subject
+            'subject' => $this->thread->subject,
         ];
     }
 }

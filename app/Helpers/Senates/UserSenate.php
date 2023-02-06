@@ -1,10 +1,12 @@
-<?php namespace App\Helpers\Senates;
+<?php
+
+namespace App\Helpers\Senates;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserSenate extends Model {
-
-    protected $table    = 'user_senate';
+class UserSenate extends Model
+{
+    protected $table = 'user_senate';
 
     protected $fillable = ['function'];
 

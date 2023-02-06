@@ -1,15 +1,16 @@
 <?php
 
+use App\Helpers\Files\FileHandler;
 use App\Helpers\Files\FilesRepository;
 use App\Helpers\Files\Labels\LabelsRepository;
-use App\Helpers\Files\FileHandler;
 use Illuminate\Http\Request;
 
 class FilesController extends BaseController
 {
-
     protected $fileHandler;
+
     protected $files;
+
     protected $labels;
 
     public function __construct(FilesRepository $files)
@@ -23,8 +24,8 @@ class FilesController extends BaseController
     /**
      * Display a listing of the resource.
      *
-     * @param Request $request
-     * @param LabelsRepository $labelsRepository
+     * @param  Request  $request
+     * @param  LabelsRepository  $labelsRepository
      * @return
      */
     public function index(Request $request, LabelsRepository $labelsRepository)
@@ -48,8 +49,8 @@ class FilesController extends BaseController
     /**
      * Display the specified resource.
      *
-     * @param  int $id
-     * @param FileHandler $fileHandler
+     * @param  int  $id
+     * @param  FileHandler  $fileHandler
      * @return \Illuminate\Http\Response
      */
     public function show($id, FileHandler $fileHandler)
@@ -58,6 +59,6 @@ class FilesController extends BaseController
 
         $path = $fileHandler->getPath($file->file_path);
 
-        return response()->download($path, $file->name . $file->type);
+        return response()->download($path, $file->name.$file->type);
     }
 }

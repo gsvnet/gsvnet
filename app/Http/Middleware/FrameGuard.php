@@ -1,6 +1,7 @@
-<?php namespace App\Http\Middleware;
+<?php
 
-use App\Helpers\Core\Exceptions\CSPException;
+namespace App\Http\Middleware;
+
 use Closure;
 
 class FrameGuard
@@ -14,13 +15,13 @@ class FrameGuard
      */
     public function handle($request, Closure $next)
     {
-        /* 
+        /*
             Temporary CSP
-            
+
             Todo after the new front page has been implemented:
             - Implement proper, much more extensive CSP from https://github.com/spatie/laravel-csp
         */
-        
+
         $response = $next($request);
 
         $response->headers->set('Content-Security-Policy', "frame-ancestors 'self' https://www.gsvgroningen.nl");

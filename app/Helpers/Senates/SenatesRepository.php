@@ -1,11 +1,13 @@
-<?php namespace App\Helpers\Senates;
+<?php
 
-class SenatesRepository {
+namespace App\Helpers\Senates;
 
+class SenatesRepository
+{
     /**
      * Get by id
      *
-     * @param int $id
+     * @param  int  $id
      * @return Senate
      */
     public function byId($id)
@@ -14,10 +16,10 @@ class SenatesRepository {
     }
 
     /**
-    * Get all senates
-    *
-    * @return Collection
-    */
+     * Get all senates
+     *
+     * @return Collection
+     */
     public function all()
     {
         return Senate::orderBy('start_date', 'DESC')->get();
@@ -26,7 +28,7 @@ class SenatesRepository {
     /**
      * Get paginated senates
      *
-     * @param int $amount
+     * @param  int  $amount
      */
     public function paginate($amount)
     {
@@ -39,18 +41,18 @@ class SenatesRepository {
     }
 
     /**
-    * Create senate
-    *
-    * @param array $input
-    * @return Senate
-    */
+     * Create senate
+     *
+     * @param  array  $input
+     * @return Senate
+     */
     public function create(array $input)
     {
-        $senate              = new Senate();
-        $senate->name        = $input['name'];
-        $senate->body        = $input['body'];
-        $senate->start_date  = $input['start_date'];
-        $senate->end_date    = $input['end_date'];
+        $senate = new Senate();
+        $senate->name = $input['name'];
+        $senate->body = $input['body'];
+        $senate->start_date = $input['start_date'];
+        $senate->end_date = $input['end_date'];
 
         $senate->save();
 
@@ -58,25 +60,24 @@ class SenatesRepository {
     }
 
     /**
-    * Update committee
-    *
-    * @param int $id
-    * @param array $input
-    * @return Senate
-    */
+     * Update committee
+     *
+     * @param  int  $id
+     * @param  array  $input
+     * @return Senate
+     */
     public function update($id, array $input)
     {
-        $senate              = $this->byId($id);
+        $senate = $this->byId($id);
 
-        $senate->name        = $input['name'];
-        $senate->body        = $input['body'];
-        $senate->start_date  = $input['start_date'];
-        $senate->end_date    = $input['end_date'];
+        $senate->name = $input['name'];
+        $senate->body = $input['body'];
+        $senate->start_date = $input['start_date'];
+        $senate->end_date = $input['end_date'];
 
         $senate->save();
 
-        if (isset($input['members']))
-        {
+        if (isset($input['members'])) {
             $senate->members()->sync($input['members']);
         }
 
@@ -84,12 +85,12 @@ class SenatesRepository {
     }
 
     /**
-    * Delete Senate
-    *
-    * @param int $id
-    * @return Senate
-    * @TODO: delete all senate members references
-    */
+     * Delete Senate
+     *
+     * @param  int  $id
+     * @return Senate
+     * @TODO: delete all senate members references
+     */
     public function delete($id)
     {
         $senate = $this->byId($id);

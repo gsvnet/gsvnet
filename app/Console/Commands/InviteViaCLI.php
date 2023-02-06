@@ -45,8 +45,9 @@ class InviteViaCLI extends Command
 
     /**
      * Create a new command instance.
-     * @param Filesystem $files
-     * @param UsersRepository $users
+     *
+     * @param  Filesystem  $files
+     * @param  UsersRepository  $users
      */
     public function __construct(Filesystem $files, UsersRepository $users)
     {
@@ -64,14 +65,14 @@ class InviteViaCLI extends Command
     {
         $file = $this->files->get($this->argument('file'));
         $this->host = $this->users->memberOrFormerByIdWithProfile($this->argument('hostId'));
-        
+
         $list = json_decode($file);
 
         array_map([$this, 'invite'], $list);
     }
 
     /**
-     * @param \stdClass $data
+     * @param  \stdClass  $data
      */
     public function invite($data)
     {

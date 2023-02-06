@@ -1,6 +1,5 @@
 <?php
 
-use App\Helpers\Tags\Tag;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -16,18 +15,18 @@ class TagSeeder extends Seeder
             'Senaat' => 'huidige en oude senaten, vragen aan de senaat',
             'Amicaal' => 'VGS-Nederland, broeder- en zusterverenigingen',
             'Oud-leden' => 'alumni van de GSV',
-            
+
             'Regio' => 'onderwerpen met betrekking tot één der regionen',
             'Jaarverband' => 'onderwerpen met betrekking tot een jaarverband',
             'Commissie' => 'vragen over of mededelingen van commissies',
-            
+
             'Politiek' => 'onderwerpen met betrekking tot politiek',
             'Maatschappij' => 'voor maatschappelijke stages, et cetera',
             'Geloof' => 'onderwerpen met betrekking tot geloof',
             'Wetenschap' => 'onderwerpen met betrekking tot wetenschap',
             'Vraag' => 'op zoek naar een kamer, gereedschap, een boek, of iets anders',
             'Aanbod' => 'kamer aangeboden of iets anders',
-            
+
             'Website' => 'vragen en opmerking over de site',
         ];
 

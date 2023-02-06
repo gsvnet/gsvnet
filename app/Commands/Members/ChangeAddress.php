@@ -1,12 +1,14 @@
-<?php namespace App\Commands\Members;
+<?php
+
+namespace App\Commands\Members;
 
 use App\Commands\Command;
 use App\Helpers\Users\User;
 use App\Helpers\Users\ValueObjects\Address;
 use Illuminate\Http\Request;
 
-class ChangeAddress extends Command {
-
+class ChangeAddress extends Command
+{
     /**
      * @var User
      */
@@ -22,14 +24,14 @@ class ChangeAddress extends Command {
      */
     public $address;
 
-    function __construct(User $user, User $manager, Address $address)
+    public function __construct(User $user, User $manager, Address $address)
     {
         $this->manager = $user;
         $this->user = $user;
         $this->address = $address;
     }
 
-    static function fromForm(Request $request, User $user)
+    public static function fromForm(Request $request, User $user)
     {
         $address = new Address(
             $request->get('address'),

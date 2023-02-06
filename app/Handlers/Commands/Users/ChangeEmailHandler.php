@@ -1,4 +1,6 @@
-<?php namespace App\Handlers\Commands\Users;
+<?php
+
+namespace App\Handlers\Commands\Users;
 
 use App\Commands\Users\ChangeEmail;
 use App\Events\Members\MemberEmailWasChanged;
@@ -33,7 +35,7 @@ class ChangeEmailHandler
     {
         if ($this->users->isEmailAddressTaken($command->email->getEmail(), $command->user->id)) {
             throw new ValidationException(new MessageBag([
-                'email' => 'Emailadres al bezet'
+                'email' => 'Emailadres al bezet',
             ]));
         }
     }

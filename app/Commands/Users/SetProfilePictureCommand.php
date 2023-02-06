@@ -1,4 +1,6 @@
-<?php namespace App\Commands\Users;
+<?php
+
+namespace App\Commands\Users;
 
 use App\Helpers\Users\User;
 use Illuminate\Http\Request;
@@ -6,7 +8,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class SetProfilePictureCommand
 {
-
     /**
      * @var UploadedFile
      */
@@ -21,9 +22,10 @@ class SetProfilePictureCommand
 
     /**
      * SetProfilePictureCommand constructor.
-     * @param User $user
-     * @param User $manager
-     * @param UploadedFile $file
+     *
+     * @param  User  $user
+     * @param  User  $manager
+     * @param  UploadedFile  $file
      */
     public function __construct(User $user, User $manager, UploadedFile $file)
     {
