@@ -2,10 +2,10 @@
 
 use View, Input, Redirect;
 
-use GSVnet\Files\FileManager;
-use GSVnet\Files\FilesRepository;
+use GSV\Helpers\Files\FileManager;
+use GSV\Helpers\Files\FilesRepository;
 
-use GSVnet\Files\Labels\LabelsRepository;
+use GSV\Helpers\Files\Labels\LabelsRepository;
 
 class FilesController extends AdminBaseController
 {

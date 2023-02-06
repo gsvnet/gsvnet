@@ -1,8 +1,8 @@
 <?php namespace Malfonds;
 
-use GSVnet\Auth\TokenRepository;
-use GSVnet\Users\MemberTransformer;
-use GSVnet\Users\UsersRepository;
+use GSV\Helpers\Auth\TokenRepository;
+use GSV\Helpers\Users\MemberTransformer;
+use GSV\Helpers\Users\UsersRepository;
 use Illuminate\Http\Request;
 use Auth;
 

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Gate;
 use Closure;
-use GSVnet\Permissions\NoPermissionException;
+use GSV\Helpers\Permissions\NoPermissionException;
 
 class MustHavePermission {
 

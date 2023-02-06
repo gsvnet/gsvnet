@@ -28,7 +28,7 @@ Heel belangrijk voor het ontwikkelen is Git. Git is een heel uitgebreide versieb
 De server waar GSVnet op draait gebruikt zelf ook Git om nieuwe versies van GSVnet te online te zetten. Dit moet overigens wel handmatig.
 
 ## Het domeinmodel
-In dit stuk licht ik een paar domein-gerelateerde (gerelateerd aan de GSV) programmeerzaken toe. Hiermee bedoel ik de manier waarop geprobeerd is de GSV te modelleren via de code. Vrij centraal is het `User` model, dat te vinden is in `GSVnet\Users\User`. Een `User` model bevat minimale informatie, zoals een emailadres en wachtwoord om in te loggen en een volledige naam. Er is een aantal verschillende soorten `User`s voor GSVnet, namelijk:
+In dit stuk licht ik een paar domein-gerelateerde (gerelateerd aan de GSV) programmeerzaken toe. Hiermee bedoel ik de manier waarop geprobeerd is de GSV te modelleren via de code. Vrij centraal is het `User` model, dat te vinden is in `GSV\Helpers\Users\User`. Een `User` model bevat minimale informatie, zoals een emailadres en wachtwoord om in te loggen en een volledige naam. Er is een aantal verschillende soorten `User`s voor GSVnet, namelijk:
 
 1. Gasten `User::VISITOR`. Kan berichten plaatsen op het externe forum.
 2. Potentials `User::POTENTIAL`. Heeft zich aangemeld via het word lid-formulier en heeft een GSV-profiel
@@ -36,9 +36,9 @@ In dit stuk licht ik een paar domein-gerelateerde (gerelateerd aan de GSV) progr
 4. Oud-leden `User::REUNIST`. Kan intern en heeft een eigen profiel.
 5. Commissies `User::COMMITTEE`. Kan ook intern, maar staat niet in de jaarbundel.
 
-Al deze types gebruikers kunnen inloggen op GSVnet. Een `User` van het type `POTENTIAL`, `MEMBER` en `FORMERMEMBER` is 1 op 1 gekoppeld met een `GSVnet\Users\Profiles\UserProfile`. Daarin staan allerlei specifieke (GSV-gerelateerde) persoonsgegevens. Een `UserProfile` is ∞ op 1 gekoppeld aan een `GSVnet\Users\YearGroup`. Dat model representeert een jaarverband. N.B.: dit is de enige plek waarop de koppeling via `UserProfile` gaat, op alle andere plekken wordt gekoppeld met het unieke `id` van een `User`.
+Al deze types gebruikers kunnen inloggen op GSVnet. Een `User` van het type `POTENTIAL`, `MEMBER` en `FORMERMEMBER` is 1 op 1 gekoppeld met een `GSV\Helpers\Users\Profiles\UserProfile`. Daarin staan allerlei specifieke (GSV-gerelateerde) persoonsgegevens. Een `UserProfile` is ∞ op 1 gekoppeld aan een `GSV\Helpers\Users\YearGroup`. Dat model representeert een jaarverband. N.B.: dit is de enige plek waarop de koppeling via `UserProfile` gaat, op alle andere plekken wordt gekoppeld met het unieke `id` van een `User`.
 
-Verder kan een `User` gekoppeld worden aan één of meerdere senaten (`GSVnet\Senates\Senate`). Voor de functie in een senaat wordt een nummer gebruikt, namelijk:
+Verder kan een `User` gekoppeld worden aan één of meerdere senaten (`GSV\Helpers\Senates\Senate`). Voor de functie in een senaat wordt een nummer gebruikt, namelijk:
 
     1 → Praeses,
     2 → Abactis,
@@ -48,13 +48,13 @@ Verder kan een `User` gekoppeld worden aan één of meerdere senaten (`GSVnet\Se
     
     (ook te vinden in config/gsvnet.php)
 
-Op een vergelijkbare wordt een `User` gekoppeld aan een commissie (`GSVnet\Committees\Committee`). In die koppeling wordt ook bijgehouden vanaf en tot wanneer iemand in een bepaalde commissie zit. Dit is erg belangrijk, omdat hier ook rechten aan ontleend worden. Zie ook het kopje Het permissiesysteem.
+Op een vergelijkbare wordt een `User` gekoppeld aan een commissie (`GSV\Helpers\Committees\Committee`). In die koppeling wordt ook bijgehouden vanaf en tot wanneer iemand in een bepaalde commissie zit. Dit is erg belangrijk, omdat hier ook rechten aan ontleend worden. Zie ook het kopje Het permissiesysteem.
 
 Tenslotte heeft een `User` ook een ∞ op ∞ met zichzelf, waarmee GSV-familiegegevens worden geregistreerd.
 
 -----
 
-Verder is er nog een aantal modellen dat niet direct te maken heeft met de GSV, namelijk `File` voor een geüploaded bestand in GSVdocs, `Album` voor een fotoalbum, `Photo` voor een losse foto in een album, `Threat` voor een forumtopic en `Reply` voor een reactie op een topic. Daarnaast is er `GSVnet\Forum\Like` dat zowel een like op een `Threat` als een `Reply` representeert. Zo'n `Like` is natuurlijk van een `User`.
+Verder is er nog een aantal modellen dat niet direct te maken heeft met de GSV, namelijk `File` voor een geüploaded bestand in GSVdocs, `Album` voor een fotoalbum, `Photo` voor een losse foto in een album, `Threat` voor een forumtopic en `Reply` voor een reactie op een topic. Daarnaast is er `GSV\Helpers\Forum\Like` dat zowel een like op een `Threat` als een `Reply` representeert. Zo'n `Like` is natuurlijk van een `User`.
 
 ## Het permissiesysteem
 Een `User` ontleent zijn rechten aan drie dingen, namelijk zijn type (zie de lijst boven), zijn actieve lidmaatschappen van commissies en huidige senatorschap. Iemand die gebruiker type `MEMBER` is kan bijvoorbeeld intern berichten plaatsen op het forum, maar kan niet noodzakelijk foto's uploaden. Daarvoor moet diegene (op het moment van schrijven) in de reebocie, de webcie of de prescie zitten. Een ander voorbeeld is het recht om iemand anders profiel bij te werken, daarvoor moet je senator zijn of in de webcie, novcie of malversacie zitten.
@@ -151,7 +151,7 @@ SELECT u.username
 FROM likeable_likes AS ll
 LEFT JOIN users AS u ON u.id = ll.user_id
 WHERE ll.likable_id = 340884
-AND ll.likable_type = 'GSVnet\\Forum\\Replies\\Reply'
+AND ll.likable_type = 'GSV\Helpers\\Forum\\Replies\\Reply'
 ```
 
 ```sql
@@ -164,7 +164,7 @@ INNER JOIN user_profiles as up
 ON fr.author_id = up.user_id
 INNER JOIN year_groups as yg
 ON yg.id = up.year_group_id
-WHERE ll.likable_type = 'GSVnet\\Forum\\Replies\\Reply'
+WHERE ll.likable_type = 'GSV\Helpers\\Forum\\Replies\\Reply'
 GROUP BY yg.id
 ORDER BY likes_received DESC;
 
@@ -175,7 +175,7 @@ INNER JOIN user_profiles as up
 ON ll.user_id = up.user_id
 INNER JOIN year_groups as yg
 ON yg.id = up.year_group_id
-WHERE ll.likable_type = 'GSVnet\\Forum\\Replies\\Reply'
+WHERE ll.likable_type = 'GSV\Helpers\\Forum\\Replies\\Reply'
 GROUP BY yg.id
 ORDER BY likes_given DESC;
 ```
@@ -189,7 +189,7 @@ INNER JOIN forum_replies AS fr
 ON fr.id = ll.likable_id
 INNER JOIN user_profiles AS up
 ON fr.author_id = up.user_id
-WHERE ll.likable_type = 'GSVnet\\Forum\\Replies\\Reply'
+WHERE ll.likable_type = 'GSV\Helpers\\Forum\\Replies\\Reply'
 GROUP BY up.region; -->
 
 <!-- -- Select number of likes given per region
@@ -197,6 +197,6 @@ SELECT up.region, count(1) AS likes_given
 FROM likeable_likes AS ll
 INNER JOIN user_profiles AS up
 ON ll.user_id = up.user_id
-WHERE ll.likable_type = 'GSVnet\\Forum\\Replies\\Reply'
+WHERE ll.likable_type = 'GSV\Helpers\\Forum\\Replies\\Reply'
 GROUP BY up.region;
 ``` -->

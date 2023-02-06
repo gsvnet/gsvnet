@@ -1,9 +1,9 @@
 <?php namespace GSV\Handlers\Events\Members;
 
 use GSV\Events\Members\ProfileEvent;
-use GSVnet\Users\ProfileActions\ProfileAction;
-use GSVnet\Users\ProfileActions\ProfileActionsRepository;
-use GSVnet\Users\UsersRepository;
+use GSV\Helpers\Users\ProfileActions\ProfileAction;
+use GSV\Helpers\Users\ProfileActions\ProfileActionsRepository;
+use GSV\Helpers\Users\UsersRepository;
 
 class ProfileUpdates
 {

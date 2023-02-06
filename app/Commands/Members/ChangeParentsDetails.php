@@ -1,10 +1,10 @@
 <?php namespace GSV\Commands\Members;
 
 use GSV\Commands\Command;
-use GSVnet\Users\User;
-use GSVnet\Users\ValueObjects\OptionalAddress;
-use GSVnet\Users\ValueObjects\OptionalPhoneNumber;
-use GSVnet\Users\ValueObjects\OptionalEmail;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\ValueObjects\OptionalAddress;
+use GSV\Helpers\Users\ValueObjects\OptionalPhoneNumber;
+use GSV\Helpers\Users\ValueObjects\OptionalEmail;
 use Illuminate\Http\Request;
 
 class ChangeParentsDetails extends Command {

@@ -1,6 +1,6 @@
 <?php
 
-use GSVnet\Tags\Tag;
+use GSV\Helpers\Tags\Tag;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 

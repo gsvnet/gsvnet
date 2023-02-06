@@ -1,6 +1,6 @@
 <?php namespace GSV\Commands\Users;
 
-use GSVnet\Users\User;
+use GSV\Helpers\Users\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 

@@ -2,7 +2,7 @@
 
 use GSV\Commands\Members\ChangeStudy;
 use GSV\Events\Members\StudyWasChanged;
-use GSVnet\Users\Profiles\ProfilesRepository;
+use GSV\Helpers\Users\Profiles\ProfilesRepository;
 
 class ChangeStudyHandler
 {

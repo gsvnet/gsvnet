@@ -1,9 +1,9 @@
 <?php namespace GSV\Providers;
 
-use GSVnet\Users\User;
-use GSVnet\Forum\Replies\Reply;
-use GSVnet\Forum\Threads\Thread;
-use GSVnet\Permissions\PermissionCache;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Forum\Replies\Reply;
+use GSV\Helpers\Forum\Threads\Thread;
+use GSV\Helpers\Permissions\PermissionCache;
 use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;

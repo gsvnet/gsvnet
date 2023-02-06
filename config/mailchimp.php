@@ -1,6 +1,6 @@
 <?php
 
-use GSVnet\Users\User;
+use GSV\Helpers\Users\User;
 
 return [
     'key' => env('MAILCHIMP_APIKEY'),

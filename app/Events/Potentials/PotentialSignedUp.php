@@ -1,7 +1,7 @@
 <?php namespace GSV\Events\Potentials;
 
 use GSV\Events\Event;
-use GSVnet\Users\User;
+use GSV\Helpers\Users\User;
 use Illuminate\Queue\SerializesModels;
 
 class PotentialSignedUp extends Event {

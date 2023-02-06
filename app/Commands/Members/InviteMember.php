@@ -1,8 +1,8 @@
 <?php namespace GSV\Commands\Members;
 
 use GSV\Commands\Command;
-use GSVnet\Users\User;
-use GSVnet\Users\ValueObjects\Email;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\ValueObjects\Email;
 use Illuminate\Http\Request;
 
 class InviteMember extends Command

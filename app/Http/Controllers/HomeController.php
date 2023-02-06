@@ -1,7 +1,7 @@
 <?php
 
-use GSVnet\Events\EventsRepository;
-use GSVnet\Users\Profiles\ProfilesRepository;
+use GSV\Helpers\Events\EventsRepository;
+use GSV\Helpers\Users\Profiles\ProfilesRepository;
 
 class HomeController extends BaseController {
 

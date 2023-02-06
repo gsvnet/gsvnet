@@ -3,7 +3,7 @@
 namespace GSV\Commands\Users;
 
 
-use GSVnet\Users\User;
+use GSV\Helpers\Users\User;
 
 class DeleteProfilePicture {
 

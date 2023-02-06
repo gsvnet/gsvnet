@@ -4,7 +4,7 @@ namespace GSV\Handlers\Commands\Members;
 
 
 use GSV\Commands\Members\ChangeUsername;
-use GSVnet\Users\UsersRepository;
+use GSV\Helpers\Users\UsersRepository;
 
 class ChangeUsernameHandler {
 

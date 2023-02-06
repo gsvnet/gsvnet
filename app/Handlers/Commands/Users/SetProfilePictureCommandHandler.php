@@ -2,8 +2,8 @@
 
 use GSV\Commands\Users\SetProfilePictureCommand;
 use GSV\Events\Members\ProfilePictureWasChanged;
-use GSVnet\Albums\Photos\PhotoStorageException;
-use GSVnet\Core\ImageHandler;
+use GSV\Helpers\Albums\Photos\PhotoStorageException;
+use GSV\Helpers\Core\ImageHandler;
 
 class SetProfilePictureCommandHandler
 {

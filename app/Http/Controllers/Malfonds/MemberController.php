@@ -12,13 +12,13 @@ use GSV\Events\Members\Verifications\FamilyWasVerified;
 use GSV\Events\Members\Verifications\GenderWasVerified;
 use GSV\Events\Members\Verifications\NameWasVerified;
 use GSV\Events\Members\Verifications\YearGroupWasVerified;
-use GSVnet\Auth\InviteValidator;
-use GSVnet\Auth\TokenRepository;
-use GSVnet\Auth\TokenTransformer;
-use GSVnet\Users\MemberTransformer;
-use GSVnet\Users\MemberTransformerWithoutYeargroup;
-use GSVnet\Users\UsersRepository;
-use GSVnet\Users\YearGroupRepository;
+use GSV\Helpers\Auth\InviteValidator;
+use GSV\Helpers\Auth\TokenRepository;
+use GSV\Helpers\Auth\TokenTransformer;
+use GSV\Helpers\Users\MemberTransformer;
+use GSV\Helpers\Users\MemberTransformerWithoutYeargroup;
+use GSV\Helpers\Users\UsersRepository;
+use GSV\Helpers\Users\YearGroupRepository;
 use Illuminate\Http\Request;
 
 class MemberController extends CoreApiController

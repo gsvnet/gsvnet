@@ -1,12 +1,12 @@
 <?php
 
-use GSVnet\Users\Profiles\ProfilesRepository;
-use GSVnet\Users\User;
-use GSVnet\Users\YearGroupRepository;
+use GSV\Helpers\Users\Profiles\ProfilesRepository;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\YearGroupRepository;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
-use GSVnet\Regions\RegionsRepository;
-use GSVnet\Events\EventsRepository;
+use GSV\Helpers\Regions\RegionsRepository;
+use GSV\Helpers\Events\EventsRepository;
 
 class ApiController extends BaseController {
 

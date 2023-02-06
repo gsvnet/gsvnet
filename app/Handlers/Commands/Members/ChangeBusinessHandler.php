@@ -2,7 +2,7 @@
 
 use GSV\Commands\Members\ChangeBusiness;
 use GSV\Events\Members\BusinessWasChanged;
-use GSVnet\Users\Profiles\ProfilesRepository;
+use GSV\Helpers\Users\Profiles\ProfilesRepository;
 
 class ChangeBusinessHandler {
 

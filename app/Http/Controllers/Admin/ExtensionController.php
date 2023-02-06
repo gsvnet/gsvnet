@@ -2,7 +2,7 @@
 
 namespace Admin;
 
-use GSVnet\Extension\ExtensionFileValidator;
+use GSV\Helpers\Extension\ExtensionFileValidator;
 use Input, File;
 
 class ExtensionController extends AdminBaseController {

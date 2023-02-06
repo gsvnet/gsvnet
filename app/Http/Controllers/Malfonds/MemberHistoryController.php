@@ -1,8 +1,8 @@
 <?php namespace Malfonds;
 
-use GSVnet\Users\ProfileActions\ProfileActionsRepository;
-use GSVnet\Users\ProfileActions\ProfileActionsTransformer;
-use GSVnet\Users\UsersRepository;
+use GSV\Helpers\Users\ProfileActions\ProfileActionsRepository;
+use GSV\Helpers\Users\ProfileActions\ProfileActionsTransformer;
+use GSV\Helpers\Users\UsersRepository;
 
 class MemberHistoryController extends CoreApiController
 {

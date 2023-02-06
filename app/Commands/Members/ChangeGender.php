@@ -1,8 +1,8 @@
 <?php namespace GSV\Commands\Members;
 
 use GSV\Commands\Command;
-use GSVnet\Users\User;
-use GSVnet\Users\ValueObjects\Gender;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\ValueObjects\Gender;
 use Illuminate\Http\Request;
 
 class ChangeGender extends Command {

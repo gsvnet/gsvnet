@@ -2,7 +2,7 @@
 
 
 use GSV\Commands\Members\ReceiveNewspaper;
-use GSVnet\Users\Profiles\ProfilesRepository;
+use GSV\Helpers\Users\Profiles\ProfilesRepository;
 
 class ReceiveNewspaperHandler
 {

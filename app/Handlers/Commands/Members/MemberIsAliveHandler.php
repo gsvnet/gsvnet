@@ -2,7 +2,7 @@
 
 
 use GSV\Commands\Members\MemberIsAlive;
-use GSVnet\Users\Profiles\ProfilesRepository;
+use GSV\Helpers\Users\Profiles\ProfilesRepository;
 
 class MemberIsAliveHandler
 {

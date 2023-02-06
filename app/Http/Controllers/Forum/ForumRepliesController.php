@@ -6,8 +6,8 @@ use GSV\Commands\Forum\ReplyToThreadCommand;
 use GSV\Http\Validators\DeleteReplyValidator;
 use GSV\Http\Validators\EditReplyValidator;
 use GSV\Http\Validators\ReplyToThreadValidator;
-use GSVnet\Events\EventsRepository;
-use GSVnet\Forum\Replies\ReplyRepository;
+use GSV\Helpers\Events\EventsRepository;
+use GSV\Helpers\Forum\Replies\ReplyRepository;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View;
 

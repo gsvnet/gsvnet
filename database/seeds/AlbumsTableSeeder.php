@@ -1,6 +1,6 @@
 <?php
 
-use GSVnet\Albums\Album;
+use GSV\Helpers\Albums\Album;
 use Illuminate\Database\Seeder;
 
 class AlbumsTableSeeder extends Seeder {

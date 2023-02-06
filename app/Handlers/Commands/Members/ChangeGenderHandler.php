@@ -2,7 +2,7 @@
 
 use GSV\Commands\Members\ChangeGender;
 use GSV\Events\Members\GenderWasChanged;
-use GSVnet\Users\Profiles\ProfilesRepository;
+use GSV\Helpers\Users\Profiles\ProfilesRepository;
 
 class ChangeGenderHandler {
 

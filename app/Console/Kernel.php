@@ -11,7 +11,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use GSVnet\Users\MemberFiler;
+use GSV\Helpers\Users\MemberFiler;
 use Illuminate\Support\Facades\Storage;
 
 class Kernel extends ConsoleKernel

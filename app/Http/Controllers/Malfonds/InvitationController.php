@@ -1,11 +1,11 @@
 <?php namespace Malfonds;
 
 use GSV\Commands\Members\InviteMember;
-use GSVnet\Auth\InviteValidator;
-use GSVnet\Auth\Token;
-use GSVnet\Auth\TokenRepository;
-use GSVnet\Core\Exceptions\ValidationException;
-use GSVnet\Users\UsersRepository;
+use GSV\Helpers\Auth\InviteValidator;
+use GSV\Helpers\Auth\Token;
+use GSV\Helpers\Auth\TokenRepository;
+use GSV\Helpers\Core\Exceptions\ValidationException;
+use GSV\Helpers\Users\UsersRepository;
 use Former;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;

@@ -1,5 +1,5 @@
 <?php
-use GSVnet\Users\User;
+use GSV\Helpers\Users\User;
 
 return [
 

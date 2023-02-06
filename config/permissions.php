@@ -1,4 +1,4 @@
-<?php use GSVnet\Users\User as User;
+<?php use GSV\Helpers\Users\User as User;
 
 /**
  * Permission configuration

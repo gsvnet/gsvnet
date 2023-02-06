@@ -1,6 +1,6 @@
 <?php namespace GSV\Http\Validators;
 
-use GSVnet\Core\Validator;
+use GSV\Helpers\Core\Validator;
 use Illuminate\Support\Facades\Validator as LaravelValidator;
 
 class StartThreadValidator extends Validator {

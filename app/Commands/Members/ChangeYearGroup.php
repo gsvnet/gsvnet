@@ -1,8 +1,8 @@
 <?php namespace GSV\Commands\Members;
 
 use GSV\Commands\Command;
-use GSVnet\Users\User;
-use GSVnet\Users\YearGroup;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\YearGroup;
 
 class ChangeYearGroup extends Command {
 

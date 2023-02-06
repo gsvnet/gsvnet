@@ -1,7 +1,7 @@
 <?php namespace GSV\Http\Middleware;
 
 use Closure;
-use GSVnet\Users\User;
+use GSV\Helpers\Users\User;
 use Illuminate\Contracts\Redis\Database;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

@@ -1,6 +1,6 @@
 <?php namespace GSV\Commands\Members;
 use GSV\Commands\Command;
-use GSVnet\Users\User;
+use GSV\Helpers\Users\User;
 
 class ChangeMembershipStatus extends Command
 {

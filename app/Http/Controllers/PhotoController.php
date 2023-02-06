@@ -1,8 +1,8 @@
 <?php
 
-use GSVnet\Albums\AlbumsRepository;
-use GSVnet\Albums\Photos\PhotosRepository;
-use GSVnet\Core\ImageHandler;
+use GSV\Helpers\Albums\AlbumsRepository;
+use GSV\Helpers\Albums\Photos\PhotosRepository;
+use GSV\Helpers\Core\ImageHandler;
 use Illuminate\Support\Facades\Config;
 
 class PhotoController extends BaseController {

@@ -1,8 +1,8 @@
 <?php
 
-use GSVnet\Files\FilesRepository;
-use GSVnet\Files\Labels\LabelsRepository;
-use GSVnet\Files\FileHandler;
+use GSV\Helpers\Files\FilesRepository;
+use GSV\Helpers\Files\Labels\LabelsRepository;
+use GSV\Helpers\Files\FileHandler;
 use Illuminate\Http\Request;
 
 class FilesController extends BaseController

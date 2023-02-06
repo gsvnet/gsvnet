@@ -2,7 +2,7 @@
 
 use GSV\Commands\Forum\DislikeReplyCommand;
 use GSV\Events\Forum\ReplyWasDisliked;
-use GSVnet\Forum\LikeRepository;
+use GSV\Helpers\Forum\LikeRepository;
 
 class DislikeReplyCommandHandler {
 

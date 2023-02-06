@@ -3,7 +3,7 @@
 use Carbon\Carbon;
 use GSV\Events\Members\MemberFileWasCreated;
 use GSV\Events\Members\ProfileEvent;
-use GSVnet\Users\ProfileActions\ProfileActionPresenter;
+use GSV\Helpers\Users\ProfileActions\ProfileActionPresenter;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Contracts\Queue\ShouldQueue;

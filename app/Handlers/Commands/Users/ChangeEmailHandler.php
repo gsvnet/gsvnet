@@ -2,8 +2,8 @@
 
 use GSV\Commands\Users\ChangeEmail;
 use GSV\Events\Members\MemberEmailWasChanged;
-use GSVnet\Core\Exceptions\ValidationException;
-use GSVnet\Users\UsersRepository;
+use GSV\Helpers\Core\Exceptions\ValidationException;
+use GSV\Helpers\Users\UsersRepository;
 use Illuminate\Support\MessageBag;
 
 class ChangeEmailHandler

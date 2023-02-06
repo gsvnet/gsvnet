@@ -12,8 +12,8 @@ class NewsletterServiceProvider extends ServiceProvider {
     public function register()
     {
         $this->app->bind(
-            'GSVnet\Newsletters\NewsletterList',
-            'GSVnet\Newsletters\Mailchimp\NewsletterList'
+            'GSV\Helpers\Newsletters\NewsletterList',
+            'GSV\Helpers\Newsletters\Mailchimp\NewsletterList'
         );
     }
 }

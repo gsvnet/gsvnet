@@ -1,6 +1,6 @@
 <?php namespace GSV\Services;
 
-use GSVnet\Users\User;
+use GSV\Helpers\Users\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 

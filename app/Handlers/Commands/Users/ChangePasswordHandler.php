@@ -2,7 +2,7 @@
 
 use GSV\Commands\Users\ChangePassword;
 use GSV\Events\Users\PasswordWasSet;
-use GSVnet\Users\UsersRepository;
+use GSV\Helpers\Users\UsersRepository;
 
 class ChangePasswordHandler {
 

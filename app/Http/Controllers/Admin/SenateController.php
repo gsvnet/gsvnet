@@ -2,9 +2,9 @@
 
 use View, Input, Redirect;
 
-use GSVnet\Senates\SenatesRepository;
-use GSVnet\Senates\SenateValidator;
-use GSVnet\Users\UsersRepository;
+use GSV\Helpers\Senates\SenatesRepository;
+use GSV\Helpers\Senates\SenateValidator;
+use GSV\Helpers\Users\UsersRepository;
 
 class SenateController extends AdminBaseController {
 

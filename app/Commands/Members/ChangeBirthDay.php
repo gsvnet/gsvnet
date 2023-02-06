@@ -1,8 +1,8 @@
 <?php namespace GSV\Commands\Members;
 
 use GSV\Commands\Command;
-use GSVnet\Users\User;
-use GSVnet\Users\ValueObjects\Date;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\ValueObjects\Date;
 use Illuminate\Http\Request;
 
 class ChangeBirthDay extends Command {

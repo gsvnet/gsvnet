@@ -5,7 +5,7 @@ use GSV\Events\Forum\ThreadWasDisliked;
 use GSV\Events\Forum\ThreadWasLiked;
 use GSV\Events\Forum\ThreadWasRepliedTo;
 
-use GSVnet\Forum\Threads\ThreadRepository;
+use GSV\Helpers\Forum\Threads\ThreadRepository;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class UpdateThreadDetails implements ShouldQueue {

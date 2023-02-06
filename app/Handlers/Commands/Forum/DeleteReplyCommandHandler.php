@@ -2,7 +2,7 @@
 
 use GSV\Commands\Forum\DeleteReplyCommand;
 use GSV\Events\Forum\ReplyWasDeleted;
-use GSVnet\Forum\Replies\ReplyRepository;
+use GSV\Helpers\Forum\Replies\ReplyRepository;
 
 class DeleteReplyCommandHandler {
 

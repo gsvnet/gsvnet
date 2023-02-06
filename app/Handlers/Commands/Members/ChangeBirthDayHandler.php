@@ -2,7 +2,7 @@
 
 use GSV\Commands\Members\ChangeBirthDay;
 use GSV\Events\Members\BirthDayWasChanged;
-use GSVnet\Users\Profiles\ProfilesRepository;
+use GSV\Helpers\Users\Profiles\ProfilesRepository;
 
 class ChangeBirthDayHandler {
 

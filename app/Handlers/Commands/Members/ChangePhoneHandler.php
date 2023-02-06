@@ -4,7 +4,7 @@ use GSV\Commands\Members\ChangeAddress;
 use GSV\Commands\Members\ChangePhone;
 use GSV\Events\Members\AddressWasChanged;
 use GSV\Events\Members\PhoneNumberWasChanged;
-use GSVnet\Users\Profiles\ProfilesRepository;
+use GSV\Helpers\Users\Profiles\ProfilesRepository;
 
 class ChangePhoneHandler {
 

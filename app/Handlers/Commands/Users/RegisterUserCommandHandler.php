@@ -2,9 +2,9 @@
 
 use GSV\Commands\Users\RegisterUserCommand;
 use GSV\Events\Users\UserWasRegistered;
-use GSVnet\Users\Profiles\ProfilesRepository;
-use GSVnet\Users\User;
-use GSVnet\Users\UsersRepository;
+use GSV\Helpers\Users\Profiles\ProfilesRepository;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\UsersRepository;
 
 class RegisterUserCommandHandler {
 

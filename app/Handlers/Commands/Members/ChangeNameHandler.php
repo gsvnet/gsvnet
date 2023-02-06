@@ -2,8 +2,8 @@
 
 use GSV\Commands\Members\ChangeName;
 use GSV\Events\Members\NameWasChanged;
-use GSVnet\Users\Profiles\ProfilesRepository;
-use GSVnet\Users\UsersRepository;
+use GSV\Helpers\Users\Profiles\ProfilesRepository;
+use GSV\Helpers\Users\UsersRepository;
 
 class ChangeNameHandler {
 

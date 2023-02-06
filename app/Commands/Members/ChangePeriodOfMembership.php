@@ -1,8 +1,8 @@
 <?php namespace GSV\Commands\Members;
 
 use Carbon\Carbon;
-use GSVnet\Users\User;
-use GSVnet\Users\ValueObjects\NullableDate;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\ValueObjects\NullableDate;
 use Illuminate\Http\Request;
 
 class ChangePeriodOfMembership

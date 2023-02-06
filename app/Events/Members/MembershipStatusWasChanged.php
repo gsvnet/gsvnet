@@ -1,6 +1,6 @@
 <?php namespace GSV\Events\Members;
 
-use GSVnet\Users\User;
+use GSV\Helpers\Users\User;
 
 class MembershipStatusWasChanged extends ProfileEvent
 {

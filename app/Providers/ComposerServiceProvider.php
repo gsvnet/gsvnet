@@ -12,7 +12,7 @@ class ComposerServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        View::composer('layouts.default', 'GSVnet\Core\Composers\NavigationViewComposer');
+        View::composer('layouts.default', 'GSV\Helpers\Core\Composers\NavigationViewComposer');
     }
 
     public function register(){}

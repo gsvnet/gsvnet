@@ -1,6 +1,6 @@
 <?php namespace GSV\Http\Middleware;
 
-use GSVnet\Auth\TokenRepository;
+use GSV\Helpers\Auth\TokenRepository;
 use Illuminate\Http\Request;
 use Auth;
 

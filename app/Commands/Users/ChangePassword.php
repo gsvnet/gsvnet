@@ -1,8 +1,8 @@
 <?php namespace GSV\Commands\Users;
 
 use GSV\Commands\Command;
-use GSVnet\Users\User;
-use GSVnet\Users\ValueObjects\Password;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\ValueObjects\Password;
 use Illuminate\Http\Request;
 
 class ChangePassword extends Command {

@@ -4,12 +4,12 @@ use GSV\Commands\Members\ChangeMembershipStatus;
 use GSV\Commands\Members\ChangeParentsDetails;
 use GSV\Commands\Members\ForgetMember;
 use GSV\Events\Members\MembershipStatusWasChanged;
-use GSVnet\Users\User;
-use GSVnet\Users\UsersRepository;
-use GSVnet\Users\Profiles\UserProfile;
-use GSVnet\Users\ValueObjects\OptionalAddress;
-use GSVnet\Users\ValueObjects\OptionalEmail;
-use GSVnet\Users\ValueObjects\OptionalPhoneNumber;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\UsersRepository;
+use GSV\Helpers\Users\Profiles\UserProfile;
+use GSV\Helpers\Users\ValueObjects\OptionalAddress;
+use GSV\Helpers\Users\ValueObjects\OptionalEmail;
+use GSV\Helpers\Users\ValueObjects\OptionalPhoneNumber;
 
 class ChangeMembershipStatusHandler
 {

@@ -1,8 +1,8 @@
 <?php namespace GSV\Commands\Members;
 
 use GSV\Commands\Command;
-use GSVnet\Users\ValueObjects\Study;
-use GSVnet\Users\User;
+use GSV\Helpers\Users\ValueObjects\Study;
+use GSV\Helpers\Users\User;
 use Illuminate\Http\Request;
 
 class ChangeStudy extends Command {

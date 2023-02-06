@@ -1,8 +1,8 @@
 <?php namespace GSV\Handlers\Commands\Potentials;
 
-use GSVnet\Users\User;
-use GSVnet\Users\UsersRepository;
-use GSVnet\Users\Profiles\UserProfile;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\UsersRepository;
+use GSV\Helpers\Users\Profiles\UserProfile;
 use GSV\Events\Potentials\PotentialSignedUp;
 use GSV\Commands\Potentials\PromoteGuestToPotentialCommand;
 

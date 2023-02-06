@@ -5,7 +5,7 @@ namespace GSV\Handlers\Commands\Users;
 
 use GSV\Commands\Users\DeleteProfilePicture;
 use GSV\Events\Members\ProfilePictureWasChanged;
-use GSVnet\Core\ImageHandler;
+use GSV\Helpers\Core\ImageHandler;
 
 class DeleteProfilePictureHandler {
 

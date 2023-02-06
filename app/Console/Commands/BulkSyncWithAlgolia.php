@@ -3,9 +3,9 @@
 namespace GSV\Console\Commands;
 
 use AlgoliaSearch\Client as AlgoliaClient;
-use GSVnet\Users\MemberTransformer;
-use GSVnet\Users\User;
-use GSVnet\Users\YearGroupTransformer;
+use GSV\Helpers\Users\MemberTransformer;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\YearGroupTransformer;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Collection;
 use Throwable;

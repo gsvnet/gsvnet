@@ -1,8 +1,8 @@
 <?php namespace GSV\Commands\Members;
 
 use GSV\Commands\Command;
-use GSVnet\Users\User;
-use GSVnet\Users\ValueObjects\Address;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\ValueObjects\Address;
 use Illuminate\Http\Request;
 
 class ChangeAddress extends Command {

@@ -10,6 +10,6 @@ class EventsServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        View::composer('events.sidebar', 'GSVnet\Events\EventsSideBarComposer');
+        View::composer('events.sidebar', 'GSV\Helpers\Events\EventsSideBarComposer');
     }
 }

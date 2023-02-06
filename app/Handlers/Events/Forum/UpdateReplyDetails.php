@@ -2,7 +2,7 @@
 
 use GSV\Events\Forum\ReplyWasLiked;
 use GSV\Events\Forum\ReplyWasDisliked;
-use GSVnet\Forum\Replies\ReplyRepository;
+use GSV\Helpers\Forum\Replies\ReplyRepository;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class UpdateReplyDetails implements ShouldQueue {

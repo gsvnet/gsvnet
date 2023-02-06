@@ -1,12 +1,12 @@
 <?php namespace GSV\Console\Commands;
 
 use GSV\Commands\Members\ChangeAddress;
-use GSVnet\Core\DispatchesJobs;
-use GSVnet\Newsletters\NewsletterList;
-use GSVnet\Users\User;
-use GSVnet\Users\UsersRepository;
-use GSVnet\Users\UserTransformer;
-use GSVnet\Users\ValueObjects\Address;
+use GSV\Helpers\Core\DispatchesJobs;
+use GSV\Helpers\Newsletters\NewsletterList;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\UsersRepository;
+use GSV\Helpers\Users\UserTransformer;
+use GSV\Helpers\Users\ValueObjects\Address;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
 

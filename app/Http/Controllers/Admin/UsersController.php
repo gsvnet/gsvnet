@@ -1,19 +1,19 @@
 <?php namespace Admin;
 
 use GSV\Commands\Users\RegisterUserCommand;
-use GSVnet\Users\Profiles\AdminProfileCreatorValidator;
-use GSVnet\Users\Profiles\AdminProfileUpdaterValidator;
-use GSVnet\Users\Profiles\ProfilesRepository;
-use GSVnet\Users\Profiles\UserProfile;
-use GSVnet\Users\RegisterUserValidator;
-use GSVnet\Users\User;
-use GSVnet\Users\UserManager;
-use GSVnet\Users\UsersRepository;
-use GSVnet\Users\UserValidator;
-use GSVnet\Users\YearGroupRepository;
+use GSV\Helpers\Users\Profiles\AdminProfileCreatorValidator;
+use GSV\Helpers\Users\Profiles\AdminProfileUpdaterValidator;
+use GSV\Helpers\Users\Profiles\ProfilesRepository;
+use GSV\Helpers\Users\Profiles\UserProfile;
+use GSV\Helpers\Users\RegisterUserValidator;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\UserManager;
+use GSV\Helpers\Users\UsersRepository;
+use GSV\Helpers\Users\UserValidator;
+use GSV\Helpers\Users\YearGroupRepository;
 use Illuminate\Http\Request;
-use GSVnet\Users\MemberFiler;
-use GSVnet\Regions\RegionsRepository;
+use GSV\Helpers\Users\MemberFiler;
+use GSV\Helpers\Regions\RegionsRepository;
 
 class UsersController extends AdminBaseController
 {

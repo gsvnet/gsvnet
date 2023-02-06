@@ -1,6 +1,6 @@
 <?php namespace Malfonds;
-use GSVnet\Users\YearGroupRepository;
-use GSVnet\Users\YearGroupTransformer;
+use GSV\Helpers\Users\YearGroupRepository;
+use GSV\Helpers\Users\YearGroupTransformer;
 
 class YearGroupController extends CoreApiController
 {

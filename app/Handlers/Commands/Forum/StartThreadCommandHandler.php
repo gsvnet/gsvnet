@@ -2,7 +2,7 @@
 
 use GSV\Commands\Forum\StartThreadCommand;
 use GSV\Events\Forum\ThreadWasStarted;
-use GSVnet\Forum\Threads\ThreadRepository;
+use GSV\Helpers\Forum\Threads\ThreadRepository;
 
 class StartThreadCommandHandler {
 

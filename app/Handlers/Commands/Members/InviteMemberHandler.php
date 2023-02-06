@@ -2,8 +2,8 @@
 
 use Carbon\Carbon;
 use GSV\Commands\Members\InviteMember;
-use GSVnet\Auth\Invite;
-use GSVnet\Auth\TokenRepository;
+use GSV\Helpers\Auth\Invite;
+use GSV\Helpers\Auth\TokenRepository;
 use Illuminate\Mail\Mailer;
 use Illuminate\Mail\Message;
 

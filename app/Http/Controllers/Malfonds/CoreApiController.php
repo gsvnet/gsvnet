@@ -2,7 +2,7 @@
 
 
 use GSV\Http\ResponderTrait;
-use GSVnet\Core\DispatchesJobs;
+use GSV\Helpers\Core\DispatchesJobs;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 

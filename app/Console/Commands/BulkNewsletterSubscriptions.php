@@ -1,9 +1,9 @@
 <?php namespace GSV\Console\Commands;
 
-use GSVnet\Newsletters\NewsletterList;
-use GSVnet\Users\User;
-use GSVnet\Users\UsersRepository;
-use GSVnet\Users\UserTransformer;
+use GSV\Helpers\Newsletters\NewsletterList;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\UsersRepository;
+use GSV\Helpers\Users\UserTransformer;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
 

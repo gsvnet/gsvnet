@@ -1,14 +1,14 @@
 <?php
 
-use GSVnet\Permissions\NoPermissionException;
+use GSV\Helpers\Permissions\NoPermissionException;
 use Illuminate\Support\Facades\Gate;
 use GSV\Commands\Potentials\PromoteGuestToPotentialCommand;
 use GSV\Commands\Potentials\SignUpAsPotentialCommand;
 use GSV\Commands\Users\SetProfilePictureCommand;
-use GSVnet\Core\Exceptions\ValidationException;
-use GSVnet\Users\Profiles\PotentialValidator;
-use GSVnet\Users\Profiles\ProfilesRepository;
-use GSVnet\Core\ImageHandler;
+use GSV\Helpers\Core\Exceptions\ValidationException;
+use GSV\Helpers\Users\Profiles\PotentialValidator;
+use GSV\Helpers\Users\Profiles\ProfilesRepository;
+use GSV\Helpers\Core\ImageHandler;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 

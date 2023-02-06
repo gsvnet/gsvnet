@@ -1,7 +1,7 @@
 <?php namespace GSV\Handlers\Commands\Forum;
 
 use GSV\Commands\Forum\VisitThreadCommand;
-use GSVnet\Forum\Threads\ThreadVisitationUpdater;
+use GSV\Helpers\Forum\Threads\ThreadVisitationUpdater;
 
 class VisitThreadCommandHandler {
 

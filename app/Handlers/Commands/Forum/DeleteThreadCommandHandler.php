@@ -1,7 +1,7 @@
 <?php namespace GSV\Handlers\Commands\Forum;
 
 use GSV\Commands\Forum\DeleteThreadCommand;
-use GSVnet\Forum\Threads\ThreadRepository;
+use GSV\Helpers\Forum\Threads\ThreadRepository;
 
 class DeleteThreadCommandHandler {
 

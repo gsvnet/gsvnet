@@ -2,16 +2,16 @@
 
 use GSV\Commands\Users\ChangeEmail;
 use GSV\Commands\Users\ChangePassword;
-use GSVnet\Users\EmailAndPasswordValidator ;
+use GSV\Helpers\Users\EmailAndPasswordValidator ;
 use Illuminate\Http\Request;
-use GSVnet\Committees\CommitteesRepository;
-use GSVnet\Users\Profiles\ProfilesRepository;
-use GSVnet\Users\User;
-use GSVnet\Users\UsersRepository;
-use GSVnet\Users\UserManager;
-use GSVnet\Users\Profiles\ProfileManager;
-use GSVnet\Users\YearGroupRepository;
-use GSVnet\Regions\RegionsRepository;
+use GSV\Helpers\Committees\CommitteesRepository;
+use GSV\Helpers\Users\Profiles\ProfilesRepository;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\UsersRepository;
+use GSV\Helpers\Users\UserManager;
+use GSV\Helpers\Users\Profiles\ProfileManager;
+use GSV\Helpers\Users\YearGroupRepository;
+use GSV\Helpers\Regions\RegionsRepository;
 
 class UserController extends BaseController
 {

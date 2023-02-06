@@ -87,11 +87,11 @@ class UserEventHandler
         
         $events->listen(self::$informNewsletterFor, NewsletterInformer::class);
 
-        $events->listen('user.registered', 'GSVnet\Users\UserMailer@registered');
-        $events->listen('user.activated', 'GSVnet\Users\UserMailer@activated');
+        $events->listen('user.registered', 'GSV\Helpers\Users\UserMailer@registered');
+        $events->listen('user.activated', 'GSV\Helpers\Users\UserMailer@activated');
 
-        $events->listen('potential.registered', 'GSVnet\Users\UserMailer@membership');
-        $events->listen('potential.accepted', 'GSVnet\Users\UserMailer@membershipAccepted');
+        $events->listen('potential.registered', 'GSV\Helpers\Users\UserMailer@membership');
+        $events->listen('potential.accepted', 'GSV\Helpers\Users\UserMailer@membershipAccepted');
 
     }
 }

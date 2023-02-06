@@ -2,7 +2,7 @@
 
 use GSV\Commands\Members\ChangeAddress;
 use GSV\Events\Members\AddressWasChanged;
-use GSVnet\Users\Profiles\ProfilesRepository;
+use GSV\Helpers\Users\Profiles\ProfilesRepository;
 
 class ChangeAddressHandler {
 

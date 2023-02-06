@@ -51,7 +51,7 @@
 		],
 		"psr-4": {
 			"GSV\\": "app/",
-		    "GSVnet\\": "GSVnet/"
+		    "GSV\Helpers\\": "GSVnet/"
 		}
 	},
 	"autoload-dev": {

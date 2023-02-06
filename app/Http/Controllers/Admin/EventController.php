@@ -2,8 +2,8 @@
 
 use View, Input, Redirect;
 
-use GSVnet\Events\EventsRepository;
-use GSVnet\Events\EventValidator;
+use GSV\Helpers\Events\EventsRepository;
+use GSV\Helpers\Events\EventValidator;
 
 class EventController extends AdminBaseController {
 

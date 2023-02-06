@@ -1,6 +1,6 @@
 <?php namespace GSV\Http\Middleware;
 
-use GSVnet\Core\Exceptions\CSPException;
+use GSV\Helpers\Core\Exceptions\CSPException;
 use Closure;
 
 class FrameGuard

@@ -1,7 +1,7 @@
 <?php
 
-use GSVnet\Committees\CommitteesRepository;
-use GSVnet\Senates\SenatesRepository;
+use GSV\Helpers\Committees\CommitteesRepository;
+use GSV\Helpers\Senates\SenatesRepository;
 
 class AboutController extends BaseController
 {

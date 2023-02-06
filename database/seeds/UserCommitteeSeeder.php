@@ -1,8 +1,8 @@
 <?php
 
 use Carbon\Carbon;
-use GSVnet\Committees\Committee;
-use GSVnet\Users\User;
+use GSV\Helpers\Committees\Committee;
+use GSV\Helpers\Users\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

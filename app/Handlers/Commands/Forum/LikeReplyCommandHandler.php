@@ -2,8 +2,8 @@
 
 use GSV\Commands\Forum\LikeReplyCommand;
 use GSV\Events\Forum\ReplyWasLiked;
-use GSVnet\Forum\Like;
-use GSVnet\Forum\Replies\ReplyRepository;
+use GSV\Helpers\Forum\Like;
+use GSV\Helpers\Forum\Replies\ReplyRepository;
 
 class LikeReplyCommandHandler {
 

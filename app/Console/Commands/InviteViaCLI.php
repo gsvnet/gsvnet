@@ -3,10 +3,10 @@
 namespace GSV\Console\Commands;
 
 use GSV\Commands\Members\InviteMember;
-use GSVnet\Core\DispatchesJobs;
-use GSVnet\Users\User;
-use GSVnet\Users\UsersRepository;
-use GSVnet\Users\ValueObjects\Email;
+use GSV\Helpers\Core\DispatchesJobs;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\UsersRepository;
+use GSV\Helpers\Users\ValueObjects\Email;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Filesystem\Filesystem;
 

@@ -2,10 +2,10 @@
 
 use GSV\Events\Members\MembershipStatusWasChanged;
 use GSV\Events\Members\ProfileEvent;
-use GSVnet\Newsletters\NewsletterList;
-use GSVnet\Newsletters\NewsletterManager;
-use GSVnet\Users\User;
-use GSVnet\Users\UserTransformer;
+use GSV\Helpers\Newsletters\NewsletterList;
+use GSV\Helpers\Newsletters\NewsletterManager;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\UserTransformer;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Log\Writer;
 

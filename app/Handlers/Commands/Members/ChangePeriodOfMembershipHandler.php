@@ -2,7 +2,7 @@
 
 use GSV\Commands\Members\ChangePeriodOfMembership;
 use GSV\Events\Members\PeriodOfMembershipWasChanged;
-use GSVnet\Users\Profiles\ProfilesRepository;
+use GSV\Helpers\Users\Profiles\ProfilesRepository;
 
 class ChangePeriodOfMembershipHandler
 {

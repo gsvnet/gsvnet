@@ -1,5 +1,5 @@
 <?php
-    $presenter = new GSVnet\Core\PaginationPresenter($paginator);
+    $presenter = new GSV\Helpers\Core\PaginationPresenter($paginator);
 ?>
 
 @if ($paginator->getLastPage() > 1)

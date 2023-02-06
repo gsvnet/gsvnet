@@ -1,7 +1,7 @@
 <?php namespace Admin\Senates;
 
-use GSVnet\Senates\SenatesRepository;
-use GSVnet\Users\UsersRepository;
+use GSV\Helpers\Senates\SenatesRepository;
+use GSV\Helpers\Users\UsersRepository;
 
 use Admin\AdminBaseController;
 use Redirect, Input, View;

@@ -2,8 +2,8 @@
 
 use GSV\Commands\Forum\LikeThreadCommand;
 use GSV\Events\Forum\ThreadWasLiked;
-use GSVnet\Forum\Like;
-use GSVnet\Forum\Threads\ThreadRepository;
+use GSV\Helpers\Forum\Like;
+use GSV\Helpers\Forum\Threads\ThreadRepository;
 
 class LikeThreadCommandHandler {
 

@@ -3,7 +3,7 @@
 namespace GSV\Commands\Members;
 
 use GSV\Commands\Command;
-use GSVnet\Users\User;
+use GSV\Helpers\Users\User;
 use Illuminate\Http\Request;
 
 class ForgetMember extends Command {

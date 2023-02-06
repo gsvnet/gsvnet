@@ -2,9 +2,9 @@
 
 use GSV\Commands\Potentials\SignUpAsPotentialCommand;
 use GSV\Events\Potentials\PotentialSignedUp;
-use GSVnet\Users\Profiles\UserProfile;
-use GSVnet\Users\User;
-use GSVnet\Users\UsersRepository;
+use GSV\Helpers\Users\Profiles\UserProfile;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\UsersRepository;
 
 class SignUpAsPotentialCommandHandler {
 

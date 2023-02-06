@@ -20,20 +20,20 @@ use GSV\Commands\Members\ReceiveNewspaper;
 use GSV\Commands\Users\ChangeEmail;
 use GSV\Commands\Users\ChangePassword;
 use GSV\Commands\Users\SetProfilePictureCommand;
-use GSVnet\Users\ProfileActions\ProfileActionsRepository;
-use GSVnet\Users\User;
-use GSVnet\Users\UsersRepository;
-use GSVnet\Users\UserTransformer;
-use GSVnet\Users\ValueObjects\Gender;
-use GSVnet\Users\ValueObjects\Username;
-use GSVnet\Users\YearGroupRepository;
+use GSV\Helpers\Users\ProfileActions\ProfileActionsRepository;
+use GSV\Helpers\Users\User;
+use GSV\Helpers\Users\UsersRepository;
+use GSV\Helpers\Users\UserTransformer;
+use GSV\Helpers\Users\ValueObjects\Gender;
+use GSV\Helpers\Users\ValueObjects\Username;
+use GSV\Helpers\Users\YearGroupRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Maatwebsite\Excel\Classes\LaravelExcelWorksheet;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\Writers\CellWriter;
 use Maatwebsite\Excel\Writers\LaravelExcelWriter;
-use GSVnet\Regions\RegionsRepository;
+use GSV\Helpers\Regions\RegionsRepository;
 
 class MemberController extends AdminBaseController
 {
