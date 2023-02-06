@@ -41,7 +41,7 @@ class File extends Model
             ->whereIn('label_id', $labels)
             ->groupBy('file_id')
             ->havingRaw('count(*) = '.$count)
-            ->lists('file_id');
+            ->pluck('file_id');
 
         if (empty($file_ids)) {
             // null returnen

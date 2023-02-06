@@ -60,7 +60,7 @@ class Thread extends Model
 
     public function getTags()
     {
-        return $this->tags->lists('slug');
+        return $this->tags->pluck('slug');
     }
 
     public function scopePublic($query)

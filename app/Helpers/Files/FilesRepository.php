@@ -48,7 +48,7 @@ class FilesRepository
             ->whereIn('label_id', $labels)
             ->groupBy('file_id')
             ->havingRaw('count(*) = '.$count)
-            ->lists('file_id');
+            ->pluck('file_id');
         // Return all files with the found ids
         return File::published($published)->whereIn('id', $file_ids)->orderBy('updated_at', 'desc')->paginate($amount);
     }

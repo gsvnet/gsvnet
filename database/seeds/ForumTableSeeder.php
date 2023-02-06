@@ -24,8 +24,8 @@ class ForumTableSeeder extends Seeder
     {
         $this->faker = Factory::create('nl_NL');
         $this->time = Carbon::now();
-        $this->userIds = User::lists('id')->all();
-        $this->tagIds = Tag::lists('id')->all();
+        $this->userIds = User::pluck('id')->all();
+        $this->tagIds = Tag::pluck('id')->all();
     }
 
     public function run()

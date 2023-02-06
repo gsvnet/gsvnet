@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
 
     public function __construct()
     {
-        $this->groupIds = DB::table('year_groups')->lists('id');
+        $this->groupIds = DB::table('year_groups')->pluck('id');
         $this->faker = Faker\Factory::create('nl_NL');
         $this->time = Carbon::now();
     }

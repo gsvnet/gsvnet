@@ -16,7 +16,7 @@ class RegionsTableSeeder extends Seeder
     public function __construct()
     {
         $this->faker = Factory::create('nl_NL');
-        $this->userIds = User::whereIn('type', [2, 3])->lists('id')->all();
+        $this->userIds = User::whereIn('type', [2, 3])->pluck('id')->all();
     }
 
     public function run()

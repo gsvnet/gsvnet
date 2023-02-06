@@ -29,7 +29,7 @@ class TagRepository extends EloquentRepository
 
     public function getTagIdList()
     {
-        return $this->model->lists('id');
+        return $this->model->pluck('id');
     }
 
     public function getTagsByIds($ids)

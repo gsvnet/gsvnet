@@ -11,8 +11,8 @@ class AdminUserSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create('en_US');
-        $yearGroupIds = DB::table('year_groups')->lists('id');
-        $regionIds = DB::table('regions')->lists('id');
+        $yearGroupIds = DB::table('year_groups')->pluck('id');
+        $regionIds = DB::table('regions')->pluck('id');
 
         $harmen = User::create([
             'email' => 'harmenstoppels@gmail.com',

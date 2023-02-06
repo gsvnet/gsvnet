@@ -161,7 +161,7 @@ class UsersRepository extends BaseRepository
 
     public function filterExistingIds(array $ids)
     {
-        return User::whereIn('id', $ids)->lists('id');
+        return User::whereIn('id', $ids)->pluck('id');
     }
 
     public function isEmailAddressTaken($email, $excludeId)
