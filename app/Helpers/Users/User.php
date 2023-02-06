@@ -2,6 +2,7 @@
 
 namespace App\Helpers\Users;
 
+use Illuminate\Notifications\Notifiable;
 use App\Helpers\Forum\Replies\Reply;
 use App\Helpers\Forum\Threads\Thread;
 use App\Helpers\Users\ProfileActions\ProfileAction;
@@ -15,6 +16,8 @@ use Laracasts\Presenter\PresentableTrait;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
+    use Notifiable;
+
     use PresentableTrait, Authenticatable, CanResetPassword;
 
     /**

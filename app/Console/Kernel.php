@@ -67,4 +67,13 @@ class Kernel extends ConsoleKernel
             Storage::deleteDirectory($excelFolderStorage);
         })->monthlyOn(2);
     }
+    /**
+     * Register the Closure based commands for the application.
+     *
+     * @return void
+     */
+    protected function commands()
+    {
+        require base_path('routes/console.php');
+    }
 }
