@@ -20,6 +20,7 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
 
 class Kernel extends HttpKernel
 {
@@ -45,12 +46,12 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'csrf' => VerifyCsrfToken::class,
-        'auth' => Authenticate::class,
-        'auth.basic' => AuthenticateWithBasicAuth::class,
+        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'tokenAuth' => ApiAuthenticated::class,
         'guest' => RedirectIfAuthenticated::class,
         'approved' => AccountNotApproved::class,
-        'can' => MustHavePermission::class,
         'has' => MustHavePermission::class,
         'checkDate' => ValidEventDate::class,
         'notYetMember' => CanBecomeMember::class,
