@@ -12,11 +12,11 @@ class UserSenate extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Helpers\Users\User');
+        return $this->belongsTo(\App\Helpers\Users\User::class);
     }
 
     public function senate()
     {
-        return $this->belongsTo('App\Helpers\Senates\Senate');
+        return $this->belongsTo(\App\Helpers\Senates\Senate::class);
     }
 }

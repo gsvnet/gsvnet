@@ -102,7 +102,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function committees()
     {
-        return $this->belongsToMany('App\Helpers\Committees\Committee', 'committee_user')
+        return $this->belongsToMany(\App\Helpers\Committees\Committee::class, 'committee_user')
                     ->withPivot('start_date', 'end_date')
                     ->withTimestamps();
     }
@@ -110,21 +110,21 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function committeesSorted()
     {
         // Maybe ->withTimestamps(); ?
-        return $this->belongsToMany('App\Helpers\Committees\Committee', 'committee_user')
+        return $this->belongsToMany(\App\Helpers\Committees\Committee::class, 'committee_user')
                     ->withPivot('start_date', 'end_date')
                     ->orderBy('committee_user.end_date', 'desc');
     }
 
     public function senates()
     {
-        return $this->belongsToMany('App\Helpers\Senates\Senate', 'user_senate')
+        return $this->belongsToMany(\App\Helpers\Senates\Senate::class, 'user_senate')
                     ->withPivot('function')
                     ->withTimestamps();
     }
 
     public function activeSenate()
     {
-        return $this->belongsToMany('App\Helpers\Senates\Senate', 'user_senate')
+        return $this->belongsToMany(\App\Helpers\Senates\Senate::class, 'user_senate')
             ->where('start_date', '<=', new \DateTime('now'))
             ->where(function ($q) {
                 return $q->where('end_date', '>=', new \DateTime('now'))
@@ -210,7 +210,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function activeCommittees()
     {
-        return $this->belongsToMany('App\Helpers\Committees\Committee', 'committee_user')
+        return $this->belongsToMany(\App\Helpers\Committees\Committee::class, 'committee_user')
             ->where('committee_user.start_date', '<=', new \DateTime('now'))
             ->where(function ($q) {
                 return $q->where('committee_user.end_date', '>=', new \DateTime('now'))

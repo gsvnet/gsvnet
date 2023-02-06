@@ -153,12 +153,12 @@ class ThreadPresenter extends Presenter
 
     private function convertMarkdown($content)
     {
-        return App::make('App\Helpers\Markdown\HtmlMarkdownConverter')->convertMarkdownToHtml($content);
+        return App::make(\App\Helpers\Markdown\HtmlMarkdownConverter::class)->convertMarkdownToHtml($content);
     }
 
     private function convertEmoticons($content)
     {
-        return App::make('App\Helpers\Emoticons\Emoticon')->toHTML($content);
+        return App::make(\App\Helpers\Emoticons\Emoticon::class)->toHTML($content);
     }
 
     private function purify($content)

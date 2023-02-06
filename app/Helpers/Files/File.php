@@ -59,7 +59,7 @@ class File extends Model
 
     public function labels()
     {
-        return $this->belongsToMany('App\Helpers\Files\Labels\Label', 'file_label');
+        return $this->belongsToMany(\App\Helpers\Files\Labels\Label::class, 'file_label');
     }
 
     public function getSizeAttribute()

@@ -18,6 +18,6 @@ class ThreadVisitation extends Entity
 
     public function user()
     {
-        return $this->belongsTo('App\Helpers\Users\User', 'user_id');
+        return $this->belongsTo(\App\Helpers\Users\User::class, 'user_id');
     }
 }

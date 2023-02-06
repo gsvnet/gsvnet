@@ -13,11 +13,11 @@ class Senate extends Model
 
     public static $rules = [];
 
-    public $presenter = 'App\Helpers\Senates\SenatePresenter';
+    public $presenter = \App\Helpers\Senates\SenatePresenter::class;
 
     public function members()
     {
-        return $this->belongsToMany('App\Helpers\Users\User', 'user_senate')
+        return $this->belongsToMany(\App\Helpers\Users\User::class, 'user_senate')
             ->withPivot('function')->orderBy('function', 'ASC');
     }
 }

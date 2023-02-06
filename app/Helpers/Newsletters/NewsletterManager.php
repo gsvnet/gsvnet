@@ -60,7 +60,7 @@ class NewsletterManager
     public function removeUserFromMailingList($job, $data)
     {
         try {
-            App::make('App\Helpers\Newsletters\NewsletterList')->unsubscribeFrom($data['list'], $data['email']);
+            App::make(\App\Helpers\Newsletters\NewsletterList::class)->unsubscribeFrom($data['list'], $data['email']);
         } catch (\Mailchimp_Error $e) {
             echo 'Mailchimp error; contact the webcie';
         }
@@ -71,7 +71,7 @@ class NewsletterManager
     public function addUserToMailingList($job, $data)
     {
         try {
-            App::make('App\Helpers\Newsletters\NewsletterList')->subscribeTo($data['list'], $data['email'], $data['user']);
+            App::make(\App\Helpers\Newsletters\NewsletterList::class)->subscribeTo($data['list'], $data['email'], $data['user']);
         } catch (\Mailchimp_Error $e) {
             echo 'Mailchimp error; contact the webcie';
         }

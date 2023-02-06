@@ -49,7 +49,7 @@ class UserProfile extends Model
         'receive_newspaper',
     ];
 
-    public $presenter = 'App\Helpers\Users\Profiles\ProfilePresenter';
+    public $presenter = \App\Helpers\Users\Profiles\ProfilePresenter::class;
 
     public function scopeSearchNameAndPhone($query, $words)
     {
@@ -76,17 +76,17 @@ class UserProfile extends Model
 
     public function yearGroup()
     {
-        return $this->belongsTo('App\Helpers\Users\YearGroup');
+        return $this->belongsTo(\App\Helpers\Users\YearGroup::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Helpers\Users\User');
+        return $this->belongsTo(\App\Helpers\Users\User::class);
     }
 
     public function regions()
     {
-        return $this->belongsToMany('App\Helpers\Regions\Region', 'region_user_profile')
+        return $this->belongsToMany(\App\Helpers\Regions\Region::class, 'region_user_profile')
                 ->orderBy(\DB::raw('end_date IS NULL'), 'desc')
                 ->orderBy('end_date', 'desc')
                 ->orderBy('name', 'asc');

@@ -12,11 +12,11 @@ class CommitteeUser extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Helpers\Users\User');
+        return $this->belongsTo(\App\Helpers\Users\User::class);
     }
 
     public function committee()
     {
-        return $this->belongsTo('App\Helpers\Committees\Committee');
+        return $this->belongsTo(\App\Helpers\Committees\Committee::class);
     }
 }

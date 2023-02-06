@@ -12,7 +12,7 @@ class Region extends Model
 
     public function members()
     {
-        return $this->belongsToMany('App\Helpers\Users\Profiles\UserProfile', 'region_user_profile');
+        return $this->belongsToMany(\App\Helpers\Users\Profiles\UserProfile::class, 'region_user_profile');
     }
 
     public function scopeCurrent($query)

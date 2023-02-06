@@ -14,7 +14,7 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('layouts.default', 'App\Helpers\Core\Composers\NavigationViewComposer');
+        View::composer('layouts.default', \App\Helpers\Core\Composers\NavigationViewComposer::class);
     }
 
     public function register()

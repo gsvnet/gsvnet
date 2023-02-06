@@ -27,7 +27,7 @@ class Album extends Model
 
     public function photos()
     {
-        return $this->hasMany('App\Helpers\Albums\Photos\Photo');
+        return $this->hasMany(\App\Helpers\Albums\Photos\Photo::class);
     }
 
     public function getSmallImageURLAttribute()

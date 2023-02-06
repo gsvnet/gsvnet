@@ -12,7 +12,7 @@ class Label extends Model
 
     public function files()
     {
-        return $this->belongsToMany('App\Helpers\Files\File', 'file_label');
+        return $this->belongsToMany(\App\Helpers\Files\File::class, 'file_label');
     }
 
     public function __toString()

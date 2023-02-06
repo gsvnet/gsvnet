@@ -163,6 +163,6 @@ class EventPresenter extends Presenter
 
     public function descriptionFormatted()
     {
-        return \App::make('App\Helpers\Markdown\HtmlMarkdownConverter')->convertMarkdownToHtml($this->description);
+        return \App::make(\App\Helpers\Markdown\HtmlMarkdownConverter::class)->convertMarkdownToHtml($this->description);
     }
 }

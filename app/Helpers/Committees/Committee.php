@@ -13,7 +13,7 @@ class Committee extends Model
 
     public static $rules = [];
 
-    public $presenter = 'App\Helpers\Committees\CommitteePresenter';
+    public $presenter = \App\Helpers\Committees\CommitteePresenter::class;
 
     public function scopePublic($query)
     {
@@ -28,7 +28,7 @@ class Committee extends Model
     // Change users to members?
     public function members()
     {
-        return $this->belongsToMany('App\Helpers\Users\User', 'committee_user')
+        return $this->belongsToMany(\App\Helpers\Users\User::class, 'committee_user')
             ->withPivot('id', 'start_date', 'end_date');
     }
 
@@ -36,7 +36,7 @@ class Committee extends Model
     {
         // Select all active members, i.e. for which the current date is
         //  between the start and enddate
-        return $this->belongsToMany('App\Helpers\Users\User', 'committee_user')
+        return $this->belongsToMany(\App\Helpers\Users\User::class, 'committee_user')
             ->where('committee_user.start_date', '<=', new \DateTime('now'))
             ->where(function ($q) {
                 return $q->where('committee_user.end_date', '>=', new \DateTime('now'))

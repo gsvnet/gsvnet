@@ -12,6 +12,6 @@ class EventsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        View::composer('events.sidebar', 'App\Helpers\Events\EventsSideBarComposer');
+        View::composer('events.sidebar', \App\Helpers\Events\EventsSideBarComposer::class);
     }
 }

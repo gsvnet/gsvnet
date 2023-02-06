@@ -20,7 +20,7 @@ class Photo extends Model
     // The photo's album
     public function album()
     {
-        return $this->belongsTo('App\Helpers\Albums\Album');
+        return $this->belongsTo(\App\Helpers\Albums\Album::class);
     }
 
     // Return the path to the original image

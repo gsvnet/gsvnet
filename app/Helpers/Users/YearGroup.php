@@ -16,10 +16,10 @@ class YearGroup extends Model
      */
     protected $table = 'year_groups';
 
-    public $presenter = 'App\Helpers\Users\YearGroupPresenter';
+    public $presenter = \App\Helpers\Users\YearGroupPresenter::class;
 
     public function userProfiles()
     {
-        return $this->hasMany('App\Helpers\Users\Profiles\UserProfile');
+        return $this->hasMany(\App\Helpers\Users\Profiles\UserProfile::class);
     }
 }

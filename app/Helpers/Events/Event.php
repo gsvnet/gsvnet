@@ -13,7 +13,7 @@ class Event extends Model
 
     protected $guarded = [];
 
-    public $presenter = 'App\Helpers\Events\EventPresenter';
+    public $presenter = \App\Helpers\Events\EventPresenter::class;
 
     public function scopePublic($query)
     {

@@ -15,16 +15,16 @@ class CommitteeMembership extends Model
 
     public static $rules = [];
 
-    public $presenter = 'App\Helpers\Committees\CommitteeMembership\CommitteeMembershipPresenter';
+    public $presenter = \App\Helpers\Committees\CommitteeMembership\CommitteeMembershipPresenter::class;
 
     // Change users to members?
     public function member()
     {
-        return $this->belongsTo('App\Helpers\Users\User', 'user_id');
+        return $this->belongsTo(\App\Helpers\Users\User::class, 'user_id');
     }
 
     public function committee()
     {
-        return $this->belongsTo('App\Helpers\Committees\Committee');
+        return $this->belongsTo(\App\Helpers\Committees\Committee::class);
     }
 }
