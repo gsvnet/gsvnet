@@ -20,7 +20,6 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-            \Illuminate\Routing\Middleware\SubstituteBindings::class,
 
 class Kernel extends HttpKernel
 {
@@ -30,13 +29,22 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
-        CheckForMaintenanceMode::class,
-        EncryptCookies::class,
-        AddQueuedCookiesToResponse::class,
-        StartSession::class,
-        ShareErrorsFromSession::class,
-        OnlineUserCounter::class,
-        FrameGuard::class,
+            \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+    ];
+
+    protected $middlewareGroups = [
+        'web' => [
+            \Illuminate\Foundation\Http\Middleware\EncryptCookies::class,
+            \Illuminate\Foundation\Http\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Foundation\Http\Middleware\StartSession::class,
+            \Illuminate\Foundation\Http\Middleware\ShareErrorsFromSession::class,
+            \App\Http\Middleware\OnlineUserCounter::class,
+            \App\Http\Middleware\FrameGuard::class,        
+        ],
+
+        'api' => [
+
+        ],
     ];
 
     /**
@@ -45,16 +53,16 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'csrf' => VerifyCsrfToken::class,
+        'csrf' => \App\Http\Middleware\VerifyCsrfToken::class,
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'tokenAuth' => ApiAuthenticated::class,
-        'guest' => RedirectIfAuthenticated::class,
-        'approved' => AccountNotApproved::class,
-        'has' => MustHavePermission::class,
-        'checkDate' => ValidEventDate::class,
-        'notYetMember' => CanBecomeMember::class,
-        'loginViaToken' => LoginViaToken::class,
+        'tokenAuth' => \App\Http\Middleware\ApiAuthenticated::class,
+        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'approved' => \App\Http\Middleware\AccountNotApproved::class,
+        'has' => \App\Http\Middleware\MustHavePermission::class,
+        'checkDate' => \App\Http\Middleware\ValidEventDate::class,
+        'notYetMember' => \App\Http\Middleware\CanBecomeMember::class,
+        'loginViaToken' => \App\Http\Middleware\LoginViaToken::class,
     ];
 }
