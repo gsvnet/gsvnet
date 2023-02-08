@@ -1,29 +1,53 @@
-<?php namespace App\Commands\Potentials;
+<?php
+
+namespace App\Commands\Potentials;
 
 use App\Commands\Command;
 
-class SignUpAsPotentialCommand extends Command {
+class SignUpAsPotentialCommand extends Command
+{
     public $firstname;
+
     public $middlename;
+
     public $lastname;
+
     public $gender;
+
     public $birthdate;
+
     public $address;
+
     public $zipCode;
+
     public $town;
+
     public $email;
+
     public $phone;
+
     public $study;
+
     public $studentNumber;
+
     public $studyStartYear;
+
     public $username;
+
     public $password;
+
     public $parentsAddress;
+
     public $parentsZipCode;
+
     public $parentsTown;
+
     public $parentsPhone;
+
     public $parentsEmail;
+
     public $message;
+
     public $school;
 
     /**

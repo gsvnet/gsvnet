@@ -1,4 +1,6 @@
-<?php namespace App\Helpers\Forum\Threads;
+<?php
+
+namespace App\Helpers\Forum\Threads;
 
 class ThreadVisitationUpdater
 {
@@ -11,9 +13,9 @@ class ThreadVisitationUpdater
 
     public function getVisitation($threadId, $userId)
     {
-    	return ThreadVisitation::firstOrNew([
-    		'user_id' => $userId,
-    		'thread_id' => $threadId
-    	]);
+        return ThreadVisitation::firstOrNew([
+            'user_id' => $userId,
+            'thread_id' => $threadId,
+        ]);
     }
 }

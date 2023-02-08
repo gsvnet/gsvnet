@@ -1,20 +1,22 @@
-<?php namespace App\Handlers\Commands\Forum;
+<?php
+
+namespace App\Handlers\Commands\Forum;
 
 use App\Commands\Forum\DeleteReplyCommand;
 use App\Events\Forum\ReplyWasDeleted;
 use App\Helpers\Forum\Replies\ReplyRepository;
 
-class DeleteReplyCommandHandler {
-
+class DeleteReplyCommandHandler
+{
     private $replies;
 
-    function __construct(ReplyRepository $replies)
+    public function __construct(ReplyRepository $replies)
     {
         $this->replies = $replies;
     }
 
     public function handle(DeleteReplyCommand $command)
-	{
+    {
         $reply = $this->replies->requireById($command->replyId);
 
         $replyId = $reply->id;
@@ -23,5 +25,5 @@ class DeleteReplyCommandHandler {
         $this->replies->delete($reply);
 
         event(new ReplyWasDeleted($threadId, $replyId));
-	}
+    }
 }

@@ -1,11 +1,13 @@
-<?php namespace App\Commands\Members;
+<?php
+
+namespace App\Commands\Members;
 
 use App\Commands\Command;
 use App\Helpers\Users\User;
 use App\Helpers\Users\YearGroup;
 
-class ChangeYearGroup extends Command {
-
+class ChangeYearGroup extends Command
+{
     /**
      * @var User
      */
@@ -21,7 +23,7 @@ class ChangeYearGroup extends Command {
      */
     public $manager;
 
-    function __construct(User $user, User $manager, YearGroup $yearGroup)
+    public function __construct(User $user, User $manager, YearGroup $yearGroup)
     {
         $this->user = $user;
         $this->yearGroup = $yearGroup;

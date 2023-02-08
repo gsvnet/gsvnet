@@ -1,6 +1,7 @@
-<?php namespace Admin;
+<?php
 
-use Carbon\Carbon;
+namespace Admin;
+
 use App\Commands\Members\ChangeAddress;
 use App\Commands\Members\ChangeBirthDay;
 use App\Commands\Members\ChangeBusiness;
@@ -20,38 +21,40 @@ use App\Commands\Members\ReceiveNewspaper;
 use App\Commands\Users\ChangeEmail;
 use App\Commands\Users\ChangePassword;
 use App\Commands\Users\SetProfilePictureCommand;
+use App\Helpers\Regions\RegionsRepository;
 use App\Helpers\Users\ProfileActions\ProfileActionsRepository;
 use App\Helpers\Users\User;
 use App\Helpers\Users\UsersRepository;
 use App\Helpers\Users\UserTransformer;
 use App\Helpers\Users\ValueObjects\Gender;
-use App\Helpers\Users\ValueObjects\Username;
 use App\Helpers\Users\YearGroupRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
 use Maatwebsite\Excel\Classes\LaravelExcelWorksheet;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\Writers\CellWriter;
 use Maatwebsite\Excel\Writers\LaravelExcelWriter;
-use App\Helpers\Regions\RegionsRepository;
 
 class MemberController extends AdminBaseController
 {
     private $users;
+
     /**
      * @var YearGroupRepository
      */
     private $yearGroups;
+
     /**
      * @var ProfileActionsRepository
      */
     private $actions;
+
     private $regions;
 
     /**
-     * @param ProfileActionsRepository $actions
-     * @param UsersRepository $users
-     * @param YearGroupRepository $yearGroups
+     * @param  ProfileActionsRepository  $actions
+     * @param  UsersRepository  $users
+     * @param  YearGroupRepository  $yearGroups
      */
     public function __construct(
         ProfileActionsRepository $actions,
@@ -69,6 +72,7 @@ class MemberController extends AdminBaseController
     public function latestUpdates()
     {
         $changes = $this->actions->latestUpdatesWithMembers();
+
         return view('admin.users.latestUpdates')->with(compact('changes'));
     }
 
@@ -76,6 +80,7 @@ class MemberController extends AdminBaseController
     {
         $user = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.name', $user);
+
         return view('admin.users.update.name')->with(compact('user'));
     }
 
@@ -87,6 +92,7 @@ class MemberController extends AdminBaseController
         $this->dispatch(ChangeName::fromForm($request, $member));
 
         flash()->success("Naam {$member->present()->fullName()} succesvol aangepast");
+
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -94,6 +100,7 @@ class MemberController extends AdminBaseController
     {
         $user = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('users.manage');
+
         return view('admin.users.update.username')->with(compact('user'));
     }
 
@@ -105,6 +112,7 @@ class MemberController extends AdminBaseController
         $this->dispatch(ChangeUsername::fromForm($request, $member));
 
         flash()->success("Naam {$member->present()->fullName()} succesvol aangepast");
+
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -113,6 +121,7 @@ class MemberController extends AdminBaseController
         $user = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.address', $user);
         $this->authorize('user.manage.phone', $user);
+
         return view('admin.users.update.contact')->with(compact('user'));
     }
 
@@ -126,6 +135,7 @@ class MemberController extends AdminBaseController
         $this->dispatch(ChangePhone::fromForm($request, $member));
 
         flash()->success("Contactgegevens {$member->present()->fullName()} succesvol aangepast");
+
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -145,6 +155,7 @@ class MemberController extends AdminBaseController
         $this->dispatch(ChangeParentsDetails::fromForm($request, $member));
 
         flash()->success("Gegevens van {$member->present()->fullName()}s ouders succesvol aangepast");
+
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -164,6 +175,7 @@ class MemberController extends AdminBaseController
         $this->dispatch(ChangeBirthDay::fromForm($request, $member));
 
         flash()->success("Geboortedatum {$member->present()->fullName()} succesvol aangepast");
+
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -183,6 +195,7 @@ class MemberController extends AdminBaseController
         $this->dispatch(ChangeEmail::fromForm($request, $member));
 
         flash()->success("Email {$member->present()->fullName()} succesvol aangepast");
+
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -202,6 +215,7 @@ class MemberController extends AdminBaseController
         $this->dispatch(ChangePassword::fromForm($request, $member));
 
         flash()->success("Wachtwoord {$member->present()->fullName()} succesvol aangepast");
+
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -222,6 +236,7 @@ class MemberController extends AdminBaseController
         $this->dispatch(new ChangeGender($member, $request->user(), $gender));
 
         flash()->success("Geslacht {$member->present()->fullName()} succesvol aangepast");
+
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -231,6 +246,7 @@ class MemberController extends AdminBaseController
         $this->authorize('users.manage');
 
         $yearGroups = $this->yearGroups->all();
+
         return view('admin.users.update.yeargroup')->with(compact('user', 'yearGroups'));
     }
 
@@ -243,6 +259,7 @@ class MemberController extends AdminBaseController
         $this->dispatch(new ChangeYearGroup($member, $request->user(), $group));
 
         flash()->success("Jaarverband {$member->present()->fullName()} succesvol aangepast");
+
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -262,6 +279,7 @@ class MemberController extends AdminBaseController
         $this->dispatch(ChangeBusiness::fromForm($request, $member));
 
         flash()->success("Werk {$member->present()->fullName()} succesvol aangepast");
+
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -281,6 +299,7 @@ class MemberController extends AdminBaseController
         $this->dispatch(ChangeStudy::fromForm($request, $member));
 
         flash()->success("Studie van {$member->present()->fullName()} succesvol aangepast");
+
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -289,6 +308,7 @@ class MemberController extends AdminBaseController
         $this->authorize('users.manage');
 
         $user = $this->users->memberOrFormerByIdWithProfile($id);
+
         return view('admin.users.update.membershipPeriod')->with(compact('user'));
     }
 
@@ -300,6 +320,7 @@ class MemberController extends AdminBaseController
         $this->dispatch(ChangePeriodOfMembership::fromForm($request, $member));
 
         flash()->success("Periode van lidmaatschap {$member->present()->fullName()} succesvol aangepast");
+
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -321,14 +342,15 @@ class MemberController extends AdminBaseController
         $this->authorize('users.manage');
 
         $member = $this->users->memberOrFormerByIdWithProfile($id);
-        $currentRegion = [ $request->get('current_region') ];
+        $currentRegion = [$request->get('current_region')];
         $formerRegion = $request->get('former_regions') ? $request->get('former_regions') : [];
 
-        $regions = $this->regions->byIds(array_merge( $currentRegion, $formerRegion ));
+        $regions = $this->regions->byIds(array_merge($currentRegion, $formerRegion));
 
         $this->dispatch(new ChangeRegion($member, $request->user(), $regions));
 
         flash()->success("Regio van {$member->present()->fullName()} succesvol aangepast");
+
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -337,6 +359,7 @@ class MemberController extends AdminBaseController
         $this->authorize('users.manage');
 
         $user = $this->users->memberOrFormerByIdWithProfile($id);
+
         return view('admin.users.update.membership')->with(compact('user'));
     }
 
@@ -349,6 +372,7 @@ class MemberController extends AdminBaseController
         $this->dispatch(new ChangeMembershipStatus(User::REUNIST, $member, $request->user()));
 
         flash()->success("{$member->present()->fullName()} is nu reünist");
+
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -361,6 +385,7 @@ class MemberController extends AdminBaseController
         $this->dispatch(new ChangeMembershipStatus(User::EXMEMBER, $member, $request->user()));
 
         flash()->success("{$member->present()->fullName()} is nu oud-lid");
+
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -373,6 +398,7 @@ class MemberController extends AdminBaseController
         $this->dispatch(new ChangeMembershipStatus(User::MEMBER, $member, $request->user()));
 
         flash()->success("{$member->present()->fullName()} is nu lid");
+
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -394,6 +420,7 @@ class MemberController extends AdminBaseController
         }
 
         flash()->success("Foto van {$member->present()->fullName()} succesvol opgeslagen");
+
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -413,7 +440,8 @@ class MemberController extends AdminBaseController
 
         $this->dispatch(MemberIsAlive::fromForm($request, $member));
 
-        flash()->success("Status gewijzigd");
+        flash()->success('Status gewijzigd');
+
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -432,7 +460,8 @@ class MemberController extends AdminBaseController
 
         $this->dispatch(ReceiveNewspaper::fromForm($request, $member));
 
-        flash()->success("Voorkeuren opgeslagen");
+        flash()->success('Voorkeuren opgeslagen');
+
         return redirect()->action('Admin\UsersController@show', $id);
     }
 
@@ -476,7 +505,7 @@ class MemberController extends AdminBaseController
 
         $this->dispatch(ForgetMember::fromForm($request, $user));
 
-        flash()->success("Profiel en account opgeschoond.");
+        flash()->success('Profiel en account opgeschoond.');
 
         return redirect()->action('Admin\UsersController@show', $id);
     }

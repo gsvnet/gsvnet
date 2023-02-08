@@ -1,16 +1,18 @@
-<?php namespace App\Helpers\Users\ValueObjects;
+<?php
 
-use Carbon\Carbon;
-use Exception;
+namespace App\Helpers\Users\ValueObjects;
+
 use App\Helpers\Core\Exceptions\ValueObjectValidationException;
 use App\Helpers\Core\ValueObject;
+use Carbon\Carbon;
+use Exception;
 use Illuminate\Support\MessageBag;
 
 class NullableDate extends ValueObject
 {
     private $date = null;
 
-    function __construct($date = null)
+    public function __construct($date = null)
     {
         if (is_null($date)) {
             return;
@@ -36,7 +38,7 @@ class NullableDate extends ValueObject
     private function throwError($message)
     {
         throw new ValueObjectValidationException(new MessageBag([
-            'date' => $message
+            'date' => $message,
         ]));
     }
 }

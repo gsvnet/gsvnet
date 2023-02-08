@@ -1,9 +1,11 @@
-<?php namespace App\Handlers\Commands\Members;
+<?php
 
-use Carbon\Carbon;
+namespace App\Handlers\Commands\Members;
+
 use App\Commands\Members\InviteMember;
 use App\Helpers\Auth\Invite;
 use App\Helpers\Auth\TokenRepository;
+use Carbon\Carbon;
 use Illuminate\Mail\Mailer;
 use Illuminate\Mail\Message;
 
@@ -21,8 +23,9 @@ class InviteMemberHandler
 
     /**
      * InviteMemberHandler constructor.
-     * @param Mailer $mailer
-     * @param TokenRepository $tokens
+     *
+     * @param  Mailer  $mailer
+     * @param  TokenRepository  $tokens
      */
     public function __construct(Mailer $mailer, TokenRepository $tokens)
     {
@@ -38,7 +41,7 @@ class InviteMemberHandler
             'url' => $token->present()->url(),
             'personalMessage' => $command->getMessage(),
             'hostName' => $command->getHost()->present()->fullName(),
-            'guestTitle' => $command->getTitle(), 
+            'guestTitle' => $command->getTitle(),
             'guestName' => $command->getName(),
         ];
 

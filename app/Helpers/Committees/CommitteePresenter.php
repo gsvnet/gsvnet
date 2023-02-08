@@ -1,33 +1,30 @@
-<?php namespace App\Helpers\Committees;
+<?php
 
-use Laracasts\Presenter\Presenter, Carbon\Carbon;
+namespace App\Helpers\Committees;
+
+use Carbon\Carbon;
+use Laracasts\Presenter\Presenter;
 
 class CommitteePresenter extends Presenter
 {
-
     public function from_to()
     {
-        $from = Carbon::createFromFormat('Y-m-d H:i:s',   $this->pivot->start_date);
+        $from = Carbon::createFromFormat('Y-m-d H:i:s', $this->pivot->start_date);
 
-        $string = $from->formatLocalized("%Y");
+        $string = $from->formatLocalized('%Y');
 
-        if( is_null(  $this->pivot->end_date) )
-        {
+        if (is_null($this->pivot->end_date)) {
             $string .= ' tot heden';
-        } else
-        {
-
-            $to = Carbon::createFromFormat('Y-m-d H:i:s',   $this->pivot->end_date);
-            if($to->isFuture())
-            {
+        } else {
+            $to = Carbon::createFromFormat('Y-m-d H:i:s', $this->pivot->end_date);
+            if ($to->isFuture()) {
                 $string .= ' tot heden';
-            }
-            else 
-            {
+            } else {
                 $string .= ' tot ';
-                $string .= $to->formatLocalized("%Y");
+                $string .= $to->formatLocalized('%Y');
             }
         }
+
         return $string;
     }
 }

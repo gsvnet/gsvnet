@@ -1,16 +1,18 @@
-<?php namespace App\Helpers\Regions;
+<?php
+
+namespace App\Helpers\Regions;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Region extends Model {
+class Region extends Model
+{
+    protected $guarded = [];
 
-    protected $guarded = array();
-
-    public static $rules = array();
+    public static $rules = [];
 
     public function members()
     {
-        return $this->belongsToMany('App\Helpers\Users\Profiles\UserProfile', 'region_user_profile');
+        return $this->belongsToMany(\App\Helpers\Users\Profiles\UserProfile::class, 'region_user_profile');
     }
 
     public function scopeCurrent($query)

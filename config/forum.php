@@ -6,28 +6,28 @@ return [
             'tags' => '',
         ],
         'Discussies en nieuws' => [
-        	'tags' => 'discussies,nieuws'
+            'tags' => 'discussies,nieuws',
         ],
         'GSV algemeen' => [
-            'tags' => 'gsv,senaat'
+            'tags' => 'gsv,senaat',
         ],
         'Jaarverbanden en regio\'s' => [
-            'tags' => 'jaarverband,regio'
+            'tags' => 'jaarverband,regio',
         ],
         'Amicaal Nederland' => [
-            'tags' => 'amicaal'
+            'tags' => 'amicaal',
         ],
         'Oud-leden' => [
-            'tags' => 'oud-leden'
+            'tags' => 'oud-leden',
         ],
         'Maatschappij en politiek' => [
-        	'tags' => 'maatschappij,politiek'
+            'tags' => 'maatschappij,politiek',
         ],
         'Geloof en wetenschap' => [
-            'tags' => 'geloof,wetenschap'
+            'tags' => 'geloof,wetenschap',
         ],
         'Vraag en aanbod' => [
-            'tags' => 'vraag,aanbod'
-        ]
-    ]
+            'tags' => 'vraag,aanbod',
+        ],
+    ],
 ];

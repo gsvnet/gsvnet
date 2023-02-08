@@ -1,32 +1,31 @@
-<?php namespace App\Exceptions;
+<?php
 
-use Exception;
-use App\Helpers\Core\Exceptions\ValidationException;
-use App\Helpers\Core\Exceptions\ValueObjectValidationException;
+namespace App\Exceptions;
+
 use App\Helpers\Permissions\NoPermissionException;
 use App\Helpers\Permissions\UserAccountNotApprovedException;
-use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Bugsnag\BugsnagLaravel\BugsnagExceptionHandler as ExceptionHandler;
+use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Response;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Handler extends ExceptionHandler
 {
-
     /**
      * A list of the exception types that should not be reported.
      *
      * @var array
      */
     protected $dontReport = [
-        AuthorizationException::class,
-        HttpException::class,
-        ModelNotFoundException::class,
-        ValidationException::class,
+        \Illuminate\Auth\AuthenticationException::class,
+        \Illuminate\Auth\Access\AuthorizationException::class,
+        \Symfony\Component\HttpKernel\Exception\HttpException::class,
+        \Illuminate\Database\Eloquent\ModelNotFoundException::class,
+        \Illuminate\Session\TokenMismatchException::class,
+        \Illuminate\Validation\ValidationException::class,
         UserAccountNotApprovedException::class,
         NoPermissionException::class,
-        ValueObjectValidationException::class,
+        ValueObject\Illuminate\Validation\ValidationException::class,
     ];
 
     /**
@@ -34,7 +33,7 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception $e
+     * @param  \Exception  $e
      * @return void
      */
     public function report(Exception $e)
@@ -45,14 +44,14 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Exception $e
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Exception  $e
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $e)
     {
         switch (get_class($e)) {
-            case AuthorizationException::class:
+            case \Illuminate\Auth\Access\AuthorizationException::class:
             case NoPermissionException::class:
                 if ($request->ajax() || $request->wantsJson()) {
                     return response()->json(null, Response::HTTP_UNAUTHORIZED);
@@ -63,15 +62,15 @@ class Handler extends ExceptionHandler
             case UserAccountNotApprovedException::class:
                 return response(view('errors.unauthorized'), 401);
                 break;
-            case ValidationException::class:
-            case ValueObjectValidationException::class:
+            case \Illuminate\Validation\ValidationException::class:
+            case ValueObject\Illuminate\Validation\ValidationException::class:
                 if ($request->ajax() || $request->wantsJson()) {
                     return response()->json($e->getErrors(), Response::HTTP_BAD_REQUEST);
                 } else {
                     return redirect()->back()->withInput()->withErrors($e->getErrors());
                 }
                 break;
-            case ModelNotFoundException::class:
+            case \Illuminate\Database\Eloquent\ModelNotFoundException::class:
                 if ($request->ajax() || $request->wantsJson()) {
                     return response()->json(null, Response::HTTP_NOT_FOUND);
                 } else {
@@ -82,5 +81,21 @@ class Handler extends ExceptionHandler
         }
 
         return parent::render($request, $e);
+    }
+
+    /**
+     * Convert an authentication exception into an unauthenticated response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Auth\AuthenticationException  $e
+     * @return \Illuminate\Http\Response
+     */
+    protected function unauthenticated($request, AuthenticationException $e)
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Unauthenticated.'], 401);
+        } else {
+            return redirect()->guest('login');
+        }
     }
 }

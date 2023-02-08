@@ -1,13 +1,16 @@
-<?php namespace App\Events\Forum;
+<?php
+
+namespace App\Events\Forum;
 
 use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
 
-class ReplyWasDisliked extends Event {
-
+class ReplyWasDisliked extends Event
+{
     use SerializesModels;
 
     public $replyId;
+
     public $userId;
 
     public function __construct($replyId, $userId)

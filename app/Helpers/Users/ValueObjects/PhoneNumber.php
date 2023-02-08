@@ -1,13 +1,15 @@
-<?php namespace App\Helpers\Users\ValueObjects;
+<?php
+
+namespace App\Helpers\Users\ValueObjects;
 
 use App\Helpers\Core\ValueObject;
 
-class PhoneNumber extends ValueObject {
-
+class PhoneNumber extends ValueObject
+{
     protected $phone;
 
-    static $rules = [
-        'phone' => 'required'
+    public static $rules = [
+        'phone' => 'required',
     ];
 
     public function __construct($phone)
@@ -15,7 +17,7 @@ class PhoneNumber extends ValueObject {
         $this->phone = $this->sanitize($phone);
 
         $this->validate([
-            'phone' => $this->phone
+            'phone' => $this->phone,
         ]);
     }
 

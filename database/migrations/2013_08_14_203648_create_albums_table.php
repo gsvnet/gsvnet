@@ -3,34 +3,33 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateAlbumsTable extends Migration {
+class CreateAlbumsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('albums', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->text('description');
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
-		Schema::create('albums', function(Blueprint $table) {
-			$table->increments('id');
-			$table->string('name');
-			$table->text('description');
+            $table->string('slug')->default('');
 
-			$table->string('slug')->default('');
+            $table->timestamps();
+        });
+    }
 
-			$table->timestamps();
-		});
-	}
-
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::drop('albums');
-	}
-
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('albums');
+    }
 }

@@ -1,3 +1,7 @@
-<?php namespace App\Helpers\Permissions;
+<?php
 
-class UserAccountNotApprovedException extends \Exception {}
+namespace App\Helpers\Permissions;
+
+class UserAccountNotApprovedException extends \Exception
+{
+}

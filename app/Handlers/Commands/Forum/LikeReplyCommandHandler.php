@@ -1,15 +1,17 @@
-<?php namespace App\Handlers\Commands\Forum;
+<?php
+
+namespace App\Handlers\Commands\Forum;
 
 use App\Commands\Forum\LikeReplyCommand;
 use App\Events\Forum\ReplyWasLiked;
 use App\Helpers\Forum\Like;
 use App\Helpers\Forum\Replies\ReplyRepository;
 
-class LikeReplyCommandHandler {
-
+class LikeReplyCommandHandler
+{
     private $replies;
 
-    function __construct(ReplyRepository $replies)
+    public function __construct(ReplyRepository $replies)
     {
         $this->replies = $replies;
     }

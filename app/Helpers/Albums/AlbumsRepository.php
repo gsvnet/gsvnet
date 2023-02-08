@@ -1,49 +1,59 @@
-<?php namespace App\Helpers\Albums;
+<?php
+
+namespace App\Helpers\Albums;
 
 use Illuminate\Support\Facades\Gate;
 
-class AlbumsRepository {
+class AlbumsRepository
+{
     /**
      * Get all albums
      */
     public function all()
     {
-        if (Gate::allows('photos.show-private'))
+        if (Gate::allows('photos.show-private')) {
             return Album::latest()->get();
-        
+        }
+
         return Album::latest()->public()->get();
     }
 
     /**
      * Get paginated albums
      *
-     * @param int $amount
+     * @param  int  $amount
      */
     public function paginate($amount)
     {
-        if (Gate::allows('photos.show-private'))
+        if (Gate::allows('photos.show-private')) {
             return Album::latest()->paginate($amount);
-        
+        }
+
         return Album::latest()->public()->paginate($amount);
     }
 
     /**
      * Get paginated albums
+     *
      * @TODO this should use eager loading
-     * @param int $amount
+     *
+     * @param  int  $amount
      */
     public function paginateWithFirstPhoto($amount)
     {
-        if (Gate::allows('photos.show-private'))
+        if (Gate::allows('photos.show-private')) {
             return Album::with('photos')->has('photos')->latest()->paginate($amount);
-        
+        }
+
         return Album::with('photos')->has('photos')->latest()->public()->paginate($amount);
     }
 
     /**
      * Get paginated albums
+     *
      * @TODO this should use eager loading
-     * @param int $amount
+     *
+     * @param  int  $amount
      */
     public function paginatePublicWithFirstPhoto($amount)
     {
@@ -66,7 +76,7 @@ class AlbumsRepository {
     /**
      * Get by slug
      *
-     * @param int $id
+     * @param  int  $id
      * @return Album
      */
     public function byId($id)
@@ -77,7 +87,7 @@ class AlbumsRepository {
     /**
      * Get by slug
      *
-     * @param string $slug
+     * @param  string  $slug
      * @return Album
      */
     public function bySlug($slug)
@@ -85,11 +95,10 @@ class AlbumsRepository {
         return Album::where('slug', '=', $slug)->first();
     }
 
-
     /**
      * Create album
      *
-     * @param array $input
+     * @param  array  $input
      * @return Album
      */
     public function create(array $input)
@@ -108,8 +117,8 @@ class AlbumsRepository {
     /**
      * Update album
      *
-     * @param int $id
-     * @param array $input
+     * @param  int  $id
+     * @param  array  $input
      * @return Album
      */
     public function update($id, array $input)
@@ -129,7 +138,7 @@ class AlbumsRepository {
     /**
      * Delete album
      *
-     * @param int $id
+     * @param  int  $id
      * @return Album
      * @TODO: delete all photos
      */

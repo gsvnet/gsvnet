@@ -1,9 +1,8 @@
 <?php
-use App\Helpers\Users\User;
 
 return [
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
     |--------------------------------------------------------------------------
@@ -14,12 +13,12 @@ return [
     |
     */
 
-	'defaults' => [
-		'guard' => 'web',
-		'passwords' => 'users',
-	],
+    'defaults' => [
+        'guard' => 'web',
+        'passwords' => 'users',
+    ],
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Authentication Guards
     |--------------------------------------------------------------------------
@@ -36,19 +35,19 @@ return [
     |
     */
 
-	'guards' => [
-		'web' => [
-			'driver' => 'session',
-			'provider' => 'users',
-		],
+    'guards' => [
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
 
-		'api' => [
-			'driver' => 'token',
-			'provider' => 'users',
-		],
-	],
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+        ],
+    ],
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | User Providers
     |--------------------------------------------------------------------------
@@ -65,21 +64,22 @@ return [
     |
     */
 
-	'providers' => [
-		'users' => [
-			'driver' => 'eloquent',
-			'model' => User::class,
-		],
-	],
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\User::class,
+        ],
 
-	/*
+        // 'users' => [
+        //     'driver' => 'database',
+        //     'table' => 'users',
+        // ],
+    ],
+
+    /*
     |--------------------------------------------------------------------------
     | Resetting Passwords
     |--------------------------------------------------------------------------
-    |
-    | Here you may set the options for resetting passwords including the view
-    | that is your password reset e-mail. You may also set the name of the
-    | table that maintains all of the reset tokens for your application.
     |
     | You may specify multiple password reset configurations if you have more
     | than one user table or model in the application and you want to have
@@ -91,13 +91,12 @@ return [
     |
     */
 
-	'passwords' => [
-		'users' => [
-			'provider' => 'users',
-			'email' => 'emails.auth.reminder',
-			'table' => 'password_reminders',
-			'expire' => 60,
-		],
-	],
+    'passwords' => [
+        'users' => [
+            'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+    ],
 
 ];

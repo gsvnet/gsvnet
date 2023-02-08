@@ -1,9 +1,7 @@
-<?php namespace App\Events\Members;
+<?php
 
-use App\Helpers\Users\User;
-use Illuminate\Queue\SerializesModels;
+namespace App\Events\Members;
 
 class AddressWasChanged extends ProfileEvent
 {
-    
 }

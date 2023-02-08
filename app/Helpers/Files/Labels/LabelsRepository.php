@@ -1,11 +1,12 @@
-<?php namespace App\Helpers\Files\Labels;
+<?php
 
+namespace App\Helpers\Files\Labels;
 
 class LabelsRepository
 {
     /**
-    * Get all labels
-    */
+     * Get all labels
+     */
     public function all()
     {
         return Label::all();

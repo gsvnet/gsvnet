@@ -1,13 +1,15 @@
-<?php namespace App\Helpers\Users;
+<?php
+
+namespace App\Helpers\Users;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class YearGroupRepository {
-
+class YearGroupRepository
+{
     /**
      * Get by id
      *
-     * @param int $id
+     * @param  int  $id
      * @return YearGroup
      */
     public function byId($id)
@@ -18,25 +20,23 @@ class YearGroupRepository {
     /**
      * Check if year group exists
      *
-     * @param int $id
+     * @param  int  $id
      * @return YearGroup
      */
     public function exists($id)
     {
-        try
-        {
+        try {
             $this->byId($id);
-        }
-        catch (ModelNotFoundException $e)
-        {
+        } catch (ModelNotFoundException $e) {
             return false;
         }
+
         return true;
     }
 
     /**
-    *   Getall year groups in descending order
-    */
+     *   Getall year groups in descending order
+     */
     public function all()
     {
         return YearGroup::orderBy('year', 'DESC')->get();

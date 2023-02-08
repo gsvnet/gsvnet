@@ -2,26 +2,31 @@
 
 use App\Commands\Users\ChangeEmail;
 use App\Commands\Users\ChangePassword;
-use App\Helpers\Users\EmailAndPasswordValidator ;
-use Illuminate\Http\Request;
 use App\Helpers\Committees\CommitteesRepository;
+use App\Helpers\Regions\RegionsRepository;
+use App\Helpers\Users\EmailAndPasswordValidator;
+use App\Helpers\Users\Profiles\ProfileManager;
 use App\Helpers\Users\Profiles\ProfilesRepository;
 use App\Helpers\Users\User;
-use App\Helpers\Users\UsersRepository;
 use App\Helpers\Users\UserManager;
-use App\Helpers\Users\Profiles\ProfileManager;
+use App\Helpers\Users\UsersRepository;
 use App\Helpers\Users\YearGroupRepository;
-use App\Helpers\Regions\RegionsRepository;
+use Illuminate\Http\Request;
 
 class UserController extends BaseController
 {
-
     protected $users;
+
     protected $profiles;
+
     protected $committees;
+
     protected $yearGroups;
+
     protected $regions;
+
     protected $profileManager;
+
     protected $userManager;
 
     public function __construct(
@@ -46,7 +51,8 @@ class UserController extends BaseController
 
     /**
      * Show the current user's profile
-     * @param Request $request
+     *
+     * @param  Request  $request
      * @return
      */
     public function showProfile(Request $request)
@@ -54,7 +60,7 @@ class UserController extends BaseController
         $member = $this->users->byIdWithProfileAndYearGroup($request->user()->id);
         $committees = $this->committees->byUserOrderByRecent($member);
         $senates = $member->senates;
-        if($member->profile && $member->profile->regions){
+        if ($member->profile && $member->profile->regions) {
             $formerRegions = $member->profile->regions->intersect($this->regions->former());
         } else {
             $formerRegions = [];
@@ -69,7 +75,8 @@ class UserController extends BaseController
 
     /**
      * Show current members
-     * @param Request $request
+     *
+     * @param  Request  $request
      * @return
      */
     public function showUsers(Request $request)
@@ -80,11 +87,12 @@ class UserController extends BaseController
         $oudLeden = $request->get('oudleden');
 
         // Search on region
-        if (!($region = $request->get('regio') and $this->regions->exists($region)))
+        if (! ($region = $request->get('regio') and $this->regions->exists($region))) {
             $region = null;
+        }
 
         // Enable search on yeargroup
-        if (!($yeargroup = $request->get('jaarverband') and $this->yearGroups->exists($yeargroup))) {
+        if (! ($yeargroup = $request->get('jaarverband') and $this->yearGroups->exists($yeargroup))) {
             $yeargroup = null;
         }
 
@@ -111,12 +119,12 @@ class UserController extends BaseController
         $member = $this->users->byIdWithProfileAndYearGroup($id);
         $committees = $this->committees->byUserOrderByRecent($member);
         $senates = $member->senates;
-        if($member->profile && $member->profile->regions){
+        if ($member->profile && $member->profile->regions) {
             $formerRegions = $member->profile->regions->intersect($this->regions->former());
         } else {
             $formerRegions = [];
         }
-        
+
         return view('users.profile')
             ->with('member', $member)
             ->with('committees', $committees)
@@ -127,7 +135,7 @@ class UserController extends BaseController
     public function editProfile(Request $request)
     {
         return view('users.edit-profile')->with([
-            'user' => $request->user()
+            'user' => $request->user(),
         ]);
     }
 
@@ -140,7 +148,7 @@ class UserController extends BaseController
         if ($user->email != $data['email']) {
             $this->dispatch(ChangeEmail::fromForm($request, $user));
         }
-        
+
         if (! empty($data['password'])) {
             $this->dispatch(ChangePassword::fromForm($request, $user));
         }

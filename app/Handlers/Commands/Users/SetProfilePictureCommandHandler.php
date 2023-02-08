@@ -1,4 +1,6 @@
-<?php namespace App\Handlers\Commands\Users;
+<?php
+
+namespace App\Handlers\Commands\Users;
 
 use App\Commands\Users\SetProfilePictureCommand;
 use App\Events\Members\ProfilePictureWasChanged;
@@ -7,7 +9,6 @@ use App\Helpers\Core\ImageHandler;
 
 class SetProfilePictureCommandHandler
 {
-
     private $imageHandler;
 
     public function __construct(ImageHandler $imageHandler)
@@ -22,7 +23,7 @@ class SetProfilePictureCommandHandler
         // If uploading new photo, destroy old one and upload new photo
         $this->imageHandler->destroy($profile->photo_path);
 
-        if (!$path = $this->imageHandler->make($command->file, "/uploads/images/users/")) {
+        if (! $path = $this->imageHandler->make($command->file, '/uploads/images/users/')) {
             throw new PhotoStorageException;
         }
 

@@ -1,15 +1,17 @@
-<?php namespace App\Handlers\Commands\Forum;
+<?php
+
+namespace App\Handlers\Commands\Forum;
 
 use App\Commands\Forum\LikeThreadCommand;
 use App\Events\Forum\ThreadWasLiked;
 use App\Helpers\Forum\Like;
 use App\Helpers\Forum\Threads\ThreadRepository;
 
-class LikeThreadCommandHandler {
-
+class LikeThreadCommandHandler
+{
     private $threads;
 
-    function __construct(ThreadRepository $threads)
+    public function __construct(ThreadRepository $threads)
     {
         $this->threads = $threads;
     }

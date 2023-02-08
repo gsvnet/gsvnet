@@ -1,10 +1,13 @@
-<?php namespace App\Helpers\Tags;
+<?php
+
+namespace App\Helpers\Tags;
 
 use App\Helpers\Core\Entity;
 
 class Tag extends Entity
 {
-    protected $table    = 'tags';
+    protected $table = 'tags';
+
     protected $fillable = ['name', 'slug', 'description', 'articles', 'forum'];
 
     public $timestamps = false;
@@ -14,7 +17,7 @@ class Tag extends Entity
         'slug' => 'required',
     ];
 
-    public function newCollection(array $models = array())
+    public function newCollection(array $models = [])
     {
         return new TagCollection($models);
     }

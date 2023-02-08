@@ -1,18 +1,20 @@
-<?php namespace App\Commands\Members;
+<?php
+
+namespace App\Commands\Members;
 
 use App\Commands\Command;
 use App\Helpers\Users\User;
 use Illuminate\Http\Request;
 
-class MemberIsAlive extends Command {
-
+class MemberIsAlive extends Command
+{
     /**
      * @var User
      */
     public $user;
 
     /**
-     * @var boolean
+     * @var bool
      */
     public $alive;
 
@@ -23,9 +25,10 @@ class MemberIsAlive extends Command {
 
     /**
      * MemberIsAlive constructor.
-     * @param User $user
-     * @param User $manager
-     * @param bool $alive
+     *
+     * @param  User  $user
+     * @param  User  $manager
+     * @param  bool  $alive
      */
     public function __construct(User $user, User $manager, bool $alive)
     {
@@ -34,8 +37,8 @@ class MemberIsAlive extends Command {
         $this->manager = $manager;
     }
 
-    static function fromForm(Request $request, User $user)
+    public static function fromForm(Request $request, User $user)
     {
-        return new static($user, $request->user(), !! $request->get('alive'));
+        return new static($user, $request->user(), (bool) $request->get('alive'));
     }
 }

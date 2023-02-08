@@ -1,3 +1,7 @@
-<?php namespace App\Helpers\Permissions;
+<?php
 
-class NoPermissionException extends \Exception {}
+namespace App\Helpers\Permissions;
+
+class NoPermissionException extends \Exception
+{
+}

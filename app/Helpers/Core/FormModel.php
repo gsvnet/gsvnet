@@ -1,10 +1,14 @@
-<?php namespace App\Helpers\Core;
+<?php
 
-use Validator, App;
+namespace App\Helpers\Core;
+
+use App;
+use Validator;
 
 class FormModel
 {
     protected $inputData;
+
     protected $validationRules;
 
     public function __construct()
@@ -21,8 +25,8 @@ class FormModel
     {
         $this->beforeValidation();
 
-        if ( ! isset($this->validationRules)) {
-            throw new NoValidationRulesFoundException('no validation rules found in class ' . get_called_class());
+        if (! isset($this->validationRules)) {
+            throw new NoValidationRulesFoundException('no validation rules found in class '.get_called_class());
         }
 
         $this->validator = Validator::make($this->getInputData(), $this->getPreparedRules());
@@ -40,5 +44,7 @@ class FormModel
         return $this->validationRules;
     }
 
-    protected function beforeValidation() {}
+    protected function beforeValidation()
+    {
+    }
 }

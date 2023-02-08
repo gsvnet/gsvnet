@@ -1,16 +1,18 @@
-<?php namespace App\Commands\Forum;
+<?php
+
+namespace App\Commands\Forum;
 
 use App\Commands\Command;
 
-class EditReplyCommand extends Command {
-
+class EditReplyCommand extends Command
+{
     public $replyId;
+
     public $reply;
 
     public function __construct($replyId, $reply)
-	{
+    {
         $this->replyId = $replyId;
         $this->reply = $reply;
     }
-
 }

@@ -1,10 +1,12 @@
-<?php namespace App\Helpers\Committees\CommitteeMembership;
+<?php
 
-use Laracasts\Presenter\Presenter, Carbon\Carbon;
+namespace App\Helpers\Committees\CommitteeMembership;
+
+use Carbon\Carbon;
+use Laracasts\Presenter\Presenter;
 
 class CommitteeMembershipPresenter extends Presenter
 {
-
     public function startSanitized()
     {
         $start = Carbon::createFromFormat('Y-m-d H:i:s', $this->start_date);
@@ -14,8 +16,7 @@ class CommitteeMembershipPresenter extends Presenter
 
     public function endSanitized()
     {
-        if(! $this->end_date)
-        {
+        if (! $this->end_date) {
             return '';
         }
 

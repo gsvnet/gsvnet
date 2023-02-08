@@ -1,14 +1,16 @@
-<?php namespace App\Handlers\Commands\Forum;
+<?php
+
+namespace App\Handlers\Commands\Forum;
 
 use App\Commands\Forum\DislikeThreadCommand;
 use App\Events\Forum\ThreadWasDisliked;
 use App\Helpers\Forum\LikeRepository;
 
-class DislikeThreadCommandHandler {
-
+class DislikeThreadCommandHandler
+{
     private $likes;
 
-    function __construct(LikeRepository $likes)
+    public function __construct(LikeRepository $likes)
     {
         $this->likes = $likes;
     }
@@ -19,5 +21,4 @@ class DislikeThreadCommandHandler {
 
         event(new ThreadWasDisliked($command->threadId, $command->userId));
     }
-
 }

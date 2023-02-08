@@ -1,10 +1,12 @@
-<?php namespace Admin;
+<?php
+
+namespace Admin;
 
 use App\Helpers\Users\UsersRepository;
 use Illuminate\Support\Facades\Input;
 
-class FamilyController extends AdminBaseController {
-
+class FamilyController extends AdminBaseController
+{
     private $users;
 
     public function __construct(UsersRepository $users)
@@ -31,8 +33,7 @@ class FamilyController extends AdminBaseController {
         $children = Input::get('childrenIds');
         $user = $this->users->byId($userId);
 
-        if(is_array($children))
-        {
+        if (is_array($children)) {
             $childrenIds = $this->users->filterExistingIds($children);
             $user->children()->sync($childrenIds->all());
         }

@@ -1,6 +1,7 @@
-<?php namespace App\Commands\Members;
+<?php
 
-use Carbon\Carbon;
+namespace App\Commands\Members;
+
 use App\Helpers\Users\User;
 use App\Helpers\Users\ValueObjects\NullableDate;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class ChangePeriodOfMembership
      * @var NullableDate
      */
     private $resignation;
-    
+
     /**
      * @var User
      */
@@ -29,10 +30,11 @@ class ChangePeriodOfMembership
 
     /**
      * ChangePeriodOfMembership constructor.
-     * @param User $user
-     * @param User $manager
-     * @param NullableDate $inauguration
-     * @param NullableDate $resignation
+     *
+     * @param  User  $user
+     * @param  User  $manager
+     * @param  NullableDate  $inauguration
+     * @param  NullableDate  $resignation
      */
     public function __construct(User $user, User $manager, NullableDate $inauguration, NullableDate $resignation)
     {

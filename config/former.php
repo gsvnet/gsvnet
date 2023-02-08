@@ -1,90 +1,92 @@
-<?php return array(
+<?php
 
-	// Markup
-	////////////////////////////////////////////////////////////////////
+return [
 
-	// Whether labels should be automatically computed from name
-	'automatic_label'         => true,
+    // Markup
+    ////////////////////////////////////////////////////////////////////
 
-	// The default form type
-	'default_form_type'       => 'horizontal',
+    // Whether labels should be automatically computed from name
+    'automatic_label' => true,
 
-	// The framework to be used by Former
-	'framework'               => 'TwitterBootstrap',
+    // The default form type
+    'default_form_type' => 'horizontal',
 
-	// Validation
-	////////////////////////////////////////////////////////////////////
+    // The framework to be used by Former
+    'framework' => 'TwitterBootstrap',
 
-	// Whether Former should fetch errors from Session
-	'fetch_errors'            => true,
+    // Validation
+    ////////////////////////////////////////////////////////////////////
 
-	// Whether Former should try to apply Validator rules as attributes
-	'live_validation'         => true,
+    // Whether Former should fetch errors from Session
+    'fetch_errors' => true,
 
-	// Whether Former should automatically fetch error messages and
-	// display them next to the matching fields
-	'error_messages'          => true,
+    // Whether Former should try to apply Validator rules as attributes
+    'live_validation' => true,
 
-	// Checkables
-	////////////////////////////////////////////////////////////////////
+    // Whether Former should automatically fetch error messages and
+    // display them next to the matching fields
+    'error_messages' => true,
 
-	// Whether checkboxes should always be present in the POST data,
-	// no matter if you checked them or not
-	'push_checkboxes'         => false,
+    // Checkables
+    ////////////////////////////////////////////////////////////////////
 
-	// The value a checkbox will have in the POST array if unchecked
-	'unchecked_value'         => 0,
+    // Whether checkboxes should always be present in the POST data,
+    // no matter if you checked them or not
+    'push_checkboxes' => false,
 
-	// Required fields
-	////////////////////////////////////////////////////////////////////
+    // The value a checkbox will have in the POST array if unchecked
+    'unchecked_value' => 0,
 
-	// The class to be added to required fields
-	'required_class'          => 'required',
+    // Required fields
+    ////////////////////////////////////////////////////////////////////
 
-	// A facultative text to append to the labels of required fields
-	'required_text'           => '<sup>*</sup>',
+    // The class to be added to required fields
+    'required_class' => 'required',
 
-	// Translations
-	////////////////////////////////////////////////////////////////////
+    // A facultative text to append to the labels of required fields
+    'required_text' => '<sup>*</sup>',
 
-	// Where Former should look for translations
-	'translate_from'          => 'validation.attributes',
+    // Translations
+    ////////////////////////////////////////////////////////////////////
 
-	// Whether text that comes out of the translated
-	// should be capitalized (ex: email => Email) automatically
-	'capitalize_translations' => true,
+    // Where Former should look for translations
+    'translate_from' => 'validation.attributes',
 
-	// An array of attributes to automatically translate
-	'translatable'            => array(
-		'help',
-		'inlineHelp',
-		'blockHelp',
-		'placeholder',
-		'data_placeholder',
-		'label',
-	),
+    // Whether text that comes out of the translated
+    // should be capitalized (ex: email => Email) automatically
+    'capitalize_translations' => true,
 
-	'TwitterBootstrap3' => [
-		// Twitter Bootstrap 3 framework markup
-		////////////////////////////////////////////////////////////////////
+    // An array of attributes to automatically translate
+    'translatable' => [
+        'help',
+        'inlineHelp',
+        'blockHelp',
+        'placeholder',
+        'data_placeholder',
+        'label',
+    ],
 
-		// Map Former-supported viewports to Bootstrap 3 equivalents
-		'viewports'   => array(
-			'large'  => 'lg',
-			'medium' => 'md',
-			'small'  => 'sm',
-			'mini'   => 'xs',
-		),
-		// Width of labels for horizontal forms expressed as viewport => grid columns
-		'labelWidths' => array(
-			'large' => 2,
-			'small' => 4,
-		),
-		// HTML markup and classes used by Bootstrap 3 for icons
-		'icon'        => array(
-			'tag'    => 'span',
-			'set'    => 'glyphicon',
-			'prefix' => 'glyphicon',
-		),
-	]
-);
+    'TwitterBootstrap3' => [
+        // Twitter Bootstrap 3 framework markup
+        ////////////////////////////////////////////////////////////////////
+
+        // Map Former-supported viewports to Bootstrap 3 equivalents
+        'viewports' => [
+            'large' => 'lg',
+            'medium' => 'md',
+            'small' => 'sm',
+            'mini' => 'xs',
+        ],
+        // Width of labels for horizontal forms expressed as viewport => grid columns
+        'labelWidths' => [
+            'large' => 2,
+            'small' => 4,
+        ],
+        // HTML markup and classes used by Bootstrap 3 for icons
+        'icon' => [
+            'tag' => 'span',
+            'set' => 'glyphicon',
+            'prefix' => 'glyphicon',
+        ],
+    ],
+];

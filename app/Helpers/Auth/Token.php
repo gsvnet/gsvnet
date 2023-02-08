@@ -1,7 +1,9 @@
-<?php namespace App\Helpers\Auth;
+<?php
 
-use Carbon\Carbon;
+namespace App\Helpers\Auth;
+
 use App\Helpers\Users\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 
@@ -10,14 +12,20 @@ class Token extends Model
     use PresentableTrait;
 
     public $table = 'invitation_tokens';
+
     public $incrementing = false;
+
     public $timestamps = false;
+
     protected $primaryKey = 'token';
+
     protected $dates = ['expires_on'];
+
     protected $fillable = ['user_id', 'expires_on', 'token'];
+
     protected $presenter = TokenPresenter::class;
 
-    static $expire = 60 * 24 * 30; // minutes
+    public static $expire = 60 * 24 * 30; // minutes
 
     public function scopeActive($query)
     {
@@ -32,6 +40,7 @@ class Token extends Model
     public function prolong()
     {
         $this->expires_on = static::generateExpireDate();
+
         return $this;
     }
 
@@ -40,13 +49,13 @@ class Token extends Model
         $token = new static ([
             'user_id' => $user->id,
             'expires_on' => static::generateExpireDate(),
-            'token' => str_random(16)
+            'token' => str_random(16),
         ]);
 
         return $token;
     }
 
-    static function generateExpireDate()
+    public static function generateExpireDate()
     {
         return Carbon::now()->addMinutes(self::$expire);
     }

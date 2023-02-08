@@ -1,17 +1,19 @@
-<?php namespace App\Commands\Members;
+<?php
+
+namespace App\Commands\Members;
 
 use App\Commands\Command;
 use App\Helpers\Users\User;
 use App\Helpers\Users\ValueObjects\Date;
 use Illuminate\Http\Request;
 
-class ChangeBirthDay extends Command {
-
+class ChangeBirthDay extends Command
+{
     /**
      * @var User
      */
     public $user;
-    
+
     /**
      * @var User
      */
@@ -24,18 +26,19 @@ class ChangeBirthDay extends Command {
 
     /**
      * ChangeBirthDay constructor.
-     * @param User $user
-     * @param User $manager
-     * @param Date $birthday
+     *
+     * @param  User  $user
+     * @param  User  $manager
+     * @param  Date  $birthday
      */
-    function __construct(User $user, User $manager, Date $birthday)
+    public function __construct(User $user, User $manager, Date $birthday)
     {
         $this->user = $user;
         $this->birthday = $birthday;
         $this->manager = $manager;
     }
 
-    static function fromForm(Request $request, User $user)
+    public static function fromForm(Request $request, User $user)
     {
         $birthday = new Date($request->get('birthdate'));
 

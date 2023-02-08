@@ -1,3 +1,7 @@
-<?php namespace App\Helpers\Albums\Photos;
+<?php
 
-class PhotoStorageException extends \Exception {}
+namespace App\Helpers\Albums\Photos;
+
+class PhotoStorageException extends \Exception
+{
+}

@@ -1,13 +1,15 @@
-<?php namespace Admin;
+<?php
 
-use View, Input, Redirect;
+namespace Admin;
 
 use App\Helpers\Events\EventsRepository;
 use App\Helpers\Events\EventValidator;
+use Input;
 
-class EventController extends AdminBaseController {
-
+class EventController extends AdminBaseController
+{
     protected $events;
+
     protected $validator;
 
     public function __construct(
@@ -90,5 +92,4 @@ class EventController extends AdminBaseController {
 
         return redirect()->action('Admin\EventController@index');
     }
-
 }

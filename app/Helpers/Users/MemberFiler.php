@@ -3,13 +3,13 @@
 namespace App\Helpers\Users;
 
 use Carbon\Carbon;
+use Maatwebsite\Excel\Classes\LaravelExcelWorksheet;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\Writers\CellWriter;
 use Maatwebsite\Excel\Writers\LaravelExcelWriter;
-use Maatwebsite\Excel\Classes\LaravelExcelWorksheet;
 
-class MemberFiler {
-
+class MemberFiler
+{
     protected $users;
 
     public function __construct(UsersRepository $users)
@@ -36,7 +36,7 @@ class MemberFiler {
                 $sheet->fromArray($exMemberData);
                 $sheet->setAutoFilter();
                 $sheet->setAutoSize(true);
-                $sheet->cells('A1:Z1', function(CellWriter $cells) {
+                $sheet->cells('A1:Z1', function (CellWriter $cells) {
                     $cells->setFontWeight(true);
                 });
             });
@@ -45,9 +45,9 @@ class MemberFiler {
                 $sheet->setAutoFilter();
                 $sheet->setAutoSize(true);
                 $sheet->setColumnFormat([
-                    'N' => 'General' // The phone column :)
+                    'N' => 'General', // The phone column :)
                 ]);
-                $sheet->cells('A1:Z1', function(CellWriter $cells) {
+                $sheet->cells('A1:Z1', function (CellWriter $cells) {
                     $cells->setFontWeight(true);
                 });
             });
@@ -56,9 +56,9 @@ class MemberFiler {
                 $sheet->setAutoFilter();
                 $sheet->setAutoSize(true);
                 $sheet->setColumnFormat([
-                    'L' => 'General' // Phone column
+                    'L' => 'General', // Phone column
                 ]);
-                $sheet->cells('A1:Z1', function(CellWriter $cells) {
+                $sheet->cells('A1:Z1', function (CellWriter $cells) {
                     $cells->setFontWeight(true);
                 });
             });

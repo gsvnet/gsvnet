@@ -1,4 +1,6 @@
-<?php namespace Malfonds;
+<?php
+
+namespace Malfonds;
 
 use App\Commands\Members\InviteMember;
 use App\Helpers\Auth\InviteValidator;
@@ -6,7 +8,6 @@ use App\Helpers\Auth\Token;
 use App\Helpers\Auth\TokenRepository;
 use App\Helpers\Core\Exceptions\ValidationException;
 use App\Helpers\Users\UsersRepository;
-use Former;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 
@@ -16,6 +17,7 @@ class InvitationController extends MalfondsController
      * @var UsersRepository
      */
     protected $users;
+
     /**
      * @var TokenRepository
      */
@@ -23,8 +25,9 @@ class InvitationController extends MalfondsController
 
     /**
      * InvitationController constructor.
-     * @param UsersRepository $users
-     * @param TokenRepository $tokens
+     *
+     * @param  UsersRepository  $users
+     * @param  TokenRepository  $tokens
      */
     public function __construct(UsersRepository $users, TokenRepository $tokens)
     {
@@ -33,16 +36,16 @@ class InvitationController extends MalfondsController
         $this->tokens = $tokens;
     }
 
-
     public function create($userId)
     {
         $this->authorize('users.show');
         $member = $this->users->memberOrFormerByIdWithProfile($userId);
         $token = $this->tokens->getActiveByUserId($userId);
         $this->authorize('member-or-reunist');
+
         return view('malfonds.invite', compact('member', 'token'));
     }
-    
+
     public function store($userId)
     {
         $this->authorize('users.show');
@@ -56,6 +59,7 @@ class InvitationController extends MalfondsController
         }
 
         $this->tokens->save($token);
+
         return redirect(action('Malfonds\InvitationController@create', $userId));
     }
 
@@ -69,7 +73,7 @@ class InvitationController extends MalfondsController
         // Don't invite invited people or yourself for now...
         if ($member->isVerified() or $member->getKey() === $request->user()->getKey()) {
             throw new ValidationException(new MessageBag([
-                'verified' => 'Al geverifieerd'
+                'verified' => 'Al geverifieerd',
             ]));
         }
 

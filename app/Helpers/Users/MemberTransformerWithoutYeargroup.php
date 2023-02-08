@@ -1,7 +1,6 @@
-<?php namespace App\Helpers\Users;
+<?php
 
-use App\Helpers\BaseTransformer;
-use App\Helpers\Users\ValueObjects\Gender;
+namespace App\Helpers\Users;
 
 class MemberTransformerWithoutYeargroup extends MemberTransformer
 {

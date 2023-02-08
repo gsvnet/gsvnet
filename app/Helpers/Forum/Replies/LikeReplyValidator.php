@@ -1,20 +1,23 @@
-<?php namespace App\Helpers\Forum\Replies;
+<?php
+
+namespace App\Helpers\Forum\Replies;
 
 use App\Helpers\Core\Validator;
 use App\Helpers\Forum\LikeRepository;
 use Illuminate\Validation\Factory;
 
-class LikeReplyValidator extends Validator {
-
-    static $rules = [
+class LikeReplyValidator extends Validator
+{
+    public static $rules = [
         'replyId' => 'required|exists:forum_replies,id',
-        'userId' => 'required'
+        'userId' => 'required',
     ];
 
     private $likes;
+
     private $replies;
 
-    function __construct(LikeRepository $likes, ReplyRepository $replies, Factory $factory)
+    public function __construct(LikeRepository $likes, ReplyRepository $replies, Factory $factory)
     {
         $this->likes = $likes;
         $this->replies = $replies;
@@ -27,13 +30,11 @@ class LikeReplyValidator extends Validator {
         $likes = $this->likes->countByReplyIdAndUserId($data['replyId'], $data['userId']);
         $reply = $this->replies->requireById($data['replyId']);
 
-        if($likes != 0)
-        {
+        if ($likes != 0) {
             $this->addError('userId', 'Al geliket');
         }
 
-        if($reply->author_id == $data['userId'])
-        {
+        if ($reply->author_id == $data['userId']) {
             $this->addError('userId', 'Niet je eigen posts liken!');
         }
     }

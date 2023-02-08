@@ -1,6 +1,8 @@
-<?php namespace App\Helpers\Users\ValueObjects;
+<?php
 
-class OptionalPhoneNumber extends PhoneNumber {
+namespace App\Helpers\Users\ValueObjects;
 
-    static $rules = [];
+class OptionalPhoneNumber extends PhoneNumber
+{
+    public static $rules = [];
 }

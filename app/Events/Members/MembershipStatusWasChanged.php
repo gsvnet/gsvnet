@@ -1,10 +1,11 @@
-<?php namespace App\Events\Members;
+<?php
+
+namespace App\Events\Members;
 
 use App\Helpers\Users\User;
 
 class MembershipStatusWasChanged extends ProfileEvent
 {
-
     private $oldStatus;
 
     public function __construct(User $user, User $manager, $oldStatus)

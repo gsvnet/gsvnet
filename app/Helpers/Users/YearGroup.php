@@ -1,10 +1,12 @@
-<?php namespace App\Helpers\Users;
+<?php
+
+namespace App\Helpers\Users;
 
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 
-class YearGroup extends Model {
-
+class YearGroup extends Model
+{
     use PresentableTrait;
 
     /**
@@ -13,11 +15,11 @@ class YearGroup extends Model {
      * @var string
      */
     protected $table = 'year_groups';
-    
-    public $presenter = 'App\Helpers\Users\YearGroupPresenter';
 
-    public function userProfiles() {
-        return $this->hasMany('App\Helpers\Users\Profiles\UserProfile');
+    public $presenter = \App\Helpers\Users\YearGroupPresenter::class;
+
+    public function userProfiles()
+    {
+        return $this->hasMany(\App\Helpers\Users\Profiles\UserProfile::class);
     }
-
 }

@@ -1,15 +1,19 @@
-<?php namespace App\Http\Middleware;
+<?php
 
-use Closure;
+namespace App\Http\Middleware;
+
 use App\Helpers\Permissions\UserAccountNotApprovedException;
+use Closure;
 
-class AccountNotApproved {
+class AccountNotApproved
+{
     protected $auth;
 
     public function handle($request, Closure $next)
     {
-        if(! $request->user()->approved)
+        if (! $request->user()->approved) {
             throw new UserAccountNotApprovedException;
+        }
 
         return $next($request);
     }

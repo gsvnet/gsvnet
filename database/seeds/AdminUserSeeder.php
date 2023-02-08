@@ -6,27 +6,26 @@ use App\Helpers\Users\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class AdminUserSeeder extends Seeder {
-
+class AdminUserSeeder extends Seeder
+{
     public function run()
     {
-
         $faker = Faker\Factory::create('en_US');
-        $yearGroupIds = DB::table('year_groups')->lists('id');
-        $regionIds = DB::table('regions')->lists('id');
+        $yearGroupIds = DB::table('year_groups')->pluck('id');
+        $regionIds = DB::table('regions')->pluck('id');
 
-        $harmen = User::create(array(
-            'email'         => 'harmenstoppels@gmail.com',
-            'password'      => bcrypt('helloworld'),
-            'firstname'     => 'Harmen',
-            'lastname'      => 'Stoppels',
-            'middlename'    => '',
-            'username'      => 'stabbles',
-            'type'          => 2,
-            'approved'      => true
-        ));
+        $harmen = User::create([
+            'email' => 'harmenstoppels@gmail.com',
+            'password' => bcrypt('helloworld'),
+            'firstname' => 'Harmen',
+            'lastname' => 'Stoppels',
+            'middlename' => '',
+            'username' => 'stabbles',
+            'type' => 2,
+            'approved' => true,
+        ]);
 
-        $profile = UserProfile::create(array(
+        $profile = UserProfile::create([
             'user_id' => $harmen->id,
             'year_group_id' => $faker->randomElement($yearGroupIds),
             'phone' => '050-4040544',
@@ -41,8 +40,8 @@ class AdminUserSeeder extends Seeder {
             'parent_address' => 'Mooiestraat 3',
             'parent_zip_code' => '9556EX',
             'parent_town' => 'Opende',
-            'parent_phone' => '0800-223344'
-        ));
+            'parent_phone' => '0800-223344',
+        ]);
 
         $profile->regions()->sync([$faker->randomElement($regionIds)]);
 

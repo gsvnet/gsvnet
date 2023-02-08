@@ -1,4 +1,6 @@
-<?php namespace App\Handlers\Commands\Potentials;
+<?php
+
+namespace App\Handlers\Commands\Potentials;
 
 use App\Commands\Potentials\SignUpAsPotentialCommand;
 use App\Events\Potentials\PotentialSignedUp;
@@ -6,8 +8,8 @@ use App\Helpers\Users\Profiles\UserProfile;
 use App\Helpers\Users\User;
 use App\Helpers\Users\UsersRepository;
 
-class SignUpAsPotentialCommandHandler {
-
+class SignUpAsPotentialCommandHandler
+{
     private $users;
 
     public function __construct(UsersRepository $users)
@@ -24,7 +26,7 @@ class SignUpAsPotentialCommandHandler {
             'lastname' => $command->lastname,
             'email' => $command->email,
             'password' => bcrypt($command->password),
-            'type' => User::POTENTIAL
+            'type' => User::POTENTIAL,
         ]);
 
         $this->users->save($user);
@@ -43,7 +45,7 @@ class SignUpAsPotentialCommandHandler {
             'parent_zip_code' => $command->parentsZipCode,
             'parent_town' => $command->parentsTown,
             'parent_phone' => $command->parentsPhone,
-            'parent_email' => $command->parentsEmail
+            'parent_email' => $command->parentsEmail,
         ]);
 
         $user->profile()->save($profile);

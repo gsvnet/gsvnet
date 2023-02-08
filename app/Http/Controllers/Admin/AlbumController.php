@@ -1,15 +1,18 @@
-<?php namespace Admin;
+<?php
 
-use View, Input, Redirect;
+namespace Admin;
 
 use App\Helpers\Albums\AlbumsRepository;
 use App\Helpers\Albums\AlbumValidator;
 use App\Helpers\Albums\Photos\PhotosRepository;
+use Input;
 
-class AlbumController extends AdminBaseController {
-
+class AlbumController extends AdminBaseController
+{
     protected $albums;
+
     protected $photos;
+
     protected $validator;
 
     public function __construct(

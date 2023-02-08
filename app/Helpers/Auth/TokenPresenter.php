@@ -1,13 +1,16 @@
-<?php namespace App\Helpers\Auth;
+<?php
 
-use Laracasts\Presenter\Presenter;
+namespace App\Helpers\Auth;
+
 use Config;
+use Laracasts\Presenter\Presenter;
 
 class TokenPresenter extends Presenter
 {
     /**
      * TokenPresenter constructor.
-     * @param Token $entity
+     *
+     * @param  Token  $entity
      */
     public function __construct(Token $entity)
     {
@@ -16,6 +19,6 @@ class TokenPresenter extends Presenter
 
     public function url()
     {
-        return Config::get('gsvnet.malfondsUrl') . '/login?token=' . $this->entity->token;
+        return Config::get('gsvnet.malfondsUrl').'/login?token='.$this->entity->token;
     }
 }

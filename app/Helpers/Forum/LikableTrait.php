@@ -1,6 +1,9 @@
-<?php namespace App\Helpers\Forum;
+<?php
 
-trait LikableTrait {
+namespace App\Helpers\Forum;
+
+trait LikableTrait
+{
     public function likes()
     {
         return $this->morphMany(Like::class, 'likable');

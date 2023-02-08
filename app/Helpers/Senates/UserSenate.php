@@ -1,20 +1,22 @@
-<?php namespace App\Helpers\Senates;
+<?php
+
+namespace App\Helpers\Senates;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserSenate extends Model {
-
-    protected $table    = 'user_senate';
+class UserSenate extends Model
+{
+    protected $table = 'user_senate';
 
     protected $fillable = ['function'];
 
     public function user()
     {
-        return $this->belongsTo('App\Helpers\Users\User');
+        return $this->belongsTo(\App\Helpers\Users\User::class);
     }
 
     public function senate()
     {
-        return $this->belongsTo('App\Helpers\Senates\Senate');
+        return $this->belongsTo(\App\Helpers\Senates\Senate::class);
     }
 }

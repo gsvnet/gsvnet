@@ -1,11 +1,13 @@
-<?php namespace App\Helpers\Users\Profiles;
+<?php
 
-use Laracasts\Presenter\PresentableTrait;
-use Illuminate\Database\Eloquent\Model;
+namespace App\Helpers\Users\Profiles;
+
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
 
-class UserProfile extends Model {
-
+class UserProfile extends Model
+{
     use PresentableTrait;
 
     /**
@@ -44,47 +46,47 @@ class UserProfile extends Model {
         'profession',
         'business_url',
         'alive',
-        'receive_newspaper'
+        'receive_newspaper',
     ];
-    
-    public $presenter = 'App\Helpers\Users\Profiles\ProfilePresenter';
+
+    public $presenter = \App\Helpers\Users\Profiles\ProfilePresenter::class;
 
     public function scopeSearchNameAndPhone($query, $words)
     {
         foreach ($words as $key) {
-            $query = $query->where(function($q) use ($key) {
-                $q->orwhere('firstname', 'like', $key . '%')
-                ->orwhere('middlename', 'like', $key . '%')
-                ->orwhere('lastname', 'like', $key . '%');
-                });
+            $query = $query->where(function ($q) use ($key) {
+                $q->orwhere('firstname', 'like', $key.'%')
+                ->orwhere('middlename', 'like', $key.'%')
+                ->orwhere('lastname', 'like', $key.'%');
+            });
         }
 
         return $query;
     }
 
-    public function inmates() 
+    public function inmates()
     {
         return $this->whereRaw("REPLACE(`address`, ' ' ,'') LIKE ?", [str_replace(' ', '', $this->address)])
         ->where('user_id', '!=', $this->user_id)
-        ->whereHas('user', function($q){
+        ->whereHas('user', function ($q) {
             $q->where('type', 2);
         })
         ->get();
     }
-    
+
     public function yearGroup()
     {
-        return $this->belongsTo('App\Helpers\Users\YearGroup');
+        return $this->belongsTo(\App\Helpers\Users\YearGroup::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Helpers\Users\User');
+        return $this->belongsTo(\App\Helpers\Users\User::class);
     }
 
     public function regions()
     {
-        return $this->belongsToMany('App\Helpers\Regions\Region', 'region_user_profile')
+        return $this->belongsToMany(\App\Helpers\Regions\Region::class, 'region_user_profile')
                 ->orderBy(\DB::raw('end_date IS NULL'), 'desc')
                 ->orderBy('end_date', 'desc')
                 ->orderBy('name', 'asc');
@@ -94,23 +96,26 @@ class UserProfile extends Model {
     {
         $region = $this->regions->first();
 
-        if($region && $region->end_date) {
+        if ($region && $region->end_date) {
             $end_date = Carbon::createFromFormat('Y-m-d H:i:s', $region->end_date);
-            
-            if($end_date->isPast()) {
+
+            if ($end_date->isPast()) {
                 $region = null;
             }
         }
-        return !$region ? null : $region;
+
+        return ! $region ? null : $region;
     }
 
     public function getFormerRegionsAttribute()
     {
-        return $this->regions->filter(function ($region, $i){
-            if($region->end_date) {
+        return $this->regions->filter(function ($region, $i) {
+            if ($region->end_date) {
                 $end_date = Carbon::createFromFormat('Y-m-d H:i:s', $region->end_date);
+
                 return $end_date->isPast();
             }
+
             return false;
         });
     }

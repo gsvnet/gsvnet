@@ -1,10 +1,12 @@
-<?php namespace App\Helpers\Users\Profiles;
+<?php
+
+namespace App\Helpers\Users\Profiles;
 
 use App\Helpers\Core\Validator;
 
 class ProfileUpdatorValidator extends Validator
 {
-    static $rules = [
+    public static $rules = [
         'photo_path' => 'image',
         'study' => 'required',
         'address' => 'required',
@@ -17,6 +19,6 @@ class ProfileUpdatorValidator extends Validator
         'parent_address' => 'required_if:parent_same_address,0',
         'parent_zip_code' => 'required_if:parent_same_address,0',
         'parent_town' => 'required_if:parent_same_address,0',
-        'parent_phone' => 'required'
+        'parent_phone' => 'required',
     ];
 }

@@ -1,12 +1,14 @@
-<?php namespace App\Commands\Users;
+<?php
+
+namespace App\Commands\Users;
 
 use App\Commands\Command;
 use App\Helpers\Users\User;
 use App\Helpers\Users\ValueObjects\Email;
 use Illuminate\Http\Request;
 
-class ChangeEmail extends Command {
-
+class ChangeEmail extends Command
+{
     /**
      * @var User
      */
@@ -24,20 +26,22 @@ class ChangeEmail extends Command {
 
     /**
      * ChangeEmail constructor.
-     * @param User $user
-     * @param User $manager
-     * @param Email $email
+     *
+     * @param  User  $user
+     * @param  User  $manager
+     * @param  Email  $email
      */
-    function __construct(User $user, User $manager, Email $email)
+    public function __construct(User $user, User $manager, Email $email)
     {
         $this->email = $email;
         $this->user = $user;
         $this->manager = $manager;
     }
 
-    static function fromForm(Request $request, User $user)
+    public static function fromForm(Request $request, User $user)
     {
         $email = new Email($request->get('email'));
+
         return new self($user, $request->user(), $email);
     }
 }

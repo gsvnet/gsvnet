@@ -6,23 +6,35 @@ use App\Commands\Command;
 use App\Helpers\Users\User;
 use Illuminate\Http\Request;
 
-class ForgetMember extends Command {
-
+class ForgetMember extends Command
+{
     public $user;
+
     public $manager;
+
     public $name;
+
     public $username;
+
     public $address;
+
     public $email;
+
     public $profilePicture;
+
     public $birthDay;
+
     public $gender;
+
     public $phone;
+
     public $study;
+
     public $business;
+
     public $parents;
 
-    function __construct(
+    public function __construct(
         User $user,
         User $manager,
         $name,
@@ -36,8 +48,7 @@ class ForgetMember extends Command {
         $study,
         $business,
         $parents
-    )
-    {
+    ) {
         $this->user = $user;
         $this->manager = $manager;
         $this->name = $name;
@@ -53,7 +64,7 @@ class ForgetMember extends Command {
         $this->parents = $parents;
     }
 
-    static function fromForm(Request $request, User $user)
+    public static function fromForm(Request $request, User $user)
     {
         return new self(
             $user,

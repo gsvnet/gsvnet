@@ -1,12 +1,14 @@
-<?php namespace App\Commands\Members;
+<?php
+
+namespace App\Commands\Members;
 
 use App\Commands\Command;
-use App\Helpers\Users\ValueObjects\Study;
 use App\Helpers\Users\User;
+use App\Helpers\Users\ValueObjects\Study;
 use Illuminate\Http\Request;
 
-class ChangeStudy extends Command {
-
+class ChangeStudy extends Command
+{
     /**
      * @var User
      */
@@ -24,18 +26,19 @@ class ChangeStudy extends Command {
 
     /**
      * ChangeStudy constructor.
-     * @param User $user
-     * @param User $manager
-     * @param Study $study
+     *
+     * @param  User  $user
+     * @param  User  $manager
+     * @param  Study  $study
      */
-    function __construct(User $user, User $manager, Study $study)
+    public function __construct(User $user, User $manager, Study $study)
     {
         $this->user = $user;
         $this->study = $study;
         $this->manager = $manager;
     }
 
-    static function fromForm(Request $request, User $user)
+    public static function fromForm(Request $request, User $user)
     {
         $address = new Study(
             $request->get('study'),

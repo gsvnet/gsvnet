@@ -1,10 +1,12 @@
-<?php namespace App\Handlers\Commands\Members;
+<?php
+
+namespace App\Handlers\Commands\Members;
 
 use App\Commands\Members\ChangeYearGroup;
 use App\Events\Members\YearGroupWasChanged;
 
-class ChangeYearGroupHandler {
-
+class ChangeYearGroupHandler
+{
     public function handle(ChangeYearGroup $command)
     {
         $profile = $command->user->profile;

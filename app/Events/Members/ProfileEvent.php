@@ -1,7 +1,9 @@
-<?php namespace App\Events\Members;
+<?php
 
-use Carbon\Carbon;
+namespace App\Events\Members;
+
 use App\Helpers\Users\User;
+use Carbon\Carbon;
 use Illuminate\Queue\SerializesModels;
 
 abstract class ProfileEvent
@@ -25,8 +27,9 @@ abstract class ProfileEvent
 
     /**
      * ProfileEvent constructor.
-     * @param User $user
-     * @param User $manager
+     *
+     * @param  User  $user
+     * @param  User  $manager
      */
     public function __construct(User $user, User $manager)
     {

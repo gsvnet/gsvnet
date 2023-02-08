@@ -1,12 +1,13 @@
-<?php namespace App\Helpers\Users;
+<?php
 
+namespace App\Helpers\Users;
+
+use App\Helpers\Core\BaseRepository;
 use Cache;
 use Carbon\Carbon;
-use App\Helpers\Core\BaseRepository;
 
 class UsersRepository extends BaseRepository
 {
-
     protected $model;
 
     public function __construct(User $model)
@@ -75,7 +76,7 @@ class UsersRepository extends BaseRepository
     /**
      * Get paginated users
      *
-     * @param int $amount
+     * @param  int  $amount
      */
     public function paginate($amount)
     {
@@ -160,7 +161,7 @@ class UsersRepository extends BaseRepository
 
     public function filterExistingIds(array $ids)
     {
-        return User::whereIn('id', $ids)->lists('id');
+        return User::whereIn('id', $ids)->pluck('id');
     }
 
     public function isEmailAddressTaken($email, $excludeId)
@@ -173,12 +174,12 @@ class UsersRepository extends BaseRepository
     /**
      * Create user
      *
-     * @param array $input
+     * @param  array  $input
      * @return User
      */
     public function create(array $input)
     {
-        return $user = User::create(array(
+        return $user = User::create([
             'firstname' => $input['register-firstname'],
             'middlename' => $input['register-middlename'],
             'lastname' => $input['register-lastname'],
@@ -186,13 +187,13 @@ class UsersRepository extends BaseRepository
             'username' => $input['register-username'],
             'password' => bcrypt($input['register-password']),
             'type' => $input['type'],
-        ));
+        ]);
     }
 
     /**
      * Delete User
      *
-     * @param int $id
+     * @param  int  $id
      * @return User
      * @TODO: delete all user members references
      */
@@ -224,7 +225,7 @@ class UsersRepository extends BaseRepository
     {
         $user = $this->byId($id);
 
-        if (!$user->isPotential()) {
+        if (! $user->isPotential()) {
             throw new \Exception;
         }
 
@@ -251,7 +252,7 @@ class UsersRepository extends BaseRepository
             return [
                 'from' => Carbon::parse($from),
                 'to' => Carbon::parse($to),
-                'users' => $users
+                'users' => $users,
             ];
         });
     }
@@ -275,7 +276,7 @@ class UsersRepository extends BaseRepository
             return [
                 'from' => Carbon::parse($from),
                 'to' => Carbon::parse($to),
-                'users' => $users
+                'users' => $users,
             ];
         });
     }
@@ -308,7 +309,7 @@ class UsersRepository extends BaseRepository
             ->groupBy('forum_replies.author_id')
             ->orderBy('num', 'DESC', 'users.lastname')
             ->get();
-        
+
         $rank = 1;
         foreach ($users as $user) {
             if ($user->id == $activeUser->id) {
@@ -316,6 +317,7 @@ class UsersRepository extends BaseRepository
             }
             $rank++;
         }
+
         return $rank;
     }
 

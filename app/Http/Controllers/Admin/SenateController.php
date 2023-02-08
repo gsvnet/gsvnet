@@ -1,15 +1,18 @@
-<?php namespace Admin;
+<?php
 
-use View, Input, Redirect;
+namespace Admin;
 
 use App\Helpers\Senates\SenatesRepository;
 use App\Helpers\Senates\SenateValidator;
 use App\Helpers\Users\UsersRepository;
+use Input;
 
-class SenateController extends AdminBaseController {
-
+class SenateController extends AdminBaseController
+{
     protected $senates;
+
     protected $users;
+
     protected $validator;
 
     public function __construct(
@@ -53,11 +56,10 @@ class SenateController extends AdminBaseController {
         $members = $this->senates->members($id);
 
         $users = $this->users->all();
-        $users = $users->map(function($user)
-        {
+        $users = $users->map(function ($user) {
             return [
-                'id' => $user->id, 
-                'name' => $user->present()->fullName
+                'id' => $user->id,
+                'name' => $user->present()->fullName,
             ];
         });
 
@@ -73,11 +75,10 @@ class SenateController extends AdminBaseController {
         $members = $senate->members;
 
         $users = $this->users->all();
-        $users = $users->map(function($user)
-        {
+        $users = $users->map(function ($user) {
             return [
-                'id' => $user->id, 
-                'name' => $user->present()->fullName
+                'id' => $user->id,
+                'name' => $user->present()->fullName,
             ];
         });
 

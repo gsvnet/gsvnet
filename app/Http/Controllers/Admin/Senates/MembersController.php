@@ -1,15 +1,16 @@
-<?php namespace Admin\Senates;
+<?php
 
-use App\Helpers\Senates\SenatesRepository;
-use App\Helpers\Users\UsersRepository;
+namespace Admin\Senates;
 
 use Admin\AdminBaseController;
-use Redirect, Input, View;
+use App\Helpers\Senates\SenatesRepository;
+use App\Helpers\Users\UsersRepository;
+use Input;
 
-class MembersController extends AdminBaseController {
-
-
+class MembersController extends AdminBaseController
+{
     protected $senates;
+
     protected $users;
 
     public function __construct(
@@ -31,8 +32,8 @@ class MembersController extends AdminBaseController {
         $senate = $this->senates->byId($senate);
         $member = $this->users->byId($member_id);
 
-        $senate->members()->attach($member_id,  [
-            'function' => $input['function']
+        $senate->members()->attach($member_id, [
+            'function' => $input['function'],
         ]);
 
         flash()->success("{$member->present()->fullName} succesvol toegevoegd aan {$senate->name}");

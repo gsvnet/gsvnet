@@ -5,11 +5,11 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class EventsTableSeeder extends Seeder {
-
-	public function run()
-	{
-		$faker = Faker\Factory::create('nl_NL');
+class EventsTableSeeder extends Seeder
+{
+    public function run()
+    {
+        $faker = Faker\Factory::create('nl_NL');
         $events = [];
         $now = Carbon::now();
 
@@ -25,21 +25,21 @@ class EventsTableSeeder extends Seeder {
             $events[] = [
                 'title' => $title,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quicquid opinemur.',
-                'meta_description' => 'Hier komt een beschrijving van ' . $title,
-                'slug' => Str::slug($title) . '-' . str_random(4),
+                'meta_description' => 'Hier komt een beschrijving van '.$title,
+                'slug' => Str::slug($title).'-'.str_random(4),
                 'location' => $faker->randomElement($places),
-                'whole_day' => rand(0,1),
+                'whole_day' => rand(0, 1),
                 'type' => rand(0, 3),
-                'public' => rand(1,10) > 3,
-                'start_time' => $randHour . ':' . rand(0, 59),
+                'public' => rand(1, 10) > 3,
+                'start_time' => $randHour.':'.rand(0, 59),
                 'start_date' => $startDate->format('Y-m-d'),
-                'end_date' => $startDate->add(date_interval_create_from_date_string(rand(0,2) . ' days'))->format('Y-m-d'),
-                'published' => rand(1,10) > 3,
+                'end_date' => $startDate->add(date_interval_create_from_date_string(rand(0, 2).' days'))->format('Y-m-d'),
+                'published' => rand(1, 10) > 3,
                 'created_at' => $now,
                 'updated_at' => $now,
             ];
         }
 
         DB::table('events')->insert($events);
-	}
+    }
 }

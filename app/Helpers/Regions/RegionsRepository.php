@@ -1,13 +1,13 @@
-<?php namespace App\Helpers\Regions;
+<?php
 
-use App\Helpers\Users\User;
+namespace App\Helpers\Regions;
 
-class RegionsRepository {
-
+class RegionsRepository
+{
     /**
      * Get by id
      *
-     * @param int $id
+     * @param  int  $id
      * @return Region
      */
     public function byId($id)
@@ -18,7 +18,7 @@ class RegionsRepository {
     /**
      * Get by id, returning null if it doesn't exist
      *
-     * @param int $id
+     * @param  int  $id
      * @return Region or null
      */
     public function tryById($id)
@@ -26,8 +26,7 @@ class RegionsRepository {
         return Region::find($id);
     }
 
-
-    public function byIds(Array $ids)
+    public function byIds(array $ids)
     {
         return Region::whereIn('id', $ids)->get();
     }
@@ -35,27 +34,25 @@ class RegionsRepository {
     /**
      * Check if region exists
      *
-     * @param int $id
+     * @param  int  $id
      * @return Region
      */
     public function exists($id)
     {
-        try
-        {
+        try {
             $this->byId($id);
-        }
-        catch (ModelNotFoundException $e)
-        {
+        } catch (ModelNotFoundException $e) {
             return false;
         }
+
         return true;
     }
 
     /**
-    * Get all regions
-    *
-    * @return Collection
-    */
+     * Get all regions
+     *
+     * @return Collection
+     */
     public function all()
     {
         return Region::orderBy(\DB::raw('end_date IS NULL'), 'desc')
@@ -65,11 +62,10 @@ class RegionsRepository {
     }
 
     /**
-    * Get current regions
-    *
-    * @return Collection
-    */
-
+     * Get current regions
+     *
+     * @return Collection
+     */
     public function current()
     {
         return Region::current()
@@ -79,11 +75,10 @@ class RegionsRepository {
     }
 
     /**
-    * Get former regions
-    *
-    * @return Collection
-    */
-
+     * Get former regions
+     *
+     * @return Collection
+     */
     public function former()
     {
         return Region::former()

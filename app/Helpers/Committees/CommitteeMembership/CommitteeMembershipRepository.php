@@ -1,14 +1,16 @@
-<?php namespace App\Helpers\Committees\CommitteeMembership;
+<?php
 
-use App\Helpers\Users\User;
+namespace App\Helpers\Committees\CommitteeMembership;
+
 use App\Helpers\Committees\Committee;
+use App\Helpers\Users\User;
 
-class CommitteeMembershipRepository {
-
+class CommitteeMembershipRepository
+{
     /**
      * Get by id
      *
-     * @param int $id
+     * @param  int  $id
      * @return Committee
      */
     public function byId($id)
@@ -17,15 +19,15 @@ class CommitteeMembershipRepository {
     }
 
     /**
-    * Create committeeMembership
-    *
-    * @param array $input
-    * @return Committee
-    */
+     * Create committeeMembership
+     *
+     * @param  array  $input
+     * @return Committee
+     */
     public function create(User $user, Committee $committee, $input)
     {
         $committeeMembership = new CommitteeMembership;
-        $committeeMembership->user_id  = $user->id;
+        $committeeMembership->user_id = $user->id;
         $committeeMembership->committee_id = $committee->id;
         $committeeMembership->start_date = $input['start_date'];
         $committeeMembership->end_date = $input['end_date'];
@@ -36,12 +38,12 @@ class CommitteeMembershipRepository {
     }
 
     /**
-    * Update committeeMembership
-    *
-    * @param int $id
-    * @param array $input
-    * @return Committee
-    */
+     * Update committeeMembership
+     *
+     * @param  int  $id
+     * @param  array  $input
+     * @return Committee
+     */
     public function update($id, array $input)
     {
         $committeeMembership = $this->byId($id);
@@ -55,12 +57,12 @@ class CommitteeMembershipRepository {
     }
 
     /**
-    * Delete committeeMembership
-    *
-    * @param int $id
-    * @return Committe
-    * @TODO: delete all committee members references
-    */
+     * Delete committeeMembership
+     *
+     * @param  int  $id
+     * @return Committe
+     * @TODO: delete all committee members references
+     */
     public function delete($id)
     {
         $committeeMembership = $this->byId($id);

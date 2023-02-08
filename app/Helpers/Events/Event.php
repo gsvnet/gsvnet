@@ -1,17 +1,19 @@
-<?php namespace App\Helpers\Events;
+<?php
 
-use Illuminate\Database\Eloquent\Model;
-use Laracasts\Presenter\PresentableTrait;
+namespace App\Helpers\Events;
+
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Laracasts\Presenter\PresentableTrait;
 
-class Event extends Model {
-
+class Event extends Model
+{
     use PresentableTrait;
-    
-    protected $guarded = array();
 
-    public $presenter = 'App\Helpers\Events\EventPresenter';
+    protected $guarded = [];
+
+    public $presenter = \App\Helpers\Events\EventPresenter::class;
 
     public function scopePublic($query)
     {
@@ -20,7 +22,10 @@ class Event extends Model {
 
     public function scopePublished($query, $published = true)
     {
-        if (! $published) { return $query; }
+        if (! $published) {
+            return $query;
+        }
+
         return $query->wherePublished($published);
     }
 
@@ -57,7 +62,7 @@ class Event extends Model {
         if ($this->exists) {
             $query->where('id', '!=', $this->id);
         }
-        
+
         return $query->count();
     }
 
@@ -66,9 +71,9 @@ class Event extends Model {
         if ($i == 0) {
             $append = '';
         } else {
-            $append = '-' . $i;
+            $append = '-'.$i;
         }
 
-        return Str::slug($this->title . $append);
+        return Str::slug($this->title.$append);
     }
 }

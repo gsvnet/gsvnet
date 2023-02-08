@@ -1,12 +1,14 @@
-<?php namespace App\Helpers\Users\Profiles;
+<?php
+
+namespace App\Helpers\Users\Profiles;
 
 use App\Helpers\Core\BaseRepository;
 use App\Helpers\Users\User;
-use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Cache;
 
-class ProfilesRepository extends BaseRepository {
-
+class ProfilesRepository extends BaseRepository
+{
     public function __construct(UserProfile $model)
     {
         $this->model = $model;
@@ -20,12 +22,11 @@ class ProfilesRepository extends BaseRepository {
     /**
      *   Search for members and paginate
      *
-     * @param string $search
-     * @param int $region
-     * @param int $yearGroup
-     * @param int|array $type
-     * @param int $amount
-     *
+     * @param  string  $search
+     * @param  int  $region
+     * @param  int  $yearGroup
+     * @param  int|array  $type
+     * @param  int  $amount
      * @return UserProfile[]
      */
     public function searchAndPaginate($search, $region = null, $yearGroup = null, $type = 2, $amount = 20)
@@ -41,56 +42,57 @@ class ProfilesRepository extends BaseRepository {
     /**
      *   Search for users + profiles
      *
-     * @param string $keyword
-     * @param int $region
-     * @param int $yearGroup
-     * @param int $type
-     *
+     * @param  string  $keyword
+     * @param  int  $region
+     * @param  int  $yearGroup
+     * @param  int  $type
      * @return UserProfile[]
      */
     public function search($keyword = '', $region = null, $yearGroup = null, $type = 2)
     {
         // Initialize basic query
         $query = UserProfile::with('user', 'yearGroup', 'regions')
-            ->join('users', function($join) use ($type) {
+            ->join('users', function ($join) {
                 $join->on('users.id', '=', 'user_profiles.user_id');
             })
             ->leftJoin('region_user_profile', 'user_profiles.id', '=', 'region_user_profile.user_profile_id')
             ->leftJoin('regions', 'region_user_profile.region_id', '=', 'regions.id')
             ->groupBy('user_profiles.id');
 
-        if(is_array($type))
+        if (is_array($type)) {
             $query->whereIn('users.type', $type);
-        else
+        } else {
             $query->where('users.type', '=', $type);
+        }
 
         $query->orderBy('users.lastname')->orderBy('users.firstname');
 
-        if ( ! empty($keyword))
-        {
+        if (! empty($keyword)) {
             $words = explode(' ', $keyword);
 
             $query->searchNameAndPhone($words);
         }
 
         // Search for members inside region if region is valid
-        if (isset($region))
+        if (isset($region)) {
             $query->where('regions.id', '=', $region);
+        }
 
         // Search for members inside year group if year group is valid
-        if (isset($yearGroup))
+        if (isset($yearGroup)) {
             $query->where('year_group_id', '=', $yearGroup);
+        }
 
         // Retrieve results
         return $query;
     }
 
     /**
-    *   Finds all users whose birthday is in coming $weeks
-    *
-    *   @param int $weeks
-    *   @return UserProfile[]
-    */
+     *   Finds all users whose birthday is in coming $weeks
+     *
+     *   @param  int  $weeks
+     *   @return UserProfile[]
+     */
     public function byUpcomingBirthdays($weeks)
     {
         $now = new Carbon;
@@ -100,45 +102,43 @@ class ProfilesRepository extends BaseRepository {
 
         $birthday = "date_format(birthdate, \"{$year}-%m-%d\")";
 
-        return Cache::remember('birthdays', 10, function() use ($birthday, $from, $to)
-        {
+        return Cache::remember('birthdays', 10, function () use ($birthday, $from, $to) {
             return UserProfile::whereRaw("$birthday between \"{$from}\" and \"{$to}\"")
-                ->whereHas('user', function($q) {
+                ->whereHas('user', function ($q) {
                     $q->where('type', '=', User::Member);
                 })
                 ->orderBy(\DB::raw($birthday))
                 ->orderBy('birthdate', 'ASC')
-                ->get(array('*', \DB::raw("{$birthday} as birthday")));
+                ->get(['*', \DB::raw("{$birthday} as birthday")]);
         });
     }
 
-
     /**
-    * Create profile
-    *
-    * @param array $input
-    * @return User
-    */
+     * Create profile
+     *
+     * @param  array  $input
+     * @return User
+     */
     public function create(User $user, array $input)
     {
-        $profile = UserProfile::create(array('user_id' => $user->id));
+        $profile = UserProfile::create(['user_id' => $user->id]);
         $profile->user_id = $user->id;
 
-        $profile->phone            = $input['potential-phone'];
-        $profile->address          = $input['potential-address'];
-        $profile->zip_code         = $input['potential-zip-code'];
-        $profile->town             = $input['potential-town'];
-        $profile->study            = $input['potential-study'];
-        $profile->birthdate        = $input['potential-birthdate'];
-        $profile->gender           = $input['potential-gender'];
-        $profile->student_number   = $input['potential-student-number'];
+        $profile->phone = $input['potential-phone'];
+        $profile->address = $input['potential-address'];
+        $profile->zip_code = $input['potential-zip-code'];
+        $profile->town = $input['potential-town'];
+        $profile->study = $input['potential-study'];
+        $profile->birthdate = $input['potential-birthdate'];
+        $profile->gender = $input['potential-gender'];
+        $profile->student_number = $input['potential-student-number'];
 
-        $profile->parent_phone     = $input['parents-phone'];
-        $profile->parent_address   = $input['parents-address'];
-        $profile->parent_zip_code  = $input['parents-zip-code'];
-        $profile->parent_town      = $input['parents-town'];
+        $profile->parent_phone = $input['parents-phone'];
+        $profile->parent_address = $input['parents-address'];
+        $profile->parent_zip_code = $input['parents-zip-code'];
+        $profile->parent_town = $input['parents-town'];
 
-        $profile->photo_path       = $input['photo_path'];
+        $profile->photo_path = $input['photo_path'];
 
         $profile->save();
         // Set user as potential
@@ -149,12 +149,12 @@ class ProfilesRepository extends BaseRepository {
     }
 
     /**
-    * Update profile
-    *
-    * @param int $id
-    * @param array $input
-    * @return User
-    */
+     * Update profile
+     *
+     * @param  int  $id
+     * @param  array  $input
+     * @return User
+     */
     public function update($id, array $input)
     {
         $profile = $this->byId($id);
@@ -166,12 +166,12 @@ class ProfilesRepository extends BaseRepository {
     }
 
     /**
-    * Delete User
-    *
-    * @param int $id
-    * @return Committe
-    * @TODO: delete all profile members references
-    */
+     * Delete User
+     *
+     * @param  int  $id
+     * @return Committe
+     * @TODO: delete all profile members references
+     */
     public function delete($id)
     {
         $profile = $this->byId($id);

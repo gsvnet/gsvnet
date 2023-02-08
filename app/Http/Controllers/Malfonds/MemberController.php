@@ -1,4 +1,6 @@
-<?php namespace Malfonds;
+<?php
+
+namespace Malfonds;
 
 use App\Commands\Members\ChangeAddress;
 use App\Commands\Members\ChangeGender;
@@ -27,7 +29,7 @@ class MemberController extends CoreApiController
      * @var UsersRepository
      */
     protected $users;
-    
+
     /**
      * @var TokenRepository
      */
@@ -35,8 +37,9 @@ class MemberController extends CoreApiController
 
     /**
      * MemberController constructor.
-     * @param UsersRepository $users
-     * @param TokenRepository $tokens
+     *
+     * @param  UsersRepository  $users
+     * @param  TokenRepository  $tokens
      */
     public function __construct(UsersRepository $users, TokenRepository $tokens)
     {
@@ -65,6 +68,7 @@ class MemberController extends CoreApiController
     public function me(Request $request)
     {
         $member = $this->users->memberOrFormerByIdWithProfile($request->user()->id);
+
         return $this->withItem($member, new MemberTransformer);
     }
 
@@ -74,6 +78,7 @@ class MemberController extends CoreApiController
         $this->authorize('user.manage.name', $member);
         $command = ChangeName::fromForm($request, $member);
         $this->dispatch($command);
+
         return $this->itemWasUpdated()->withItem($member, new MemberTransformer);
     }
 
@@ -128,7 +133,7 @@ class MemberController extends CoreApiController
         $member = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.name', $member);
         event(new NameWasVerified($member, $member));
-        
+
         return $this->itemWasUpdated()->withItem($member, new MemberTransformer());
     }
 
@@ -171,13 +176,13 @@ class MemberController extends CoreApiController
     public function family($id)
     {
         $this->authorize('users.show');
-        
+
         $you = $this->users->memberOrFormerByIdWithProfile($id);
         $children = $this->users->childrenWithProfileAndYearGroup($you);
         $parents = $this->users->parentsWithProfileAndYearGroup($you);
 
         $transform = $this->getFractalService();
-        
+
         return $this->withArray([
             'children' => $transform->collection($children, new MemberTransformer),
             'parents' => $transform->collection($parents, new MemberTransformer),
@@ -204,15 +209,15 @@ class MemberController extends CoreApiController
     public function requestInvite(Request $request, $userId)
     {
         $this->authorize('users.show');
-        
+
         $member = $this->users->memberOrFormerByIdWithProfile($userId);
 
         if ($member->isVerified() or $member->getKey() === $request->user()->getKey()) {
             return $this->errorBadRequest();
         }
-        
+
         $token = $this->tokens->getOrCreateFor($member);
-        
+
         return $this->itemWasUpdated()->withItem($token, new TokenTransformer);
     }
 }

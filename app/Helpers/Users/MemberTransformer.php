@@ -1,4 +1,6 @@
-<?php namespace App\Helpers\Users;
+<?php
+
+namespace App\Helpers\Users;
 
 use App\Helpers\BaseTransformer;
 use App\Helpers\Users\ValueObjects\Gender;
@@ -43,7 +45,7 @@ class MemberTransformer extends BaseTransformer
     public function includeYearGroup(User $member)
     {
         $group = $member->profile->yearGroup;
-        
+
         return $this->item($group, new YearGroupTransformer);
     }
 }

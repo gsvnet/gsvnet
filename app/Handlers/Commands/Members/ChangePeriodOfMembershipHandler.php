@@ -1,4 +1,6 @@
-<?php namespace App\Handlers\Commands\Members;
+<?php
+
+namespace App\Handlers\Commands\Members;
 
 use App\Commands\Members\ChangePeriodOfMembership;
 use App\Events\Members\PeriodOfMembershipWasChanged;
@@ -13,7 +15,8 @@ class ChangePeriodOfMembershipHandler
 
     /**
      * ChangePeriodOfMembershipHandler constructor.
-     * @param ProfilesRepository $profiles
+     *
+     * @param  ProfilesRepository  $profiles
      */
     public function __construct(ProfilesRepository $profiles)
     {

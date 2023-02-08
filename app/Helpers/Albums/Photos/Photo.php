@@ -1,22 +1,26 @@
-<?php namespace App\Helpers\Albums\Photos;
+<?php
 
-use URL;
+namespace App\Helpers\Albums\Photos;
+
 use Illuminate\Database\Eloquent\Model;
+use URL;
 
-class Photo extends Model {
+class Photo extends Model
+{
     // Define the dimensions of small and wide photos
 
-    protected $fillable = array('name', 'src_path', 'album_id');
+    protected $fillable = ['name', 'src_path', 'album_id'];
+
     protected $imageHandler;
 
-    public static $rules = array(
-        'album_id'    => 'required|integer',
-    );
+    public static $rules = [
+        'album_id' => 'required|integer',
+    ];
 
     // The photo's album
     public function album()
     {
-        return $this->belongsTo('App\Helpers\Albums\Album');
+        return $this->belongsTo(\App\Helpers\Albums\Album::class);
     }
 
     // Return the path to the original image

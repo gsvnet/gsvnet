@@ -1,9 +1,10 @@
-<?php namespace App\Handlers\Events;
+<?php
+
+namespace App\Handlers\Events;
 
 use App\Events\Members\MembershipStatusWasChanged;
 use App\Events\Members\ProfileEvent;
 use App\Helpers\Newsletters\NewsletterList;
-use App\Helpers\Newsletters\NewsletterManager;
 use App\Helpers\Users\User;
 use App\Helpers\Users\UserTransformer;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -20,6 +21,7 @@ class NewsletterInformer implements ShouldQueue
      * @var UserTransformer
      */
     private $transformer;
+
     /**
      * @var Writer
      */
@@ -27,9 +29,10 @@ class NewsletterInformer implements ShouldQueue
 
     /**
      * NewsletterInformer constructor.
-     * @param NewsletterList $newsletterList
-     * @param UserTransformer $transformer
-     * @param Writer $log
+     *
+     * @param  NewsletterList  $newsletterList
+     * @param  UserTransformer  $transformer
+     * @param  Writer  $log
      */
     public function __construct(NewsletterList $newsletterList, UserTransformer $transformer, Writer $log)
     {
@@ -44,8 +47,9 @@ class NewsletterInformer implements ShouldQueue
 
         // Remove from old mailing lists if necessary
         if ($event instanceof MembershipStatusWasChanged) {
-            if (in_array($event->getOldStatus(), [User::MEMBER, User::REUNIST, User::EXMEMBER]))
+            if (in_array($event->getOldStatus(), [User::MEMBER, User::REUNIST, User::EXMEMBER])) {
                 $this->list->unsubscribeFrom($event->getOldStatus(), $user->email);
+            }
         }
 
         // Add to mailing lists
@@ -54,7 +58,7 @@ class NewsletterInformer implements ShouldQueue
             try {
                 $this->list->subscribeTo($user->type, $user->email, $data);
             } catch (\Mailchimp_Error $e) {
-                $this->log->error('Something has gone wrong when accessing MailChimp: ' . $e->getMessage());
+                $this->log->error('Something has gone wrong when accessing MailChimp: '.$e->getMessage());
                 // simply ignore MailChimp errors for now.
             }
         }

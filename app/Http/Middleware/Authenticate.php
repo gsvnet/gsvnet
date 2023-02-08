@@ -1,27 +1,29 @@
-<?php namespace App\Http\Middleware;
+<?php
+
+namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class Authenticate {
+class Authenticate
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        if (Auth::guest()) {
+            if ($request->ajax()) {
+                return response('Unauthorized.', 401);
+            } else {
+                return redirect()->guest(action('SessionController@getLogin'));
+            }
+        }
 
-	/**
-	 * Handle an incoming request.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \Closure  $next
-	 * @return mixed
-	 */
-	public function handle($request, Closure $next)
-	{
-		if (Auth::guest()) {
-			if ($request->ajax()) {
-				return response('Unauthorized.', 401);
-			} else {
-				return redirect()->guest(action('SessionController@getLogin'));
-			}
-		}
-		return $next($request);
-	}
-
+        return $next($request);
+    }
 }

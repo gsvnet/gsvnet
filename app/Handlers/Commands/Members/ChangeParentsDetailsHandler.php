@@ -1,16 +1,16 @@
-<?php namespace App\Handlers\Commands\Members;
+<?php
 
-use App\Commands\Members\ChangeAddress;
+namespace App\Handlers\Commands\Members;
+
 use App\Commands\Members\ChangeParentsDetails;
-use App\Events\Members\AddressWasChanged;
 use App\Events\Members\ParentDetailsWereChanged;
 use App\Helpers\Users\Profiles\ProfilesRepository;
 
-class ChangeParentsDetailsHandler {
-
+class ChangeParentsDetailsHandler
+{
     private $profiles;
 
-    function __construct(ProfilesRepository $profiles)
+    public function __construct(ProfilesRepository $profiles)
     {
         $this->profiles = $profiles;
     }

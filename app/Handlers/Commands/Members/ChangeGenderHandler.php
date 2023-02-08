@@ -1,14 +1,16 @@
-<?php namespace App\Handlers\Commands\Members;
+<?php
+
+namespace App\Handlers\Commands\Members;
 
 use App\Commands\Members\ChangeGender;
 use App\Events\Members\GenderWasChanged;
 use App\Helpers\Users\Profiles\ProfilesRepository;
 
-class ChangeGenderHandler {
-
+class ChangeGenderHandler
+{
     private $profiles;
 
-    function __construct(ProfilesRepository $profiles)
+    public function __construct(ProfilesRepository $profiles)
     {
         $this->profiles = $profiles;
     }

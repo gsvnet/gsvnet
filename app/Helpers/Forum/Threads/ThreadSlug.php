@@ -1,26 +1,29 @@
-<?php namespace App\Helpers\Forum\Threads;
+<?php
+
+namespace App\Helpers\Forum\Threads;
 
 use App\Helpers\Core\Slug;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 
-class ThreadSlug implements Slug {
-
+class ThreadSlug implements Slug
+{
     private $threads;
+
     private $tries = 5;
 
-    function __construct(ThreadRepository $threads)
+    public function __construct(ThreadRepository $threads)
     {
         $this->threads = $threads;
     }
 
     public function generateSlug($from)
     {
-        for($i=0; $i < $this->tries; ++$i)
-        {
+        for ($i = 0; $i < $this->tries; $i++) {
             $slug = $this->generateSlugWithIndex($i, $from);
-            if(! $this->threads->slugExists($slug))
+            if (! $this->threads->slugExists($slug)) {
                 return $slug;
+            }
         }
 
         return str_random(16);
@@ -28,19 +31,21 @@ class ThreadSlug implements Slug {
 
     private function generateSlugWithIndex($i, $desired)
     {
-        $appendix = '-' . $i;
+        $appendix = '-'.$i;
 
-        if ($i == 0)
+        if ($i == 0) {
             $appendix = '';
+        }
 
         $date = date('d-m-Y');
 
-        return Str::slug("{$date}-{$desired}"  . $appendix);
+        return Str::slug("{$date}-{$desired}".$appendix);
     }
 
-    static function generate($from = null)
+    public static function generate($from = null)
     {
         $object = App::make(static::class);
+
         return $object->generateSlug($from);
     }
 }

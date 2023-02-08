@@ -1,6 +1,6 @@
-<?php namespace App\Helpers\Forum\Replies;
+<?php
 
-use DB, Permission;
+namespace App\Helpers\Forum\Replies;
 
 class ReplySearch
 {
@@ -13,16 +13,16 @@ class ReplySearch
 
     public function searchReplys($query)
     {
-        $replys = $this->model->where(function($q) use ($query) {
-            $q->Where('body', 'like', '%' . $query . '%');
-            })->get();
-        
+        $replys = $this->model->where(function ($q) use ($query) {
+            $q->Where('body', 'like', '%'.$query.'%');
+        })->get();
+
         $result = [];
 
         foreach ($replys as $reply) {
             $result[] = $reply->thread_id;
         }
-        
+
         return $result;
     }
 }

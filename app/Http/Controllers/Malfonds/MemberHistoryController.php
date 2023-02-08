@@ -1,4 +1,6 @@
-<?php namespace Malfonds;
+<?php
+
+namespace Malfonds;
 
 use App\Helpers\Users\ProfileActions\ProfileActionsRepository;
 use App\Helpers\Users\ProfileActions\ProfileActionsTransformer;
@@ -18,8 +20,9 @@ class MemberHistoryController extends CoreApiController
 
     /**
      * MemberHistoryController constructor.
-     * @param ProfileActionsRepository $actions
-     * @param UsersRepository $users
+     *
+     * @param  ProfileActionsRepository  $actions
+     * @param  UsersRepository  $users
      */
     public function __construct(ProfileActionsRepository $actions, UsersRepository $users)
     {
@@ -32,7 +35,7 @@ class MemberHistoryController extends CoreApiController
         $this->authorize('users.show');
         $member = $this->users->memberOrFormerByIdWithProfile($id);
         $changes = $this->actions->latestUpdatesOfMember($member);
-        
+
         return $this->withCollection($changes, new ProfileActionsTransformer);
     }
 }

@@ -1,5 +1,7 @@
-<?php namespace App\Events\Members;
+<?php
 
-class NameWasChanged extends ProfileEvent {
+namespace App\Events\Members;
 
+class NameWasChanged extends ProfileEvent
+{
 }

@@ -1,27 +1,33 @@
-<?php namespace App\Helpers\Forum\Threads;
+<?php
 
-use Laracasts\Presenter\Presenter;
+namespace App\Helpers\Forum\Threads;
+
 use App;
+use Auth;
+use Carbon\Carbon;
+use Laracasts\Presenter\Presenter;
 use Str;
-use Carbon\Carbon, Auth;
 
 class ThreadPresenter extends Presenter
 {
     public function url()
     {
-        if ( ! $this->slug) {
+        if (! $this->slug) {
             return '';
         }
+
         return action('ForumThreadsController@getShowThread', [$this->slug]);
     }
 
     public function likeClass()
     {
-        if(! Auth::check() )
+        if (! Auth::check()) {
             return '';
+        }
 
-        if($this->likes->isEmpty())
+        if ($this->likes->isEmpty()) {
             return '';
+        }
 
         return 'liked';
     }
@@ -42,6 +48,7 @@ class ThreadPresenter extends Presenter
         $body = $this->convertMarkdown($body);
         $body = $this->convertEmoticons($body);
         $body = $this->purify($body);
+
         return $body;
     }
 
@@ -52,28 +59,28 @@ class ThreadPresenter extends Presenter
 
     public function mostRecentReplier()
     {
-        if ( ! $this->mostRecentReply) {
+        if (! $this->mostRecentReply) {
             return null;
         }
+
         return $this->mostRecentReply->author->username;
     }
 
     public function latestReplyUrl()
     {
-        if ( ! $this->mostRecentReply) {
+        if (! $this->mostRecentReply) {
             return $this->url;
         }
 
         $page = ceil($this->reply_count / 20);
         $id = $this->most_recent_reply_id;
         $url = $this->url;
-        
-        if( $page > 1)
-        {
-            $url .= '?page=' . $page;
+
+        if ($page > 1) {
+            $url .= '?page='.$page;
         }
 
-        $url .= '#reactie-' . $id;
+        $url .= '#reactie-'.$id;
 
         return $url;
     }
@@ -82,10 +89,9 @@ class ThreadPresenter extends Presenter
     {
         $page = ceil($this->reply_count / 20);
         $url = $this->url;
-        
-        if( $page > 1)
-        {
-            $url .= '?page=' . $page;
+
+        if ($page > 1) {
+            $url .= '?page='.$page;
         }
 
         return $url;
@@ -105,12 +111,11 @@ class ThreadPresenter extends Presenter
     {
         $count = $this->reply_count;
         $class = 'media-counter';
-        if($count >= 100)
-        {
+        if ($count >= 100) {
             $class .= ' small';
         }
 
-        return '<a class="' . $class . '" href="' . $this->lastPageUrl . '">' . $count . '</a>';
+        return '<a class="'.$class.'" href="'.$this->lastPageUrl.'">'.$count.'</a>';
     }
 
     public function replyCounterList()
@@ -120,36 +125,40 @@ class ThreadPresenter extends Presenter
 
     public function visited()
     {
-        if( !Auth::check() )
+        if (! Auth::check()) {
             return '';
+        }
 
         $visitations = $this->visitations;
         $mostRecentReply = $this->mostRecentReply;
 
-        if( ! isset($visitations) || $visitations->count() == 0)
+        if (! isset($visitations) || $visitations->count() == 0) {
             return 'new';
+        }
 
-        if( !isset($mostRecentReply) )
+        if (! isset($mostRecentReply)) {
             $updated = $this->created_at;
-        else
+        } else {
             $updated = $this->mostRecentReply->created_at;
+        }
 
         $lastVisit = new Carbon($visitations[0]->visited_at);
 
-        if( $updated->gt($lastVisit) )
+        if ($updated->gt($lastVisit)) {
             return 'new';
+        }
 
         return '';
     }
 
     private function convertMarkdown($content)
     {
-        return App::make('App\Helpers\Markdown\HtmlMarkdownConverter')->convertMarkdownToHtml($content);
+        return App::make(\App\Helpers\Markdown\HtmlMarkdownConverter::class)->convertMarkdownToHtml($content);
     }
 
     private function convertEmoticons($content)
     {
-        return App::make('App\Helpers\Emoticons\Emoticon')->toHTML($content);
+        return App::make(\App\Helpers\Emoticons\Emoticon::class)->toHTML($content);
     }
 
     private function purify($content)

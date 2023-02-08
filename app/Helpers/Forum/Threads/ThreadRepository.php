@@ -1,14 +1,15 @@
-<?php namespace App\Helpers\Forum\Threads;
+<?php
 
+namespace App\Helpers\Forum\Threads;
+
+use App\Helpers\Core\EloquentRepository;
+use App\Helpers\Core\Exceptions\EntityNotFoundException;
 use App\Helpers\Forum\Like;
 use App\Helpers\Forum\Replies\Reply;
-use App\Helpers\Permissions\Permission;
 use Illuminate\Support\Collection;
-use App\Helpers\Core\EloquentRepository;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
-use App\Helpers\Core\Exceptions\EntityNotFoundException;
+use Illuminate\Support\Facades\Gate;
 
 class ThreadRepository extends EloquentRepository
 {
@@ -31,18 +32,17 @@ class ThreadRepository extends EloquentRepository
                 ->whereIn('tagged_items.tag_id', $tags->pluck('id'));
         }
 
-        if ( Gate::denies('threads.show-internal'))
-        {
+        if (Gate::denies('threads.show-internal')) {
             $query = $query->public();
         }
 
-        if (Gate::denies('threads.show-private'))
+        if (Gate::denies('threads.show-private')) {
             $query = $query->where('private', '=', 0);
+        }
 
-        if ( Auth::check() )
-        {
+        if (Auth::check()) {
             $id = Auth::user()->id;
-            $query->with(['visitations' => function($q) use ($id){
+            $query->with(['visitations' => function ($q) use ($id) {
                 $q->where('user_id', $id);
             }]);
         }
@@ -56,11 +56,10 @@ class ThreadRepository extends EloquentRepository
     {
         $query = $thread->replies()->with('author');
 
-        if( Auth::check() )
-        {
+        if (Auth::check()) {
             $id = Auth::user()->id;
 
-            $query->with(['likes' => function($q) use ($id){
+            $query->with(['likes' => function ($q) use ($id) {
                 $q->where('user_id', $id);
             }]);
         }
@@ -74,7 +73,7 @@ class ThreadRepository extends EloquentRepository
     {
         $model = $this->getBySlug($slug);
 
-        if ( ! $model) {
+        if (! $model) {
             throw new EntityNotFoundException;
         }
 
@@ -84,18 +83,15 @@ class ThreadRepository extends EloquentRepository
     public function getBySlug($slug)
     {
         $query = $this->model->where('slug', '=', $slug);
-        
+
         // Include removed ones if permissions allow
-        if (Gate::allows('thread.manage'))
-        {
+        if (Gate::allows('thread.manage')) {
             $query->withTrashed();
         }
 
-        if ( Auth::check() )
-        {
+        if (Auth::check()) {
             $id = Auth::user()->id;
-            $query->with(['likes' => function($q) use ($id)
-            {
+            $query->with(['likes' => function ($q) use ($id) {
                 $q->where('user_id', $id);
             }]);
         }
@@ -107,19 +103,17 @@ class ThreadRepository extends EloquentRepository
     {
         $query = $this->model->onlyTrashed()->with(['mostRecentReply', 'mostRecentReply.author', 'tags']);
 
-        if ( Gate::denies('threads.show-internal'))
-        {
+        if (Gate::denies('threads.show-internal')) {
             $query = $query->public();
         }
 
-        if (Gate::denies('threads.show-private'))
+        if (Gate::denies('threads.show-private')) {
             $query = $query->where('private', '=', 0);
+        }
 
-        if ( Auth::check() )
-        {
+        if (Auth::check()) {
             $id = Auth::user()->id;
-            $query->with(['visitations' => function($q) use ($id)
-            {
+            $query->with(['visitations' => function ($q) use ($id) {
                 $q->where('user_id', $id);
             }]);
         }
@@ -138,6 +132,7 @@ class ThreadRepository extends EloquentRepository
     {
         $this->model->where('id', $threadId)->increment('reply_count');
     }
+
     public function decrementReplies($threadId)
     {
         $this->model->where('id', $threadId)->decrement('reply_count');
@@ -146,7 +141,7 @@ class ThreadRepository extends EloquentRepository
     public function setLastReply($threadId, $replyId)
     {
         $this->model->where('id', $threadId)->update([
-            'most_recent_reply_id' => $replyId
+            'most_recent_reply_id' => $replyId,
         ]);
     }
 
@@ -154,10 +149,11 @@ class ThreadRepository extends EloquentRepository
     {
         $last = $thread->replies()->orderBy('created_at', 'DESC')->first();
 
-        if(!$last)
+        if (! $last) {
             $thread->most_recent_reply_id = null;
-        else
+        } else {
             $thread->most_recent_reply_id = $last->id;
+        }
 
         $thread->save();
     }
@@ -178,7 +174,7 @@ class ThreadRepository extends EloquentRepository
         /* NOTE: The increment method above seems to update timestamps, which we don't want here */
 
         $thread = $this->model->where('id', $threadId)->first();
-        
+
         $thread->timestamps = false;
         $thread->like_count++;
         $thread->save();
@@ -190,7 +186,7 @@ class ThreadRepository extends EloquentRepository
         /* NOTE: The decrement method above seems to update timestamps, which we don't want here */
 
         $thread = $this->model->where('id', $threadId)->first();
-        
+
         $thread->timestamps = false;
         $thread->like_count--;
         $thread->save();
@@ -198,9 +194,8 @@ class ThreadRepository extends EloquentRepository
 
     public function totalLikesGivenPerYearGroup()
     {
-        return Cache::remember('total-likes-given-per-year-group', 24*60, function()
-        {
-            return \DB::select("SELECT yg.name as name, count(1) AS likes_given
+        return Cache::remember('total-likes-given-per-year-group', 24 * 60, function () {
+            return \DB::select('SELECT yg.name as name, count(1) AS likes_given
                 FROM likeable_likes as ll
                 INNER JOIN user_profiles as up
                 ON ll.user_id = up.user_id
@@ -208,17 +203,16 @@ class ThreadRepository extends EloquentRepository
                 ON yg.id = up.year_group_id
                 GROUP BY yg.id
                 HAVING likes_given > 30
-                ORDER BY yg.year DESC"
+                ORDER BY yg.year DESC'
             );
         });
     }
 
     public function totalLikesReceivedPerYearGroup()
     {
-        return Cache::remember('total-likes-received-per-year-group', 24*60, function()
-        {
+        return Cache::remember('total-likes-received-per-year-group', 24 * 60, function () {
             // This is getting quite a large query... LOL
-            return \DB::select("SELECT t.name, count(t.id) AS likes_received
+            return \DB::select('SELECT t.name, count(t.id) AS likes_received
                 FROM
                 (
                     SELECT yg.id, yg.year, yg.name
@@ -245,10 +239,10 @@ class ThreadRepository extends EloquentRepository
                 ) t
                 GROUP BY t.id
                 HAVING likes_received > 30
-                ORDER BY t.year DESC",
+                ORDER BY t.year DESC',
                 [
                     Reply::class,
-                    Thread::class
+                    Thread::class,
                 ]
             );
         });

@@ -1,9 +1,11 @@
-<?php namespace App\Providers;
+<?php
+
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class NewsletterServiceProvider extends ServiceProvider {
-
+class NewsletterServiceProvider extends ServiceProvider
+{
     /**
      * Register the service provider.
      *
@@ -12,8 +14,8 @@ class NewsletterServiceProvider extends ServiceProvider {
     public function register()
     {
         $this->app->bind(
-            'App\Helpers\Newsletters\NewsletterList',
-            'App\Helpers\Newsletters\Mailchimp\NewsletterList'
+            \App\Helpers\Newsletters\NewsletterList::class,
+            \App\Helpers\Newsletters\Mailchimp\NewsletterList::class
         );
     }
 }

@@ -1,10 +1,11 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class DatabaseSeeder extends Seeder {
+class DatabaseSeeder extends Seeder
+{
     protected $tables = [
         'activity',
         'albums',
@@ -35,7 +36,7 @@ class DatabaseSeeder extends Seeder {
         'user_profiles',
         'user_senate',
         'users',
-        'year_groups'
+        'year_groups',
     ];
 
     protected $seeders = [
@@ -51,7 +52,7 @@ class DatabaseSeeder extends Seeder {
         'TagSeeder',
         'ForumTableSeeder',
         'AdminUserSeeder',
-        'RegionsTableSeeder'
+        'RegionsTableSeeder',
     ];
 
     /**
@@ -69,16 +70,14 @@ class DatabaseSeeder extends Seeder {
 
     protected function truncateTables()
     {
-        foreach ($this->tables as $tableName)
-        {
+        foreach ($this->tables as $tableName) {
             DB::table($tableName)->truncate();
         }
     }
 
     protected function seedTables()
     {
-        foreach ($this->seeders as $seeder)
-        {
+        foreach ($this->seeders as $seeder) {
             $timeStart = microtime(true);
             $this->call($seeder);
             $timeEnd = microtime(true);

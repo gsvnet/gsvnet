@@ -1,6 +1,10 @@
-<?php namespace Admin;
+<?php
+
+namespace Admin;
 
 use App\Commands\Users\RegisterUserCommand;
+use App\Helpers\Regions\RegionsRepository;
+use App\Helpers\Users\MemberFiler;
 use App\Helpers\Users\Profiles\AdminProfileCreatorValidator;
 use App\Helpers\Users\Profiles\AdminProfileUpdaterValidator;
 use App\Helpers\Users\Profiles\ProfilesRepository;
@@ -12,20 +16,25 @@ use App\Helpers\Users\UsersRepository;
 use App\Helpers\Users\UserValidator;
 use App\Helpers\Users\YearGroupRepository;
 use Illuminate\Http\Request;
-use App\Helpers\Users\MemberFiler;
-use App\Helpers\Regions\RegionsRepository;
 
 class UsersController extends AdminBaseController
 {
-
     protected $users;
+
     protected $yearGroups;
+
     protected $regions;
+
     protected $validator;
+
     protected $profileCreatorValidator;
+
     protected $profileUpdaterValidator;
+
     protected $userManager;
+
     protected $filer;
+
     private $profiles;
 
     public function __construct(
@@ -85,12 +94,14 @@ class UsersController extends AdminBaseController
         $perPage = 300;
 
         // Search on region
-        if (!($region = $request->get('regio') and $this->regions->exists($region)))
+        if (! ($region = $request->get('regio') and $this->regions->exists($region))) {
             $region = null;
+        }
 
         // Enable search on yeargroup
-        if (!($yearGroup = $request->get('jaarverband') and $this->yearGroups->exists($yearGroup)))
+        if (! ($yearGroup = $request->get('jaarverband') and $this->yearGroups->exists($yearGroup))) {
             $yearGroup = null;
+        }
 
         $profiles = $this->profiles->searchAndPaginate($search, $region, $yearGroup, $type, $perPage);
         $yearGroups = $this->yearGroups->all();
@@ -109,7 +120,7 @@ class UsersController extends AdminBaseController
         $reunist = $request->get('reunist');
 
         // Search for any former member or a specific group?
-        switch($reunist) {
+        switch ($reunist) {
             case -1:
                 $types = User::EXMEMBER;
                 break;
@@ -121,12 +132,14 @@ class UsersController extends AdminBaseController
         }
 
         // Search on region
-        if (!($region = $request->get('regio') and $this->regions->exists($region)))
+        if (! ($region = $request->get('regio') and $this->regions->exists($region))) {
             $region = null;
+        }
 
         // Enable search on yeargroup
-        if (!($yearGroup = $request->get('jaarverband') and $this->yearGroups->exists($yearGroup)))
+        if (! ($yearGroup = $request->get('jaarverband') and $this->yearGroups->exists($yearGroup))) {
             $yearGroup = null;
+        }
 
         $profiles = $this->profiles->searchAndPaginate($search, $region, $yearGroup, $types, $perPage);
         $yearGroups = $this->yearGroups->all();
@@ -145,6 +158,7 @@ class UsersController extends AdminBaseController
     public function create()
     {
         $this->authorize('users.manage');
+
         return view('admin.users.create');
     }
 
@@ -158,8 +172,9 @@ class UsersController extends AdminBaseController
         $validator->validate($input);
 
         // set random password if password is empty
-        if (empty($input['password']))
+        if (empty($input['password'])) {
             $input['password'] = str_random(16);
+        }
 
         // Map to command input
         $data = [
@@ -170,7 +185,7 @@ class UsersController extends AdminBaseController
             'type' => $input['type'],
             'email' => $input['email'],
             'password' => $input['password'],
-            'approved' => true
+            'approved' => true,
         ];
 
         $this->dispatchFromArray(RegisterUserCommand::class, $data);
@@ -186,12 +201,14 @@ class UsersController extends AdminBaseController
         $user = $this->users->byId($id);
 
         // Committees or ordinary forum users do not need a fancy profile page
-        if (!$user->isMemberOrReunist() && !$user->isPotential())
+        if (! $user->isMemberOrReunist() && ! $user->isPotential()) {
             return view('admin.users.show')->with(compact('user'));
+        }
 
         // Since GDPR, not all (former) members still have profiles
-        if (!$user->profile)
+        if (! $user->profile) {
             return view('admin.users.show')->with(compact('user'));
+        }
 
         $profile = $user->profile;
 
@@ -215,12 +232,12 @@ class UsersController extends AdminBaseController
         $this->authorize('users.manage');
         $user = $this->users->byId($id);
 
-        if($profile = $user->profile) {
+        if ($profile = $user->profile) {
             $profile->delete();
         }
         $user->delete();
 
-        flash()->success("Account is succesvol verwijderd.");
+        flash()->success('Account is succesvol verwijderd.');
 
         return redirect()->action('Admin\UsersController@index');
     }
@@ -275,7 +292,7 @@ class UsersController extends AdminBaseController
         }
 
         // Check if the region is valid
-        if (!$this->regions->exists($input['region'])) {
+        if (! $this->regions->exists($input['region'])) {
             $input['region'] = null;
         }
 

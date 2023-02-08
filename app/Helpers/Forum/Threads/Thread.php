@@ -1,19 +1,24 @@
-<?php namespace App\Helpers\Forum\Threads;
+<?php
+
+namespace App\Helpers\Forum\Threads;
 
 use App\Helpers\Forum\LikableTrait;
 use Illuminate\Database\Eloquent\Model;
-use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laracasts\Presenter\PresentableTrait;
 
 class Thread extends Model
 {
     use PresentableTrait;
     use SoftDeletes;
     use LikableTrait;
-    
+
     protected $table = 'forum_threads';
+
     protected $fillable = ['subject', 'body', 'author_id', 'slug', 'public', 'private'];
+
     protected $with = ['author'];
+
     protected $dates = ['deleted_at'];
 
     public $presenter = \App\Helpers\Forum\Threads\ThreadPresenter::class;
@@ -55,7 +60,7 @@ class Thread extends Model
 
     public function getTags()
     {
-        return $this->tags->lists('slug');
+        return $this->tags->pluck('slug');
     }
 
     public function scopePublic($query)
@@ -80,6 +85,6 @@ class Thread extends Model
 
     public function getReplyPageNumber($replyId, $repliesPerPage)
     {
-        return (int)($this->getReplyIndex($replyId) / $repliesPerPage + 1);
+        return (int) ($this->getReplyIndex($replyId) / $repliesPerPage + 1);
     }
 }

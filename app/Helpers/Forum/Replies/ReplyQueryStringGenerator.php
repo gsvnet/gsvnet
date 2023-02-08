@@ -1,4 +1,6 @@
-<?php namespace App\Helpers\Forum\Replies;
+<?php
+
+namespace App\Helpers\Forum\Replies;
 
 class ReplyQueryStringGenerator
 {

@@ -1,13 +1,15 @@
-<?php namespace App\Handlers\Commands\Forum;
+<?php
+
+namespace App\Handlers\Commands\Forum;
 
 use App\Commands\Forum\VisitThreadCommand;
 use App\Helpers\Forum\Threads\ThreadVisitationUpdater;
 
-class VisitThreadCommandHandler {
-
+class VisitThreadCommandHandler
+{
     private $updater;
 
-    function __construct(ThreadVisitationUpdater $updater)
+    public function __construct(ThreadVisitationUpdater $updater)
     {
         $this->updater = $updater;
     }

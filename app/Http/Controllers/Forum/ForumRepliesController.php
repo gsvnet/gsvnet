@@ -3,23 +3,23 @@
 use App\Commands\Forum\DeleteReplyCommand;
 use App\Commands\Forum\EditReplyCommand;
 use App\Commands\Forum\ReplyToThreadCommand;
+use App\Helpers\Events\EventsRepository;
+use App\Helpers\Forum\Replies\ReplyRepository;
 use App\Http\Validators\DeleteReplyValidator;
 use App\Http\Validators\EditReplyValidator;
 use App\Http\Validators\ReplyToThreadValidator;
-use App\Helpers\Events\EventsRepository;
-use App\Helpers\Forum\Replies\ReplyRepository;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View;
 
-class ForumRepliesController extends BaseController {
-
+class ForumRepliesController extends BaseController
+{
     protected $repliesPerPage = 20;
+
     protected $replies;
 
     public function __construct(ReplyRepository $replies, EventsRepository $events)
     {
         parent::__construct();
-        
+
         $this->replies = $replies;
 
         View::share('events', $events->upcoming(5));
@@ -30,7 +30,7 @@ class ForumRepliesController extends BaseController {
         $data = [
             'threadSlug' => $threadSlug,
             'authorId' => Auth::user()->id,
-            'reply' => Input::get('body')
+            'reply' => Input::get('body'),
         ];
 
         $validator->validate($data);
@@ -57,7 +57,7 @@ class ForumRepliesController extends BaseController {
 
         $data = [
             'replyId' => $replyId,
-            'reply' => Input::get('body')
+            'reply' => Input::get('body'),
         ];
 
         $validator->validate($data);
@@ -94,9 +94,10 @@ class ForumRepliesController extends BaseController {
     public function redirectToReply($replyId)
     {
         $reply = $this->replies->requireById($replyId);
+
         return redirect()->action('ForumThreadsController@getShowThread', [$reply->thread->slug,
-            "page=" . $reply->thread->getReplyPageNumber($replyId, $this->repliesPerPage) .
-            "#reactie-" . $reply->id]
+            'page='.$reply->thread->getReplyPageNumber($replyId, $this->repliesPerPage).
+            '#reactie-'.$reply->id, ]
         );
     }
 }

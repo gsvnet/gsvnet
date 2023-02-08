@@ -1,21 +1,23 @@
-<?php namespace App\Helpers\Senates;
+<?php
 
-use Laracasts\Presenter\PresentableTrait;
+namespace App\Helpers\Senates;
+
 use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
 
-class Senate extends Model {
+class Senate extends Model
+{
+    use PresentableTrait;
 
-	use PresentableTrait;
+    protected $guarded = [];
 
-    protected $guarded = array();
+    public static $rules = [];
 
-    public static $rules = array();
-
-    public $presenter = 'App\Helpers\Senates\SenatePresenter';
+    public $presenter = \App\Helpers\Senates\SenatePresenter::class;
 
     public function members()
     {
-        return $this->belongsToMany('App\Helpers\Users\User', 'user_senate')
+        return $this->belongsToMany(\App\Helpers\Users\User::class, 'user_senate')
             ->withPivot('function')->orderBy('function', 'ASC');
     }
 }

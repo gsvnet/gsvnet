@@ -1,17 +1,22 @@
-<?php namespace App\Helpers\Users\ValueObjects;
+<?php
+
+namespace App\Helpers\Users\ValueObjects;
 
 use App\Helpers\Core\ValueObject;
 
-class Name extends ValueObject {
-
-    static $rules = [
+class Name extends ValueObject
+{
+    public static $rules = [
         'firstName' => 'required',
         'lastName' => 'required',
     ];
 
     private $firstName;
+
     private $middleName;
+
     private $lastName;
+
     private $initials;
 
     public function __construct($firstName, $middleName, $lastName, $initials)

@@ -1,47 +1,46 @@
-<?php namespace App\Helpers\Newsletters;
+<?php
 
+namespace App\Helpers\Newsletters;
+
+use App;
 use App\Helpers\Users\User;
 use App\Helpers\Users\UserTransformer;
 use Illuminate\Support\Facades\Config;
-use Queue, App, Log;
+use Queue;
 
-class NewsletterManager {
-
+class NewsletterManager
+{
     protected $userTransformer;
 
-    function __construct(UserTransformer $userTransformer)
+    public function __construct(UserTransformer $userTransformer)
     {
         $this->userTransformer = $userTransformer;
     }
 
     public function userUpdated(User $old, User $new)
     {
-        if($old->type == $new->type && $old->email == $new->email)
-        {
+        if ($old->type == $new->type && $old->email == $new->email) {
             return;
         }
 
-        if(Config::get('app.debug'))
-        {
+        if (Config::get('app.debug')) {
             return;
         }
 
         // Remove old user from mailing lists
-        if($old->wasOrIsMember())
-        {
+        if ($old->wasOrIsMember()) {
             Queue::push('App\Helpers\Newsletters\NewsletterManager@removeUserFromMailingList', [
                 'list' => $old->type,
-                'email' => $old->email
+                'email' => $old->email,
             ]);
         }
 
         // Add to mailing lists
-        if($new->isMemberOrReunist())
-        {
+        if ($new->isMemberOrReunist()) {
             $data = [
                 'list' => $new->type,
                 'email' => $new->email,
-                'user' => $this->userTransformer->mailchimpSubscribe($new)
+                'user' => $this->userTransformer->mailchimpSubscribe($new),
             ];
 
             Queue::push('App\Helpers\Newsletters\NewsletterManager@addUserToMailingList', $data);
@@ -53,7 +52,7 @@ class NewsletterManager {
         if ($user->wasOrIsMember()) {
             Queue::push('App\Helpers\Newsletters\NewsletterManager@removeUserFromMailingList', [
                 'list' => $user->type,
-                'email' => $user->email
+                'email' => $user->email,
             ]);
         }
     }
@@ -61,9 +60,9 @@ class NewsletterManager {
     public function removeUserFromMailingList($job, $data)
     {
         try {
-            App::make('App\Helpers\Newsletters\NewsletterList')->unsubscribeFrom($data['list'], $data['email']);
-        } catch(\Mailchimp_Error $e) {
-            echo "Mailchimp error; contact the webcie";
+            App::make(\App\Helpers\Newsletters\NewsletterList::class)->unsubscribeFrom($data['list'], $data['email']);
+        } catch (\Mailchimp_Error $e) {
+            echo 'Mailchimp error; contact the webcie';
         }
 
         $job->delete();
@@ -72,11 +71,11 @@ class NewsletterManager {
     public function addUserToMailingList($job, $data)
     {
         try {
-            App::make('App\Helpers\Newsletters\NewsletterList')->subscribeTo($data['list'], $data['email'], $data['user']);
-        } catch(\Mailchimp_Error $e) {
-            echo "Mailchimp error; contact the webcie";
+            App::make(\App\Helpers\Newsletters\NewsletterList::class)->subscribeTo($data['list'], $data['email'], $data['user']);
+        } catch (\Mailchimp_Error $e) {
+            echo 'Mailchimp error; contact the webcie';
         }
 
         $job->delete();
     }
-} 
+}

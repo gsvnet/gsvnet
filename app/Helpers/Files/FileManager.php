@@ -1,10 +1,15 @@
-<?php namespace App\Helpers\Files;
+<?php
+
+namespace App\Helpers\Files;
 
 class FileManager
 {
     protected $createValidator;
+
     protected $updateValidator;
+
     protected $fileHandler;
+
     protected $files;
 
     public function __construct(
@@ -12,8 +17,7 @@ class FileManager
         FileUpdatorValidator $updateValidator,
         FileHandler $fileHandler,
         FilesRepository $files
-    )
-    {
+    ) {
         $this->fileHandler = $fileHandler;
         $this->createValidator = $createValidator;
         $this->updateValidator = $updateValidator;
@@ -21,11 +25,11 @@ class FileManager
     }
 
     /**
-    * Validate input, create file model and store file file
-    *
-    * @param array $input
-    * @return File
-    */
+     * Validate input, create file model and store file file
+     *
+     * @param  array  $input
+     * @return File
+     */
     public function create(array $input)
     {
         $this->createValidator->validate($input);
@@ -38,17 +42,16 @@ class FileManager
     }
 
     /**
-    * Validate input, update file model and optionally update file file
-    *
-    * @param array $input
-    * @return File
-    */
+     * Validate input, update file model and optionally update file file
+     *
+     * @param  array  $input
+     * @return File
+     */
     public function update($id, array $input)
     {
         $this->updateValidator->validate($input);
         // Optionally update the file's file
-        if (isset($input['file']))
-        {
+        if (isset($input['file'])) {
             // Delete the old file file and store the new one
             $file = $this->files->byId($id);
             $this->fileHandler->destroy($file->file_path);
@@ -74,8 +77,7 @@ class FileManager
     private function uploadFile(&$input)
     {
         if (! $input['file_path'] = $this->fileHandler->make($input['file'],
-                "/uploads/files/"))
-        {
+                '/uploads/files/')) {
             throw new FileStorageException;
         }
     }
@@ -84,8 +86,7 @@ class FileManager
     private function nameFile(&$input)
     {
         // If the file was not given a name, use the file's name
-        if (! (isset($input['name'])) || $input['name'] == '')
-        {
+        if (! (isset($input['name'])) || $input['name'] == '') {
             $input['name'] = $input['file']->getClientOriginalName();
         }
     }

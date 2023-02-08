@@ -1,4 +1,6 @@
-<?php namespace App\Console\Commands;
+<?php
+
+namespace App\Console\Commands;
 
 use App\Commands\Members\ChangePhone;
 use App\Helpers\Core\DispatchesJobs;
@@ -51,12 +53,13 @@ class StandardizePhoneNumbers extends Command
      */
     private $values = [
         'leden' => User::MEMBER,
-        'reünisten' => User::REUNIST
+        'reünisten' => User::REUNIST,
     ];
 
     /**
      * BulkNewsletterSubscriptions constructor.
-     * @param UsersRepository $users
+     *
+     * @param  UsersRepository  $users
      */
     public function __construct(UsersRepository $users)
     {
@@ -73,8 +76,9 @@ class StandardizePhoneNumbers extends Command
     {
         $for = $this->argument('of');
 
-        if (!array_key_exists($for, $this->values)) {
+        if (! array_key_exists($for, $this->values)) {
             $this->error('Kies uit leden of reünisten');
+
             return;
         }
 
@@ -88,14 +92,14 @@ class StandardizePhoneNumbers extends Command
     {
         $parser = PhoneNumberUtil::getInstance();
 
-        if (!$user->profile) {
+        if (! $user->profile) {
             return true;
         }
 
         $phone = $user->profile->phone;
 
         try {
-            $phoneNumber = $parser->parse($phone, "NL");
+            $phoneNumber = $parser->parse($phone, 'NL');
             $formatted = $parser->format($phoneNumber, PhoneNumberFormat::E164);
 
             // Ask to save if not the same
@@ -130,5 +134,4 @@ class StandardizePhoneNumbers extends Command
     {
         return [];
     }
-
 }

@@ -1,13 +1,13 @@
-<?php namespace App\Handlers\Commands\Members;
+<?php
 
+namespace App\Handlers\Commands\Members;
 
 use App\Commands\Members\ReceiveNewspaper;
 use App\Helpers\Users\Profiles\ProfilesRepository;
 
 class ReceiveNewspaperHandler
 {
-
-    function __construct(ProfilesRepository $profiles)
+    public function __construct(ProfilesRepository $profiles)
     {
         $this->profiles = $profiles;
     }

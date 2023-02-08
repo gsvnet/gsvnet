@@ -1,4 +1,6 @@
-<?php namespace App\Helpers\Users;
+<?php
+
+namespace App\Helpers\Users;
 
 use App\Helpers\BaseTransformer;
 
@@ -10,7 +12,7 @@ class YearGroupTransformer extends BaseTransformer
             return [
                 'id' => $group->id,
                 'name' => $group->name,
-                'year' => $group->year
+                'year' => $group->year,
             ];
         }
 

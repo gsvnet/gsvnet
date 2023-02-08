@@ -2,13 +2,12 @@
 
 namespace App\Handlers\Commands\Users;
 
-
 use App\Commands\Users\DeleteProfilePicture;
 use App\Events\Members\ProfilePictureWasChanged;
 use App\Helpers\Core\ImageHandler;
 
-class DeleteProfilePictureHandler {
-
+class DeleteProfilePictureHandler
+{
     private $imageHandler;
 
     public function __construct(ImageHandler $imageHandler)

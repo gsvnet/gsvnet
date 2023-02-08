@@ -1,6 +1,7 @@
-<?php namespace App\Events\Users;
+<?php
+
+namespace App\Events\Users;
 
 class PasswordWasSet
 {
-    
 }

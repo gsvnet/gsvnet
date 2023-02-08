@@ -1,21 +1,21 @@
 <?php
 
-use App\Helpers\Permissions\NoPermissionException;
-use Illuminate\Support\Facades\Gate;
 use App\Commands\Potentials\PromoteGuestToPotentialCommand;
 use App\Commands\Potentials\SignUpAsPotentialCommand;
 use App\Commands\Users\SetProfilePictureCommand;
 use App\Helpers\Core\Exceptions\ValidationException;
+use App\Helpers\Core\ImageHandler;
+use App\Helpers\Permissions\NoPermissionException;
 use App\Helpers\Users\Profiles\PotentialValidator;
 use App\Helpers\Users\Profiles\ProfilesRepository;
-use App\Helpers\Core\ImageHandler;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\MessageBag;
 
 class MemberController extends BaseController
 {
-
     protected $profiles;
+
     protected $imageHandler;
 
     public function __construct(ProfilesRepository $profiles, ImageHandler $imageHandler)
@@ -44,9 +44,10 @@ class MemberController extends BaseController
      * This method is still a mess due to new requirements... It currently has too many
      * responsibilities. Should be refactored.
      *
-     * @param Request $request
-     * @param PotentialValidator $validator
+     * @param  Request  $request
+     * @param  PotentialValidator  $validator
      * @return \Illuminate\Http\RedirectResponse
+     *
      * @throws ValidationException
      */
     public function store(Request $request, PotentialValidator $validator)
@@ -56,10 +57,10 @@ class MemberController extends BaseController
         $data = $request->only(['firstname', 'middlename', 'lastname', 'gender', 'birthDay', 'birthMonth', 'birthYear',
             'address', 'zipCode', 'town', 'email', 'phone', 'studyStartYear', 'study', 'studentNumber', 'username',
             'password', 'password_confirmation', 'parents-same-address', 'parentsAddress', 'parentsZipCode',
-            'parentsTown', 'parentsEmail', 'parentsPhone', 'message', 'school', 'photo_path', 'g-recaptcha-response']);
+            'parentsTown', 'parentsEmail', 'parentsPhone', 'message', 'school', 'photo_path', 'g-recaptcha-response', ]);
 
         // Construct a date from separate day, month and year fields.
-        $data['birthdate'] = $data['birthYear'] . '-' . $data['birthMonth'] . '-' . $data['birthDay'];
+        $data['birthdate'] = $data['birthYear'].'-'.$data['birthMonth'].'-'.$data['birthDay'];
 
         // Check if parent address is the same as potential address
         if ($request->get('parents-same-address', '0') == '1') {
@@ -83,12 +84,12 @@ class MemberController extends BaseController
         // Check if the user is logged in
         if (Auth::check()) {
             // Only allow visitors here.
-            if (!Auth::user()->isVisitor())
+            if (! Auth::user()->isVisitor()) {
                 throw new ValidationException(new MessageBag(['user' => 'Je hebt je al aangemeld']));
+            }
 
             // Promote this guest to potential
             $this->dispatchFromArray(PromoteGuestToPotentialCommand::class, $data);
-
         } else {
             $user = $this->dispatchFromArray(SignUpAsPotentialCommand::class, $data);
 
@@ -134,15 +135,15 @@ class MemberController extends BaseController
         if ($request->user()->profile->id != $profile_id && Gate::denies('users.show')) {
             throw new NoPermissionException;
         }
+
         return $this->photoResponse($profile_id, $type);
     }
 
     /**
-     *
      *   Returns an image response
      *
-     * @param int $id
-     * @param string $type
+     * @param  int  $id
+     * @param  string  $type
      */
     private function photoResponse($id, $type = '')
     {

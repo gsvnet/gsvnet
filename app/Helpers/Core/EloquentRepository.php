@@ -1,7 +1,9 @@
-<?php namespace App\Helpers\Core;
+<?php
 
-use Illuminate\Database\Eloquent\Model;
+namespace App\Helpers\Core;
+
 use App\Helpers\Core\Exceptions\EntityNotFoundException;
+use Illuminate\Database\Eloquent\Model;
 
 abstract class EloquentRepository
 {
@@ -41,24 +43,25 @@ abstract class EloquentRepository
     {
         $model = $this->getById($id);
 
-        if ( ! $model)
+        if (! $model) {
             throw new EntityNotFoundException;
+        }
 
         return $model;
     }
 
-    public function getNew($attributes = array())
+    public function getNew($attributes = [])
     {
         return $this->model->newInstance($attributes);
     }
 
     public function save($data)
     {
-        if ($data instanceOf Model)
+        if ($data instanceof Model) {
             return $this->storeEloquentModel($data);
-
-        elseif (is_array($data))
+        } elseif (is_array($data)) {
             return $this->storeArray($data);
+        }
     }
 
     public function delete($model)
@@ -73,15 +76,17 @@ abstract class EloquentRepository
 
     protected function storeEloquentModel($model)
     {
-        if ($model->getDirty())
+        if ($model->getDirty()) {
             return $model->save();
-        else
+        } else {
             return $model->touch();
+        }
     }
 
     protected function storeArray($data)
     {
         $model = $this->getNew($data);
+
         return $this->storeEloquentModel($model);
     }
 }

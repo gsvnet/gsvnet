@@ -1,20 +1,20 @@
-<?php namespace App\Helpers\Files;
+<?php
+
+namespace App\Helpers\Files;
 
 use App\Helpers\Permissions\NoPermissionException;
 use Illuminate\Support\Facades\Gate;
-use Permission;
 
 /**
  * Class FilesRepository
- * @package App\Helpers\Files
  */
 class FilesRepository
 {
     /**
-    * Get all albums
-    *
-    * @return Collection
-    */
+     * Get all albums
+     *
+     * @return Collection
+     */
     public function all($published = true)
     {
         return File::published($published)->all();
@@ -23,7 +23,7 @@ class FilesRepository
     /**
      * Get paginated albums
      *
-     * @param int $amount
+     * @param  int  $amount
      */
     public function paginate($amount, $published = true)
     {
@@ -31,25 +31,24 @@ class FilesRepository
     }
 
     /**
-    *   Get all files belonging to selected labels
-    *
-    *   @param
-    */
+     *   Get all files belonging to selected labels
+     *
+     *   @param
+     */
     public function paginateWhereLabels($amount, $labels = [], $published = true)
     {
         $count = count($labels);
         // Just return paginated data when we have no restriction
         //  on the labels
-        if ($count == 0)
-        {
+        if ($count == 0) {
             return File::published($published)->orderBy('updated_at', 'desc')->paginate($amount);
         }
         // Get the ids of files which belong to all the specified labels
         $file_ids = \DB::table('file_label')
             ->whereIn('label_id', $labels)
             ->groupBy('file_id')
-            ->havingRaw('count(*) = ' . $count)
-            ->lists('file_id');
+            ->havingRaw('count(*) = '.$count)
+            ->pluck('file_id');
         // Return all files with the found ids
         return File::published($published)->whereIn('id', $file_ids)->orderBy('updated_at', 'desc')->paginate($amount);
     }
@@ -58,13 +57,11 @@ class FilesRepository
     {
         $query = File::published();
 
-        if ( ! empty($search))
-        {
-            $query = $query->search('*' . $search . '*');
+        if (! empty($search)) {
+            $query = $query->search('*'.$search.'*');
         }
 
-        if ( ! empty($labels))
-        {
+        if (! empty($labels)) {
             $query = $query->withLabels($labels);
         }
 
@@ -73,15 +70,16 @@ class FilesRepository
 
     /**
      * Get by slug
-     * @param int $id
+     *
+     * @param  int  $id
+     *
      * @throws NoPermissionException
      */
     public function byId($id)
     {
         $file = File::findOrFail($id);
 
-        if (! $file->published and Gate::denies('docs.publish'))
-        {
+        if (! $file->published and Gate::denies('docs.publish')) {
             throw new NoPermissionException;
         }
 
@@ -89,26 +87,24 @@ class FilesRepository
     }
 
     /**
-    * Create file
-    *
-    * @param array $input
-    * @return File
-    */
+     * Create file
+     *
+     * @param  array  $input
+     * @return File
+     */
     public function create(array $input)
     {
         $file = new File;
         $file->name = $input['name'];
         $file->file_path = $input['file_path'];
 
-        if (Gate::allows('docs.publish'))
-        {
+        if (Gate::allows('docs.publish')) {
             $file->published = $input['published'];
         }
 
         $file->save();
 
-        if (isset($input['labels']))
-        {
+        if (isset($input['labels'])) {
             $file->labels()->sync($input['labels']);
         }
 
@@ -116,43 +112,39 @@ class FilesRepository
     }
 
     /**
-    * Update file
-    *
-    * @param int $id
-    * @param array $input
-    * @return File
-    */
+     * Update file
+     *
+     * @param  int  $id
+     * @param  array  $input
+     * @return File
+     */
     public function update($id, array $input)
     {
         $file = $this->byId($id);
         $file->fill($input);
 
-        if (Gate::allows('docs.publish'))
-        {
+        if (Gate::allows('docs.publish')) {
             $file->published = $input['published'];
         }
-        
+
         $file->save();
 
         // Reset the selected labels
-        if (isset($input['labels']))
-        {
+        if (isset($input['labels'])) {
             $file->labels()->sync($input['labels']);
-        }
-        else
-        {
-            $file->labels()->sync(array());
+        } else {
+            $file->labels()->sync([]);
         }
 
         return $file;
     }
 
     /**
-    * Delete file
-    *
-    * @param int $id
-    * @return File
-    */
+     * Delete file
+     *
+     * @param  int  $id
+     * @return File
+     */
     public function delete($id)
     {
         $file = $this->byId($id);

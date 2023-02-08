@@ -1,4 +1,6 @@
-<?php use App\Helpers\Users\User as User;
+<?php
+
+use App\Helpers\Users\User as User;
 
 /**
  * Permission configuration
@@ -12,15 +14,15 @@ return [
      */
     'general' => [
         'ads.hide' => [
-            'type' => [User::MEMBER, User::REUNIST]
+            'type' => [User::MEMBER, User::REUNIST],
         ],
 
         'member-or-reunist' => [
-            'type' => [User::MEMBER, User::REUNIST]
+            'type' => [User::MEMBER, User::REUNIST],
         ],
 
         'user.become-member' => [
-            'type' => [User::VISITOR]
+            'type' => [User::VISITOR],
         ],
 
         'users.show' => [
@@ -29,42 +31,42 @@ return [
 
         'users.manage' => [
             'committee' => ['webcie', 'malversacie'],
-            'senate' => true
+            'senate' => true,
         ],
 
         'committees.manage' => [
             'committee' => ['webcie'],
-            'senate' => true
+            'senate' => true,
         ],
 
         'committees.show-novcie' => [
-            'type' => [User::MEMBER, User::REUNIST]
+            'type' => [User::MEMBER, User::REUNIST],
         ],
 
         'photos.show-private' => [
-            'type' => [User::MEMBER]
+            'type' => [User::MEMBER],
         ],
 
         'photos.manage' => [
             'committee' => ['webcie', 'reebocie', 'prescie'],
-            'senate' => true
+            'senate' => true,
         ],
 
         'docs.show' => [
-            'type' => [User::MEMBER]
+            'type' => [User::MEMBER],
         ],
 
         'docs.manage' => [
-            'type' => [User::MEMBER]
+            'type' => [User::MEMBER],
         ],
 
         'docs.publish' => [
             'committee' => ['webcie'],
-            'senate' => true
+            'senate' => true,
         ],
 
         'dropbox.show' => [
-            'type' => [User::MEMBER]
+            'type' => [User::MEMBER],
         ],
 
         'events.show-private' => [
@@ -77,41 +79,41 @@ return [
 
         'events.publish' => [
             'committee' => ['webcie', 'prescie'],
-            'senate' => true
+            'senate' => true,
         ],
 
         'senates.show' => [
-            'type' => [User::MEMBER, User::REUNIST]
+            'type' => [User::MEMBER, User::REUNIST],
         ],
 
         'senates.manage' => [
             'committee' => ['webcie'],
-            'senate' => true
+            'senate' => true,
         ],
 
         'admin.show' => [
-            'type' => [User::MEMBER, User::REUNIST]
+            'type' => [User::MEMBER, User::REUNIST],
         ],
 
         'admin' => [
-            'committee' => ['webcie']
+            'committee' => ['webcie'],
         ],
 
         'users.edit-profile' => [
-            'type' => ['potential', User::MEMBER, User::REUNIST, User::EXMEMBER, User::INTERNAL_COMMITTEE]
+            'type' => ['potential', User::MEMBER, User::REUNIST, User::EXMEMBER, User::INTERNAL_COMMITTEE],
         ],
 
         'threads.show-private' => [
-            'type' => [User::MEMBER, User::INTERNAL_COMMITTEE]
+            'type' => [User::MEMBER, User::INTERNAL_COMMITTEE],
         ],
 
         'threads.show-internal' => [
-            'type' => [User::MEMBER, User::REUNIST, User::INTERNAL_COMMITTEE]
+            'type' => [User::MEMBER, User::REUNIST, User::INTERNAL_COMMITTEE],
         ],
 
         'extension.manage' => [
-            'committee' => ['webcie']
-        ]
+            'committee' => ['webcie'],
+        ],
     ],
 
     /**
@@ -122,73 +124,73 @@ return [
     'entity-specific' => [
         'thread.manage' => [
             'committee' => ['webcie'],
-            'senate' => true
+            'senate' => true,
         ],
 
         'thread.like' => [],
 
         'reply.manage' => [
             'committee' => ['webcie'],
-            'senate' => true
+            'senate' => true,
         ],
 
         'reply.like' => [],
 
         'user.manage.address' => [
             'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
-            'senate' => true
+            'senate' => true,
         ],
         'user.manage.birthday' => [
             'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
-            'senate' => true
+            'senate' => true,
         ],
         'user.manage.business' => [
             'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
-            'senate' => true
+            'senate' => true,
         ],
         'user.manage.email' => [
             'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
-            'senate' => true
+            'senate' => true,
         ],
         'user.manage.gender' => [
             'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
-            'senate' => true
+            'senate' => true,
         ],
         'user.manage.name' => [
             'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
-            'senate' => true
+            'senate' => true,
         ],
         'user.manage.parents' => [
             'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
-            'senate' => true
+            'senate' => true,
         ],
         'user.manage.password' => [
             'committee' => ['webcie', 'novcie', 'malversacie'],
-            'senate' => true
+            'senate' => true,
         ],
         'user.manage.phone' => [
             'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
-            'senate' => true
+            'senate' => true,
         ],
         'user.manage.photo' => [
             'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
-            'senate' => true
+            'senate' => true,
         ],
         'user.manage.year' => [
             'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
-            'senate' => true
+            'senate' => true,
         ],
         'formerMember.manage.year' => [
             'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
-            'senate' => true
+            'senate' => true,
         ],
         'user.manage.study' => [
             'committee' => ['webcie', 'novcie', 'malversacie', 'jaarbundelcommissie'],
-            'senate' => true
+            'senate' => true,
         ],
         'user.manage.receive_newspaper' => [
             'committee' => ['webcie', 'malversacie'],
-            'senate' => true
-        ]
+            'senate' => true,
+        ],
     ],
 ];

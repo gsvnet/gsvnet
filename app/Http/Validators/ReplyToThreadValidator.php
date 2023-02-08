@@ -1,10 +1,13 @@
-<?php namespace App\Http\Validators;
+<?php
+
+namespace App\Http\Validators;
 
 use App\Helpers\Core\Validator;
 
-class ReplyToThreadValidator extends Validator {
-    static $rules = [
+class ReplyToThreadValidator extends Validator
+{
+    public static $rules = [
         'reply' => 'required',
-        'threadSlug' => 'exists:forum_threads,slug'
+        'threadSlug' => 'exists:forum_threads,slug',
     ];
 }

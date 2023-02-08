@@ -1,11 +1,13 @@
-<?php namespace App\Helpers\Forum;
+<?php
+
+namespace App\Helpers\Forum;
 
 use App\Helpers\Core\EloquentRepository;
 use App\Helpers\Forum\Replies\Reply;
 use App\Helpers\Forum\Threads\Thread;
 
-class LikeRepository extends EloquentRepository {
-
+class LikeRepository extends EloquentRepository
+{
     public function __construct(Like $model)
     {
         $this->model = $model;

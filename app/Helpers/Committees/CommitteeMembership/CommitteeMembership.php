@@ -1,28 +1,30 @@
-<?php namespace App\Helpers\Committees\CommitteeMembership;
+<?php
 
-use Laracasts\Presenter\PresentableTrait;
+namespace App\Helpers\Committees\CommitteeMembership;
+
 use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
 
-class CommitteeMembership extends Model {
-    
+class CommitteeMembership extends Model
+{
     use PresentableTrait;
 
     protected $table = 'committee_user';
 
-    protected $guarded = array();
+    protected $guarded = [];
 
-    public static $rules = array();
+    public static $rules = [];
 
-    public $presenter = 'App\Helpers\Committees\CommitteeMembership\CommitteeMembershipPresenter';
+    public $presenter = \App\Helpers\Committees\CommitteeMembership\CommitteeMembershipPresenter::class;
 
     // Change users to members?
     public function member()
     {
-        return $this->belongsTo('App\Helpers\Users\User', 'user_id');
+        return $this->belongsTo(\App\Helpers\Users\User::class, 'user_id');
     }
 
     public function committee()
     {
-        return $this->belongsTo('App\Helpers\Committees\Committee');
+        return $this->belongsTo(\App\Helpers\Committees\Committee::class);
     }
 }

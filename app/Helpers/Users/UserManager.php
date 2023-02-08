@@ -1,12 +1,15 @@
-<?php namespace App\Helpers\Users;
+<?php
+
+namespace App\Helpers\Users;
 
 use Event;
-use Config;
 
 class UserManager
 {
     protected $createValidator;
+
     protected $updateValidator;
+
     protected $users;
 
     public function __construct(UserCreatorValidator $createValidator, UserUpdatorValidator $updateValidator, UsersRepository $users)
@@ -17,11 +20,11 @@ class UserManager
     }
 
     /**
-    * Validate input, create user model and store user file
-    *
-    * @param array $input
-    * @return User
-    */
+     * Validate input, create user model and store user file
+     *
+     * @param  array  $input
+     * @return User
+     */
     public function create(array $input)
     {
         $this->createValidator->validate($input);
@@ -33,9 +36,6 @@ class UserManager
         return $user;
     }
 
-    /**
-    *
-    */
     public function activateUser($id)
     {
         $user = $this->users->byId($id);
@@ -47,8 +47,8 @@ class UserManager
     }
 
     /**
-    *   Activates user and sends mail
-    */
+     *   Activates user and sends mail
+     */
     public function acceptMembership($id)
     {
         $user = $this->users->byId($id);

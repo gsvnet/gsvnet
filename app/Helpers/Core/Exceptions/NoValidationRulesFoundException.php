@@ -1,3 +1,7 @@
-<?php namespace App\Helpers\Core\Exceptions;
+<?php
 
-class NoValidationRulesFoundException extends \Exception {}
+namespace App\Helpers\Core\Exceptions;
+
+class NoValidationRulesFoundException extends \Exception
+{
+}

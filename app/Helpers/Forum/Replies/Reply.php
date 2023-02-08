@@ -1,8 +1,10 @@
-<?php namespace App\Helpers\Forum\Replies;
+<?php
 
-use App\Helpers\Users\User;
+namespace App\Helpers\Forum\Replies;
+
 use App\Helpers\Forum\LikableTrait;
 use App\Helpers\Forum\Threads\Thread;
+use App\Helpers\Users\User;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 
@@ -10,10 +12,13 @@ class Reply extends Model
 {
     use PresentableTrait;
     use LikableTrait;
-    
+
     protected $table = 'forum_replies';
+
     protected $fillable = ['body', 'author_id', 'thread_id'];
+
     protected $with = ['author'];
+
     protected $softDelete = true;
 
     public $presenter = ReplyPresenter::class;

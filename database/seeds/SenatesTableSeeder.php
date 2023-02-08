@@ -1,13 +1,13 @@
 <?php
 
-use Carbon\Carbon;
 use App\Helpers\Senates\Senate;
 use App\Helpers\Users\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class SenatesTableSeeder extends Seeder {
-
+class SenatesTableSeeder extends Seeder
+{
     private $time;
 
     public function __construct()
@@ -15,39 +15,38 @@ class SenatesTableSeeder extends Seeder {
         $this->time = Carbon::now();
     }
 
-	public function run()
-	{
-		$senates = [
-			['name' => 'Van de Kamp', 'start_date' => '2013-09-14', 'end_date' => '2014-09-14', 'body' => 'test'],
-			['name' => 'Winters', 'start_date' => '2012-09-14', 'end_date' => '2013-09-14', 'body' => 'test'],
-			['name' => 'Molenaar', 'start_date' => '2011-09-14', 'end_date' => '2012-09-14', 'body' => 'test'],
-		];
+    public function run()
+    {
+        $senates = [
+            ['name' => 'Van de Kamp', 'start_date' => '2013-09-14', 'end_date' => '2014-09-14', 'body' => 'test'],
+            ['name' => 'Winters', 'start_date' => '2012-09-14', 'end_date' => '2013-09-14', 'body' => 'test'],
+            ['name' => 'Molenaar', 'start_date' => '2011-09-14', 'end_date' => '2012-09-14', 'body' => 'test'],
+        ];
 
-		DB::table('senates')->insert($senates);
+        DB::table('senates')->insert($senates);
 
-		// Add some users
-		$senateIds = Senate::lists('id')->all();
-		$number = count($senateIds);
-		$userIds = User::take($number*5)->lists('id')->all();
+        // Add some users
+        $senateIds = Senate::pluck('id')->all();
+        $number = count($senateIds);
+        $userIds = User::take($number * 5)->pluck('id')->all();
         $memberships = [];
-		$i=0;
+        $i = 0;
 
-		foreach($userIds as $userId)
-		{
-            $senateIndex = floor($i/5);
+        foreach ($userIds as $userId) {
+            $senateIndex = floor($i / 5);
             $function = 1 + ($i % 5);
 
             $memberships[] = [
                 'user_id' => $userId,
                 'senate_id' => $senateIds[$senateIndex],
-				'function' => $function,
+                'function' => $function,
                 'created_at' => $this->time,
-                'updated_at' => $this->time
+                'updated_at' => $this->time,
             ];
 
-			$i++;
-		}
+            $i++;
+        }
 
         DB::table('user_senate')->insert($memberships);
-	}
+    }
 }

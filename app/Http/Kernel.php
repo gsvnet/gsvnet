@@ -1,17 +1,18 @@
-<?php namespace App\Http;
+<?php
+
+namespace App\Http;
 
 use App\Http\Middleware\AccountNotApproved;
 use App\Http\Middleware\ApiAuthenticated;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CanBecomeMember;
-use App\Http\Middleware\CorsApi;
+use App\Http\Middleware\FrameGuard;
 use App\Http\Middleware\LoginViaToken;
 use App\Http\Middleware\MustHavePermission;
 use App\Http\Middleware\OnlineUserCounter;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\ValidEventDate;
 use App\Http\Middleware\VerifyCsrfToken;
-use App\Http\Middleware\FrameGuard;
 use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -22,20 +23,28 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class Kernel extends HttpKernel
 {
-
     /**
      * The application's global HTTP middleware stack.
      *
      * @var array
      */
     protected $middleware = [
-        CheckForMaintenanceMode::class,
-        EncryptCookies::class,
-        AddQueuedCookiesToResponse::class,
-        StartSession::class,
-        ShareErrorsFromSession::class,
-        OnlineUserCounter::class,
-        FrameGuard::class
+            \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+    ];
+
+    protected $middlewareGroups = [
+        'web' => [
+            \Illuminate\Foundation\Http\Middleware\EncryptCookies::class,
+            \Illuminate\Foundation\Http\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Foundation\Http\Middleware\StartSession::class,
+            \Illuminate\Foundation\Http\Middleware\ShareErrorsFromSession::class,
+            \App\Http\Middleware\OnlineUserCounter::class,
+            \App\Http\Middleware\FrameGuard::class,        
+        ],
+
+        'api' => [
+
+        ],
     ];
 
     /**
@@ -44,16 +53,16 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'csrf' => VerifyCsrfToken::class,
-        'auth' => Authenticate::class,
-        'auth.basic' => AuthenticateWithBasicAuth::class,
-        'tokenAuth' => ApiAuthenticated::class,
-        'guest' => RedirectIfAuthenticated::class,
-        'approved' => AccountNotApproved::class,
-        'can' => MustHavePermission::class,
-        'has' => MustHavePermission::class,
-        'checkDate' => ValidEventDate::class,
-        'notYetMember' => CanBecomeMember::class,
-        'loginViaToken' => LoginViaToken::class,
+        'csrf' => \App\Http\Middleware\VerifyCsrfToken::class,
+        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'can' => \Illuminate\Auth\Middleware\Authorize::class,
+        'tokenAuth' => \App\Http\Middleware\ApiAuthenticated::class,
+        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'approved' => \App\Http\Middleware\AccountNotApproved::class,
+        'has' => \App\Http\Middleware\MustHavePermission::class,
+        'checkDate' => \App\Http\Middleware\ValidEventDate::class,
+        'notYetMember' => \App\Http\Middleware\CanBecomeMember::class,
+        'loginViaToken' => \App\Http\Middleware\LoginViaToken::class,
     ];
 }

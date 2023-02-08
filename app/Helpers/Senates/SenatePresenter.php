@@ -1,7 +1,11 @@
-<?php namespace App\Helpers\Senates;
+<?php
+
+namespace App\Helpers\Senates;
 
 use App\Helpers\Markdown\HtmlMarkdownConverter;
-use Laracasts\Presenter\Presenter, Carbon\Carbon, Config;
+use Carbon\Carbon;
+use Config;
+use Laracasts\Presenter\Presenter;
 
 class SenatePresenter extends Presenter
 {
@@ -18,21 +22,23 @@ class SenatePresenter extends Presenter
         }
     }
 
-    public function canPresent() {
+    public function canPresent()
+    {
         return $this->canPresent;
     }
 
     public function senateFunction()
     {
         $functions = Config::get('gsvnet.senateFunctions');
+
         return $functions[$this->pivot->function];
     }
 
     public function nameWithYear()
     {
-        $string =   $this->name;
+        $string = $this->name;
         $string .= ' (';
-        $string .= Carbon::createFromFormat('Y-m-d',   $this->start_date)->format('Y');
+        $string .= Carbon::createFromFormat('Y-m-d', $this->start_date)->format('Y');
         $string .= ')';
 
         return $string;
@@ -40,13 +46,13 @@ class SenatePresenter extends Presenter
 
     public function year()
     {
-        return Carbon::createFromFormat('Y-m-d',   $this->start_date)->format('Y');
+        return Carbon::createFromFormat('Y-m-d', $this->start_date)->format('Y');
     }
 
     public function bodyFormatted()
     {
-        if (!$this->canPresent) {
-            return "De daden van deze Senaat zijn verhuld door de tijd...";
+        if (! $this->canPresent) {
+            return 'De daden van deze Senaat zijn verhuld door de tijd...';
         }
 
         return $this->convertMarkdown($this->body);

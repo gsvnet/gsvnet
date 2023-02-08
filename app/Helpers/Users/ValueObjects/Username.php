@@ -2,15 +2,14 @@
 
 namespace App\Helpers\Users\ValueObjects;
 
-
 use App\Helpers\Core\ValueObject;
 
-class Username extends ValueObject {
-
+class Username extends ValueObject
+{
     private $username;
 
-    static $rules = [
-        "username" => "required|unique:users,username"
+    public static $rules = [
+        'username' => 'required|unique:users,username',
     ];
 
     public function __construct($username)
@@ -18,7 +17,7 @@ class Username extends ValueObject {
         $this->username = $this->sanitize($username);
 
         $this->validate([
-            "username" => $this->username
+            'username' => $this->username,
         ]);
     }
 

@@ -1,3 +1,7 @@
-<?php namespace App\Helpers\Files;
+<?php
 
-class FileStorageException extends \Exception {}
+namespace App\Helpers\Files;
+
+class FileStorageException extends \Exception
+{
+}

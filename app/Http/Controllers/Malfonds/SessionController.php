@@ -1,10 +1,12 @@
-<?php namespace Malfonds;
+<?php
+
+namespace Malfonds;
 
 use App\Helpers\Auth\TokenRepository;
 use App\Helpers\Users\MemberTransformer;
 use App\Helpers\Users\UsersRepository;
-use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Http\Request;
 
 class SessionController extends CoreApiController
 {
@@ -20,8 +22,9 @@ class SessionController extends CoreApiController
 
     /**
      * SessionController constructor.
-     * @param TokenRepository $tokens
-     * @param UsersRepository $users
+     *
+     * @param  TokenRepository  $tokens
+     * @param  UsersRepository  $users
      */
     public function __construct(TokenRepository $tokens, UsersRepository $users)
     {
@@ -31,13 +34,13 @@ class SessionController extends CoreApiController
 
     public function login(Request $request)
     {
-        if(Auth::attempt($request->only('email', 'password')))
-        {
+        if (Auth::attempt($request->only('email', 'password'))) {
             $fractal = $this->getFractalService();
             $member = $this->users->memberOrFormerByIdWithProfile(Auth::user()->id);
+
             return $this->withArray([
                 'token' => $this->tokens->getOrCreateFor(Auth::user()),
-                'member' => $fractal->item($member, new MemberTransformer)
+                'member' => $fractal->item($member, new MemberTransformer),
             ]);
         }
 

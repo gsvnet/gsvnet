@@ -1,14 +1,17 @@
-<?php namespace App\Helpers\Users\ValueObjects;
+<?php
+
+namespace App\Helpers\Users\ValueObjects;
 
 use App\Helpers\Core\ValueObject;
 
-class Email extends ValueObject {
-
+class Email extends ValueObject
+{
     private $email;
+
     private $_email;
 
-    static $rules = [
-        'email' => 'required|email'
+    public static $rules = [
+        'email' => 'required|email',
     ];
 
     public function __construct($email)
@@ -17,7 +20,7 @@ class Email extends ValueObject {
         $this->email = $this->sanitize($email);
 
         $this->validate([
-            'email' => $this->email
+            'email' => $this->email,
         ]);
     }
 

@@ -1,11 +1,13 @@
-<?php namespace App\Helpers\Users\ValueObjects;
+<?php
+
+namespace App\Helpers\Users\ValueObjects;
 
 use App\Helpers\Core\ValueObject;
 
-class Password extends ValueObject {
-
-    static $rules = [
-        'password' => 'required|min:6'
+class Password extends ValueObject
+{
+    public static $rules = [
+        'password' => 'required|min:6',
     ];
 
     private $password;
