@@ -13,6 +13,9 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+        \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
+        \App\Http\Middleware\TrimStrings::class,
+        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
     ];
 
     protected $middlewareGroups = [
@@ -20,6 +23,7 @@ class Kernel extends HttpKernel
             \Illuminate\Foundation\Http\Middleware\EncryptCookies::class,
             \Illuminate\Foundation\Http\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Foundation\Http\Middleware\StartSession::class,
+            // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\Foundation\Http\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\OnlineUserCounter::class,
             \App\Http\Middleware\FrameGuard::class,
