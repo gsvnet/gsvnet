@@ -16,7 +16,7 @@ class ShowThreadFilter
 
     public function filter($route)
     {
-        $slug = $route->getParameter('slug');
+        $slug = $route->parameter('slug');
         $thread = $this->threads->getBySlug($slug);
 
         if ($thread->public) {
