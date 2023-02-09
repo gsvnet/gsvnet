@@ -2,8 +2,6 @@
 
 namespace App\Helpers\Users;
 
-use Event;
-
 class UserManager
 {
     protected $createValidator;
