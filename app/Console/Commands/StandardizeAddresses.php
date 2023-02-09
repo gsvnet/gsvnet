@@ -130,7 +130,6 @@ class StandardizeAddresses extends Command
         } catch (\Exception $e) {
             $this->error($e->getMessage());
         }
-
     }
 
     /**

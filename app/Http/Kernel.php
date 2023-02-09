@@ -2,24 +2,7 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\AccountNotApproved;
-use App\Http\Middleware\ApiAuthenticated;
-use App\Http\Middleware\Authenticate;
-use App\Http\Middleware\CanBecomeMember;
-use App\Http\Middleware\FrameGuard;
-use App\Http\Middleware\LoginViaToken;
-use App\Http\Middleware\MustHavePermission;
-use App\Http\Middleware\OnlineUserCounter;
-use App\Http\Middleware\RedirectIfAuthenticated;
-use App\Http\Middleware\ValidEventDate;
-use App\Http\Middleware\VerifyCsrfToken;
-use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
-use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
-use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode;
-use Illuminate\Session\Middleware\StartSession;
-use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class Kernel extends HttpKernel
 {
@@ -29,7 +12,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
-            \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+        \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
     ];
 
     protected $middlewareGroups = [
@@ -39,7 +22,7 @@ class Kernel extends HttpKernel
             \Illuminate\Foundation\Http\Middleware\StartSession::class,
             \Illuminate\Foundation\Http\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\OnlineUserCounter::class,
-            \App\Http\Middleware\FrameGuard::class,        
+            \App\Http\Middleware\FrameGuard::class,
         ],
 
         'api' => [
