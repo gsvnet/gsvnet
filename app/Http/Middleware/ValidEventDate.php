@@ -13,8 +13,8 @@ class ValidEventDate
         $max = (int) Config::get('gsvnet.events.maxYear');
         $months = Config::get('gsvnet.months');
 
-        $year = (int) $request->route()->getParameter('year');
-        $month = $request->route()->getParameter('month', '');
+        $year = (int) $request->route('year');
+        $month = $request->route('month', '');
 
         if ($year < $min or $year > $max) {
             abort('404');
