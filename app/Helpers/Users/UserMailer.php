@@ -19,7 +19,7 @@ class UserMailer extends Mailer
         ];
 
         // Send user a welcome message
-        $this->sendTo($user->email, 'Welkom', 'emails.users.welcome', $data);
+        $this->sendTo($user, 'Welkom', 'emails.users.welcome', $data);
         // Notify administrators about the new user
         $this->sendTo(Config::get('gsvnet.email.admin'), 'Nieuwe gebruiker', 'emails.admin.registered', $data);
     }
@@ -35,7 +35,7 @@ class UserMailer extends Mailer
         ];
 
         // Send user an email informing that his account wasd approved
-        $this->sendTo($user->email, 'Account is geactiveerd', 'emails.users.activated', $data);
+        $this->sendTo($user, 'Account is geactiveerd', 'emails.users.activated', $data);
     }
 
     /**
@@ -50,7 +50,7 @@ class UserMailer extends Mailer
             'input' => $input,
         ];
 
-        $this->sendTo($user->email, 'Aanmelding wordt verwerkt', 'emails.users.join', $data);
+        $this->sendTo($user, 'Aanmelding wordt verwerkt', 'emails.users.join', $data);
 
         $this->sendTo(
             Config::get('gsvnet.email.membership'),
@@ -70,7 +70,7 @@ class UserMailer extends Mailer
             'user' => $user,
         ];
 
-        $this->sendTo($user->email, 'Aanmelding geaccepteerd', 'emails.users.accepted', $data);
+        $this->sendTo($user, 'Aanmelding geaccepteerd', 'emails.users.accepted', $data);
     }
 
     public function updatedByOwner(User $oldUser, User $newUser, UserProfile $oldProfile, UserProfile $newProfile)

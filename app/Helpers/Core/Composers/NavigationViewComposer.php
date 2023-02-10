@@ -318,7 +318,7 @@ class NavigationViewComposer
                 'url' => action('SessionController@getLogin'),
                 'params' => ['data-mfp-src' => '#login-dialog', 'id' => 'login-link', 'rel' => 'nofollow'],
                 'visible' => function () {
-                return Auth::guest();
+                    return Auth::guest();
                 },
                 'rel' => 'nofollow',
             ],
@@ -329,7 +329,7 @@ class NavigationViewComposer
                 },
                 'url' => action('UserController@showProfile'),
                 'visible' => function () {
-                return Auth::check();
+                    return Auth::check();
                 },
                 'submenu' => [
                     'profiel' => [

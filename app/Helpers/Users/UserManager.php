@@ -2,8 +2,6 @@
 
 namespace App\Helpers\Users;
 
-use Event;
-
 class UserManager
 {
     protected $createValidator;
@@ -31,7 +29,7 @@ class UserManager
         $user = $this->users->create($input);
 
         // Send email etc.
-        Event::fire('user.registered', ['user' => $user]);
+        event('user.registered', ['user' => $user]);
 
         return $user;
     }
@@ -41,7 +39,7 @@ class UserManager
         $user = $this->users->byId($id);
         $this->users->activateUser($id);
 
-        Event::fire('user.activated', ['user' => $user]);
+        event('user.activated', ['user' => $user]);
 
         return $user;
     }
@@ -54,7 +52,7 @@ class UserManager
         $user = $this->users->byId($id);
         $this->users->acceptMembership($id);
 
-        Event::fire('potential.accepted', ['user' => $user]);
+        event('potential.accepted', ['user' => $user]);
 
         return $user;
     }
