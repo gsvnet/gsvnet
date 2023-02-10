@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Gate;
+use Carbon\Carbon;
 
 class ForumThreadsController extends BaseController {
     protected $threads;
@@ -54,7 +55,9 @@ class ForumThreadsController extends BaseController {
         $queryString = !empty($tagAppends['tags']) ? '?tags=' . implode(',', (array)$tagAppends['tags']) : '';
         $threads->appends($tagAppends);
 
-        return view('forum.threads.index', compact('threads', 'tags', 'queryString'));
+        $verse = $this->getVerse();
+
+        return view('forum.threads.index', compact('threads', 'tags', 'queryString', 'verse'));
     }
 
     // show a thread
@@ -238,5 +241,21 @@ class ForumThreadsController extends BaseController {
         $threads = $this->threads->getTrashedPaginated();
 
         return view('forum.threads.thrashed', compact('threads'));
+    }
+
+    public function getVerse()
+    {
+        $path = storage_path('extension/verse.json');
+        $currentDate = Carbon::now()->toDateString();
+
+        if (!File::exists($path))
+            return NULL;
+
+        $json = json_decode(file_get_contents($path), true); 
+
+        if (!isset($json[$currentDate]) || count($json[$currentDate]) < 2) 
+            return NULL;
+        
+        return $json[$currentDate];
     }
 }
