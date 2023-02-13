@@ -3,7 +3,6 @@
 namespace App\Helpers\Core;
 
 use Mail;
-use App\Helpers\Core\MailableMail;
 
 abstract class Mailer
 {
