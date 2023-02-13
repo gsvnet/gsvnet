@@ -141,7 +141,7 @@ class UserController extends BaseController
 
     public function updateProfile(Request $request, EmailAndPasswordValidator $validator)
     {
-        $data = $request->only('email', 'password', 'password_confirmation');
+        $data = $request->all('email', 'password', 'password_confirmation');
         $user = $request->user();
         $validator->forUser($user)->validate($data);
 

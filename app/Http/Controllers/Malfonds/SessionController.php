@@ -34,7 +34,7 @@ class SessionController extends CoreApiController
 
     public function login(Request $request)
     {
-        if (Auth::attempt($request->only('email', 'password'))) {
+        if (Auth::attempt($request->all('email', 'password'))) {
             $fractal = $this->getFractalService();
             $member = $this->users->memberOrFormerByIdWithProfile(Auth::user()->id);
 
