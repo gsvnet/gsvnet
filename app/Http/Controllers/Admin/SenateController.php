@@ -34,8 +34,8 @@ class SenateController extends AdminBaseController
         $users = $this->users->all();
 
         return view('admin.senates.index')
-            ->withSenates($senates)
-            ->withUsers($users);
+            ->with('senates', $senates)
+            ->with('users', $users);
     }
 
     public function store()
@@ -64,9 +64,9 @@ class SenateController extends AdminBaseController
         });
 
         return view('admin.senates.show')
-            ->withSenate($senate)
-            ->withUsers($users)
-            ->withMembers($members);
+            ->with('senate', $senate)
+            ->with('users', $users)
+            ->with('members', $members);
     }
 
     public function edit($id)
@@ -83,9 +83,9 @@ class SenateController extends AdminBaseController
         });
 
         return view('admin.senates.edit')
-            ->withSenate($senate)
-            ->withUsers($users)
-            ->withMembers($members);
+            ->with('senate', $senate)
+            ->with('users', $users)
+            ->with('members', $members);
     }
 
     public function update($id)

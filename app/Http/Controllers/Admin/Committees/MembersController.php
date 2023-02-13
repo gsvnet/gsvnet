@@ -79,9 +79,9 @@ class MembersController extends AdminBaseController
         $committee = $membership->committee;
 
         return view('admin.committees.edit-membership')
-            ->withMembership($membership)
-            ->withCommittee($committee)
-            ->withMember($member);
+            ->with('membership', $membership)
+            ->with('committee', $committee)
+            ->with('member', $member);
     }
 
     public function update($id)

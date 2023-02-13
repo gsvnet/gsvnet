@@ -40,8 +40,8 @@ class CommitteeController extends AdminBaseController
         $users = $this->users->byType(2);
 
         return view('admin.committees.index')
-            ->withCommittees($committees)
-            ->withUsers($users);
+            ->with('committees', $committees)
+            ->with('users', $users);
     }
 
     public function store()
@@ -72,9 +72,9 @@ class CommitteeController extends AdminBaseController
         });
 
         return view('admin.committees.show')
-            ->withCommittee($committee)
-            ->withUsers($users)
-            ->withMembers($members);
+            ->with('committee', $committee)
+            ->with('users', $users)
+            ->with('members', $members);
     }
 
     public function edit($id)
@@ -83,8 +83,8 @@ class CommitteeController extends AdminBaseController
         $members = $committee->users;
 
         return view('admin.committees.edit')
-            ->withCommittee($committee)
-            ->withMembers($members);
+            ->with('committee', $committee)
+            ->with('members', $members);
     }
 
     public function update($id)

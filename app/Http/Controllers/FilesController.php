@@ -42,8 +42,8 @@ class FilesController extends BaseController
         $labels = $labelsRepository->all();
 
         return view('files.index')
-            ->withFiles($files)
-            ->withLabels($labels);
+            ->with('files', $files)
+            ->with('labels', $labels);
     }
 
     /**
