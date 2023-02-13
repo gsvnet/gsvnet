@@ -245,7 +245,7 @@ class ForumThreadsController extends BaseController {
 
     public function getVerse()
     {
-        $path = storage_path('extension/verse.json');
+        $path = storage_path('extension/verses.json');
         $currentDate = Carbon::now()->toDateString();
 
         if (!File::exists($path))
