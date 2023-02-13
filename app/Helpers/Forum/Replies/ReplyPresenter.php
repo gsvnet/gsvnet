@@ -4,7 +4,7 @@ namespace App\Helpers\Forum\Replies;
 
 use App\Helpers\Emoticons\Emoticon;
 use App\Helpers\Markdown\HtmlMarkdownConverter;
-use Chromabits\Purifier\Purifier;
+use Mews\Purifier\Purifier;
 use Illuminate\Support\Facades\Auth;
 use Laracasts\Presenter\Presenter;
 
