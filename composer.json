@@ -15,6 +15,7 @@
         "anahkiasen/former": "~4.0.0",
         "fzaninotto/faker": "~1.5.0",
         "intervention/image": "~2.3.0",
+        "chromabits/purifier": "~2.1",
         "misd/linkify": "~1.1.2",
         "guzzlehttp/guzzle": "~6.0",
         "laracasts/presenter": "~0.2.1",
@@ -34,8 +35,7 @@
         "algolia/algoliasearch-client-php": "^1.10",
         "php": ">=7.0.0",
         "laravel/tinker": "~1.0",
-        "fideloper/proxy": "~3.3",
-        "mews/purifier": "^3.3.8"
+        "fideloper/proxy": "~3.3"
     },
     "require-dev": {
         "phpunit/phpunit": "~6.0",
