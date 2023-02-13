@@ -22,7 +22,7 @@
 
         {{--!! Former::file('photo_path')->label('Upload een foto van jezelf (niet verplicht)')->accept('image') !!--}}
 
-        <div class="form-group {{$errors->has('firstname') || $errors->has('middlename') || $errors->has('lastname') ? ' has-error' : ''}}">
+        <div class="form-group {{$errors->filled('firstname') || $errors->filled('middlename') || $errors->filled('lastname') ? ' has-error' : ''}}">
             <label for="firstname" class="control-label">Naam<sup>*</sup></label>
             <input type="text" class="form-control" value="{{old('firstname')}}" placeholder="Voornaam" id="firstname" name="firstname" required>
             <input type="text" class="form-control" value="{{old('middlename')}}" placeholder="Tussenvoegsel" id="middlename" name="middlename" size="4" required>
@@ -31,7 +31,7 @@
 
         {!! Former::select('gender')->label('Geslacht')->options(array('1' => 'Man', '0' => 'Vrouw'))->required() !!}
 
-        <div class="inline-form-row {{$errors->has('birthdate') ? ' has-error' : ''}}">
+        <div class="inline-form-row {{$errors->filled('birthdate') ? ' has-error' : ''}}">
             <label for="birth-day" class="control-label">Geboortedatum<sup>*</sup></label>
             {!! Former::select('birthDay')->label('')->range(1, 31) !!}
             {!! Former::select('birthMonth')->label('')->options(["01" =>"jan","02" =>"feb","03" =>"mrt","04" =>"apr","05" =>"mei","06" =>"jun","07" =>"jul","08" =>"aug","09" =>"sep","10" =>"okt","11" =>"nov","12" =>"dec"]) !!}
@@ -43,7 +43,7 @@
 
         {!! Former::text('address')->label('Adres en huisnummer')->placeholder('Straatnaam en nummer')->required() !!}
 
-        <div class="form-group {{$errors->has('zipCode') || $errors->has('town') ? ' has-error' : ''}}">
+        <div class="form-group {{$errors->filled('zipCode') || $errors->filled('town') ? ' has-error' : ''}}">
             <label for="zipCode" class="control-label">Postcode en plaats<sup>*</sup></label>
             <input type="text" class="form-control" value="{{old('zipCode')}}" placeholder="Postcode" id="zipCode" name="zipCode" size="6" required>
             <input type="text" class="form-control" value="{{old('town')}}" placeholder="Woonplaats" id="town" name="town" required>
@@ -87,7 +87,7 @@
 
         <div id="parents-info">
             {!! Former::text('parentsAddress')->label('Adres en huisnummer ouders')->placeholder('Straatnaam en nummer') !!}
-            <div class="form-group {{$errors->has('parentsZipCode') || $errors->has('parents-town') ? ' has-error' : ''}}">
+            <div class="form-group {{$errors->filled('parentsZipCode') || $errors->filled('parents-town') ? ' has-error' : ''}}">
                 <label for="parentsZipCode" class="control-label">Postcode en plaats ouders</label>
                 <input type="text" class="form-control" value="{{old('parentsZipCode')}}" placeholder="Postcode" id="parentsZipCode" name="parentsZipCode" size="6">
                 <input type="text" class="form-control" value="{{old('parentsTown')}}" placeholder="Woonplaats" id="parentsTown" name="parentsTown">

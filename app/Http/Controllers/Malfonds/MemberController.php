@@ -49,7 +49,7 @@ class MemberController extends CoreApiController
 
     public function index(Request $request)
     {
-        if (! $request->has('yearGroup')) {
+        if (! $request->filled('yearGroup')) {
             $this->errorBadRequest();
         }
 

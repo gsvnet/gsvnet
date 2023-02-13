@@ -10,7 +10,7 @@
 @section('content')
 <div class="column-holder">
     <h1>Forum</h1>
-    @if(Input::has('tags'))
+    @if(Input::filled('tags'))
         <p class="delta">
             Onderwerpen met de tags {{{ str_replace(',', ', ', Input::get('tags')) }}}
         </p>
@@ -33,7 +33,7 @@
             {{-- If no comments are found display a message --}}
             @if( ! $threads->count())
                 <div class="empty-state">
-                    @if(Input::has('tags'))
+                    @if(Input::filled('tags'))
                         <h3>Geen onderwerpen gevonden met de tags {{{ str_replace(',', ', ', Input::get('tags')) }}}</h3>
                     @else
                         <h3>Geen onderwerpen gevonden.</h3>
