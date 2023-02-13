@@ -69,7 +69,7 @@ class StandardizeAddresses extends Command
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $for = $this->argument('of');
 
