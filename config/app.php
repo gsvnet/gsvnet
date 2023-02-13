@@ -162,7 +162,6 @@ return [
 
         Former\FormerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Chromabits\Purifier\PurifierServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Collective\Bus\BusServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
@@ -230,7 +229,6 @@ return [
         'HTML' => Collective\Html\HtmlFacade::class,
 
         'Former' => Former\Facades\Former::class,
-        'Purifier' => Chromabits\Purifier\Purifier::class,
         'Image' => Intervention\Image\Facades\Image::class,
 
         'Flash' => Laracasts\Flash\Flash::class,
