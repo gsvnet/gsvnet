@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use Collective\Bus\Dispatcher;
+use Illuminate\Bus\Dispatcher;
 use Illuminate\Support\ServiceProvider;
 
 class BusServiceProvider extends ServiceProvider
@@ -14,11 +14,7 @@ class BusServiceProvider extends ServiceProvider
      */
     public function boot(Dispatcher $dispatcher)
     {
-        $dispatcher->mapUsing(function ($command) {
-            return Dispatcher::simpleMapping(
-                $command, 'App\Commands', 'App\Handlers\Commands'
-            );
-        });
+        $dispatcher->map(['App\Handlers\Commands']);
     }
 
     /**

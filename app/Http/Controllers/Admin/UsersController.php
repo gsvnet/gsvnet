@@ -166,7 +166,7 @@ class UsersController extends AdminBaseController
     {
         $this->authorize('users.manage');
 
-        $input = $request->only('type', 'username', 'firstname', 'middlename', 'lastname', 'email', 'password', 'password_confirmation');
+        $input = $request->all('type', 'username', 'firstname', 'middlename', 'lastname', 'email', 'password', 'password_confirmation');
         $input['approved'] = true;
 
         $validator->validate($input);
@@ -274,7 +274,7 @@ class UsersController extends AdminBaseController
         $this->authorize('users.manage');
         $user = $this->users->byId($id);
 
-        $input = $request->only('region', 'year_group_id', 'inauguration_date', 'initials', 'phone', 'address',
+        $input = $request->all('region', 'year_group_id', 'inauguration_date', 'initials', 'phone', 'address',
             'zip_code', 'town', 'study', 'student_number', 'birthdate', 'gender');
         $input['user_id'] = $id;
 
@@ -288,7 +288,7 @@ class UsersController extends AdminBaseController
 
         // Natural parents
         if ($user->isMember()) {
-            $input = array_merge($input, $request->only('parent_phone', 'parent_email', 'parent_address', 'parent_zip_code', 'parent_town'));
+            $input = array_merge($input, $request->all('parent_phone', 'parent_email', 'parent_address', 'parent_zip_code', 'parent_town'));
         }
 
         // Check if the region is valid

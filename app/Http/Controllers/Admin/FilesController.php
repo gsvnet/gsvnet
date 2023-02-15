@@ -38,9 +38,9 @@ class FilesController extends AdminBaseController
         }
 
         return view('admin.files.index')
-            ->withFiles($files)
-            ->withLabels($labels)
-            ->withChecked($checked);
+            ->with('files', $files)
+            ->with('labels', $labels)
+            ->with('checked', $checked);
     }
 
     public function store()
@@ -69,9 +69,9 @@ class FilesController extends AdminBaseController
         }
 
         return view('admin.files.edit')
-            ->withFile($file)
-            ->withLabels($labels)
-            ->withChecked($checked);
+            ->with('file', $file)
+            ->with('labels', $labels)
+            ->with('checked', $checked);
     }
 
     public function update($id)

@@ -145,7 +145,6 @@ return [
         Illuminate\Redis\RedisServiceProvider::class,
         Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
         Illuminate\Session\SessionServiceProvider::class,
-        Laravel\Tinker\TinkerServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
@@ -163,11 +162,9 @@ return [
 
         Former\FormerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Chromabits\Purifier\PurifierServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
-        Collective\Bus\BusServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Barryvdh\Cors\ServiceProvider::class,
+        Fruitcake\Cors\CorsServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider::class,
 
@@ -231,7 +228,6 @@ return [
         'HTML' => Collective\Html\HtmlFacade::class,
 
         'Former' => Former\Facades\Former::class,
-        'Purifier' => Chromabits\Purifier\Purifier::class,
         'Image' => Intervention\Image\Facades\Image::class,
 
         'Flash' => Laracasts\Flash\Flash::class,

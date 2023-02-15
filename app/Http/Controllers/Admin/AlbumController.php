@@ -57,8 +57,8 @@ class AlbumController extends AdminBaseController
         $photos = $this->photos->byAlbumIdAndPaginate($id, $photosPerPage);
 
         return view('admin.albums.show')
-            ->withAlbum($album)
-            ->withPhotos($photos);
+            ->with('album', $album)
+            ->with('photos', $photos);
     }
 
     public function edit($id)
@@ -66,7 +66,7 @@ class AlbumController extends AdminBaseController
         $album = $this->albums->byId($id);
 
         return view('admin.albums.edit')
-            ->withAlbum($album);
+            ->with('album', $album);
     }
 
     public function update($id)

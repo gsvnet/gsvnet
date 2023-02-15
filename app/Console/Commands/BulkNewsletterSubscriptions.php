@@ -68,7 +68,7 @@ class BulkNewsletterSubscriptions extends Command
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $for = $this->argument('for');
 

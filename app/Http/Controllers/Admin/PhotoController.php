@@ -44,7 +44,7 @@ class PhotoController extends AdminBaseController
     {
         $photo = $this->photos->byId($id);
 
-        return view('admin.photos.show')->withPhoto($photo);
+        return view('admin.photos.show')->with('photo', $photo);
     }
 
     public function update($album_id, $id)

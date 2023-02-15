@@ -28,7 +28,7 @@ class EventController extends AdminBaseController
         $events = $this->events->paginate(50, false);
 
         return view('admin.events.index')
-            ->withEvents($events);
+            ->with('events', $events);
     }
 
     public function create()
@@ -57,7 +57,7 @@ class EventController extends AdminBaseController
         $event = $this->events->byId($id);
 
         return view('admin.events.show')
-            ->withEvent($event);
+            ->with('event', $event);
     }
 
     public function edit($id)
@@ -65,7 +65,7 @@ class EventController extends AdminBaseController
         $event = $this->events->byId($id);
 
         return view('admin.events.edit')
-            ->withEvent($event);
+            ->with('event', $event);
     }
 
     public function update($id)

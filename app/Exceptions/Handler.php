@@ -23,9 +23,20 @@ class Handler extends ExceptionHandler
         \Illuminate\Database\Eloquent\ModelNotFoundException::class,
         \Illuminate\Session\TokenMismatchException::class,
         \Illuminate\Validation\ValidationException::class,
-        UserAccountNotApprovedException::class,
-        NoPermissionException::class,
+        \App\Helpers\Permissions\UserAccountNotApprovedException::class,
+        \App\Helpers\Permissions\NoPermissionException::class,
         ValueObject\Illuminate\Validation\ValidationException::class,
+    ];
+
+
+    /**
+     * A list of the inputs that are never flashed for validation exceptions.
+     *
+     * @var array
+     */
+    protected $dontFlash = [
+        'password',
+        'password_confirmation',
     ];
 
     /**

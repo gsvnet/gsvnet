@@ -60,8 +60,8 @@ class UserController extends BaseController
         $member = $this->users->byIdWithProfileAndYearGroup($request->user()->id);
         $committees = $this->committees->byUserOrderByRecent($member);
         $senates = $member->senates;
-        if ($member->profile && $member->profile->regions) {
-            $formerRegions = $member->profile->regions->intersect($this->regions->former());
+        if ($member->profile && $member->profile->regions) {            
+            $formerRegions = array_filter($member->profile->regions->only($this->regions->former()));
         } else {
             $formerRegions = [];
         }
@@ -120,7 +120,7 @@ class UserController extends BaseController
         $committees = $this->committees->byUserOrderByRecent($member);
         $senates = $member->senates;
         if ($member->profile && $member->profile->regions) {
-            $formerRegions = $member->profile->regions->intersect($this->regions->former());
+            $formerRegions = array_filter($member->profile->regions->only($this->regions->former()));
         } else {
             $formerRegions = [];
         }
@@ -141,7 +141,7 @@ class UserController extends BaseController
 
     public function updateProfile(Request $request, EmailAndPasswordValidator $validator)
     {
-        $data = $request->only('email', 'password', 'password_confirmation');
+        $data = $request->all('email', 'password', 'password_confirmation');
         $user = $request->user();
         $validator->forUser($user)->validate($data);
 

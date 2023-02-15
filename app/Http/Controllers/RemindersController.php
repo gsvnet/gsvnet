@@ -48,7 +48,7 @@ class RemindersController extends BaseController
             'password' => 'required|confirmed',
         ]);
 
-        $credentials = $request->only(
+        $credentials = $request->all(
             'email', 'password', 'password_confirmation', 'token'
         );
 
@@ -66,7 +66,7 @@ class RemindersController extends BaseController
 
             default:
                 return redirect()->back()
-                    ->withInput($request->only('email'))
+                    ->withInput($request->all('email'))
                     ->withErrors(['email' => trans($response)]);
         }
     }

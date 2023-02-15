@@ -54,7 +54,7 @@ class MemberController extends BaseController
     {
         \Log::info('Potential wil lid worden', $request->except('password', 'password_confirmation'));
 
-        $data = $request->only(['firstname', 'middlename', 'lastname', 'gender', 'birthDay', 'birthMonth', 'birthYear',
+        $data = $request->all(['firstname', 'middlename', 'lastname', 'gender', 'birthDay', 'birthMonth', 'birthYear',
             'address', 'zipCode', 'town', 'email', 'phone', 'studyStartYear', 'study', 'studentNumber', 'username',
             'password', 'password_confirmation', 'parents-same-address', 'parentsAddress', 'parentsZipCode',
             'parentsTown', 'parentsEmail', 'parentsPhone', 'message', 'school', 'photo_path', 'g-recaptcha-response', ]);
@@ -71,7 +71,7 @@ class MemberController extends BaseController
 
         // Set username and email if the user is logged in
         $data['new_user'] = 1;
-        if (Auth::check() || Auth::attempt($request->only('email', 'password'))) {
+        if (Auth::check() || Auth::attempt($request->all('email', 'password'))) {
             $data['new_user'] = 0;
             $data['userId'] = Auth::user()->id;
             $data['email'] = Auth::user()->email;

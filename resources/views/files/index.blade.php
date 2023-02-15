@@ -56,7 +56,7 @@
                                 <input type="checkbox" value="{{{ $label->id }}}" name="labels[{{{ $label->id }}}]"
                                 <?php
                                 // Lelijke code om irritate select boxen te laten checken
-                                if (Input::has('labels'))
+                                if (Input::filled('labels'))
                                 {
                                     $labels = Input::get('labels');
                                     if (isset($labels[$label->id]))
