@@ -7,6 +7,7 @@ use App\Events\Potentials\PotentialSignedUp;
 use App\Helpers\Users\Profiles\UserProfile;
 use App\Helpers\Users\User;
 use App\Helpers\Users\UsersRepository;
+use Illuminate\Support\Facades\Hash;
 
 class SignUpAsPotentialCommandHandler
 {
@@ -25,7 +26,7 @@ class SignUpAsPotentialCommandHandler
             'middlename' => $command->middlename,
             'lastname' => $command->lastname,
             'email' => $command->email,
-            'password' => bcrypt($command->password),
+            'password' => Hash::make($command->password),
             'type' => User::POTENTIAL,
         ]);
 

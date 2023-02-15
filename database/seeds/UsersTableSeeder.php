@@ -3,6 +3,7 @@
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -27,7 +28,7 @@ class UsersTableSeeder extends Seeder
     {
         $users = [];
         $profiles = [];
-        $password = bcrypt('testen');
+        $password = Hash::make('testen');
 
         foreach (range(1, $this->totalUsers) as $userId) {
             $type = rand(0, 3);
