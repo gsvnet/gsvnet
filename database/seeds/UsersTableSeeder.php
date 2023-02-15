@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +28,7 @@ class UsersTableSeeder extends Seeder
     {
         $users = [];
         $profiles = [];
-        $password = bcrypt('testen');
+        $password = Hash::make('testen');
 
         foreach (range(1, $this->totalUsers) as $userId) {
             $type = rand(0, 3);

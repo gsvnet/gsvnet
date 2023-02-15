@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Hash;
 use App\Helpers\Committees\Committee;
 use App\Helpers\Users\Profiles\UserProfile;
 use App\Helpers\Users\User;
@@ -16,7 +17,7 @@ class AdminUserSeeder extends Seeder
 
         $harmen = User::create([
             'email' => 'harmenstoppels@gmail.com',
-            'password' => bcrypt('helloworld'),
+            'password' => Hash::make('helloworld'),
             'firstname' => 'Harmen',
             'lastname' => 'Stoppels',
             'middlename' => '',

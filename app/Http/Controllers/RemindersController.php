@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Foundation\Auth\ResetsPasswords;
@@ -53,7 +54,7 @@ class RemindersController extends BaseController
         );
 
         $response = $this->passwords->reset($credentials, function ($user, $password) {
-            $user->password = bcrypt($password);
+            $user->password = Hash::make($password);
 
             $user->save();
 
