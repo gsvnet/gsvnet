@@ -2,12 +2,12 @@
 
 namespace App\Handlers\Commands\Potentials;
 
-use Illuminate\Support\Facades\Hash;
 use App\Commands\Potentials\SignUpAsPotentialCommand;
 use App\Events\Potentials\PotentialSignedUp;
 use App\Helpers\Users\Profiles\UserProfile;
 use App\Helpers\Users\User;
 use App\Helpers\Users\UsersRepository;
+use Illuminate\Support\Facades\Hash;
 
 class SignUpAsPotentialCommandHandler
 {

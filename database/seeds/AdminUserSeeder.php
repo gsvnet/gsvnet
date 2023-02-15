@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Hash;
 use App\Helpers\Committees\Committee;
 use App\Helpers\Users\Profiles\UserProfile;
 use App\Helpers\Users\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminUserSeeder extends Seeder
 {

@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Facades\Hash;
 use App\Helpers\Users\User;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
+use Illuminate\Support\Facades\Hash;
 use Validator;
 
 class Registrar implements RegistrarContract

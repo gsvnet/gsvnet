@@ -2,12 +2,12 @@
 
 namespace App\Handlers\Commands\Users;
 
-use Illuminate\Support\Facades\Hash;
 use App\Commands\Users\RegisterUserCommand;
 use App\Events\Users\UserWasRegistered;
 use App\Helpers\Users\Profiles\ProfilesRepository;
 use App\Helpers\Users\User;
 use App\Helpers\Users\UsersRepository;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterUserCommandHandler
 {

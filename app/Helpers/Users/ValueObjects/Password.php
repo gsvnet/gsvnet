@@ -2,8 +2,8 @@
 
 namespace App\Helpers\Users\ValueObjects;
 
-use Illuminate\Support\Facades\Hash;
 use App\Helpers\Core\ValueObject;
+use Illuminate\Support\Facades\Hash;
 
 class Password extends ValueObject
 {

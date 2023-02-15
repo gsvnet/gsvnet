@@ -2,10 +2,10 @@
 
 namespace App\Helpers\Users;
 
-use Illuminate\Support\Facades\Hash;
 use App\Helpers\Core\BaseRepository;
 use Cache;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class UsersRepository extends BaseRepository
 {
