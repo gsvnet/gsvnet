@@ -393,7 +393,7 @@
                                                                 <tr style="padding:0;text-align:left;vertical-align:top">
                                                                     <th class="callout-inner"
                                                                         style="Margin:0;background:#fefefe;border:1px solid #E8E8E8;color:#212121;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0;padding:10px;text-align:left;width:100%">
-                                                                        {!!  nl2br(e($personalMessage)) !!}
+                                                                        {!!  nl2br(e($personalMessage, false)) !!}
                                                                     </th>
                                                                     <th class="expander"
                                                                         style="Margin:0;color:#212121;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0"></th>

@@ -5,6 +5,8 @@ namespace App\Providers;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
         // Set locale to Dutch
         setlocale(LC_ALL, 'nl_NL.UTF-8');
         Carbon::setLocale(config('app.locale'));
+        Paginator::useBootstrapThree();
 
         Validator::extend(
             'recaptcha',
