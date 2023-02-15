@@ -3,7 +3,6 @@
 namespace App\Helpers\Users\ValueObjects;
 
 use App\Helpers\Core\ValueObject;
-use Illuminate\Support\Facades\Hash;
 
 class Password extends ValueObject
 {
@@ -22,6 +21,6 @@ class Password extends ValueObject
 
     public function getEncryptedPassword()
     {
-        return Hash::make($this->password);
+        return bcrypt($this->password);
     }
 }

@@ -4,7 +4,6 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class RemindersController extends BaseController
@@ -54,7 +53,7 @@ class RemindersController extends BaseController
         );
 
         $response = $this->passwords->reset($credentials, function ($user, $password) {
-            $user->password = Hash::make($password);
+            $user->password = bcrypt($password);
 
             $user->save();
 
