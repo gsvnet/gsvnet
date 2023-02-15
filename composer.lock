@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "956af853949a3073f5f0bd57584e379f",
+    "content-hash": "ee3abe39280c886e1cf516bc15fc397d",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -2716,51 +2716,59 @@
             "time": "2022-11-25T18:57:19+00:00"
         },
         {
-            "name": "mailchimp/mailchimp",
-            "version": "2.0.6",
+            "name": "mailchimp/marketing",
+            "version": "3.0.80",
             "source": {
                 "type": "git",
-                "url": "https://bitbucket.org/mailchimp/mailchimp-api-php.git",
-                "reference": "7ac99b5ac746d5875c5c350ad7e3b83674c83ec1"
+                "url": "https://github.com/mailchimp/mailchimp-marketing-php.git",
+                "reference": "c1a38f7248d8de7de412418fed8dae759b9e4b97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/mailchimp/mailchimp-api-php/get/7ac99b5ac746d5875c5c350ad7e3b83674c83ec1.zip",
-                "reference": "7ac99b5ac746d5875c5c350ad7e3b83674c83ec1",
+                "url": "https://api.github.com/repos/mailchimp/mailchimp-marketing-php/zipball/c1a38f7248d8de7de412418fed8dae759b9e4b97",
+                "reference": "c1a38f7248d8de7de412418fed8dae759b9e4b97",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.2.0"
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "guzzlehttp/guzzle": "^6.4 || ^7.2",
+                "guzzlehttp/psr7": "^1.7 || ^2.0",
+                "php": ">=7.2"
             },
             "require-dev": {
-                "apigen/apigen": "dev-master"
+                "friendsofphp/php-cs-fixer": "~2.12",
+                "phpunit/phpunit": "^7",
+                "squizlabs/php_codesniffer": "~2.6"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Mailchimp": "src/"
+                "psr-4": {
+                    "MailchimpMarketing\\": "lib/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "proprietary"
             ],
             "authors": [
                 {
-                    "name": "MailChimp Devs",
-                    "email": "api@mailchimp.com",
-                    "homepage": "http://mailchimp.com",
-                    "role": "Developer"
+                    "name": "Mailchimp",
+                    "homepage": "https://github.com/mailchimp/mailchimp-marketing-php"
                 }
             ],
-            "description": "API client library for the MailChimp bulk email as a service platform",
-            "homepage": "https://bitbucket.org/mailchimp/mailchimp-api-php",
+            "homepage": "http://swagger.io",
             "keywords": [
                 "api",
-                "email"
+                "php",
+                "sdk",
+                "swagger"
             ],
-            "abandoned": "mailchimp/marketing",
-            "time": "2014-10-30T20:38:12+00:00"
+            "support": {
+                "source": "https://github.com/mailchimp/mailchimp-marketing-php/tree/v3.0.80"
+            },
+            "time": "2022-11-02T19:19:48+00:00"
         },
         {
             "name": "markbaker/complex",

@@ -1,10 +1,12 @@
 <?php
 
+
+
 namespace App\Helpers\Newsletters\Mailchimp;
 
 use App\Helpers\Newsletters\NewsletterList as NewsletterListInterface;
 use Illuminate\Contracts\Config\Repository;
-use Mailchimp;
+use MailchimpMarketing\ApiClient;
 
 class NewsletterList implements NewsletterListInterface
 {
@@ -13,13 +15,17 @@ class NewsletterList implements NewsletterListInterface
     protected $lists = [];
 
     /**
-     * @param  Mailchimp  $mailchimp
+     * @param  ApiClient  $mailchimp
      * @param  Repository  $config
      */
-    public function __construct(Mailchimp $mailchimp, Repository $config)
+    public function __construct(ApiClient $mailchimp, Repository $config)
     {
         $this->mailchimp = $mailchimp;
         $this->lists = $config->get('mailchimp.lists');
+        $mailchimp->setConfig([
+            'apiKey' => $config->get('mailchimp.key'),
+            'server' => $config->get('mailchimp.server')
+        ]);
     }
 
     /**
@@ -34,13 +40,13 @@ class NewsletterList implements NewsletterListInterface
             return null;
         }
 
-        return $this->mailchimp->lists->subscribe(
+        return $this->mailchimp->lists->addListMember(
             $this->lists[$listName],
-            ['email' => $email],
-            $vars, // merge vars,
-            'html', // email type
-            false, // double opt-in
-            true // update existing
+            ['email_address' => $email,
+            'status' => 'pending',
+            'merge_fields' => $vars, // merge vars,
+            'email_type' => 'html', // email type
+            ]
         );
     }
 
@@ -55,12 +61,9 @@ class NewsletterList implements NewsletterListInterface
             return null;
         }
 
-        return $this->mailchimp->lists->unsubscribe(
+        return $this->mailchimp->lists->deleteListMember(
             $this->lists[$listName],
-            ['email' => $email],
-            false, // delete
-            false, // goodbye mail
-            false // notification
+            md5(strtolower($email)),
         );
     }
 
@@ -69,37 +72,16 @@ class NewsletterList implements NewsletterListInterface
      * @param $batch
      * @return mixed
      */
-    public function batchSubscribeTo($listname, $batch)
+    public function handleBatch($listname, $batch)
     {
         if (! array_key_exists($listname, $this->lists)) {
             return null;
         }
 
-        return $this->mailchimp->lists->batchSubscribe(
+        return $this->mailchimp->lists->batchListMembers(
             $this->lists[$listname],
-            $batch,
-            false,// double opt in
-            true // replace existing
-        );
-    }
-
-    /**
-     * @param $listname
-     * @param $batch
-     * @return mixed
-     */
-    public function batchUnsubscribeFrom($listname, $batch)
-    {
-        if (! array_key_exists($listname, $this->lists)) {
-            return null;
-        }
-
-        return $this->mailchimp->lists->batchUnsubscribe(
-            $this->lists[$listname],
-            $batch,
-            false, // delete
-            false, // goodbye
-            false // notification
-        );
+            ['members' => $batch,
+            'skip_duplicate_check' => true, // replace existing
+        ]);
     }
 }
