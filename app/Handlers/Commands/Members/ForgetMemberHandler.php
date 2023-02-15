@@ -2,7 +2,6 @@
 
 namespace App\Handlers\Commands\Members;
 
-use Illuminate\Support\Str;
 use App\Commands\Members\ChangeAddress;
 use App\Commands\Members\ChangeBirthDay;
 use App\Commands\Members\ChangeBusiness;
@@ -30,6 +29,7 @@ use App\Helpers\Users\ValueObjects\OptionalPhoneNumber;
 use App\Helpers\Users\ValueObjects\PhoneNumber;
 use App\Helpers\Users\ValueObjects\Study;
 use App\Helpers\Users\ValueObjects\Username;
+use Illuminate\Support\Str;
 
 class ForgetMemberHandler
 {

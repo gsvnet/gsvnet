@@ -19,7 +19,6 @@ class Thread extends Model
 
     protected $with = ['author'];
 
-
     public $presenter = \App\Helpers\Forum\Threads\ThreadPresenter::class;
 
     public function author()

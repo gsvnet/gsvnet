@@ -2,10 +2,10 @@
 
 namespace App\Helpers\Auth;
 
-use Illuminate\Support\Str;
 use App\Helpers\Users\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Laracasts\Presenter\PresentableTrait;
 
 class Token extends Model

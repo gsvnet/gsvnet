@@ -2,11 +2,11 @@
 
 namespace App\Helpers\Core;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use App\Helpers\Core\Exceptions\NoValidationRulesFoundException;
 use App\Helpers\Core\Exceptions\NoValidatorInstantiatedException;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Validator;
 
 abstract class Entity extends Model

@@ -2,10 +2,10 @@
 
 namespace Admin;
 
-use Illuminate\Support\Arr;
 use App\Helpers\Files\FileManager;
 use App\Helpers\Files\FilesRepository;
 use App\Helpers\Files\Labels\LabelsRepository;
+use Illuminate\Support\Arr;
 use Input;
 
 class FilesController extends AdminBaseController
