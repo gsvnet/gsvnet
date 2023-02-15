@@ -5,7 +5,6 @@ namespace App\Helpers\Users;
 use App\Helpers\Core\BaseRepository;
 use Cache;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Hash;
 
 class UsersRepository extends BaseRepository
 {
@@ -186,7 +185,7 @@ class UsersRepository extends BaseRepository
             'lastname' => $input['register-lastname'],
             'email' => $input['register-email'],
             'username' => $input['register-username'],
-            'password' => Hash::make($input['register-password']),
+            'password' => bcrypt($input['register-password']),
             'type' => $input['type'],
         ]);
     }

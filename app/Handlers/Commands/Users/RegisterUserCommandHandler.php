@@ -7,7 +7,6 @@ use App\Events\Users\UserWasRegistered;
 use App\Helpers\Users\Profiles\ProfilesRepository;
 use App\Helpers\Users\User;
 use App\Helpers\Users\UsersRepository;
-use Illuminate\Support\Facades\Hash;
 
 class RegisterUserCommandHandler
 {
@@ -29,7 +28,7 @@ class RegisterUserCommandHandler
         $user->username = $command->userName;
         $user->type = $command->type;
         $user->email = $command->email;
-        $user->password = Hash::make($command->password);
+        $user->password = bcrypt($command->password);
         $user->approved = $command->approved;
 
         $this->users->save($user);
