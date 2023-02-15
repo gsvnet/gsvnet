@@ -48,23 +48,13 @@ class UserTransformer
 
         foreach ($users as $user) {
             $batch[] = [
-                'email' => ['email' => $user->email],
+                'email_address' => $user->email,
+                'status' => 'pending',
                 'merge_vars' => $this->mailchimpSubscribe($user),
             ];
         }
 
         return $batch;
-    }
-
-    /**
-     * @param  User  $user
-     * @return array
-     */
-    public function mailchimpUnsubscribe(User $user)
-    {
-        return [
-            ['email' => $user->email],
-        ];
     }
 
     /**
@@ -75,7 +65,10 @@ class UserTransformer
     {
         $batch = [];
         foreach ($users as $user) {
-            $batch[] = $this->mailchimpUnsubscribe($user);
+            $batch[] = [
+                'email_address' => $user->email,
+                'status' => 'subscribed',
+            ];
         }
 
         return $batch;

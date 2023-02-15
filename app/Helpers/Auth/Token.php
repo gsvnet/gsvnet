@@ -5,6 +5,7 @@ namespace App\Helpers\Auth;
 use App\Helpers\Users\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Laracasts\Presenter\PresentableTrait;
 
 class Token extends Model
@@ -49,7 +50,7 @@ class Token extends Model
         $token = new static ([
             'user_id' => $user->id,
             'expires_on' => static::generateExpireDate(),
-            'token' => str_random(16),
+            'token' => Str::random(16),
         ]);
 
         return $token;

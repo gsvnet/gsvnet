@@ -19,8 +19,6 @@ class Thread extends Model
 
     protected $with = ['author'];
 
-    protected $dates = ['deleted_at'];
-
     public $presenter = \App\Helpers\Forum\Threads\ThreadPresenter::class;
 
     public function author()

@@ -26,7 +26,7 @@ class EventsTableSeeder extends Seeder
                 'title' => $title,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quicquid opinemur.',
                 'meta_description' => 'Hier komt een beschrijving van '.$title,
-                'slug' => Str::slug($title).'-'.str_random(4),
+                'slug' => Str::slug($title).'-'.Str::random(4),
                 'location' => $faker->randomElement($places),
                 'whole_day' => rand(0, 1),
                 'type' => rand(0, 3),

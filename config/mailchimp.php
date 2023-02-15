@@ -3,9 +3,10 @@
 use App\Helpers\Users\User;
 
 return [
-    'key' => env('MAILCHIMP_APIKEY'),
+    'key' => 'secret', //env('MAILCHIMP_APIKEY'),
+    'server' => 'LOOKUPINACCOUNT', //env('MAILCHIMP_SERVER')
     'lists' => [
-        User::MEMBER => env('MAILCHIMP_MEMBERS', 'c5f9a07ee4'),
-        User::REUNIST => env('MAILCHIMP_FORMERMEMBERS', 'f844adabde'),
+        User::MEMBER => 'listnr', // env('MAILCHIMP_MEMBERS', 'c5f9a07ee4'),
+        User::REUNIST => 'listnr', // env('MAILCHIMP_FORMERMEMBERS', 'f844adabde'),
     ],
 ];

@@ -24,12 +24,5 @@ interface NewsletterList
      * @param $batch
      * @return mixed
      */
-    public function batchSubscribeTo($listname, $batch);
-
-    /**
-     * @param $listname
-     * @param $batch
-     * @return mixed
-     */
-    public function batchUnsubscribeFrom($listname, $batch);
+    public function handleBatch($listname, $batch);
 }

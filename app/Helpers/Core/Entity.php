@@ -5,6 +5,8 @@ namespace App\Helpers\Core;
 use App\Helpers\Core\Exceptions\NoValidationRulesFoundException;
 use App\Helpers\Core\Exceptions\NoValidatorInstantiatedException;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Validator;
 
 abstract class Entity extends Model
@@ -51,13 +53,13 @@ abstract class Entity extends Model
         $newRules = [];
 
         foreach ($rules as $key => $rule) {
-            if (str_contains($rule, '<id>')) {
+            if (Str::contains($rule, '<id>')) {
                 $replacement = $this->exists ? $this->getAttribute($this->primaryKey) : '';
 
                 $rule = str_replace('<id>', $replacement, $rule);
             }
 
-            array_set($newRules, $key, $rule);
+            Arr::set($newRules, $key, $rule);
         }
 
         return $newRules;

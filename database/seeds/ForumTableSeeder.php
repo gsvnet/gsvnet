@@ -71,7 +71,7 @@ class ForumTableSeeder extends Seeder
             $threads[] = [
                 'subject' => $this->faker->text(20),
                 'body' => $this->faker->paragraphs(rand(1, 5), true),
-                'slug' => Str::slug($subject.'-'.str_random(4)),
+                'slug' => Str::slug($subject.'-'.Str::random(4)),
                 'public' => $this->faker->boolean(70),
                 'author_id' => $this->faker->randomElement($this->userIds),
                 'created_at' => $date,

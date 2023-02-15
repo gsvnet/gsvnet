@@ -26,7 +26,7 @@ class ThreadSlug implements Slug
             }
         }
 
-        return str_random(16);
+        return Str::random(16);
     }
 
     private function generateSlugWithIndex($i, $desired)

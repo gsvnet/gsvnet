@@ -16,6 +16,7 @@ use App\Helpers\Users\UsersRepository;
 use App\Helpers\Users\UserValidator;
 use App\Helpers\Users\YearGroupRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class UsersController extends AdminBaseController
 {
@@ -173,7 +174,7 @@ class UsersController extends AdminBaseController
 
         // set random password if password is empty
         if (empty($input['password'])) {
-            $input['password'] = str_random(16);
+            $input['password'] = Str::random(16);
         }
 
         // Map to command input

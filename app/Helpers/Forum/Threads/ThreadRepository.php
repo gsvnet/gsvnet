@@ -194,7 +194,7 @@ class ThreadRepository extends EloquentRepository
 
     public function totalLikesGivenPerYearGroup()
     {
-        return Cache::remember('total-likes-given-per-year-group', 24 * 60, function () {
+        return Cache::remember('total-likes-given-per-year-group', 24 * 60 * 60 * 100, function () {
             return \DB::select('SELECT yg.name as name, count(1) AS likes_given
                 FROM likeable_likes as ll
                 INNER JOIN user_profiles as up
@@ -210,7 +210,7 @@ class ThreadRepository extends EloquentRepository
 
     public function totalLikesReceivedPerYearGroup()
     {
-        return Cache::remember('total-likes-received-per-year-group', 24 * 60, function () {
+        return Cache::remember('total-likes-received-per-year-group', 24 * 60 * 60 * 100, function () {
             // This is getting quite a large query... LOL
             return \DB::select('SELECT t.name, count(t.id) AS likes_received
                 FROM
