@@ -28,7 +28,6 @@ class Handler extends ExceptionHandler
         ValueObject\Illuminate\Validation\ValidationException::class,
     ];
 
-
     /**
      * A list of the inputs that are never flashed for validation exceptions.
      *
