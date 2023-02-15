@@ -8,7 +8,7 @@ use App\Helpers\Newsletters\NewsletterList;
 use App\Helpers\Users\User;
 use App\Helpers\Users\UserTransformer;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Log\Writer;
+use Illuminate\Log\Logger;
 
 class NewsletterInformer implements ShouldQueue
 {
@@ -23,7 +23,7 @@ class NewsletterInformer implements ShouldQueue
     private $transformer;
 
     /**
-     * @var Writer
+     * @var Logger
      */
     private $log;
 
@@ -32,9 +32,9 @@ class NewsletterInformer implements ShouldQueue
      *
      * @param  NewsletterList  $newsletterList
      * @param  UserTransformer  $transformer
-     * @param  Writer  $log
+     * @param  Logger  $log
      */
-    public function __construct(NewsletterList $newsletterList, UserTransformer $transformer, Writer $log)
+    public function __construct(NewsletterList $newsletterList, UserTransformer $transformer, Logger $log)
     {
         $this->list = $newsletterList;
         $this->transformer = $transformer;
