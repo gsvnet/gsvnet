@@ -237,7 +237,7 @@ class UsersRepository extends BaseRepository
 
     public function mostPostsPreviousMonth($num = 20)
     {
-        return Cache::remember('most-posts-prev-month', 24 * 60 * 60, function () use ($num) {
+        return Cache::remember('most-posts-prev-month', 24 * 60 * 60 * 100, function () use ($num) {
             $now = (new Carbon)->subMonth(1);
             $from = $now->format('Y-m-01 00:00:00');
             $to = $now->format('Y-m-t 23:59:59');
@@ -259,7 +259,7 @@ class UsersRepository extends BaseRepository
 
     public function mostPostsPreviousWeek($num = 20)
     {
-        return Cache::remember('most-posts-prev-week', 24 * 60 * 60, function () use ($num) {
+        return Cache::remember('most-posts-prev-week', 24 * 60 * 60 * 100, function () use ($num) {
             $pastWeek = (new Carbon)->subWeek(1);
             $dayOfWeek = $pastWeek->dayOfWeek;
 
@@ -283,7 +283,7 @@ class UsersRepository extends BaseRepository
 
     public function mostPostsAllTime($num = 250)
     {
-        return Cache::remember('most-posts-all-time', 24 * 60 * 60, function () use ($num) {
+        return Cache::remember('most-posts-all-time', 24 * 60 * 60 * 100, function () use ($num) {
             return User::select(\DB::raw('count(forum_replies.author_id) as num, users.id, users.type, users.username, users.firstname, users.middlename, users.lastname'))
                 ->join('forum_replies', 'users.id', '=', 'forum_replies.author_id')
                 ->groupBy('forum_replies.author_id')

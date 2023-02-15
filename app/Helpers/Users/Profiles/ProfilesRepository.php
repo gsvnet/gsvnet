@@ -102,7 +102,7 @@ class ProfilesRepository extends BaseRepository
 
         $birthday = "date_format(birthdate, \"{$year}-%m-%d\")";
 
-        return Cache::remember('birthdays', 600, function () use ($birthday, $from, $to) {
+        return Cache::remember('birthdays', 60000, function () use ($birthday, $from, $to) {
             return UserProfile::whereRaw("$birthday between \"{$from}\" and \"{$to}\"")
                 ->whereHas('user', function ($q) {
                     $q->where('type', '=', User::Member);
