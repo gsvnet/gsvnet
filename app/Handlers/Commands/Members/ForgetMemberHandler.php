@@ -2,6 +2,7 @@
 
 namespace App\Handlers\Commands\Members;
 
+use Illuminate\Support\Str;
 use App\Commands\Members\ChangeAddress;
 use App\Commands\Members\ChangeBirthDay;
 use App\Commands\Members\ChangeBusiness;
@@ -113,7 +114,7 @@ class ForgetMemberHandler
     // Keeps trying to change the username until it finds a unique one.
     private function handleUsername($user, $manager)
     {
-        $newUsername = str_random(15);
+        $newUsername = Str::random(15);
         try {
             dispatch(new ChangeUsername($user, $manager, new Username($newUsername)));
         } catch (ValidationException $e) {
@@ -124,7 +125,7 @@ class ForgetMemberHandler
     // Keeps trying to change the email until it finds a unique one.
     private function handleEmail($user, $manager)
     {
-        $newEmail = str_random(15).'@gsvnet.nl';
+        $newEmail = Str::random(15).'@gsvnet.nl';
         try {
             dispatch(new ChangeEmail($user, $manager, new Email($newEmail)));
         } catch (ValidationException $e) {

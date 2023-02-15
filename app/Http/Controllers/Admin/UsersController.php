@@ -2,6 +2,7 @@
 
 namespace Admin;
 
+use Illuminate\Support\Str;
 use App\Commands\Users\RegisterUserCommand;
 use App\Helpers\Regions\RegionsRepository;
 use App\Helpers\Users\MemberFiler;
@@ -173,7 +174,7 @@ class UsersController extends AdminBaseController
 
         // set random password if password is empty
         if (empty($input['password'])) {
-            $input['password'] = str_random(16);
+            $input['password'] = Str::random(16);
         }
 
         // Map to command input

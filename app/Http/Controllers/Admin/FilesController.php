@@ -2,6 +2,7 @@
 
 namespace Admin;
 
+use Illuminate\Support\Arr;
 use App\Helpers\Files\FileManager;
 use App\Helpers\Files\FilesRepository;
 use App\Helpers\Files\Labels\LabelsRepository;
@@ -63,7 +64,7 @@ class FilesController extends AdminBaseController
 
         // Get the file's labels
         $checked = [];
-        $fileIdLabels = array_pluck($file->labels->toArray(), 'id');
+        $fileIdLabels = Arr::pluck($file->labels->toArray(), 'id');
         foreach ($labels as $label) {
             $checked[$label->id] = in_array($label->id, $fileIdLabels) ? 'checked' : '';
         }
