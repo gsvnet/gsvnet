@@ -53,6 +53,7 @@ class Kernel extends HttpKernel
         'notYetMember' => \App\Http\Middleware\CanBecomeMember::class,
         'loginViaToken' => \App\Http\Middleware\LoginViaToken::class,
     ];
+
     /**
      * The priority-sorted list of middleware.
      *
