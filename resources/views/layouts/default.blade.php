@@ -7,7 +7,7 @@
 
     <meta name="description" content="@yield('description')" >
     <meta property="og:site_name" content="Gereformeerde Studenten Vereniging Groningen">
-    <meta property="og:title" content="{{ $title or 'GSV' }}">
+    <meta property="og:title" content="{{ $title ?? 'GSV' }}">
     <meta property="og:description" content="{{ !empty($description) ? $description : 'Gereformeerde Studenten Vereniging Groningen' }}">
     <meta property="og:url" content="{{Request::url()}}">
     <meta property="og:type" content="{{ Request::is('/') ? 'website' : 'article' }}">
