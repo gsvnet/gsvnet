@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Throwable;
 use App\Helpers\Permissions\NoPermissionException;
 use App\Helpers\Permissions\UserAccountNotApprovedException;
 use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
@@ -47,7 +48,7 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $e
      * @return void
      */
-    public function report(Exception $e)
+    public function report(Throwable $e)
     {
         Bugsnag::notifyException($e);
         parent::report($e);
@@ -60,7 +61,7 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $e
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $e)
+    public function render($request, Throwable $e)
     {
         switch (get_class($e)) {
             case \Illuminate\Auth\Access\AuthorizationException::class:
