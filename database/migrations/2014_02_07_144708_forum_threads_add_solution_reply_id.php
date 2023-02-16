@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class ForumThreadsAddSolutionReplyId extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -27,4 +27,4 @@ class ForumThreadsAddSolutionReplyId extends Migration
             $t->dropColumn('solution_reply_id');
         });
     }
-}
+};

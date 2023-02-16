@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class ForumThreadVisitationTimestampsCreateTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -30,4 +30,4 @@ class ForumThreadVisitationTimestampsCreateTable extends Migration
     {
         Schema::drop('forum_thread_visitations');
     }
-}
+};

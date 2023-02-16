@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class AddDescriptionFieldToTags extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -27,4 +27,4 @@ class AddDescriptionFieldToTags extends Migration
             $t->dropColumn('description');
         });
     }
-}
+};

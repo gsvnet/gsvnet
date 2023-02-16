@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class PivotCommitteeUserTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -35,4 +35,4 @@ class PivotCommitteeUserTable extends Migration
     {
         Schema::drop('committee_user');
     }
-}
+};
