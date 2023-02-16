@@ -38,7 +38,7 @@
             </table>
             </div>
 
-            {!! $files->appends(Input::except(array('page')))->render() !!}
+            {!! $files->appends(Request::except(array('page')))->render() !!}
 
         </div>
 
@@ -56,9 +56,9 @@
                                 <input type="checkbox" value="{{{ $label->id }}}" name="labels[{{{ $label->id }}}]"
                                 <?php
                                 // Lelijke code om irritate select boxen te laten checken
-                                if (Input::filled('labels'))
+                                if (Request::filled('labels'))
                                 {
-                                    $labels = Input::get('labels');
+                                    $labels = Request::get('labels');
                                     if (isset($labels[$label->id]))
                                         echo "checked";
                                 }

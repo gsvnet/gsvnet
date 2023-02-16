@@ -20,7 +20,7 @@
         <div class="main-content has-border-bottom">
             <div class="forum">
 
-                @if(Input::get('page') < 2)
+                @if(Request::get('page') < 2)
                     @include('forum.threads._thread')
                 @endif
 

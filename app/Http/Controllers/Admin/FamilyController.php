@@ -3,7 +3,7 @@
 namespace Admin;
 
 use App\Helpers\Users\UsersRepository;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request;
 
 class FamilyController extends AdminBaseController
 {
@@ -29,8 +29,8 @@ class FamilyController extends AdminBaseController
 
     public function store($userId)
     {
-        $parent = [Input::get('parentId')];
-        $children = Input::get('childrenIds');
+        $parent = [Request::get('parentId')];
+        $children = Request::get('childrenIds');
         $user = $this->users->byId($userId);
 
         if (is_array($children)) {

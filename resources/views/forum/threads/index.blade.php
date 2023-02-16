@@ -10,9 +10,9 @@
 @section('content')
 <div class="column-holder">
     <h1>Forum</h1>
-    @if(Input::filled('tags'))
+    @if(Request::filled('tags'))
         <p class="delta">
-            Onderwerpen met de tags {{{ str_replace(',', ', ', Input::get('tags')) }}}
+            Onderwerpen met de tags {{{ str_replace(',', ', ', Request::get('tags')) }}}
         </p>
     @elseif(!Auth::check() or Auth::user()->isVisitor())
         <p class="delta">Op het actieve forum van de GSV staat informatie over activiteiten en aanbod van kamers in Groningen. Je kunt er praktisch alles kwijt. Dit is het externe deel van het forum. Er is ook nog een intern deel, dat bruist van activiteit!</p>
@@ -33,8 +33,8 @@
             {{-- If no comments are found display a message --}}
             @if( ! $threads->count())
                 <div class="empty-state">
-                    @if(Input::filled('tags'))
-                        <h3>Geen onderwerpen gevonden met de tags {{{ str_replace(',', ', ', Input::get('tags')) }}}</h3>
+                    @if(Request::filled('tags'))
+                        <h3>Geen onderwerpen gevonden met de tags {{{ str_replace(',', ', ', Request::get('tags')) }}}</h3>
                     @else
                         <h3>Geen onderwerpen gevonden.</h3>
                     @endif

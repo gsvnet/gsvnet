@@ -6,7 +6,7 @@ use App\Helpers\Committees\CommitteeCreatorValidator;
 use App\Helpers\Committees\CommitteesRepository;
 use App\Helpers\Committees\CommitteeUpdaterValidator;
 use App\Helpers\Users\UsersRepository;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Str;
 
 class CommitteeController extends AdminBaseController
@@ -46,9 +46,9 @@ class CommitteeController extends AdminBaseController
 
     public function store()
     {
-        $input = Input::only('name', 'description');
-        $input['public'] = Input::get('public', false);
-        $input['unique_name'] = Str::slug(Input::get('unique_name'));
+        $input = Request::only('name', 'description');
+        $input['public'] = Request::get('public', false);
+        $input['unique_name'] = Str::slug(Request::get('unique_name'));
 
         $this->creatorValidator->validate($input);
         $committee = $this->committees->create($input);
@@ -89,10 +89,10 @@ class CommitteeController extends AdminBaseController
 
     public function update($id)
     {
-        $input = Input::only('name', 'description');
+        $input = Request::only('name', 'description');
         $input['id'] = $id;
-        $input['public'] = Input::get('public', false);
-        $input['unique_name'] = Str::slug(Input::get('unique_name'));
+        $input['public'] = Request::get('public', false);
+        $input['unique_name'] = Str::slug(Request::get('unique_name'));
 
         $this->updaterValidator->forCommittee($id);
         $this->updaterValidator->validate($input);

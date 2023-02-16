@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Request;
 use App\Commands\Forum\DeleteReplyCommand;
 use App\Commands\Forum\EditReplyCommand;
 use App\Commands\Forum\ReplyToThreadCommand;
@@ -30,7 +31,7 @@ class ForumRepliesController extends BaseController
         $data = [
             'threadSlug' => $threadSlug,
             'authorId' => Auth::user()->id,
-            'reply' => Input::get('body'),
+            'reply' => Request::get('body'),
         ];
 
         $validator->validate($data);
@@ -57,7 +58,7 @@ class ForumRepliesController extends BaseController
 
         $data = [
             'replyId' => $replyId,
-            'reply' => Input::get('body'),
+            'reply' => Request::get('body'),
         ];
 
         $validator->validate($data);

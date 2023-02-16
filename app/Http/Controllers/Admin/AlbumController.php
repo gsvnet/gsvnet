@@ -5,7 +5,7 @@ namespace Admin;
 use App\Helpers\Albums\AlbumsRepository;
 use App\Helpers\Albums\AlbumValidator;
 use App\Helpers\Albums\Photos\PhotosRepository;
-use Input;
+use Illuminate\Support\Facades\Request;
 
 class AlbumController extends AdminBaseController
 {
@@ -38,8 +38,8 @@ class AlbumController extends AdminBaseController
 
     public function store()
     {
-        $input = Input::all();
-        $input['public'] = Input::get('public', false);
+        $input = Request::all();
+        $input['public'] = Request::get('public', false);
 
         $this->validator->validate($input);
         $album = $this->albums->create($input);
@@ -71,8 +71,8 @@ class AlbumController extends AdminBaseController
 
     public function update($id)
     {
-        $input = Input::all();
-        $input['public'] = Input::get('public', false);
+        $input = Request::all();
+        $input['public'] = Request::get('public', false);
 
         $this->validator->validate($input);
         $album = $this->albums->update($id, $input);

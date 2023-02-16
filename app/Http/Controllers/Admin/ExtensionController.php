@@ -4,7 +4,7 @@ namespace Admin;
 
 use App\Helpers\Extension\ExtensionFileValidator;
 use File;
-use Input;
+use Illuminate\Support\Facades\Request;
 
 class ExtensionController extends AdminBaseController
 {
@@ -25,7 +25,7 @@ class ExtensionController extends AdminBaseController
     public function store()
     {
         $this->authorize('extension.manage');
-        $input['file'] = Input::file('file');
+        $input['file'] = Request::file('file');
         $this->validator->validate($input);
 
         $path = storage_path('extension/');

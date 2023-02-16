@@ -15,7 +15,7 @@
                 <select name="jaarverband" id="jaarverband" class="form-control">
                     <option value="0">Doet er niet toe</option>
                     @foreach ($yearGroups as $yearGroup)
-                        <option value="{{$yearGroup->id}}" {{Input::get('jaarverband') == $yearGroup->id ? 'selected="selected"' : ''}}>{{$yearGroup->present()->nameWithYear}}</option>
+                        <option value="{{$yearGroup->id}}" {{Request::get('jaarverband') == $yearGroup->id ? 'selected="selected"' : ''}}>{{$yearGroup->present()->nameWithYear}}</option>
                     @endforeach
                 </select>
             </div>
@@ -23,8 +23,8 @@
                 <label for="reunist">Reunist</label>
                 <select name="reunist" id="reunist" class="form-control">
                     <option value="0">Doet er niet toe</option>
-                    <option value="1" {{Input::get('reunist') == '1' ? 'selected="selected"' : ''}}>Ja</option>
-                    <option value="-1" {{Input::get('reunist') == '-1' ? 'selected="selected"' : ''}}>Nee</option>
+                    <option value="1" {{Request::get('reunist') == '1' ? 'selected="selected"' : ''}}>Ja</option>
+                    <option value="-1" {{Request::get('reunist') == '-1' ? 'selected="selected"' : ''}}>Nee</option>
                 </select>
             </div>
             <div class="form-group">
@@ -32,7 +32,7 @@
                 <select name="regio" id="regio" class="form-control">
                     <option value="0">Maakt niet uit</option>
                     @foreach ($regions as $region)
-                        <option value="{{$region->id}}" {{Input::get('regio') == $region->id ? 'selected="selected"' : ''}}>{{$region->name}}</option>
+                        <option value="{{$region->id}}" {{Request::get('regio') == $region->id ? 'selected="selected"' : ''}}>{{$region->name}}</option>
                     @endforeach
                 </select>
             </div>

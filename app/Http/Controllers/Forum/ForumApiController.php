@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Request;
 use App\Commands\Forum\DislikeReplyCommand;
 use App\Commands\Forum\DislikeThreadCommand;
 use App\Commands\Forum\LikeReplyCommand;
@@ -27,7 +28,7 @@ class ForumApiController extends BaseController
 
     public function preview()
     {
-        $data = Input::get('text');
+        $data = Request::get('text');
 
         return $this->markdown->convertMarkdownToHtml($data);
     }

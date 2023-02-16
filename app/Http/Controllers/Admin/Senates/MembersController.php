@@ -5,7 +5,7 @@ namespace Admin\Senates;
 use Admin\AdminBaseController;
 use App\Helpers\Senates\SenatesRepository;
 use App\Helpers\Users\UsersRepository;
-use Input;
+use Illuminate\Support\Facades\Request;
 
 class MembersController extends AdminBaseController
 {
@@ -26,7 +26,7 @@ class MembersController extends AdminBaseController
 
     public function store($senate)
     {
-        $input = Input::all();
+        $input = Request::all();
 
         $member_id = $input['member'];
         $senate = $this->senates->byId($senate);

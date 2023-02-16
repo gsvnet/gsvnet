@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Request;
 use App\Helpers\Users\UserManager;
 
 class RegisterController extends BaseController
@@ -11,7 +12,7 @@ class RegisterController extends BaseController
 
     public function store(UserManager $userManager)
     {
-        $input = Input::all();
+        $input = Request::all();
 
         // Very specific spam protection...
         if ($input['register-firstname'] == $input['register-middlename'] && $input['register-middlename'] == $input['register-lastname']) {
@@ -33,7 +34,7 @@ class RegisterController extends BaseController
         Auth::login($user);
 
         // Potentials should return to the become member form
-        if (Input::has('become-member-register')) {
+        if (Request::has('become-member-register')) {
             return redirect()->action('MemberController@becomeMember');
         }
 
