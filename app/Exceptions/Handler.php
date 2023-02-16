@@ -4,10 +4,10 @@ namespace App\Exceptions;
 
 use App\Helpers\Permissions\NoPermissionException;
 use App\Helpers\Permissions\UserAccountNotApprovedException;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Exception;
 use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
+use Exception;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Response;
 
 class Handler extends ExceptionHandler
