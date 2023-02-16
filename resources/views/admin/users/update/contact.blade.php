@@ -9,7 +9,7 @@
         <div class="col-xs-12 col-md-6">
             <h2>Adres aanpassen</h2>
 
-            {!! Former::vertical_open()->action(action('Admin\MemberController@updateContactDetails', $user->id))->method('PUT') !!}
+            {!! Former::vertical_open()->action(action([\App\Http\Controllers\Admin\MemberController::class, 'updateContactDetails'], $user->id))->method('PUT') !!}
             {!! Former::populate( $user->profile ) !!}
 
             {!! Former::text('address')->label('Adres') !!}

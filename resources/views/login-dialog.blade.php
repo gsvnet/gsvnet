@@ -2,7 +2,7 @@
     <div class="dialog-main">
         <h2>Login</h2>
 
-        {!! Former::open()->action(action('SessionController@postLogin')) !!}
+        {!! Former::open()->action(action([\App\Http\Controllers\SessionController::class, 'postLogin'])) !!}
 
             <p>Inloggen geeft je toegang tot het forum</p>
 

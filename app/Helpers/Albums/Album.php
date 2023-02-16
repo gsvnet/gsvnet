@@ -46,13 +46,13 @@ class Album extends Model
 
     public function getShowURLAttribute()
     {
-        return URL::action('PhotoController@showPhotos', $this->slug);
+        return URL::action([\App\Http\Controllers\PhotoController::class, 'showPhotos'], $this->slug);
     }
 
     // Return the path to the original image
     public function getImageURLAttribute()
     {
-        return URL::action('PhotoController@showPhotos', $this->slug);
+        return URL::action([\App\Http\Controllers\PhotoController::class, 'showPhotos'], $this->slug);
     }
 
     public function getUpdatedAtAttribute($updatedAt)

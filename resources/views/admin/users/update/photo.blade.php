@@ -12,7 +12,7 @@
                 <p><img src="{{ $user->profile->present()->xsmallProfileImage() }}" /></p>
             @endif
 
-            {!! Former::open_vertical_for_files()->action(action('Admin\MemberController@updatePhoto', $user->id))->method('PUT') !!}
+            {!! Former::open_vertical_for_files()->action(action([\App\Http\Controllers\Admin\MemberController::class, 'updatePhoto'], $user->id))->method('PUT') !!}
 
             {!! Former::file('photo_path')->label('Foto') !!}
 

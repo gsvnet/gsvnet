@@ -9,7 +9,7 @@
         <div class="col-xs-12 col-md-6">
             <h2>Wachtwoord aanpassen</h2>
 
-            {!! Former::vertical_open()->action(action('Admin\MemberController@updatePassword', $user->id))->method('PUT') !!}
+            {!! Former::vertical_open()->action(action([\App\Http\Controllers\Admin\MemberController::class, 'updatePassword'], $user->id))->method('PUT') !!}
             {!! Former::populate( $user ) !!}
 
             {!! Former::password('password')->label('Nieuw wachtwoord') !!}

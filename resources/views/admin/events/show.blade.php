@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    <a href="{{ URL::action('Admin\EventController@edit', $event->id) }}" alt="Bewerk {{{ $event->title }}}" class='btn btn-default'>
+    <a href="{{ URL::action([\App\Http\Controllers\Admin\EventController::class, 'edit'], $event->id) }}" alt="Bewerk {{{ $event->title }}}" class='btn btn-default'>
         <i class="fa fa-pencil"></i> Activiteit informatie bewerken
     </a>
 @stop

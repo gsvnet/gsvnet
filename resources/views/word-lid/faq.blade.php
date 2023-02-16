@@ -11,7 +11,7 @@
         <div class="main-content">
             <h2 id="hoe">Hoe word ik lid?</h2>
             <p>Je kunt je zowel via de site als in de sociëteit aanmelden.</p>
-            <p><a href="{{URL::action('MemberController@becomeMember')}}" title="Word lid!" class="button">Word lid!</a></p>
+            <p><a href="{{URL::action([\App\Http\Controllers\MemberController::class, 'becomeMember'])}}" title="Word lid!" class="button">Word lid!</a></p>
 
             <h2 id="voor-wie">Kan iedereen lid worden?</h2>
             <p>Iedereen die aan de RUG, de Hanzehogeschool of aan een andere gelijkwaardige vereniging staat ingeschreven kan lid worden van de GSV. Een vereiste voor het lidmaatschap is gebruikelijk dat je het novitiaat hebt doorlopen, maar dat gaat dit jaar helaas niet door vanwege Corona. Er wordt gewerkt aan een alternatieve manier van kennismaken.</p>
@@ -29,7 +29,7 @@
             <p>Op dinsdagavond hebben wij standaard onze bijbelkringavonden, hiervan wordt verwacht dat je daarbij bent. Verder is elke donderdagavond de sociëteit geopend. Niet verplicht, wel een leuke gelegenheid om iedereen weer even te zien en op de hoogte te blijven van wat er gebeurt. Voor de rest geldt er wat de beschrijving van het eerste jaar ook al genoemd wordt: hoe meer tijd je investeert, hoe meer contacten bij de vereniging en hoe meer plezier je hieraan zult beleven.</p>
 
             <h2 id="studie">Is de GSV te combineren met je studie?</h2>
-            <p>Elk jaar blijkt dat de GSV en studeren goed samengaan. Bij het plannen van activiteiten wordt rekening gehouden met jouw studiemomenten. Daarnaast zijn er activiteiten die het studeren bevorderen. Kijk voor meer informatie op <a href="{{ URL::action('MemberController@study') }}" title="GSV en studie">deze pagina</a>.</p>
+            <p>Elk jaar blijkt dat de GSV en studeren goed samengaan. Bij het plannen van activiteiten wordt rekening gehouden met jouw studiemomenten. Daarnaast zijn er activiteiten die het studeren bevorderen. Kijk voor meer informatie op <a href="{{ URL::action([\App\Http\Controllers\MemberController::class, 'study']) }}" title="GSV en studie">deze pagina</a>.</p>
 
             <h2 id="uniek">Wat is het verschil tussen GSV en andere christelijke studentenverenigingen? Wat maakt de GSV uniek?</h2>
             <p>De GSV is de beste combinatie tussen de christelijke basis en alles wat het studentenleven te bieden heeft. Daar waar andere christelijke verenigingen de punten gezelligheid en studentikoziteit reduceren tot de wekelijkse borrel is onze vereniging ermee doorvlochten. Niet alleen bijbel en bier, maar ook tradities, mores, een novitiaat dat je uitdaagt jezelf echt voor 100% ergens voor in te zetten enzovoort. Daarnaast heeft de GSV een unieke structuur die ervoor zorgt dat wij een zeer hechte vereniging zijn. Wat dat laatste inhoudt valt het beste te merken tijdens een van onze open sociëteitsavonden. Kom dus vooral eens kijken en ervaar zelf wat ons anders maakt!</p>

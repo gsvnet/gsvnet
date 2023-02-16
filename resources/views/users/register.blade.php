@@ -9,7 +9,7 @@
         <h2>Registreer</h2>
         <p class="delta">Registreren geeft je toegang tot het forum</p>
         <div class="main-content">
-            {!! Former::open()->action(URL::action('RegisterController@store')) !!}
+            {!! Former::open()->action(URL::action([\App\Http\Controllers\RegisterController::class, 'store'])) !!}
 
                 @include('partials._register')
 

@@ -70,7 +70,7 @@ class ForumThreadsController extends BaseController
         //return $thread;
 
         if (! $thread) {
-            return redirect()->action('ForumThreadsController@getIndex');
+            return redirect()->action([\App\Http\Controllers\ForumThreadsController::class, 'getIndex']);
         }
 
         if (! $thread->public && Gate::denies('threads.show-internal')) {
@@ -139,7 +139,7 @@ class ForumThreadsController extends BaseController
 
         $this->dispatchFromArray(StartThreadCommand::class, $data);
 
-        return redirect()->action('ForumThreadsController@getShowThread', [$slug]);
+        return redirect()->action([\App\Http\Controllers\ForumThreadsController::class, 'getShowThread'], [$slug]);
     }
 
     public function getEditThread($threadId)
@@ -182,7 +182,7 @@ class ForumThreadsController extends BaseController
 
         $this->dispatchFromArray(EditThreadCommand::class, $data);
 
-        return redirect()->action('ForumThreadsController@getShowThread', [$thread->slug]);
+        return redirect()->action([\App\Http\Controllers\ForumThreadsController::class, 'getShowThread'], [$thread->slug]);
     }
 
     public function getDelete($threadId)
@@ -204,7 +204,7 @@ class ForumThreadsController extends BaseController
             'threadId' => $threadId,
         ]);
 
-        return redirect()->action('ForumThreadsController@getIndex');
+        return redirect()->action([\App\Http\Controllers\ForumThreadsController::class, 'getIndex']);
     }
 
     public function getSearch()

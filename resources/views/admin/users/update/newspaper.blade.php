@@ -9,7 +9,7 @@
         <div class="col-xs-12 col-md-6">
             <h2>SIC thuis ontvangen</h2>
 
-            {!! Former::vertical_open()->action(action('Admin\MemberController@updateNewspaper', $user->id))->method('PUT') !!}
+            {!! Former::vertical_open()->action(action([\App\Http\Controllers\Admin\MemberController::class, 'updateNewspaper'], $user->id))->method('PUT') !!}
             {!! Former::populate( $user->profile ) !!}
 
             {!! Former::select('receive_newspaper')->options(['0' => 'Niet ontvangen', '1' => 'Wel ontvangen'])->label('SIC thuis ontvangen') !!}

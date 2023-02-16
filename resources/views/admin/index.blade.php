@@ -10,9 +10,9 @@
     <h3>Snelle dingetjes</h3>
     <p>Voor excelexperts</p>
     <p>
-        <a href="{!! URL::action('Admin\UsersController@exportMembers') !!}" class="btn btn-sm btn-primary"><i class="fa fa-download"></i> Ledenbestand (csv)</a>
+        <a href="{!! URL::action([\App\Http\Controllers\Admin\UsersController::class, 'exportMembers']) !!}" class="btn btn-sm btn-primary"><i class="fa fa-download"></i> Ledenbestand (csv)</a>
     </p>
     <p>
-        <a href="{!! URL::action('Admin\MemberController@exportNewspaperRecipients') !!}" class="btn btn-sm btn-primary"><i class="fa fa-download"></i> SIC-ontvangers (csv)</a>
+        <a href="{!! URL::action([\App\Http\Controllers\Admin\MemberController::class, 'exportNewspaperRecipients']) !!}" class="btn btn-sm btn-primary"><i class="fa fa-download"></i> SIC-ontvangers (csv)</a>
     </p>
 @stop

@@ -9,7 +9,7 @@
         <div class="col-xs-12 col-md-6">
             <h2>Regio aanpassen</h2>
 
-            {!! Former::vertical_open()->action(action('Admin\MemberController@updateRegion', $user->id))->method('PUT') !!}
+            {!! Former::vertical_open()->action(action([\App\Http\Controllers\Admin\MemberController::class, 'updateRegion'], $user->id))->method('PUT') !!}
             {!! Former::populate( $user->profile ) !!}
 
             <div class="form-group">

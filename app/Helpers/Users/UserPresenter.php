@@ -121,6 +121,6 @@ class UserPresenter extends Presenter
 
     public function profileUrl()
     {
-        return URL::action('UserController@showUser', [$this->id]);
+        return URL::action([\App\Http\Controllers\UserController::class, 'showUser'], [$this->id]);
     }
 }

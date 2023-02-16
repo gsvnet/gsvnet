@@ -12,13 +12,13 @@
                 <p>Verloopt <strong>{{$token->expires_on->diffForHumans()}}</strong>. <a href="{{$token->present()->url()}}">Klikbare link</a></p>
             @endif
 
-            {!! Former::vertical_open()->action(action('Malfonds\InvitationController@store', $member->id))->method('POST') !!}
+            {!! Former::vertical_open()->action(action([\App\Http\Controllers\Malfonds\InvitationController::class, 'store'], $member->id))->method('POST') !!}
             {!! Former::submit()->value('Link opvragen')->class('btn btn-primary') !!}
             {!! Former::close() !!}
         </div>
         <div class="col-xs-12 col-md-6">
             <h2>Optie 2: Uitnodiging versturen per email</h2>
-            {!! Former::vertical_open()->action(action('Malfonds\InvitationController@inviteByMail', $member->id))->method('POST') !!}
+            {!! Former::vertical_open()->action(action([\App\Http\Controllers\Malfonds\InvitationController::class, 'inviteByMail'], $member->id))->method('POST') !!}
             {!! Former::populateField('name', $member->present()->fullName)!!}
             {!! Former::populateField('email', $member->email)!!}
 

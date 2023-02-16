@@ -38,7 +38,7 @@ class MembersController extends AdminBaseController
 
         flash()->success("{$member->present()->fullName} succesvol toegevoegd aan {$senate->name}");
 
-        return redirect()->action('Admin\SenateController@show', $senate->id);
+        return redirect()->action([\App\Http\Controllers\Admin\SenateController::class, 'show'], $senate->id);
     }
 
     public function destroy($senate, $member)
@@ -48,6 +48,6 @@ class MembersController extends AdminBaseController
 
         flash()->success("{$member->present()->fullName} succesvol uit de senaat geknikkerd");
 
-        return redirect()->action('Admin\SenateController@show', $senate);
+        return redirect()->action([\App\Http\Controllers\Admin\SenateController::class, 'show'], $senate);
     }
 }

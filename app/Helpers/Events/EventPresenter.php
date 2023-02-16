@@ -154,7 +154,7 @@ class EventPresenter extends Presenter
         $keys = array_keys(\Config::get('gsvnet.months'));
         $month = $keys[$start->month - 1];
 
-        return \URL::action('EventController@showEvent', [
+        return \URL::action([\App\Http\Controllers\EventController::class, 'showEvent'], [
             $start->year,
             $month,
             $this->slug,

@@ -12,7 +12,7 @@
         </div>
 
         {!! Former::open_vertical_for_files()
-            ->action(action('Admin\FilesController@update', $file->id))
+            ->action(action([\App\Http\Controllers\Admin\FilesController::class, 'update'], $file->id))
             ->method('put')
             ->class('panel-body add-form') !!}
 

@@ -14,7 +14,7 @@
             {{ Session::get('error') }}
         @endif
 
-        {!! Former::open()->action(URL::action('RemindersController@postEmail')) !!}
+        {!! Former::open()->action(URL::action([\App\Http\Controllers\RemindersController::class, 'postEmail'])) !!}
         {!! Former::text('email')->label('Je emailadres') !!}
         <div class="control-group">
             <input type="submit" id="submit" value="Stuur mij een reset-link" class="button">

@@ -54,7 +54,7 @@ class FilesController extends AdminBaseController
 
         flash()->success("{$file->name} is succesvol opgeslagen");
 
-        return redirect()->action('Admin\FilesController@index');
+        return redirect()->action([\App\Http\Controllers\Admin\FilesController::class, 'index']);
     }
 
     public function edit($id)
@@ -85,7 +85,7 @@ class FilesController extends AdminBaseController
 
         flash()->success("{$file->name} is succesvol bijgewerkt.");
 
-        return redirect()->action('Admin\FilesController@index');
+        return redirect()->action([\App\Http\Controllers\Admin\FilesController::class, 'index']);
     }
 
     public function destroy($id)
@@ -94,6 +94,6 @@ class FilesController extends AdminBaseController
 
         flash()->success("{$file->name} is succesvol verwijderd.");
 
-        return redirect()->action('Admin\FilesController@index');
+        return redirect()->action([\App\Http\Controllers\Admin\FilesController::class, 'index']);
     }
 }

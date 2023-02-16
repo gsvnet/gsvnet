@@ -55,7 +55,7 @@ class CommitteeController extends AdminBaseController
 
         flash()->success("Commissie {$committee->name} is succesvol opgeslagen");
 
-        return redirect()->action('Admin\CommitteeController@index');
+        return redirect()->action([\App\Http\Controllers\Admin\CommitteeController::class, 'index']);
     }
 
     public function show($id)
@@ -101,7 +101,7 @@ class CommitteeController extends AdminBaseController
 
         flash()->success("{$committee->name} is succesvol bewerkt.");
 
-        return redirect()->action('Admin\CommitteeController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\CommitteeController::class, 'show'], $id);
     }
 
     public function destroy($id)
@@ -110,6 +110,6 @@ class CommitteeController extends AdminBaseController
 
         flash()->success("{$committee->name} is succesvol verwijderd.");
 
-        return redirect()->action('Admin\CommitteeController@index');
+        return redirect()->action([\App\Http\Controllers\Admin\CommitteeController::class, 'index']);
     }
 }

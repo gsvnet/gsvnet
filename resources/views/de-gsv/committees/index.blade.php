@@ -23,7 +23,7 @@
                 </div>
                 <ul class="list secondary-menu">
                     @foreach ($committees as $committee)
-                        <li><a class="committee" href="{{ URL::action('AboutController@showCommittee', $committee->unique_name) }}">{{ $committee->name }}</a> <span class="hide slug">({{{$committee->unique_name}}})</span></li>
+                        <li><a class="committee" href="{{ URL::action([\App\Http\Controllers\AboutController::class, 'showCommittee'], $committee->unique_name) }}">{{ $committee->name }}</a> <span class="hide slug">({{{$committee->unique_name}}})</span></li>
                     @endforeach
                 </ul>
             </div>

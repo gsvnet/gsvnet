@@ -9,7 +9,7 @@
         <div class="col-xs-12 col-md-6">
             <h2>Naam aanpassen</h2>
 
-            {!! Former::vertical_open()->action(action('Admin\MemberController@updateBirthDay', $user->id))->method('PUT') !!}
+            {!! Former::vertical_open()->action(action([\App\Http\Controllers\Admin\MemberController::class, 'updateBirthDay'], $user->id))->method('PUT') !!}
             {!! Former::populate( $user ) !!}
 
             {!! Former::text('birthdate')->class('form-control birthday-picker')->dataValue($user->profile->birthdate)->label('Geboortedatum') !!}

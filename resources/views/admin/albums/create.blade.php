@@ -2,7 +2,7 @@
     <h2><i class="fa fa-plus"></i> Album toevoegen</h2>
 
     {!! Former::vertical_open()
-        ->action(action('Admin\AlbumController@store'))
+        ->action(action([\App\Http\Controllers\Admin\AlbumController::class, 'store']))
         ->method('POST')
         ->class('add-form')!!}
 

@@ -1,6 +1,6 @@
 @section('content')
     {!!Former::inline_open()
-        ->action(action('Admin\PhotoController@destroy', [$photo->album_id, $photo->id]))
+        ->action(action([\App\Http\Controllers\Admin\PhotoController::class, 'destroy'], [$photo->album_id, $photo->id]))
         ->method('DELETE')
     !!}
         <button type='submit' class='btn btn-danger'>
@@ -10,25 +10,25 @@
     {!! Former::close()!!}
 
     <div class="page-header">
-        <h1>{{ $photo->name }} <small>uit <a href="{{ URL::action('Admin\AlbumController@show', $photo->album_id) }}" alt="Bewerk {{{ $photo->album->name }}}">{{{ $photo->album->name }}}</a></small></h1>
+        <h1>{{ $photo->name }} <small>uit <a href="{{ URL::action([\App\Http\Controllers\Admin\AlbumController::class, 'show'], $photo->album_id) }}" alt="Bewerk {{{ $photo->album->name }}}">{{{ $photo->album->name }}}</a></small></h1>
     </div>
 
     <h2>Originele foto</h2>
     <div class="thumbnail">
-        <img src="{{ URL::action('PhotoController@showPhoto', $photo->id) }}" alt="{{{ $photo->name }}}" style='max-width: 100%;'>
+        <img src="{{ URL::action([\App\Http\Controllers\PhotoController::class, 'showPhoto'], $photo->id) }}" alt="{{{ $photo->name }}}" style='max-width: 100%;'>
 
     </div>
 
 
     <h3>Kleine foto</h3>
     <div class="thumbnail">
-        <img src="{{ URL::action('PhotoController@showPhotoSmall', $photo->id) }}" alt="{{{ $photo->name }}}" style='max-width: 100%;'>
+        <img src="{{ URL::action([\App\Http\Controllers\PhotoController::class, 'showPhotoSmall'], $photo->id) }}" alt="{{{ $photo->name }}}" style='max-width: 100%;'>
 
     </div>
 
     <h3>Grote foto</h3>
     <div class="thumbnail">
-        <img src="{{ URL::action('PhotoController@showPhotoWide', $photo->id) }}" alt="{{{ $photo->name }}}" style='max-width: 100%;'>
+        <img src="{{ URL::action([\App\Http\Controllers\PhotoController::class, 'showPhotoWide'], $photo->id) }}" alt="{{{ $photo->name }}}" style='max-width: 100%;'>
 
     </div>
 
@@ -37,7 +37,7 @@
             <h4 class="panel-title"><i class="fa fa-pencil"></i> Foto bewerken <span class="caret"></span></h4>
         </div>
         {!! Former::open_vertical_for_files()
-                ->action(action('Admin\PhotoController@update', [$photo->album_id, $photo->id]))
+                ->action(action([\App\Http\Controllers\Admin\PhotoController::class, 'update'], [$photo->album_id, $photo->id]))
                 ->method('PUT')
                 ->class('panel-body add-form') !!}
             <h2>Foto bewerken</h2>

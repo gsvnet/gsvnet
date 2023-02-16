@@ -21,7 +21,7 @@
 				<tbody>
 					@foreach($albums as $album)
 					<tr>
-						<td><a href="{{ URL::action('Admin\AlbumController@show', $album->id) }}" alt="{{ $album->name }}">
+						<td><a href="{{ URL::action([\App\Http\Controllers\Admin\AlbumController::class, 'show'], $album->id) }}" alt="{{ $album->name }}">
 							{{ $album->name }}
 						</a></td>
 						<td>{{ $album->photos->count()}}</td>

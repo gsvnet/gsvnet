@@ -96,7 +96,7 @@ class ForumRepliesController extends BaseController
     {
         $reply = $this->replies->requireById($replyId);
 
-        return redirect()->action('ForumThreadsController@getShowThread', [$reply->thread->slug,
+        return redirect()->action([\App\Http\Controllers\ForumThreadsController::class, 'getShowThread'], [$reply->thread->slug,
             'page='.$reply->thread->getReplyPageNumber($replyId, $this->repliesPerPage).
             '#reactie-'.$reply->id, ]
         );

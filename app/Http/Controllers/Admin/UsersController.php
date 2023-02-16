@@ -193,7 +193,7 @@ class UsersController extends AdminBaseController
 
         flash()->success('Gebruiker is succesvol opgeslagen.');
 
-        return redirect()->action('Admin\UsersController@showGuests');
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'showGuests']);
     }
 
     public function show($id)
@@ -240,7 +240,7 @@ class UsersController extends AdminBaseController
 
         flash()->success('Account is succesvol verwijderd.');
 
-        return redirect()->action('Admin\UsersController@index');
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'index']);
     }
 
     public function storeProfile($id)
@@ -256,7 +256,7 @@ class UsersController extends AdminBaseController
 
         flash()->success("{$user->present()->fullName} heeft een GSV-profiel.");
 
-        return redirect()->action('Admin\UsersController@edit', $user->id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'edit'], $user->id);
     }
 
     public function destroyProfile($id)
@@ -267,7 +267,7 @@ class UsersController extends AdminBaseController
 
         flash()->success("Profiel van {$user->present()->fullName} is succesvol verwijderd.");
 
-        return redirect()->action('Admin\UsersController@edit', $user->id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'edit'], $user->id);
     }
 
     public function updateProfile(Request $request, $id)
@@ -305,7 +305,7 @@ class UsersController extends AdminBaseController
 
         flash()->success("Profiel van {$user->present()->fullName} is succesvol bijgewerkt.");
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function activate($id)
@@ -315,7 +315,7 @@ class UsersController extends AdminBaseController
 
         flash()->success("Account van {$user->present()->fullName} is succesvol geactiveerd.");
 
-        return redirect()->action('Admin\UsersController@index');
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'index']);
     }
 
     public function accept($id)
@@ -325,6 +325,6 @@ class UsersController extends AdminBaseController
 
         flash()->success("Noviet {$user->present()->fullName} is succesvol geïnstalleerd.");
 
-        return redirect()->action('Admin\UsersController@index');
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'index']);
     }
 }

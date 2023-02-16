@@ -153,6 +153,6 @@ class UserController extends BaseController
             $this->dispatch(ChangePassword::fromForm($request, $user));
         }
 
-        return redirect()->action('UserController@showProfile');
+        return redirect()->action([\App\Http\Controllers\UserController::class, 'showProfile']);
     }
 }

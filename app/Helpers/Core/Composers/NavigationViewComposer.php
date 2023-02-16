@@ -193,97 +193,97 @@ class NavigationViewComposer
         return [
             'gsvgroningen' => [
                 'title' => 'GSV Groningen',
-                'url' => action('HomeController@showIndex'),
+                'url' => action([\App\Http\Controllers\HomeController::class, 'showIndex']),
             ],
 
             //            'de-gsv' => [
-            //                'url' => action('AboutController@showAbout'),
+            //                'url' => action([\App\Http\Controllers\AboutController::class, 'showAbout']),
             //                'title' => 'De GSV',
             //                'submenu' => [
             //                    'over-de-gsv' => [
             //                        'title' => 'Over de GSV',
-            //                        'url' => action('AboutController@showAbout')
+            //                        'url' => action([\App\Http\Controllers\AboutController::class, 'showAbout'])
             //                    ],
             //                    'geschiedenis' => [
             //                        'title' => 'Geschiedenis',
-            //                        'url' => action('AboutController@showHistory')
+            //                        'url' => action([\App\Http\Controllers\AboutController::class, 'showHistory'])
             //                    ],
             //                    'pijlers' => [
             //                        'title' => 'Pijlers',
-            //                        'url' => action('AboutController@showPillars')
+            //                        'url' => action([\App\Http\Controllers\AboutController::class, 'showPillars'])
             //                    ],
             //                    'senaten' => [
             //                        'title' => 'Senaten',
-            //                        'url' => action('AboutController@showSenates')
+            //                        'url' => action([\App\Http\Controllers\AboutController::class, 'showSenates'])
             //                    ],
             //                    'vertrouwenspersonen' => [
             //                        'title' => 'Vertrouwenspersonen',
-            //                        'url' => action('AboutController@showConfidants')
+            //                        'url' => action([\App\Http\Controllers\AboutController::class, 'showConfidants'])
             //                    ],
             //                    'commissies' => [
             //                        'title' => 'Commissies',
-            //                        'url' => action('AboutController@showCommittees')
+            //                        'url' => action([\App\Http\Controllers\AboutController::class, 'showCommittees'])
             //                    ],
             //                    'contact' => [
             //                        'title' => 'Contact',
-            //                        'url' => action('AboutController@showContact')
+            //                        'url' => action([\App\Http\Controllers\AboutController::class, 'showContact'])
             //                    ],
             ////                    'oud-leden' => [
             ////                        'title' => 'Oud-leden',
-            ////                        'url' => action('AboutController@showFormerMembers')
+            ////                        'url' => action([\App\Http\Controllers\AboutController::class, 'showFormerMembers'])
             ////                    ]
             //                ]
             //            ],
 
             //            'kei' => [
             //                'title' => 'KEI-week',
-            //                'url' => action('HomeController@showKei')
+            //                'url' => action([\App\Http\Controllers\HomeController::class, 'showKei'])
             //            ],
 
             'forum' => [
                 'title' => 'Forum',
-                'url' => action('ForumThreadsController@getIndex'),
+                'url' => action([\App\Http\Controllers\ForumThreadsController::class, 'getIndex']),
             ],
 
             //            'albums' => [
             //                'title' => 'Fotoalbum',
-            //                'url' => action('PhotoController@showAlbums')
+            //                'url' => action([\App\Http\Controllers\PhotoController::class, 'showAlbums'])
             //            ],
             //
             //            'activiteiten' => [
             //                'title' => 'Activiteiten',
-            //                'url' => action('EventController@showIndex')
+            //                'url' => action([\App\Http\Controllers\EventController::class, 'showIndex'])
             //            ],
 
             //            'word-lid' => [
             //                'title' => 'Word lid!',
-            //                'url' => action('MemberController@index'),
+            //                'url' => action([\App\Http\Controllers\MemberController::class, 'index']),
             //                'visible' => function(){
             //                    return Auth::guest() || Gate::allows('user.become-member');
             //                },
             //                'submenu' => [
             //                    'lid-worden' => [
-            //                        'url' => action('MemberController@index'),
+            //                        'url' => action([\App\Http\Controllers\MemberController::class, 'index']),
             //                        'title' => 'Lid worden?'
             //                    ],
             //                    'studie' => [
-            //                        'url' => action('MemberController@study'),
+            //                        'url' => action([\App\Http\Controllers\MemberController::class, 'study']),
             //                        'title' => 'Studie & Vereniging'
             //                    ],
             //                    'corona' => [
-            //                        'url' => action('MemberController@showCorona'),
+            //                        'url' => action([\App\Http\Controllers\MemberController::class, 'showCorona']),
             //                        'title' => 'Q&A Corona'
             //                    ],
             //                    'veel-gestelde-vragen' => [
-            //                        'url' => action('MemberController@faq'),
+            //                        'url' => action([\App\Http\Controllers\MemberController::class, 'faq']),
             //                        'title' => 'Veelgestelde vragen'
             //                    ],
             //                    'klachtencommissie' => [
-            //                        'url' => action('MemberController@complaints'),
+            //                        'url' => action([\App\Http\Controllers\MemberController::class, 'complaints']),
             //                        'title' => 'Klachtencommissie'
             //                    ],
             //                    'inschrijven' => [
-            //                        'url' => action('MemberController@becomeMember'),
+            //                        'url' => action([\App\Http\Controllers\MemberController::class, 'becomeMember']),
             //                        'title' => 'Inschrijven'
             //                    ]
             //                ]
@@ -291,7 +291,7 @@ class NavigationViewComposer
 
             'activiteiten' => [
                 'title' => 'Activiteiten',
-                'url' => action('EventController@showIndex'),
+                'url' => action([\App\Http\Controllers\EventController::class, 'showIndex']),
                 'visible' => function () {
                     return Auth::check() && Gate::allows('events.show-private');
                 },
@@ -299,7 +299,7 @@ class NavigationViewComposer
 
             'jaarbundel' => [
                 'title' => 'Jaarbundel',
-                'url' => action('UserController@showUsers'),
+                'url' => action([\App\Http\Controllers\UserController::class, 'showUsers']),
                 'visible' => function () {
                     return Auth::check() && Gate::allows('users.show');
                 },
@@ -315,7 +315,7 @@ class NavigationViewComposer
 
             'inloggen' => [
                 'title' => 'Inloggen',
-                'url' => action('SessionController@getLogin'),
+                'url' => action([\App\Http\Controllers\SessionController::class, 'getLogin']),
                 'params' => ['data-mfp-src' => '#login-dialog', 'id' => 'login-link', 'rel' => 'nofollow'],
                 'visible' => function () {
                     return Auth::guest();
@@ -327,25 +327,25 @@ class NavigationViewComposer
                 'title' => function () {
                     return '<img src="'.Auth::user()->present()->avatar(24).'" width="24" height="24" class="nav-profile-image">'.Auth::user()->firstname;
                 },
-                'url' => action('UserController@showProfile'),
+                'url' => action([\App\Http\Controllers\UserController::class, 'showProfile']),
                 'visible' => function () {
                     return Auth::check();
                 },
                 'submenu' => [
                     'profiel' => [
                         'title' => 'Profiel',
-                        'url' => action('UserController@showProfile'),
+                        'url' => action([\App\Http\Controllers\UserController::class, 'showProfile']),
                         'visible' => function () {
                             return Gate::allows('users.edit-profile');
                         },
                     ],
                     'commissies' => [
                         'title' => 'Commissies',
-                        'url' => action('AboutController@showCommittees'),
+                        'url' => action([\App\Http\Controllers\AboutController::class, 'showCommittees']),
                     ],
                     'senaten' => [
                         'title' => 'Senaten',
-                        'url' => action('AboutController@showSenates'),
+                        'url' => action([\App\Http\Controllers\AboutController::class, 'showSenates']),
                     ],
                     'bk-materiaal' => [
                         'title' => 'BK-materiaal',
@@ -356,25 +356,25 @@ class NavigationViewComposer
                     ],
                     'bestanden' => [
                         'title' => 'GSVdocs',
-                        'url' => action('FilesController@index'),
+                        'url' => action([\App\Http\Controllers\FilesController::class, 'index']),
                         'visible' => function () {
                             return Gate::allows('docs.show');
                         },
                     ],
                     'admin' => [
                         'title' => 'Admin',
-                        'url' => action('Admin\AdminController@index'),
+                        'url' => action([\App\Http\Controllers\Admin\AdminController::class, 'index']),
                         'visible' => function () {
                             return Gate::allows('admin.show');
                         },
                     ],
                     'sponsorprogramma' => [
                         'title' => 'Sponsors',
-                        'url' => action('HomeController@sponsorProgram'),
+                        'url' => action([\App\Http\Controllers\HomeController::class, 'sponsorProgram']),
                     ],
                     'uitloggen' => [
                         'title' => 'Uitloggen',
-                        'url' => action('SessionController@getLogout'),
+                        'url' => action([\App\Http\Controllers\SessionController::class, 'getLogout']),
                     ],
                 ],
             ],

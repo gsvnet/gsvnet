@@ -9,7 +9,7 @@
         <div class="col-xs-12 col-md-6">
             <h2>Verwijderen</h2>
 
-            {!! Former::vertical_open()->action(action('Admin\MemberController@forget', $user->id))->method('POST') !!}
+            {!! Former::vertical_open()->action(action([\App\Http\Controllers\Admin\MemberController::class, 'forget'], $user->id))->method('POST') !!}
 
             {!! Former::checkbox('name')->push(true)->label('')->text('Naam')->check() !!}
             {!! Former::checkbox('username')->push(true)->label('')->text('Gebruikersnaam')->check() !!}

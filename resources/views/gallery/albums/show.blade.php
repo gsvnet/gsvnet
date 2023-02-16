@@ -14,7 +14,7 @@
         <div class="photos">
             @for($i=0, $j=0; $i<count($photos); $i++, $j++)
                 @if($i==2)
-                    <a href="{{ URL::action('MemberController@index')  }}" class="photo-tile tile-number-2 word-lid-tile">
+                    <a href="{{ URL::action([\App\Http\Controllers\MemberController::class, 'index'])  }}" class="photo-tile tile-number-2 word-lid-tile">
                         <div class="spacer">
                             <span class="full-tile-link" title="Word lid van de GSV Groningen">
                                 Meld je nu aan!

@@ -49,7 +49,7 @@ class EventController extends AdminBaseController
 
         flash()->success("{$event->title} is succesvol opgeslagen.");
 
-        return redirect()->action('Admin\EventController@index');
+        return redirect()->action([\App\Http\Controllers\Admin\EventController::class, 'index']);
     }
 
     public function show($id)
@@ -81,7 +81,7 @@ class EventController extends AdminBaseController
 
         flash()->success("{$event->title} is succesvol bewerkt.");
 
-        return redirect()->action('Admin\EventController@index');
+        return redirect()->action([\App\Http\Controllers\Admin\EventController::class, 'index']);
     }
 
     public function destroy($id)
@@ -90,6 +90,6 @@ class EventController extends AdminBaseController
 
         flash()->success("{$event->title} is succesvol verwijderd.");
 
-        return redirect()->action('Admin\EventController@index');
+        return redirect()->action([\App\Http\Controllers\Admin\EventController::class, 'index']);
     }
 }

@@ -43,7 +43,7 @@ class ProfilePresenter extends Presenter
     public function xsmallProfileImage()
     {
         if ($this->photo_path != '') {
-            return action('MemberController@showPhoto', ['profile_id' => $this->user->profile->id, 'type' => 'x-small']);
+            return action([\App\Http\Controllers\MemberController::class, 'showPhoto'], ['profile_id' => $this->user->profile->id, 'type' => 'x-small']);
         }
 
         return $this->user->present()->avatar(102);
@@ -52,7 +52,7 @@ class ProfilePresenter extends Presenter
     public function photo()
     {
         if ($this->photo_path != '') {
-            return action('MemberController@showPhoto', ['profile_id' => $this->user->profile->id]);
+            return action([\App\Http\Controllers\MemberController::class, 'showPhoto'], ['profile_id' => $this->user->profile->id]);
         }
 
         return $this->user->present()->avatar(120);
@@ -75,7 +75,7 @@ class ProfilePresenter extends Presenter
     public function formerRegionLinks()
     {
         return $this->user->profile->former_regions->map(function ($region, $i) {
-            $searchUrl = action('UserController@showUsers', ['regio' => $region->id]);
+            $searchUrl = action([\App\Http\Controllers\UserController::class, 'showUsers'], ['regio' => $region->id]);
 
             return "<a href='".$searchUrl."'>".$region->name.'</a>';
         })->implode(', ');

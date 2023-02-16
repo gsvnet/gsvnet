@@ -22,7 +22,7 @@
 			@foreach($files as $file)
 			<tr>
 				<td>
-                    <a href="{{ URL::action('Admin\FilesController@edit', $file->id) }}" alt="{{ $file->name }}">
+                    <a href="{{ URL::action([\App\Http\Controllers\Admin\FilesController::class, 'edit'], $file->id) }}" alt="{{ $file->name }}">
 					   {{ $file->name }} <i class="fa fa-pencil"></i>
                     </a>
                 </td>
@@ -33,7 +33,7 @@
                     {{ $file->updated_at }}
                 </td>
                 <td>
-                    <a href="{{ URL::action('FilesController@show', $file->id) }}">
+                    <a href="{{ URL::action([\App\Http\Controllers\FilesController::class, 'show'], $file->id) }}">
                         <i class="glyphicon glyphicon-download-alt"></i> Download
                     </a>
                 </td>

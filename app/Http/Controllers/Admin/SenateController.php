@@ -47,7 +47,7 @@ class SenateController extends AdminBaseController
 
         flash()->success("{$senate->name} is succesvol opgeslagen.");
 
-        return redirect()->action('Admin\SenateController@index');
+        return redirect()->action([\App\Http\Controllers\Admin\SenateController::class, 'index']);
     }
 
     public function show($id)
@@ -96,7 +96,7 @@ class SenateController extends AdminBaseController
 
         flash()->success("{$senate->name} is succesvol bewerkt.");
 
-        return redirect()->action('Admin\SenateController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\SenateController::class, 'show'], $id);
     }
 
     public function destroy($id)
@@ -105,6 +105,6 @@ class SenateController extends AdminBaseController
 
         flash()->success("{$senate->name} is succesvol verwijderd.");
 
-        return redirect()->action('Admin\SenateController@index');
+        return redirect()->action([\App\Http\Controllers\Admin\SenateController::class, 'index']);
     }
 }

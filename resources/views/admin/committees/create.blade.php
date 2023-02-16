@@ -2,7 +2,7 @@
     <h2><i class="fa fa-plus"></i> Commissie toevoegen</h2>
 
     {!! Former::vertical_open()
-        ->action(action('Admin\CommitteeController@store'))
+        ->action(action([\App\Http\Controllers\Admin\CommitteeController::class, 'store']))
         ->method('POST')
         ->class('add-form') !!}
 

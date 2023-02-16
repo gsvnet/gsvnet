@@ -22,10 +22,10 @@
         </div>
         <div class="secondary-column">
             <h2>Gelijk inschrijven</h2>
-            <p><a href="{{ URL::action('MemberController@becomeMember') }}" class="button" title="Meld je aan">Meld je aan!</a></p>
+            <p><a href="{{ URL::action([\App\Http\Controllers\MemberController::class, 'becomeMember']) }}" class="button" title="Meld je aan">Meld je aan!</a></p>
 
             <h2>Vragen?</h2>
-            <p>Kijk op de <a href="{{ URL::action('MemberController@faq') }}" title="Veel gestelde vragen">FAQ-pagina</a></p>
+            <p>Kijk op de <a href="{{ URL::action([\App\Http\Controllers\MemberController::class, 'faq']) }}" title="Veel gestelde vragen">FAQ-pagina</a></p>
         </div>
     </div>
 @stop

@@ -13,6 +13,6 @@ class AdminController extends AdminBaseController
 
     public function redirectToMyProfile(Request $request)
     {
-        return redirect()->action('Admin\UsersController@show', $request->user()->id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $request->user()->id);
     }
 }

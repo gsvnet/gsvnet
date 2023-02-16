@@ -4,7 +4,7 @@
     <h2>Album bewerken</h2>
 
     {!! Former::vertical_open()
-        ->action(action('Admin\AlbumController@update', $album->id))
+        ->action(action([\App\Http\Controllers\Admin\AlbumController::class, 'update'], $album->id))
         ->method('PUT') !!}
         {!! Former::populate( $album ) !!}
 
@@ -22,7 +22,7 @@
     <p>Of verwijder het album.</p>
 
     {!! Former::inline_open()
-        ->action(action('Admin\AlbumController@destroy', $album->id))
+        ->action(action([\App\Http\Controllers\Admin\AlbumController::class, 'destroy'], $album->id))
         ->method('DELETE') !!}
         <button type='submit' class='btn btn-danger'>
             <i class="glyphicon glyphicon-trash"></i> Verwijderen

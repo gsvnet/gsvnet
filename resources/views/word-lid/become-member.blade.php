@@ -1,4 +1,4 @@
-{!! Former::open_vertical_for_files()->action(URL::action('MemberController@store'))->id('become-member-form')->novalidate() !!}
+{!! Former::open_vertical_for_files()->action(URL::action([\App\Http\Controllers\MemberController::class, 'store']))->id('become-member-form')->novalidate() !!}
     <div class="column-holder" role="main">
 
         <h2>Wat leuk dat je lid wilt worden van de GSV! Vul het onderstaande formulier in om je in te schrijven.</h2>

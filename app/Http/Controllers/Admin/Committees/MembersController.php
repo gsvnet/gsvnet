@@ -56,7 +56,7 @@ class MembersController extends AdminBaseController
 
         flash()->success("{$member->present()->fullName} succesvol toegevoegd aan {$committee->name}");
 
-        return redirect()->action('Admin\CommitteeController@show', $committee->id);
+        return redirect()->action([\App\Http\Controllers\Admin\CommitteeController::class, 'show'], $committee->id);
     }
 
     public function destroy($id)
@@ -69,7 +69,7 @@ class MembersController extends AdminBaseController
 
         flash()->success("{$member->present()->fullName} succesvol verwijderd uit {$committee->name}");
 
-        return redirect()->action('Admin\CommitteeController@show', $committee->id);
+        return redirect()->action([\App\Http\Controllers\Admin\CommitteeController::class, 'show'], $committee->id);
     }
 
     public function edit($id)
@@ -104,6 +104,6 @@ class MembersController extends AdminBaseController
 
         flash()->success("{$user->present()->fullName} z'n commissiewerk voor {$committee->name} is succesvol bijgewerkt");
 
-        return redirect()->action('Admin\CommitteeController@show', $committee->id);
+        return redirect()->action([\App\Http\Controllers\Admin\CommitteeController::class, 'show'], $committee->id);
     }
 }

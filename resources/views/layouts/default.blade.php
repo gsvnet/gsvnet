@@ -54,7 +54,7 @@
     @section('word-lid')
         @if (Auth::guest() || Gate::allows('user.become-member'))
         <div class="hero-unit purple">
-            <p class="center"><a href="{{ URL::action('MemberController@becomeMember') }}" class="button">Word lid!</a></p>
+            <p class="center"><a href="{{ URL::action([\App\Http\Controllers\MemberController::class, 'becomeMember']) }}" class="button">Word lid!</a></p>
         </div>
         @endif
     @show

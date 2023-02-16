@@ -22,7 +22,7 @@
 					@foreach($committees as $committee)
 					<tr>
 						<td>
-                            <a href="{{ URL::action('Admin\CommitteeController@show', $committee->id) }}" alt="{{ $committee->name }}">
+                            <a href="{{ URL::action([\App\Http\Controllers\Admin\CommitteeController::class, 'show'], $committee->id) }}" alt="{{ $committee->name }}">
 							    {{ $committee->name }}
 						    </a>
                         </td>

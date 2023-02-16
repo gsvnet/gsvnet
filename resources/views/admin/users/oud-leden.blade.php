@@ -61,7 +61,7 @@
                     @foreach($profiles as $profile)
                         <tr>
                             <td>
-                                <a href="{{ URL::action('Admin\UsersController@show', $profile->user->id) }}" alt="{{ $profile->user->present()->fullName }}">
+                                <a href="{{ URL::action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $profile->user->id) }}" alt="{{ $profile->user->present()->fullName }}">
                                     {{ $profile->user->firstname }}
                                 </a>
                             </td>
@@ -77,7 +77,7 @@
                                 @if($profile->user->isVerified())
                                     Ja
                                 @else
-                                    <a href="{{action('Malfonds\InvitationController@create', $profile->user->id)}}">Uitnodigen</a>
+                                    <a href="{{action([\App\Http\Controllers\Malfonds\InvitationController::class, 'create'], $profile->user->id)}}">Uitnodigen</a>
                                 @endif
                             </td>
                             <td class="text-muted">{{ $profile->updated_at }}</td>

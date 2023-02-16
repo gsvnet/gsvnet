@@ -6,7 +6,7 @@
 
         @can('users.manage')
         {!! Former::inline_open()
-            ->action(action('Admin\UsersController@destroy', $user->id))
+            ->action(action([\App\Http\Controllers\Admin\UsersController::class, 'destroy'], $user->id))
             ->method('DELETE') !!}
         <button type='submit' class='btn btn-danger'>
             <i class="glyphicon glyphicon-trash"></i> Verwijderen
@@ -36,7 +36,7 @@
             </dl>
             @can('users.manage')
             <div class="form-group">
-                {!! Former::vertical_open()->action(action('Admin\MemberController@makeMember', $user->id))->method('POST') !!}
+                {!! Former::vertical_open()->action(action([\App\Http\Controllers\Admin\MemberController::class, 'makeMember'], $user->id))->method('POST') !!}
                 <button type='submit' class='btn btn-success btn-confirm'>
                     <i class="glyphicon glyphicon-ok"></i> Lid maken
                 </button>
@@ -44,7 +44,7 @@
             </div>
 
             <div class="form-group">
-                {!! Former::vertical_open()->action(action('Admin\MemberController@makeReunist', $user->id))->method('POST') !!}
+                {!! Former::vertical_open()->action(action([\App\Http\Controllers\Admin\MemberController::class, 'makeReunist'], $user->id))->method('POST') !!}
                 <button type='submit' class='btn btn-success btn-confirm'>
                     <i class="glyphicon glyphicon-ok"></i> Reünist maken
                 </button>

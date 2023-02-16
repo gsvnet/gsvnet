@@ -4,7 +4,7 @@
     </div>
 
     {!! Former::open_vertical_for_files()
-        ->action(action('Admin\FilesController@store'))
+        ->action(action([\App\Http\Controllers\Admin\FilesController::class, 'store']))
         ->method('POST')
         ->class('panel-body add-form')
     !!}

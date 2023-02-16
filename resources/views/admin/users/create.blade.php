@@ -7,7 +7,7 @@
     <div class="spacer row">
         <div class="col-xs-12 col-md-6">
             <section class="create-event">
-                {!! Former::open_vertical()->action(action('Admin\UsersController@store')) !!}
+                {!! Former::open_vertical()->action(action([\App\Http\Controllers\Admin\UsersController::class, 'store'])) !!}
                 {!! Former::select('type')->label('Gebruikerssoort')->options(Config::get('gsvnet.userTypesFormatted')) !!}
                 {!! Former::text('username')->label('Gebruikersnaam') !!}
                 {!! Former::text('firstname')->label('Voornaam') !!}

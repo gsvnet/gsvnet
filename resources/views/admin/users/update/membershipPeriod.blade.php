@@ -7,7 +7,7 @@
 
     <div class="row">
         <div class="col-xs-12 col-md-6">
-            {!! Former::vertical_open()->action(action('Admin\MemberController@updateMembershipPeriod', $user->id))->method('PUT') !!}
+            {!! Former::vertical_open()->action(action([\App\Http\Controllers\Admin\MemberController::class, 'updateMembershipPeriod'], $user->id))->method('PUT') !!}
 
             <h2>Van</h2>
             {!! Former::text('inauguration_date')->class('form-control birthday-picker')->dataValue($user->profile->inauguration_date ?: '')->label('Van') !!}
