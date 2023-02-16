@@ -8,9 +8,6 @@ class CommitteesRepository
 {
     /**
      * Get by id
-     *
-     * @param  int  $id
-     * @return Committee
      */
     public function byId(int $id): Committee
     {
@@ -19,9 +16,6 @@ class CommitteesRepository
 
     /**
      * Get by slug
-     *
-     * @param  string  $slug
-     * @return Committee
      */
     public function bySlug(string $slug): Committee
     {
@@ -35,8 +29,6 @@ class CommitteesRepository
 
     /**
      * Get all committees
-     *
-     * @return Collection
      */
     public function all(): Collection
     {
@@ -45,8 +37,6 @@ class CommitteesRepository
 
     /**
      * Get paginated committees
-     *
-     * @param  int  $amount
      */
     public function paginate(int $amount)
     {
@@ -60,9 +50,6 @@ class CommitteesRepository
 
     /**
      * Create committee
-     *
-     * @param  array  $input
-     * @return Committee
      */
     public function create(array $input): Committee
     {
@@ -79,10 +66,6 @@ class CommitteesRepository
 
     /**
      * Update committee
-     *
-     * @param  int  $id
-     * @param  array  $input
-     * @return Committee
      */
     public function update(int $id, array $input): Committee
     {
@@ -101,8 +84,6 @@ class CommitteesRepository
     /**
      * Delete Committee
      *
-     * @param  int  $id
-     * @return Committe
      * @TODO: delete all committee members references
      */
     public function delete(int $id): Committe

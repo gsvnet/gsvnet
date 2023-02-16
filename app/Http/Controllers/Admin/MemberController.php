@@ -53,11 +53,6 @@ class MemberController extends AdminBaseController
 
     private $regions;
 
-    /**
-     * @param  ProfileActionsRepository  $actions
-     * @param  UsersRepository  $users
-     * @param  YearGroupRepository  $yearGroups
-     */
     public function __construct(
         ProfileActionsRepository $actions,
         UsersRepository $users,

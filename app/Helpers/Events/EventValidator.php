@@ -19,8 +19,6 @@ class EventValidator extends Validator
     /**
      * Trigger validation
      *
-     * @param  array  $data
-     * @return bool
      *
      * @throws ValidationException
      */

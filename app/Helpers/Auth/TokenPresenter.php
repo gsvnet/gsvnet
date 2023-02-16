@@ -9,8 +9,6 @@ class TokenPresenter extends Presenter
 {
     /**
      * TokenPresenter constructor.
-     *
-     * @param  Token  $entity
      */
     public function __construct(Token $entity)
     {

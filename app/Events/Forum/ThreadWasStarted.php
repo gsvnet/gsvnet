@@ -20,8 +20,6 @@ class ThreadWasStarted extends Event implements ShouldBroadcast
 
     /**
      * Get the channels the event should be broadcast on.
-     *
-     * @return array
      */
     public function broadcastOn(): array
     {
@@ -35,8 +33,6 @@ class ThreadWasStarted extends Event implements ShouldBroadcast
 
     /**
      * Get the data to broadcast.
-     *
-     * @return array
      */
     public function broadcastWith(): array
     {

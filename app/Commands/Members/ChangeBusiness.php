@@ -26,10 +26,6 @@ class ChangeBusiness extends Command
 
     /**
      * ChangeBusiness constructor.
-     *
-     * @param  User  $user
-     * @param  User  $manager
-     * @param  Business  $business
      */
     public function __construct(User $user, User $manager, Business $business)
     {

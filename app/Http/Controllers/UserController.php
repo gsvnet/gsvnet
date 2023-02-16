@@ -54,7 +54,6 @@ class UserController extends BaseController
     /**
      * Show the current user's profile
      *
-     * @param  Request  $request
      * @return
      */
     public function showProfile(Request $request): View
@@ -78,7 +77,6 @@ class UserController extends BaseController
     /**
      * Show current members
      *
-     * @param  Request  $request
      * @return
      */
     public function showUsers(Request $request): View

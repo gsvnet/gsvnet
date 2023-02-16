@@ -26,10 +26,6 @@ class ChangeStudy extends Command
 
     /**
      * ChangeStudy constructor.
-     *
-     * @param  User  $user
-     * @param  User  $manager
-     * @param  Study  $study
      */
     public function __construct(User $user, User $manager, Study $study)
     {

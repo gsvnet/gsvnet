@@ -22,10 +22,6 @@ class SetProfilePictureCommand
 
     /**
      * SetProfilePictureCommand constructor.
-     *
-     * @param  User  $user
-     * @param  User  $manager
-     * @param  UploadedFile  $file
      */
     public function __construct(User $user, User $manager, UploadedFile $file)
     {

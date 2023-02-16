@@ -26,10 +26,6 @@ class ChangePhone extends Command
 
     /**
      * ChangePhone constructor.
-     *
-     * @param  User  $user
-     * @param  User  $manager
-     * @param  PhoneNumber  $phone
      */
     public function __construct(User $user, User $manager, PhoneNumber $phone)
     {

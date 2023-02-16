@@ -12,9 +12,7 @@ class PermissionCache
     private $permissions = [];
 
     /**
-     * @param  User  $user
      * @param $permission
-     * @return bool
      */
     public function has(User $user, $permission): bool
     {
@@ -22,7 +20,6 @@ class PermissionCache
     }
 
     /**
-     * @param  User  $user
      * @param $permission
      * @return mixed
      */
@@ -32,10 +29,8 @@ class PermissionCache
     }
 
     /**
-     * @param  User  $user
      * @param $permission
      * @param $access
-     * @return bool
      */
     public function set(User $user, $permission, $access): bool
     {
@@ -49,7 +44,6 @@ class PermissionCache
     }
 
     /**
-     * @param  User  $user
      * @return mixed
      */
     private function hasUser(User $user)
@@ -58,7 +52,6 @@ class PermissionCache
     }
 
     /**
-     * @param  User  $user
      * @param $permission
      * @return mixed
      */

@@ -22,9 +22,6 @@ class SessionController extends CoreApiController
 
     /**
      * SessionController constructor.
-     *
-     * @param  TokenRepository  $tokens
-     * @param  UsersRepository  $users
      */
     public function __construct(TokenRepository $tokens, UsersRepository $users)
     {

@@ -6,9 +6,6 @@ class SenatesRepository
 {
     /**
      * Get by id
-     *
-     * @param  int  $id
-     * @return Senate
      */
     public function byId(int $id): Senate
     {
@@ -17,8 +14,6 @@ class SenatesRepository
 
     /**
      * Get all senates
-     *
-     * @return Collection
      */
     public function all(): Collection
     {
@@ -27,8 +22,6 @@ class SenatesRepository
 
     /**
      * Get paginated senates
-     *
-     * @param  int  $amount
      */
     public function paginate(int $amount)
     {
@@ -42,9 +35,6 @@ class SenatesRepository
 
     /**
      * Create senate
-     *
-     * @param  array  $input
-     * @return Senate
      */
     public function create(array $input): Senate
     {
@@ -61,10 +51,6 @@ class SenatesRepository
 
     /**
      * Update committee
-     *
-     * @param  int  $id
-     * @param  array  $input
-     * @return Senate
      */
     public function update(int $id, array $input): Senate
     {
@@ -87,8 +73,6 @@ class SenatesRepository
     /**
      * Delete Senate
      *
-     * @param  int  $id
-     * @return Senate
      * @TODO: delete all senate members references
      */
     public function delete(int $id): Senate

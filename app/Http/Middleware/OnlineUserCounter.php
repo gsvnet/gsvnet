@@ -29,8 +29,6 @@ class OnlineUserCounter
 
     /**
      * OnlineUserCounter constructor.
-     *
-     * @param  Database  $redis
      */
     public function __construct(Database $redis)
     {
@@ -39,9 +37,6 @@ class OnlineUserCounter
 
     /**
      * @param $request
-     * @param  Closure  $next
-     * @param  string|null  $guard
-     * @return mixed
      */
     public function handle(Request $request, Closure $next, ?string $guard = null): Response
     {

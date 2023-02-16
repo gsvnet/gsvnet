@@ -14,17 +14,12 @@ class TokenRepository extends BaseRepository
 
     /**
      * @param $token
-     * @return Token
      */
     public function getActiveToken($token): Token
     {
         return $this->model->active()->where('token', $token)->first();
     }
 
-    /**
-     * @param  int  $userId
-     * @return Token
-     */
     public function getActiveByUserId(int $userId): Token
     {
         return $this->model->active()->where('user_id', $userId)->first();

@@ -67,8 +67,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     /**
      * Get the password for the user.
-     *
-     * @return string
      */
     public function getAuthPassword(): string
     {
@@ -77,8 +75,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     /**
      * Get the e-mail address where password reminders are sent.
-     *
-     * @return string
      */
     public function getReminderEmail(): string
     {

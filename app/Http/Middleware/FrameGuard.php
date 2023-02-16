@@ -10,10 +10,6 @@ class FrameGuard
 {
     /**
      * Handle the given request and get the response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return \Illuminate\Http\Response
      */
     public function handle(Request $request, Closure $next): Response
     {

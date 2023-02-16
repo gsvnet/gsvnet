@@ -50,10 +50,6 @@ class BulkNewsletterSubscriptions extends Command
 
     /**
      * BulkNewsletterSubscriptions constructor.
-     *
-     * @param  NewsletterList  $newsletterList
-     * @param  UserTransformer  $userTransformer
-     * @param  UsersRepository  $users
      */
     public function __construct(NewsletterList $newsletterList, UserTransformer $userTransformer, UsersRepository $users)
     {
@@ -65,8 +61,6 @@ class BulkNewsletterSubscriptions extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
     public function handle(): void
     {
@@ -94,8 +88,6 @@ class BulkNewsletterSubscriptions extends Command
 
     /**
      * Get the console command arguments.
-     *
-     * @return array
      */
     protected function getArguments(): array
     {
@@ -106,8 +98,6 @@ class BulkNewsletterSubscriptions extends Command
 
     /**
      * Get the console command options.
-     *
-     * @return array
      */
     protected function getOptions(): array
     {

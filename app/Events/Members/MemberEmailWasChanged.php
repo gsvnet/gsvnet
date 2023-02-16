@@ -11,8 +11,6 @@ class MemberEmailWasChanged extends ProfileEvent
     /**
      * MemberEmailWasChanged constructor.
      *
-     * @param  User  $member
-     * @param  User  $manager
      * @param $oldEmail
      */
     public function __construct(User $member, User $manager, $oldEmail)
@@ -21,9 +19,6 @@ class MemberEmailWasChanged extends ProfileEvent
         $this->oldEmail = $oldEmail;
     }
 
-    /**
-     * @return string
-     */
     public function getOldEmail(): string
     {
         return $this->oldEmail;

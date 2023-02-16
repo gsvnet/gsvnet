@@ -8,8 +8,6 @@ class PaginationPresenter extends BootstrapThreePresenter
 {
     /**
      * Render the Pagination contents.
-     *
-     * @return string
      */
     public function render(): string
     {
@@ -24,8 +22,6 @@ class PaginationPresenter extends BootstrapThreePresenter
 
     /**
      * Create a pagination slider link window.
-     *
-     * @return string
      */
     protected function getPageSlider(): string
     {
@@ -63,8 +59,6 @@ class PaginationPresenter extends BootstrapThreePresenter
 
     /**
      * Get the page range for the current page window.
-     *
-     * @return string
      */
     public function getAdjacentRange(): string
     {
@@ -73,8 +67,6 @@ class PaginationPresenter extends BootstrapThreePresenter
 
     /**
      * Create the beginning leader of a pagination slider.
-     *
-     * @return string
      */
     public function getStart(): string
     {
@@ -83,8 +75,6 @@ class PaginationPresenter extends BootstrapThreePresenter
 
     /**
      * Create the ending cap of a pagination slider.
-     *
-     * @return string
      */
     public function getFinish(): string
     {

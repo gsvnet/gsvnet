@@ -6,9 +6,6 @@ class RegionsRepository
 {
     /**
      * Get by id
-     *
-     * @param  int  $id
-     * @return Region
      */
     public function byId(int $id): Region
     {
@@ -18,7 +15,6 @@ class RegionsRepository
     /**
      * Get by id, returning null if it doesn't exist
      *
-     * @param  int  $id
      * @return Region or null
      */
     public function tryById(int $id): Region
@@ -33,9 +29,6 @@ class RegionsRepository
 
     /**
      * Check if region exists
-     *
-     * @param  int  $id
-     * @return Region
      */
     public function exists(int $id): Region
     {
@@ -50,8 +43,6 @@ class RegionsRepository
 
     /**
      * Get all regions
-     *
-     * @return Collection
      */
     public function all(): Collection
     {
@@ -63,8 +54,6 @@ class RegionsRepository
 
     /**
      * Get current regions
-     *
-     * @return Collection
      */
     public function current(): Collection
     {
@@ -76,8 +65,6 @@ class RegionsRepository
 
     /**
      * Get former regions
-     *
-     * @return Collection
      */
     public function former(): Collection
     {

@@ -14,8 +14,6 @@ class FractalService
 {
     /**
      * FractalService constructor.
-     *
-     * @param  Manager  $fractal
      */
     public function __construct(Manager $fractal)
     {
@@ -26,10 +24,6 @@ class FractalService
      * Create a new collection resource with the given transformer.
      *
      * @param  array|object  $collection
-     * @param  object  $transformer
-     * @param  \League\Fractal\Pagination\CursorInterface  $cursor
-     * @param  string  $key
-     * @return \Illuminate\Http\Response
      */
     public function collection($collection, object $transformer, FractalCursorInterface $cursor = null, string $key = null): Response
     {
@@ -46,9 +40,6 @@ class FractalService
      * Create a new item resource with the given transformer.
      *
      * @param  array|object  $item
-     * @param  object  $transformer
-     * @param  string  $key
-     * @return \Illuminate\Http\Response
      */
     public function item($item, object $transformer, string $key = null): Response
     {
@@ -59,11 +50,6 @@ class FractalService
 
     /**
      * Create a new collection resource from a paginator with the given transformer.
-     *
-     * @param  \League\Fractal\Pagination\PaginatorInterface  $paginator
-     * @param  object  $transformer
-     * @param  string  $key
-     * @return \Illuminate\Http\Response
      */
     public function paginator(FractalPaginatorInterface $paginator, object $transformer, string $key = null): Response
     {
@@ -78,7 +64,6 @@ class FractalService
      * Build the response.
      *
      * @param  array|\League\Fractal\Resource\ResourceInterface  $data
-     * @return \Illuminate\Http\Response
      */
     public function build($data): Response
     {

@@ -17,7 +17,6 @@ class UsersRepository extends BaseRepository
 
     /**
      * @param $id
-     * @return User
      */
     public function byId($id): User
     {
@@ -26,7 +25,6 @@ class UsersRepository extends BaseRepository
 
     /**
      * @param $id
-     * @return User
      */
     public function byIdWithProfileAndYearGroup($id): User
     {
@@ -45,7 +43,6 @@ class UsersRepository extends BaseRepository
 
     /**
      * @param $id
-     * @return User
      */
     public function memberOrFormerByIdWithProfile($id): User
     {
@@ -55,8 +52,6 @@ class UsersRepository extends BaseRepository
 
     /**
      * Get all users
-     *
-     * @return Collection
      */
     public function all(): Collection
     {
@@ -75,8 +70,6 @@ class UsersRepository extends BaseRepository
 
     /**
      * Get paginated users
-     *
-     * @param  int  $amount
      */
     public function paginate(int $amount)
     {
@@ -173,9 +166,6 @@ class UsersRepository extends BaseRepository
 
     /**
      * Create user
-     *
-     * @param  array  $input
-     * @return User
      */
     public function create(array $input): User
     {
@@ -193,8 +183,6 @@ class UsersRepository extends BaseRepository
     /**
      * Delete User
      *
-     * @param  int  $id
-     * @return User
      * @TODO: delete all user members references
      */
     public function delete(int $id): User

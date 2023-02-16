@@ -8,9 +8,6 @@ class YearGroupRepository
 {
     /**
      * Get by id
-     *
-     * @param  int  $id
-     * @return YearGroup
      */
     public function byId(int $id): YearGroup
     {
@@ -19,9 +16,6 @@ class YearGroupRepository
 
     /**
      * Check if year group exists
-     *
-     * @param  int  $id
-     * @return YearGroup
      */
     public function exists(int $id): YearGroup
     {

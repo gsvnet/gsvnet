@@ -12,10 +12,6 @@ class NewsletterList implements NewsletterListInterface
 
     protected $lists = [];
 
-    /**
-     * @param  ApiClient  $mailchimp
-     * @param  Repository  $config
-     */
     public function __construct(ApiClient $mailchimp, Repository $config)
     {
         $this->mailchimp = $mailchimp;

@@ -28,9 +28,6 @@ class PhotoManager
 
     /**
      * Validate input, create photo model and store photo file
-     *
-     * @param  array  $input
-     * @return Photo
      */
     public function create(array $input): Photo
     {
@@ -44,9 +41,6 @@ class PhotoManager
 
     /**
      * Validate input, update photo model and optionally update photo file
-     *
-     * @param  array  $input
-     * @return Photo
      */
     public function update($id, array $input): Photo
     {

@@ -11,9 +11,6 @@ class PhotosRepository
 
     /**
      * Get by id
-     *
-     * @param  int  $id
-     * @return Photo
      */
     public function byId(int $id): Photo
     {
@@ -22,10 +19,6 @@ class PhotosRepository
 
     /**
      * Get by album id and paginate photos
-     *
-     * @param  int  $id
-     * @param  int  $amount
-     * @return Collection
      */
     public function byAlbumIdAndPaginate(int $id, int $amount): Collection
     {
@@ -34,9 +27,6 @@ class PhotosRepository
 
     /**
      * Create photo
-     *
-     * @param  array  $input
-     * @return Photo
      */
     public function create(array $input): Photo
     {
@@ -51,10 +41,6 @@ class PhotosRepository
 
     /**
      * Update photo
-     *
-     * @param  int  $id
-     * @param  array  $input
-     * @return Photo
      */
     public function update(int $id, array $input): Photo
     {
@@ -66,9 +52,6 @@ class PhotosRepository
 
     /**
      * Delete photo
-     *
-     * @param  int  $id
-     * @return Photo
      */
     public function delete(int $id): Photo
     {

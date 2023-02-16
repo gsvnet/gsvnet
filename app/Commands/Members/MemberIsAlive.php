@@ -25,10 +25,6 @@ class MemberIsAlive extends Command
 
     /**
      * MemberIsAlive constructor.
-     *
-     * @param  User  $user
-     * @param  User  $manager
-     * @param  bool  $alive
      */
     public function __construct(User $user, User $manager, bool $alive)
     {

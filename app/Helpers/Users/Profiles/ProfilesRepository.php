@@ -22,11 +22,7 @@ class ProfilesRepository extends BaseRepository
     /**
      *   Search for members and paginate
      *
-     * @param  string  $search
-     * @param  int  $region
-     * @param  int  $yearGroup
      * @param  int|array  $type
-     * @param  int  $amount
      * @return UserProfile[]
      */
     public function searchAndPaginate(string $search, int $region = null, int $yearGroup = null, $type = 2, int $amount = 20): array
@@ -42,10 +38,6 @@ class ProfilesRepository extends BaseRepository
     /**
      *   Search for users + profiles
      *
-     * @param  string  $keyword
-     * @param  int  $region
-     * @param  int  $yearGroup
-     * @param  int  $type
      * @return UserProfile[]
      */
     public function search(string $keyword = '', int $region = null, int $yearGroup = null, int $type = 2): array
@@ -115,9 +107,6 @@ class ProfilesRepository extends BaseRepository
 
     /**
      * Create profile
-     *
-     * @param  array  $input
-     * @return User
      */
     public function create(User $user, array $input): User
     {
@@ -150,10 +139,6 @@ class ProfilesRepository extends BaseRepository
 
     /**
      * Update profile
-     *
-     * @param  int  $id
-     * @param  array  $input
-     * @return User
      */
     public function update(int $id, array $input): User
     {
@@ -168,8 +153,6 @@ class ProfilesRepository extends BaseRepository
     /**
      * Delete User
      *
-     * @param  int  $id
-     * @return Committe
      * @TODO: delete all profile members references
      */
     public function delete(int $id): Committe

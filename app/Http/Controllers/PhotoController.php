@@ -54,7 +54,6 @@ class PhotoController extends BaseController
      * Returns an image response
      *
      * @param $photo_id
-     * @param  string  $type
      * @return
      */
     public function showPhoto($photo_id, string $type = ''): Response

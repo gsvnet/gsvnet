@@ -12,8 +12,6 @@ class FilesRepository
 {
     /**
      * Get all albums
-     *
-     * @return Collection
      */
     public function all($published = true): Collection
     {
@@ -22,8 +20,6 @@ class FilesRepository
 
     /**
      * Get paginated albums
-     *
-     * @param  int  $amount
      */
     public function paginate(int $amount, $published = true)
     {
@@ -71,7 +67,6 @@ class FilesRepository
     /**
      * Get by slug
      *
-     * @param  int  $id
      *
      * @throws NoPermissionException
      */
@@ -88,9 +83,6 @@ class FilesRepository
 
     /**
      * Create file
-     *
-     * @param  array  $input
-     * @return File
      */
     public function create(array $input): File
     {
@@ -113,10 +105,6 @@ class FilesRepository
 
     /**
      * Update file
-     *
-     * @param  int  $id
-     * @param  array  $input
-     * @return File
      */
     public function update(int $id, array $input): File
     {
@@ -141,9 +129,6 @@ class FilesRepository
 
     /**
      * Delete file
-     *
-     * @param  int  $id
-     * @return File
      */
     public function delete(int $id): File
     {

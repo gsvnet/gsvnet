@@ -55,8 +55,6 @@ class StandardizeAddresses extends Command
 
     /**
      * BulkNewsletterSubscriptions constructor.
-     *
-     * @param  UsersRepository  $users
      */
     public function __construct(UsersRepository $users)
     {
@@ -66,8 +64,6 @@ class StandardizeAddresses extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
     public function handle(): void
     {
@@ -134,8 +130,6 @@ class StandardizeAddresses extends Command
 
     /**
      * Get the console command arguments.
-     *
-     * @return array
      */
     protected function getArguments(): array
     {
@@ -146,8 +140,6 @@ class StandardizeAddresses extends Command
 
     /**
      * Get the console command options.
-     *
-     * @return array
      */
     protected function getOptions(): array
     {

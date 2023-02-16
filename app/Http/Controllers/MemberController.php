@@ -46,9 +46,6 @@ class MemberController extends BaseController
      * This method is still a mess due to new requirements... It currently has too many
      * responsibilities. Should be refactored.
      *
-     * @param  Request  $request
-     * @param  PotentialValidator  $validator
-     * @return \Illuminate\Http\RedirectResponse
      *
      * @throws ValidationException
      */
@@ -143,9 +140,6 @@ class MemberController extends BaseController
 
     /**
      *   Returns an image response
-     *
-     * @param  int  $id
-     * @param  string  $type
      */
     private function photoResponse(int $id, string $type = '')
     {

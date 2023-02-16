@@ -26,9 +26,6 @@ class FileManager
 
     /**
      * Validate input, create file model and store file file
-     *
-     * @param  array  $input
-     * @return File
      */
     public function create(array $input): File
     {
@@ -43,9 +40,6 @@ class FileManager
 
     /**
      * Validate input, update file model and optionally update file file
-     *
-     * @param  array  $input
-     * @return File
      */
     public function update($id, array $input): File
     {

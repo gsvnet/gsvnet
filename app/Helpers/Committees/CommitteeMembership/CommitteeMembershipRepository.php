@@ -9,9 +9,6 @@ class CommitteeMembershipRepository
 {
     /**
      * Get by id
-     *
-     * @param  int  $id
-     * @return Committee
      */
     public function byId(int $id): Committee
     {
@@ -20,9 +17,6 @@ class CommitteeMembershipRepository
 
     /**
      * Create committeeMembership
-     *
-     * @param  array  $input
-     * @return Committee
      */
     public function create(User $user, Committee $committee, array $input): Committee
     {
@@ -39,10 +33,6 @@ class CommitteeMembershipRepository
 
     /**
      * Update committeeMembership
-     *
-     * @param  int  $id
-     * @param  array  $input
-     * @return Committee
      */
     public function update(int $id, array $input): Committee
     {
@@ -59,8 +49,6 @@ class CommitteeMembershipRepository
     /**
      * Delete committeeMembership
      *
-     * @param  int  $id
-     * @return Committe
      * @TODO: delete all committee members references
      */
     public function delete(int $id): Committe

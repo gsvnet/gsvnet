@@ -16,8 +16,6 @@ class LoginViaToken
 
     /**
      * LoginViaToken constructor.
-     *
-     * @param  TokenRepository  $tokens
      */
     public function __construct(TokenRepository $tokens)
     {

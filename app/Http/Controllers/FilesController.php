@@ -26,8 +26,6 @@ class FilesController extends BaseController
     /**
      * Display a listing of the resource.
      *
-     * @param  Request  $request
-     * @param  LabelsRepository  $labelsRepository
      * @return
      */
     public function index(Request $request, LabelsRepository $labelsRepository): View
@@ -50,10 +48,6 @@ class FilesController extends BaseController
 
     /**
      * Display the specified resource.
-     *
-     * @param  int  $id
-     * @param  FileHandler  $fileHandler
-     * @return \Illuminate\Http\Response
      */
     public function show(int $id, FileHandler $fileHandler): Response
     {

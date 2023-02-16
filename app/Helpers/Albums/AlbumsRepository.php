@@ -20,8 +20,6 @@ class AlbumsRepository
 
     /**
      * Get paginated albums
-     *
-     * @param  int  $amount
      */
     public function paginate(int $amount)
     {
@@ -36,8 +34,6 @@ class AlbumsRepository
      * Get paginated albums
      *
      * @TODO this should use eager loading
-     *
-     * @param  int  $amount
      */
     public function paginateWithFirstPhoto(int $amount)
     {
@@ -52,8 +48,6 @@ class AlbumsRepository
      * Get paginated albums
      *
      * @TODO this should use eager loading
-     *
-     * @param  int  $amount
      */
     public function paginatePublicWithFirstPhoto(int $amount)
     {
@@ -65,8 +59,6 @@ class AlbumsRepository
 
     /**
      * Get first album
-     *
-     * @return Album
      */
     public function first(): Album
     {
@@ -75,9 +67,6 @@ class AlbumsRepository
 
     /**
      * Get by slug
-     *
-     * @param  int  $id
-     * @return Album
      */
     public function byId(int $id): Album
     {
@@ -86,9 +75,6 @@ class AlbumsRepository
 
     /**
      * Get by slug
-     *
-     * @param  string  $slug
-     * @return Album
      */
     public function bySlug(string $slug): Album
     {
@@ -97,9 +83,6 @@ class AlbumsRepository
 
     /**
      * Create album
-     *
-     * @param  array  $input
-     * @return Album
      */
     public function create(array $input): Album
     {
@@ -116,10 +99,6 @@ class AlbumsRepository
 
     /**
      * Update album
-     *
-     * @param  int  $id
-     * @param  array  $input
-     * @return Album
      */
     public function update(int $id, array $input): Album
     {
@@ -138,8 +117,6 @@ class AlbumsRepository
     /**
      * Delete album
      *
-     * @param  int  $id
-     * @return Album
      * @TODO: delete all photos
      */
     public function delete(int $id): Album

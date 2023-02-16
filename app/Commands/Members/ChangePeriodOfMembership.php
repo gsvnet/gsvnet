@@ -30,11 +30,6 @@ class ChangePeriodOfMembership
 
     /**
      * ChangePeriodOfMembership constructor.
-     *
-     * @param  User  $user
-     * @param  User  $manager
-     * @param  NullableDate  $inauguration
-     * @param  NullableDate  $resignation
      */
     public function __construct(User $user, User $manager, NullableDate $inauguration, NullableDate $resignation)
     {
@@ -52,33 +47,21 @@ class ChangePeriodOfMembership
         return new static($user, $request->user(), $inauguration, $resignation);
     }
 
-    /**
-     * @return NullableDate
-     */
     public function getInauguration(): NullableDate
     {
         return $this->inauguration;
     }
 
-    /**
-     * @return NullableDate
-     */
     public function getResignation(): NullableDate
     {
         return $this->resignation;
     }
 
-    /**
-     * @return User
-     */
     public function getUser(): User
     {
         return $this->user;
     }
 
-    /**
-     * @return User
-     */
     public function getManager(): User
     {
         return $this->manager;

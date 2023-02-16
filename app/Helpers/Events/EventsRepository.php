@@ -111,9 +111,6 @@ class EventsRepository
 
     /**
      * Create event
-     *
-     * @param  array  $input
-     * @return Event
      */
     public function create(array $input): Event
     {
@@ -126,10 +123,6 @@ class EventsRepository
 
     /**
      * Update event
-     *
-     * @param  int  $id
-     * @param  array  $input
-     * @return Event
      */
     public function update(int $id, array $input): Event
     {
@@ -143,9 +136,7 @@ class EventsRepository
     /**
      * Delete event
      *
-     * @param  int  $id
      * @param  array  $input
-     * @return Event
      */
     public function delete(int $id): Event
     {

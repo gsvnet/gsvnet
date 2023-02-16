@@ -23,9 +23,6 @@ class InviteMemberHandler
 
     /**
      * InviteMemberHandler constructor.
-     *
-     * @param  Mailer  $mailer
-     * @param  TokenRepository  $tokens
      */
     public function __construct(Mailer $mailer, TokenRepository $tokens)
     {
