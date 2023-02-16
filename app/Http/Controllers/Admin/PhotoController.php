@@ -4,7 +4,6 @@ namespace Admin;
 
 use App\Helpers\Albums\Photos\PhotoManager;
 use App\Helpers\Albums\Photos\PhotosRepository;
-
 use Request;
 
 class PhotoController extends AdminBaseController

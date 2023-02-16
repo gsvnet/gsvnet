@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Request;
 use App\Helpers\Users\UserManager;
+use Illuminate\Support\Facades\Request;
 
 class RegisterController extends BaseController
 {

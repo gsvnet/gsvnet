@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Request;
 use App\Commands\Forum\DeleteReplyCommand;
 use App\Commands\Forum\EditReplyCommand;
 use App\Commands\Forum\ReplyToThreadCommand;
@@ -9,6 +8,7 @@ use App\Helpers\Forum\Replies\ReplyRepository;
 use App\Http\Validators\DeleteReplyValidator;
 use App\Http\Validators\EditReplyValidator;
 use App\Http\Validators\ReplyToThreadValidator;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\View;
 
 class ForumRepliesController extends BaseController
