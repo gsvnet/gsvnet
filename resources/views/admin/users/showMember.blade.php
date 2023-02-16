@@ -10,7 +10,7 @@
         <div class="col-xs-12">
             <ul class="nav nav-pills">
                 <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editPassword', $user->id) }}">
+                    <a href="{{ action('Admin\MemberController@editPassword', ['id' => $user->id]) }}">
                         <i class="fa fa-unlock-alt"></i> Wachtwoord wijzigen
                     </a>
                 </li>
@@ -34,7 +34,7 @@
                 <i class="glyphicon glyphicon-user"></i>
                 Naam
                 @can('user.manage.name', $user)
-                    <a href="{{ action('Admin\MemberController@editName', $user->id) }}">(wijzig)</a>
+                    <a href="{{ action('Admin\MemberController@editName', ['id' => $user->id]) }}">(wijzig)</a>
                 @endcan
             </h3>
             <table class='table table-striped table-hover' style="table-layout: fixed;">
@@ -55,7 +55,7 @@
                 <i class="glyphicon glyphicon-comment"></i>
                 Gebruikersnaam
                 @can('users.manage')
-                    <a href="{{ action('Admin\MemberController@editUsername', $user->id) }}">(wijzig)</a>
+                    <a href="{{ action('Admin\MemberController@editUsername', ['id' => $user->id]) }}">(wijzig)</a>
                 @endcan
 
             </h3>
@@ -84,7 +84,7 @@
                                 Onbekend
                             @endif
                             @can('users.manage', $user)
-                                <a href="{{ action('Admin\MemberController@editYearGroup', $user->id) }}">(wijzig)</a>
+                                <a href="{{ action('Admin\MemberController@editYearGroup', ['id' => $user->id]) }}">(wijzig)</a>
                             @endcan
                         </td>
                     </tr>
@@ -93,7 +93,7 @@
                         <td>
                             {{ $profile->present()->regionName }} 
                             @can('users.manage', $user)
-                                <a href="{{ action('Admin\MemberController@editRegion', $user->id) }}">(wijzig)</a>
+                                <a href="{{ action('Admin\MemberController@editRegion', ['id' => $user->id]) }}">(wijzig)</a>
                             @endcan
                         </td>
                     </tr>
@@ -102,7 +102,7 @@
                         <td>
                             {{ $user->present()->membershipType }}
                             @can('users.manage')
-                                <a href="{{ action('Admin\MemberController@editMembershipStatus', $user->id) }}">(wijzig)</a>
+                                <a href="{{ action('Admin\MemberController@editMembershipStatus', ['id' => $user->id]) }}">(wijzig)</a>
                             @endcan
                         </td>
                     </tr>
@@ -116,7 +116,7 @@
                             @endif
 
                             @can('users.manage', $user)
-                                <a href="{{ action('Admin\MemberController@editMembershipPeriod', $user->id) }}">(wijzig)</a>
+                                <a href="{{ action('Admin\MemberController@editMembershipPeriod', ['id' => $user->id]) }}">(wijzig)</a>
                             @endcan
                         </td>
                     </tr>
@@ -131,7 +131,7 @@
                             @endif
 
                             @can('users.manage', $user)
-                                <a href="{{ action('Admin\MemberController@editMembershipPeriod', $user->id) }}">(wijzig)</a>
+                                <a href="{{ action('Admin\MemberController@editMembershipPeriod', ['id' => $user->id]) }}">(wijzig)</a>
                             @endcan
                         </td>
                     </tr>
@@ -146,7 +146,7 @@
                 Email
 
                 @can('user.manage.email', $user)
-                    <a href="{{ action('Admin\MemberController@editEmail', $user->id) }}">(wijzig)</a>
+                    <a href="{{ action('Admin\MemberController@editEmail', ['id' => $user->id]) }}">(wijzig)</a>
                 @endcan
             </h3>
             <table class='table table-striped table-hover' style="table-layout: fixed;">
@@ -165,7 +165,7 @@
                 Contactgegevens
 
                 @can('user.manage.address', $user)
-                    <a href="{{ action('Admin\MemberController@editContactDetails', $user->id) }}">(wijzig)</a>
+                    <a href="{{ action('Admin\MemberController@editContactDetails', ['id' => $user->id]) }}">(wijzig)</a>
                 @endcan
             </h3>
             <table class='table table-striped table-hover' style="table-layout: fixed;">
@@ -201,7 +201,7 @@
                     SIC thuis ontvangen
 
                     @can('user.manage.receive_newspaper', $user)
-                        <a href="{{ action('Admin\MemberController@editNewspaper', $user->id) }}">(wijzig)</a>
+                        <a href="{{ action('Admin\MemberController@editNewspaper', ['id' => $user->id]) }}">(wijzig)</a>
                     @endcan
                 </h3>
                 <table class='table table-striped table-hover' style="table-layout: fixed;">
@@ -221,7 +221,7 @@
                 Profielfoto
 
                 @can('user.manage.photo', $user)
-                    <a href="{{ action('Admin\MemberController@editPhoto', $user->id) }}">(wijzig)</a>
+                    <a href="{{ action('Admin\MemberController@editPhoto', ['id' => $user->id]) }}">(wijzig)</a>
                 @endcan
             </h3>
             <table class='table table-striped table-hover' style="table-layout: fixed;">
@@ -246,7 +246,7 @@
                 Geslacht
 
                 @can('user.manage.gender', $user)
-                    <a href="{{ action('Admin\MemberController@editGender', $user->id) }}">(wijzig)</a>
+                    <a href="{{ action('Admin\MemberController@editGender', ['id' => $user->id]) }}">(wijzig)</a>
                 @endcan
             </h3>
             <table class='table table-striped table-hover' style="table-layout: fixed;">
@@ -265,7 +265,7 @@
                 Geboortedatum
 
                 @can('user.manage.birthday', $user)
-                    <a href="{{ action('Admin\MemberController@editBirthDay', $user->id) }}">(wijzig)</a>
+                    <a href="{{ action('Admin\MemberController@editBirthDay', ['id' => $user->id]) }}">(wijzig)</a>
                 @endcan
             </h3>
             <table class='table table-striped table-hover' style="table-layout: fixed;">
@@ -283,7 +283,7 @@
                <i class="fa fa-university"></i> Studie
 
                 @can('user.manage.study', $user)
-                    <a href="{{ action('Admin\MemberController@editStudy', $user->id) }}">(wijzig)</a>
+                    <a href="{{ action('Admin\MemberController@editStudy', ['id' => $user->id]) }}">(wijzig)</a>
                 @endcan
             </h3>
             <table class='table table-striped table-hover' style="table-layout: fixed;">
@@ -308,7 +308,7 @@
                 Werkgegevens
 
                 @can('user.manage.business', $user)
-                    <a href="{{ action('Admin\MemberController@editBusiness', $user->id) }}">(wijzig)</a>
+                    <a href="{{ action('Admin\MemberController@editBusiness', ['id' => $user->id]) }}">(wijzig)</a>
                 @endcan
             </h3>
             <table class='table table-striped table-hover' style="table-layout: fixed;">
@@ -334,7 +334,7 @@
                <i class="fa fa-users"></i> Gegevens ouders
 
                 @can('user.manage.parents', $user)
-                    <a href="{{ action('Admin\MemberController@editParentContactDetails', $user->id) }}">(wijzig)</a>
+                    <a href="{{ action('Admin\MemberController@editParentContactDetails', ['id' => $user->id]) }}">(wijzig)</a>
                 @endcan
             </h3>
             <table class='table table-striped table-hover' style="table-layout: fixed;">
@@ -365,14 +365,14 @@
 
             @can('users.manage')
                 <hr>
-                <p><strong>In leven</strong> <a href="{{ action('Admin\MemberController@editAlive', $user->id) }}">(wijzig)</a></p>
+                <p><strong>In leven</strong> <a href="{{ action('Admin\MemberController@editAlive', ['id' => $user->id]) }}">(wijzig)</a></p>
                 <p>{{$profile->alive ? 'Ja' : 'Nee'}}</p>
             @endcan
 
             @can('users.manage')
                 <hr>
                 {!! Former::inline_open()
-                    ->action(action('Admin\MemberController@setForget', $user->id))
+                    ->action(action('Admin\MemberController@setForget', ['id' => $user->id]))
                     ->method('GET') !!}
 
                 <button type='submit' class='btn btn-primary'>
@@ -400,7 +400,7 @@
                 <i class="fa fa-tree"></i> GSV-familie
 
                 @can('users.manage')
-                    <a href="{{ action('Admin\FamilyController@index', $user->id) }}">(wijzig)</a>
+                    <a href="{{ action('Admin\FamilyController@index', ['id' => $user->id]) }}">(wijzig)</a>
                 @endcan
             </h2>
             <h3>Papa of mama</h3>
