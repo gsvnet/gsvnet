@@ -1,10 +1,10 @@
 <?php
 
 // We keep the home route name as some built in functions use the 'home' name
-Route::get('/', ['as' => 'home', 'uses' => 'HomeController@showIndex']);
+Route::get('/', 'HomeController@showIndex')->name('home');
 
 // Keep the new homepage accessible
-Route::get('welkom', ['as' => 'home', 'uses' => 'HomeController@showNewIndex']);
+Route::get('welkom', 'HomeController@showNewIndex')->name('home');
 
 // Nothing to see here, move along
 Route::get('roos', 'HomeController@roos');
@@ -19,12 +19,12 @@ Route::get('roos', 'HomeController@roos');
 Route::get('privacy-statement', 'PublicFilesController@showPrivacyStatement');
 
 // Login and logout routes
-Route::get('inloggen', ['middleware' => 'guest', 'uses' => 'SessionController@getLogin']);
-Route::post('inloggen', ['middleware' => 'guest', 'uses' => 'SessionController@postLogin']);
-Route::get('uitloggen', ['middleware' => 'auth', 'uses' => 'SessionController@getLogout']);
+Route::get('inloggen', 'SessionController@getLogin')->middleware('guest');
+Route::post('inloggen', 'SessionController@postLogin')->middleware('guest');
+Route::get('uitloggen', 'SessionController@getLogout')->middleware('auth');
 
 // Intern
-Route::group(['prefix' => 'intern', 'middleware' => 'auth'], function () {
+Route::prefix('intern')->middleware('auth')->group(function () {
     // Profiles
     Route::get('profiel', 'UserController@showProfile');
     Route::get('profiel/bewerken', 'UserController@editProfile');
@@ -38,7 +38,7 @@ Route::group(['prefix' => 'intern', 'middleware' => 'auth'], function () {
 });
 
 // Jaarbundel
-Route::group(['middleware' => 'auth'], function () {
+Route::middleware('auth')->group(function () {
     // Only logged in users can view the member list if they have permission
     Route::get('jaarbundel', 'UserController@showUsers');
     Route::get('jaarbundel/{id}', 'UserController@showUser')->where('id', '[0-9]+');
@@ -47,7 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
 //Sponsors
 Route::get('sponsors', 'HomeController@sponsorProgram');
 
-Route::group(['prefix' => 'uploads'], function () {
+Route::prefix('uploads')->group(function () {
     Route::get('bestanden/{id}', 'FilesController@show');
     // Shows photo corresponding to photo id
     Route::get('fotos/{id}/{type?}', 'PhotoController@showPhoto');
@@ -56,7 +56,7 @@ Route::group(['prefix' => 'uploads'], function () {
 });
 
 // De GSV
-Route::group(['prefix' => 'de-gsv'], function () {
+Route::prefix('de-gsv')->group(function () {
     Route::get('/', 'AboutController@showAbout');
 
     Route::get('/pijlers', 'AboutController@showPillars');
@@ -79,7 +79,7 @@ Route::group(['prefix' => 'de-gsv'], function () {
 //Route::post('registreer', 'RegisterController@store');
 
 // Word lid
-Route::group(['prefix' => 'word-lid'], function () {
+Route::prefix('word-lid')->group(function () {
     Route::get('/', 'MemberController@index');
     Route::get('/studie-en-vereniging', 'MemberController@study');
     // Corona Q&A
@@ -99,35 +99,31 @@ Route::get('activiteiten', 'EventController@showIndex');
 Route::get('activiteiten/{year}/{month?}', 'EventController@showMonth')->middleware('checkDate');
 Route::get('activiteiten/{year}/{month}/{slug}', 'EventController@showEvent')->middleware('checkDate');
 
-Route::group(['prefix' => 'wachtwoord-vergeten'], function () {
+Route::prefix('wachtwoord-vergeten')->group(function () {
     Route::get('herinner', 'RemindersController@getEmail');
     Route::post('herinner', 'RemindersController@postEmail');
     Route::get('reset/{token}', 'RemindersController@getReset');
     Route::post('reset', 'RemindersController@postReset');
 });
 
-Route::group([
-    'prefix' => 'admin',
-    'namespace' => 'Admin',
-    'middleware' => ['auth', 'has:member-or-reunist'],
-], function () {
+Route::prefix('admin')->namespace('Admin')->middleware('auth', 'has:member-or-reunist')->group(function () {
     Route::get('/', 'AdminController@index');
     Route::get('/me', 'AdminController@redirectToMyProfile');
 
     // events, albums/{photo}, files
     Route::resource('events', 'EventController');
-    Route::resource('albums', 'AlbumController', ['except' => ['create']]);
-    Route::resource('albums.photo', 'PhotoController', ['except' => ['index', 'create']]);
+    Route::resource('albums', 'AlbumController')->except('create');
+    Route::resource('albums.photo', 'PhotoController')->except('index', 'create');
     Route::resource('files', 'FilesController');
 
     // Commissies
-    Route::resource('commissies', 'CommitteeController', ['except' => ['create']]);
+    Route::resource('commissies', 'CommitteeController')->except('create');
 
     // Hier nog een route voor ajax calls naar users db
     Route::resource('commissies/lidmaatschap', 'Committees\MembersController');
 
     // Users
-    Route::group(['prefix' => 'gebruikers'], function () {
+    Route::prefix('gebruikers')->group(function () {
         Route::post('/{user}/activeren', 'UsersController@activate');
         Route::post('/{user}/accepteer-lid', 'UsersController@accept');
         Route::post('/{user}/profiel/create', 'UsersController@storeProfile');
@@ -204,7 +200,7 @@ Route::group([
 });
 
 // Forum
-Route::group(['prefix' => 'forum', 'middleware' => ['auth', 'approved']], function () {
+Route::prefix('forum')->middleware('auth', 'approved')->group(function () {
     Route::get('stats', 'ForumThreadsController@statistics');
 
     Route::get('prullenbak', 'ForumThreadsController@getTrashed');
@@ -237,9 +233,9 @@ Route::group(['prefix' => 'forum', 'middleware' => ['auth', 'approved']], functi
     Route::delete('threads/{id}/like', 'ForumApiController@dislikeThread');
 });
 
-Route::get('preview', ['middleware' => 'auth', 'uses' => 'ForumApiController@preview']);
+Route::get('preview', 'ForumApiController@preview')->middleware('auth');
 
-Route::group(['prefix' => 'api', 'middleware' => ['auth', 'approved', 'has:member-or-reunist']], function () {
+Route::prefix('api')->middleware('auth', 'approved', 'has:member-or-reunist')->group(function () {
     Route::get('search/members', 'ApiController@members');
 });
 
@@ -253,8 +249,8 @@ Route::get('admin/leden/{id}/invite', 'Malfonds\InvitationController@create');
 Route::post('admin/leden/{id}/invite', 'Malfonds\InvitationController@store');
 Route::post('admin/leden/{id}/invite-via-mail', 'Malfonds\InvitationController@inviteByMail');
 
-Route::group(['prefix' => 'api', 'middleware' => ['cors']], function () {
-    Route::group(['middleware' => ['loginViaToken', 'tokenAuth']], function () {
+Route::prefix('api')->middleware('cors')->group(function () {
+    Route::middleware('loginViaToken', 'tokenAuth')->group(function () {
         Route::get('me', 'Malfonds\MemberController@me');
 
         Route::resource('members', 'Malfonds\MemberController');
@@ -285,7 +281,7 @@ Route::group(['prefix' => 'api', 'middleware' => ['cors']], function () {
     Route::post('login', 'Malfonds\SessionController@login');
 });
 
-Route::group(['prefix' => 'api', 'middleware' => ['cors']], function () {
+Route::prefix('api')->middleware('cors')->group(function () {
     // Shop extension
     Route::get('shops', 'ExtensionApiController@show');
 
@@ -294,6 +290,6 @@ Route::group(['prefix' => 'api', 'middleware' => ['cors']], function () {
 });
 
 // Iframes
-Route::group(['prefix' => 'iframe'], function () {
+Route::prefix('iframe')->group(function () {
     Route::get('inschrijven', 'MemberController@becomeMemberIFrame');
 });
