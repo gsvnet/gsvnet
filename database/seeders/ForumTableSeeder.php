@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Helpers\Tags\Tag;
 use App\Helpers\Users\User;
 use Carbon\Carbon;

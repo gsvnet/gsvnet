@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Helpers\Committees\Committee;
 use App\Helpers\Users\Profiles\UserProfile;
 use App\Helpers\Users\User;
