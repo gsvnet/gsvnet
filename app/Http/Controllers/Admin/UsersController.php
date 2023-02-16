@@ -301,7 +301,7 @@ class UsersController extends AdminBaseController
         $this->profileUpdaterValidator->validate($input);
 
         // Update
-        $user->profile()->update($input);
+        $user->profile->update($input);
 
         flash()->success("Profiel van {$user->present()->fullName} is succesvol bijgewerkt.");
 
