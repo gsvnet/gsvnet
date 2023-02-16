@@ -166,7 +166,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Fruitcake\Cors\CorsServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider::class,
+        Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
 
         App\Providers\NewsletterServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
@@ -233,6 +233,6 @@ return [
 
         'Flash' => Laracasts\Flash\Flash::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'Bugsnag' => Bugsnag\BugsnagLaravel\BugsnagFacade::class,
+        'Bugsnag' => Bugsnag\BugsnagLaravel\Facades\Bugsnag::class,
     ],
 ];
