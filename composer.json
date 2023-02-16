@@ -32,7 +32,9 @@
         "php": "^8.0",
         "laravel/tinker": "^2.7",
         "mews/purifier": "*",
-        "laravel/ui": "^3.3"
+        "laravel/ui": "^3.3",
+        "symfony/mailgun-mailer": "*",
+        "symfony/http-client": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5.10",
