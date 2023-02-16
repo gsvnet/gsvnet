@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RemoveRedundantColumnsFromForumThreadsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -31,4 +31,4 @@ class RemoveRedundantColumnsFromForumThreadsTable extends Migration
             $table->integer('solution_reply_id')->nullable()->defaults(null);
         });
     }
-}
+};

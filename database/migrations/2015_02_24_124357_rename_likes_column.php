@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class RenameLikesColumn extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -36,4 +36,4 @@ class RenameLikesColumn extends Migration
             $table->renameColumn('like_count', 'likes');
         });
     }
-}
+};
