@@ -13,8 +13,6 @@ class File extends Model
 
     protected $presenter = FilePresenter::class;
 
-    protected $dates = ['updated_at', 'created_at'];
-
     public static $rules = [
         'name' => 'required',
     ];

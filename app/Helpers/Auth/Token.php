@@ -20,7 +20,9 @@ class Token extends Model
 
     protected $primaryKey = 'token';
 
-    protected $dates = ['expires_on'];
+    protected $casts = [
+        'expires_on' => 'datetime',
+    ];
 
     protected $fillable = ['user_id', 'expires_on', 'token'];
 

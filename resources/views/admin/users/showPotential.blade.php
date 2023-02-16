@@ -11,63 +11,63 @@
             <ul class="nav nav-pills">
                 @can('user.manage.name', $user)
                 <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editName', $user->id) }}">
+                    <a href="{{ action([\App\Http\Controllers\Admin\MemberController::class, 'editName'], $user->id) }}">
                         <i class="glyphicon glyphicon-user"></i> Naam
                     </a>
                 </li>
                 @endcan
                 @can('user.manage.address', $user)
                 <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editContactDetails', $user->id) }}">
+                    <a href="{{ action([\App\Http\Controllers\Admin\MemberController::class, 'editContactDetails'], $user->id) }}">
                         <i class="glyphicon glyphicon-home"></i> Contactgegevens
                     </a>
                 </li>
                 @endcan
                 @can('user.manage.photo', $user)
                 <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editPhoto', $user->id) }}">
+                    <a href="{{ action([\App\Http\Controllers\Admin\MemberController::class, 'editPhoto'], $user->id) }}">
                         <i class="fa fa-camera"></i> Foto
                     </a>
                 </li>
                 @endcan
                 @can('user.manage.gender', $user)
                 <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editGender', $user->id) }}">
+                    <a href="{{ action([\App\Http\Controllers\Admin\MemberController::class, 'editGender'], $user->id) }}">
                         <i class="fa fa-transgender"></i> Geslacht
                     </a>
                 </li>
                 @endcan
                 @can('user.manage.birthday', $user)
                 <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editBirthDay', $user->id) }}">
+                    <a href="{{ action([\App\Http\Controllers\Admin\MemberController::class, 'editBirthDay'], $user->id) }}">
                         <i class="glyphicon glyphicon-calendar"></i> Geboortedatum
                     </a>
                 </li>
                 @endcan
                 @can('user.manage.study', $user)
                 <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editStudy', $user->id) }}">
+                    <a href="{{ action([\App\Http\Controllers\Admin\MemberController::class, 'editStudy'], $user->id) }}">
                         <i class="fa fa-university"></i> Studie
                     </a>
                 </li>
                 @endcan
                 @can('user.manage.parents', $user)
                 <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editParentContactDetails', $user->id) }}">
+                    <a href="{{ action([\App\Http\Controllers\Admin\MemberController::class, 'editParentContactDetails'], $user->id) }}">
                         <i class="fa fa-users"></i> Ouders
                     </a>
                 </li>
                 @endcan
                 @can('user.manage.email', $user)
                 <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editEmail', $user->id) }}">
+                    <a href="{{ action([\App\Http\Controllers\Admin\MemberController::class, 'editEmail'], $user->id) }}">
                         <i class="glyphicon glyphicon-envelope"></i> Emailadres
                     </a>
                 </li>
                 @endcan
                 @can('user.manage.password', $user)
                 <li role="presentation">
-                    <a href="{{ action('Admin\MemberController@editPassword', $user->id) }}">
+                    <a href="{{ action([\App\Http\Controllers\Admin\MemberController::class, 'editPassword'], $user->id) }}">
                         <i class="fa fa-unlock-alt"></i> Wachtwoord
                     </a>
                 </li>
@@ -154,7 +154,7 @@
             <h2>Danger zone!</h2>
             @can('users.manage')
             {!! Former::inline_open()
-                ->action(action('Admin\UsersController@destroy', $user->id))
+                ->action(action([\App\Http\Controllers\Admin\UsersController::class, 'destroy'], $user->id))
                 ->method('DELETE') !!}
             <button type='submit' class='btn btn-danger'>
                 <i class="glyphicon glyphicon-trash"></i> Aanmelding verwijderen

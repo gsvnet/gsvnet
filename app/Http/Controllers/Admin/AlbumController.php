@@ -46,7 +46,7 @@ class AlbumController extends AdminBaseController
 
         flash()->success("Album {$album->name} is succesvol opgeslagen");
 
-        return redirect()->action('Admin\AlbumController@index');
+        return redirect()->action([\App\Http\Controllers\Admin\AlbumController::class, 'index']);
     }
 
     public function show($id)
@@ -79,7 +79,7 @@ class AlbumController extends AdminBaseController
 
         flash()->success("Album {$album->name} is succesvol bewerkt");
 
-        return redirect()->action('Admin\AlbumController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\AlbumController::class, 'show'], $id);
     }
 
     public function destroy($id)
@@ -88,6 +88,6 @@ class AlbumController extends AdminBaseController
 
         flash()->success("Album {$album->name} is succesvol verwijderd");
 
-        return redirect()->action('Admin\AlbumController@index');
+        return redirect()->action([\App\Http\Controllers\Admin\AlbumController::class, 'index']);
     }
 }

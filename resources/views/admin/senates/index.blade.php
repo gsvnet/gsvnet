@@ -21,7 +21,7 @@
 		<tbody>
 			@foreach($senates as $senate)
 			<tr>
-				<td><a href="{{ URL::action('Admin\SenateController@show', $senate->id) }}" alt="{{ $senate->name }}">
+				<td><a href="{{ URL::action([\App\Http\Controllers\Admin\SenateController::class, 'show'], $senate->id) }}" alt="{{ $senate->name }}">
 					{{ $senate->name }}
 				</a></td>
 

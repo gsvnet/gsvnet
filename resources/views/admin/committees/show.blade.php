@@ -9,7 +9,7 @@
             <h2>Beschrijving</h2>
             <p>{{{ $committee->description }}}</p>
 
-            <a href="{{ URL::action('Admin\CommitteeController@edit', $committee->id) }}" alt="Bewerk {{{ $committee->name }}}" class='btn btn-default'>
+            <a href="{{ URL::action([\App\Http\Controllers\Admin\CommitteeController::class, 'edit'], $committee->id) }}" alt="Bewerk {{{ $committee->name }}}" class='btn btn-default'>
                 <i class="fa fa-pencil"></i> Commissie informatie bewerken
             </a>
         </div>
@@ -23,7 +23,7 @@
 
                 <div class="panel-body">
                 {!! Former::vertical_open()
-                    ->action(action('Admin\Committees\MembersController@store'))
+                    ->action(action([\App\Http\Controllers\Admin\Committees\MembersController::class, 'store']))
                     ->method('POST') !!}
 
                 {!! Former::hidden('committee_id')->value($committee->id) !!}
@@ -60,11 +60,11 @@
                         <td>{{ $member->present()->fullName }}</td>
                         <td>{{ $member->present()->committeeFromTo }}</td>
                         <td>
-                            {!! Former::inline_open()->action(action('Admin\Committees\MembersController@destroy', [$member->pivot->id]))->method('DELETE')->class('pull-right') !!}
+                            {!! Former::inline_open()->action(action([\App\Http\Controllers\Admin\Committees\MembersController::class, 'destroy'], [$member->pivot->id]))->method('DELETE')->class('pull-right') !!}
                             <button type='submit' class='btn btn-danger btn-xs'><i class="glyphicon glyphicon-remove"></i> Verwijderen </button>
                             {!! Former::close() !!}
 
-                            <a href="{{action('Admin\Committees\MembersController@edit', $member->pivot->id)}}" class="btn btn-default btn-xs pull-right"><i class="fa fa-pencil"></i> Bewerk</button></a>
+                            <a href="{{action([\App\Http\Controllers\Admin\Committees\MembersController::class, 'edit'], $member->pivot->id)}}" class="btn btn-default btn-xs pull-right"><i class="fa fa-pencil"></i> Bewerk</button></a>
                         </td>
                     </tr>
                 @endforeach

@@ -4,7 +4,7 @@
     </div>
 
     {!! Former::vertical_open()
-        ->action(action('Admin\SenateController@store'))
+        ->action(action([\App\Http\Controllers\Admin\SenateController::class, 'store']))
         ->method('POST')
         ->class('panel-body add-form')
     !!}

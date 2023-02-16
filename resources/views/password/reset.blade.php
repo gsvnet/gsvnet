@@ -11,7 +11,7 @@
             {{ Session::get('error') }}
         @endif
 
-        {!! Former::open()->action(action('RemindersController@postReset'))!!}
+        {!! Former::open()->action(action([\App\Http\Controllers\RemindersController::class, 'postReset']))!!}
             {!! Former::hidden('token', $token)!!}
             {!! Former::email('email')->label('Je emailadres') !!}
             {!! Former::password('password')->label('Nieuw wachtwoord') !!}

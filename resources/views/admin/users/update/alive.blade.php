@@ -7,7 +7,7 @@
 
     <div class="row">
         <div class="col-xs-12 col-md-6">
-            {!! Former::vertical_open()->action(action('Admin\MemberController@updateAlive', $user->id))->method('PUT') !!}
+            {!! Former::vertical_open()->action(action([\App\Http\Controllers\Admin\MemberController::class, 'updateAlive'], $user->id))->method('PUT') !!}
             {!! Former::populate( $user->profile ) !!}
 
             {!! Former::select('alive')->options(['1' => 'In leven', '0' => 'Overleden'])->label('In leven?') !!}

@@ -20,7 +20,7 @@
                     @foreach($members as $member)
                     <li>
                         @can('users.show')
-                            <a href="{{URL::action('UserController@showUser', [$member->id])}}" title="Bekijk het profiel van {{{$member->present()->fullName}}}" class="list-title">{{{$member->present()->fullName}}}</a>
+                            <a href="{{URL::action([\App\Http\Controllers\UserController::class, 'showUser'], [$member->id])}}" title="Bekijk het profiel van {{{$member->present()->fullName}}}" class="list-title">{{{$member->present()->fullName}}}</a>
                         @else
                             <span class="list-title">{{{$member->present()->fullName}}}</span>
                         @endcan

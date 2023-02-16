@@ -37,7 +37,7 @@
         </div>
         <div class="secondary-column">
             <h2>Verdere vragen?</h2>
-            <p>Kijk op de <a href="{{ URL::action('MemberController@faq') }}" title="Veel gestelde vragen">FAQ-pagina</a></p>
+            <p>Kijk op de <a href="{{ URL::action([\App\Http\Controllers\MemberController::class, 'faq']) }}" title="Veel gestelde vragen">FAQ-pagina</a></p>
         </div>
     </div>
 @stop

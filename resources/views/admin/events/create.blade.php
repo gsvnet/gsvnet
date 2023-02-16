@@ -9,7 +9,7 @@
             <section class="create-event">
 
                 {!! Former::vertical_open()
-                    ->action(action('Admin\EventController@store'))
+                    ->action(action([\App\Http\Controllers\Admin\EventController::class, 'store']))
                     ->method('POST') !!}
 
                 @include('admin.events._form')

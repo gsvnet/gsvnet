@@ -4,7 +4,7 @@
     <div class="page-header">
         <h1>{{ $senate->name }}</h1>
     </div>
-    <a href="{{ URL::action('Admin\SenateController@edit', $senate->id) }}" alt="Bewerk {{{ $senate->name }}}" class='btn btn-default'>
+    <a href="{{ URL::action([\App\Http\Controllers\Admin\SenateController::class, 'edit'], $senate->id) }}" alt="Bewerk {{{ $senate->name }}}" class='btn btn-default'>
         <i class="fa fa-pencil"></i> Senaatsinformatie bewerken
     </a>
 
@@ -13,7 +13,7 @@
         <div class="panel-heading">Lid toevoegen</div>
         <div class="panel-body">
             {!! Former::vertical_open()
-                ->action(action('Admin\Senates\MembersController@store', $senate->id))
+                ->action(action([\App\Http\Controllers\Admin\Senates\MembersController::class, 'store'], $senate->id))
                 ->method('POST') !!}
 
                 {!! Former::select('member')->placeholder('Naam lid')->id('add-user')->label('Lid') !!}
@@ -36,7 +36,7 @@
                         {{ $member->present()->fullName }} <span class="text-muted">({{ $member->present()->senateFunction }})</span>
 
                         {!! Former::inline_open()
-                              ->action(action('Admin\Senates\MembersController@destroy', [$senate->id, $member->id]))
+                              ->action(action([\App\Http\Controllers\Admin\Senates\MembersController::class, 'destroy'], [$senate->id, $member->id]))
                               ->method('DELETE')
                               ->class('pull-right')
                         !!}

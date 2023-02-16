@@ -11,7 +11,7 @@ class TagCollection extends \Illuminate\Database\Eloquent\Collection
         $tagLinks = [];
 
         foreach ($this->items as $item) {
-            $tagLinks[] = HTML::link(action('ForumThreadsController@getIndex').'?tags='.$item->slug, $item->name);
+            $tagLinks[] = HTML::link(action([\App\Http\Controllers\ForumThreadsController::class, 'getIndex']).'?tags='.$item->slug, $item->name);
         }
 
         return implode(', ', $tagLinks);

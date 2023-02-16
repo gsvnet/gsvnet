@@ -24,7 +24,7 @@
                     @foreach($files as $file)
                     <tr>
                         <td>
-                        <a href="{{ URL::action('FilesController@show', $file->id) }}">
+                        <a href="{{ URL::action([\App\Http\Controllers\FilesController::class, 'show'], $file->id) }}">
                           <i class="fa fa-download"></i>
                            {{{ $file->name }}} ({{{ $file->size}}} {{{$file->type }}})
                            </a>
@@ -44,7 +44,7 @@
 
         <div class="secondary-column">
             {!! Former::open()
-                ->action(action('FilesController@index'))
+                ->action(action([\App\Http\Controllers\FilesController::class, 'index']))
                 ->method('GET') !!}
 
                 <ul class='list secondary-menu'>

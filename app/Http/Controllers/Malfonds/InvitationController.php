@@ -60,7 +60,7 @@ class InvitationController extends MalfondsController
 
         $this->tokens->save($token);
 
-        return redirect(action('Malfonds\InvitationController@create', $userId));
+        return redirect(action([\App\Http\Controllers\Malfonds\InvitationController::class, 'create'], $userId));
     }
 
     public function inviteByMail(Request $request, InviteValidator $validator, $userId)
@@ -81,6 +81,6 @@ class InvitationController extends MalfondsController
 
         flash()->success('Uitnodiging verstuurd!');
 
-        return redirect(action('Admin\UsersController@show', $userId));
+        return redirect(action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $userId));
     }
 }

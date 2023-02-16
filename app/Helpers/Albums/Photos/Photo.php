@@ -26,24 +26,24 @@ class Photo extends Model
     // Return the path to the original image
     public function getShowURLAttribute()
     {
-        return URL::action('PhotoController@showPhoto', [$this->id]);
+        return URL::action([\App\Http\Controllers\PhotoController::class, 'showPhoto'], [$this->id]);
     }
 
     // Return the path to the original image
     public function getImageURLAttribute()
     {
-        return URL::action('PhotoController@showPhoto', [$this->id]);
+        return URL::action([\App\Http\Controllers\PhotoController::class, 'showPhoto'], [$this->id]);
     }
 
     // Return the path to the original image
     public function getWideImageURLAttribute()
     {
-        return URL::action('PhotoController@showPhoto', [$this->id, 'wide']);
+        return URL::action([\App\Http\Controllers\PhotoController::class, 'showPhoto'], [$this->id, 'wide']);
     }
 
     // Return the path to the original image
     public function getSmallImageURLAttribute()
     {
-        return URL::action('PhotoController@showPhoto', [$this->id, 'small']);
+        return URL::action([\App\Http\Controllers\PhotoController::class, 'showPhoto'], [$this->id, 'small']);
     }
 }

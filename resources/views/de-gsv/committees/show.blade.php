@@ -22,7 +22,7 @@
                         @foreach ($activeMembers as $member)
                             <li>
                                 @can('users.show')
-                                    <a href="{{ URL::action('UserController@showUser', [$member->id]) }}" title="Bekijk het profiel van {{{ $member->fullName }}}" class="list-title">{{{ $member->present()->fullName }}}</a>
+                                    <a href="{{ URL::action([\App\Http\Controllers\UserController::class, 'showUser'], [$member->id]) }}" title="Bekijk het profiel van {{{ $member->fullName }}}" class="list-title">{{{ $member->present()->fullName }}}</a>
                                 @else
                                     <span class="list-title">{{{ $member->present()->fullName }}}</span>
                                 @endcan
@@ -42,7 +42,7 @@
             </div>
             <ul class="list secondary-menu">
                 @foreach ($committees as $committee)
-                    <li><a class="committee" href="{{ URL::action('AboutController@showCommittee', $committee->unique_name) }}">{{ $committee->name }}</a> <span class="hide slug">({{{$committee->unique_name}}})</span></li>
+                    <li><a class="committee" href="{{ URL::action([\App\Http\Controllers\AboutController::class, 'showCommittee'], $committee->unique_name) }}">{{ $committee->name }}</a> <span class="hide slug">({{{$committee->unique_name}}})</span></li>
                 @endforeach
             </ul>
         </div>

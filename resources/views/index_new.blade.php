@@ -34,18 +34,18 @@
                 <a href="#gsv">GSV</a>
                 <a href="#activiteiten">KEI-week</a>
                 <a href="#fotos">Foto's</a>
-                <a href="{{ action('MemberController@study') }}">Studeren</a>
-                <a href="{{ action('ForumThreadsController@getIndex') }}">Forum</a>
-                <a href="{{ action('MemberController@becomeMember') }}" id="register" class="focus">Word lid!</a> 
+                <a href="{{ action([\App\Http\Controllers\MemberController::class, 'study']) }}">Studeren</a>
+                <a href="{{ action([\App\Http\Controllers\ForumThreadsController::class, 'getIndex']) }}">Forum</a>
+                <a href="{{ action([\App\Http\Controllers\MemberController::class, 'becomeMember']) }}" id="register" class="focus">Word lid!</a> 
             </div>
             <div class="links">
                 <a href="#gsv">GSV</a>
                 <a href="#activiteiten">KEI-week</a>
                 <a href="#fotos">Foto's</a>
-                <a href="{{ action('MemberController@study') }}">Studeren</a>
-                <a href="{{ action('ForumThreadsController@getIndex') }}">Forum</a>
+                <a href="{{ action([\App\Http\Controllers\MemberController::class, 'study']) }}">Studeren</a>
+                <a href="{{ action([\App\Http\Controllers\ForumThreadsController::class, 'getIndex']) }}">Forum</a>
             </div>
-            <a href="{{ action('MemberController@becomeMember') }}" id="register" class="right">Word lid!</a> 
+            <a href="{{ action([\App\Http\Controllers\MemberController::class, 'becomeMember']) }}" id="register" class="right">Word lid!</a> 
         </nav>
 
         <!-- END NAV MENU -->
@@ -210,7 +210,7 @@
         <section class="footer partial primary flex col">
             <!--p>Caput sapientiae est reverentia Domini</p-->
             <p>
-                <a href="#intro">Gereformeerde Studenten Vereniging</a>. Hereweg 40, Groningen. <a href="{{ action('AboutController@showContact') }}">Contactgegevens</a>
+                <a href="#intro">Gereformeerde Studenten Vereniging</a>. Hereweg 40, Groningen. <a href="{{ action([\App\Http\Controllers\AboutController::class, 'showContact']) }}">Contactgegevens</a>
             </p>
         </section>
 

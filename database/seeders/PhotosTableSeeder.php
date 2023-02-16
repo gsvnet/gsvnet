@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Helpers\Albums\Photos\Photo;
 use Illuminate\Database\Seeder;
 

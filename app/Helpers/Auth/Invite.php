@@ -14,7 +14,9 @@ class Invite extends Model
 
     protected $primaryKey = null;
 
-    protected $dates = ['invited_at'];
+    protected $casts = [
+        'invited_at' => 'datetime',
+    ];
 
     protected $fillable = ['host_id', 'guest_id', 'title', 'name', 'email', 'message', 'invited_at'];
 }

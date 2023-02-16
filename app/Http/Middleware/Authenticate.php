@@ -20,7 +20,7 @@ class Authenticate
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
-                return redirect()->guest(action('SessionController@getLogin'));
+                return redirect()->guest(action([\App\Http\Controllers\SessionController::class, 'getLogin']));
             }
         }
 

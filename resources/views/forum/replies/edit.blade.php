@@ -10,7 +10,7 @@
         <h1>Bewerk je reactie</h1>
     </div>
     <div class="main-content" style="padding-top:1em;">
-        {!! Former::open()->action(action('ForumRepliesController@postEditReply', [$reply->id])) !!}
+        {!! Former::open()->action(action([\App\Http\Controllers\ForumRepliesController::class, 'postEditReply'], [$reply->id])) !!}
         {!! Former::populate($reply) !!}
         @include('forum._editor')
 

@@ -44,7 +44,7 @@
                         <p>Je kan nog niet reageren omdat je account nog niet is goedgekeurd.</p>
                     @endif
                 @else
-                    <p><a class="button" href="{{ action('SessionController@getLogin') }}" rel="nofollow">Log in om te reageren</a>
+                    <p><a class="button" href="{{ action([\App\Http\Controllers\SessionController::class, 'getLogin']) }}" rel="nofollow">Log in om te reageren</a>
                 @endif
             </div>
         </div>

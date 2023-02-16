@@ -4,7 +4,7 @@
     <h2>Activiteit bewerken</h2>
     <div class="col-xs-12 col-md-8">
         {!! Former::vertical_open()
-            ->action(action('Admin\EventController@update', $event->id))
+            ->action(action([\App\Http\Controllers\Admin\EventController::class, 'update'], $event->id))
             ->method('PUT') !!}
         {!! Former::populate( $event ) !!}
         {!! Former::populateField('start_time', $event->present()->startHourMinute) !!}
@@ -23,7 +23,7 @@
         <h3>Overige acties</h3>
 
         {!! Former::inline_open()
-            ->action(action('Admin\EventController@destroy', $event->id))
+            ->action(action([\App\Http\Controllers\Admin\EventController::class, 'destroy'], $event->id))
             ->method('DELETE') !!}
             <button type='submit' class='btn btn-danger'>
                 <i class="glyphicon glyphicon-trash"></i> Verwijderen

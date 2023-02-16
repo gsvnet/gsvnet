@@ -4,7 +4,7 @@
     <h2>Bewerk commissieactiviteit <small>van {{$member->present()->fullName}} in {{$committee->name}}</small></h2>
 
     {!! Former::vertical_open()
-            ->action(action('Admin\Committees\MembersController@update', $membership->id))
+            ->action(action([\App\Http\Controllers\Admin\Committees\MembersController::class, 'update'], $membership->id))
             ->method('PUT') !!}
         {!! Former::populateField('start_date', $membership->present()->startSanitized) !!}
         {!! Former::populateField('end_date', $membership->present()->endSanitized) !!}
@@ -28,7 +28,7 @@
     <p>Of verwijder dit commissiewerk.</p>
 
     {!! Former::inline_open()
-        ->action(action('Admin\Committees\MembersController@destroy', $membership->id))
+        ->action(action([\App\Http\Controllers\Admin\Committees\MembersController::class, 'destroy'], $membership->id))
         ->method('DELETE') !!}
         <button type='submit' class='btn btn-danger'>
             <i class="glyphicon glyphicon-trash"></i> Verwijderen

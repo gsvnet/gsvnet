@@ -18,7 +18,7 @@
             </div>
         @endif
 
-        {!! Former::open_vertical()->action(action('UserController@updateProfile'))->id('edit-profile-form') !!}
+        {!! Former::open_vertical()->action(action([\App\Http\Controllers\UserController::class, 'updateProfile']))->id('edit-profile-form') !!}
         <div class="main-content">
             {!! Former::populateField('email', Auth::user()->email) !!}
 
@@ -32,7 +32,7 @@
         <div class="secondary-column">
             @if($user->isMemberOrReunist())
                 <h2>Wil je je GSV-profiel wijzigen?</h2>
-                <p><a href="{{action('Admin\UsersController@show', $user->id)}}" class="button">GSV-profiel wijzigen</a></p>
+                <p><a href="{{action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $user->id)}}" class="button">GSV-profiel wijzigen</a></p>
             @endif
             <h2>Je avatar</h2>
             <p>Je avatar kun je aanpassen op <a href="http://nl.gravatar.com/" title="Je avatar aanpassen">Gravatar</a>.</p>

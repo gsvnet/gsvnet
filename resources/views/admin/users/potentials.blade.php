@@ -22,7 +22,7 @@
                 @foreach($users as $user)
                 <tr>
                     <td>
-                    <a href="{{ URL::action('Admin\UsersController@show', $user->id) }}" alt="{{ $user->present()->fullName }}">
+                    <a href="{{ URL::action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $user->id) }}" alt="{{ $user->present()->fullName }}">
                         {{ $user->username }}
                     </a>
                     </td>
@@ -37,7 +37,7 @@
                         @if (! $user->approved && Gate::allows('users.manage'))
                         {!!
                             Former::inline_open()
-                              ->action(action('Admin\UsersController@activate', $user->id))
+                              ->action(action([\App\Http\Controllers\Admin\UsersController::class, 'activate'], $user->id))
                         !!}
                             <button type='submit' class='btn btn-success btn-xs'>
                                 <i class="glyphicon glyphicon-ok"></i> Registratie goedkeuren
@@ -50,7 +50,7 @@
                         @if ($user->isPotential() && Gate::allows('users.manage'))
                         {!!
                             Former::inline_open()
-                              ->action(action('Admin\UsersController@accept', $user->id))
+                              ->action(action([\App\Http\Controllers\Admin\UsersController::class, 'accept'], $user->id))
                               ->style('float: left; margin-right: 1em;')
                         !!}
                             <button type='submit' class='btn btn-warning btn-xs'>

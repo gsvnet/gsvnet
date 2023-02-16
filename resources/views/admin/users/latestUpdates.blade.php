@@ -24,7 +24,7 @@
                             <tr>
                                 <td class="text-muted"><time title="{{$change->at}}">{{ $change->at->diffForHumans() }}</time></td>
                                 <td>
-                                    <a href="{{ action('Admin\UsersController@show', $change->user->id) }}" title="{{ $change->user->present()->fullName }}">
+                                    <a href="{{ action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $change->user->id) }}" title="{{ $change->user->present()->fullName }}">
                                         {{ $change->user->present()->fullName() }}
                                     </a>
                                 </td>

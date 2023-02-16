@@ -22,7 +22,7 @@
 			@foreach($events as $event)
 			<tr>
 				<td>
-                    <a href="{{ URL::action('Admin\EventController@edit', $event->id) }}" alt="{{ $event->title }}">
+                    <a href="{{ URL::action([\App\Http\Controllers\Admin\EventController::class, 'edit'], $event->id) }}" alt="{{ $event->title }}">
                         {{ $event->title }}
                     </a>
                 </td>

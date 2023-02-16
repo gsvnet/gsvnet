@@ -9,7 +9,7 @@
         <div class="col-xs-12 col-md-6">
             <h2>Werk aanpassen</h2>
 
-            {!! Former::vertical_open()->action(action('Admin\MemberController@updateBusiness', $user->id))->method('PUT') !!}
+            {!! Former::vertical_open()->action(action([\App\Http\Controllers\Admin\MemberController::class, 'updateBusiness'], $user->id))->method('PUT') !!}
             {!! Former::populate( $user->profile ) !!}
 
             {!! Former::text('company')->label('Bedrijf') !!}

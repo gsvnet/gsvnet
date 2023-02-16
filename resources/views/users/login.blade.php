@@ -5,7 +5,7 @@
 
 @section('content')
 	<div class="column-holder">
-		{!! Former::open()->action(action('SessionController@postLogin')) !!}
+		{!! Former::open()->action(action([\App\Http\Controllers\SessionController::class, 'postLogin'])) !!}
 	    <p>Inloggen geeft je toegang tot het forum</p>
 
 		@include('partials._login')

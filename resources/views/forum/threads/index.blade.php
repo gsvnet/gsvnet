@@ -38,7 +38,7 @@
                     @else
                         <h3>Geen onderwerpen gevonden.</h3>
                     @endif
-                    <a class="button" href="{{ action('ForumThreadsController@getCreateThread') }}">Maak een nieuw topic</a>
+                    <a class="button" href="{{ action([\App\Http\Controllers\ForumThreadsController::class, 'getCreateThread']) }}">Maak een nieuw topic</a>
                 </div>
             @endif
         </div>

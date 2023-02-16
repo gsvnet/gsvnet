@@ -4,7 +4,7 @@
     <h2>Senaat bewerken</h2>
 
     {!! Former::vertical_open()
-        ->action(action('Admin\SenateController@update', $senate->id))
+        ->action(action([\App\Http\Controllers\Admin\SenateController::class, 'update'], $senate->id))
         ->method('PUT')
     !!}
         {!! Former::populate( $senate ) !!}
@@ -27,7 +27,7 @@
     <p>Of verwijder de senaat.</p>
 
     {!! Former::inline_open()
-        ->action(action('Admin\SenateController@destroy', $senate->id))
+        ->action(action([\App\Http\Controllers\Admin\SenateController::class, 'destroy'], $senate->id))
         ->method('DELETE')
     !!}
         <button type='submit' class='btn btn-danger'>

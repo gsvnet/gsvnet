@@ -102,7 +102,7 @@ class MemberController extends BaseController
         }
 
         // Redirect to the become-member page which shows some congrats page
-        return redirect()->action('MemberController@becomeMember');
+        return redirect()->action([\App\Http\Controllers\MemberController::class, 'becomeMember']);
     }
 
     public function study()

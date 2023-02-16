@@ -13,7 +13,7 @@
     <div class="main-content has-border-bottom">
         <div class="padding">
 
-            {!! Former::open()->action(action('ForumThreadsController@postEditThread', [$thread->id])) !!}
+            {!! Former::open()->action(action([\App\Http\Controllers\ForumThreadsController::class, 'postEditThread'], [$thread->id])) !!}
             {!! Former::populate($thread) !!}
             {!! Former::text('subject')->label('Onderwerp')->placeholder('Onderwerp')->class('form-control wide') !!}
             @include('forum._editor')

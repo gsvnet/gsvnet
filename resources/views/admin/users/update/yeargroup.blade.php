@@ -9,7 +9,7 @@
         <div class="col-xs-12 col-md-6">
             <h2>Jaarverband aanpassen</h2>
 
-            {!! Former::vertical_open()->action(action('Admin\MemberController@updateYearGroup', $user->id))->method('PUT') !!}
+            {!! Former::vertical_open()->action(action([\App\Http\Controllers\Admin\MemberController::class, 'updateYearGroup'], $user->id))->method('PUT') !!}
             {!! Former::populate( $user->profile ) !!}
             <!-- {!! Former::select('year_group_id')->label('Jaarverband')->fromQuery($yearGroups, 'name', 'id') !!} -->
             <div class="form-group">

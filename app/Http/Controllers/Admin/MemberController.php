@@ -93,7 +93,7 @@ class MemberController extends AdminBaseController
 
         flash()->success("Naam {$member->present()->fullName()} succesvol aangepast");
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function editUsername($id)
@@ -113,7 +113,7 @@ class MemberController extends AdminBaseController
 
         flash()->success("Naam {$member->present()->fullName()} succesvol aangepast");
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function editContactDetails($id)
@@ -136,7 +136,7 @@ class MemberController extends AdminBaseController
 
         flash()->success("Contactgegevens {$member->present()->fullName()} succesvol aangepast");
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function editParentContactDetails($id)
@@ -156,7 +156,7 @@ class MemberController extends AdminBaseController
 
         flash()->success("Gegevens van {$member->present()->fullName()}s ouders succesvol aangepast");
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function editBirthDay($id)
@@ -176,7 +176,7 @@ class MemberController extends AdminBaseController
 
         flash()->success("Geboortedatum {$member->present()->fullName()} succesvol aangepast");
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function editEmail($id)
@@ -196,7 +196,7 @@ class MemberController extends AdminBaseController
 
         flash()->success("Email {$member->present()->fullName()} succesvol aangepast");
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function editPassword($id)
@@ -216,7 +216,7 @@ class MemberController extends AdminBaseController
 
         flash()->success("Wachtwoord {$member->present()->fullName()} succesvol aangepast");
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function editGender($id)
@@ -237,7 +237,7 @@ class MemberController extends AdminBaseController
 
         flash()->success("Geslacht {$member->present()->fullName()} succesvol aangepast");
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function editYearGroup($id)
@@ -260,7 +260,7 @@ class MemberController extends AdminBaseController
 
         flash()->success("Jaarverband {$member->present()->fullName()} succesvol aangepast");
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function editBusiness($id)
@@ -280,7 +280,7 @@ class MemberController extends AdminBaseController
 
         flash()->success("Werk {$member->present()->fullName()} succesvol aangepast");
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function editStudy($id)
@@ -300,7 +300,7 @@ class MemberController extends AdminBaseController
 
         flash()->success("Studie van {$member->present()->fullName()} succesvol aangepast");
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function editMembershipPeriod($id)
@@ -321,7 +321,7 @@ class MemberController extends AdminBaseController
 
         flash()->success("Periode van lidmaatschap {$member->present()->fullName()} succesvol aangepast");
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function editRegion($id)
@@ -351,7 +351,7 @@ class MemberController extends AdminBaseController
 
         flash()->success("Regio van {$member->present()->fullName()} succesvol aangepast");
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function editMembershipStatus($id)
@@ -373,7 +373,7 @@ class MemberController extends AdminBaseController
 
         flash()->success("{$member->present()->fullName()} is nu reünist");
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function makeExMember(Request $request, $id)
@@ -386,7 +386,7 @@ class MemberController extends AdminBaseController
 
         flash()->success("{$member->present()->fullName()} is nu oud-lid");
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function makeMember(Request $request, $id)
@@ -399,7 +399,7 @@ class MemberController extends AdminBaseController
 
         flash()->success("{$member->present()->fullName()} is nu lid");
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function editPhoto($id)
@@ -421,7 +421,7 @@ class MemberController extends AdminBaseController
 
         flash()->success("Foto van {$member->present()->fullName()} succesvol opgeslagen");
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function editAlive($id)
@@ -442,7 +442,7 @@ class MemberController extends AdminBaseController
 
         flash()->success('Status gewijzigd');
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function editNewspaper($id)
@@ -462,7 +462,7 @@ class MemberController extends AdminBaseController
 
         flash()->success('Voorkeuren opgeslagen');
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
     public function exportNewspaperRecipients()
@@ -507,6 +507,6 @@ class MemberController extends AdminBaseController
 
         flash()->success('Profiel en account opgeschoond.');
 
-        return redirect()->action('Admin\UsersController@show', $id);
+        return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 }

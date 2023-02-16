@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Helpers\Senates\Senate;
 use App\Helpers\Users\User;
 use Carbon\Carbon;

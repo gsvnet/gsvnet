@@ -13,7 +13,7 @@
         </div>
 
         {!! Former::open_vertical_for_files()
-            ->action(action('Admin\FilesController@update', $file->id))
+            ->action(action([\App\Http\Controllers\Admin\FilesController::class, 'update'], $file->id))
             ->method('put')
             ->class('panel-body add-form') !!}
 
@@ -33,7 +33,7 @@
     <p>Of verwijder het bestand.</p>
 
     {!! Former::inline_open()
-          ->action(action('Admin\FilesController@destroy', $file->id))
+          ->action(action([\App\Http\Controllers\Admin\FilesController::class, 'destroy'], $file->id))
           ->method('DELETE') !!}
         <button type='submit' class='btn btn-danger'>
             <i class="glyphicon glyphicon-trash"></i> Verwijderen
