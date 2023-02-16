@@ -25,7 +25,6 @@
         "laracasts/flash": "^3.2",
         "league/csv": "^8.0",
         "league/fractal": "^0.13.0",
-        "fruitcake/laravel-cors": "*",
         "maatwebsite/excel": "^3.1",
         "giggsey/libphonenumber-for-php": "^7.4",
         "bugsnag/bugsnag-laravel": "^2.20",
