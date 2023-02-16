@@ -2,10 +2,10 @@
 
 namespace Admin;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Helpers\Users\UsersRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Request;
+use Illuminate\View\View;
 
 class FamilyController extends AdminBaseController
 {

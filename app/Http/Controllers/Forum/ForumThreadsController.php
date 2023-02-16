@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 use App\Commands\Forum\DeleteThreadCommand;
 use App\Commands\Forum\EditThreadCommand;
 use App\Commands\Forum\StartThreadCommand;
@@ -15,11 +13,13 @@ use App\Helpers\Permissions\NoPermissionException;
 use App\Helpers\Tags\TagRepository;
 use App\Helpers\Users\UsersRepository;
 use App\Http\Validators\StartThreadValidator;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Request as Input;
 use Illuminate\Support\Facades\View;
+use Illuminate\View\View;
 
 class ForumThreadsController extends BaseController
 {

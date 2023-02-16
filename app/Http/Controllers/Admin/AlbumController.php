@@ -2,12 +2,12 @@
 
 namespace Admin;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Helpers\Albums\AlbumsRepository;
 use App\Helpers\Albums\AlbumValidator;
 use App\Helpers\Albums\Photos\PhotosRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Request;
+use Illuminate\View\View;
 
 class AlbumController extends AdminBaseController
 {

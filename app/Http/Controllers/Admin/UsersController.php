@@ -2,8 +2,6 @@
 
 namespace Admin;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Commands\Users\RegisterUserCommand;
 use App\Helpers\Regions\RegionsRepository;
 use App\Helpers\Users\MemberFiler;
@@ -17,8 +15,10 @@ use App\Helpers\Users\UserManager;
 use App\Helpers\Users\UsersRepository;
 use App\Helpers\Users\UserValidator;
 use App\Helpers\Users\YearGroupRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class UsersController extends AdminBaseController
 {

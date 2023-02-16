@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
+use Illuminate\View\View;
 
 class SessionController extends BaseController
 {

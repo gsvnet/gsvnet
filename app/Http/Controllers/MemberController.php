@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 use App\Commands\Potentials\PromoteGuestToPotentialCommand;
 use App\Commands\Potentials\SignUpAsPotentialCommand;
 use App\Commands\Users\SetProfilePictureCommand;
@@ -10,9 +8,11 @@ use App\Helpers\Core\ImageHandler;
 use App\Helpers\Permissions\NoPermissionException;
 use App\Helpers\Users\Profiles\PotentialValidator;
 use App\Helpers\Users\Profiles\ProfilesRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\MessageBag;
+use Illuminate\View\View;
 
 class MemberController extends BaseController
 {

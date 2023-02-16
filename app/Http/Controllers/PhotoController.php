@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\View\View;
-use Illuminate\Http\Response;
 use App\Helpers\Albums\AlbumsRepository;
 use App\Helpers\Albums\Photos\PhotosRepository;
 use App\Helpers\Core\ImageHandler;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Config;
+use Illuminate\View\View;
 
 class PhotoController extends BaseController
 {

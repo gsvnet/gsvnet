@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Http\Response;
 use App\Helpers\Files\FileHandler;
+use Illuminate\Http\Response;
 
 // Did not really know where to put this single method, so I created a new controller.
 class PublicFilesController extends BaseController

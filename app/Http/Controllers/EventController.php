@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\View\View;
 use App\Helpers\Events\EventsRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Config;
+use Illuminate\View\View;
 
 class EventController extends BaseController
 {

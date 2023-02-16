@@ -2,10 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Http\Request;
 use Closure;
 use Config;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ValidEventDate
 {

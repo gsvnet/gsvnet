@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Commands\Users\ChangeEmail;
 use App\Commands\Users\ChangePassword;
 use App\Helpers\Committees\CommitteesRepository;
@@ -13,7 +11,9 @@ use App\Helpers\Users\User;
 use App\Helpers\Users\UserManager;
 use App\Helpers\Users\UsersRepository;
 use App\Helpers\Users\YearGroupRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class UserController extends BaseController
 {

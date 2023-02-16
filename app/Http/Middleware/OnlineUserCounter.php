@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use Symfony\Component\HttpFoundation\Response;
 use App\Helpers\Users\User;
 use Closure;
 use Illuminate\Contracts\Redis\Database;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * The idea is that there are two sets:

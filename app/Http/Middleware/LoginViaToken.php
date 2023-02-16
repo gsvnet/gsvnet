@@ -2,10 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use Symfony\Component\HttpFoundation\Response;
 use App\Helpers\Auth\TokenRepository;
 use Auth;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class LoginViaToken
 {

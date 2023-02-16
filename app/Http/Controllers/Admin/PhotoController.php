@@ -2,10 +2,10 @@
 
 namespace Admin;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Helpers\Albums\Photos\PhotoManager;
 use App\Helpers\Albums\Photos\PhotosRepository;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Request;
 
 class PhotoController extends AdminBaseController

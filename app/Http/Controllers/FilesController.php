@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\View\View;
-use Illuminate\Http\Response;
 use App\Helpers\Files\FileHandler;
 use App\Helpers\Files\FilesRepository;
 use App\Helpers\Files\Labels\LabelsRepository;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class FilesController extends BaseController
 {

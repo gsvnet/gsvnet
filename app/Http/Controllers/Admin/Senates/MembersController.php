@@ -2,10 +2,10 @@
 
 namespace Admin\Senates;
 
-use Illuminate\Http\RedirectResponse;
 use Admin\AdminBaseController;
 use App\Helpers\Senates\SenatesRepository;
 use App\Helpers\Users\UsersRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Request;
 
 class MembersController extends AdminBaseController

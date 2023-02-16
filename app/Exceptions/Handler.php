@@ -2,13 +2,13 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Http\Request;
 use App\Helpers\Permissions\NoPermissionException;
 use App\Helpers\Permissions\UserAccountNotApprovedException;
 use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Throwable;
 

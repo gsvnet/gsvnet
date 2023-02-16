@@ -2,8 +2,6 @@
 
 namespace Admin;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Commands\Members\ChangeAddress;
 use App\Commands\Members\ChangeBirthDay;
 use App\Commands\Members\ChangeBusiness;
@@ -31,7 +29,9 @@ use App\Helpers\Users\UserTransformer;
 use App\Helpers\Users\ValueObjects\Gender;
 use App\Helpers\Users\YearGroupRepository;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Maatwebsite\Excel\Classes\LaravelExcelWorksheet;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\Writers\CellWriter;

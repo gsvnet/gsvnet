@@ -2,11 +2,11 @@
 
 namespace Admin;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Helpers\Events\EventsRepository;
 use App\Helpers\Events\EventValidator;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Request;
+use Illuminate\View\View;
 
 class EventController extends AdminBaseController
 {

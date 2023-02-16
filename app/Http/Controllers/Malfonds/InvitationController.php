@@ -2,16 +2,16 @@
 
 namespace Malfonds;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Commands\Members\InviteMember;
 use App\Helpers\Auth\InviteValidator;
 use App\Helpers\Auth\Token;
 use App\Helpers\Auth\TokenRepository;
 use App\Helpers\Core\Exceptions\ValidationException;
 use App\Helpers\Users\UsersRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
+use Illuminate\View\View;
 
 class InvitationController extends MalfondsController
 {

@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Response;
 use App\Commands\Forum\DislikeReplyCommand;
 use App\Commands\Forum\DislikeThreadCommand;
 use App\Commands\Forum\LikeReplyCommand;
@@ -14,6 +13,7 @@ use App\Helpers\Forum\Threads\LikeThreadValidator;
 use App\Helpers\Forum\Threads\ThreadRepository;
 use App\Helpers\Markdown\HtmlMarkdownConverter;
 use App\Helpers\Permissions\NoPermissionException;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Request;
 

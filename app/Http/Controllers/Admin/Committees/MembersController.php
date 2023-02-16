@@ -2,15 +2,15 @@
 
 namespace Admin\Committees;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use Admin\AdminBaseController;
 use App\Helpers\Committees\CommitteeMembership\CommitteeMembershipRepository;
 use App\Helpers\Committees\CommitteeMembership\MemberCreatorValidator;
 use App\Helpers\Committees\CommitteeMembership\MemberUpdaterValidator;
 use App\Helpers\Committees\CommitteesRepository;
 use App\Helpers\Users\UsersRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Request;
+use Illuminate\View\View;
 
 class MembersController extends AdminBaseController
 {

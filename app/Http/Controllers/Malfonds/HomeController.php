@@ -2,8 +2,8 @@
 
 namespace Malfonds;
 
-use Illuminate\Http\Response;
 use Auth;
+use Illuminate\Http\Response;
 
 class HomeController extends MalfondsController
 {

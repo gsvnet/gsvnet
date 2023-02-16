@@ -2,13 +2,13 @@
 
 namespace Admin;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Helpers\Files\FileManager;
 use App\Helpers\Files\FilesRepository;
 use App\Helpers\Files\Labels\LabelsRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Request;
+use Illuminate\View\View;
 
 class FilesController extends AdminBaseController
 {
