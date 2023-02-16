@@ -43,7 +43,7 @@ class ProfilePresenter extends Presenter
     public function xsmallProfileImage()
     {
         if ($this->photo_path != '') {
-            return action('MemberController@showPhoto', [$this->user->profile->id, 'x-small']);
+            return action('MemberController@showPhoto', ['profile_id' => $this->user->profile->id, 'type' => 'x-small']);
         }
 
         return $this->user->present()->avatar(102);
@@ -52,7 +52,7 @@ class ProfilePresenter extends Presenter
     public function photo()
     {
         if ($this->photo_path != '') {
-            return action('MemberController@showPhoto', $this->user->profile->id);
+            return action('MemberController@showPhoto', ['profile_id' => $this->user->profile->id]);
         }
 
         return $this->user->present()->avatar(120);
