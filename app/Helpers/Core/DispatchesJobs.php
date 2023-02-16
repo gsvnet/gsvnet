@@ -26,7 +26,7 @@ trait DispatchesJobs
      */
     public function dispatchNow($job)
     {
-        return app(Dispatcher::class)->dispatchNow($job);
+        return app(Dispatcher::class)->dispatchSync($job);
     }
 
     public function dispatchFrom($job, ArrayAccess $source, array $extras = [])
