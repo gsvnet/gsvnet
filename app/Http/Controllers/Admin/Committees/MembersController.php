@@ -8,7 +8,7 @@ use App\Helpers\Committees\CommitteeMembership\MemberCreatorValidator;
 use App\Helpers\Committees\CommitteeMembership\MemberUpdaterValidator;
 use App\Helpers\Committees\CommitteesRepository;
 use App\Helpers\Users\UsersRepository;
-use Input;
+use Illuminate\Support\Facades\Request;
 
 class MembersController extends AdminBaseController
 {
@@ -40,8 +40,8 @@ class MembersController extends AdminBaseController
 
     public function store()
     {
-        $input = Input::only('member', 'committee_id', 'start_date', 'end_date');
-        $input['currently_member'] = Input::get('currently_member', '0');
+        $input = Request::only('member', 'committee_id', 'start_date', 'end_date');
+        $input['currently_member'] = Request::get('currently_member', '0');
 
         $this->creatorValidator->validate($input);
 
@@ -86,8 +86,8 @@ class MembersController extends AdminBaseController
 
     public function update($id)
     {
-        $input = Input::only('start_date', 'end_date');
-        $input['currently_member'] = Input::get('currently_member', '0');
+        $input = Request::only('start_date', 'end_date');
+        $input['currently_member'] = Request::get('currently_member', '0');
 
         $this->updaterValidator->validate($input);
 

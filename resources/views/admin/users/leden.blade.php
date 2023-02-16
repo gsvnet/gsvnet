@@ -15,7 +15,7 @@
                 <select name="jaarverband" id="jaarverband" class="form-control">
                     <option value="0">Doet er niet toe</option>
                     @foreach ($yearGroups as $yearGroup)
-                        <option value="{{$yearGroup->id}}" {{Input::get('jaarverband') == $yearGroup->id ? 'selected="selected"' : ''}}>{{$yearGroup->present()->nameWithYear}}</option>
+                        <option value="{{$yearGroup->id}}" {{Request::get('jaarverband') == $yearGroup->id ? 'selected="selected"' : ''}}>{{$yearGroup->present()->nameWithYear}}</option>
                     @endforeach
                 </select>
             </div>
@@ -24,7 +24,7 @@
                 <select name="regio" id="regio" class="form-control">
                     <option value="0">Maakt niet uit</option>
                     @foreach ($regions as $region)
-                        <option value="{{$region->id}}" {{Input::get('regio') == $region->id ? 'selected="selected"' : ''}}>{{$region->name}}</option>
+                        <option value="{{$region->id}}" {{Request::get('regio') == $region->id ? 'selected="selected"' : ''}}>{{$region->name}}</option>
                     @endforeach
                 </select>
             </div>

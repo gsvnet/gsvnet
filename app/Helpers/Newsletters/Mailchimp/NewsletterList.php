@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace App\Helpers\Newsletters\Mailchimp;
 
 use App\Helpers\Newsletters\NewsletterList as NewsletterListInterface;
@@ -24,7 +22,7 @@ class NewsletterList implements NewsletterListInterface
         $this->lists = $config->get('mailchimp.lists');
         $mailchimp->setConfig([
             'apiKey' => $config->get('mailchimp.key'),
-            'server' => $config->get('mailchimp.server')
+            'server' => $config->get('mailchimp.server'),
         ]);
     }
 
@@ -43,9 +41,9 @@ class NewsletterList implements NewsletterListInterface
         return $this->mailchimp->lists->addListMember(
             $this->lists[$listName],
             ['email_address' => $email,
-            'status' => 'pending',
-            'merge_fields' => $vars, // merge vars,
-            'email_type' => 'html', // email type
+                'status' => 'pending',
+                'merge_fields' => $vars, // merge vars,
+                'email_type' => 'html', // email type
             ]
         );
     }
@@ -81,7 +79,7 @@ class NewsletterList implements NewsletterListInterface
         return $this->mailchimp->lists->batchListMembers(
             $this->lists[$listname],
             ['members' => $batch,
-            'skip_duplicate_check' => true, // replace existing
-        ]);
+                'skip_duplicate_check' => true, // replace existing
+            ]);
     }
 }

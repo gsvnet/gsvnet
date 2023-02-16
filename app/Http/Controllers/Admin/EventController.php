@@ -4,7 +4,7 @@ namespace Admin;
 
 use App\Helpers\Events\EventsRepository;
 use App\Helpers\Events\EventValidator;
-use Input;
+use Illuminate\Support\Facades\Request;
 
 class EventController extends AdminBaseController
 {
@@ -38,11 +38,11 @@ class EventController extends AdminBaseController
 
     public function store()
     {
-        $input = Input::all();
-        $input['location'] = Input::get('location', '');
-        $input['whole_day'] = Input::get('whole_day', false);
-        $input['public'] = Input::get('public', false) == 1;
-        $input['published'] = Input::get('published', false) == 1;
+        $input = Request::all();
+        $input['location'] = Request::get('location', '');
+        $input['whole_day'] = Request::get('whole_day', false);
+        $input['public'] = Request::get('public', false) == 1;
+        $input['published'] = Request::get('published', false) == 1;
 
         $this->validator->validate($input);
         $event = $this->events->create($input);
@@ -70,11 +70,11 @@ class EventController extends AdminBaseController
 
     public function update($id)
     {
-        $input = Input::all();
-        $input['location'] = Input::get('location', '');
-        $input['whole_day'] = Input::get('whole_day', '0');
-        $input['public'] = Input::get('public', false) == 1;
-        $input['published'] = Input::get('published', false) == 1;
+        $input = Request::all();
+        $input['location'] = Request::get('location', '');
+        $input['whole_day'] = Request::get('whole_day', '0');
+        $input['public'] = Request::get('public', false) == 1;
+        $input['published'] = Request::get('published', false) == 1;
 
         $this->validator->validate($input);
         $event = $this->events->update($id, $input);

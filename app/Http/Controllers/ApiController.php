@@ -5,7 +5,7 @@ use App\Helpers\Regions\RegionsRepository;
 use App\Helpers\Users\Profiles\ProfilesRepository;
 use App\Helpers\Users\User;
 use App\Helpers\Users\YearGroupRepository;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request;
 
 class ApiController extends BaseController
 {
@@ -31,12 +31,12 @@ class ApiController extends BaseController
 
     public function members()
     {
-        $search = Input::get('zoekwoord', '');
-        $type = Input::get('type');
+        $search = Request::get('zoekwoord', '');
+        $type = Request::get('type');
         $regions = $this->regions->all();
-        $region = Input::get('regio');
-        $reunist = Input::get('reunist');
-        $yearGroup = Input::get('jaarverband');
+        $region = Request::get('regio');
+        $reunist = Request::get('reunist');
+        $yearGroup = Request::get('jaarverband');
 
         // Search on region
         if (! $region || ! $this->regions->exists($region)) {

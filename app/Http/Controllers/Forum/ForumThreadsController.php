@@ -16,7 +16,7 @@ use App\Http\Validators\StartThreadValidator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request as Input;
 use Illuminate\Support\Facades\View;
 
 class ForumThreadsController extends BaseController

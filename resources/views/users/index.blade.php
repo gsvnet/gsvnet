@@ -13,14 +13,14 @@
 			{!! Form::open(array('method'=>'get', 'id' => 'user-search-form')) !!}
 			<div class="form-group">
 				<label class="control-label" for="naam">Naam</label>
-				<input type="search" class="form-control search-user-input" id="naam" name="naam" placeholder="typ maar gewoon iets" value="{{{Input::get('name', '')}}}">
+				<input type="search" class="form-control search-user-input" id="naam" name="naam" placeholder="typ maar gewoon iets" value="{{{Request::get('name', '')}}}">
 			</div>
 			<div class="form-group">
 				<label class="control-label" for="regio">Regio</label>
 				<select name="regio" id="regio">
 					<option value="0">Maakt niet uit</option>
 					@foreach ($regions as $region)
-                        <option value="{{$region->id}}" {{Input::get('regio') == $region->id ? 'selected="selected"' : ''}}>{{$region->name}}</option>
+                        <option value="{{$region->id}}" {{Request::get('regio') == $region->id ? 'selected="selected"' : ''}}>{{$region->name}}</option>
                     @endforeach
 				</select>
 			</div>
@@ -29,12 +29,12 @@
 				<select name="jaarverband" id="jaarverband">
 					<option value="0">Doet er niet toe</option>
 					@foreach ($yearGroups as $yearGroup)
-						<option value="{{$yearGroup->id}}" {{Input::get('jaarverband') == $yearGroup->id ? 'selected="selected"' : ''}}>{{$yearGroup->present()->nameWithYear}}</option>
+						<option value="{{$yearGroup->id}}" {{Request::get('jaarverband') == $yearGroup->id ? 'selected="selected"' : ''}}>{{$yearGroup->present()->nameWithYear}}</option>
 					@endforeach
 				</select>
 			</div>
 			<div class="form-group">
-			    <label><input type="checkbox" name="oudleden" value="1" {{Input::get('oudleden') == 1 ? 'checked="checked"' : ''}} /> Oudleden weergeven</label>
+			    <label><input type="checkbox" name="oudleden" value="1" {{Request::get('oudleden') == 1 ? 'checked="checked"' : ''}} /> Oudleden weergeven</label>
 			</div>
 
 			<div class="form-group">
@@ -56,6 +56,6 @@
 	</div>
 
 	<div class="column-holder">
-		{!! $members->appends(Input::except(array('page')))->render() !!}
+		{!! $members->appends(Request::except(array('page')))->render() !!}
 	</div>
 @stop

@@ -5,7 +5,7 @@ namespace Admin;
 use App\Helpers\Senates\SenatesRepository;
 use App\Helpers\Senates\SenateValidator;
 use App\Helpers\Users\UsersRepository;
-use Input;
+use Illuminate\Support\Facades\Request;
 
 class SenateController extends AdminBaseController
 {
@@ -40,7 +40,7 @@ class SenateController extends AdminBaseController
 
     public function store()
     {
-        $input = Input::all();
+        $input = Request::all();
 
         $this->validator->validate($input);
         $senate = $this->senates->create($input);
@@ -90,7 +90,7 @@ class SenateController extends AdminBaseController
 
     public function update($id)
     {
-        $input = Input::all();
+        $input = Request::all();
         $this->validator->validate($input);
         $senate = $this->senates->update($id, $input);
 

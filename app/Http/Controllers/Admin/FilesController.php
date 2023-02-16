@@ -6,7 +6,7 @@ use App\Helpers\Files\FileManager;
 use App\Helpers\Files\FilesRepository;
 use App\Helpers\Files\Labels\LabelsRepository;
 use Illuminate\Support\Arr;
-use Input;
+use Illuminate\Support\Facades\Request;
 
 class FilesController extends AdminBaseController
 {
@@ -46,9 +46,9 @@ class FilesController extends AdminBaseController
 
     public function store()
     {
-        $input = Input::all();
-        $input['file'] = Input::file('file');
-        $input['published'] = Input::get('published', false);
+        $input = Request::all();
+        $input['file'] = Request::file('file');
+        $input['published'] = Request::get('published', false);
 
         $file = $this->manager->create($input);
 
@@ -77,9 +77,9 @@ class FilesController extends AdminBaseController
 
     public function update($id)
     {
-        $input = Input::except('published');
-        $input['file'] = Input::file('file');
-        $input['published'] = Input::get('published', false) == '1';
+        $input = Request::except('published');
+        $input['file'] = Request::file('file');
+        $input['published'] = Request::get('published', false) == '1';
 
         $file = $this->manager->update($id, $input);
 

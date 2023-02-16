@@ -14,6 +14,7 @@ use App\Helpers\Forum\Threads\ThreadRepository;
 use App\Helpers\Markdown\HtmlMarkdownConverter;
 use App\Helpers\Permissions\NoPermissionException;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Request;
 
 class ForumApiController extends BaseController
 {
@@ -27,7 +28,7 @@ class ForumApiController extends BaseController
 
     public function preview()
     {
-        $data = Input::get('text');
+        $data = Request::get('text');
 
         return $this->markdown->convertMarkdownToHtml($data);
     }

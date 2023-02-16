@@ -1,22 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request;
 
 class SessionController extends BaseController
 {
     public function postLogin()
     {
-        $becomingMember = Input::has('become-member-login');
+        $becomingMember = Request::has('become-member-login');
 
         // Get POST data
         $userdata = [
-            'email' => Input::get('inputEmail'),
-            'password' => Input::get('inputPassword'),
+            'email' => Request::get('inputEmail'),
+            'password' => Request::get('inputPassword'),
         ];
 
         // Attempt to login user else redirect as intended
-        if (Auth::attempt($userdata, Input::get('remember', false))) {
+        if (Auth::attempt($userdata, Request::get('remember', false))) {
             //For redirect
             $intended = URL::previous();
 

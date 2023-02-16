@@ -4,7 +4,6 @@ namespace Admin;
 
 use App\Helpers\Albums\Photos\PhotoManager;
 use App\Helpers\Albums\Photos\PhotosRepository;
-use Input;
 use Request;
 
 class PhotoController extends AdminBaseController
@@ -24,9 +23,9 @@ class PhotoController extends AdminBaseController
 
     public function store($album_id)
     {
-        $input = Input::all();
+        $input = Request::all();
         $input['album_id'] = $album_id;
-        $input['photo'] = Input::file('photo');
+        $input['photo'] = Request::file('photo');
 
         $photo = $this->manager->create($input);
 
@@ -49,9 +48,9 @@ class PhotoController extends AdminBaseController
 
     public function update($album_id, $id)
     {
-        $input = Input::all();
+        $input = Request::all();
         $input['album_id'] = $album_id;
-        $input['photo'] = Input::file('photo');
+        $input['photo'] = Request::file('photo');
 
         $photo = $this->manager->update($id, $input);
 

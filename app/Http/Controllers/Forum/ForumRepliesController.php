@@ -8,6 +8,7 @@ use App\Helpers\Forum\Replies\ReplyRepository;
 use App\Http\Validators\DeleteReplyValidator;
 use App\Http\Validators\EditReplyValidator;
 use App\Http\Validators\ReplyToThreadValidator;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\View;
 
 class ForumRepliesController extends BaseController
@@ -30,7 +31,7 @@ class ForumRepliesController extends BaseController
         $data = [
             'threadSlug' => $threadSlug,
             'authorId' => Auth::user()->id,
-            'reply' => Input::get('body'),
+            'reply' => Request::get('body'),
         ];
 
         $validator->validate($data);
@@ -57,7 +58,7 @@ class ForumRepliesController extends BaseController
 
         $data = [
             'replyId' => $replyId,
-            'reply' => Input::get('body'),
+            'reply' => Request::get('body'),
         ];
 
         $validator->validate($data);
