@@ -12,9 +12,6 @@ class File extends Model
     protected $fillable = ['name', 'file_path', 'published'];
 
     protected $presenter = FilePresenter::class;
-
-    protected $dates = ['updated_at', 'created_at'];
-
     public static $rules = [
         'name' => 'required',
     ];
