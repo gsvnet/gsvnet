@@ -13,6 +13,7 @@ class Invite extends Model
     public $timestamps = false;
 
     protected $primaryKey = null;
+
     protected $casts = [
         'invited_at' => 'datetime',
     ];

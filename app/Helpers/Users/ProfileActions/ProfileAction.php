@@ -16,6 +16,7 @@ class ProfileAction extends Model
     protected $table = 'profile_actions';
 
     protected $fillable = ['user_id', 'at', 'action'];
+
     protected $casts = [
         'at' => 'datetime',
     ];

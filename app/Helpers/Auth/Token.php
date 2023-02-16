@@ -19,6 +19,7 @@ class Token extends Model
     public $timestamps = false;
 
     protected $primaryKey = 'token';
+
     protected $casts = [
         'expires_on' => 'datetime',
     ];

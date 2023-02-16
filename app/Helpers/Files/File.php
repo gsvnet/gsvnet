@@ -12,6 +12,7 @@ class File extends Model
     protected $fillable = ['name', 'file_path', 'published'];
 
     protected $presenter = FilePresenter::class;
+
     public static $rules = [
         'name' => 'required',
     ];
