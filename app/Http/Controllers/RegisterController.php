@@ -1,11 +1,12 @@
 <?php
 
+use Illuminate\View\View;
 use App\Helpers\Users\UserManager;
 use Illuminate\Support\Facades\Request;
 
 class RegisterController extends BaseController
 {
-    public function create()
+    public function create(): View
     {
         return view('users.register');
     }

@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use App\Commands\Potentials\PromoteGuestToPotentialCommand;
 use App\Commands\Potentials\SignUpAsPotentialCommand;
 use App\Commands\Users\SetProfilePictureCommand;
@@ -25,17 +27,17 @@ class MemberController extends BaseController
         $this->profiles = $profiles;
     }
 
-    public function index()
+    public function index(): View
     {
         return view('word-lid.index');
     }
 
-    public function becomeMember()
+    public function becomeMember(): View
     {
         return view('word-lid.word-lid');
     }
 
-    public function becomeMemberIFrame()
+    public function becomeMemberIFrame(): View
     {
         return view('iframes.word-lid');
     }
@@ -50,7 +52,7 @@ class MemberController extends BaseController
      *
      * @throws ValidationException
      */
-    public function store(Request $request, PotentialValidator $validator)
+    public function store(Request $request, PotentialValidator $validator): RedirectResponse
     {
         \Log::info('Potential wil lid worden', $request->except('password', 'password_confirmation'));
 
@@ -105,22 +107,22 @@ class MemberController extends BaseController
         return redirect()->action([\App\Http\Controllers\MemberController::class, 'becomeMember']);
     }
 
-    public function study()
+    public function study(): View
     {
         return view('word-lid.study');
     }
 
-    public function showCorona()
+    public function showCorona(): View
     {
         return view('word-lid.corona');
     }
 
-    public function faq()
+    public function faq(): View
     {
         return view('word-lid.faq');
     }
 
-    public function complaints()
+    public function complaints(): View
     {
         return view('word-lid.complaints');
     }
@@ -145,7 +147,7 @@ class MemberController extends BaseController
      * @param  int  $id
      * @param  string  $type
      */
-    private function photoResponse($id, $type = '')
+    private function photoResponse(int $id, string $type = '')
     {
         $profile = $this->profiles->byId($id);
         $path = $this->imageHandler->getStoragePath($profile->photo_path, $type);

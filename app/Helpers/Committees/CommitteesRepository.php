@@ -12,7 +12,7 @@ class CommitteesRepository
      * @param  int  $id
      * @return Committee
      */
-    public function byId($id)
+    public function byId(int $id): Committee
     {
         return Committee::findOrFail($id);
     }
@@ -23,7 +23,7 @@ class CommitteesRepository
      * @param  string  $slug
      * @return Committee
      */
-    public function bySlug($slug)
+    public function bySlug(string $slug): Committee
     {
         return Committee::where('unique_name', '=', $slug)->firstOrFail();
     }
@@ -38,7 +38,7 @@ class CommitteesRepository
      *
      * @return Collection
      */
-    public function all()
+    public function all(): Collection
     {
         return Committee::orderBy('name', 'ASC')->public()->get();
     }
@@ -48,7 +48,7 @@ class CommitteesRepository
      *
      * @param  int  $amount
      */
-    public function paginate($amount)
+    public function paginate(int $amount)
     {
         return Committee::orderBy('name', 'ASC')->paginate($amount);
     }
@@ -64,7 +64,7 @@ class CommitteesRepository
      * @param  array  $input
      * @return Committee
      */
-    public function create(array $input)
+    public function create(array $input): Committee
     {
         $committee = new Committee();
         $committee->name = $input['name'];
@@ -84,7 +84,7 @@ class CommitteesRepository
      * @param  array  $input
      * @return Committee
      */
-    public function update($id, array $input)
+    public function update(int $id, array $input): Committee
     {
         $committee = $this->byId($id);
 
@@ -105,7 +105,7 @@ class CommitteesRepository
      * @return Committe
      * @TODO: delete all committee members references
      */
-    public function delete($id)
+    public function delete(int $id): Committe
     {
         $committee = $this->byId($id);
         $committee->delete();

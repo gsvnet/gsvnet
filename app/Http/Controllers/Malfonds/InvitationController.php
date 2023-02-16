@@ -2,6 +2,8 @@
 
 namespace Malfonds;
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use App\Commands\Members\InviteMember;
 use App\Helpers\Auth\InviteValidator;
 use App\Helpers\Auth\Token;
@@ -36,7 +38,7 @@ class InvitationController extends MalfondsController
         $this->tokens = $tokens;
     }
 
-    public function create($userId)
+    public function create($userId): View
     {
         $this->authorize('users.show');
         $member = $this->users->memberOrFormerByIdWithProfile($userId);
@@ -46,7 +48,7 @@ class InvitationController extends MalfondsController
         return view('malfonds.invite', compact('member', 'token'));
     }
 
-    public function store($userId)
+    public function store($userId): RedirectResponse
     {
         $this->authorize('users.show');
         $member = $this->users->memberOrFormerByIdWithProfile($userId);
@@ -63,7 +65,7 @@ class InvitationController extends MalfondsController
         return redirect(action([\App\Http\Controllers\Malfonds\InvitationController::class, 'create'], $userId));
     }
 
-    public function inviteByMail(Request $request, InviteValidator $validator, $userId)
+    public function inviteByMail(Request $request, InviteValidator $validator, $userId): RedirectResponse
     {
         $this->authorize('users.show');
 

@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         // Set locale to Dutch
         setlocale(LC_ALL, 'nl_NL.UTF-8');
@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->bind(
             'Illuminate\Contracts\Auth\Registrar',

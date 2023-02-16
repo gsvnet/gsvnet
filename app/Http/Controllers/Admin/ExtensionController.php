@@ -2,6 +2,7 @@
 
 namespace Admin;
 
+use Illuminate\View\View;
 use App\Helpers\Extension\ExtensionFileValidator;
 use File;
 use Illuminate\Support\Facades\Request;
@@ -15,14 +16,14 @@ class ExtensionController extends AdminBaseController
         $this->validator = $validator;
     }
 
-    public function index()
+    public function index(): View
     {
         $this->authorize('extension.manage');
 
         return view('admin.extension.index');
     }
 
-    public function store()
+    public function store(): View
     {
         $this->authorize('extension.manage');
         $input['file'] = Request::file('file');

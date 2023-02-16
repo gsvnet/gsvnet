@@ -2,6 +2,8 @@
 
 namespace Admin\Committees;
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use Admin\AdminBaseController;
 use App\Helpers\Committees\CommitteeMembership\CommitteeMembershipRepository;
 use App\Helpers\Committees\CommitteeMembership\MemberCreatorValidator;
@@ -38,7 +40,7 @@ class MembersController extends AdminBaseController
         parent::__construct();
     }
 
-    public function store()
+    public function store(): RedirectResponse
     {
         $input = Request::only('member', 'committee_id', 'start_date', 'end_date');
         $input['currently_member'] = Request::get('currently_member', '0');
@@ -59,7 +61,7 @@ class MembersController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\CommitteeController::class, 'show'], $committee->id);
     }
 
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         $membership = $this->committeeMembership->byId($id);
         $committee = $membership->committee;
@@ -72,7 +74,7 @@ class MembersController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\CommitteeController::class, 'show'], $committee->id);
     }
 
-    public function edit($id)
+    public function edit($id): View
     {
         $membership = $this->committeeMembership->byId($id);
         $member = $membership->member;
@@ -84,7 +86,7 @@ class MembersController extends AdminBaseController
             ->with('member', $member);
     }
 
-    public function update($id)
+    public function update($id): RedirectResponse
     {
         $input = Request::only('start_date', 'end_date');
         $input['currently_member'] = Request::get('currently_member', '0');

@@ -34,7 +34,7 @@ trait ResponderTrait
      *
      * @return void
      */
-    protected function reset()
+    protected function reset(): void
     {
         $this->statusCode = 200;
         $this->headers = [];
@@ -47,7 +47,7 @@ trait ResponderTrait
      * @param  string  $value
      * @return $this
      */
-    public function addHeader($name, $value)
+    public function addHeader(string $name, string $value): static
     {
         $this->headers[$name] = $value;
 
@@ -60,7 +60,7 @@ trait ResponderTrait
      * @param  array  $headers
      * @return $this
      */
-    public function addHeaders(array $headers)
+    public function addHeaders(array $headers): static
     {
         $this->headers = array_merge($this->headers, $headers);
 
@@ -76,7 +76,7 @@ trait ResponderTrait
      * @param  string  $key
      * @return \Illuminate\Http\Response
      */
-    public function withCollection($collection, $transformer, FractalCursorInterface $cursor = null, $key = null)
+    public function withCollection($collection, object $transformer, FractalCursorInterface $cursor = null, string $key = null): Response
     {
         $fractalService = $this->getFractalService();
 
@@ -93,7 +93,7 @@ trait ResponderTrait
      * @param  string  $key
      * @return \Illuminate\Http\Response
      */
-    public function withItem($item, $transformer, $key = null)
+    public function withItem($item, object $transformer, string $key = null): Response
     {
         $fractalService = $this->getFractalService();
 
@@ -110,7 +110,7 @@ trait ResponderTrait
      * @param  string  $key
      * @return \Illuminate\Http\Response
      */
-    public function withPaginator(FractalPaginatorInterface $paginator, $transformer, $key = null)
+    public function withPaginator(FractalPaginatorInterface $paginator, object $transformer, string $key = null): Response
     {
         $fractalService = $this->getFractalService();
 
@@ -125,7 +125,7 @@ trait ResponderTrait
      * @param  array  $array
      * @return \Illuminate\Http\Response
      */
-    public function withArray(array $array = [])
+    public function withArray(array $array = []): Response
     {
         return $this->build($array);
     }
@@ -137,7 +137,7 @@ trait ResponderTrait
      * @param  int  $statusCode
      * @return $this
      */
-    public function withError($error, $statusCode)
+    public function withError($error, int $statusCode): static
     {
         if (! is_array($error)) {
             $error = ['error' => $error];
@@ -154,7 +154,7 @@ trait ResponderTrait
      * @param  array|\League\Fractal\Resource\ResourceInterface  $data
      * @return \Illuminate\Http\Response
      */
-    protected function build($data)
+    protected function build($data): Response
     {
         $response = new IlluminateResponse($data, $this->statusCode, $this->headers);
 
@@ -167,7 +167,7 @@ trait ResponderTrait
      * @param $statusCode
      * @return $this
      */
-    public function setStatusCode($statusCode)
+    public function setStatusCode($statusCode): static
     {
         $this->statusCode = $statusCode;
 
@@ -177,7 +177,7 @@ trait ResponderTrait
     /**
      * @return $this
      */
-    public function itemWasCreated()
+    public function itemWasCreated(): static
     {
         return $this->setStatusCode(IlluminateResponse::HTTP_CREATED);
     }
@@ -185,7 +185,7 @@ trait ResponderTrait
     /**
      * @return $this
      */
-    public function itemWasUpdated()
+    public function itemWasUpdated(): static
     {
         return $this->setStatusCode(IlluminateResponse::HTTP_OK);
     }
@@ -193,7 +193,7 @@ trait ResponderTrait
     /**
      * @return $this
      */
-    public function itemWasRemoved()
+    public function itemWasRemoved(): static
     {
         return $this->setStatusCode(IlluminateResponse::HTTP_NO_CONTENT);
     }
@@ -204,7 +204,7 @@ trait ResponderTrait
      * @param  string  $message
      * @return $this
      */
-    public function errorNotFound($message = 'Not Found')
+    public function errorNotFound(string $message = 'Not Found'): static
     {
         return $this->withError($message, IlluminateResponse::HTTP_NOT_FOUND);
     }
@@ -215,7 +215,7 @@ trait ResponderTrait
      * @param  string  $message
      * @return $this
      */
-    public function errorBadRequest($message = 'Bad Request')
+    public function errorBadRequest(string $message = 'Bad Request'): static
     {
         return $this->withError($message, IlluminateResponse::HTTP_BAD_REQUEST);
     }
@@ -226,7 +226,7 @@ trait ResponderTrait
      * @param  string|array  $message
      * @return $this
      */
-    public function errorForbidden($message = 'Forbidden')
+    public function errorForbidden($message = 'Forbidden'): static
     {
         return $this->withError($message, IlluminateResponse::HTTP_FORBIDDEN);
     }
@@ -237,7 +237,7 @@ trait ResponderTrait
      * @param  string|array  $message
      * @return $this
      */
-    public function errorInternal($message = 'Internal Error')
+    public function errorInternal($message = 'Internal Error'): static
     {
         return $this->withError($message, IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR);
     }
@@ -248,7 +248,7 @@ trait ResponderTrait
      * @param  string|array  $message
      * @return \Illuminate\Http\Response
      */
-    public function errorUnauthorized($message = 'Unauthorized')
+    public function errorUnauthorized($message = 'Unauthorized'): Response
     {
         return $this->withError($message, IlluminateResponse::HTTP_UNAUTHORIZED);
     }
@@ -256,7 +256,7 @@ trait ResponderTrait
     /**
      * @return Manager
      */
-    public function getFractal()
+    public function getFractal(): Manager
     {
         return App::make(Manager::class);
     }
@@ -278,7 +278,7 @@ trait ResponderTrait
      *
      * @return FractalService
      */
-    public function getFractalService()
+    public function getFractalService(): FractalService
     {
         return $this->fractal ?: App::make(FractalService::class);
     }

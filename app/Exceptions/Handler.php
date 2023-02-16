@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Http\Request;
 use App\Helpers\Permissions\NoPermissionException;
 use App\Helpers\Permissions\UserAccountNotApprovedException;
 use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
@@ -49,7 +50,7 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $e
      * @return void
      */
-    public function report(Throwable $e)
+    public function report(Throwable $e): void
     {
         Bugsnag::notifyException($e);
         parent::report($e);
@@ -104,7 +105,7 @@ class Handler extends ExceptionHandler
      * @param  \Illuminate\Auth\AuthenticationException  $e
      * @return \Illuminate\Http\Response
      */
-    protected function unauthenticated($request, AuthenticationException $e)
+    protected function unauthenticated(Request $request, AuthenticationException $e): Response
     {
         if ($request->expectsJson()) {
             return response()->json(['error' => 'Unauthenticated.'], 401);

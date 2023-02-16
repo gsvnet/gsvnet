@@ -10,7 +10,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('committees', function (Blueprint $table) {
             $table->boolean('public')->default(true);
@@ -22,7 +22,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('committees', function (Blueprint $table) {
             $table->dropColumn('public');

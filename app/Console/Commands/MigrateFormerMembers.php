@@ -30,7 +30,7 @@ class MigrateFormerMembers extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         /*if (!$this->confirm('Hiermee worden alle oud-leden volgens het nieuwe systeem in de database gezet. Wil je doorgaan?')) {
             return;

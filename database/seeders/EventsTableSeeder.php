@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 class EventsTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $faker = Faker\Factory::create('nl_NL');
         $events = [];

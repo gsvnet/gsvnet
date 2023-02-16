@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use App\Commands\Forum\DeleteReplyCommand;
 use App\Commands\Forum\EditReplyCommand;
 use App\Commands\Forum\ReplyToThreadCommand;
@@ -26,7 +28,7 @@ class ForumRepliesController extends BaseController
         View::share('events', $events->upcoming(5));
     }
 
-    public function postCreateReply(ReplyToThreadValidator $validator, $threadSlug)
+    public function postCreateReply(ReplyToThreadValidator $validator, $threadSlug): RedirectResponse
     {
         $data = [
             'threadSlug' => $threadSlug,
@@ -41,7 +43,7 @@ class ForumRepliesController extends BaseController
         return redirect()->back();
     }
 
-    public function getEditReply($replyId)
+    public function getEditReply($replyId): View
     {
         $reply = $this->replies->getById($replyId);
         $author = $reply->author;
@@ -68,7 +70,7 @@ class ForumRepliesController extends BaseController
         return $this->redirectToReply($replyId);
     }
 
-    public function getDelete($replyId)
+    public function getDelete($replyId): View
     {
         $reply = $this->replies->requireById($replyId);
 
@@ -77,7 +79,7 @@ class ForumRepliesController extends BaseController
         return view('forum.replies.delete', compact('reply'));
     }
 
-    public function postDelete(DeleteReplyValidator $validator, $replyId)
+    public function postDelete(DeleteReplyValidator $validator, $replyId): RedirectResponse
     {
         $reply = $this->replies->requireById($replyId);
 
@@ -92,7 +94,7 @@ class ForumRepliesController extends BaseController
         return redirect('/forum');
     }
 
-    public function redirectToReply($replyId)
+    public function redirectToReply($replyId): RedirectResponse
     {
         $reply = $this->replies->requireById($replyId);
 

@@ -24,7 +24,7 @@ class EventValidator extends Validator
      *
      * @throws ValidationException
      */
-    public function validate(array $data)
+    public function validate(array $data): bool
     {
         $validation = $this->validator->make($data, static::$rules);
 

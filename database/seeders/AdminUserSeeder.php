@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class AdminUserSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $faker = Faker\Factory::create('en_US');
         $yearGroupIds = DB::table('year_groups')->pluck('id');

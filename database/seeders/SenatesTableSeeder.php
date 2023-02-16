@@ -17,7 +17,7 @@ class SenatesTableSeeder extends Seeder
         $this->time = Carbon::now();
     }
 
-    public function run()
+    public function run(): void
     {
         $senates = [
             ['name' => 'Van de Kamp', 'start_date' => '2013-09-14', 'end_date' => '2014-09-14', 'body' => 'test'],

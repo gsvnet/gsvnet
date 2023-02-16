@@ -9,7 +9,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('comments', function ($t) {
             $t->integer('type');
@@ -21,7 +21,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('comments', function ($t) {
             $t->dropColumn('type');

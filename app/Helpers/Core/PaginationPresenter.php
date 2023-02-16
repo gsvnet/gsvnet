@@ -11,7 +11,7 @@ class PaginationPresenter extends BootstrapThreePresenter
      *
      * @return string
      */
-    public function render()
+    public function render(): string
     {
         if ($this->lastPage < 9) {
             $content = $this->getPageRange(1, $this->lastPage);
@@ -27,7 +27,7 @@ class PaginationPresenter extends BootstrapThreePresenter
      *
      * @return string
      */
-    protected function getPageSlider()
+    protected function getPageSlider(): string
     {
         $window = 3;
 
@@ -66,7 +66,7 @@ class PaginationPresenter extends BootstrapThreePresenter
      *
      * @return string
      */
-    public function getAdjacentRange()
+    public function getAdjacentRange(): string
     {
         return $this->getPageRange($this->currentPage - 2, $this->currentPage + 2);
     }
@@ -76,7 +76,7 @@ class PaginationPresenter extends BootstrapThreePresenter
      *
      * @return string
      */
-    public function getStart()
+    public function getStart(): string
     {
         return $this->getPageRange(1, 1).$this->getDots();
     }
@@ -86,7 +86,7 @@ class PaginationPresenter extends BootstrapThreePresenter
      *
      * @return string
      */
-    public function getFinish()
+    public function getFinish(): string
     {
         $content = $this->getPageRange($this->lastPage, $this->lastPage);
 

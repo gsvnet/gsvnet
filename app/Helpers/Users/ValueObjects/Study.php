@@ -22,7 +22,7 @@ class Study extends ValueObject
      * @param  string  $study
      * @param  string  $studentNumber
      */
-    public function __construct($study, $studentNumber)
+    public function __construct(string $study, string $studentNumber)
     {
         $this->study = trim($study);
         $this->studentNumber = strtolower(trim($studentNumber));
@@ -31,7 +31,7 @@ class Study extends ValueObject
     /**
      * @return string
      */
-    public function getStudy()
+    public function getStudy(): string
     {
         return $this->study;
     }
@@ -39,7 +39,7 @@ class Study extends ValueObject
     /**
      * @return string
      */
-    public function getStudentNumber()
+    public function getStudentNumber(): string
     {
         return $this->studentNumber;
     }

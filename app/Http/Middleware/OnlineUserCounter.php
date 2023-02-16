@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Symfony\Component\HttpFoundation\Response;
 use App\Helpers\Users\User;
 use Closure;
 use Illuminate\Contracts\Redis\Database;
@@ -42,7 +43,7 @@ class OnlineUserCounter
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle(Request $request, Closure $next, $guard = null)
+    public function handle(Request $request, Closure $next, ?string $guard = null): Response
     {
         $user = Auth::guard($guard)->user();
 

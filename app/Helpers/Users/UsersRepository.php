@@ -19,7 +19,7 @@ class UsersRepository extends BaseRepository
      * @param $id
      * @return User
      */
-    public function byId($id)
+    public function byId($id): User
     {
         return User::findOrFail($id);
     }
@@ -28,7 +28,7 @@ class UsersRepository extends BaseRepository
      * @param $id
      * @return User
      */
-    public function byIdWithProfileAndYearGroup($id)
+    public function byIdWithProfileAndYearGroup($id): User
     {
         return User::with('profile.yearGroup')->findOrFail($id);
     }
@@ -47,7 +47,7 @@ class UsersRepository extends BaseRepository
      * @param $id
      * @return User
      */
-    public function memberOrFormerByIdWithProfile($id)
+    public function memberOrFormerByIdWithProfile($id): User
     {
         return User::whereIn('type',
             [User::MEMBER, User::REUNIST, User::EXMEMBER, User::POTENTIAL])->with('profile.yearGroup', 'profile.regions')->findOrFail($id);
@@ -58,7 +58,7 @@ class UsersRepository extends BaseRepository
      *
      * @return Collection
      */
-    public function all()
+    public function all(): Collection
     {
         return User::orderBy('lastname', 'ASC')
             ->orderBy('firstname', 'ASC')
@@ -78,7 +78,7 @@ class UsersRepository extends BaseRepository
      *
      * @param  int  $amount
      */
-    public function paginate($amount)
+    public function paginate(int $amount)
     {
         return User::orderBy('lastname', 'ASC')->paginate($amount);
     }
@@ -177,7 +177,7 @@ class UsersRepository extends BaseRepository
      * @param  array  $input
      * @return User
      */
-    public function create(array $input)
+    public function create(array $input): User
     {
         return $user = User::create([
             'firstname' => $input['register-firstname'],
@@ -197,7 +197,7 @@ class UsersRepository extends BaseRepository
      * @return User
      * @TODO: delete all user members references
      */
-    public function delete($id)
+    public function delete(int $id): User
     {
         $user = $this->byId($id);
         $user->delete();

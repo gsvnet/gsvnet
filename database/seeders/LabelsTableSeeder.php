@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class LabelsTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $labels = [
             [

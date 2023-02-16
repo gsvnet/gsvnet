@@ -2,6 +2,8 @@
 
 namespace Admin;
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use App\Helpers\Files\FileManager;
 use App\Helpers\Files\FilesRepository;
 use App\Helpers\Files\Labels\LabelsRepository;
@@ -27,7 +29,7 @@ class FilesController extends AdminBaseController
         parent::__construct();
     }
 
-    public function index()
+    public function index(): View
     {
         $files = $this->files->paginate(10, false);
         $labels = $this->labels->all();
@@ -44,7 +46,7 @@ class FilesController extends AdminBaseController
             ->with('checked', $checked);
     }
 
-    public function store()
+    public function store(): RedirectResponse
     {
         $input = Request::all();
         $input['file'] = Request::file('file');
@@ -57,7 +59,7 @@ class FilesController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\FilesController::class, 'index']);
     }
 
-    public function edit($id)
+    public function edit($id): View
     {
         $file = $this->files->byId($id);
         $labels = $this->labels->all();
@@ -75,7 +77,7 @@ class FilesController extends AdminBaseController
             ->with('checked', $checked);
     }
 
-    public function update($id)
+    public function update($id): RedirectResponse
     {
         $input = Request::except('published');
         $input['file'] = Request::file('file');
@@ -88,7 +90,7 @@ class FilesController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\FilesController::class, 'index']);
     }
 
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         $file = $this->manager->destroy($id);
 

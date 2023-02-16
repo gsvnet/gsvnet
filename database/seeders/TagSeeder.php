@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 class TagSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $tags = [];
         $commonTags = [

@@ -24,7 +24,7 @@ class MemberEmailWasChanged extends ProfileEvent
     /**
      * @return string
      */
-    public function getOldEmail()
+    public function getOldEmail(): string
     {
         return $this->oldEmail;
     }

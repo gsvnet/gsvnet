@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\View\View;
+use Illuminate\Http\Response;
 use App\Helpers\Files\FileHandler;
 use App\Helpers\Files\FilesRepository;
 use App\Helpers\Files\Labels\LabelsRepository;
@@ -28,7 +30,7 @@ class FilesController extends BaseController
      * @param  LabelsRepository  $labelsRepository
      * @return
      */
-    public function index(Request $request, LabelsRepository $labelsRepository)
+    public function index(Request $request, LabelsRepository $labelsRepository): View
     {
         // Select all files which belong to (all of) the selected labels
         $selectedLabels = $request->get('labels');
@@ -53,7 +55,7 @@ class FilesController extends BaseController
      * @param  FileHandler  $fileHandler
      * @return \Illuminate\Http\Response
      */
-    public function show($id, FileHandler $fileHandler)
+    public function show(int $id, FileHandler $fileHandler): Response
     {
         $file = $this->files->byId($id);
 

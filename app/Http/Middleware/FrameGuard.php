@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 use Closure;
 
 class FrameGuard
@@ -13,7 +15,7 @@ class FrameGuard
      * @param  \Closure  $next
      * @return \Illuminate\Http\Response
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         /*
             Temporary CSP

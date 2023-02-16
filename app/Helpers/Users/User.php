@@ -70,7 +70,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @return string
      */
-    public function getAuthPassword()
+    public function getAuthPassword(): string
     {
         return $this->password;
     }
@@ -80,7 +80,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @return string
      */
-    public function getReminderEmail()
+    public function getReminderEmail(): string
     {
         return $this->email;
     }

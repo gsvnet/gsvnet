@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\View\View;
 use App\Helpers\Committees\CommitteesRepository;
 use App\Helpers\Senates\SenatesRepository;
 
@@ -11,7 +12,7 @@ class AboutController extends BaseController
         $this->senates = $senates;
     }
 
-    public function showAbout()
+    public function showAbout(): View
     {
         $key = Config::get('google.key');
         $mapUrl = 'https://maps.googleapis.com/maps/api/staticmap?center=Hereweg%2040,Groningen,Nederland&size=480x320&zoom=14&sensor=false&markers=color:purple%7Clabel:S%7CHereweg%2040,Groningen,Nederland&key='.$key.'&scale=2';
@@ -20,7 +21,7 @@ class AboutController extends BaseController
         return view('de-gsv.de-gsv', compact('mapImage'));
     }
 
-    public function showCommittees(CommitteesRepository $committeesRepo)
+    public function showCommittees(CommitteesRepository $committeesRepo): View
     {
         $committees = $committeesRepo->all();
 
@@ -28,7 +29,7 @@ class AboutController extends BaseController
             ->with('committees', $committees);
     }
 
-    public function showCommittee($slug, CommitteesRepository $committeesRepo)
+    public function showCommittee($slug, CommitteesRepository $committeesRepo): View
     {
         $committee = $committeesRepo->bySlug($slug);
         $committees = $committeesRepo->all();
@@ -40,7 +41,7 @@ class AboutController extends BaseController
             ->with('activeMembers', $activeMembers);
     }
 
-    public function showSenates(SenatesRepository $senatesRepository)
+    public function showSenates(SenatesRepository $senatesRepository): View
     {
         $senates = $senatesRepository->all();
 
@@ -48,7 +49,7 @@ class AboutController extends BaseController
             ->with('senates', $senates);
     }
 
-    public function showSenate($id, SenatesRepository $senatesRepository)
+    public function showSenate($id, SenatesRepository $senatesRepository): View
     {
         $senate = $senatesRepository->byId($id);
         $members = $senate->members()->get();
@@ -60,27 +61,27 @@ class AboutController extends BaseController
             ->with('senates', $senates);
     }
 
-    public function showFormerMembers()
+    public function showFormerMembers(): View
     {
         return view('de-gsv.former-members');
     }
 
-    public function showConfidants()
+    public function showConfidants(): View
     {
         return view('de-gsv.confidants');
     }
 
-    public function showContact()
+    public function showContact(): View
     {
         return view('de-gsv.contact');
     }
 
-    public function showPillars()
+    public function showPillars(): View
     {
         return view('de-gsv.pillars');
     }
 
-    public function showHistory()
+    public function showHistory(): View
     {
         return view('de-gsv.history');
     }

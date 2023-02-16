@@ -7,7 +7,7 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testBasicExample()
+    public function testBasicExample(): void
     {
         $response = $this->call('GET', '/');
 

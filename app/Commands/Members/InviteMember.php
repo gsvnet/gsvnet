@@ -67,7 +67,7 @@ class InviteMember extends Command
     /**
      * @return User
      */
-    public function getHost()
+    public function getHost(): User
     {
         return $this->host;
     }
@@ -75,7 +75,7 @@ class InviteMember extends Command
     /**
      * @return User
      */
-    public function getGuest()
+    public function getGuest(): User
     {
         return $this->guest;
     }
@@ -83,7 +83,7 @@ class InviteMember extends Command
     /**
      * @return Email
      */
-    public function getEmail()
+    public function getEmail(): Email
     {
         return $this->email;
     }

@@ -24,7 +24,7 @@ class UserCommitteeSeeder extends Seeder
         $this->faker = Faker\Factory::create('nl_NL');
     }
 
-    public function run()
+    public function run(): void
     {
         $memberships = [];
 

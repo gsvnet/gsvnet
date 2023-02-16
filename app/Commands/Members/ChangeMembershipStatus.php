@@ -29,7 +29,7 @@ class ChangeMembershipStatus extends Command
      * @param  User  $user
      * @param  User  $manager
      */
-    public function __construct($status, User $user, User $manager)
+    public function __construct(int $status, User $user, User $manager)
     {
         $this->status = $status;
         $this->user = $user;

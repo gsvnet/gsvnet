@@ -26,7 +26,7 @@ class BulkSyncWithAlgolia extends Command
      */
     protected $description = 'Synchronize all members with algolia.';
 
-    public function handle()
+    public function handle(): int
     {
         /** @var AlgoliaClient $algolia */
         $algolia = app(AlgoliaClient::class);

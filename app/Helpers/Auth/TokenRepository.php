@@ -16,7 +16,7 @@ class TokenRepository extends BaseRepository
      * @param $token
      * @return Token
      */
-    public function getActiveToken($token)
+    public function getActiveToken($token): Token
     {
         return $this->model->active()->where('token', $token)->first();
     }
@@ -25,7 +25,7 @@ class TokenRepository extends BaseRepository
      * @param  int  $userId
      * @return Token
      */
-    public function getActiveByUserId($userId)
+    public function getActiveByUserId(int $userId): Token
     {
         return $this->model->active()->where('user_id', $userId)->first();
     }

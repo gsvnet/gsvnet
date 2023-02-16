@@ -55,7 +55,7 @@ class ChangePeriodOfMembership
     /**
      * @return NullableDate
      */
-    public function getInauguration()
+    public function getInauguration(): NullableDate
     {
         return $this->inauguration;
     }
@@ -63,7 +63,7 @@ class ChangePeriodOfMembership
     /**
      * @return NullableDate
      */
-    public function getResignation()
+    public function getResignation(): NullableDate
     {
         return $this->resignation;
     }
@@ -71,7 +71,7 @@ class ChangePeriodOfMembership
     /**
      * @return User
      */
-    public function getUser()
+    public function getUser(): User
     {
         return $this->user;
     }
@@ -79,7 +79,7 @@ class ChangePeriodOfMembership
     /**
      * @return User
      */
-    public function getManager()
+    public function getManager(): User
     {
         return $this->manager;
     }

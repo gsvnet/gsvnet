@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use Illuminate\Http\Response;
 use League\Fractal\Manager;
 use League\Fractal\Pagination\CursorInterface as FractalCursorInterface;
 use League\Fractal\Pagination\PaginatorInterface as FractalPaginatorInterface;
@@ -30,7 +31,7 @@ class FractalService
      * @param  string  $key
      * @return \Illuminate\Http\Response
      */
-    public function collection($collection, $transformer, FractalCursorInterface $cursor = null, $key = null)
+    public function collection($collection, object $transformer, FractalCursorInterface $cursor = null, string $key = null): Response
     {
         $resource = new FractalCollection($collection, $transformer, $key);
 
@@ -49,7 +50,7 @@ class FractalService
      * @param  string  $key
      * @return \Illuminate\Http\Response
      */
-    public function item($item, $transformer, $key = null)
+    public function item($item, object $transformer, string $key = null): Response
     {
         $resource = new FractalItem($item, $transformer, $key);
 
@@ -64,7 +65,7 @@ class FractalService
      * @param  string  $key
      * @return \Illuminate\Http\Response
      */
-    public function paginator(FractalPaginatorInterface $paginator, $transformer, $key = null)
+    public function paginator(FractalPaginatorInterface $paginator, object $transformer, string $key = null): Response
     {
         $resource = new FractalCollection($paginator->getCollection(), $transformer, $key);
 
@@ -79,7 +80,7 @@ class FractalService
      * @param  array|\League\Fractal\Resource\ResourceInterface  $data
      * @return \Illuminate\Http\Response
      */
-    public function build($data)
+    public function build($data): Response
     {
         if ($data instanceof FractalResourceInterface) {
             $data = $this->fractal->createData($data)->toArray();

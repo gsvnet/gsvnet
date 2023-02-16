@@ -61,7 +61,7 @@ class InviteViaCLI extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $file = $this->files->get($this->argument('file'));
         $this->host = $this->users->memberOrFormerByIdWithProfile($this->argument('hostId'));
@@ -74,7 +74,7 @@ class InviteViaCLI extends Command
     /**
      * @param  \stdClass  $data
      */
-    public function invite($data)
+    public function invite(stdClass $data)
     {
         $member = $this->users->memberOrFormerByIdWithProfile($data->id);
         $email = new Email($data->email);

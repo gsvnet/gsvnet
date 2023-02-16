@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use App\Commands\Users\ChangeEmail;
 use App\Commands\Users\ChangePassword;
 use App\Helpers\Committees\CommitteesRepository;
@@ -55,7 +57,7 @@ class UserController extends BaseController
      * @param  Request  $request
      * @return
      */
-    public function showProfile(Request $request)
+    public function showProfile(Request $request): View
     {
         $member = $this->users->byIdWithProfileAndYearGroup($request->user()->id);
         $committees = $this->committees->byUserOrderByRecent($member);
@@ -79,7 +81,7 @@ class UserController extends BaseController
      * @param  Request  $request
      * @return
      */
-    public function showUsers(Request $request)
+    public function showUsers(Request $request): View
     {
         $this->authorize('users.show');
         $search = $request->get('naam', '');
@@ -113,7 +115,7 @@ class UserController extends BaseController
     /**
      * Show the user's profile
      */
-    public function showUser($id)
+    public function showUser($id): View
     {
         $this->authorize('users.show');
         $member = $this->users->byIdWithProfileAndYearGroup($id);
@@ -132,14 +134,14 @@ class UserController extends BaseController
             ->with('formerRegions', $formerRegions);
     }
 
-    public function editProfile(Request $request)
+    public function editProfile(Request $request): View
     {
         return view('users.edit-profile')->with([
             'user' => $request->user(),
         ]);
     }
 
-    public function updateProfile(Request $request, EmailAndPasswordValidator $validator)
+    public function updateProfile(Request $request, EmailAndPasswordValidator $validator): RedirectResponse
     {
         $data = $request->all('email', 'password', 'password_confirmation');
         $user = $request->user();

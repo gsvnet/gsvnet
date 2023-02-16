@@ -30,7 +30,7 @@ class FileManager
      * @param  array  $input
      * @return File
      */
-    public function create(array $input)
+    public function create(array $input): File
     {
         $this->createValidator->validate($input);
         // Store the file file and get its new path
@@ -47,7 +47,7 @@ class FileManager
      * @param  array  $input
      * @return File
      */
-    public function update($id, array $input)
+    public function update($id, array $input): File
     {
         $this->updateValidator->validate($input);
         // Optionally update the file's file

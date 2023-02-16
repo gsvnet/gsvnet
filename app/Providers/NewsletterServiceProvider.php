@@ -11,7 +11,7 @@ class NewsletterServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->bind(
             \App\Helpers\Newsletters\NewsletterList::class,

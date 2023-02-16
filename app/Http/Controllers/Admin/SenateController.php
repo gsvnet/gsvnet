@@ -2,6 +2,8 @@
 
 namespace Admin;
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use App\Helpers\Senates\SenatesRepository;
 use App\Helpers\Senates\SenateValidator;
 use App\Helpers\Users\UsersRepository;
@@ -28,7 +30,7 @@ class SenateController extends AdminBaseController
         parent::__construct();
     }
 
-    public function index()
+    public function index(): View
     {
         $senates = $this->senates->paginate(20);
         $users = $this->users->all();
@@ -38,7 +40,7 @@ class SenateController extends AdminBaseController
             ->with('users', $users);
     }
 
-    public function store()
+    public function store(): RedirectResponse
     {
         $input = Request::all();
 
@@ -88,7 +90,7 @@ class SenateController extends AdminBaseController
             ->with('members', $members);
     }
 
-    public function update($id)
+    public function update($id): RedirectResponse
     {
         $input = Request::all();
         $this->validator->validate($input);
@@ -99,7 +101,7 @@ class SenateController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\SenateController::class, 'show'], $id);
     }
 
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         $senate = $this->senates->delete($id);
 

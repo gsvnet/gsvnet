@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
         $this->time = Carbon::now();
     }
 
-    public function run()
+    public function run(): void
     {
         $users = [];
         $profiles = [];

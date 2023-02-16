@@ -29,7 +29,7 @@ class ProfilesRepository extends BaseRepository
      * @param  int  $amount
      * @return UserProfile[]
      */
-    public function searchAndPaginate($search, $region = null, $yearGroup = null, $type = 2, $amount = 20)
+    public function searchAndPaginate(string $search, int $region = null, int $yearGroup = null, $type = 2, int $amount = 20): array
     {
         return $this->search($search, $region, $yearGroup, $type)->paginate($amount);
     }
@@ -48,7 +48,7 @@ class ProfilesRepository extends BaseRepository
      * @param  int  $type
      * @return UserProfile[]
      */
-    public function search($keyword = '', $region = null, $yearGroup = null, $type = 2)
+    public function search(string $keyword = '', int $region = null, int $yearGroup = null, int $type = 2): array
     {
         // Initialize basic query
         $query = UserProfile::with('user', 'yearGroup', 'regions')
@@ -93,7 +93,7 @@ class ProfilesRepository extends BaseRepository
      *   @param  int  $weeks
      *   @return UserProfile[]
      */
-    public function byUpcomingBirthdays($weeks)
+    public function byUpcomingBirthdays($weeks): array
     {
         $now = new Carbon;
         $year = $now->year;
@@ -119,7 +119,7 @@ class ProfilesRepository extends BaseRepository
      * @param  array  $input
      * @return User
      */
-    public function create(User $user, array $input)
+    public function create(User $user, array $input): User
     {
         $profile = UserProfile::create(['user_id' => $user->id]);
         $profile->user_id = $user->id;
@@ -155,7 +155,7 @@ class ProfilesRepository extends BaseRepository
      * @param  array  $input
      * @return User
      */
-    public function update($id, array $input)
+    public function update(int $id, array $input): User
     {
         $profile = $this->byId($id);
         $profile->fill($input);
@@ -172,7 +172,7 @@ class ProfilesRepository extends BaseRepository
      * @return Committe
      * @TODO: delete all profile members references
      */
-    public function delete($id)
+    public function delete(int $id): Committe
     {
         $profile = $this->byId($id);
         $profile->delete();

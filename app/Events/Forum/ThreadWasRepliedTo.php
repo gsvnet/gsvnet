@@ -27,7 +27,7 @@ class ThreadWasRepliedTo extends Event implements ShouldBroadcast
      *
      * @return array
      */
-    public function broadcastOn()
+    public function broadcastOn(): array
     {
         return ['activity'];
     }
@@ -42,7 +42,7 @@ class ThreadWasRepliedTo extends Event implements ShouldBroadcast
      *
      * @return array
      */
-    public function broadcastWith()
+    public function broadcastWith(): array
     {
         return [
             'user_id' => $this->reply->author_id,

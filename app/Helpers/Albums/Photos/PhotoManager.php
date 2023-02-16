@@ -32,7 +32,7 @@ class PhotoManager
      * @param  array  $input
      * @return Photo
      */
-    public function create(array $input)
+    public function create(array $input): Photo
     {
         $this->createValidator->validate($input);
         // Store the photo file and get its new path
@@ -48,7 +48,7 @@ class PhotoManager
      * @param  array  $input
      * @return Photo
      */
-    public function update($id, array $input)
+    public function update($id, array $input): Photo
     {
         $this->updateValidator->validate($input);
 

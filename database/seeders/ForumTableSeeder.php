@@ -30,7 +30,7 @@ class ForumTableSeeder extends Seeder
         $this->tagIds = Tag::pluck('id')->all();
     }
 
-    public function run()
+    public function run(): void
     {
         $threads = $this->generateThreads();
 

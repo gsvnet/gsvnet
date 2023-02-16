@@ -68,7 +68,7 @@ class BulkNewsletterSubscriptions extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $for = $this->argument('for');
 
@@ -97,7 +97,7 @@ class BulkNewsletterSubscriptions extends Command
      *
      * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
             ['for', InputArgument::REQUIRED, 'Wie moeten er geupdate worden? leden|reünisten '],
@@ -109,7 +109,7 @@ class BulkNewsletterSubscriptions extends Command
      *
      * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [];
     }

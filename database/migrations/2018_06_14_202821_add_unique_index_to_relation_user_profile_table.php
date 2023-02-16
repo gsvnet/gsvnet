@@ -10,7 +10,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('region_user_profile', function (Blueprint $table) {
             $table->unique(['region_id', 'user_profile_id']);
@@ -22,7 +22,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('region_user_profile', function (Blueprint $table) {
             $table->dropUnique(['region_id', 'user_profile_id']);

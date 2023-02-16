@@ -12,7 +12,7 @@ class YearGroupRepository
      * @param  int  $id
      * @return YearGroup
      */
-    public function byId($id)
+    public function byId(int $id): YearGroup
     {
         return YearGroup::findOrFail($id);
     }
@@ -23,7 +23,7 @@ class YearGroupRepository
      * @param  int  $id
      * @return YearGroup
      */
-    public function exists($id)
+    public function exists(int $id): YearGroup
     {
         try {
             $this->byId($id);

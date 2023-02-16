@@ -12,7 +12,7 @@ class BusServiceProvider extends ServiceProvider
      *
      * @param  Dispatcher|\Illuminate\Bus\Dispatcher  $dispatcher
      */
-    public function boot(Dispatcher $dispatcher)
+    public function boot(Dispatcher $dispatcher): void
     {
         $dispatcher->map(['App\Handlers\Commands']);
     }
@@ -22,7 +22,7 @@ class BusServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         //
     }

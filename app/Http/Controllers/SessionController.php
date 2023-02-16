@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 
@@ -36,14 +38,14 @@ class SessionController extends BaseController
         return redirect()->action([\App\Http\Controllers\SessionController::class, 'getLogin'])->with('login_errors', true);
     }
 
-    public function getLogout()
+    public function getLogout(): RedirectResponse
     {
         Auth::logout();
 
         return redirect('/');
     }
 
-    public function getLogin()
+    public function getLogin(): View
     {
         return view('users.login');
     }

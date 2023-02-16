@@ -12,7 +12,7 @@ class ValidationException extends \Exception
     /**
      * @param  string  $errors
      */
-    public function __construct($errors)
+    public function __construct(string $errors)
     {
         $this->errors = $errors;
     }
@@ -22,7 +22,7 @@ class ValidationException extends \Exception
      *
      * @return string
      */
-    public function getErrors()
+    public function getErrors(): string
     {
         return $this->errors;
     }

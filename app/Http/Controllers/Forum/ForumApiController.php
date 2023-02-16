@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Response;
 use App\Commands\Forum\DislikeReplyCommand;
 use App\Commands\Forum\DislikeThreadCommand;
 use App\Commands\Forum\LikeReplyCommand;
@@ -33,7 +34,7 @@ class ForumApiController extends BaseController
         return $this->markdown->convertMarkdownToHtml($data);
     }
 
-    public function quoteReply(ReplyRepository $replies, $replyId)
+    public function quoteReply(ReplyRepository $replies, $replyId): Response
     {
         $reply = $replies->requireById($replyId);
         $thread = $reply->thread;
@@ -52,7 +53,7 @@ class ForumApiController extends BaseController
         ]);
     }
 
-    public function quoteThread(ThreadRepository $threads, $threadId)
+    public function quoteThread(ThreadRepository $threads, $threadId): Response
     {
         $thread = $threads->requireById($threadId);
 
@@ -70,7 +71,7 @@ class ForumApiController extends BaseController
         ]);
     }
 
-    public function likeReply(LikeReplyValidator $validator, $replyId)
+    public function likeReply(LikeReplyValidator $validator, $replyId): Response
     {
         $data = [
             'userId' => Auth::user()->id,
@@ -88,7 +89,7 @@ class ForumApiController extends BaseController
         return response()->json();
     }
 
-    public function dislikeReply(DislikeReplyValidator $validator, $replyId)
+    public function dislikeReply(DislikeReplyValidator $validator, $replyId): Response
     {
         $data = [
             'userId' => Auth::user()->id,
@@ -106,7 +107,7 @@ class ForumApiController extends BaseController
         return response()->json();
     }
 
-    public function likeThread(LikeThreadValidator $validator, $threadId)
+    public function likeThread(LikeThreadValidator $validator, $threadId): Response
     {
         $data = [
             'userId' => Auth::user()->id,
@@ -124,7 +125,7 @@ class ForumApiController extends BaseController
         return response()->json();
     }
 
-    public function dislikeThread(DislikeThreadValidator $validator, $threadId)
+    public function dislikeThread(DislikeThreadValidator $validator, $threadId): Response
     {
         $data = [
             'userId' => Auth::user()->id,

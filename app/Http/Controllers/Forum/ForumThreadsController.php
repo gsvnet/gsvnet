@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use App\Commands\Forum\DeleteThreadCommand;
 use App\Commands\Forum\EditThreadCommand;
 use App\Commands\Forum\StartThreadCommand;
@@ -48,7 +50,7 @@ class ForumThreadsController extends BaseController
     }
 
     // show thread list - clean this method
-    public function getIndex()
+    public function getIndex(): View
     {
         // query tags and retrieve the appropriate threads
         $tags = $this->tags->getAllTagsBySlug(Input::get('tags'));
@@ -98,7 +100,7 @@ class ForumThreadsController extends BaseController
         return view('forum.threads.show', compact('thread', 'replies', 'author'));
     }
 
-    public function getCreateThread()
+    public function getCreateThread(): View
     {
         $tags = $this->tags->getAllForForum();
 
@@ -111,7 +113,7 @@ class ForumThreadsController extends BaseController
         return view('forum.threads.create', compact('tags', 'author'));
     }
 
-    public function postCreateThread(StartThreadValidator $validator)
+    public function postCreateThread(StartThreadValidator $validator): RedirectResponse
     {
         $subject = Input::get('subject');
         $slug = ThreadSlug::generate($subject);
@@ -142,7 +144,7 @@ class ForumThreadsController extends BaseController
         return redirect()->action([\App\Http\Controllers\ForumThreadsController::class, 'getShowThread'], [$slug]);
     }
 
-    public function getEditThread($threadId)
+    public function getEditThread($threadId): View
     {
         $thread = $this->threads->requireById($threadId);
         $author = $thread->author;
@@ -156,7 +158,7 @@ class ForumThreadsController extends BaseController
         return view('forum.threads.edit', compact('thread', 'tags', 'author', 'visibility'));
     }
 
-    public function postEditThread(Request $request, $threadId)
+    public function postEditThread(Request $request, $threadId): RedirectResponse
     {
         $thread = $this->threads->requireById($threadId);
 
@@ -185,7 +187,7 @@ class ForumThreadsController extends BaseController
         return redirect()->action([\App\Http\Controllers\ForumThreadsController::class, 'getShowThread'], [$thread->slug]);
     }
 
-    public function getDelete($threadId)
+    public function getDelete($threadId): View
     {
         $thread = $this->threads->requireById($threadId);
 
@@ -194,7 +196,7 @@ class ForumThreadsController extends BaseController
         return view('forum.threads.delete', compact('thread'));
     }
 
-    public function postDelete($threadId)
+    public function postDelete($threadId): RedirectResponse
     {
         $thread = $this->threads->requireById($threadId);
 
@@ -207,7 +209,7 @@ class ForumThreadsController extends BaseController
         return redirect()->action([\App\Http\Controllers\ForumThreadsController::class, 'getIndex']);
     }
 
-    public function getSearch()
+    public function getSearch(): View
     {
         $query = Input::get('query');
         $replies = Input::get('replies');
@@ -218,7 +220,7 @@ class ForumThreadsController extends BaseController
         return view('forum.search', compact('query', 'results'));
     }
 
-    public function statistics()
+    public function statistics(): View
     {
         $perMonthUsers = $this->users->mostPostsPreviousMonth();
         $perWeekUsers = $this->users->mostPostsPreviousWeek();
@@ -239,7 +241,7 @@ class ForumThreadsController extends BaseController
         ));
     }
 
-    public function getTrashed()
+    public function getTrashed(): View
     {
         $this->authorize('thread.manage');
 

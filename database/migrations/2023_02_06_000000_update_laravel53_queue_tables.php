@@ -11,7 +11,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('jobs', function (Blueprint $table) {
             $table->dropIndex('jobs_queue_reserved_reserved_at_index');
@@ -29,7 +29,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('jobs', function (Blueprint $table) {
             $table->tinyInteger('reserved')->unsigned();

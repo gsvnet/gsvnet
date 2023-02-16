@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class PhotosTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         Photo::create([
             'name' => 'Kat',

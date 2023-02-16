@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 
 class AlgoliaServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         $this->app->bind(Client::class, function () {
             return new Client(

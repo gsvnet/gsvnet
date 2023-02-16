@@ -2,6 +2,8 @@
 
 namespace Admin;
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use App\Helpers\Events\EventsRepository;
 use App\Helpers\Events\EventValidator;
 use Illuminate\Support\Facades\Request;
@@ -23,7 +25,7 @@ class EventController extends AdminBaseController
         parent::__construct();
     }
 
-    public function index()
+    public function index(): View
     {
         $events = $this->events->paginate(50, false);
 
@@ -31,12 +33,12 @@ class EventController extends AdminBaseController
             ->with('events', $events);
     }
 
-    public function create()
+    public function create(): View
     {
         return view('admin.events.create');
     }
 
-    public function store()
+    public function store(): RedirectResponse
     {
         $input = Request::all();
         $input['location'] = Request::get('location', '');
@@ -52,7 +54,7 @@ class EventController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\EventController::class, 'index']);
     }
 
-    public function show($id)
+    public function show($id): View
     {
         $event = $this->events->byId($id);
 
@@ -60,7 +62,7 @@ class EventController extends AdminBaseController
             ->with('event', $event);
     }
 
-    public function edit($id)
+    public function edit($id): View
     {
         $event = $this->events->byId($id);
 
@@ -68,7 +70,7 @@ class EventController extends AdminBaseController
             ->with('event', $event);
     }
 
-    public function update($id)
+    public function update($id): RedirectResponse
     {
         $input = Request::all();
         $input['location'] = Request::get('location', '');
@@ -84,7 +86,7 @@ class EventController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\EventController::class, 'index']);
     }
 
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         $event = $this->events->delete($id);
 
