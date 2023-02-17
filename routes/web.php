@@ -38,7 +38,7 @@ Route::get('roos', [HomeController::class, 'roos']);
 Route::get('privacy-statement', [PublicFilesController::class, 'showPrivacyStatement']);
 
 // Login and logout routes
-Route::get('inloggen', [SessionController::class, 'getLogin'])->middleware('guest');
+Route::get('inloggen', [SessionController::class, 'getLogin'])->middleware('guest')->name('login');
 Route::post('inloggen', [SessionController::class, 'postLogin'])->middleware('guest');
 Route::get('uitloggen', [SessionController::class, 'getLogout'])->middleware('auth');
 
