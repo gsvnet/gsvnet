@@ -97,7 +97,7 @@ class Handler extends ExceptionHandler
     /**
      * Convert an authentication exception into an unauthenticated response.
      */
-    protected function unauthenticated(Request $request, AuthenticationException $e): Response
+    protected function unauthenticated($request, AuthenticationException $e): Response
     {
         if ($request->expectsJson()) {
             return response()->json(['error' => 'Unauthenticated.'], 401);

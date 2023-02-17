@@ -151,6 +151,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -167,7 +169,6 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
 
         App\Providers\NewsletterServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
