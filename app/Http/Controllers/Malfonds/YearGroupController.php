@@ -14,8 +14,6 @@ class YearGroupController extends CoreApiController
 
     /**
      * YearGroupsController constructor.
-     *
-     * @param  YearGroupRepository  $groups
      */
     public function __construct(YearGroupRepository $groups)
     {

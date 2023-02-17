@@ -12,20 +12,16 @@ class FilesRepository
 {
     /**
      * Get all albums
-     *
-     * @return Collection
      */
-    public function all($published = true)
+    public function all($published = true): Collection
     {
         return File::published($published)->all();
     }
 
     /**
      * Get paginated albums
-     *
-     * @param  int  $amount
      */
-    public function paginate($amount, $published = true)
+    public function paginate(int $amount, $published = true)
     {
         return File::published($published)->orderBy('updated_at', 'desc')->paginate($amount);
     }
@@ -71,11 +67,10 @@ class FilesRepository
     /**
      * Get by slug
      *
-     * @param  int  $id
      *
      * @throws NoPermissionException
      */
-    public function byId($id)
+    public function byId(int $id)
     {
         $file = File::findOrFail($id);
 
@@ -88,11 +83,8 @@ class FilesRepository
 
     /**
      * Create file
-     *
-     * @param  array  $input
-     * @return File
      */
-    public function create(array $input)
+    public function create(array $input): File
     {
         $file = new File;
         $file->name = $input['name'];
@@ -113,12 +105,8 @@ class FilesRepository
 
     /**
      * Update file
-     *
-     * @param  int  $id
-     * @param  array  $input
-     * @return File
      */
-    public function update($id, array $input)
+    public function update(int $id, array $input): File
     {
         $file = $this->byId($id);
         $file->fill($input);
@@ -141,11 +129,8 @@ class FilesRepository
 
     /**
      * Delete file
-     *
-     * @param  int  $id
-     * @return File
      */
-    public function delete($id)
+    public function delete(int $id): File
     {
         $file = $this->byId($id);
         $file->delete();

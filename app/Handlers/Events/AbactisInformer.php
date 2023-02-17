@@ -23,9 +23,6 @@ class AbactisInformer
 
     /**
      * AbactisInformer constructor.
-     *
-     * @param  Mailer  $mailer
-     * @param  Repository  $config
      */
     public function __construct(Mailer $mailer, Repository $config)
     {

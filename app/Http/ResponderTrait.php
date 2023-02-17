@@ -31,10 +31,8 @@ trait ResponderTrait
 
     /**
      * Reset this response builder instance.
-     *
-     * @return void
      */
-    protected function reset()
+    protected function reset(): void
     {
         $this->statusCode = 200;
         $this->headers = [];
@@ -42,12 +40,8 @@ trait ResponderTrait
 
     /**
      * Add a header to the response
-     *
-     * @param  string  $name
-     * @param  string  $value
-     * @return $this
      */
-    public function addHeader($name, $value)
+    public function addHeader(string $name, string $value): static
     {
         $this->headers[$name] = $value;
 
@@ -56,11 +50,8 @@ trait ResponderTrait
 
     /**
      * Add an array of headers.
-     *
-     * @param  array  $headers
-     * @return $this
      */
-    public function addHeaders(array $headers)
+    public function addHeaders(array $headers): static
     {
         $this->headers = array_merge($this->headers, $headers);
 
@@ -71,12 +62,8 @@ trait ResponderTrait
      * Create a new collection resource with the given tranformer.
      *
      * @param  array|object  $collection
-     * @param  object  $transformer
-     * @param  \League\Fractal\Pagination\CursorInterface  $cursor
-     * @param  string  $key
-     * @return \Illuminate\Http\Response
      */
-    public function withCollection($collection, $transformer, FractalCursorInterface $cursor = null, $key = null)
+    public function withCollection($collection, object $transformer, FractalCursorInterface $cursor = null, string $key = null): Response
     {
         $fractalService = $this->getFractalService();
 
@@ -89,11 +76,8 @@ trait ResponderTrait
      * Create a new item resource with the given transformer.
      *
      * @param  array|object  $item
-     * @param  object  $transformer
-     * @param  string  $key
-     * @return \Illuminate\Http\Response
      */
-    public function withItem($item, $transformer, $key = null)
+    public function withItem($item, object $transformer, string $key = null): Response
     {
         $fractalService = $this->getFractalService();
 
@@ -104,13 +88,8 @@ trait ResponderTrait
 
     /**
      * Create a new collection resource from a paginator with the given transformer.
-     *
-     * @param  \League\Fractal\Pagination\PaginatorInterface  $paginator
-     * @param  object  $transformer
-     * @param  string  $key
-     * @return \Illuminate\Http\Response
      */
-    public function withPaginator(FractalPaginatorInterface $paginator, $transformer, $key = null)
+    public function withPaginator(FractalPaginatorInterface $paginator, object $transformer, string $key = null): Response
     {
         $fractalService = $this->getFractalService();
 
@@ -121,11 +100,8 @@ trait ResponderTrait
 
     /**
      * Return an array response.
-     *
-     * @param  array  $array
-     * @return \Illuminate\Http\Response
      */
-    public function withArray(array $array = [])
+    public function withArray(array $array = []): Response
     {
         return $this->build($array);
     }
@@ -134,10 +110,8 @@ trait ResponderTrait
      * Return an error response.
      *
      * @param  string|array  $error
-     * @param  int  $statusCode
-     * @return $this
      */
-    public function withError($error, $statusCode)
+    public function withError($error, int $statusCode): static
     {
         if (! is_array($error)) {
             $error = ['error' => $error];
@@ -152,9 +126,8 @@ trait ResponderTrait
      * Build the response.
      *
      * @param  array|\League\Fractal\Resource\ResourceInterface  $data
-     * @return \Illuminate\Http\Response
      */
-    protected function build($data)
+    protected function build($data): Response
     {
         $response = new IlluminateResponse($data, $this->statusCode, $this->headers);
 
@@ -165,57 +138,41 @@ trait ResponderTrait
      * Set the responses status code.
      *
      * @param $statusCode
-     * @return $this
      */
-    public function setStatusCode($statusCode)
+    public function setStatusCode($statusCode): static
     {
         $this->statusCode = $statusCode;
 
         return $this;
     }
 
-    /**
-     * @return $this
-     */
-    public function itemWasCreated()
+    public function itemWasCreated(): static
     {
         return $this->setStatusCode(IlluminateResponse::HTTP_CREATED);
     }
 
-    /**
-     * @return $this
-     */
-    public function itemWasUpdated()
+    public function itemWasUpdated(): static
     {
         return $this->setStatusCode(IlluminateResponse::HTTP_OK);
     }
 
-    /**
-     * @return $this
-     */
-    public function itemWasRemoved()
+    public function itemWasRemoved(): static
     {
         return $this->setStatusCode(IlluminateResponse::HTTP_NO_CONTENT);
     }
 
     /**
      * Return a 404 not found error.
-     *
-     * @param  string  $message
-     * @return $this
      */
-    public function errorNotFound($message = 'Not Found')
+    public function errorNotFound(string $message = 'Not Found'): static
     {
         return $this->withError($message, IlluminateResponse::HTTP_NOT_FOUND);
     }
 
     /**
      * Return a 400 bad request error.
-     *
-     * @param  string  $message
-     * @return $this
      */
-    public function errorBadRequest($message = 'Bad Request')
+    public function errorBadRequest(string $message = 'Bad Request'): static
     {
         return $this->withError($message, IlluminateResponse::HTTP_BAD_REQUEST);
     }
@@ -224,9 +181,8 @@ trait ResponderTrait
      * Return a 403 forbidden error.
      *
      * @param  string|array  $message
-     * @return $this
      */
-    public function errorForbidden($message = 'Forbidden')
+    public function errorForbidden($message = 'Forbidden'): static
     {
         return $this->withError($message, IlluminateResponse::HTTP_FORBIDDEN);
     }
@@ -235,9 +191,8 @@ trait ResponderTrait
      * Return a 500 internal server error.
      *
      * @param  string|array  $message
-     * @return $this
      */
-    public function errorInternal($message = 'Internal Error')
+    public function errorInternal($message = 'Internal Error'): static
     {
         return $this->withError($message, IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR);
     }
@@ -246,17 +201,13 @@ trait ResponderTrait
      * Return a 401 unauthorized error.
      *
      * @param  string|array  $message
-     * @return \Illuminate\Http\Response
      */
-    public function errorUnauthorized($message = 'Unauthorized')
+    public function errorUnauthorized($message = 'Unauthorized'): Response
     {
         return $this->withError($message, IlluminateResponse::HTTP_UNAUTHORIZED);
     }
 
-    /**
-     * @return Manager
-     */
-    public function getFractal()
+    public function getFractal(): Manager
     {
         return App::make(Manager::class);
     }
@@ -264,7 +215,6 @@ trait ResponderTrait
     /**
      * Set the fractalService instance.
      *
-     * @param  FractalService  $fractalService
      *
      * @internal param $FractalService
      */
@@ -275,10 +225,8 @@ trait ResponderTrait
 
     /**
      * Get the fractalService.
-     *
-     * @return FractalService
      */
-    public function getFractalService()
+    public function getFractalService(): FractalService
     {
         return $this->fractal ?: App::make(FractalService::class);
     }

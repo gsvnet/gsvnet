@@ -20,10 +20,8 @@ class ThreadWasStarted extends Event implements ShouldBroadcast
 
     /**
      * Get the channels the event should be broadcast on.
-     *
-     * @return array
      */
-    public function broadcastOn()
+    public function broadcastOn(): array
     {
         return ['activity'];
     }
@@ -35,10 +33,8 @@ class ThreadWasStarted extends Event implements ShouldBroadcast
 
     /**
      * Get the data to broadcast.
-     *
-     * @return array
      */
-    public function broadcastWith()
+    public function broadcastWith(): array
     {
         return [
             'user_id' => $this->thread->author_id,

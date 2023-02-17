@@ -5,6 +5,7 @@ namespace Admin\Senates;
 use Admin\AdminBaseController;
 use App\Helpers\Senates\SenatesRepository;
 use App\Helpers\Users\UsersRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Request;
 
 class MembersController extends AdminBaseController
@@ -24,7 +25,7 @@ class MembersController extends AdminBaseController
         parent::__construct();
     }
 
-    public function store($senate)
+    public function store($senate): RedirectResponse
     {
         $input = Request::all();
 
@@ -41,7 +42,7 @@ class MembersController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\SenateController::class, 'show'], $senate->id);
     }
 
-    public function destroy($senate, $member)
+    public function destroy($senate, $member): RedirectResponse
     {
         $member = $this->users->byId($member);
         $member->senates()->detach($senate);

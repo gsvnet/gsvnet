@@ -163,6 +163,6 @@ class ThreadPresenter extends Presenter
 
     private function purify($content)
     {
-        return App::make('Mews\Purifier\Purifier')->clean($content);
+        return App::make('Stevebauman\Purify\Facades\Purify')->clean($content);
     }
 }

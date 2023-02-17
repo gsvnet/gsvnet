@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class YearGroupsSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $time = Carbon::now();
 

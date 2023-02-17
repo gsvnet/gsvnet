@@ -14,7 +14,7 @@ class Registrar implements RegistrarContract
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function validator(array $data)
+    public function validator(array $data): Validator
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
@@ -29,7 +29,7 @@ class Registrar implements RegistrarContract
      * @param  array  $data
      * @return User
      */
-    public function create(array $data)
+    public function create(array $data): User
     {
         return User::create([
             'name' => $data['name'],

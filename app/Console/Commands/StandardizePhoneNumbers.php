@@ -58,8 +58,6 @@ class StandardizePhoneNumbers extends Command
 
     /**
      * BulkNewsletterSubscriptions constructor.
-     *
-     * @param  UsersRepository  $users
      */
     public function __construct(UsersRepository $users)
     {
@@ -69,10 +67,8 @@ class StandardizePhoneNumbers extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $for = $this->argument('of');
 
@@ -115,10 +111,8 @@ class StandardizePhoneNumbers extends Command
 
     /**
      * Get the console command arguments.
-     *
-     * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
             ['of', InputArgument::REQUIRED, 'leden of reünisten'],
@@ -127,10 +121,8 @@ class StandardizePhoneNumbers extends Command
 
     /**
      * Get the console command options.
-     *
-     * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [];
     }

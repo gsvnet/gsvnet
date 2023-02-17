@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class AlbumsTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         Album::create([
             'name' => 'Honden',

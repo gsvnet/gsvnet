@@ -33,9 +33,6 @@ class InviteMember extends Command
     /**
      * InviteMember constructor.
      *
-     * @param  User  $host
-     * @param  User  $guest
-     * @param  Email  $email
      * @param $title
      * @param $name
      * @param $message
@@ -64,26 +61,17 @@ class InviteMember extends Command
         );
     }
 
-    /**
-     * @return User
-     */
-    public function getHost()
+    public function getHost(): User
     {
         return $this->host;
     }
 
-    /**
-     * @return User
-     */
-    public function getGuest()
+    public function getGuest(): User
     {
         return $this->guest;
     }
 
-    /**
-     * @return Email
-     */
-    public function getEmail()
+    public function getEmail(): Email
     {
         return $this->email;
     }

@@ -8,10 +8,8 @@ class PaginationPresenter extends BootstrapThreePresenter
 {
     /**
      * Render the Pagination contents.
-     *
-     * @return string
      */
-    public function render()
+    public function render(): string
     {
         if ($this->lastPage < 9) {
             $content = $this->getPageRange(1, $this->lastPage);
@@ -24,10 +22,8 @@ class PaginationPresenter extends BootstrapThreePresenter
 
     /**
      * Create a pagination slider link window.
-     *
-     * @return string
      */
-    protected function getPageSlider()
+    protected function getPageSlider(): string
     {
         $window = 3;
 
@@ -63,30 +59,24 @@ class PaginationPresenter extends BootstrapThreePresenter
 
     /**
      * Get the page range for the current page window.
-     *
-     * @return string
      */
-    public function getAdjacentRange()
+    public function getAdjacentRange(): string
     {
         return $this->getPageRange($this->currentPage - 2, $this->currentPage + 2);
     }
 
     /**
      * Create the beginning leader of a pagination slider.
-     *
-     * @return string
      */
-    public function getStart()
+    public function getStart(): string
     {
         return $this->getPageRange(1, 1).$this->getDots();
     }
 
     /**
      * Create the ending cap of a pagination slider.
-     *
-     * @return string
      */
-    public function getFinish()
+    public function getFinish(): string
     {
         $content = $this->getPageRange($this->lastPage, $this->lastPage);
 

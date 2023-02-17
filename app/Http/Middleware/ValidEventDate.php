@@ -4,10 +4,12 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Config;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ValidEventDate
 {
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         $min = (int) Config::get('gsvnet.events.minYear');
         $max = (int) Config::get('gsvnet.events.maxYear');

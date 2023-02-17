@@ -20,9 +20,6 @@ class MemberHistoryController extends CoreApiController
 
     /**
      * MemberHistoryController constructor.
-     *
-     * @param  ProfileActionsRepository  $actions
-     * @param  UsersRepository  $users
      */
     public function __construct(ProfileActionsRepository $actions, UsersRepository $users)
     {

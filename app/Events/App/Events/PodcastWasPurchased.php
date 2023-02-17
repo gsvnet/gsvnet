@@ -21,10 +21,8 @@ class PodcastWasPurchased extends Event
 
     /**
      * Get the channels the event should be broadcast on.
-     *
-     * @return array
      */
-    public function broadcastOn()
+    public function broadcastOn(): array
     {
         return [];
     }

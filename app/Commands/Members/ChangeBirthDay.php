@@ -26,10 +26,6 @@ class ChangeBirthDay extends Command
 
     /**
      * ChangeBirthDay constructor.
-     *
-     * @param  User  $user
-     * @param  User  $manager
-     * @param  Date  $birthday
      */
     public function __construct(User $user, User $manager, Date $birthday)
     {

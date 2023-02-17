@@ -3,7 +3,9 @@
 use App\Helpers\Albums\AlbumsRepository;
 use App\Helpers\Albums\Photos\PhotosRepository;
 use App\Helpers\Core\ImageHandler;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Config;
+use Illuminate\View\View;
 
 class PhotoController extends BaseController
 {
@@ -21,7 +23,7 @@ class PhotoController extends BaseController
         $this->handler = $handler;
     }
 
-    public function showAlbums()
+    public function showAlbums(): View
     {
         $photosPerPage = Config::get('photos.photos_per_page');
         $albums = $this->albums->paginateWithFirstPhoto($photosPerPage);
@@ -29,7 +31,7 @@ class PhotoController extends BaseController
         return view('gallery.albums.index')->with('albums', $albums);
     }
 
-    public function showPhotos($slug)
+    public function showPhotos($slug): View
     {
         $album = $this->albums->bySlug($slug);
         $photosPerPage = Config::get('photos.photos_per_page');
@@ -52,10 +54,9 @@ class PhotoController extends BaseController
      * Returns an image response
      *
      * @param $photo_id
-     * @param  string  $type
      * @return
      */
-    public function showPhoto($photo_id, $type = '')
+    public function showPhoto($photo_id, string $type = ''): Response
     {
         $photo = $this->photos->byId($photo_id);
         $path = $this->handler->getStoragePath($photo->src_path, $type);

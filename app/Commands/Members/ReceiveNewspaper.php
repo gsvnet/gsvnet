@@ -25,10 +25,6 @@ class ReceiveNewspaper extends Command
 
     /**
      * ReceiveNewspaper constructor.
-     *
-     * @param  User  $user
-     * @param  User  $manager
-     * @param  bool  $receive_newspaper
      */
     public function __construct(User $user, User $manager, bool $receive_newspaper)
     {

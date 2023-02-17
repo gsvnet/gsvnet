@@ -2,6 +2,7 @@
 
 use App\Helpers\Events\EventsRepository;
 use App\Helpers\Users\Profiles\ProfilesRepository;
+use Illuminate\View\View;
 
 class HomeController extends BaseController
 {
@@ -30,7 +31,7 @@ class HomeController extends BaseController
         return redirect()->away('https://www.gsvgroningen.nl', 301);
     }
 
-    public function showNewIndex()
+    public function showNewIndex(): View
     {
         // Temporary filter to decide which index page to show
         $ua = $_SERVER['HTTP_USER_AGENT'];
@@ -78,22 +79,22 @@ class HomeController extends BaseController
         }
     }
 
-    public function sponsorProgram()
+    public function sponsorProgram(): View
     {
         return view('ad-page');
     }
 
-    public function showKiezel()
+    public function showKiezel(): View
     {
         return view('kiezel');
     }
 
-    public function showKei()
+    public function showKei(): View
     {
         return view('kei');
     }
 
-    public function roos()
+    public function roos(): View
     {
         return view('roos');
     }

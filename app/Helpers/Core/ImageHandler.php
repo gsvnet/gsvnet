@@ -93,7 +93,7 @@ class ImageHandler
      *
      * @param  string  $dimension either small or wide
      */
-    private function getOrCreate($path, $dimension = '')
+    private function getOrCreate($path, string $dimension = '')
     {
         $fullPath = $this->basePath.$path;
 

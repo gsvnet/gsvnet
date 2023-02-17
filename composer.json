@@ -8,16 +8,15 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "laravel/framework": "^9.52",
-        "laravelcollective/html": "^6.3",
-        "doctrine/dbal": "^2.13",
-        "anahkiasen/former": "^4.7",
+        "laravel/framework": "^10.0",
+        "laravelcollective/html": "^6.4",
+        "doctrine/dbal": "^3.5",
         "intervention/image": "~2.3.0",
         "misd/linkify": "~1.1.2",
         "guzzlehttp/guzzle": "^7.2",
-        "laracasts/presenter": "~0.2.1",
+        "laracasts/presenter": "dev-master",
         "pda/pheanstalk": "^4.0",
-        "msurguy/honeypot": "^1.1",
+        "msurguy/honeypot": "^1.2",
         "mailchimp/marketing": "*",
         "erusev/parsedown": "~1.7.2",
         "haampie/gravatar": "~1.4.0",
@@ -27,14 +26,15 @@
         "league/fractal": "^0.13.0",
         "maatwebsite/excel": "^3.1",
         "giggsey/libphonenumber-for-php": "^7.4",
-        "bugsnag/bugsnag-laravel": "^2.23",
-        "algolia/algoliasearch-client-php": "^2.7",
-        "php": "^8.0",
-        "laravel/tinker": "^2.7",
-        "mews/purifier": "*",
-        "laravel/ui": "^3.3",
+        "bugsnag/bugsnag-laravel": "^2.0",
+        "algolia/algoliasearch-client-php": "*",
+        "php": "^8.1",
+        "laravel/tinker": "^2.8",
+        "stevebauman/purify": "*",
+        "laravel/ui": "^4.2",
         "symfony/mailgun-mailer": "*",
-        "symfony/http-client": "*"
+        "symfony/http-client": "*",
+        "anahkiasen/former": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5.10",
@@ -42,12 +42,20 @@
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.3",
         "fakerphp/faker": "*",
-        "spatie/laravel-ignition": "^1.4"
+        "spatie/laravel-ignition": "^2.0"
     },
     "repositories": [
         {
             "type": "vcs",
             "url": "git@github.com:haampie/gravatar.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:Erfan98/Presenter.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:lasschehj/former.git"
         }
     ],
     "autoload": {
@@ -97,5 +105,7 @@
         "laravel": {
             "dont-discover": []
         }
-    }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }

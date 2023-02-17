@@ -8,9 +8,11 @@ use App\Helpers\Core\ImageHandler;
 use App\Helpers\Permissions\NoPermissionException;
 use App\Helpers\Users\Profiles\PotentialValidator;
 use App\Helpers\Users\Profiles\ProfilesRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\MessageBag;
+use Illuminate\View\View;
 
 class MemberController extends BaseController
 {
@@ -25,17 +27,17 @@ class MemberController extends BaseController
         $this->profiles = $profiles;
     }
 
-    public function index()
+    public function index(): View
     {
         return view('word-lid.index');
     }
 
-    public function becomeMember()
+    public function becomeMember(): View
     {
         return view('word-lid.word-lid');
     }
 
-    public function becomeMemberIFrame()
+    public function becomeMemberIFrame(): View
     {
         return view('iframes.word-lid');
     }
@@ -44,13 +46,10 @@ class MemberController extends BaseController
      * This method is still a mess due to new requirements... It currently has too many
      * responsibilities. Should be refactored.
      *
-     * @param  Request  $request
-     * @param  PotentialValidator  $validator
-     * @return \Illuminate\Http\RedirectResponse
      *
      * @throws ValidationException
      */
-    public function store(Request $request, PotentialValidator $validator)
+    public function store(Request $request, PotentialValidator $validator): RedirectResponse
     {
         \Log::info('Potential wil lid worden', $request->except('password', 'password_confirmation'));
 
@@ -105,22 +104,22 @@ class MemberController extends BaseController
         return redirect()->action([\App\Http\Controllers\MemberController::class, 'becomeMember']);
     }
 
-    public function study()
+    public function study(): View
     {
         return view('word-lid.study');
     }
 
-    public function showCorona()
+    public function showCorona(): View
     {
         return view('word-lid.corona');
     }
 
-    public function faq()
+    public function faq(): View
     {
         return view('word-lid.faq');
     }
 
-    public function complaints()
+    public function complaints(): View
     {
         return view('word-lid.complaints');
     }
@@ -141,11 +140,8 @@ class MemberController extends BaseController
 
     /**
      *   Returns an image response
-     *
-     * @param  int  $id
-     * @param  string  $type
      */
-    private function photoResponse($id, $type = '')
+    private function photoResponse(int $id, string $type = '')
     {
         $profile = $this->profiles->byId($id);
         $path = $this->imageHandler->getStoragePath($profile->photo_path, $type);

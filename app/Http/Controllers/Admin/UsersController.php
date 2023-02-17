@@ -15,8 +15,10 @@ use App\Helpers\Users\UserManager;
 use App\Helpers\Users\UsersRepository;
 use App\Helpers\Users\UserValidator;
 use App\Helpers\Users\YearGroupRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class UsersController extends AdminBaseController
 {
@@ -62,7 +64,7 @@ class UsersController extends AdminBaseController
         parent::__construct();
     }
 
-    public function index()
+    public function index(): View
     {
         $this->authorize('users.show');
         $users = $this->users->paginateLatelyRegistered(50);
@@ -70,7 +72,7 @@ class UsersController extends AdminBaseController
         return view('admin.users.index')->with('users', $users);
     }
 
-    public function showGuests()
+    public function showGuests(): View
     {
         $this->authorize('users.show');
         $users = $this->users->paginateLatestRegisteredGuests(50);
@@ -78,7 +80,7 @@ class UsersController extends AdminBaseController
         return view('admin.users.visitors')->with('users', $users);
     }
 
-    public function showPotentials()
+    public function showPotentials(): View
     {
         $this->authorize('users.show');
         $users = $this->users->paginateLatestPotentials(50);
@@ -86,7 +88,7 @@ class UsersController extends AdminBaseController
         return view('admin.users.potentials')->with(['users' => $users]);
     }
 
-    public function showMembers(Request $request)
+    public function showMembers(Request $request): View
     {
         $this->authorize('users.show');
         $search = $request->get('zoekwoord', '');
@@ -112,7 +114,7 @@ class UsersController extends AdminBaseController
             ->with('regions', $regions);
     }
 
-    public function showFormerMembers(Request $request)
+    public function showFormerMembers(Request $request): View
     {
         $this->authorize('users.show');
         $search = $request->get('zoekwoord', '');
@@ -156,14 +158,14 @@ class UsersController extends AdminBaseController
         $this->filer->fileMembers()->export('xls');
     }
 
-    public function create()
+    public function create(): View
     {
         $this->authorize('users.manage');
 
         return view('admin.users.create');
     }
 
-    public function store(Request $request, RegisterUserValidator $validator)
+    public function store(Request $request, RegisterUserValidator $validator): RedirectResponse
     {
         $this->authorize('users.manage');
 
@@ -196,7 +198,7 @@ class UsersController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'showGuests']);
     }
 
-    public function show($id)
+    public function show($id): View
     {
         $this->authorize('users.show');
         $user = $this->users->byId($id);
@@ -228,7 +230,7 @@ class UsersController extends AdminBaseController
         return view('admin.users.showPotential')->with(compact('user', 'profile'));
     }
 
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         $this->authorize('users.manage');
         $user = $this->users->byId($id);
@@ -243,7 +245,7 @@ class UsersController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'index']);
     }
 
-    public function storeProfile($id)
+    public function storeProfile($id): RedirectResponse
     {
         $this->authorize('users.manage');
         $input = [];
@@ -259,7 +261,7 @@ class UsersController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'edit'], $user->id);
     }
 
-    public function destroyProfile($id)
+    public function destroyProfile($id): RedirectResponse
     {
         $this->authorize('users.manage');
         $user = $this->users->byId($id);
@@ -270,7 +272,7 @@ class UsersController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'edit'], $user->id);
     }
 
-    public function updateProfile(Request $request, $id)
+    public function updateProfile(Request $request, $id): RedirectResponse
     {
         $this->authorize('users.manage');
         $user = $this->users->byId($id);
@@ -308,7 +310,7 @@ class UsersController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
-    public function activate($id)
+    public function activate($id): RedirectResponse
     {
         $this->authorize('users.manage');
         $user = $this->userManager->activateUser($id);
@@ -318,7 +320,7 @@ class UsersController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'index']);
     }
 
-    public function accept($id)
+    public function accept($id): RedirectResponse
     {
         $this->authorize('users.manage');
         $user = $this->userManager->acceptMembership($id);

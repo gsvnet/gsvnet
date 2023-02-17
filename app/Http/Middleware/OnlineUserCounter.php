@@ -7,6 +7,7 @@ use Closure;
 use Illuminate\Contracts\Redis\Database;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * The idea is that there are two sets:
@@ -28,8 +29,6 @@ class OnlineUserCounter
 
     /**
      * OnlineUserCounter constructor.
-     *
-     * @param  Database  $redis
      */
     public function __construct(Database $redis)
     {
@@ -38,11 +37,8 @@ class OnlineUserCounter
 
     /**
      * @param $request
-     * @param  Closure  $next
-     * @param  string|null  $guard
-     * @return mixed
      */
-    public function handle(Request $request, Closure $next, $guard = null)
+    public function handle(Request $request, Closure $next, ?string $guard = null): Response
     {
         $user = Auth::guard($guard)->user();
 

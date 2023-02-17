@@ -26,10 +26,6 @@ class ChangeEmail extends Command
 
     /**
      * ChangeEmail constructor.
-     *
-     * @param  User  $user
-     * @param  User  $manager
-     * @param  Email  $email
      */
     public function __construct(User $user, User $manager, Email $email)
     {

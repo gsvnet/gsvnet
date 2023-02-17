@@ -12,17 +12,14 @@ class PermissionCache
     private $permissions = [];
 
     /**
-     * @param  User  $user
      * @param $permission
-     * @return bool
      */
-    public function has(User $user, $permission)
+    public function has(User $user, $permission): bool
     {
         return $this->hasUser($user) && $this->hasUserPermission($user, $permission);
     }
 
     /**
-     * @param  User  $user
      * @param $permission
      * @return mixed
      */
@@ -32,12 +29,10 @@ class PermissionCache
     }
 
     /**
-     * @param  User  $user
      * @param $permission
      * @param $access
-     * @return bool
      */
-    public function set(User $user, $permission, $access)
+    public function set(User $user, $permission, $access): bool
     {
         if (! $this->hasUser($user)) {
             $this->permissions[$user->id] = [];
@@ -49,7 +44,6 @@ class PermissionCache
     }
 
     /**
-     * @param  User  $user
      * @return mixed
      */
     private function hasUser(User $user)
@@ -58,7 +52,6 @@ class PermissionCache
     }
 
     /**
-     * @param  User  $user
      * @param $permission
      * @return mixed
      */

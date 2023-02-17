@@ -6,8 +6,10 @@ use App\Helpers\Committees\CommitteeCreatorValidator;
 use App\Helpers\Committees\CommitteesRepository;
 use App\Helpers\Committees\CommitteeUpdaterValidator;
 use App\Helpers\Users\UsersRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class CommitteeController extends AdminBaseController
 {
@@ -34,7 +36,7 @@ class CommitteeController extends AdminBaseController
         parent::__construct();
     }
 
-    public function index()
+    public function index(): View
     {
         $committees = $this->committees->paginate(100);
         $users = $this->users->byType(2);
@@ -44,7 +46,7 @@ class CommitteeController extends AdminBaseController
             ->with('users', $users);
     }
 
-    public function store()
+    public function store(): RedirectResponse
     {
         $input = Request::only('name', 'description');
         $input['public'] = Request::get('public', false);
@@ -77,7 +79,7 @@ class CommitteeController extends AdminBaseController
             ->with('members', $members);
     }
 
-    public function edit($id)
+    public function edit($id): View
     {
         $committee = $this->committees->byId($id);
         $members = $committee->users;
@@ -87,7 +89,7 @@ class CommitteeController extends AdminBaseController
             ->with('members', $members);
     }
 
-    public function update($id)
+    public function update($id): RedirectResponse
     {
         $input = Request::only('name', 'description');
         $input['id'] = $id;
@@ -104,7 +106,7 @@ class CommitteeController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\CommitteeController::class, 'show'], $id);
     }
 
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         $committee = $this->committees->delete($id);
 

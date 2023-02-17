@@ -4,6 +4,8 @@ namespace Admin;
 
 use App\Helpers\Albums\Photos\PhotoManager;
 use App\Helpers\Albums\Photos\PhotosRepository;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Request;
 
 class PhotoController extends AdminBaseController
@@ -39,14 +41,14 @@ class PhotoController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\AlbumController::class, 'show'], $album_id);
     }
 
-    public function show($album_id, $id)
+    public function show($album_id, $id): View
     {
         $photo = $this->photos->byId($id);
 
         return view('admin.photos.show')->with('photo', $photo);
     }
 
-    public function update($album_id, $id)
+    public function update($album_id, $id): RedirectResponse
     {
         $input = Request::all();
         $input['album_id'] = $album_id;
@@ -59,7 +61,7 @@ class PhotoController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\AlbumController::class, 'show'], $album_id);
     }
 
-    public function destroy($album_id, $id)
+    public function destroy($album_id, $id): RedirectResponse
     {
         $photo = $this->manager->destroy($id);
 

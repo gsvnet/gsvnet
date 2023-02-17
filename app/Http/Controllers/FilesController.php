@@ -4,6 +4,8 @@ use App\Helpers\Files\FileHandler;
 use App\Helpers\Files\FilesRepository;
 use App\Helpers\Files\Labels\LabelsRepository;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class FilesController extends BaseController
 {
@@ -24,11 +26,9 @@ class FilesController extends BaseController
     /**
      * Display a listing of the resource.
      *
-     * @param  Request  $request
-     * @param  LabelsRepository  $labelsRepository
      * @return
      */
-    public function index(Request $request, LabelsRepository $labelsRepository)
+    public function index(Request $request, LabelsRepository $labelsRepository): View
     {
         // Select all files which belong to (all of) the selected labels
         $selectedLabels = $request->get('labels');
@@ -48,12 +48,8 @@ class FilesController extends BaseController
 
     /**
      * Display the specified resource.
-     *
-     * @param  int  $id
-     * @param  FileHandler  $fileHandler
-     * @return \Illuminate\Http\Response
      */
-    public function show($id, FileHandler $fileHandler)
+    public function show(int $id, FileHandler $fileHandler): Response
     {
         $file = $this->files->byId($id);
 

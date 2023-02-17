@@ -6,31 +6,24 @@ class SenatesRepository
 {
     /**
      * Get by id
-     *
-     * @param  int  $id
-     * @return Senate
      */
-    public function byId($id)
+    public function byId(int $id): Senate
     {
         return Senate::findOrFail($id);
     }
 
     /**
      * Get all senates
-     *
-     * @return Collection
      */
-    public function all()
+    public function all(): Collection
     {
         return Senate::orderBy('start_date', 'DESC')->get();
     }
 
     /**
      * Get paginated senates
-     *
-     * @param  int  $amount
      */
-    public function paginate($amount)
+    public function paginate(int $amount)
     {
         return Senate::with('members')->orderBy('updated_at', 'DESC')->paginate($amount);
     }
@@ -42,11 +35,8 @@ class SenatesRepository
 
     /**
      * Create senate
-     *
-     * @param  array  $input
-     * @return Senate
      */
-    public function create(array $input)
+    public function create(array $input): Senate
     {
         $senate = new Senate();
         $senate->name = $input['name'];
@@ -61,12 +51,8 @@ class SenatesRepository
 
     /**
      * Update committee
-     *
-     * @param  int  $id
-     * @param  array  $input
-     * @return Senate
      */
-    public function update($id, array $input)
+    public function update(int $id, array $input): Senate
     {
         $senate = $this->byId($id);
 
@@ -87,11 +73,9 @@ class SenatesRepository
     /**
      * Delete Senate
      *
-     * @param  int  $id
-     * @return Senate
      * @TODO: delete all senate members references
      */
-    public function delete($id)
+    public function delete(int $id): Senate
     {
         $senate = $this->byId($id);
         $senate->delete();

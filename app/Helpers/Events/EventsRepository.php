@@ -111,11 +111,8 @@ class EventsRepository
 
     /**
      * Create event
-     *
-     * @param  array  $input
-     * @return Event
      */
-    public function create(array $input)
+    public function create(array $input): Event
     {
         $event = new Event();
         $event = $this->setEventProperties($event, $input);
@@ -126,12 +123,8 @@ class EventsRepository
 
     /**
      * Update event
-     *
-     * @param  int  $id
-     * @param  array  $input
-     * @return Event
      */
-    public function update($id, array $input)
+    public function update(int $id, array $input): Event
     {
         $event = $this->byId($id);
         $event = $this->setEventProperties($event, $input);
@@ -143,11 +136,9 @@ class EventsRepository
     /**
      * Delete event
      *
-     * @param  int  $id
      * @param  array  $input
-     * @return Event
      */
-    public function delete($id)
+    public function delete(int $id): Event
     {
         $event = $this->byId($id);
         $event->delete();

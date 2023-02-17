@@ -37,9 +37,6 @@ class MemberController extends CoreApiController
 
     /**
      * MemberController constructor.
-     *
-     * @param  UsersRepository  $users
-     * @param  TokenRepository  $tokens
      */
     public function __construct(UsersRepository $users, TokenRepository $tokens)
     {

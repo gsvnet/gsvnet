@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Http\Response;
+
 class ExtensionApiController extends BaseController
 {
-    public function show()
+    public function show(): Response
     {
         $path = storage_path('extension/shops.json');
 

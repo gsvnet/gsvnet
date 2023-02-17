@@ -11,34 +11,24 @@ class PhotosRepository
 
     /**
      * Get by id
-     *
-     * @param  int  $id
-     * @return Photo
      */
-    public function byId($id)
+    public function byId(int $id): Photo
     {
         return Photo::findOrFail($id);
     }
 
     /**
      * Get by album id and paginate photos
-     *
-     * @param  int  $id
-     * @param  int  $amount
-     * @return Collection
      */
-    public function byAlbumIdAndPaginate($id, $amount)
+    public function byAlbumIdAndPaginate(int $id, int $amount): Collection
     {
         return Photo::whereAlbumId($id)->paginate($amount);
     }
 
     /**
      * Create photo
-     *
-     * @param  array  $input
-     * @return Photo
      */
-    public function create(array $input)
+    public function create(array $input): Photo
     {
         $photo = $this->getInstance();
         $photo->name = $input['name'];
@@ -51,12 +41,8 @@ class PhotosRepository
 
     /**
      * Update photo
-     *
-     * @param  int  $id
-     * @param  array  $input
-     * @return Photo
      */
-    public function update($id, array $input)
+    public function update(int $id, array $input): Photo
     {
         $photo = $this->byId($id);
         $photo->update($input);
@@ -66,11 +52,8 @@ class PhotosRepository
 
     /**
      * Delete photo
-     *
-     * @param  int  $id
-     * @return Photo
      */
-    public function delete($id)
+    public function delete(int $id): Photo
     {
         $photo = $this->byId($id);
         $photo->delete();

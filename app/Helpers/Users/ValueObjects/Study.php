@@ -18,28 +18,19 @@ class Study extends ValueObject
 
     /**
      * Study constructor.
-     *
-     * @param  string  $study
-     * @param  string  $studentNumber
      */
-    public function __construct($study, $studentNumber)
+    public function __construct(string $study, string $studentNumber)
     {
         $this->study = trim($study);
         $this->studentNumber = strtolower(trim($studentNumber));
     }
 
-    /**
-     * @return string
-     */
-    public function getStudy()
+    public function getStudy(): string
     {
         return $this->study;
     }
 
-    /**
-     * @return string
-     */
-    public function getStudentNumber()
+    public function getStudentNumber(): string
     {
         return $this->studentNumber;
     }

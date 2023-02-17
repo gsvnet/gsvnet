@@ -67,20 +67,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     /**
      * Get the password for the user.
-     *
-     * @return string
      */
-    public function getAuthPassword()
+    public function getAuthPassword(): string
     {
         return $this->password;
     }
 
     /**
      * Get the e-mail address where password reminders are sent.
-     *
-     * @return string
      */
-    public function getReminderEmail()
+    public function getReminderEmail(): string
     {
         return $this->email;
     }

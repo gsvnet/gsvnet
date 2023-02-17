@@ -9,22 +9,16 @@ class CommitteeMembershipRepository
 {
     /**
      * Get by id
-     *
-     * @param  int  $id
-     * @return Committee
      */
-    public function byId($id)
+    public function byId(int $id): Committee
     {
         return CommitteeMembership::findOrFail($id);
     }
 
     /**
      * Create committeeMembership
-     *
-     * @param  array  $input
-     * @return Committee
      */
-    public function create(User $user, Committee $committee, $input)
+    public function create(User $user, Committee $committee, array $input): Committee
     {
         $committeeMembership = new CommitteeMembership;
         $committeeMembership->user_id = $user->id;
@@ -39,12 +33,8 @@ class CommitteeMembershipRepository
 
     /**
      * Update committeeMembership
-     *
-     * @param  int  $id
-     * @param  array  $input
-     * @return Committee
      */
-    public function update($id, array $input)
+    public function update(int $id, array $input): Committee
     {
         $committeeMembership = $this->byId($id);
 
@@ -59,11 +49,9 @@ class CommitteeMembershipRepository
     /**
      * Delete committeeMembership
      *
-     * @param  int  $id
-     * @return Committe
      * @TODO: delete all committee members references
      */
-    public function delete($id)
+    public function delete(int $id): Committe
     {
         $committeeMembership = $this->byId($id);
         $committeeMembership->delete();

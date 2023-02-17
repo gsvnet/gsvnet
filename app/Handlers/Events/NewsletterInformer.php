@@ -29,10 +29,6 @@ class NewsletterInformer implements ShouldQueue
 
     /**
      * NewsletterInformer constructor.
-     *
-     * @param  NewsletterList  $newsletterList
-     * @param  UserTransformer  $transformer
-     * @param  Logger  $log
      */
     public function __construct(NewsletterList $newsletterList, UserTransformer $transformer, Logger $log)
     {

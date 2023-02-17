@@ -9,20 +9,15 @@ class ValidationException extends \Exception
      */
     protected $errors;
 
-    /**
-     * @param  string  $errors
-     */
-    public function __construct($errors)
+    public function __construct(string $errors)
     {
         $this->errors = $errors;
     }
 
     /**
      * Fetch validation errors
-     *
-     * @return string
      */
-    public function getErrors()
+    public function getErrors(): string
     {
         return $this->errors;
     }

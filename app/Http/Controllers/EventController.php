@@ -3,6 +3,7 @@
 use App\Helpers\Events\EventsRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Config;
+use Illuminate\View\View;
 
 class EventController extends BaseController
 {
@@ -14,7 +15,7 @@ class EventController extends BaseController
         parent::__construct();
     }
 
-    public function showIndex()
+    public function showIndex(): View
     {
         // Get all events which haven't finishes yet
         $events = $this->events->upcoming(10);
@@ -25,7 +26,7 @@ class EventController extends BaseController
             ->with('types', Config::get('gsvnet.eventTypes'));
     }
 
-    public function showMonth($year, $strMonth = false)
+    public function showMonth($year, $strMonth = false): View
     {
         // Stores the month as number 01 ... 12
         $months = Config::get('gsvnet.months');
@@ -52,7 +53,7 @@ class EventController extends BaseController
             ->with('types', Config::get('gsvnet.eventTypes'));
     }
 
-    public function showEvent($year, $month, $slug)
+    public function showEvent($year, $month, $slug): View
     {
         $date = Carbon::createFromDate($year, Config::get("gsvnet.months.$month"), 1);
         $event = $this->events->byYearMonthSlug($date, $slug);

@@ -19,11 +19,8 @@ class UserManager
 
     /**
      * Validate input, create user model and store user file
-     *
-     * @param  array  $input
-     * @return User
      */
-    public function create(array $input)
+    public function create(array $input): User
     {
         $this->createValidator->validate($input);
         $user = $this->users->create($input);

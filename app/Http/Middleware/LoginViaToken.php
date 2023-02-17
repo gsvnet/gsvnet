@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Helpers\Auth\TokenRepository;
 use Auth;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class LoginViaToken
 {
@@ -15,15 +16,13 @@ class LoginViaToken
 
     /**
      * LoginViaToken constructor.
-     *
-     * @param  TokenRepository  $tokens
      */
     public function __construct(TokenRepository $tokens)
     {
         $this->tokens = $tokens;
     }
 
-    public function handle(Request $request, \Closure $next)
+    public function handle(Request $request, \Closure $next): Response
     {
         $token = $request->header('X-Auth-Token');
 

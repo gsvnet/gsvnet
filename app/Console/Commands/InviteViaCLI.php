@@ -45,9 +45,6 @@ class InviteViaCLI extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @param  Filesystem  $files
-     * @param  UsersRepository  $users
      */
     public function __construct(Filesystem $files, UsersRepository $users)
     {
@@ -58,10 +55,8 @@ class InviteViaCLI extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $file = $this->files->get($this->argument('file'));
         $this->host = $this->users->memberOrFormerByIdWithProfile($this->argument('hostId'));
@@ -71,10 +66,7 @@ class InviteViaCLI extends Command
         array_map([$this, 'invite'], $list);
     }
 
-    /**
-     * @param  \stdClass  $data
-     */
-    public function invite($data)
+    public function invite(stdClass $data)
     {
         $member = $this->users->memberOrFormerByIdWithProfile($data->id);
         $email = new Email($data->email);

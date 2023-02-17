@@ -10,16 +10,14 @@ class ResponsesServiceProvider extends ServiceProvider
 {
     /**
      * Perform post-registration booting of services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->inlinePhoto();
         $this->csv();
     }
 
-    public function register()
+    public function register(): void
     {
     }
 

@@ -15,8 +15,6 @@ class ChangePeriodOfMembershipHandler
 
     /**
      * ChangePeriodOfMembershipHandler constructor.
-     *
-     * @param  ProfilesRepository  $profiles
      */
     public function __construct(ProfilesRepository $profiles)
     {

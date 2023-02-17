@@ -29,7 +29,9 @@ use App\Helpers\Users\UserTransformer;
 use App\Helpers\Users\ValueObjects\Gender;
 use App\Helpers\Users\YearGroupRepository;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Maatwebsite\Excel\Classes\LaravelExcelWorksheet;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\Writers\CellWriter;
@@ -51,11 +53,6 @@ class MemberController extends AdminBaseController
 
     private $regions;
 
-    /**
-     * @param  ProfileActionsRepository  $actions
-     * @param  UsersRepository  $users
-     * @param  YearGroupRepository  $yearGroups
-     */
     public function __construct(
         ProfileActionsRepository $actions,
         UsersRepository $users,
@@ -69,14 +66,14 @@ class MemberController extends AdminBaseController
         $this->regions = $regions;
     }
 
-    public function latestUpdates()
+    public function latestUpdates(): View
     {
         $changes = $this->actions->latestUpdatesWithMembers();
 
         return view('admin.users.latestUpdates')->with(compact('changes'));
     }
 
-    public function editName($id)
+    public function editName($id): View
     {
         $user = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.name', $user);
@@ -84,7 +81,7 @@ class MemberController extends AdminBaseController
         return view('admin.users.update.name')->with(compact('user'));
     }
 
-    public function updateName(Request $request, $id)
+    public function updateName(Request $request, $id): RedirectResponse
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.name', $member);
@@ -96,7 +93,7 @@ class MemberController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
-    public function editUsername($id)
+    public function editUsername($id): View
     {
         $user = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('users.manage');
@@ -104,7 +101,7 @@ class MemberController extends AdminBaseController
         return view('admin.users.update.username')->with(compact('user'));
     }
 
-    public function updateUsername(Request $request, $id)
+    public function updateUsername(Request $request, $id): RedirectResponse
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('users.manage');
@@ -116,7 +113,7 @@ class MemberController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
-    public function editContactDetails($id)
+    public function editContactDetails($id): View
     {
         $user = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.address', $user);
@@ -125,7 +122,7 @@ class MemberController extends AdminBaseController
         return view('admin.users.update.contact')->with(compact('user'));
     }
 
-    public function updateContactDetails(Request $request, $id)
+    public function updateContactDetails(Request $request, $id): RedirectResponse
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.address', $member);
@@ -139,7 +136,7 @@ class MemberController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
-    public function editParentContactDetails($id)
+    public function editParentContactDetails($id): View
     {
         $user = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.parents', $user);
@@ -147,7 +144,7 @@ class MemberController extends AdminBaseController
         return view('admin.users.update.parents')->with(compact('user'));
     }
 
-    public function updateParentContactDetails(Request $request, $id)
+    public function updateParentContactDetails(Request $request, $id): RedirectResponse
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.parents', $member);
@@ -159,7 +156,7 @@ class MemberController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
-    public function editBirthDay($id)
+    public function editBirthDay($id): View
     {
         $user = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.birthday', $user);
@@ -167,7 +164,7 @@ class MemberController extends AdminBaseController
         return view('admin.users.update.birthday')->with(compact('user'));
     }
 
-    public function updateBirthDay(Request $request, $id)
+    public function updateBirthDay(Request $request, $id): RedirectResponse
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.birthday', $member);
@@ -179,7 +176,7 @@ class MemberController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
-    public function editEmail($id)
+    public function editEmail($id): View
     {
         $user = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.email', $user);
@@ -187,7 +184,7 @@ class MemberController extends AdminBaseController
         return view('admin.users.update.email')->with(compact('user'));
     }
 
-    public function updateEmail(Request $request, $id)
+    public function updateEmail(Request $request, $id): RedirectResponse
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.email', $member);
@@ -199,7 +196,7 @@ class MemberController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
-    public function editPassword($id)
+    public function editPassword($id): View
     {
         $user = $this->users->byId($id);
         $this->authorize('user.manage.password', $user);
@@ -207,7 +204,7 @@ class MemberController extends AdminBaseController
         return view('admin.users.update.password')->with(compact('user'));
     }
 
-    public function updatePassword(Request $request, $id)
+    public function updatePassword(Request $request, $id): RedirectResponse
     {
         $member = $this->users->byId($id);
         $this->authorize('user.manage.password', $member);
@@ -219,7 +216,7 @@ class MemberController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
-    public function editGender($id)
+    public function editGender($id): View
     {
         $user = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.gender', $user);
@@ -227,7 +224,7 @@ class MemberController extends AdminBaseController
         return view('admin.users.update.gender')->with(compact('user'));
     }
 
-    public function updateGender(Request $request, $id)
+    public function updateGender(Request $request, $id): RedirectResponse
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.gender', $member);
@@ -240,7 +237,7 @@ class MemberController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
-    public function editYearGroup($id)
+    public function editYearGroup($id): View
     {
         $user = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('users.manage');
@@ -250,7 +247,7 @@ class MemberController extends AdminBaseController
         return view('admin.users.update.yeargroup')->with(compact('user', 'yearGroups'));
     }
 
-    public function updateYearGroup(Request $request, $id)
+    public function updateYearGroup(Request $request, $id): RedirectResponse
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('users.manage', $member);
@@ -263,7 +260,7 @@ class MemberController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
-    public function editBusiness($id)
+    public function editBusiness($id): View
     {
         $user = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.business', $user);
@@ -271,7 +268,7 @@ class MemberController extends AdminBaseController
         return view('admin.users.update.business')->with(compact('user'));
     }
 
-    public function updateBusiness(Request $request, $id)
+    public function updateBusiness(Request $request, $id): RedirectResponse
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.business', $member);
@@ -283,7 +280,7 @@ class MemberController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
-    public function editStudy($id)
+    public function editStudy($id): View
     {
         $user = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.study', $user);
@@ -291,7 +288,7 @@ class MemberController extends AdminBaseController
         return view('admin.users.update.study')->with(compact('user'));
     }
 
-    public function updateStudy(Request $request, $id)
+    public function updateStudy(Request $request, $id): RedirectResponse
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.study', $member);
@@ -303,7 +300,7 @@ class MemberController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
-    public function editMembershipPeriod($id)
+    public function editMembershipPeriod($id): View
     {
         $this->authorize('users.manage');
 
@@ -312,7 +309,7 @@ class MemberController extends AdminBaseController
         return view('admin.users.update.membershipPeriod')->with(compact('user'));
     }
 
-    public function updateMembershipPeriod(Request $request, $id)
+    public function updateMembershipPeriod(Request $request, $id): RedirectResponse
     {
         $this->authorize('users.manage');
 
@@ -324,7 +321,7 @@ class MemberController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
-    public function editRegion($id)
+    public function editRegion($id): View
     {
         $this->authorize('users.manage');
 
@@ -337,7 +334,7 @@ class MemberController extends AdminBaseController
         return view('admin.users.update.region')->with(compact('user', 'userRegions', 'currentRegions', 'formerRegions'));
     }
 
-    public function updateRegion(Request $request, $id)
+    public function updateRegion(Request $request, $id): RedirectResponse
     {
         $this->authorize('users.manage');
 
@@ -354,7 +351,7 @@ class MemberController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
-    public function editMembershipStatus($id)
+    public function editMembershipStatus($id): View
     {
         $this->authorize('users.manage');
 
@@ -363,7 +360,7 @@ class MemberController extends AdminBaseController
         return view('admin.users.update.membership')->with(compact('user'));
     }
 
-    public function makeReunist(Request $request, $id)
+    public function makeReunist(Request $request, $id): RedirectResponse
     {
         $this->authorize('users.manage');
 
@@ -376,7 +373,7 @@ class MemberController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
-    public function makeExMember(Request $request, $id)
+    public function makeExMember(Request $request, $id): RedirectResponse
     {
         $this->authorize('users.manage');
 
@@ -389,7 +386,7 @@ class MemberController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
-    public function makeMember(Request $request, $id)
+    public function makeMember(Request $request, $id): RedirectResponse
     {
         $this->authorize('users.manage');
 
@@ -402,7 +399,7 @@ class MemberController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
-    public function editPhoto($id)
+    public function editPhoto($id): View
     {
         $user = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.photo', $user);
@@ -410,7 +407,7 @@ class MemberController extends AdminBaseController
         return view('admin.users.update.photo')->with(compact('user'));
     }
 
-    public function updatePhoto(Request $request, $id)
+    public function updatePhoto(Request $request, $id): RedirectResponse
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.photo', $member);
@@ -424,7 +421,7 @@ class MemberController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
-    public function editAlive($id)
+    public function editAlive($id): View
     {
         $user = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('users.manage');
@@ -432,7 +429,7 @@ class MemberController extends AdminBaseController
         return view('admin.users.update.alive')->with(compact('user'));
     }
 
-    public function updateAlive(Request $request, $id)
+    public function updateAlive(Request $request, $id): RedirectResponse
     {
         $this->authorize('users.manage');
 
@@ -445,7 +442,7 @@ class MemberController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\UsersController::class, 'show'], $id);
     }
 
-    public function editNewspaper($id)
+    public function editNewspaper($id): View
     {
         $user = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.receive_newspaper', $user);
@@ -453,7 +450,7 @@ class MemberController extends AdminBaseController
         return view('admin.users.update.newspaper')->with(compact('user'));
     }
 
-    public function updateNewspaper(Request $request, $id)
+    public function updateNewspaper(Request $request, $id): RedirectResponse
     {
         $member = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('user.manage.receive_newspaper', $member);
@@ -490,7 +487,7 @@ class MemberController extends AdminBaseController
         })->export('xls');
     }
 
-    public function setForget($id)
+    public function setForget($id): View
     {
         $user = $this->users->memberOrFormerByIdWithProfile($id);
         $this->authorize('users.manage');
@@ -498,7 +495,7 @@ class MemberController extends AdminBaseController
         return view('admin.users.settingsForget')->with(compact('user'));
     }
 
-    public function forget(Request $request, $id)
+    public function forget(Request $request, $id): RedirectResponse
     {
         $this->authorize('users.manage');
         $user = $this->users->byId($id);

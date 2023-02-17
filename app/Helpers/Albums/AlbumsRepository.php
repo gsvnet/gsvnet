@@ -20,10 +20,8 @@ class AlbumsRepository
 
     /**
      * Get paginated albums
-     *
-     * @param  int  $amount
      */
-    public function paginate($amount)
+    public function paginate(int $amount)
     {
         if (Gate::allows('photos.show-private')) {
             return Album::latest()->paginate($amount);
@@ -36,10 +34,8 @@ class AlbumsRepository
      * Get paginated albums
      *
      * @TODO this should use eager loading
-     *
-     * @param  int  $amount
      */
-    public function paginateWithFirstPhoto($amount)
+    public function paginateWithFirstPhoto(int $amount)
     {
         if (Gate::allows('photos.show-private')) {
             return Album::with('photos')->has('photos')->latest()->paginate($amount);
@@ -52,10 +48,8 @@ class AlbumsRepository
      * Get paginated albums
      *
      * @TODO this should use eager loading
-     *
-     * @param  int  $amount
      */
-    public function paginatePublicWithFirstPhoto($amount)
+    public function paginatePublicWithFirstPhoto(int $amount)
     {
         return Album::has('photos')
             ->latest()
@@ -65,43 +59,32 @@ class AlbumsRepository
 
     /**
      * Get first album
-     *
-     * @return Album
      */
-    public function first()
+    public function first(): Album
     {
         return Album::orderBy('updated_at', 'DESC')->firstOrFail();
     }
 
     /**
      * Get by slug
-     *
-     * @param  int  $id
-     * @return Album
      */
-    public function byId($id)
+    public function byId(int $id): Album
     {
         return Album::findOrFail($id);
     }
 
     /**
      * Get by slug
-     *
-     * @param  string  $slug
-     * @return Album
      */
-    public function bySlug($slug)
+    public function bySlug(string $slug): Album
     {
         return Album::where('slug', '=', $slug)->first();
     }
 
     /**
      * Create album
-     *
-     * @param  array  $input
-     * @return Album
      */
-    public function create(array $input)
+    public function create(array $input): Album
     {
         $album = new Album();
         $album->name = $input['name'];
@@ -116,12 +99,8 @@ class AlbumsRepository
 
     /**
      * Update album
-     *
-     * @param  int  $id
-     * @param  array  $input
-     * @return Album
      */
-    public function update($id, array $input)
+    public function update(int $id, array $input): Album
     {
         $album = $this->byId($id);
 
@@ -138,11 +117,9 @@ class AlbumsRepository
     /**
      * Delete album
      *
-     * @param  int  $id
-     * @return Album
      * @TODO: delete all photos
      */
-    public function delete($id)
+    public function delete(int $id): Album
     {
         $album = $this->byId($id);
         $album->delete();

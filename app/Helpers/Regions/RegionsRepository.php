@@ -6,11 +6,8 @@ class RegionsRepository
 {
     /**
      * Get by id
-     *
-     * @param  int  $id
-     * @return Region
      */
-    public function byId($id)
+    public function byId(int $id): Region
     {
         return Region::findOrFail($id);
     }
@@ -18,10 +15,9 @@ class RegionsRepository
     /**
      * Get by id, returning null if it doesn't exist
      *
-     * @param  int  $id
      * @return Region or null
      */
-    public function tryById($id)
+    public function tryById(int $id): Region
     {
         return Region::find($id);
     }
@@ -33,11 +29,8 @@ class RegionsRepository
 
     /**
      * Check if region exists
-     *
-     * @param  int  $id
-     * @return Region
      */
-    public function exists($id)
+    public function exists(int $id): Region
     {
         try {
             $this->byId($id);
@@ -50,10 +43,8 @@ class RegionsRepository
 
     /**
      * Get all regions
-     *
-     * @return Collection
      */
-    public function all()
+    public function all(): Collection
     {
         return Region::orderBy(\DB::raw('end_date IS NULL'), 'desc')
                     ->orderBy('end_date', 'desc')
@@ -63,10 +54,8 @@ class RegionsRepository
 
     /**
      * Get current regions
-     *
-     * @return Collection
      */
-    public function current()
+    public function current(): Collection
     {
         return Region::current()
                     ->orderBy('end_date', 'DESC')
@@ -76,10 +65,8 @@ class RegionsRepository
 
     /**
      * Get former regions
-     *
-     * @return Collection
      */
-    public function former()
+    public function former(): Collection
     {
         return Region::former()
             ->orderBy('end_date', 'DESC')

@@ -3,7 +3,9 @@
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class RemindersController extends BaseController
@@ -26,12 +28,12 @@ class RemindersController extends BaseController
         $this->passwords = $passwords;
     }
 
-    public function getEmail()
+    public function getEmail(): View
     {
         return view('password.remind');
     }
 
-    public function getReset($token = null)
+    public function getReset($token = null): View
     {
         if (is_null($token)) {
             throw new NotFoundHttpException;
@@ -40,7 +42,7 @@ class RemindersController extends BaseController
         return view('password.reset')->with('token', $token);
     }
 
-    public function postReset(Request $request)
+    public function postReset(Request $request): RedirectResponse
     {
         $this->validate($request, [
             'token' => 'required',

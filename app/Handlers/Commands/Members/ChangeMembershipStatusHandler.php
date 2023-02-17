@@ -22,8 +22,6 @@ class ChangeMembershipStatusHandler
 
     /**
      * ChangeMembershipStatusHandler constructor.
-     *
-     * @param  UsersRepository  $users
      */
     public function __construct(UsersRepository $users)
     {

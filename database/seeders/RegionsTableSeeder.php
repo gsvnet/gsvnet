@@ -21,7 +21,7 @@ class RegionsTableSeeder extends Seeder
         $this->userIds = User::whereIn('type', [2, 3])->pluck('id')->all();
     }
 
-    public function run()
+    public function run(): void
     {
         $this->addRegions();
         $this->assignRegions();

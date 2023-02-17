@@ -9,15 +9,13 @@ class ComposerServiceProvider extends ServiceProvider
 {
     /**
      * Register bindings in the container.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         View::composer('layouts.default', \App\Helpers\Core\Composers\NavigationViewComposer::class);
     }
 
-    public function register()
+    public function register(): void
     {
     }
 }

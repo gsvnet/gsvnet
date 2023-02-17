@@ -3,7 +3,9 @@
 namespace Admin;
 
 use App\Helpers\Users\UsersRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Request;
+use Illuminate\View\View;
 
 class FamilyController extends AdminBaseController
 {
@@ -16,7 +18,7 @@ class FamilyController extends AdminBaseController
         parent::__construct();
     }
 
-    public function index($userId)
+    public function index($userId): View
     {
         $user = $this->users->byId($userId);
         $children = $user->children;
@@ -27,7 +29,7 @@ class FamilyController extends AdminBaseController
             ->with('parent', $parent);
     }
 
-    public function store($userId)
+    public function store($userId): RedirectResponse
     {
         $parent = [Request::get('parentId')];
         $children = Request::get('childrenIds');

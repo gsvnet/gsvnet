@@ -11,7 +11,9 @@ use App\Helpers\Users\User;
 use App\Helpers\Users\UserManager;
 use App\Helpers\Users\UsersRepository;
 use App\Helpers\Users\YearGroupRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class UserController extends BaseController
 {
@@ -52,10 +54,9 @@ class UserController extends BaseController
     /**
      * Show the current user's profile
      *
-     * @param  Request  $request
      * @return
      */
-    public function showProfile(Request $request)
+    public function showProfile(Request $request): View
     {
         $member = $this->users->byIdWithProfileAndYearGroup($request->user()->id);
         $committees = $this->committees->byUserOrderByRecent($member);
@@ -76,10 +77,9 @@ class UserController extends BaseController
     /**
      * Show current members
      *
-     * @param  Request  $request
      * @return
      */
-    public function showUsers(Request $request)
+    public function showUsers(Request $request): View
     {
         $this->authorize('users.show');
         $search = $request->get('naam', '');
@@ -113,7 +113,7 @@ class UserController extends BaseController
     /**
      * Show the user's profile
      */
-    public function showUser($id)
+    public function showUser($id): View
     {
         $this->authorize('users.show');
         $member = $this->users->byIdWithProfileAndYearGroup($id);
@@ -132,14 +132,14 @@ class UserController extends BaseController
             ->with('formerRegions', $formerRegions);
     }
 
-    public function editProfile(Request $request)
+    public function editProfile(Request $request): View
     {
         return view('users.edit-profile')->with([
             'user' => $request->user(),
         ]);
     }
 
-    public function updateProfile(Request $request, EmailAndPasswordValidator $validator)
+    public function updateProfile(Request $request, EmailAndPasswordValidator $validator): RedirectResponse
     {
         $data = $request->all('email', 'password', 'password_confirmation');
         $user = $request->user();

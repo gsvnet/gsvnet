@@ -2,10 +2,11 @@
 
 use App\Helpers\Users\UserManager;
 use Illuminate\Support\Facades\Request;
+use Illuminate\View\View;
 
 class RegisterController extends BaseController
 {
-    public function create()
+    public function create(): View
     {
         return view('users.register');
     }

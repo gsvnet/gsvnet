@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class CommitteesTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $committees = [];
         $time = Carbon::now();

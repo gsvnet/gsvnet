@@ -8,8 +8,10 @@ use App\Helpers\Forum\Replies\ReplyRepository;
 use App\Http\Validators\DeleteReplyValidator;
 use App\Http\Validators\EditReplyValidator;
 use App\Http\Validators\ReplyToThreadValidator;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\View as ViewFacade;
+use Illuminate\View\View;
 
 class ForumRepliesController extends BaseController
 {
@@ -23,10 +25,10 @@ class ForumRepliesController extends BaseController
 
         $this->replies = $replies;
 
-        View::share('events', $events->upcoming(5));
+        ViewFacade::share('events', $events->upcoming(5));
     }
 
-    public function postCreateReply(ReplyToThreadValidator $validator, $threadSlug)
+    public function postCreateReply(ReplyToThreadValidator $validator, $threadSlug): RedirectResponse
     {
         $data = [
             'threadSlug' => $threadSlug,
@@ -41,7 +43,7 @@ class ForumRepliesController extends BaseController
         return redirect()->back();
     }
 
-    public function getEditReply($replyId)
+    public function getEditReply($replyId): View
     {
         $reply = $this->replies->getById($replyId);
         $author = $reply->author;
@@ -68,7 +70,7 @@ class ForumRepliesController extends BaseController
         return $this->redirectToReply($replyId);
     }
 
-    public function getDelete($replyId)
+    public function getDelete($replyId): View
     {
         $reply = $this->replies->requireById($replyId);
 
@@ -77,7 +79,7 @@ class ForumRepliesController extends BaseController
         return view('forum.replies.delete', compact('reply'));
     }
 
-    public function postDelete(DeleteReplyValidator $validator, $replyId)
+    public function postDelete(DeleteReplyValidator $validator, $replyId): RedirectResponse
     {
         $reply = $this->replies->requireById($replyId);
 
@@ -92,7 +94,7 @@ class ForumRepliesController extends BaseController
         return redirect('/forum');
     }
 
-    public function redirectToReply($replyId)
+    public function redirectToReply($replyId): RedirectResponse
     {
         $reply = $this->replies->requireById($replyId);
 

@@ -5,7 +5,9 @@ namespace Admin;
 use App\Helpers\Albums\AlbumsRepository;
 use App\Helpers\Albums\AlbumValidator;
 use App\Helpers\Albums\Photos\PhotosRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Request;
+use Illuminate\View\View;
 
 class AlbumController extends AdminBaseController
 {
@@ -29,14 +31,14 @@ class AlbumController extends AdminBaseController
         parent::__construct();
     }
 
-    public function index()
+    public function index(): View
     {
         $albums = $this->albums->paginate(25);
 
         return view('admin.albums.index')->with('albums', $albums);
     }
 
-    public function store()
+    public function store(): RedirectResponse
     {
         $input = Request::all();
         $input['public'] = Request::get('public', false);
@@ -49,7 +51,7 @@ class AlbumController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\AlbumController::class, 'index']);
     }
 
-    public function show($id)
+    public function show($id): View
     {
         $album = $this->albums->byId($id);
 
@@ -61,7 +63,7 @@ class AlbumController extends AdminBaseController
             ->with('photos', $photos);
     }
 
-    public function edit($id)
+    public function edit($id): View
     {
         $album = $this->albums->byId($id);
 
@@ -69,7 +71,7 @@ class AlbumController extends AdminBaseController
             ->with('album', $album);
     }
 
-    public function update($id)
+    public function update($id): RedirectResponse
     {
         $input = Request::all();
         $input['public'] = Request::get('public', false);
@@ -82,7 +84,7 @@ class AlbumController extends AdminBaseController
         return redirect()->action([\App\Http\Controllers\Admin\AlbumController::class, 'show'], $id);
     }
 
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         $album = $this->albums->delete($id);
 

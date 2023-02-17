@@ -12,11 +12,7 @@ class UserTransformer
         Gender::FEMALE => 'Amica',
     ];
 
-    /**
-     * @param  User  $user
-     * @return array
-     */
-    public function mailchimpSubscribe(User $user)
+    public function mailchimpSubscribe(User $user): array
     {
         if ($user->profile && ! is_null($user->profile->gender)) {
             $titel = self::$genderMap[$user->profile->gender];
@@ -38,11 +34,7 @@ class UserTransformer
         ];
     }
 
-    /**
-     * @param  Collection  $users
-     * @return array
-     */
-    public function batchMailchimpSubscribe(Collection $users)
+    public function batchMailchimpSubscribe(Collection $users): array
     {
         $batch = [];
 
@@ -57,11 +49,7 @@ class UserTransformer
         return $batch;
     }
 
-    /**
-     * @param  Collection  $users
-     * @return array
-     */
-    public function batchMailchimpUnsubscribe(Collection $users)
+    public function batchMailchimpUnsubscribe(Collection $users): array
     {
         $batch = [];
         foreach ($users as $user) {
