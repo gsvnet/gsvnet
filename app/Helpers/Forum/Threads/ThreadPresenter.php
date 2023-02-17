@@ -16,7 +16,7 @@ class ThreadPresenter extends Presenter
             return '';
         }
 
-        return action([\App\Http\Controllers\ForumThreadsController::class, 'getShowThread'], [$this->slug]);
+        return action([\App\Http\Controllers\Forum\ForumThreadsController::class, 'getShowThread'], [$this->slug]);
     }
 
     public function likeClass()
@@ -99,12 +99,12 @@ class ThreadPresenter extends Presenter
 
     public function editUrl()
     {
-        return action([\App\Http\Controllers\ForumThreadsController::class, 'getEditThread'], [$this->id]);
+        return action([\App\Http\Controllers\Forum\ForumThreadsController::class, 'getEditThread'], [$this->id]);
     }
 
     public function deleteUrl()
     {
-        return action([\App\Http\Controllers\ForumThreadsController::class, 'getDelete'], [$this->id]);
+        return action([\App\Http\Controllers\Forum\ForumThreadsController::class, 'getDelete'], [$this->id]);
     }
 
     public function replyCounter()

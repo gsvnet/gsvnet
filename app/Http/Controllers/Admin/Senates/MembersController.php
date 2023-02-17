@@ -1,8 +1,8 @@
 <?php
 
-namespace Admin\Senates;
+namespace  App\Http\Controllers\Admin\Senates;
 
-use Admin\AdminBaseController;
+use App\Http\Controllers\Admin\AdminBaseController;
 use App\Helpers\Senates\SenatesRepository;
 use App\Helpers\Users\UsersRepository;
 use Illuminate\Http\RedirectResponse;

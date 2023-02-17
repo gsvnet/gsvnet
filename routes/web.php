@@ -8,7 +8,7 @@ use App\Http\Controllers\ExtensionApiController;
 use App\Http\Controllers\FilesController;
 use App\Http\Controllers\ForumApiController;
 use App\Http\Controllers\ForumRepliesController;
-use App\Http\Controllers\ForumThreadsController;
+use App\Http\Controllers\Forum\ForumThreadsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Malfonds;
 use App\Http\Controllers\MemberController;

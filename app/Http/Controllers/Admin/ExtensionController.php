@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Helpers\Extension\ExtensionFileValidator;
 use File;

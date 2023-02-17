@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Commands\Members\ChangeAddress;
 use App\Commands\Members\ChangeBirthDay;

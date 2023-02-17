@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Http\Controllers\Forum;
+
+use App\Http\Controllers\BaseController;
 use App\Commands\Forum\DeleteThreadCommand;
 use App\Commands\Forum\EditThreadCommand;
 use App\Commands\Forum\StartThreadCommand;
@@ -72,7 +75,7 @@ class ForumThreadsController extends BaseController
         //return $thread;
 
         if (! $thread) {
-            return redirect()->action([\App\Http\Controllers\ForumThreadsController::class, 'getIndex']);
+            return redirect()->action([\App\Http\Controllers\Forum\ForumThreadsController::class, 'getIndex']);
         }
 
         if (! $thread->public && Gate::denies('threads.show-internal')) {
@@ -141,7 +144,7 @@ class ForumThreadsController extends BaseController
 
         $this->dispatchFromArray(StartThreadCommand::class, $data);
 
-        return redirect()->action([\App\Http\Controllers\ForumThreadsController::class, 'getShowThread'], [$slug]);
+        return redirect()->action([\App\Http\Controllers\Forum\ForumThreadsController::class, 'getShowThread'], [$slug]);
     }
 
     public function getEditThread($threadId): View
@@ -184,7 +187,7 @@ class ForumThreadsController extends BaseController
 
         $this->dispatchFromArray(EditThreadCommand::class, $data);
 
-        return redirect()->action([\App\Http\Controllers\ForumThreadsController::class, 'getShowThread'], [$thread->slug]);
+        return redirect()->action([\App\Http\Controllers\Forum\ForumThreadsController::class, 'getShowThread'], [$thread->slug]);
     }
 
     public function getDelete($threadId): View
@@ -206,7 +209,7 @@ class ForumThreadsController extends BaseController
             'threadId' => $threadId,
         ]);
 
-        return redirect()->action([\App\Http\Controllers\ForumThreadsController::class, 'getIndex']);
+        return redirect()->action([\App\Http\Controllers\Forum\ForumThreadsController::class, 'getIndex']);
     }
 
     public function getSearch(): View

@@ -1,8 +1,8 @@
 <?php
 
-namespace Admin\Committees;
+namespace  App\Http\Controllers\Admin\Committees;
 
-use Admin\AdminBaseController;
+use App\Http\Controllers\Admin\AdminBaseController;
 use App\Helpers\Committees\CommitteeMembership\CommitteeMembershipRepository;
 use App\Helpers\Committees\CommitteeMembership\MemberCreatorValidator;
 use App\Helpers\Committees\CommitteeMembership\MemberUpdaterValidator;

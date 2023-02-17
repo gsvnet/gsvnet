@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Helpers\Committees\CommitteeCreatorValidator;
 use App\Helpers\Committees\CommitteesRepository;

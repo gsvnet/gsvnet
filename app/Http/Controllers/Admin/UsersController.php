@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Commands\Users\RegisterUserCommand;
 use App\Helpers\Regions\RegionsRepository;

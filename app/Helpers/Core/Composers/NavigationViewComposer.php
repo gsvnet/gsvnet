@@ -242,7 +242,7 @@ class NavigationViewComposer
 
             'forum' => [
                 'title' => 'Forum',
-                'url' => action([\App\Http\Controllers\ForumThreadsController::class, 'getIndex']),
+                'url' => action([\App\Http\Controllers\Forum\ForumThreadsController::class, 'getIndex']),
             ],
 
             //            'albums' => [

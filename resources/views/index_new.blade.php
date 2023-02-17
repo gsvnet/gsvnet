@@ -35,7 +35,7 @@
                 <a href="#activiteiten">KEI-week</a>
                 <a href="#fotos">Foto's</a>
                 <a href="{{ action([\App\Http\Controllers\MemberController::class, 'study']) }}">Studeren</a>
-                <a href="{{ action([\App\Http\Controllers\ForumThreadsController::class, 'getIndex']) }}">Forum</a>
+                <a href="{{ action([\App\Http\Controllers\Forum\ForumThreadsController::class, 'getIndex']) }}">Forum</a>
                 <a href="{{ action([\App\Http\Controllers\MemberController::class, 'becomeMember']) }}" id="register" class="focus">Word lid!</a> 
             </div>
             <div class="links">
@@ -43,7 +43,7 @@
                 <a href="#activiteiten">KEI-week</a>
                 <a href="#fotos">Foto's</a>
                 <a href="{{ action([\App\Http\Controllers\MemberController::class, 'study']) }}">Studeren</a>
-                <a href="{{ action([\App\Http\Controllers\ForumThreadsController::class, 'getIndex']) }}">Forum</a>
+                <a href="{{ action([\App\Http\Controllers\Forum\ForumThreadsController::class, 'getIndex']) }}">Forum</a>
             </div>
             <a href="{{ action([\App\Http\Controllers\MemberController::class, 'becomeMember']) }}" id="register" class="right">Word lid!</a> 
         </nav>

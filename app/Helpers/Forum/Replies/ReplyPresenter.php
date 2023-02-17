@@ -14,7 +14,7 @@ class ReplyPresenter extends Presenter
     public function url()
     {
         $slug = $this->thread->slug;
-        $threadUrl = action([\App\Http\Controllers\ForumThreadsController::class, 'getShowThread'], [$slug]);
+        $threadUrl = action([\App\Http\Controllers\Forum\ForumThreadsController::class, 'getShowThread'], [$slug]);
 
         return $threadUrl.app(ReplyQueryStringGenerator::class)->generate($this->entity);
     }

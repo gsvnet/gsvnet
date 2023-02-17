@@ -12,17 +12,11 @@ use Image;
 
 class ImageHandler
 {
-    // Base path kunnen we gebruiken om het pad waar de foto in opgeslagen moet worden alvast vast te zetten,
-    // zodat we dan alleen nog maar de naam van een bestand hoeven te weten,
-    // maar hier moet eerst nog wat beter over nageacht worden voordat we dat implementeren...
-    protected $basePath;
-
     protected $filesystem;
 
-    public function __construct($basePath, Filesystem $filesystem)
+    public function __construct(Filesystem $filesystem)
     {
         $this->filesystem = $filesystem;
-        $this->basePath = storage_path($basePath);
     }
 
     /**

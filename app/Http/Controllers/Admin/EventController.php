@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Helpers\Events\EventsRepository;
 use App\Helpers\Events\EventValidator;
