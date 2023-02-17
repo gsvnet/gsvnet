@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Request as Input;
-use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\View as ViewFacade;
 use Illuminate\View\View;
 
 class ForumThreadsController extends BaseController
@@ -46,7 +46,7 @@ class ForumThreadsController extends BaseController
 
         $events = $events->upcoming(5);
 
-        View::share('events', $events);
+        ViewFacade::share('events', $events);
     }
 
     // show thread list - clean this method

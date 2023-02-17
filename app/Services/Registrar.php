@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Helpers\Users\User;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
-use Illuminate\Contracts\Validation\Validator;
 use Validator;
 
 class Registrar implements RegistrarContract

@@ -10,7 +10,7 @@ use App\Http\Validators\EditReplyValidator;
 use App\Http\Validators\ReplyToThreadValidator;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\View as ViewFacade;
 use Illuminate\View\View;
 
 class ForumRepliesController extends BaseController
@@ -25,7 +25,7 @@ class ForumRepliesController extends BaseController
 
         $this->replies = $replies;
 
-        View::share('events', $events->upcoming(5));
+        ViewFacade::share('events', $events->upcoming(5));
     }
 
     public function postCreateReply(ReplyToThreadValidator $validator, $threadSlug): RedirectResponse
