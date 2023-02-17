@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use App\Commands\Potentials\PromoteGuestToPotentialCommand;
 use App\Commands\Potentials\SignUpAsPotentialCommand;
 use App\Commands\Users\SetProfilePictureCommand;

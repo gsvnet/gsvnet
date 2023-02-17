@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use App\Helpers\Events\EventsRepository;
 use App\Helpers\Users\Profiles\ProfilesRepository;
 use Illuminate\View\View;

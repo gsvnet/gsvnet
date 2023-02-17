@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use App\Helpers\Files\FileHandler;
 use Illuminate\Http\Response;
 

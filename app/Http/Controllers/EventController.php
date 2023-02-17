@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use App\Helpers\Events\EventsRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Config;

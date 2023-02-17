@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use App\Helpers\Albums\AlbumsRepository;
 use App\Helpers\Albums\Photos\PhotosRepository;
 use App\Helpers\Core\ImageHandler;

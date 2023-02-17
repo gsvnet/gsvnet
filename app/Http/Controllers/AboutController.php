@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use App\Helpers\Committees\CommitteesRepository;
 use App\Helpers\Senates\SenatesRepository;
 use Illuminate\View\View;

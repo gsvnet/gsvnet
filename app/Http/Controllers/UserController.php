@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use App\Commands\Users\ChangeEmail;
 use App\Commands\Users\ChangePassword;
 use App\Helpers\Committees\CommitteesRepository;
