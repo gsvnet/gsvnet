@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'showIndex'])->name('home');
 
 // Keep the new homepage accessible
-Route::get('welkom', [HomeController::class, 'showNewIndex'])->name('home');
+Route::get('welkom', [HomeController::class, 'showNewIndex'])->name('homepage');
 
 // Nothing to see here, move along
 Route::get('roos', [HomeController::class, 'roos']);
@@ -38,7 +38,7 @@ Route::get('roos', [HomeController::class, 'roos']);
 Route::get('privacy-statement', [PublicFilesController::class, 'showPrivacyStatement']);
 
 // Login and logout routes
-Route::get('inloggen', [SessionController::class, 'getLogin'])->middleware('guest')->name('login');
+Route::get('inloggen', [SessionController::class, 'getLogin'])->middleware('guest');
 Route::post('inloggen', [SessionController::class, 'postLogin'])->middleware('guest');
 Route::get('uitloggen', [SessionController::class, 'getLogout'])->middleware('auth');
 
@@ -312,3 +312,5 @@ Route::prefix('api')->middleware('cors')->group(function () {
 Route::prefix('iframe')->group(function () {
     Route::get('inschrijven', [MemberController::class, 'becomeMemberIFrame']);
 });
+
+Auth::routes();
