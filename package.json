@@ -1,18 +1,40 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
-    },
+    "name": "gsvnet",
+    "version": "1.0.0",
+    "description": "Website http://gsvnet.nl",
+    "main": "gulpfile.js",
+    "dependencies": {},
     "devDependencies": {
-        "axios": "^0.25",
-        "laravel-mix": "^6.0.6",
-        "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
-    }
+        "@babel/core": "^7.9.0",
+        "@babel/preset-env": "^7.9.0",
+        "babel-loader": "^8.1.0",
+        "browserslist": "^4.11.1",
+        "event-stream": "^4.0.1",
+        "gulp": "^4.0.2",
+        "gulp-autoprefixer": "^7.0.1",
+        "gulp-babel": "^8.0.0",
+        "gulp-clean-css": "^4.3.0",
+        "gulp-concat": "~2.6.0",
+        "gulp-imagemin": "^7.1.0",
+        "gulp-sass": "^4.0.2",
+        "gulp-uglify-es": "^2.0.0",
+        "webpack-stream": "^5.2.1",
+        "flipdown": "^0.3.2",
+        "bootstrap-sass": "^3.3.7",
+        "jquery": "^3.1.0",
+        "laravel-elixir": "^6.0.0-14",
+        "laravel-elixir-vue-2": "^0.2.0",
+        "laravel-elixir-webpack-official": "^1.0.2",
+        "lodash": "^4.16.2",
+        "vue": "^2.0.1",
+        "vue-resource": "^1.0.3"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "students"
+    ],
+    "author": "Harmen Stoppels",
+    "license": "ISC"
 }
