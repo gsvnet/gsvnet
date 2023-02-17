@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e0a341b0d46aad11bd178927b2ea738e",
+    "content-hash": "568fcb0ec587be3c07aece8f047ce6b6",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -82,34 +82,40 @@
         },
         {
             "name": "anahkiasen/former",
-            "version": "3.5.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/formers/former.git",
-                "reference": "e1e9b98d5c03932f8a12b6620fac3c4a81baa7be"
+                "url": "https://github.com/lasschehj/former.git",
+                "reference": "3ad3797ac7d8dca743d8f54c37aa53671229cfa6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/formers/former/zipball/e1e9b98d5c03932f8a12b6620fac3c4a81baa7be",
-                "reference": "e1e9b98d5c03932f8a12b6620fac3c4a81baa7be",
+                "url": "https://api.github.com/repos/lasschehj/former/zipball/3ad3797ac7d8dca743d8f54c37aa53671229cfa6",
+                "reference": "3ad3797ac7d8dca743d8f54c37aa53671229cfa6",
                 "shasum": ""
             },
             "require": {
                 "anahkiasen/html-object": "~1.4",
-                "illuminate/config": ">=4.2",
-                "illuminate/container": ">=4.2",
-                "illuminate/http": ">=4.2",
-                "illuminate/routing": ">=4.2",
-                "illuminate/session": ">=4.2",
-                "illuminate/translation": ">=4.2",
-                "php": ">=5.4.0"
+                "laravel/framework": "^10.0",
+                "php": "^7.2|^8.0"
             },
             "require-dev": {
-                "illuminate/database": ">=4.2",
-                "mockery/mockery": "~0.9.1",
-                "phpunit/phpunit": "~4.1.6"
+                "illuminate/database": "^5.1.3|^6.0|^7.0|^8.0",
+                "mockery/mockery": "^1.3",
+                "phpunit/phpunit": "^8.5"
             },
+            "default-branch": true,
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Former\\FormerServiceProvider"
+                    ],
+                    "aliases": {
+                        "Former": "Former\\Facades\\Former"
+                    }
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Former\\": [
@@ -119,7 +125,6 @@
                     "Laravel\\": "src/Laravel"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -130,7 +135,7 @@
                 }
             ],
             "description": "A powerful form builder",
-            "homepage": "http://anahkiasen.github.com/former/",
+            "homepage": "http://formers.github.io/former/",
             "keywords": [
                 "bootstrap",
                 "form",
@@ -138,10 +143,9 @@
                 "laravel"
             ],
             "support": {
-                "issues": "https://github.com/formers/former/issues",
-                "source": "https://github.com/formers/former/tree/3.5.3"
+                "source": "https://github.com/lasschehj/former/tree/master"
             },
-            "time": "2014-12-16T10:28:40+00:00"
+            "time": "2023-02-17T14:59:53+00:00"
         },
         {
             "name": "anahkiasen/html-object",
@@ -10763,7 +10767,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "laracasts/presenter": 20
+        "laracasts/presenter": 20,
+        "anahkiasen/former": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
