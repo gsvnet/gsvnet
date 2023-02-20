@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('jobs', function (Blueprint $table) {
-            $table->dropIndex('jobs_queue_reserved_reserved_at_index');
-            $table->dropColumn('reserved');
-            $table->index(['queue', 'reserved_at']);
-        });
+        // Schema::table('jobs', function (Blueprint $table) {
+        //     $table->dropIndex('jobs_queue_reserved_reserved_at_index');
+        //     $table->dropColumn('reserved');
+        //     $table->index(['queue', 'reserved_at']);
+        // }); Added by Laravel Shift. Maybe should be addded, but table does not exist at all yet.
 
         Schema::table('failed_jobs', function (Blueprint $table) {
             $table->longText('exception')->after('payload');
@@ -27,11 +27,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('jobs', function (Blueprint $table) {
-            $table->tinyInteger('reserved')->unsigned();
-            $table->index(['queue', 'reserved', 'reserved_at']);
-            $table->dropIndex('jobs_queue_reserved_at_index');
-        });
+        // Schema::table('jobs', function (Blueprint $table) {
+        //     $table->tinyInteger('reserved')->unsigned();
+        //     $table->index(['queue', 'reserved', 'reserved_at']);
+        //     $table->dropIndex('jobs_queue_reserved_at_index');
+        // });
 
         Schema::table('failed_jobs', function (Blueprint $table) {
             $table->dropColumn('exception');

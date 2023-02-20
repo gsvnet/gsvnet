@@ -6,8 +6,8 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ExtensionApiController;
 use App\Http\Controllers\FilesController;
-use App\Http\Controllers\ForumApiController;
-use App\Http\Controllers\ForumRepliesController;
+use App\Http\Controllers\Forum\ForumApiController;
+use App\Http\Controllers\Forum\ForumRepliesController;
 use App\Http\Controllers\Forum\ForumThreadsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Malfonds;
@@ -38,7 +38,7 @@ Route::get('roos', [HomeController::class, 'roos']);
 Route::get('privacy-statement', [PublicFilesController::class, 'showPrivacyStatement']);
 
 // Login and logout routes
-Route::get('inloggen', [SessionController::class, 'getLogin'])->middleware('guest');
+Route::get('inloggen', [SessionController::class, 'getLogin'])->middleware('guest')->name('login');
 Route::post('inloggen', [SessionController::class, 'postLogin'])->middleware('guest');
 Route::get('uitloggen', [SessionController::class, 'getLogout'])->middleware('auth');
 
@@ -312,5 +312,3 @@ Route::prefix('api')->middleware('cors')->group(function () {
 Route::prefix('iframe')->group(function () {
     Route::get('inschrijven', [MemberController::class, 'becomeMemberIFrame']);
 });
-
-Auth::routes();

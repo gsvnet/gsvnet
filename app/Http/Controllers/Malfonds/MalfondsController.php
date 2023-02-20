@@ -1,8 +1,8 @@
 <?php
 
-namespace Malfonds;
+namespace App\Http\Controllers\Malfonds;
 
-use Controller;
+use App\Http\Controllers\Controller;
 
 class MalfondsController extends Controller
 {

@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Http\Controllers\Forum;
+
+use App\Http\Controllers\BaseController;
 use App\Commands\Forum\DeleteReplyCommand;
 use App\Commands\Forum\EditReplyCommand;
 use App\Commands\Forum\ReplyToThreadCommand;

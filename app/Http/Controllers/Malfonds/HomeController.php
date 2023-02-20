@@ -1,6 +1,6 @@
 <?php
 
-namespace Malfonds;
+namespace App\Http\Controllers\Malfonds;
 
 use Auth;
 use Illuminate\Http\Response;

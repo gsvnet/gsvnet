@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Http\Controllers\Forum;
+
+use App\Http\Controllers\BaseController;
 use App\Commands\Forum\DislikeReplyCommand;
 use App\Commands\Forum\DislikeThreadCommand;
 use App\Commands\Forum\LikeReplyCommand;

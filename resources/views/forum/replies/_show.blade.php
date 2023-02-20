@@ -32,8 +32,8 @@
                 </li>
 
                 @can('reply.manage', $reply)
-                    <li><a href="{{ action([\App\Http\Controllers\ForumRepliesController::class, 'getEditReply'], [$reply->id]) }}">bewerk</a></li>
-                    <li><a href="{{ action([\App\Http\Controllers\ForumRepliesController::class, 'getDelete'], [$reply->id]) }}">verwijder</a></li>
+                    <li><a href="{{ action([\App\Http\Controllers\Forum\ForumRepliesController::class, 'getEditReply'], [$reply->id]) }}">bewerk</a></li>
+                    <li><a href="{{ action([\App\Http\Controllers\Forum\ForumRepliesController::class, 'getDelete'], [$reply->id]) }}">verwijder</a></li>
                 @endcan
 
                 @if(Auth::check())

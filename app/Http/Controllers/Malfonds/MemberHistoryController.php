@@ -1,6 +1,6 @@
 <?php
 
-namespace Malfonds;
+namespace App\Http\Controllers\Malfonds;
 
 use App\Helpers\Users\ProfileActions\ProfileActionsRepository;
 use App\Helpers\Users\ProfileActions\ProfileActionsTransformer;

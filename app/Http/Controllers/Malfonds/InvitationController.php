@@ -1,6 +1,6 @@
 <?php
 
-namespace Malfonds;
+namespace App\Http\Controllers\Malfonds;
 
 use App\Commands\Members\InviteMember;
 use App\Helpers\Auth\InviteValidator;

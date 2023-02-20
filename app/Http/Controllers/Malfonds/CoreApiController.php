@@ -1,6 +1,6 @@
 <?php
 
-namespace Malfonds;
+namespace App\Http\Controllers\Malfonds;
 
 use App\Helpers\Core\DispatchesJobs;
 use App\Http\ResponderTrait;
