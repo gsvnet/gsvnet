@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use App\Helpers\Users\User;
 use Closure;
-use Illuminate\Contracts\Redis\Database;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,19 +20,6 @@ use Symfony\Component\HttpFoundation\Response;
 class OnlineUserCounter
 {
     public static $key = 'gsv_online';
-
-    /**
-     * @var Database
-     */
-    protected $redis;
-
-    /**
-     * OnlineUserCounter constructor.
-     */
-    public function __construct(Database $redis)
-    {
-        $this->redis = $redis;
-    }
 
     /**
      * @param $request
@@ -54,6 +40,6 @@ class OnlineUserCounter
 
     private function informRedis(User $user)
     {
-        $this->redis->command('sadd', [self::$key, $user->id]);
+        Redis::command('sadd', [self::$key, $user->id]);
     }
 }

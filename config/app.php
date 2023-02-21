@@ -197,6 +197,6 @@ return [
         'HTML' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Inspiring' => Illuminate\Foundation\Inspiring::class,
-        'Redis' => Illuminate\Support\Facades\Redis::class,
+        // 'Redis' => Illuminate\Support\Facades\Redis::class,
     ])->toArray(),
 ];
