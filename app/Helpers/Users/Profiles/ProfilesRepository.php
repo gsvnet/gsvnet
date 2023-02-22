@@ -6,6 +6,8 @@ use App\Helpers\Core\BaseRepository;
 use App\Helpers\Users\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class ProfilesRepository extends BaseRepository
 {
@@ -25,7 +27,7 @@ class ProfilesRepository extends BaseRepository
      * @param  int|array  $type
      * @return UserProfile[]
      */
-    public function searchAndPaginate(string $search, int $region = null, int $yearGroup = null, $type = 2, int $amount = 20): array
+    public function searchAndPaginate(string|null $search, int $region = null, int $yearGroup = null, $type = 2, int $amount = 20): LengthAwarePaginator
     {
         return $this->search($search, $region, $yearGroup, $type)->paginate($amount);
     }
@@ -40,7 +42,7 @@ class ProfilesRepository extends BaseRepository
      *
      * @return UserProfile[]
      */
-    public function search(string $keyword = '', int $region = null, int $yearGroup = null, int $type = 2): array
+    public function search(string|null $keyword = '', int $region = null, int $yearGroup = null, int|array $type = 2): Builder
     {
         // Initialize basic query
         $query = UserProfile::with('user', 'yearGroup', 'regions')

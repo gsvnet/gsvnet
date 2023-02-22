@@ -17,7 +17,7 @@ class YearGroupRepository
     /**
      * Check if year group exists
      */
-    public function exists(int $id): YearGroup
+    public function exists(int $id): bool
     {
         try {
             $this->byId($id);

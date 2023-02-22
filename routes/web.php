@@ -60,7 +60,7 @@ Route::prefix('intern')->middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     // Only logged in users can view the member list if they have permission
     Route::get('jaarbundel', [UserController::class, 'showUsers']);
-    Route::get('jaarbundel/{id}', [UserController::class, 'showUser'])->where('id', '[0-9]+');
+    Route::get('jaarbundel/{id}', [UserController::class, 'showUser'])->where('id', '[0-9]+')->name('showUser');
 });
 
 //Sponsors

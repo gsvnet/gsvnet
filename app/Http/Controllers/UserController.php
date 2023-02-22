@@ -84,7 +84,7 @@ class UserController extends BaseController
     public function showUsers(Request $request): View
     {
         $this->authorize('users.show');
-        $search = $request->get('naam', '');
+        $search = $request->input('naam', '');
         $regions = $this->regions->all();
         $oudLeden = $request->get('oudleden');
 

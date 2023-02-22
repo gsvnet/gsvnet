@@ -64,6 +64,6 @@ class ReplyPresenter extends Presenter
 
     private function purify($content)
     {
-        return app(Purifier::class)->clean($content);
+        return Purifier::clean($content);
     }
 }

@@ -88,6 +88,7 @@ class ForumThreadsController extends BaseController
 
         $replies = $this->threads->getThreadRepliesPaginated($thread, $this->repliesPerPage);
 
+        $author = null;
         if (Auth::check()) {
             if (Auth::user()->approved) {
                 $author = Auth::user();

@@ -2,6 +2,8 @@
 
 namespace App\Helpers\Regions;
 
+use Illuminate\Database\Eloquent\Collection;
+
 class RegionsRepository
 {
     /**
@@ -30,7 +32,7 @@ class RegionsRepository
     /**
      * Check if region exists
      */
-    public function exists(int $id): Region
+    public function exists(int $id): bool
     {
         try {
             $this->byId($id);

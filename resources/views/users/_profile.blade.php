@@ -4,7 +4,7 @@
     </div>
     <div class="user-details">
         <h3>
-            {!! link_to_action('UserController@showUser', $member->user->present()->fullName, [$member->user->id], ['class' => 'search-users']) !!}
+            <a href="{{route('showUser', $member->user->id)}}">{{ $member->user->present()->fullName }}</a>
         </h3>
         <ul class="user-details-list">
             <li>

@@ -6,6 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\URL;
 
 class SessionController extends BaseController
 {
