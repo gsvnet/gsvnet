@@ -7,6 +7,7 @@ use App\Helpers\Users\Profiles\UserProfile;
 use App\Helpers\Users\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker;
 
 class AdminUserSeeder extends Seeder
 {
@@ -15,9 +16,10 @@ class AdminUserSeeder extends Seeder
         $faker = Faker\Factory::create('en_US');
         $yearGroupIds = DB::table('year_groups')->pluck('id');
         $regionIds = DB::table('regions')->pluck('id');
+        $region = rand(0,3);
 
         $harmen = User::create([
-            'email' => 'harmenstoppels@gmail.com',
+            'email' => 'lassche.hj@gmail.com',
             'password' => bcrypt('helloworld'),
             'firstname' => 'Harmen',
             'lastname' => 'Stoppels',
@@ -43,9 +45,15 @@ class AdminUserSeeder extends Seeder
             'parent_zip_code' => '9556EX',
             'parent_town' => 'Opende',
             'parent_phone' => '0800-223344',
+            'photo_path' => '',
+            'region' => $region,
+            'initials' => '',
+            'company' => '',
+            'profession' => '',
+            'business_url' => '',
+            'country' => '',
+            'parent_email' => ''
         ]);
-
-        $profile->regions()->sync([$faker->randomElement($regionIds)]);
 
         $startDate = $faker->dateTimeBetween('-3 years', '-1 month');
 

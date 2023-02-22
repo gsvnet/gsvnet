@@ -14,6 +14,12 @@ class YearGroupsSeeder extends Seeder
 
         $yearGroups = [
             [
+                'year' => 2020,
+                'name' => 'Chezulas',
+                'created_at' => $time,
+                'updated_at' => $time,
+            ],
+            [
                 'year' => 2017,
                 'name' => 'Qamonris',
                 'created_at' => $time,

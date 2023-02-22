@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker;
 
 class UsersTableSeeder extends Seeder
 {
@@ -33,6 +34,7 @@ class UsersTableSeeder extends Seeder
 
         foreach (range(1, $this->totalUsers) as $userId) {
             $type = rand(0, 3);
+            $region = rand(0,3);
 
             $users[] = [
                 'firstname' => $this->faker->firstName(),
@@ -69,6 +71,14 @@ class UsersTableSeeder extends Seeder
                     'parent_phone' => $this->faker->phoneNumber(),
                     'created_at' => $this->time,
                     'updated_at' => $this->time,
+                    'region' => $region,
+                    'photo_path' => '',
+                    'initials' => '',
+                    'company' => '',
+                    'profession' => '',
+                    'business_url' => '',
+                    'country' => '',
+                    'parent_email' => ''
                 ];
             }
         }

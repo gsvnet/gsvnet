@@ -42,19 +42,19 @@ class DatabaseSeeder extends Seeder
     ];
 
     protected $seeders = [
-        'CommitteesTableSeeder',
-        'YearGroupsSeeder',
-        'UsersTableSeeder',
-        'EventsTableSeeder',
-        'UserCommitteeSeeder',
-        'LabelsTableSeeder',
-        'AlbumsTableSeeder',
-        'PhotosTableSeeder',
-        'SenatesTableSeeder',
-        'TagSeeder',
-        'ForumTableSeeder',
-        'AdminUserSeeder',
-        'RegionsTableSeeder',
+        CommitteesTableSeeder::class,
+        YearGroupsSeeder::class,
+        UsersTableSeeder::class,
+        EventsTableSeeder::class,
+        UserCommitteeSeeder::class,
+        LabelsTableSeeder::class,
+        AlbumsTableSeeder::class,
+        PhotosTableSeeder::class,
+        SenatesTableSeeder::class,
+        TagSeeder::class,
+        ForumTableSeeder::class,
+        AdminUserSeeder::class,
+        RegionsTableSeeder::class,
     ];
 
     /**

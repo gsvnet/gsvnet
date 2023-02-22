@@ -7,6 +7,7 @@ use App\Helpers\Users\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker;
 
 class UserCommitteeSeeder extends Seeder
 {

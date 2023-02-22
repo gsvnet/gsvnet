@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Helpers\Albums\Album;
 use Illuminate\Database\Seeder;
+use Faker;
 
 class AlbumsTableSeeder extends Seeder
 {

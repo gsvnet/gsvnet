@@ -6,6 +6,7 @@ use App\Helpers\Users\User;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker;
 
 class RegionsTableSeeder extends Seeder
 {
