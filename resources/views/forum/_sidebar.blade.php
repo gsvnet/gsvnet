@@ -1,9 +1,5 @@
 <div class="content-columns">
     <div class="content-column">
-        <h2>Countdown tot een machtige keiweek #ZININDEZOMERMAN</h2>
-        <div id="flipdown" class="flipdown"></div>
-        <br>
-
         <h2>Maak een nieuw topic</h2>
         <p>
             <a class="button" href="{{ action('ForumThreadsController@getCreateThread') }}" rel="nofollow">Nieuw topic</a>
