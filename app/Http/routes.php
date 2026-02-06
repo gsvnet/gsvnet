@@ -209,6 +209,7 @@ Route::group([
 Route::group(['prefix' => 'forum', 'middleware' => ['auth', 'approved']], function() {
 
     Route::get('stats', 'ForumThreadsController@statistics');
+    Route::get('klachtencommissie', 'ForumThreadsController@klachtencommissie');
 
     Route::get('prullenbak', 'ForumThreadsController@getTrashed');
 

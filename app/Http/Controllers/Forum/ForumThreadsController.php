@@ -234,6 +234,14 @@ class ForumThreadsController extends BaseController {
         ));
     }
 
+    public function klachtencommissie()
+    {
+        if (Gate::denies('threads.show-private'))
+            throw new NoPermissionException;
+        
+        return view('forum.ComplaintCommittee');
+    }
+
     public function getTrashed()
     {
         $this->authorize('thread.manage');
