@@ -15,7 +15,7 @@
 
             <h2>Wat is de GSV?</h2>
             <p>
-                <iframe frameborder="0" width="560" height="315" src="//www.dailymotion.com/embed/video/x5wxp95" allowfullscreen></iframe>
+                <iframe frameborder="0" width="560" height="315" src="https://www.youtube.com/embed/LXKUh5fhQDo" allowfullscreen></iframe>
                 <br />
                 <a href="http://www.dailymotion.com/video/x5wxp95" target="_blank">Dit is de GSV</a> <i>door  <a href="http://www.dailymotion.com/degsv" target="_blank">degsv</a></i>
             </p>

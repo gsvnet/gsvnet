@@ -80,12 +80,12 @@ Route::group(['prefix' => 'de-gsv'], function() {
 
 // Word lid
 Route::group(['prefix' => 'word-lid'], function() {
-    Route::get('/', 'MemberController@index');
-    Route::get('/studie-en-vereniging', 'MemberController@study');
+    //Route::get('/', 'MemberController@index');
+    //Route::get('/studie-en-vereniging', 'MemberController@study');
     // Corona Q&A
-    Route::get('corona', 'MemberController@showCorona');
-    Route::get('/veel-gestelde-vragen', 'MemberController@faq');
-    Route::get('klachtencommissie', 'MemberController@complaints');
+    //Route::get('corona', 'MemberController@showCorona');
+    //Route::get('/veel-gestelde-vragen', 'MemberController@faq');
+    //Route::get('klachtencommissie', 'MemberController@complaints');
     Route::get('inschrijven',  'MemberController@becomeMember');
     Route::post('inschrijven', 'MemberController@store');
 });

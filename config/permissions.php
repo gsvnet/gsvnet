@@ -121,7 +121,7 @@ return [
      */
     'entity-specific' => [
         'thread.manage' => [
-            'committee' => ['webcie'],
+            'committee' => ['webcie', 'prescie'],
             'senate' => true
         ],
 

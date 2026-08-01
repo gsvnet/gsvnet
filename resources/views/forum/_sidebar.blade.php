@@ -40,7 +40,7 @@
             <a href="https://partnerprogramma.bol.com/click/click?p=1&amp;t=url&amp;s=33791&amp;f=TXL&amp;url=http%3A%2F%2Fwww.bol.com&amp;name=GSV-tekstadvertentie" title="Bol.com" class="button">Bol.com</a>
         </p>
         <p>
-            <a href="http://www.sponsorkliks.com/winkels.php?club=5241" title="Sponsorkliks" class="button">Sponsorkliks</a>
+            <a href="https://www.sponsorkliks.com/products/shops.php?club=15816" title="Sponsorkliks" class="button">Sponsorkliks</a>
         </p>
     </div>
 </div>
