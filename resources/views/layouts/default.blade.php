@@ -79,6 +79,9 @@
             </address>
 
             <p class="right">
+                @can('threads.show-private')
+                    <i><a href="/forum/klachtencommissie" title="klachtencommissie">Klachtencommissie</a>&nbsp; &nbsp; &nbsp;</i>
+                @endcan  
                 <i><a href="/privacy-statement" title="Privacyverklaring">Privacyverklaring</a></i>
             </p>
         </footer>
