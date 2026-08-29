@@ -16,7 +16,7 @@
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "~2.6.0",
     "gulp-imagemin": "^7.1.0",
-    "gulp-sass": "^4.0.2",
+    "gulp-sass": "^5.1.0",
     "gulp-uglify-es": "^2.0.0",
     "webpack-stream": "^5.2.1",
     "flipdown": "^0.3.2"
